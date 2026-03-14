@@ -67,6 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_captureSeeCast()
 	_apply_gravity(delta)
 	_handle_jump()
 	_handle_sprint()
@@ -97,7 +98,7 @@ func _handle_movement(delta: float) -> void:
 	var acceleration: float = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
 	
 	# strafing controls
-	if direction != Vector3.ZERO:
+	if direction != Vector3.ZERO: 
 		velocity.x = lerp(velocity.x, direction.x * _current_speed, delta * acceleration)
 		velocity.z = lerp(velocity.z, direction.z * _current_speed, delta * acceleration)
 	else:
@@ -143,7 +144,7 @@ func _toggle_flashlight() -> void:
 	_flashlight.visible = not _flashlight.visible
 
 func _update_flashlight(delta: float) -> void:
-	# ROTATION: Use Quaternion slerp to avoid gimbal lock
+	# ROTATION: Quaternion slerp to avoid gimbal lock
 	var current_rotation: Quaternion = Quaternion(_flashlight.global_transform.basis)
 	var target_rotation: Quaternion = Quaternion(_camera.global_transform.basis)
 	var smoothed_rotation: Quaternion = current_rotation.slerp(
@@ -177,3 +178,12 @@ func _toggle_mouse_capture() -> void:
 		_is_mouse_captured = false
 	else:
 		_capture_mouse()
+
+func _captureSeeCast() -> void:
+	%InteractText.hide()
+	if %SeeCast.is_colliding():
+		var target = %SeeCast.get_collider()
+		if target != null and target.has_method("interact"):
+			%InteractText.show()
+			if Input.is_action_just_pressed("interact"):
+				target.interact()
