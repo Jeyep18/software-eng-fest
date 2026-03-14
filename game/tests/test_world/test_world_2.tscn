@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://bi7thj72onpnm"]
+
+[ext_resource type="PackedScene" uid="uid://dx3oug1d2ncup" path="res://game/objects/chair.tscn" id="3_8n8cx"]
+[ext_resource type="PackedScene" uid="uid://cjfcb8uqcjewa" path="res://game/objects/cafeteri_acake.tscn" id="4_8n8cx"]
+[ext_resource type="PackedScene" uid="uid://ci8x2vwwxqd65" path="res://game/objects/walldoor_0022.tscn" id="5_06lrm"]
+[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_06lrm"]
+[ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/door_2.tscn" id="6_cmxvi"]
+[ext_resource type="PackedScene" uid="uid://5lygidd3w3bd" path="res://game/objects/table.tscn" id="7_2vdvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1koyj"]
+albedo_color = Color(0.4454912, 0.3730912, 0.37375227, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywe85"]
+material = SubResource("StandardMaterial3D_1koyj")
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8n8cx"]
+size = Vector3(50, 0.5, 50)
+
+[node name="test_world_2" type="Node3D" unique_id=734613532]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=348644310]
+transform = Transform3D(1.881793, 0, 0, 0, 1, 0, 0, 0, 2.2602863, 0, 0, 0)
+mesh = SubResource("BoxMesh_ywe85")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=744075734]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1288792462]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_8n8cx")
+
+[node name="Lights" type="Node3D" parent="." unique_id=2082978592]
+metadata/_edit_lock_ = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights" unique_id=230111061]
+transform = Transform3D(0.017956203, -0.7534663, 0.6572414, -0.18788086, 0.6430947, 0.74238145, -0.9820278, -0.13681334, -0.1300144, 57.634014, 56.1628, -14.054409)
+shadow_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="props" type="Node3D" parent="." unique_id=1767941796]
+
+[node name="Table" parent="props" unique_id=1735109321 instance=ExtResource("7_2vdvj")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.677581, 0.27099597, -21.492819)
+
+[node name="Table2" parent="props" unique_id=1338527656 instance=ExtResource("7_2vdvj")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 16.193779, 0.27470326, -21.50009)
+
+[node name="Table3" parent="props" unique_id=634336975 instance=ExtResource("7_2vdvj")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 23.364048, 0.27099597, -21.560427)
+
+[node name="Table4" parent="props" unique_id=333732673 instance=ExtResource("7_2vdvj")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 27.880247, 0.27470326, -21.567698)
+
+[node name="Chair" parent="props" unique_id=1099457580 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.074055, 0.25331768, -22.366264)
+
+[node name="Chair2" parent="props" unique_id=483114310 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.9841275, 0, -0.17746262, 0, 1, 0, 0.17746262, 0, 0.9841275, 12.185483, 0.25331768, -22.19358)
+
+[node name="Chair3" parent="props" unique_id=1278096998 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.9887459, 0, 0.14960437, 0, 1, 0, -0.14960437, 0, 0.9887459, 15.526263, 0.25331768, -22.370983)
+
+[node name="Chair4" parent="props" unique_id=319108251 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.9869205, 0, -0.16120768, 0, 1, 0, 0.16120768, 0, 0.9869205, 16.873318, 0.25331768, -22.370983)
+
+[node name="Chair5" parent="props" unique_id=1680125967 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.97931117, 0, -0.2023599, 0, 1, 0, 0.2023599, 0, -0.97931117, 16.873318, 0.25331768, -20.691639)
+
+[node name="Chair6" parent="props" unique_id=417721134 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.9999737, 0, -0.007242948, 0, 1, 0, 0.007242948, 0, -0.9999737, 15.517378, 0.25331768, -20.88625)
+
+[node name="Chair7" parent="props" unique_id=1845532545 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.9999737, 0, -0.007242948, 0, 1, 0, 0.007242948, 0, -0.9999737, 12.47769, 0.25331768, -20.88625)
+
+[node name="Chair8" parent="props" unique_id=1031517946 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.9886569, 0, 0.15019117, 0, 1, 0, -0.15019117, 0, -0.9886569, 11.08715, 0.25331768, -20.88625)
+
+[node name="Chair9" parent="props" unique_id=768184460 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.99340487, 0, -0.11465967, 0, 1, 0, 0.11465967, 0, -0.99340487, 22.77232, 0.25331768, -20.88625)
+
+[node name="Chair10" parent="props" unique_id=1318984591 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.9998183, 0, 0.019057915, 0, 1, 0, -0.019057915, 0, -0.9998183, 23.898794, 0.25331768, -20.88625)
+
+[node name="Chair11" parent="props" unique_id=306255075 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.33316508, 0, 0.9428685, 0, 1, 0, -0.9428685, 0, -0.33316508, 21.067951, 0.25331768, -20.88625)
+
+[node name="Chair18" parent="props" unique_id=1292448915 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.366209, 0, -0.93053263, 0, 1, 0, 0.93053263, 0, -0.366209, 18.121304, 0.25331768, -21.21746)
+
+[node name="Chair12" parent="props" unique_id=2000004910 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.9685788, 0, 0.24870673, 0, 1, 0, -0.24870673, 0, 0.9685788, 22.567715, 0.25331768, -22.539621)
+
+[node name="Chair13" parent="props" unique_id=724935888 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.99770796, 0, -0.0676671, 0, 1, 0, 0.0676671, 0, 0.99770796, 23.792953, 0.25331768, -22.539621)
+
+[node name="Chair14" parent="props" unique_id=1007708806 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.99770796, 0, -0.0676671, 0, 1, 0, 0.0676671, 0, 0.99770796, 27.269754, 0.25331768, -22.25276)
+
+[node name="Chair15" parent="props" unique_id=1269816647 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(0.985265, 0, 0.17103489, 0, 1, 0, -0.17103489, 0, 0.985265, 28.458076, 0.25331768, -22.25276)
+
+[node name="Chair16" parent="props" unique_id=1882126337 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.99904674, 0, 0.043654405, 0, 1, 0, -0.043654405, 0, -0.99904674, 28.458076, 0.25331768, -20.877438)
+
+[node name="Chair17" parent="props" unique_id=399439511 instance=ExtResource("3_8n8cx")]
+transform = Transform3D(-0.99904674, 0, 0.043654405, 0, 1, 0, -0.043654405, 0, -0.99904674, 27.395231, 0.25331768, -20.877438)
+
+[node name="CAFETERIAcake" parent="props" unique_id=1324015259 instance=ExtResource("4_8n8cx")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 23.444551, 1.641641, -21.54759)
+
+[node name="CAFETERIAcake2" parent="props" unique_id=1819067175 instance=ExtResource("4_8n8cx")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 24.295357, 1.6238605, -21.54759)
+
+[node name="CAFETERIAcake4" parent="props" unique_id=355391665 instance=ExtResource("4_8n8cx")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26.914433, 1.730254, -21.54759)
+
+[node name="CAFETERIAcake3" parent="props" unique_id=387912060 instance=ExtResource("4_8n8cx")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 22.784779, 1.6238605, -21.54759)
+
+[node name="walldoor_0022" parent="props" unique_id=685054689 instance=ExtResource("5_06lrm")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.719313, 1.7822006, -18.148794)
+
+[node name="door2" parent="props" unique_id=2137293157 instance=ExtResource("6_cmxvi")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.721611, 1.3608801, -18.104168)
+
+[node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("6_06lrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.98882, 0.25171742, -17.69356)
