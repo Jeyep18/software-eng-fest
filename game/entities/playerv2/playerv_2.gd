@@ -172,3 +172,5 @@ func _on_interactable_entered(interactable: Interactable) -> void:
 func _on_interactable_exited(interactable: Interactable) -> void:
 	_nearby_interactables.erase(interactable)
 #endregion
+
+#nig
