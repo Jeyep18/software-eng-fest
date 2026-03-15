@@ -5,7 +5,6 @@ var _is_open: bool = false
 
 @export var _animation_player: AnimationPlayer
 
-
 func interact() -> void:
 	if _animation_player == null:
 		push_error("Door: _animation_player is not assigned on " + name)
@@ -20,3 +19,4 @@ func interact() -> void:
 	else:
 		_animation_player.play("door_close1")
 		_is_open = false
+		
