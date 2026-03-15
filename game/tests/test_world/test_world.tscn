@@ -153,3 +153,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.118592, 1.0365231, -0
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("6_t2khi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1429965, -0.04873565, 1.3876052)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=575988715]
+transform = Transform3D(11.120166, 0, 0, 0, 2.2229538, 0, 0, 0, 3.0112693, 17.6347, -48.630783, -79.36769)
