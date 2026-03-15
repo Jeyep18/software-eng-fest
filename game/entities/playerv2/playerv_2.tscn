@@ -23,6 +23,9 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, 0)
 script = ExtResource("2_kjoon")
 follow_target = NodePath("..")
+follow_smoothness = 3.0
+look_at_height_offset = 1.5
+look_ahead_distance = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="camera_mount" unique_id=2140922647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5379745, 2.6204987)
