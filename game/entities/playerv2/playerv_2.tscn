@@ -23,8 +23,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, 0)
 script = ExtResource("2_kjoon")
 follow_target = NodePath("..")
-follow_smoothness = 3.0
-look_at_height_offset = 1.5
 look_ahead_distance = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="camera_mount" unique_id=2140922647]
@@ -39,14 +37,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -97.0
+offset_top = -51.0
+offset_right = 97.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="InteractText" type="Label" parent="CanvasLayer/BoxContainer" unique_id=2113316651]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 6
 text = "press E to interact"
