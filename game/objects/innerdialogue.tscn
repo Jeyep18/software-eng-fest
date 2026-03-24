@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://lapvjimh6af4"]
 
-[ext_resource type="Script" uid="uid://dn831lde6o1b7" path="res://game/objects/area_3d.gd" id="1_slm0f"]
+[ext_resource type="Script" uid="uid://dn831lde6o1b7" path="res://game/objects/innerMonologue.gd" id="1_slm0f"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f2msa"]
 _surfaces = [{
@@ -35,9 +35,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018798828, 0.5283203)
 shape = SubResource("BoxShape3D_f2msa")
 debug_color = Color(0.91945577, 6.343633e-05, 0.7003069, 0.41960785)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=267214587]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1397334607]
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=557279181]
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=653677302]
 unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
@@ -52,8 +52,14 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BoxContainer" unique_id=1315270201]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BoxContainer" unique_id=1993614412]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Nigga nigga nigga "
+text = "AHHHHHHHHHHHHHHHHHHHHHHH "
+
+[node name="LineCounter" type="Label" parent="CanvasLayer/BoxContainer" unique_id=1674969374]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "1 / 3"

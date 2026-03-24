@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_hrr0m"]
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/door_2.tscn" id="2_2237b"]
+[ext_resource type="VoxelGIData" uid="uid://cqj5cl3lk1ixu" path="res://game/maps/test_map1/room_1.VoxelGI_data.res" id="2_wwvr2"]
 [ext_resource type="PackedScene" uid="uid://lapvjimh6af4" path="res://game/objects/innerdialogue.tscn" id="3_2m77p"]
+[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_lhrku"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrr0m"]
 albedo_color = Color(0.8919668, 0.6861965, 1, 1)
@@ -30,9 +32,14 @@ fog_light_color = Color(0.17039818, 0.17323923, 0.13406974, 1)
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.19066867, 0.26354674, 0.13402292, 1)
 
-[sub_resource type="VoxelGIData" id="VoxelGIData_hrr0m"]
-propagation = 0.4
-interior = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_oejw1"]
+size = Vector3(9.525894, 2.6912842, 7.4823914)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhrku"]
+size = Vector3(9.935799, 2.6912842, 7.4823914)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wiix6"]
+size = Vector3(14.58487, 2.6912842, 7.4823914)
 
 [node name="room1" type="Node3D" unique_id=1732754024]
 
@@ -215,10 +222,57 @@ spot_angle = 34.806156
 [node name="VoxelGI" type="VoxelGI" parent="environment" unique_id=1893799703]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4082947, 6.1087036, 0.31222916)
 size = Vector3(37.04901, 13.399536, 10.094261)
-data = SubResource("VoxelGIData_hrr0m")
+data = ExtResource("2_wwvr2")
 
 [node name="door2" parent="." unique_id=1172666031 instance=ExtResource("2_2237b")]
 transform = Transform3D(0.08111826, 0, -1.497805, 0, 1.5, 0, 1.497805, 0, 0.08111826, -4.286972, 1.2864804, 0.72221446)
 
 [node name="innerdialogue" parent="." unique_id=1514315481 instance=ExtResource("3_2m77p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.696485, 0.66478467, -2.1789546)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=189256735]
+
+[node name="area1" type="Area3D" parent="Node3D" unique_id=471872977 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.419657, 1.4082203, 0)
+script = ExtResource("5_lhrku")
+z_distance = 5.0
+z_wall_position = 8.0
+z_dynamic_enabled = true
+x_min = -7.0
+x_max = -2.0
+transition_duration = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/area1" unique_id=1469184813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0613327, 0.04925537, -0.07725525)
+shape = SubResource("BoxShape3D_oejw1")
+debug_color = Color(0.8536516, 0.0008174527, 0.89261615, 0.41960785)
+
+[node name="area2" type="Area3D" parent="Node3D" unique_id=1464826521 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1580634, 1.4082203, 0)
+script = ExtResource("5_lhrku")
+z_distance = 5.0
+z_wall_position = 8.0
+z_dynamic_enabled = true
+x_min = 3.0
+x_max = 7.0
+transition_duration = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/area2" unique_id=1531222119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.266285, 0.04925537, -0.07725525)
+shape = SubResource("BoxShape3D_lhrku")
+debug_color = Color(0.6429236, 0.3492239, 0.9801101, 0.41960785)
+
+[node name="area3" type="Area3D" parent="Node3D" unique_id=1384969550 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1580634, 1.4082203, 0)
+script = ExtResource("5_lhrku")
+z_distance = 10.0
+z_wall_position = 10.0
+z_dynamic_enabled = true
+x_min = 13.0
+x_max = 21.0
+transition_duration = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/area3" unique_id=1266642325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.590559, 0.04925537, -0.07725525)
+shape = SubResource("BoxShape3D_wiix6")
+debug_color = Color(0.6879652, 0.4826578, 0.377151, 0.41960785)
