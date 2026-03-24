@@ -39,3 +39,5 @@ func set_prompt_visible(visible: bool) -> void:
 
 func hide_ui() -> void:
 	hide()
+
+# end of file
