@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://s2h4lnx5ugmq"]
+
+[ext_resource type="Script" uid="uid://drs4pm8curf5l" path="res://game/ui/npc_dialogue/dialogue_ui.gd" id="1_1csa8"]
+[ext_resource type="Texture2D" uid="uid://cmitawtnbhpuc" path="res://game/assets/images/pichahah.jpg" id="1_rmsek"]
+
+[node name="DialogueUI" type="Control" unique_id=171568857]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_1csa8")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=735811752]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_right = -200.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1110831751]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=80396021]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1816777407]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="NameContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1108875816]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/NameContainer" unique_id=537655146]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="SpeakerName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/NameContainer/MarginContainer" unique_id=1448468044]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MABATAKSNMGNBAJKGNBAKSNAKFNKAFN"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1500685049]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer" unique_id=428945612]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1248777889]
+custom_minimum_size = Vector2(618, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="SpeakerDialogue" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=739598144]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Hello my ni-"
+scroll_active = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=940026293]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="InteractPrompt" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2" unique_id=28763757]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(165, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "Press E to continue..."
+fit_content = true
+scroll_active = false
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1532441342]
+layout_mode = 2
+
+[node name="ImageContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=190248521]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SpeakerImage" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer/ImageContainer" unique_id=1601402857]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("1_rmsek")
+expand_mode = 1
