@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://b2rdge8kkopbv"]
+
+[ext_resource type="PackedScene" uid="uid://i1uyg6mybba" path="res://game/entities/playerv2/player_model.tscn" id="1_w0ywr"]
+[ext_resource type="Texture2D" uid="uid://cmitawtnbhpuc" path="res://game/assets/images/pichahah.jpg" id="2_kyit0"]
+[ext_resource type="Script" uid="uid://kpkssbdxypxw" path="res://game/entities/npc/npc.gd" id="2_whnsa"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_gaydl"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="3_whnsa"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="4_gaydl"]
+[ext_resource type="Texture2D" uid="uid://0m0emvc3kt6x" path="res://game/assets/images/chris.jpg" id="4_pvu2q"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kyit0"]
+radius = 0.3046875
+
+[sub_resource type="Resource" id="Resource_78a3a"]
+script = ExtResource("3_gaydl")
+speaker_name = "Chris"
+expression = ExtResource("4_pvu2q")
+text = "hi baby"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_2oq6d"]
+script = ExtResource("3_gaydl")
+speaker_name = "BigNigga"
+expression = ExtResource("2_kyit0")
+text = "yes baby ano yon"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_1vq1q"]
+script = ExtResource("3_gaydl")
+speaker_name = "Chris"
+expression = ExtResource("4_pvu2q")
+text = "wala nigga..."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_tbbly"]
+script = ExtResource("4_gaydl")
+lines = Array[ExtResource("3_gaydl")]([SubResource("Resource_78a3a"), SubResource("Resource_2oq6d"), SubResource("Resource_1vq1q")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_whnsa"]
+radius = 0.62646484
+
+[node name="NPC" type="CharacterBody3D" unique_id=1075283028]
+
+[node name="Visuals" type="Node3D" parent="." unique_id=979677614]
+
+[node name="player_model" parent="Visuals" unique_id=1028691560 instance=ExtResource("1_w0ywr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1824602118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_kyit0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=442305421]
+script = ExtResource("2_whnsa")
+dialogue_ui_scene = ExtResource("3_whnsa")
+default_sequence = SubResource("Resource_tbbly")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=727018545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.2327277)
+shape = SubResource("CylinderShape3D_whnsa")
+debug_color = Color(0.7544347, 0.23602062, 0.9553887, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=515564306]
+unique_name_in_owner = true
