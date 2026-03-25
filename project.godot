@@ -19,6 +19,13 @@ run/main_scene="uid://blsk41vol8ppb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TransitionOverlay="*uid://bx637gkf0lc65"
+GlobalTimer="*uid://evkdxftbiln"
+SceneManager="*uid://byw1611rs1g8q"
+NeedsLog="*uid://chb7qf2rtv351"
+
 [global_group]
 
 player=""
