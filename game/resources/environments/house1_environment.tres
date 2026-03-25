@@ -1,5 +1,7 @@
 [gd_resource type="Environment" format=3 uid="uid://cl5jberr11oyd"]
 
+[ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="1_bqqw3"]
+
 [sub_resource type="Gradient" id="Gradient_ktcou"]
 offsets = PackedFloat32Array(0, 0.19863015, 0.8630137, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.17099999, 0.18461667, 0.19, 1, 0.86, 0.81786, 0.7396, 1, 1, 1, 1, 1)
@@ -7,13 +9,12 @@ colors = PackedColorArray(0, 0, 0, 1, 0.17099999, 0.18461667, 0.19, 1, 0.86, 0.8
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r7nb8"]
 gradient = SubResource("Gradient_ktcou")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ktcou"]
-sky_top_color = Color(0, 0.46828794, 0.67898804, 1)
-sky_horizon_color = Color(0.7240749, 0.8771094, 0.9358921, 1)
-sky_energy_multiplier = 1.5
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pstp2"]
+panorama = ExtResource("1_bqqw3")
+energy_multiplier = 0.5
 
 [sub_resource type="Sky" id="Sky_r7nb8"]
-sky_material = SubResource("ProceduralSkyMaterial_ktcou")
+sky_material = SubResource("PanoramaSkyMaterial_pstp2")
 
 [resource]
 background_mode = 2
