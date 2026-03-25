@@ -26,6 +26,10 @@ GlobalTimer="*uid://evkdxftbiln"
 SceneManager="*uid://byw1611rs1g8q"
 NeedsLog="*uid://chb7qf2rtv351"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 player=""
