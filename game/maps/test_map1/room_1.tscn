@@ -5,6 +5,7 @@
 [ext_resource type="VoxelGIData" uid="uid://cqj5cl3lk1ixu" path="res://game/maps/test_map1/room_1.VoxelGI_data.res" id="2_wwvr2"]
 [ext_resource type="PackedScene" uid="uid://lapvjimh6af4" path="res://game/objects/innerdialogue.tscn" id="3_2m77p"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_lhrku"]
+[ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/fridge.tscn" id="6_oejw1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrr0m"]
 albedo_color = Color(0.8919668, 0.6861965, 1, 1)
@@ -276,3 +277,6 @@ transition_duration = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.590559, 0.04925537, -0.07725525)
 shape = SubResource("BoxShape3D_wiix6")
 debug_color = Color(0.6879652, 0.4826578, 0.377151, 0.41960785)
+
+[node name="Fridge" parent="." unique_id=1495864148 instance=ExtResource("6_oejw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7379605, 1.2087512, -0.5040683)
