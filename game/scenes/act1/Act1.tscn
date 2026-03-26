@@ -5,6 +5,7 @@
 [ext_resource type="VoxelGIData" uid="uid://c7bx8hixmt3r4" path="res://game/maps/house/house_1.VoxelGI_data.res" id="3_arbvm"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="4_foylt"]
 [ext_resource type="PackedScene" uid="uid://b2rdge8kkopbv" path="res://game/entities/npc/npc.tscn" id="5_k5jwi"]
+[ext_resource type="PackedScene" uid="uid://6bc76ruqkrog" path="res://game/entities/nanay_npc/Nanay.tscn" id="6_si113"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohr03"]
 
@@ -383,3 +384,6 @@ debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 
 [node name="NPC" parent="." unique_id=1075283028 instance=ExtResource("5_k5jwi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.328557, 0.009041638, -2.8131056)
+
+[node name="Nanay" parent="." unique_id=1938827577 instance=ExtResource("6_si113")]
+transform = Transform3D(0.9999972, -0.0022144082, 0.0008301238, 0.0022147896, 0.9999974, -0.0004555986, -0.00082910573, 0.00045744856, 0.9999995, 2.3606129, 0.031185389, -2.3712938)
