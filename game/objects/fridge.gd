@@ -1,10 +1,9 @@
-class_name InnerMonologue
+class_name Fridge
 extends Interactable
 
-@export var interaction_prompt: String = "PRESS E"
+@export var interaction_prompt: String = "Press E to inspect"
 @export var monologue_lines: Array[String] = [
-	"This is a box...",
-	"I wonder what I can do with this.."
+	"The fridge is empty..",
 ]
 @export var auto_dismiss: bool = false
 @export var chars_per_second: float = 20.0
@@ -26,7 +25,7 @@ func _ready() -> void:
 
 func _setup_ui() -> void:
 	if monologue_ui_scene == null:
-		push_error("InnerMonologue: monologue_ui_scene not assigned on " + name)
+		push_error("Fridge: monologue_ui_scene not assigned on " + name)
 		return
 	_ui = monologue_ui_scene.instantiate() as MonologueUI
 	%CanvasLayer.add_child(_ui)
