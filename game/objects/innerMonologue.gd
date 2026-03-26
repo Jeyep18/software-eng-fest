@@ -1,10 +1,11 @@
 class_name InnerMonologue
 extends Interactable
 
-@export var interaction_prompt: String = "PRESS E"
+@export var interaction_prompt: String = "Interact [E]"
 @export var monologue_lines: Array[String] = [
 	"This is a box...",
-	"I wonder what I can do with this.."
+	"I wonder what I can do with this..",
+	"Maybe I can ask Mom"
 ]
 @export var auto_dismiss: bool = false
 @export var chars_per_second: float = 20.0

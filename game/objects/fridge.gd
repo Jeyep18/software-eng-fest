@@ -1,9 +1,10 @@
 class_name Fridge
 extends Interactable
 
-@export var interaction_prompt: String = "Press E to inspect"
+@export var interaction_prompt: String = "Interact [E]"
 @export var monologue_lines: Array[String] = [
 	"The fridge is empty..",
+	"I need to buy some groceries..."
 ]
 @export var auto_dismiss: bool = false
 @export var chars_per_second: float = 20.0

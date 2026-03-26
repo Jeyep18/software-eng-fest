@@ -30,7 +30,6 @@ shape = SubResource("ConcavePolygonShape3D_slm0f")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=225007852]
 script = ExtResource("1_slm0f")
-interaction_prompt = "PRESS E"
 monologue_ui_scene = ExtResource("2_be4a8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2098128167]

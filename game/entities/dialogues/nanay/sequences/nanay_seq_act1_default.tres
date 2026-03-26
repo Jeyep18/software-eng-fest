@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://cjb3qgwrq7v7h"]
+
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="1_4flvv"]
+[ext_resource type="Resource" uid="uid://dsmlxcpjuf81u" path="res://game/entities/dialogues/nanay/lines/nanay_line1.tres" id="2_2b7o1"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="2_if7ug"]
+[ext_resource type="Resource" uid="uid://cntse1fferoje" path="res://game/entities/dialogues/nanay/lines/nanay_line2.tres" id="3_xcjy0"]
+
+[resource]
+script = ExtResource("2_if7ug")
+lines = Array[ExtResource("1_4flvv")]([ExtResource("2_2b7o1"), ExtResource("3_xcjy0")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"

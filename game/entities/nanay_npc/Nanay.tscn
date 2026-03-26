@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://6bc76ruqkrog"]
+
+[ext_resource type="PackedScene" uid="uid://dgw708edian3h" path="res://game/assets/models/nanay_model.tscn" id="1_e6l8e"]
+[ext_resource type="Script" uid="uid://dk0h7l0jfn1a" path="res://game/entities/nanay_npc/nanay.gd" id="2_ewcw0"]
+[ext_resource type="Resource" uid="uid://cjb3qgwrq7v7h" path="res://game/entities/dialogues/nanay/sequences/nanay_seq_act1_default.tres" id="3_oc2pm"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_dgrso"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ewcw0"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e6l8e"]
+radius = 0.71533203
+
+[node name="Nanay" type="CharacterBody3D" unique_id=1938827577]
+
+[node name="visuals" type="Node3D" parent="." unique_id=1058585255]
+
+[node name="nanay_model" parent="visuals" unique_id=1953470792 instance=ExtResource("1_e6l8e")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1571707294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("CylinderShape3D_ewcw0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=115671592]
+script = ExtResource("2_ewcw0")
+sequence_act1_default = ExtResource("3_oc2pm")
+sequence_after_roof_found = ExtResource("3_oc2pm")
+dialogue_ui_scene = ExtResource("4_dgrso")
+chars_per_second = 40.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=395129141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.3057801)
+shape = SubResource("CylinderShape3D_e6l8e")
+debug_color = Color(0.78586143, 0.1424543, 0.9810607, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=570082434]
+unique_name_in_owner = true

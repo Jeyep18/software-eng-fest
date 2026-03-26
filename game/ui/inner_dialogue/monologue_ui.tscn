@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc7vud8rjtghk"]
 
 [ext_resource type="Script" uid="uid://dstiflxhd0vlr" path="res://game/ui/inner_dialogue/monologue_ui.gd" id="1_3haje"]
-[ext_resource type="Texture2D" uid="uid://cmitawtnbhpuc" path="res://game/assets/images/pichahah.jpg" id="1_l7ebr"]
+[ext_resource type="Texture2D" uid="uid://boh3kdg2n44sm" path="res://game/assets/images/o.png" id="2_3haje"]
 
 [node name="monologue_ui" type="Control" unique_id=53010592]
 layout_mode = 3
@@ -36,7 +36,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-texture = ExtResource("1_l7ebr")
+texture = ExtResource("2_3haje")
 expand_mode = 1
 stretch_mode = 6
 
