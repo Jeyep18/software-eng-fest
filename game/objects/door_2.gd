@@ -6,6 +6,8 @@ var _is_open: bool = false
 @export var _animation_player: AnimationPlayer
 
 func interact() -> void:
+	await TransitionOverlay.fade_to_black()
+	SceneManager.load_scene("act1")
 	if _animation_player == null:
 		push_error("Door: _animation_player is not assigned on " + name)
 		return

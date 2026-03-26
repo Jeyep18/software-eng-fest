@@ -33,8 +33,8 @@ func skip_to_end() -> void:
 	_speaker_dialogue.visible_ratio = 1.0
 
 
-func set_prompt_visible(visible: bool) -> void:
-	_interact_prompt.visible = visible
+func set_prompt_visible(isVisible: bool) -> void:
+	_interact_prompt.visible = isVisible
 
 
 func hide_ui() -> void:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://cntse1fferoje"]
+
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="1_5colp"]
+[ext_resource type="Texture2D" uid="uid://cu7a5dgh3bms8" path="res://game/assets/images/onanay.jpg" id="1_6eqgp"]
+
+[resource]
+script = ExtResource("1_5colp")
+speaker_name = "OHNanay"
+expression = ExtResource("1_6eqgp")
+text = "Ano ba yan nak. naku"
+metadata/_custom_type_script = "uid://po32410sv037"
