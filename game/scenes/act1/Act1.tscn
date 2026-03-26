@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://des0sglylmgcx"]
 
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_80egk"]
-[ext_resource type="Script" uid="uid://iqaqivurqc8u" path="res://game/scenes/act1/Act_1.gd" id="1_si113"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="2_1kl2d"]
 [ext_resource type="VoxelGIData" uid="uid://c7bx8hixmt3r4" path="res://game/maps/house/house_1.VoxelGI_data.res" id="3_arbvm"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="4_foylt"]
@@ -36,7 +35,6 @@ size = Vector3(6.9779205, 3.1103516, 5.2154236)
 size = Vector3(7.5839233, 3.1496582, 10.320129)
 
 [node name="House1" type="Node3D" unique_id=203503962]
-script = ExtResource("1_si113")
 
 [node name="Inviswall" type="CSGBox3D" parent="." unique_id=1863343441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1433382, 1.6178141, 2.590981)

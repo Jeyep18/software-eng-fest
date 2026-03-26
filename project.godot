@@ -23,7 +23,6 @@ config/icon="res://icon.svg"
 
 TransitionOverlay="*uid://bx637gkf0lc65"
 GlobalTimer="*uid://evkdxftbiln"
-TravelCalculator="*uid://e2soax5a625t"
 SceneManager="*uid://byw1611rs1g8q"
 NeedsLog="*uid://chb7qf2rtv351"
 
