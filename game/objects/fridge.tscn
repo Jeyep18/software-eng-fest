@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://q1mqm53bb7nh"]
+
+[ext_resource type="PackedScene" uid="uid://dgardm584oru2" path="res://_raw_assets/psx_style_fridge.glb" id="1_wg60y"]
+[ext_resource type="Script" uid="uid://cc77n6dbdkgr6" path="res://game/objects/fridge.gd" id="2_uhd8r"]
+[ext_resource type="PackedScene" uid="uid://cc7vud8rjtghk" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhd8r"]
+size = Vector3(1.0595093, 2.707672, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mq1j"]
+size = Vector3(1.0633545, 2.6504517, 1.451294)
+
+[node name="Fridge" type="StaticBody3D" unique_id=1495864148]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1662103715 instance=ExtResource("1_wg60y")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=442599865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38529968, 0)
+shape = SubResource("BoxShape3D_uhd8r")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=348564518]
+script = ExtResource("2_uhd8r")
+monologue_ui_scene = ExtResource("3_7mq1j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1601409854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024963379, 0.39950562, 0.22564697)
+shape = SubResource("BoxShape3D_7mq1j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616304789]
+unique_name_in_owner = true
