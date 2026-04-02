@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://7an6p7fapspp"]
+
+[ext_resource type="Script" uid="uid://cayjpt5gunvro" path="res://spawnpoint.gd" id="1_gn48j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gn48j"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ewxtd"]
+material = SubResource("StandardMaterial3D_gn48j")
+
+[node name="Spawnpoint" type="Marker3D" unique_id=1429357958]
+script = ExtResource("1_gn48j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=549091316]
+mesh = SubResource("PlaneMesh_ewxtd")

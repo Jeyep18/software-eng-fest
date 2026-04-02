@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://3y6jkqwli6g2"]
 
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_hrr0m"]
-[ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/door_2.tscn" id="2_2237b"]
+[ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="2_2237b"]
 [ext_resource type="VoxelGIData" uid="uid://cqj5cl3lk1ixu" path="res://game/maps/test_map1/room_1.VoxelGI_data.res" id="2_wwvr2"]
 [ext_resource type="PackedScene" uid="uid://lapvjimh6af4" path="res://game/objects/innerdialogue.tscn" id="3_2m77p"]
+[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="4_wiix6"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_lhrku"]
-[ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/fridge.tscn" id="6_oejw1"]
+[ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="6_oejw1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrr0m"]
 albedo_color = Color(0.8919668, 0.6861965, 1, 1)
@@ -226,7 +227,9 @@ size = Vector3(37.04901, 13.399536, 10.094261)
 data = ExtResource("2_wwvr2")
 
 [node name="door2" parent="." unique_id=1172666031 instance=ExtResource("2_2237b")]
-transform = Transform3D(0.08111826, 0, -1.497805, 0, 1.5, 0, 1.497805, 0, 0.08111826, -4.286972, 1.2864804, 0.72221446)
+transform = Transform3D(0.3177804, 0, -1.465952, 0, 1.5, 0, 1.465952, 0, 0.3177804, 18.978148, 1.2864804, -0.76892495)
+door_destination = "act1"
+spawn_point_id = "from_room_1"
 
 [node name="innerdialogue" parent="." unique_id=1514315481 instance=ExtResource("3_2m77p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.696485, 0.66478467, -2.1789546)
@@ -280,3 +283,7 @@ debug_color = Color(0.6879652, 0.4826578, 0.377151, 0.41960785)
 
 [node name="Fridge" parent="." unique_id=1495864148 instance=ExtResource("6_oejw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7379605, 1.2087512, -0.5040683)
+
+[node name="Spawnpoint" parent="." unique_id=1429357958 instance=ExtResource("4_wiix6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.550964, 0.26298332, -0.24368024)
+spawn_id = "from_living_room"

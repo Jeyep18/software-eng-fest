@@ -23,10 +23,14 @@ var _current_target: Interactable = null
 
 func _ready() -> void:
 	_capture_mouse()
-	_is_input_locked = true
-	_animation_player.play("get_up")
-	_animation_player.animation_finished.connect(_on_opening_animation_finished)
-
+	
+	if not SceneManager.has_played_opening:
+		_is_input_locked = true
+		_animation_player.play("get_up")
+		_animation_player.animation_finished.connect(_on_opening_animation_finished)
+		SceneManager.has_played_opening = true
+	else:
+		_is_input_locked = false
 
 func _on_opening_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "get_up":
