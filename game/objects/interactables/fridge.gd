@@ -6,6 +6,7 @@ extends Interactable
 	"The fridge is empty..",
 	"I need to buy some groceries..."
 ]
+@export var need_to_discover: NeedsLog.Need = NeedsLog.Need.FOOD
 @export var auto_dismiss: bool = false
 @export var chars_per_second: float = 20.0
 @export var monologue_ui_scene: PackedScene
@@ -33,6 +34,7 @@ func _setup_ui() -> void:
 	_ui.hide_ui()
 
 func interact() -> void:
+	NeedsLog.debug_print_status()
 	if not _is_showing:
 		_current_line = 0
 		_show_current_line()
@@ -47,13 +49,22 @@ func interact() -> void:
 	_show_current_line()
 
 func _show_current_line() -> void:
+	if _current_line == 0:
+		NeedsLog.discover(need_to_discover)
+		
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
+	
+	var speaker: String = GameState.player_name \
+		if not GameState.player_name.is_empty() \
+		else "..."
+	
 	var line: String = monologue_lines[_current_line]
 	_ui.show_line(line, PLAYER_NAME)
 	_ui.set_prompt_visible(false)
 	prompt_visibility_changed.emit(false)
+	
 	if _tween and _tween.is_valid():
 		_tween.kill()
 	_tween = _ui.run_typewriter(chars_per_second)
