@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dk0h7l0jfn1a" path="res://game/entities/nanay_npc/nanay.gd" id="2_ewcw0"]
 [ext_resource type="Resource" uid="uid://cjb3qgwrq7v7h" path="res://game/entities/dialogues/nanay/sequences/nanay_seq_act1_default.tres" id="3_oc2pm"]
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_dgrso"]
+[ext_resource type="Resource" uid="uid://b803oi1ys3nbd" path="res://game/entities/dialogues/nanay/sequences/nanay_seq_after_roof_found.tres" id="4_tayy0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ewcw0"]
 height = 1.7739258
@@ -25,7 +26,7 @@ shape = SubResource("CylinderShape3D_ewcw0")
 [node name="Area3D" type="Area3D" parent="." unique_id=115671592]
 script = ExtResource("2_ewcw0")
 sequence_act1_default = ExtResource("3_oc2pm")
-sequence_after_roof_found = ExtResource("3_oc2pm")
+sequence_after_roof_found = ExtResource("4_tayy0")
 dialogue_ui_scene = ExtResource("4_dgrso")
 chars_per_second = 40.0
 

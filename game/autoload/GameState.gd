@@ -1,0 +1,85 @@
+# GameState.gd
+# Autoload singleton — add to Project > Autoloads as "GameState"
+extends Node
+
+var player_name: String = ""
+
+#region Act Tracking
+enum Act { ACT_1, ACT_2, ACT_3, ACT_4 }
+var current_act: Act = Act.ACT_1
+
+func advance_act() -> void:
+	if current_act < Act.ACT_4:
+		current_act += 1
+		act_changed.emit(current_act)
+#endregion
+
+#region Act 1 State Machine
+enum Act1State {
+	WAKE_UP,
+	TV_BROADCAST,
+	FAMILY_BREAKFAST,
+	FREE_EXPLORE,
+	DEPARTURE
+}
+
+var act1_state: Act1State = Act1State.WAKE_UP
+
+func set_act1_state(new_state: Act1State) -> void:
+	if act1_state == new_state:
+		return
+	act1_state = new_state
+	act1_state_changed.emit(new_state)
+#endregion
+
+#region Outcome Variables (read by EndingResolver)
+var tarp_applied: bool = false
+var plywood_applied: bool = false
+var rope_applied: bool = false
+var medicine_obtained: bool = false
+var first_aid_available: bool = false
+var tatay_called: bool = false
+var time_of_last_departure: int = 0   # in game-minutes
+var child_sheltered_pre_storm: bool = false
+var child_rescued_during_storm: bool = false
+var corruption_evidence_found: bool = false
+var corruption_evidence_shared: bool = false
+#endregion
+
+#region Signals
+signal act_changed(new_act: Act)
+signal act1_state_changed(new_state: Act1State)
+signal player_name_set(name: String)
+#endregion
+
+#region Public API
+
+func set_player_name(new_name: String, gender: String = "kuya") -> void:
+	if new_name.strip_edges().is_empty():
+		push_warning("GameState: set_player_name called with empty string.")
+		return
+	player_name = new_name.strip_edges()
+	player_name_set.emit(player_name)
+
+func get_display_name() -> String:
+	return player_name
+
+func is_act1_complete() -> bool:
+	return act1_state == Act1State.DEPARTURE
+
+func reset() -> void:
+	player_name = ""
+	current_act = Act.ACT_1
+	act1_state = Act1State.WAKE_UP
+	tarp_applied = false
+	plywood_applied = false
+	rope_applied = false
+	medicine_obtained = false
+	first_aid_available = false
+	tatay_called = false
+	time_of_last_departure = 0
+	child_sheltered_pre_storm = false
+	child_rescued_during_storm = false
+	corruption_evidence_found = false
+	corruption_evidence_shared = false
+#endregion

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://b803oi1ys3nbd"]
+
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="1_pdokw"]
+[ext_resource type="Resource" uid="uid://csms6xv6r2ua" path="res://game/entities/dialogues/nanay/lines/nanay_line3.tres" id="2_twvix"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="2_wuea8"]
+[ext_resource type="Texture2D" uid="uid://0m0emvc3kt6x" path="res://game/assets/images/chris.jpg" id="3_yklda"]
+
+[sub_resource type="Resource" id="Resource_7lbd4"]
+script = ExtResource("1_pdokw")
+speaker_name = "Player"
+expression = ExtResource("3_yklda")
+text = "ano ba naman yan ma jusq"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[resource]
+script = ExtResource("2_wuea8")
+lines = Array[ExtResource("1_pdokw")]([ExtResource("2_twvix"), SubResource("Resource_7lbd4")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
