@@ -9,6 +9,6 @@ func _ready() -> void:
 	prompt_label = "Talk to Nanay"
 
 func _pick_sequence() -> DialogueSequence:
-	if NeedsLog.is_need_discovered("roof_damaged"):
+	if NeedsLog.is_discovered(NeedsLog.Need.ROOF):
 		return sequence_after_roof_found
 	return sequence_act1_default

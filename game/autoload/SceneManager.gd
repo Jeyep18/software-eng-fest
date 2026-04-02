@@ -1,12 +1,18 @@
 # SceneManager.gd — Autoload Singleton
 extends Node
 
+var has_played_opening: bool = false
 var current_location: String = "home"
 var is_travelling: bool = false
+
+var _pending_spawn_id: String = ""
 
 const SCENE_PATHS: Dictionary = {
 	"act1":          "res://game/scenes/act1/Act1.tscn",
 	"home":          "res://game/scenes/locations/house_1.tscn",
+	"test_room1":    "res://game/maps/test_map1/room_1.tscn",
+	"test_room2":    "res://game/tests/test_world/test_world.tscn",
+	"tindahan":      "res://game/maps/tindahan/tindahan.tscn",
 }
 
 # Storm encroachment state — SceneManager reads these to block travel
@@ -34,7 +40,7 @@ func load_scene(scene_id: String) -> void:
 	
 # ── Location Travel (Act 2 preparation loop) ─────────────────────────────────
 
-func travel_to(target_location: String) -> void:
+func travel_to(target_location: String, spawn_id: String = "") -> void:
 	if is_travelling:
 		return
 	if not SCENE_PATHS.has(target_location):
@@ -46,6 +52,7 @@ func travel_to(target_location: String) -> void:
 		
 	var travel_cost: int = TravelCalculator.get_travel_time(current_location, target_location)
 	is_travelling = true
+	_pending_spawn_id = spawn_id
 	
 	await TransitionOverlay.fade_to_black()
 	GlobalTimer.add_time(travel_cost)
@@ -57,6 +64,11 @@ func travel_to(target_location: String) -> void:
 	is_travelling = false
 	emit_signal("travel_completed", target_location)
 
+func clear_pending_spawn() -> void:
+	_pending_spawn_id = ""
+
+func get_pending_spawn_id() -> String:
+	return _pending_spawn_id
 
 # ── Zone State ────────────────────────────────────────────────────────────────
 
