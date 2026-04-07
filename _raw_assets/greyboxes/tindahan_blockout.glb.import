@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6hq7i7pdou8d"
-path="res://.godot/imported/house_1.gltf-dd4fe136f6b0ff42e6abeaaba797377d.scn"
+uid="uid://cc0qrc7dkkq68"
+path="res://.godot/imported/tindahan_blockout.glb-505f5e327b694f5df1454a022f0266ed.scn"
 
 [deps]
 
-source_file="res://_raw_assets/house_map/house_1.gltf"
-dest_files=["res://.godot/imported/house_1.gltf-dd4fe136f6b0ff42e6abeaaba797377d.scn"]
+source_file="res://_raw_assets/greyboxes/tindahan_blockout.glb"
+dest_files=["res://.godot/imported/tindahan_blockout.glb-505f5e327b694f5df1454a022f0266ed.scn"]
 
 [params]
 
@@ -37,6 +37,33 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Cube_001": {
+"generate/physics": true
+},
+"PATH:Cylinder": {
+"generate/physics": true
+},
+"PATH:Cylinder_001": {
+"generate/physics": true
+},
+"PATH:Kapitbahay": {
+"generate/physics": true
+},
+"PATH:Road": {
+"generate/physics": true
+},
+"PATH:Sidewalk": {
+"generate/physics": true
+},
+"PATH:Tindahan": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
