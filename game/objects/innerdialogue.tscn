@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://lapvjimh6af4"]
 
 [ext_resource type="Script" uid="uid://dn831lde6o1b7" path="res://game/objects/innerMonologue.gd" id="1_slm0f"]
-[ext_resource type="PackedScene" uid="uid://cc7vud8rjtghk" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_be4a8"]
+[ext_resource type="PackedScene" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_be4a8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f2msa"]
 _surfaces = [{
