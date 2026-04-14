@@ -4,7 +4,7 @@
 
 [node name="player_model" unique_id=1028691560 instance=ExtResource("1_4sfrc")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1293465127) index="0" unique_id=647753218]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1932966674) index="0" unique_id=63388742]
 bones/0/rotation = Quaternion(-0.7076563, -0.024179237, -0.04269355, 0.7048512)
 bones/1/rotation = Quaternion(-0.069102354, -0.012513866, 0.02576787, 0.9971982)
 bones/2/rotation = Quaternion(0.006470402, -0.0056749186, 0.051593736, 0.9986312)

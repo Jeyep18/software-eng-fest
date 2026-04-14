@@ -12,7 +12,13 @@ const SCENE_PATHS: Dictionary = {
 	"home":          "res://game/scenes/locations/house_1.tscn",
 	"test_room1":    "res://game/maps/test_map1/room_1.tscn",
 	"test_room2":    "res://game/tests/test_world/test_world.tscn",
-	"tindahan":      "res://game/maps/tindahan/tindahan.tscn",
+	"tindahan":      "res://game/scenes/locations/tindahan.tscn",
+	"pharmacy":      "res://game/scenes/locations/pharmacy.tscn",
+	"barangay_hall": "res://game/scenes/locations/barangay_hall.tscn",
+	"grocery":       "res://game/scenes/locations/grocery.tscn",
+	"mang_romy":     "res://game/scenes/locations/mang_romy.tscn",
+	"ate_linda":     "res://game/scenes/locations/ate_linda.tscn",
+	"hardware":      "res://game/scenes/locations/hardware.tscn",
 }
 
 # Storm encroachment state — SceneManager reads these to block travel
@@ -43,23 +49,25 @@ func load_scene(scene_id: String) -> void:
 func travel_to(target_location: String, spawn_id: String = "") -> void:
 	if is_travelling:
 		return
+
 	if not SCENE_PATHS.has(target_location):
-		push_error("SceneManager: Unknown location ID: " + target_location)
+		print("Scene not yet built for: ", target_location)
 		return
+
 	if closed_zones.has(target_location):
 		push_warning("SceneManager: Location is closed: " + target_location)
 		return
-		
+
 	var travel_cost: int = TravelCalculator.get_travel_time(current_location, target_location)
 	is_travelling = true
 	_pending_spawn_id = spawn_id
-	
+
 	await TransitionOverlay.fade_to_black()
 	GlobalTimer.add_time(travel_cost)
 	get_tree().change_scene_to_file(SCENE_PATHS[target_location])
 	await get_tree().create_timer(0.1).timeout
 	await TransitionOverlay.fade_from_black()
-	
+
 	current_location = target_location
 	is_travelling = false
 	emit_signal("travel_completed", target_location)
