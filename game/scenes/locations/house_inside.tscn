@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://c6d5c3iuydxos"]
+
+[ext_resource type="PackedScene" uid="uid://bqujtorm10mxk" path="res://_raw_assets/house_map/house_inside1.glb" id="1_rt03g"]
+[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_hrxyr"]
+[ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_is8m0"]
+[ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
+[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlj0p"]
+size = Vector3(6.5210648, 3.1103516, 5.2154236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
+size = Vector3(8.106903, 3.1496582, 10.320129)
+
+[node name="HouseInside" type="Node3D" unique_id=1548119595]
+
+[node name="house_inside1" parent="." unique_id=1572664480 instance=ExtResource("1_rt03g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13370037, 0, -0.6912918)
+
+[node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_hrxyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.574519, 0.074735105, 0)
+
+[node name="Lights" type="Node" parent="." unique_id=804893288]
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=1823329168]
+transform = Transform3D(1, 0, 0, 0, -0.012251936, 0.99992496, 0, -0.99992496, -0.012251936, -3.17402, 3.0424638, -0.13396476)
+light_color = Color(0.8525233, 0.83088005, 0.81083655, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 7.559709
+spot_angle = 80.15625
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1835358498]
+transform = Transform3D(1, 0, 0, 0, -0.012251936, 0.99992496, 0, -0.99992496, -0.012251936, 2.0228958, 2.917953, -2.778009)
+light_color = Color(0.8506974, 0.8458637, 0.6823066, 1)
+light_energy = 3.78
+light_indirect_energy = 1.215
+shadow_enabled = true
+spot_range = 40.996
+spot_angle = 82.02
+
+[node name="Environment" type="Node" parent="." unique_id=613088320]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=19579548]
+environment = ExtResource("3_is8m0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=692121294]
+transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.4397611, 0.40833047, -0.597907, 0.64220345, -0.47966847, -3.7560396, 5.09972, 0)
+light_energy = 2.108
+shadow_enabled = true
+
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=1568830526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2047424, -3.4084015)
+size = Vector3(20, 5.4887085, 11.867706)
+data = ExtResource("4_2sg0l")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1352635784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.63672, 2.2067423, 1.8699625)
+material_override = SubResource("StandardMaterial3D_2sg0l")
+size = Vector3(10.357513, 5.115967, 0.26220703)
+
+[node name="InvisWall" type="CSGBox3D" parent="." unique_id=1151641536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7810345, 2.2067423, 2.0031123)
+visible = false
+material_override = SubResource("StandardMaterial3D_2sg0l")
+use_collision = true
+size = Vector3(14.826706, 5.115967, 0.26220703)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1651033915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3984628, 6.104459, 1.8699625)
+material_override = SubResource("StandardMaterial3D_2sg0l")
+size = Vector3(17.917526, 5.115967, 0.26220703)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=154719546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.470448, 2.2067423, 1.8699625)
+material_override = SubResource("StandardMaterial3D_2sg0l")
+size = Vector3(10.357513, 5.115967, 0.26220703)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=911922966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.608654, -2.5623884, 1.8699625)
+material_override = SubResource("StandardMaterial3D_2sg0l")
+size = Vector3(28.0811, 5.115967, 0.26220703)
+
+[node name="CameraVolumes" type="Node3D" parent="." unique_id=970652957]
+
+[node name="Bedroom" type="Area3D" parent="CameraVolumes" unique_id=955512069 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.050873, 0.9478489, 1.3912337)
+script = ExtResource("5_iw5ha")
+z_distance = 5.0
+z_wall_position = 6.0
+z_dynamic_enabled = true
+x_min = -6.0
+x_max = -3.0
+transition_duration = 1.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraVolumes/Bedroom" unique_id=180483872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19103622, 0.6201172, -1.2977753)
+shape = SubResource("BoxShape3D_qlj0p")
+debug_color = Color(0.9907649, 0, 0.28004077, 0.41960785)
+
+[node name="LivingRoom" type="Area3D" parent="CameraVolumes" unique_id=969910261 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.771533, 1.1641177, -3.45506)
+script = ExtResource("5_iw5ha")
+z_distance = 5.0
+z_wall_position = 6.0
+z_dynamic_enabled = true
+x_min = 1.0
+x_max = 6.0
+transition_duration = 1.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraVolumes/LivingRoom" unique_id=2063391908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.96865845)
+shape = SubResource("BoxShape3D_dn58f")
+debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bw5ddhfvapne8"]
 
+[ext_resource type="PackedScene" uid="uid://dtqgjfxxnejci" path="res://_raw_assets/Locations/tindahan.glb" id="1_61ce1"]
 [ext_resource type="PackedScene" uid="uid://cab67kn2yu0wv" path="res://game/maps/tindahan/tinadahan_greybox.tscn" id="1_rchrt"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_61ce1"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="3_0aq8a"]
-[ext_resource type="VoxelGIData" uid="uid://cely5hhtplkk" path="res://game/maps/tindahan/tindahan.VoxelGI_data.res" id="4_bchsq"]
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="5_qn75a"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="6_p6obu"]
 
@@ -69,7 +69,11 @@ adjustment_contrast = 1.03
 
 [node name="Tindahan" type="Node3D" unique_id=1154781179]
 
+[node name="tindahan" parent="." unique_id=1107860213 instance=ExtResource("1_61ce1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036268234, -0.072064996, 0.022230148)
+
 [node name="TinadahanGreybox" parent="." unique_id=167651465 instance=ExtResource("1_rchrt")]
+visible = false
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_61ce1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1296325, 0.5370202, -6.8962994)
@@ -85,11 +89,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=173007157]
 environment = SubResource("Environment_swj85")
-
-[node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=208952996]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8658752, 3.14888, -35.277927)
-size = Vector3(65.52045, 26.29776, 76.2637)
-data = ExtResource("4_bchsq")
 
 [node name="door2" parent="." unique_id=1354119428 instance=ExtResource("5_qn75a")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 15.734098, 1.4266284, -8.16967)
