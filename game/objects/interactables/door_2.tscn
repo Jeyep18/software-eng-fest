@@ -322,7 +322,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_a6r1q")
 door_destination = null
 spawn_point_id = null
-_door_destination = null
 prompt_label = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=302395387]
@@ -334,7 +333,6 @@ shape = SubResource("ConcavePolygonShape3D_a6r1q")
 [node name="door" type="MeshInstance3D" parent="." unique_id=878009296]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("ArrayMesh_pwlsh")
-skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=476905057]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.0014648438, 0.037353516, -0.0280762)

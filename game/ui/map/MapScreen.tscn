@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://dwwxolqa0jpjs"]
+
+[ext_resource type="Script" uid="uid://d4m8vjfifxaqi" path="res://game/ui/map/MapScreen.gd" id="1_wkx60"]
+[ext_resource type="Script" uid="uid://1ytg0smdfvjy" path="res://game/ui/map/MapRoadLayer.gd" id="2_22ccy"]
+[ext_resource type="Script" uid="uid://dljchs54k1dc6" path="res://game/ui/map/MapStormOverlay.gd" id="3_ul25n"]
+
+[node name="MapScreen" type="CanvasLayer" unique_id=1053564521]
+script = ExtResource("1_wkx60")
+
+[node name="Panel" type="Control" parent="." unique_id=1467488610]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 1
+
+[node name="Header" type="HBoxContainer" parent="Panel" unique_id=1389008431]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -3.5
+offset_bottom = -624.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="Panel/Header" unique_id=2045827536]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Time"
+
+[node name="LocationLabel" type="Label" parent="Panel/Header" unique_id=1495421432]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Location"
+
+[node name="ETALabel" type="Label" parent="Panel/Header" unique_id=2015878812]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "ETA"
+
+[node name="MapNodes" type="Control" parent="Panel" unique_id=941862579]
+custom_minimum_size = Vector2(1152, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="RoadLayer" type="Control" parent="Panel/MapNodes" unique_id=2061388295]
+custom_minimum_size = Vector2(1152, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_22ccy")
+
+[node name="StormOverlay" type="Control" parent="Panel/MapNodes" unique_id=77879216]
+custom_minimum_size = Vector2(1152, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ul25n")
+
+[node name="MapNodeButton" type="Control" parent="Panel/MapNodes" unique_id=1547864800]
+custom_minimum_size = Vector2(1152, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.5
+offset_top = 2.0
+offset_right = -4.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmPanel" type="PanelContainer" parent="Panel" unique_id=1649256256]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 0
+offset_left = 819.5
+offset_top = 235.0
+offset_right = 1053.5
+offset_bottom = 365.0
+
+[node name="DestinationLabel" type="Label" parent="Panel/ConfirmPanel" unique_id=1698369465]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Destination: "
+
+[node name="TravelTimeLabel" type="Label" parent="Panel/ConfirmPanel" unique_id=120153686]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Travel Time:"
+
+[node name="ConfirmButton" type="Button" parent="Panel/ConfirmPanel" unique_id=2013624972]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="Panel/ConfirmPanel" unique_id=476906034]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Cancel"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=424408836]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 619.0
+offset_right = 1146.0
+offset_bottom = 642.0
+
+[node name="CloseHint" type="Label" parent="Panel/HBoxContainer" unique_id=741374057]
+layout_mode = 2
+text = "Press M to close"

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="6_elbau"]
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="6_ru6d8"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_t2khi"]
+[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_elbau"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54g8b"]
 sky_top_color = Color(0.41826138, 0.36624485, 0.30621976, 1)
@@ -160,3 +161,5 @@ spawn_id = "from_kitchen"
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("6_t2khi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1429965, -0.04873565, 1.3876052)
+
+[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_elbau")]
