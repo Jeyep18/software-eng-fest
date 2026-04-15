@@ -8,10 +8,6 @@
 
 config_version=5
 
-[animation]
-
-compatibility/default_parent_skeleton_in_mesh_instance_3d=true
-
 [application]
 
 config/name="Software Festival 2026"
@@ -27,6 +23,10 @@ SceneManager="*uid://byw1611rs1g8q"
 NeedsLog="*uid://chb7qf2rtv351"
 GameState="*uid://b3n2wbiimdixf"
 TravelCalculator="*uid://bkjg6rep2nwea"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [global_group]
 
@@ -89,6 +89,11 @@ interact={
 dialogue_advance={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+open_map={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"location":0,"echo":false,"script":null)
 ]
 }
 

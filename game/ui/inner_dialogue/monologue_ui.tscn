@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cc7vud8rjtghk"]
+[gd_scene format=3 uid="uid://cgyxg4b0v8p4u"]
 
-[ext_resource type="Script" uid="uid://dstiflxhd0vlr" path="res://game/ui/inner_dialogue/monologue_ui.gd" id="1_3haje"]
+[ext_resource type="Script" path="res://game/ui/inner_dialogue/monologue_ui.gd" id="1_3haje"]
 [ext_resource type="Texture2D" uid="uid://boh3kdg2n44sm" path="res://game/assets/images/o.png" id="2_3haje"]
 
 [node name="monologue_ui" type="Control" unique_id=53010592]
