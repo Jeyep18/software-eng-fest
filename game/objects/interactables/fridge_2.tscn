@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://siwbj2eyp70d"]
+
+[ext_resource type="PackedScene" uid="uid://c1qs6sbqe5cs0" path="res://_raw_assets/interactable_models/fridge.glb" id="1_so6w4"]
+
+[node name="fridge2" unique_id=283335002 instance=ExtResource("1_so6w4")]
