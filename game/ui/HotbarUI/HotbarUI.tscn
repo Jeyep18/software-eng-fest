@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ckjolpyvp2maj"]
+
+[ext_resource type="Script" uid="uid://0a01bvenr6eb" path="res://game/ui/HotbarUI/HotbarUI.gd" id="1_3t8fp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t8fp"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="HotbarUi" type="CanvasLayer" unique_id=1014249989]
+script = ExtResource("1_3t8fp")
+
+[node name="HotbarRoot" type="Control" parent="." unique_id=763609587]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -71.0
+offset_right = 215.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HotbarBG" type="Panel" parent="HotbarRoot" unique_id=1072293837]
+custom_minimum_size = Vector2(430, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -390.0
+offset_bottom = -19.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3t8fp")
+
+[node name="SlotContainer" type="HBoxContainer" parent="HotbarRoot" unique_id=98096001]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+theme_override_constants/separation = 6
