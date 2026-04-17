@@ -1,0 +1,111 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c2sp28fvd3dvj"
+path="res://.godot/imported/Pharmacy.glb-8ff39e07e7adc34afb851e3b1c556dd0.scn"
+
+[deps]
+
+source_file="res://_raw_assets/Locations/Pharmacy.glb"
+dest_files=["res://.godot/imported/Pharmacy.glb-8ff39e07e7adc34afb851e3b1c556dd0.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Building_02": {
+"generate/physics": true
+},
+"PATH:Building_04": {
+"generate/physics": true
+},
+"PATH:Building_06": {
+"generate/physics": true
+},
+"PATH:Building_09": {
+"generate/physics": true
+},
+"PATH:Building_09_001": {
+"generate/physics": true
+},
+"PATH:Greybox/CSGBox3D22": {
+"generate/physics": true
+},
+"PATH:Greybox/CSGBox3D32": {
+"generate/physics": true
+},
+"PATH:Greybox/CSGCombiner3D22": {
+"generate/physics": true
+},
+"PATH:Plane": {
+"generate/physics": true
+},
+"PATH:Plane_001": {
+"generate/physics": true
+},
+"PATH:Plane_002": {
+"generate/physics": true
+},
+"PATH:Plane_003": {
+"generate/physics": true
+},
+"PATH:Plane_004": {
+"generate/physics": true
+},
+"PATH:Plane_005": {
+"generate/physics": true
+},
+"PATH:Plane_006": {
+"generate/physics": true
+},
+"PATH:Road": {
+"generate/physics": true
+},
+"PATH:Sidewalk": {
+"generate/physics": true
+},
+"PATH:Sidewalk_001": {
+"generate/physics": true
+},
+"PATH:fridge2/fridge": {
+"generate/physics": true
+},
+"PATH:fridge2/fridge boxes": {
+"generate/physics": true
+},
+"PATH:fridge2/fridge boxes_001": {
+"generate/physics": true
+},
+"PATH:fridge2/fridge_001": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

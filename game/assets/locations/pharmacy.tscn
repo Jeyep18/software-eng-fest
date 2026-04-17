@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cvxl55pxvqoxj"]
+
+[ext_resource type="PackedScene" uid="uid://c2sp28fvd3dvj" path="res://_raw_assets/Locations/Pharmacy.glb" id="1_30gf6"]
+
+[node name="Pharmacy" unique_id=254151288 instance=ExtResource("1_30gf6")]

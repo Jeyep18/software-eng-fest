@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ckm0fwrxpsf01"]
+
+[ext_resource type="PackedScene" uid="uid://dtqgjfxxnejci" path="res://_raw_assets/Locations/tindahan.glb" id="1_73no1"]
+
+[node name="tindahan" unique_id=1107860213 instance=ExtResource("1_73no1")]
