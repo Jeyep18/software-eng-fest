@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://4egt5nehio1w"]
+
+[ext_resource type="Script" uid="uid://c700nd6l2yrfm" path="res://game/ui/BackpackUI/BackpackUI.gd" id="1_v55kr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v55kr"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="BackpackUi" type="CanvasLayer" unique_id=1631499679]
+script = ExtResource("1_v55kr")
+
+[node name="BackpackPanel" type="Panel" parent="." unique_id=1534246965]
+custom_minimum_size = Vector2(400, 340)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v55kr")
+
+[node name="TitleBar" type="HBoxContainer" parent="BackpackPanel" unique_id=126599084]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="BackpackPanel/TitleBar" unique_id=433466624]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="BackpackPanel/TitleBar" unique_id=1521297608]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="BackpackPanel" unique_id=1024555406]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="ItemInfoBar" type="HBoxContainer" parent="BackpackPanel" unique_id=1240186118]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InfoIcon" type="TextureRect" parent="BackpackPanel/ItemInfoBar" unique_id=101099929]
+layout_mode = 2
+
+[node name="InfoName" type="Label" parent="BackpackPanel/ItemInfoBar" unique_id=1613304213]
+layout_mode = 2
+
+[node name="InfoDesc" type="Label" parent="BackpackPanel/ItemInfoBar" unique_id=30953757]
+layout_mode = 2
