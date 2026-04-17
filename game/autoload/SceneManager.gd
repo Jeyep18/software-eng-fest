@@ -114,3 +114,12 @@ func _mark_closed(location_id: String) -> void:
 	danger_zones.erase(location_id)
 	if not closed_zones.has(location_id):
 		closed_zones.append(location_id)
+
+# Add to SceneManager.gd
+func reset() -> void:
+	current_location  = "home"
+	is_travelling     = false
+	has_played_opening = false
+	_pending_spawn_id = ""
+	danger_zones.clear()
+	closed_zones.clear()
