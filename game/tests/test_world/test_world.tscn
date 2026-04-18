@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_elbau"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="9_fvk8q"]
 [ext_resource type="Resource" uid="uid://3nff5bac5elg" path="res://game/resources/items/banana.tres" id="10_47sew"]
-[ext_resource type="PackedScene" uid="uid://c1qs6sbqe5cs0" path="res://_raw_assets/interactable_models/fridge.glb" id="11_1o4qq"]
+[ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="11_1o4qq"]
+[ext_resource type="PackedScene" uid="uid://c7fktavqh7aoy" path="res://game/ui/pause/PauseMenu.tscn" id="12_t4iey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54g8b"]
 sky_top_color = Color(0.41826138, 0.36624485, 0.30621976, 1)
@@ -173,3 +174,5 @@ item_data = ExtResource("10_47sew")
 
 [node name="fridge2" parent="." unique_id=283335002 instance=ExtResource("11_1o4qq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3760846, -0.050453305, 1.9619645)
+
+[node name="PauseMenu" parent="." unique_id=1158059127 instance=ExtResource("12_t4iey")]
