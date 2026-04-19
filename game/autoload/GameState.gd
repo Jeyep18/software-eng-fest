@@ -3,6 +3,7 @@
 extends Node
 
 var player_name: String = ""
+var cash_balance: int = 400
 
 #region Act Tracking
 enum Act { ACT_1, ACT_2, ACT_3, ACT_4 }
@@ -50,9 +51,23 @@ var corruption_evidence_shared: bool = false
 signal act_changed(new_act: Act)
 signal act1_state_changed(new_state: Act1State)
 signal player_name_set(name: String)
+signal cash_changed(new_balance: int)
 #endregion
 
 #region Public API
+func add_cash(amount: int) -> void:
+	cash_balance += amount
+	cash_changed.emit(cash_balance)
+
+func spend_cash(amount: int) -> bool:
+	if cash_balance < amount:
+		return false   # not enough money — caller handles feedback
+	cash_balance -= amount
+	cash_changed.emit(cash_balance)
+	return true
+
+func get_cash() -> int:
+	return cash_balance
 
 func set_player_name(new_name: String, gender: String = "kuya") -> void:
 	if new_name.strip_edges().is_empty():
@@ -82,4 +97,14 @@ func reset() -> void:
 	child_rescued_during_storm = false
 	corruption_evidence_found = false
 	corruption_evidence_shared = false
+	cash_balance = 400
 #endregion
+
+func _ready() -> void:
+	print("Starting cash: ₱", GameState.get_cash())
+	
+	GameState.spend_cash(100)
+	print("After spending ₱100: ₱", GameState.get_cash())
+	
+	GameState.add_cash(50)
+	print("After adding ₱50: ₱", GameState.get_cash())

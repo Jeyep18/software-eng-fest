@@ -7,5 +7,7 @@
 script = ExtResource("1_frofo")
 item_name = "Banana"
 item_icon = ExtResource("1_bq18v")
-item_description = "A fresh yellow banana."
+item_description = "pagkain para kay Chris."
+item_id = "banana"
+item_price = 80
 metadata/_custom_type_script = "uid://b51r7pisrdybh"
