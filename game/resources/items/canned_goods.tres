@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjle5kmwsfk27"]
+
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_4tuxr"]
+
+[resource]
+script = ExtResource("1_4tuxr")
+item_name = "Canned Goods"
+item_description = "Pagkain para sa pamilya. 4 cans fit in one slot."
+item_id = "canned_goods"
+item_price = 80
+metadata/_custom_type_script = "uid://b51r7pisrdybh"

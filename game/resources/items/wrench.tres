@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dwlf2grpplygs"]
+
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_h58he"]
+
+[resource]
+script = ExtResource("1_h58he")
+item_name = "Wrench"
+item_description = "Wrench"
+item_id = "wrench"
+item_price = 120
+metadata/_custom_type_script = "uid://b51r7pisrdybh"

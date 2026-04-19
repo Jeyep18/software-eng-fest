@@ -32,7 +32,6 @@ func _ready() -> void:
 	if has_node("InteractLabel"):
 		$InteractLabel.visible = false
 
-
 # --- INPUT ---
 func _unhandled_input(event: InputEvent) -> void:
 	if _player_in_range and event.is_action_pressed("interact"):
