@@ -79,7 +79,22 @@ func use_item(index: int) -> void:
 	item.use()  # Call the item's custom use logic (currently a placeholder).
 	remove_item(index)
 
+## Returns true if the inventory contains an item with the given item_id.
+func has_item_id(item_id: String) -> bool:
+	for item in inventory:
+		if item.item_id == item_id:
+			return true
+	return false
 
+## Removes the first item matching item_id. Returns true if successful.
+func remove_item_by_id(item_id: String) -> bool:
+	for i in range(inventory.size()):
+		if inventory[i].item_id == item_id:
+			inventory.remove_at(i)
+			inventory_changed.emit()
+			return true
+	push_warning("InventoryManager: No item found with id: " + item_id)
+	return false
 # --- COMPUTED VIEWS ---
 # These functions provide "views" of the same data array.
 # WHY: The Hotbar UI only cares about the first 5 items. The Backpack
