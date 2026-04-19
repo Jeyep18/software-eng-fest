@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cjn3t87s1ye2t"
+uid="uid://dth2tafulr3mo"
 path="res://.godot/imported/Flashlight.glb-cf25e67e5221471b308b1786ccf96a37.scn"
 
 [deps]
@@ -37,12 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Cylinder": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

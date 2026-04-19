@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c7fktavqh7aoy"]
+
+[ext_resource type="Script" uid="uid://8x3povv3cpl4" path="res://game/ui/pause/PauseMenu.gd" id="1_oetci"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1158059127]
+process_mode = 3
+script = ExtResource("1_oetci")
+
+[node name="Panel" type="Control" parent="." unique_id=378229010]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" type="VBoxContainer" parent="Panel" unique_id=1838427935]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -89.5
+offset_right = 159.0
+offset_bottom = 89.5
+grow_vertical = 2
+
+[node name="ResumeBtn" type="Button" parent="Panel/Sidebar" unique_id=2119799876]
+layout_mode = 2
+text = "Resume"
+
+[node name="ChecklistBtn" type="Button" parent="Panel/Sidebar" unique_id=746636472]
+layout_mode = 2
+text = "Checklist"
+
+[node name="ControlsBtn" type="Button" parent="Panel/Sidebar" unique_id=1814828853]
+layout_mode = 2
+text = "Controls"
+
+[node name="SettingsBtn" type="Button" parent="Panel/Sidebar" unique_id=702566776]
+layout_mode = 2
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/Sidebar" unique_id=1178561712]
+layout_mode = 2
+
+[node name="RestartBtn" type="Button" parent="Panel/Sidebar" unique_id=226180309]
+layout_mode = 2
+text = "Restart"
+
+[node name="ContentArea" type="Control" parent="Panel" unique_id=1019218703]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResumePanel" type="Control" parent="Panel/ContentArea" unique_id=667964145]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ChecklistPanel" type="Control" parent="Panel/ContentArea" unique_id=1223727696]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlsPanel" type="Control" parent="Panel/ContentArea" unique_id=2097099020]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SettingsPanel" type="Control" parent="Panel/ContentArea" unique_id=818203311]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

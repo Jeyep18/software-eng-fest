@@ -93,3 +93,10 @@ func _check_thresholds(minute: int) -> void:
 				emit_signal("storm_arrived")
 			else:
 				emit_signal("encroachment_threshold_reached", threshold["zone_id"])
+
+# Add to GlobalTimer.gd
+func reset() -> void:
+	current_minutes = 0
+	is_paused = true
+	for threshold in THRESHOLDS:
+		threshold["fired"] = false

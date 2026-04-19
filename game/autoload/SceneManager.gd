@@ -9,7 +9,7 @@ var _pending_spawn_id: String = ""
 
 const SCENE_PATHS: Dictionary = {
 	"act1":          "res://game/scenes/act1/Act1.tscn",
-	"home":          "res://game/scenes/locations/house_1.tscn",
+	"home":          "res://game/scenes/locations/house_inside.tscn",
 	"test_room1":    "res://game/maps/test_map1/room_1.tscn",
 	"test_room2":    "res://game/tests/test_world/test_world.tscn",
 	"tindahan":      "res://game/scenes/locations/tindahan.tscn",
@@ -114,3 +114,12 @@ func _mark_closed(location_id: String) -> void:
 	danger_zones.erase(location_id)
 	if not closed_zones.has(location_id):
 		closed_zones.append(location_id)
+
+# Add to SceneManager.gd
+func reset() -> void:
+	current_location  = "home"
+	is_travelling     = false
+	has_played_opening = false
+	_pending_spawn_id = ""
+	danger_zones.clear()
+	closed_zones.clear()

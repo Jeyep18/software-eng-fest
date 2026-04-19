@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c1qs6sbqe5cs0"
+uid="uid://cs0rqh6yvrrtk"
 path="res://.godot/imported/fridge.glb-ef1354bd65e5d655cf726cd9f77f4b68.scn"
 
 [deps]
@@ -37,30 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Plane": {
-"generate/physics": true
-},
-"PATH:Plane_001": {
-"generate/physics": true
-},
-"PATH:can_001": {
-"generate/physics": true
-},
-"PATH:can_002": {
-"generate/physics": true
-},
-"PATH:can_003": {
-"generate/physics": true
-},
-"PATH:fridge": {
-"generate/physics": true
-},
-"PATH:kittle": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
