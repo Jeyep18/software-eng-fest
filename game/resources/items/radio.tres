@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://e16k2c7scyao"]
+
+[ext_resource type="Texture2D" uid="uid://n5eq4u7k068k" path="res://game/assets/images/radio.jpg" id="1_v5dxu"]
+[ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="2_kvd67"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_pm04t"]
+
+[resource]
+script = ExtResource("2_pm04t")
+item_name = "radio"
+item_icon = ExtResource("1_v5dxu")
+item_description = "music.."
+item_model = ExtResource("2_kvd67")
+pickup_lines = Array[String](["Lumang radyo. Hindi gumagana 'to.", "Pero pag may baterya... baka puwede pa."])
