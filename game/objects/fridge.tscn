@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bgdjhu853yomb"]
+
+[ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="1_wg60y"]
+[ext_resource type="Script" uid="uid://d32i71lh5dky0" path="res://game/objects/interactables/interactable.gd" id="2_uhd8r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mq1j"]
+size = Vector3(1, 2.1824646, 1.9058838)
+
+[node name="Node3D" type="Node3D" unique_id=202966650]
+
+[node name="fridge2" parent="." unique_id=1847587527 instance=ExtResource("1_wg60y")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=719840851]
+script = ExtResource("2_uhd8r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1286145992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2195892, 0.4529419)
+shape = SubResource("BoxShape3D_7mq1j")
