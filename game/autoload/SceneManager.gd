@@ -8,10 +8,10 @@ var is_travelling: bool = false
 var _pending_spawn_id: String = ""
 
 const SCENE_PATHS: Dictionary = {
-	"act1":          "res://game/scenes/act1/Act1.tscn",
+	"intro":         "res://game/scenes/intro/IntroSequence.tscn", 
+	"main_menu":     "res://game/scenes/main_menu/Main_Menu.tscn",
+	"act1":          "res://game/scenes/act1/HouseAct1.tscn",
 	"home":          "res://game/scenes/locations/house_inside.tscn",
-	"test_room1":    "res://game/maps/test_map1/room_1.tscn",
-	"test_room2":    "res://game/tests/test_world/test_world.tscn",
 	"tindahan":      "res://game/scenes/locations/tindahan.tscn",
 	"pharmacy":      "res://game/scenes/locations/pharmacy.tscn",
 	"barangay_hall": "res://game/scenes/locations/barangay_hall.tscn",

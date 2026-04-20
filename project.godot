@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Software Festival 2026"
-run/main_scene="uid://blsk41vol8ppb"
+run/main_scene="uid://c4d7ja1u0s1e7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

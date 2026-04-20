@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://des0sglylmgcx"]
+[gd_scene format=3 uid="uid://ds5rwxscyybwt"]
 
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_80egk"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="2_1kl2d"]
@@ -37,7 +37,7 @@ size = Vector3(6.9779205, 3.1103516, 5.2154236)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohr03"]
 size = Vector3(7.5839233, 3.1496582, 10.320129)
 
-[node name="House1" type="Node3D" unique_id=203503962]
+[node name="House2" type="Node3D" unique_id=203503962]
 
 [node name="Inviswall" type="CSGBox3D" parent="." unique_id=1863343441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1433382, 1.6178141, 2.590981)
