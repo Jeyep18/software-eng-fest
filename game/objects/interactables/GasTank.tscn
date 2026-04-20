@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cekuiqqcccxni"]
+
+[ext_resource type="PackedScene" uid="uid://nqipqtwj2nlw" path="res://_raw_assets/interactable_models/GasTank.glb" id="1_khpck"]
+[ext_resource type="Script" uid="uid://cc77n6dbdkgr6" path="res://game/objects/interactables/fridge.gd" id="2_v1jmu"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_segoh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_khpck"]
+size = Vector3(0.46972656, 0.9033203, 0.4336548)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wa4q6"]
+size = Vector3(1.09906, 2.2901688, 1.451294)
+
+[node name="GasTank" type="StaticBody3D" unique_id=744970663]
+
+[node name="GasTank" parent="." unique_id=600533340 instance=ExtResource("1_khpck")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=741781924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068359375, 0.4500537, -0.030670166)
+shape = SubResource("BoxShape3D_khpck")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1031000232]
+script = ExtResource("2_v1jmu")
+need_to_discover = 0
+monologue_ui_scene = ExtResource("3_segoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2027005330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022251964, 0.57964706, 0.22564697)
+shape = SubResource("BoxShape3D_wa4q6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1214400493]
+unique_name_in_owner = true
