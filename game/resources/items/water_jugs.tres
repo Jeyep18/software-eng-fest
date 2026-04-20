@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cekmubr42kcip"]
+
+[ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="1_0eav8"]
+[ext_resource type="Texture2D" uid="uid://mrrlxqgym0by" path="res://game/assets/images/waterjug.png" id="1_mpute"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_mpute"]
+
+[resource]
+script = ExtResource("2_mpute")
+item_name = "Water Jugs"
+item_icon = ExtResource("1_mpute")
+item_description = "water containers "
+item_model = ExtResource("1_0eav8")
+pickup_lines = Array[String](["Mga banga — walang laman", "Puwede ko itong punuin sa gripo", "Libre pa"])
