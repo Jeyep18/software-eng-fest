@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgardm584oru2" path="res://_raw_assets/psx_style_fridge.glb" id="1_wg60y"]
 [ext_resource type="Script" uid="uid://cc77n6dbdkgr6" path="res://game/objects/interactables/fridge.gd" id="2_uhd8r"]
-[ext_resource type="PackedScene" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhd8r"]
 size = Vector3(1.0595093, 2.707672, 1)
