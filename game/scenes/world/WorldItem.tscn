@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d1dubyie44o62" path="res://game/scenes/world/world_item.gd" id="1_ub52d"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_ub52d"]
-[ext_resource type="Texture2D" uid="uid://bb1b5m81n5hju" path="res://game/assets/images/banan.png" id="3_a7dba"]
 
 [sub_resource type="Resource" id="Resource_a7dba"]
 script = ExtResource("2_ub52d")
+pickup_lines = null
 metadata/_custom_type_script = "uid://b51r7pisrdybh"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ywq1"]
@@ -14,13 +14,6 @@ metadata/_custom_type_script = "uid://b51r7pisrdybh"
 script = ExtResource("1_ub52d")
 item_data = SubResource("Resource_a7dba")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1493485925]
-texture = ExtResource("3_a7dba")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1681895725]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_8ywq1")
-
-[node name="Label3D" type="Label3D" parent="." unique_id=1406938227]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3680954, 0)
-text = "[E] Pick Up"
