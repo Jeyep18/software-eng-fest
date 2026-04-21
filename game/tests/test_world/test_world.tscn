@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="9_fvk8q"]
 [ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/flashlight.tres" id="12_7kk8o"]
 [ext_resource type="PackedScene" uid="uid://c7fktavqh7aoy" path="res://game/ui/pause/PauseMenu.tscn" id="12_t4iey"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="13_7kk8o"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="14_78ptq"]
 [ext_resource type="PackedScene" uid="uid://cekuiqqcccxni" path="res://game/objects/interactables/GasTank.tscn" id="14_yvhk5"]
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="15_yvhk5"]
@@ -20,6 +19,9 @@
 [ext_resource type="Resource" uid="uid://cekmubr42kcip" path="res://game/resources/items/water_jugs.tres" id="18_aebbe"]
 [ext_resource type="Resource" uid="uid://dwlf2grpplygs" path="res://game/resources/items/wrench.tres" id="19_r37rf"]
 [ext_resource type="Resource" uid="uid://byurdrwuga6g4" path="res://game/resources/items/plywood.tres" id="20_dvpop"]
+[ext_resource type="PackedScene" uid="uid://85o8ejsdvvlt" path="res://game/ui/tasksUI/NeedsHUD.tscn" id="20_susyl"]
+[ext_resource type="Resource" uid="uid://dn6352fvr03p2" path="res://game/resources/items/nails.tres" id="21_o21ry"]
+[ext_resource type="PackedScene" uid="uid://boa547w07bf30" path="res://game/objects/interactables/Roof.tscn" id="22_87twc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54g8b"]
 sky_top_color = Color(0.41826138, 0.36624485, 0.30621976, 1)
@@ -179,6 +181,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1429965, -0.04873565, 1.387
 
 [node name="PauseMenu" parent="." unique_id=1158059127 instance=ExtResource("12_t4iey")]
 
+[node name="NeedsHUD" parent="." unique_id=720643601 instance=ExtResource("20_susyl")]
+
 [node name="TV" parent="." unique_id=1186584198 instance=ExtResource("17_6ggnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5676377, 0.23775679, -7.86636)
 
@@ -192,34 +196,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4355984, 0.57446766, -7.986
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1801213, 0.501958, -6.087389)
 item_data = ExtResource("12_7kk8o")
-monologue_ui_scene = ExtResource("13_7kk8o")
 
 [node name="Hammer" parent="." unique_id=1520261942 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0345073, -0.050453067, -7.7758837)
 item_data = ExtResource("15_yvhk5")
-monologue_ui_scene = ExtResource("13_7kk8o")
 
 [node name="Radio" parent="." unique_id=898477914 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33876055, 0.84041333, -4.115938)
 item_data = ExtResource("16_xudhu")
-monologue_ui_scene = ExtResource("13_7kk8o")
 
 [node name="water jug" parent="." unique_id=1212291807 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7263951, 0.68627775, -4.8527565)
 item_data = ExtResource("18_aebbe")
-monologue_ui_scene = ExtResource("13_7kk8o")
 
 [node name="wrench" parent="." unique_id=1005204101 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1409972, 0.97780573, -3.9524846)
 item_data = ExtResource("19_r37rf")
-monologue_ui_scene = ExtResource("13_7kk8o")
 
-[node name="plywood" parent="." unique_id=1743909769 instance=ExtResource("9_fvk8q")]
+[node name="nail" parent="." unique_id=1208360090 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4725318, 0.30255806, 0.5285872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.807227, 0.6217562, -1.8174131)
+item_data = ExtResource("21_o21ry")
+
+[node name="plywood" parent="." unique_id=2034881017 instance=ExtResource("9_fvk8q")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07695246, 0.61787385, -1.0495095)
 item_data = ExtResource("20_dvpop")
-monologue_ui_scene = ExtResource("13_7kk8o")
+
+[node name="Roof" parent="." unique_id=1843619503 instance=ExtResource("22_87twc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3608556, 0.4495467, 1.1318392)

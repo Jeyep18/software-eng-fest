@@ -9,5 +9,6 @@ script = ExtResource("3_y0vm0")
 item_name = "plywood"
 item_icon = ExtResource("1_xm8qu")
 item_description = "a piece of wood"
+item_id = "plywood"
 item_model = ExtResource("2_ur0vv")
-pickup_lines = Array[String](["kahoy.. "])
+pickup_lines = Array[String](["kahoy.."])
