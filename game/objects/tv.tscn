@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4d0nxdvhfmtt"]
 
 [ext_resource type="PackedScene" uid="uid://cfqx4x7dxm8er" path="res://_raw_assets/interactable_models/tv.glb" id="1_xa42e"]
-[ext_resource type="Script" uid="uid://cc77n6dbdkgr6" path="res://game/objects/interactables/fridge.gd" id="2_u78w7"]
+[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="2_xa42e"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_jq686"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tygdx"]
@@ -20,8 +20,8 @@ visible = false
 shape = SubResource("BoxShape3D_tygdx")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1346175810]
-script = ExtResource("2_u78w7")
-need_to_discover = 0
+script = ExtResource("2_xa42e")
+monologue_lines = Array[String](["..."])
 monologue_ui_scene = ExtResource("3_jq686")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1401251886]
