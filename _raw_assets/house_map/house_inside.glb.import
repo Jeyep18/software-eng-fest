@@ -1,0 +1,174 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c0ig0ldbdxsw1"
+path="res://.godot/imported/house_inside.glb-9632b59a8500b39ab3cae9db30546fde.scn"
+
+[deps]
+
+source_file="res://_raw_assets/house_map/house_inside.glb"
+dest_files=["res://.godot/imported/house_inside.glb-9632b59a8500b39ab3cae9db30546fde.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Balde": {
+"generate/physics": true
+},
+"PATH:Balde_001": {
+"generate/physics": true
+},
+"PATH:BedCushion": {
+"generate/physics": true
+},
+"PATH:BedFrame": {
+"generate/physics": true
+},
+"PATH:Chair": {
+"generate/physics": true
+},
+"PATH:Chair_05": {
+"generate/physics": true
+},
+"PATH:Chair_05_001": {
+"generate/physics": true
+},
+"PATH:Chair_05_002": {
+"generate/physics": true
+},
+"PATH:Chest_drawers_03_001": {
+"generate/physics": true
+},
+"PATH:CortinaSaLababo": {
+"generate/physics": true
+},
+"PATH:Cylinder": {
+"generate/physics": true
+},
+"PATH:Drawerulit": {
+"generate/physics": true
+},
+"PATH:Floor": {
+"generate/physics": true
+},
+"PATH:Hotdog": {
+"generate/physics": true
+},
+"PATH:Lababo": {
+"generate/physics": true
+},
+"PATH:LabahanBasket": {
+"generate/physics": true
+},
+"PATH:Pillow": {
+"generate/physics": true
+},
+"PATH:Pillow_001": {
+"generate/physics": true
+},
+"PATH:PlasticDrawer": {
+"generate/physics": true
+},
+"PATH:PlasticDrawer_001": {
+"generate/physics": true
+},
+"PATH:Plate_025": {
+"generate/physics": true
+},
+"PATH:RoofBroken": {
+"generate/physics": true
+},
+"PATH:RoofSupport": {
+"generate/physics": true
+},
+"PATH:Shelf": {
+"generate/physics": true
+},
+"PATH:Shelf_001": {
+"generate/physics": true
+},
+"PATH:Shelf_002": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model_001/Bombola_fbx/RootNode/Bombola_001/Bombola_001__0": {
+"generate/physics": true
+},
+"PATH:Table": {
+"generate/physics": true
+},
+"PATH:Trash_can": {
+"generate/physics": true
+},
+"PATH:Ventilator": {
+"generate/physics": true
+},
+"PATH:Walis": {
+"generate/physics": true
+},
+"PATH:Walls": {
+"generate/physics": true
+},
+"PATH:eletric fan": {
+"generate/physics": true
+},
+"PATH:jamb door": {
+"generate/physics": true
+},
+"PATH:jamb door_001": {
+"generate/physics": true
+},
+"PATH:jamb door_002": {
+"generate/physics": true
+},
+"PATH:pillow_001": {
+"generate/physics": true
+},
+"PATH:pillow_002": {
+"generate/physics": true
+},
+"PATH:pillow_003": {
+"generate/physics": true
+},
+"PATH:shelf": {
+"generate/physics": true
+},
+"PATH:sink": {
+"generate/physics": true
+},
+"PATH:sofa/sofa frame": {
+"generate/physics": true
+},
+"PATH:sofa/sofa pillow": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

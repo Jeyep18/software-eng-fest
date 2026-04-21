@@ -1,0 +1,243 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ccn02805xx87w"
+path="res://.godot/imported/HardwareStore.glb-0b5f0460016a21b8e487947a0f111761.scn"
+
+[deps]
+
+source_file="res://_raw_assets/Locations/HardwareStore.glb"
+dest_files=["res://.godot/imported/HardwareStore.glb-0b5f0460016a21b8e487947a0f111761.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Balde_003": {
+"generate/physics": true
+},
+"PATH:Balde_004": {
+"generate/physics": true
+},
+"PATH:Balde_005": {
+"generate/physics": true
+},
+"PATH:Balde_006": {
+"generate/physics": true
+},
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Cube_001": {
+"generate/physics": true
+},
+"PATH:Cube_002": {
+"generate/physics": true
+},
+"PATH:Cube_003": {
+"generate/physics": true
+},
+"PATH:Cube_004": {
+"generate/physics": true
+},
+"PATH:Cube_005": {
+"generate/physics": true
+},
+"PATH:Cube_006": {
+"generate/physics": true
+},
+"PATH:Cube_007": {
+"generate/physics": true
+},
+"PATH:Cube_008": {
+"generate/physics": true
+},
+"PATH:Cube_009": {
+"generate/physics": true
+},
+"PATH:Cube_010": {
+"generate/physics": true
+},
+"PATH:Cube_011": {
+"generate/physics": true
+},
+"PATH:Cube_012": {
+"generate/physics": true
+},
+"PATH:Cube_013": {
+"generate/physics": true
+},
+"PATH:Cube_014": {
+"generate/physics": true
+},
+"PATH:Cube_015": {
+"generate/physics": true
+},
+"PATH:Cube_016": {
+"generate/physics": true
+},
+"PATH:Cube_017": {
+"generate/physics": true
+},
+"PATH:Cube_018": {
+"generate/physics": true
+},
+"PATH:Cube_019": {
+"generate/physics": true
+},
+"PATH:Cube_020": {
+"generate/physics": true
+},
+"PATH:Cube_021": {
+"generate/physics": true
+},
+"PATH:Cube_022": {
+"generate/physics": true
+},
+"PATH:Cube_023": {
+"generate/physics": true
+},
+"PATH:Cube_024": {
+"generate/physics": true
+},
+"PATH:Cube_025": {
+"generate/physics": true
+},
+"PATH:Cube_026": {
+"generate/physics": true
+},
+"PATH:Floor": {
+"generate/physics": true
+},
+"PATH:Garbage_bags": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_001": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_002": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_003": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_004": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_005": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_006": {
+"generate/physics": true
+},
+"PATH:Plane": {
+"generate/physics": true
+},
+"PATH:Plane_001": {
+"generate/physics": true
+},
+"PATH:Plane_002": {
+"generate/physics": true
+},
+"PATH:Plane_003": {
+"generate/physics": true
+},
+"PATH:Plane_004": {
+"generate/physics": true
+},
+"PATH:Plane_005": {
+"generate/physics": true
+},
+"PATH:Plane_006": {
+"generate/physics": true
+},
+"PATH:Plane_007": {
+"generate/physics": true
+},
+"PATH:Plane_008": {
+"generate/physics": true
+},
+"PATH:Plane_009": {
+"generate/physics": true
+},
+"PATH:Plane_010": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/d32b6ab888ee414bbce02666b5ae684e_fbx/RootNode/Cart/Cart_Cart_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/d32b6ab888ee414bbce02666b5ae684e_fbx/RootNode/Cart/Cart_Cart_0_001": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/d32b6ab888ee414bbce02666b5ae684e_fbx/RootNode/Cart/Cart_Cart_0_002": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/d32b6ab888ee414bbce02666b5ae684e_fbx/RootNode/CartWheel/CartWheel_Cart_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/d32b6ab888ee414bbce02666b5ae684e_fbx/RootNode/CartWheel/CartWheel_Cart_0_001": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/d32b6ab888ee414bbce02666b5ae684e_fbx/RootNode/CartWheel/CartWheel_Cart_0_002": {
+"generate/physics": true
+},
+"PATH:WaterJug_004": {
+"generate/physics": true
+},
+"PATH:WaterJug_005": {
+"generate/physics": true
+},
+"PATH:WaterJug_006": {
+"generate/physics": true
+},
+"PATH:WaterJug_007": {
+"generate/physics": true
+},
+"PATH:WaterJug_008": {
+"generate/physics": true
+},
+"PATH:WaterJug_009": {
+"generate/physics": true
+},
+"PATH:WaterJug_010": {
+"generate/physics": true
+},
+"PATH:jar of pickles_001": {
+"generate/physics": true
+},
+"PATH:jar of pickles_002": {
+"generate/physics": true
+},
+"PATH:jar of pickles_003": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
