@@ -109,4 +109,4 @@ func _refresh_info_bar() -> void:
 	else:
 		info_icon.texture = null
 		info_name.text = ""
-		info_desc.text = "Click an item to see details."
+		info_desc.text = ""
