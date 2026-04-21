@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://85o8ejsdvvlt"]
+
+[ext_resource type="Script" uid="uid://disx4o1blwqeq" path="res://game/ui/tasksUI/NeedsHUD.gd" id="1_ncpn3"]
+
+[node name="NeedsHUD" type="CanvasLayer" unique_id=720643601]
+script = ExtResource("1_ncpn3")
+
+[node name="Panel" type="Panel" parent="." unique_id=332782189]
+custom_minimum_size = Vector2(260, 160)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=1706990543]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Tasks"
+
+[node name="TaskList" type="VBoxContainer" parent="Panel" unique_id=396850800]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
