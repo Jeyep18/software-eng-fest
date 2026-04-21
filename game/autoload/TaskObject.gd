@@ -1,45 +1,28 @@
 # FILE: res://scripts/TaskObject.gd
-# ATTACH TO: The Area3D node of any fixable object (roof, windows, etc.)
-# PURPOSE: An interactable object that requires specific items to "complete."
-# It checks the inventory, plays different monologues based on what the
-# player has, consumes items on completion, and updates NeedsLog.
 
 class_name TaskObject
 extends Interactable
 
-# --- CONFIGURATION (set all of these in the Inspector) ---
-
-## The prompt shown when player is nearby.
 @export var interaction_prompt: String = "Interact [E]"
-
-## The Need this object maps to in NeedsLog.
-## Example: NeedsLog.Need.ROOF
 @export var need: NeedsLog.Need = NeedsLog.Need.ROOF
-
-## The item_id strings required to complete this task.
-## Must match item_id fields in your .tres files exactly.
-## Example: ["plywood", "nails"]
 @export var required_item_ids: Array[String] = []
 
-## Monologue shown when player does NOT have the required items yet.
-## This also discovers the need in NeedsLog (adds it to the HUD).
 @export var missing_lines: Array[String] = [
     "I need to get some supplies first."
 ]
-
-## Monologue shown when player HAS all required items.
-## After this finishes, items are consumed and the need is resolved.
 @export var ready_lines: Array[String] = [
     "Alright, I have everything I need."
 ]
 
-## Speed of the typewriter text effect.
-@export var chars_per_second: float = 20.0
+## Shown when the player interacts AFTER the task is already completed.
+## Example: "Naayos na ang bubong. Okay na."
+@export var completed_lines: Array[String] = [
+    "It's already been fixed."
+]
 
-## Drag monologue_ui.tscn here in the Inspector.
+@export var chars_per_second: float = 20.0
 @export var monologue_ui_scene: PackedScene
 
-# --- INTERNAL STATE ---
 const PLAYER_NAME: String = "Player"
 
 var _ui: MonologueUI = null
@@ -47,15 +30,14 @@ var _current_line: int = 0
 var _is_showing: bool = false
 var _is_typing: bool = false
 var _tween: Tween = null
-
-# Tracks which branch we're currently showing.
-# WHY: When the player presses E mid-monologue, we need to know
-# whether we're in the "missing" branch or the "ready" branch
-# so we know what to do when the last line finishes.
 var _showing_ready_branch: bool = false
 
+# Remembers if this task was completed this session.
+# WHY: Once done, re-interacting should show completed_lines,
+# not fall back into the missing branch.
+var _is_completed: bool = false
 
-# --- READY ---
+
 func _ready() -> void:
 	super._ready()
 	prompt_label = interaction_prompt
@@ -63,7 +45,6 @@ func _ready() -> void:
 	_setup_ui()
 
 
-# --- UI SETUP ---
 func _setup_ui() -> void:
 	if monologue_ui_scene == null:
 		push_error("TaskObject: monologue_ui_scene not assigned on " + name)
@@ -73,49 +54,53 @@ func _setup_ui() -> void:
 	_ui.hide_ui()
 
 
-# --- INTERACT ---
-# Called automatically by the player system when E is pressed.
 func interact() -> void:
-	# If monologue is not yet showing, decide which branch to start.
 	if not _is_showing:
 		_current_line = 0
+
+		# CASE 1: Already completed — show the done dialogue.
+		if _is_completed:
+			_showing_ready_branch = false
+			_show_line(completed_lines)
+			return
+
+		# CASE 2: Has all items — show ready branch.
 		if _has_all_required_items():
 			_showing_ready_branch = true
 			_show_line(ready_lines)
-		else:
-			_showing_ready_branch = false
-			# Discover the need — this adds it to the HUD task list.
-			# WHY: We only call this on the "missing" branch. Once the
-			# player has the items, the task is about to be resolved,
-			# so there's no point discovering it again.
-			NeedsLog.discover(need)
-			_show_line(missing_lines)
+			return
+
+		# CASE 3: Missing items — discover need and show missing branch.
+		_showing_ready_branch = false
+		NeedsLog.discover(need)
+		_show_line(missing_lines)
 		return
 
-	# If typewriter is still typing, skip to end of current line.
 	if _is_typing:
 		_skip_to_line_end()
 		return
 
-	# Advance to next line.
 	_current_line += 1
 
-	# Determine which line array we're working with.
-	var lines: Array[String] = ready_lines if _showing_ready_branch else missing_lines
+	# Pick the right line array based on current state.
+	var lines: Array[String]
+	if _is_completed:
+		lines = completed_lines
+	elif _showing_ready_branch:
+		lines = ready_lines
+	else:
+		lines = missing_lines
 
-	# If we've passed the last line, the monologue is done.
 	if _current_line >= lines.size():
+		var was_ready_branch: bool = _showing_ready_branch
 		_hide_monologue()
-		# If we just finished the ready branch, complete the task.
-		if _showing_ready_branch:
+		if was_ready_branch:
 			_complete_task()
 		return
 
 	_show_line(lines)
 
 
-# --- ITEM CHECKING ---
-# Returns true only if the player has ALL required items.
 func _has_all_required_items() -> bool:
 	for item_id in required_item_ids:
 		if not _player_has_item(item_id):
@@ -123,7 +108,6 @@ func _has_all_required_items() -> bool:
 	return true
 
 
-# Checks if a single item_id exists anywhere in the inventory.
 func _player_has_item(item_id: String) -> bool:
 	for item in InventoryManager.inventory:
 		if item.item_id == item_id:
@@ -131,11 +115,7 @@ func _player_has_item(item_id: String) -> bool:
 	return false
 
 
-# --- TASK COMPLETION ---
 func _complete_task() -> void:
-	# Consume each required item if its ItemType is BRING_HOME.
-	# TOOL items are reusable and are NOT consumed.
-	# WHY: This uses your existing ItemType enum from ItemData.gd.
 	for item_id in required_item_ids:
 		for i in range(InventoryManager.inventory.size()):
 			var item = InventoryManager.inventory[i]
@@ -144,18 +124,13 @@ func _complete_task() -> void:
 				or item.item_type == ItemData.ItemType.USE_IN_PLACE \
 				or item.item_type == ItemData.ItemType.COMBINE:
 					InventoryManager.remove_item(i)
-				# Stop after consuming the first match for this id.
 				break
 
-	# Mark the need as resolved in NeedsLog.
-	# This emits need_resolved signal → HUD removes the task entry.
 	NeedsLog.resolve(need)
+	# Mark as completed so future interactions show completed_lines.
+	_is_completed = true
+	print("TaskObject: Completed — ", NeedsLog.NEED_LABELS.get(need, str(need)))
 
-	print("TaskObject: Completed task for need: ", NeedsLog.NEED_LABELS.get(need, str(need)))
-
-
-# --- MONOLOGUE HELPERS ---
-# These are identical to fridge.gd — same pattern, same behaviour.
 
 func _show_line(lines: Array[String]) -> void:
 	is_showing = true

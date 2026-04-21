@@ -23,7 +23,7 @@ var inventory: Array[ItemData] = []
 # The BackpackUI just asks "can these combine?" and gets a yes/no + result.
 var _combine_recipes: Dictionary = {
 	"batteries+dead_flashlight": "working_flashlight",
-	"broken_radio+fresh_batteries": "working_radio",
+	"batteries+broken_radio": "working_radio",
 }
 
 # --- PUBLIC FUNCTIONS ---

@@ -1,11 +1,15 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjle5kmwsfk27"]
 
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_4tuxr"]
+[ext_resource type="Texture2D" uid="uid://cox3lsudbo863" path="res://game/assets/images/canned_goods.png" id="1_gdpx4"]
+[ext_resource type="PackedScene" uid="uid://b17fnmp7jshgp" path="res://_raw_assets/interactable_models/treska.glb" id="2_4iv1y"]
 
 [resource]
 script = ExtResource("1_4tuxr")
 item_name = "Canned Goods"
+item_icon = ExtResource("1_gdpx4")
 item_description = "Pagkain para sa pamilya. 4 cans fit in one slot."
 item_id = "canned_goods"
 item_price = 80
+item_model = ExtResource("2_4iv1y")
 metadata/_custom_type_script = "uid://b51r7pisrdybh"
