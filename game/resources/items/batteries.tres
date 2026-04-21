@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://5st8s2a2t2vs"]
+
+[ext_resource type="Texture2D" uid="uid://btclaixciiifb" path="res://game/assets/images/batteries.png" id="1_5872u"]
+[ext_resource type="PackedScene" uid="uid://cg2xxkgacyhae" path="res://_raw_assets/interactable_models/Batteries.glb" id="2_n4ryt"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_1q654"]
+
+[resource]
+script = ExtResource("3_1q654")
+item_name = "Batteries"
+item_icon = ExtResource("1_5872u")
+item_description = "batteries.."
+item_id = "batteries"
+item_model = ExtResource("2_n4ryt")
+pickup_lines = Array[String](["Pwede ko to magamit"])

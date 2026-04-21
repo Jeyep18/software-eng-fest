@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcngs6ycp85up"]
+
+[ext_resource type="Texture2D" uid="uid://d1r0psjj8o1jo" path="res://game/assets/images/flashlight.png" id="1_t78al"]
+[ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="2_fcv52"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_acfdx"]
+
+[resource]
+script = ExtResource("3_acfdx")
+item_name = "working_flashlight"
+item_icon = ExtResource("1_t78al")
+item_description = "May ilaw na woohoo"
+item_id = "working_flashlight"
+item_model = ExtResource("2_fcv52")
+item_type = 2
