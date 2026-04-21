@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c4d0nxdvhfmtt" path="res://game/objects/tv.tscn" id="17_6ggnl"]
 [ext_resource type="Resource" uid="uid://cekmubr42kcip" path="res://game/resources/items/water_jugs.tres" id="18_aebbe"]
 [ext_resource type="Resource" uid="uid://dwlf2grpplygs" path="res://game/resources/items/wrench.tres" id="19_r37rf"]
+[ext_resource type="Resource" uid="uid://byurdrwuga6g4" path="res://game/resources/items/plywood.tres" id="20_dvpop"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54g8b"]
 sky_top_color = Color(0.41826138, 0.36624485, 0.30621976, 1)
@@ -215,4 +216,10 @@ monologue_ui_scene = ExtResource("13_7kk8o")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1409972, 0.97780573, -3.9524846)
 item_data = ExtResource("19_r37rf")
+monologue_ui_scene = ExtResource("13_7kk8o")
+
+[node name="plywood" parent="." unique_id=1743909769 instance=ExtResource("9_fvk8q")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4725318, 0.30255806, 0.5285872)
+item_data = ExtResource("20_dvpop")
 monologue_ui_scene = ExtResource("13_7kk8o")
