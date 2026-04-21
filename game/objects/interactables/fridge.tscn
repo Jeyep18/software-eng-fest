@@ -1,22 +1,23 @@
 [gd_scene format=3 uid="uid://q1mqm53bb7nh"]
 
-[ext_resource type="PackedScene" uid="uid://dgardm584oru2" path="res://_raw_assets/psx_style_fridge.glb" id="1_wg60y"]
+[ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="1_riw02"]
 [ext_resource type="Script" uid="uid://cc77n6dbdkgr6" path="res://game/objects/interactables/fridge.gd" id="2_uhd8r"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uhd8r"]
-size = Vector3(1.0595093, 2.707672, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]
+size = Vector3(1.1669617, 1.0712891, 1.1739502)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mq1j"]
-size = Vector3(1.0633545, 2.6504517, 1.451294)
+size = Vector3(1.09906, 2.2901688, 1.451294)
 
 [node name="Fridge" type="StaticBody3D" unique_id=1495864148]
 
-[node name="Sketchfab_Scene" parent="." unique_id=1662103715 instance=ExtResource("1_wg60y")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1645893761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006729126, -0.03564453, -0.016540527)
+shape = SubResource("BoxShape3D_cldu5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=442599865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38529968, 0)
-shape = SubResource("BoxShape3D_uhd8r")
+[node name="fridge2" parent="." unique_id=1554945471 instance=ExtResource("1_riw02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5949855, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=348564518]
 script = ExtResource("2_uhd8r")
@@ -24,7 +25,7 @@ need_to_discover = 0
 monologue_ui_scene = ExtResource("3_7mq1j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1601409854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024963379, 0.39950562, 0.22564697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022251964, 0.57964706, 0.22564697)
 shape = SubResource("BoxShape3D_7mq1j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616304789]

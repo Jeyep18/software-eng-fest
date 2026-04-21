@@ -1,11 +1,16 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dwlf2grpplygs"]
 
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_h58he"]
+[ext_resource type="Texture2D" uid="uid://d0ltk1w6oshgb" path="res://game/assets/images/wrench.png" id="1_q5c4n"]
+[ext_resource type="PackedScene" uid="uid://di3j6j64f7smb" path="res://_raw_assets/interactable_models/Wrench.glb" id="2_nwlb5"]
 
 [resource]
 script = ExtResource("1_h58he")
 item_name = "Wrench"
+item_icon = ExtResource("1_q5c4n")
 item_description = "Wrench"
 item_id = "wrench"
 item_price = 120
+item_model = ExtResource("2_nwlb5")
+pickup_lines = Array[String](["Lumang liyabe", "Hindi ko alam kung para saan — pero baka kailangan ng ibang tao nito"])
 metadata/_custom_type_script = "uid://b51r7pisrdybh"
