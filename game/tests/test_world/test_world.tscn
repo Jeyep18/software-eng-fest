@@ -9,12 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_t2khi"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_elbau"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="9_fvk8q"]
-[ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/flashlight.tres" id="12_7kk8o"]
+[ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/dead_flashlight.tres" id="12_7kk8o"]
 [ext_resource type="PackedScene" uid="uid://c7fktavqh7aoy" path="res://game/ui/pause/PauseMenu.tscn" id="12_t4iey"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="14_78ptq"]
 [ext_resource type="PackedScene" uid="uid://cekuiqqcccxni" path="res://game/objects/interactables/GasTank.tscn" id="14_yvhk5"]
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="15_yvhk5"]
-[ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/radio.tres" id="16_xudhu"]
+[ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="16_xudhu"]
 [ext_resource type="PackedScene" uid="uid://c4d0nxdvhfmtt" path="res://game/objects/tv.tscn" id="17_6ggnl"]
 [ext_resource type="Resource" uid="uid://cekmubr42kcip" path="res://game/resources/items/water_jugs.tres" id="18_aebbe"]
 [ext_resource type="Resource" uid="uid://dwlf2grpplygs" path="res://game/resources/items/wrench.tres" id="19_r37rf"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://85o8ejsdvvlt" path="res://game/ui/tasksUI/NeedsHUD.tscn" id="20_susyl"]
 [ext_resource type="Resource" uid="uid://dn6352fvr03p2" path="res://game/resources/items/nails.tres" id="21_o21ry"]
 [ext_resource type="PackedScene" uid="uid://boa547w07bf30" path="res://game/objects/interactables/Roof.tscn" id="22_87twc"]
+[ext_resource type="Resource" uid="uid://5st8s2a2t2vs" path="res://game/resources/items/batteries.tres" id="23_76tff"]
+[ext_resource type="Resource" uid="uid://bqu5lfx4s02h6" path="res://game/resources/items/fresh_batteries.tres" id="24_m16l7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54g8b"]
 sky_top_color = Color(0.41826138, 0.36624485, 0.30621976, 1)
@@ -192,7 +194,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016491473, -0.07876289, -7.
 [node name="Fridge2" parent="." unique_id=1495864148 instance=ExtResource("14_78ptq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4355984, 0.57446766, -7.9864106)
 
-[node name="Flashlight" parent="." unique_id=704261374 instance=ExtResource("9_fvk8q")]
+[node name="dead_flashlight" parent="." unique_id=704261374 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1801213, 0.501958, -6.087389)
 item_data = ExtResource("12_7kk8o")
@@ -202,7 +204,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0345073, -0.050453067, -7.7758837)
 item_data = ExtResource("15_yvhk5")
 
-[node name="Radio" parent="." unique_id=898477914 instance=ExtResource("9_fvk8q")]
+[node name="dead_radio" parent="." unique_id=898477914 instance=ExtResource("9_fvk8q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33876055, 0.84041333, -4.115938)
 item_data = ExtResource("16_xudhu")
@@ -229,3 +231,13 @@ item_data = ExtResource("20_dvpop")
 
 [node name="Roof" parent="." unique_id=1843619503 instance=ExtResource("22_87twc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3608556, 0.4495467, 1.1318392)
+
+[node name="batteries" parent="." unique_id=684033436 instance=ExtResource("9_fvk8q")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4285827, 0.31892133, 0.22713137)
+item_data = ExtResource("23_76tff")
+
+[node name="fresh_batteries" parent="." unique_id=746269134 instance=ExtResource("9_fvk8q")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59872, 0.40291268, 1.4025801)
+item_data = ExtResource("24_m16l7")
