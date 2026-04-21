@@ -115,10 +115,13 @@ func open_shop(shop_data: ShopData) -> void:
 	if shop_data == null:
 		push_error("ShopUI.open_shop(): called with null ShopData.")
 		return
-	_current_shop = shop_data
-	shop_name_label.text  = shop_data.shop_name
-	subtitle_label.text   = shop_data.shop_subtitle
-	subtitle_label.visible = shop_data.shop_subtitle != ""
+	
+	# Duplicate so we never modify the original .tres resource
+	_current_shop = shop_data.duplicate(true)  # true = deep duplicate
+	
+	shop_name_label.text   = _current_shop.shop_name
+	subtitle_label.text    = _current_shop.shop_subtitle
+	subtitle_label.visible = _current_shop.shop_subtitle != ""
 	_refresh_cash()
 	_rebuild_item_list()
 	_clear_feedback()
@@ -186,7 +189,7 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 	# Stock label
 	if shop_item.stock != -1:
 		var stock_lbl := Label.new()
-		stock_lbl.text = "x%d" % shop_item._remaining_stock
+		stock_lbl.text = "x%d" % shop_item.stock
 		stock_lbl.add_theme_font_size_override("font_size", 11)
 		stock_lbl.modulate = Color(1, 1, 1, 0.55)
 		stock_lbl.custom_minimum_size = Vector2(32, 0)
