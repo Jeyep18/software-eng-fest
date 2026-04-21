@@ -1,13 +1,12 @@
-[gd_scene format=3 uid="uid://bdrdiyck13r11"]
+[gd_scene format=3 uid="uid://dvsimsn4kkqmg"]
 
-[ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_iw5ha"]
-[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_hrxyr"]
-[ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_is8m0"]
-[ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
-[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
-[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
+[ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_ow6fg"]
+[ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_n54o5"]
+[ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_40lqx"]
+[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_nmekv"]
+[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_bwlk5"]
+[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_e8epe"]
+[ext_resource type="Script" uid="uid://cx15idd6avcuk" path="res://game/scenes/main_menu/start_button.gd" id="9_n2j5s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -18,13 +17,71 @@ size = Vector3(6.5210648, 3.1103516, 5.5842743)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
 size = Vector3(8.106903, 3.1496582, 10.895905)
 
+[sub_resource type="Animation" id="Animation_ndtma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.6625664, 1.4652394, 2.682346)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.015670996, 0.5567242, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gdrdg"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.6625664, 1.4652394, 2.682346), Vector3(1.8240339, 1.3374572, -5.877038)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.015670996, 0.5567242, 0), Vector3(-0.034110267, 0.4258263, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n54o5"]
+_data = {
+&"RESET": SubResource("Animation_ndtma"),
+&"new_animation": SubResource("Animation_gdrdg")
+}
+
 [node name="HouseInside" type="Node3D" unique_id=1548119595]
 
-[node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_iw5ha")]
+[node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_ow6fg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
-
-[node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_hrxyr")]
-transform = Transform3D(0.9994502, 0, 0.03315515, 0, 1, 0, -0.03315515, 0, 0.9994502, 0.65504456, 0.074735105, -7.613753)
 
 [node name="Lights" type="Node" parent="." unique_id=804893288]
 
@@ -48,7 +105,7 @@ spot_angle = 82.02
 [node name="Environment" type="Node" parent="." unique_id=613088320]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=19579548]
-environment = ExtResource("3_is8m0")
+environment = ExtResource("3_n54o5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=692121294]
 transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.4397611, 0.40833047, -0.597907, 0.64220345, -0.47966847, -3.7560396, 5.09972, 0)
@@ -58,7 +115,7 @@ shadow_enabled = true
 [node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=1350160904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8154297, -2.4493408)
 size = Vector3(20, 12.369141, 25.848389)
-data = ExtResource("4_2sg0l")
+data = ExtResource("4_40lqx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1352635784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.63672, 2.110856, 1.8699625)
@@ -96,7 +153,7 @@ metadata/_edit_lock_ = true
 
 [node name="Bedroom" type="Area3D" parent="CameraVolumes" unique_id=955512069 groups=["camera volume"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.050873, 0.9478489, 1.3912337)
-script = ExtResource("5_iw5ha")
+script = ExtResource("5_nmekv")
 z_distance = 5.0
 z_wall_position = 6.0
 z_dynamic_enabled = true
@@ -111,7 +168,7 @@ debug_color = Color(0.9907649, 0, 0.28004077, 0.41960785)
 
 [node name="LivingRoom" type="Area3D" parent="CameraVolumes" unique_id=969910261 groups=["camera volume"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.771533, 1.1641177, -3.45506)
-script = ExtResource("5_iw5ha")
+script = ExtResource("5_nmekv")
 z_distance = 5.0
 z_wall_position = 6.0
 z_dynamic_enabled = true
@@ -124,13 +181,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.6807
 shape = SubResource("BoxShape3D_dn58f")
 debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_qlj0p")]
-
-[node name="door" parent="." unique_id=1970056124 instance=ExtResource("7_dn58f")]
+[node name="door" parent="." unique_id=1970056124 instance=ExtResource("7_bwlk5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7993892, 0, -4.232849)
 door_destination = "bodega"
 spawn_point_id = "from_house"
 
-[node name="Spawnpoint" parent="." unique_id=1429357958 instance=ExtResource("8_y6bww")]
+[node name="Spawnpoint" parent="." unique_id=1429357958 instance=ExtResource("8_e8epe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18268609, 0.008939624, -4.237865)
 spawn_id = "from_bodega"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1531171616]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1923912197]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=240193404]
+transform = Transform3D(0.8489906, -0.00828034, 0.5283429, 0, 0.9998772, 0.015670352, -0.52840793, -0.013303985, 0.8488862, -1.6625664, 1.4652394, 2.682346)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1584692849]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_right = 99.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="start_button" type="Button" parent="VBoxContainer" unique_id=946051166]
+layout_mode = 2
+text = "start"
+script = ExtResource("9_n2j5s")
+
+[node name="load_button" type="Button" parent="VBoxContainer" unique_id=383943701]
+layout_mode = 2
+text = "load"
+
+[node name="settings_button" type="Button" parent="VBoxContainer" unique_id=894939448]
+layout_mode = 2
+text = "settings"
+
+[node name="quit_button" type="Button" parent="VBoxContainer" unique_id=174355223]
+layout_mode = 2
+text = "quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1715784096]
+libraries/ = SubResource("AnimationLibrary_n54o5")
+autoplay = &"new_animation"

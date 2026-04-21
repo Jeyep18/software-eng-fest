@@ -9,8 +9,8 @@ var _pending_spawn_id: String = ""
 
 const SCENE_PATHS: Dictionary = {
 	"intro":         "res://game/scenes/intro/IntroSequence.tscn", 
-	"main_menu":     "res://game/scenes/main_menu/Main_Menu.tscn",
-	"act1":          "res://game/scenes/act1/HouseAct1.tscn",
+	"main_menu":     "res://game/scenes/main_menu/Main_Menu1.tscn",
+	"act1":          "res://game/scenes/act1/Inside_House_Act1.tscn",
 	"home":          "res://game/scenes/locations/house_inside.tscn",
 	"tindahan":      "res://game/scenes/locations/tindahan.tscn",
 	"pharmacy":      "res://game/scenes/locations/pharmacy.tscn",

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ShopData" format=3 uid="uid://b0vnjl6ly34gf"]
+
+[ext_resource type="Script" uid="uid://drt5nt3ddch63" path="res://game/scripts/ShopItem.gd" id="1_jod66"]
+[ext_resource type="Resource" uid="uid://cjle5kmwsfk27" path="res://game/resources/items/canned_goods.tres" id="2_f5s5k"]
+[ext_resource type="Resource" uid="uid://cje1dvn2jujwn" path="res://game/resources/items/water_jugs.tres" id="2_lttth"]
+[ext_resource type="Script" uid="uid://baep303p2o6o1" path="res://game/scripts/ShopData.gd" id="2_vamq0"]
+
+[sub_resource type="Resource" id="Resource_tfxak"]
+script = ExtResource("1_jod66")
+item_data = ExtResource("2_f5s5k")
+price = 80
+stock = 5
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[sub_resource type="Resource" id="Resource_tg3eh"]
+script = ExtResource("1_jod66")
+item_data = ExtResource("2_lttth")
+price = 100
+stock = 2
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[resource]
+script = ExtResource("2_vamq0")
+shop_name = "Ate Linda's Sari-sari"
+shop_subtitle = "Presyo ay medyo mahal ngayon... buhay ganyan."
+items = Array[ExtResource("1_jod66")]([SubResource("Resource_tfxak"), SubResource("Resource_tg3eh")])
+metadata/_custom_type_script = "uid://baep303p2o6o1"

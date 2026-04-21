@@ -19,34 +19,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 1
 
-[node name="Header" type="HBoxContainer" parent="Panel" unique_id=1389008431]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -3.5
-offset_bottom = -624.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TimeLabel" type="Label" parent="Panel/Header" unique_id=2045827536]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Time"
-
-[node name="LocationLabel" type="Label" parent="Panel/Header" unique_id=1495421432]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "Location"
-
-[node name="ETALabel" type="Label" parent="Panel/Header" unique_id=2015878812]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "ETA"
-
 [node name="MapNodes" type="Control" parent="Panel" unique_id=941862579]
 custom_minimum_size = Vector2(1152, 600)
 layout_mode = 1
