@@ -1,29 +1,10 @@
-[gd_scene format=4 uid="uid://b70hey3kcobx2"]
+[gd_scene format=3 uid="uid://b70hey3kcobx2"]
 
-[ext_resource type="Texture2D" uid="uid://du4nafhdine4c" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_diff_4k.png" id="1_xd4q2"]
-[ext_resource type="Texture2D" uid="uid://cn3ifi1md8t14" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_ao_4k.png" id="2_eprta"]
-[ext_resource type="Texture2D" uid="uid://b06bpfvtsegu3" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_diff_4k.jpg" id="3_yn1y5"]
-[ext_resource type="Texture2D" uid="uid://dm0i10xqkx0jb" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_diff_2k.png" id="4_0ah4r"]
-[ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_43he2"]
+[ext_resource type="VoxelGIData" uid="uid://daf080x3na5qv" path="res://game/resources/voxels/grocery.VoxelGI_data.res" id="2_anphp"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_r5jgj"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_ve5we"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_eprta"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mq8r4"]
-albedo_texture = ExtResource("1_xd4q2")
-ao_enabled = true
-ao_texture = ExtResource("2_eprta")
-uv1_scale = Vector3(64, 64, 64)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4s3l"]
-albedo_color = Color(0.27258793, 0.26384878, 0.26888588, 1)
-albedo_texture = ExtResource("3_yn1y5")
-uv1_scale = Vector3(16, 16, 16)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpnis"]
-albedo_texture = ExtResource("4_0ah4r")
-roughness_texture = ExtResource("5_43he2")
-uv1_scale = Vector3(2, 2, 2)
+[ext_resource type="PackedScene" uid="uid://cbtfx45as84mq" path="res://_raw_assets/Locations/Market.glb" id="9_yn1y5"]
 
 [sub_resource type="Shader" id="Shader_tokvj"]
 code = "
@@ -85,50 +66,7 @@ adjustment_enabled = true
 adjustment_brightness = 0.86
 adjustment_contrast = 1.03
 
-[sub_resource type="VoxelGIData" id="VoxelGIData_q6ofo"]
-_data = {
-"bounds": AABB(-32.760223, -13.14888, -38.13185, 65.52045, 26.29776, 76.2637),
-"level_counts": PackedInt32Array(1, 0, 0, 0, 0, 0, 0, 0),
-"octree_cells": PackedByteArray("//////////////////////////////////////////8="),
-"octree_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAA=="),
-"octree_df_png": PackedByteArray("iVBORw0KGgoAAAANSUhEUgAAIAAAAACACAAAAACGzLjBAAAAAXNSR0IArs4c6QAABU1JREFUeJzt2jENACAAwDDAv2cQwUFYWgUTsLkHAAAAAAAAAPC79ToAAAAAAAAAALhnAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQMABJx8B//w5aDkAAAAASUVORK5CYII="),
-"octree_size": Vector3(128, 64, 128),
-"to_cell_xform": Transform3D(1.6783869, 0, 0, 0, 1.6783869, 0, 0, 0, 1.6783869, 54.98433, 22.068909, 64)
-}
-
 [node name="Grocery" type="Node3D" unique_id=2043522354]
-
-[node name="Greybox" type="Node3D" parent="." unique_id=604606902]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Greybox" unique_id=964835626]
-use_collision = true
-size = Vector3(500, 0.5, 500)
-material = SubResource("StandardMaterial3D_mq8r4")
-metadata/_edit_lock_ = true
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Greybox" unique_id=455601724]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4555078, 0, 0)
-use_collision = true
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Greybox/CSGCombiner3D" unique_id=507812061]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5276494, 0.35000002, -2.3049557)
-size = Vector3(51.123047, 0.1, 8.69751)
-material = SubResource("StandardMaterial3D_w4s3l")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Greybox/CSGCombiner3D" unique_id=158387036]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.925236, 0.35000002, -24.70852)
-size = Vector3(85.51416, 0.1, 8.69751)
-material = SubResource("StandardMaterial3D_w4s3l")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Greybox/CSGCombiner3D" unique_id=2116370722]
-transform = Transform3D(1, 0, 0, 0, 0.50113404, 0, 0, 0, 1, -7.3273797, 0.45000002, -7.4138536)
-size = Vector3(37.81076, 0.3, 1.5161622)
-material = SubResource("StandardMaterial3D_kpnis")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Greybox/CSGCombiner3D" unique_id=150576063]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.50113404, 0, -1, 0, -4.371139e-08, 10.814775, 0.45000002, -15.411611)
-size = Vector3(14.6, 0.3, 1.5161622)
-material = SubResource("StandardMaterial3D_kpnis")
 
 [node name="Environment" type="Node" parent="." unique_id=958567759]
 
@@ -142,12 +80,58 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2029722894]
 environment = SubResource("Environment_o40fb")
 
-[node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=979950094]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8658752, 3.14888, -35.277927)
-size = Vector3(65.52045, 26.29776, 76.2637)
-data = SubResource("VoxelGIData_q6ofo")
+[node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=44111381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5275421, 6.2610245, -18.955826)
+size = Vector3(41.851044, 16.070023, 29.232391)
+data = ExtResource("2_anphp")
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("7_ve5we")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.582499, 10.345173, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.438011, 0.6383518, -10.502749)
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_eprta")]
+
+[node name="Market" parent="." unique_id=1319487788 instance=ExtResource("9_yn1y5")]
+
+[node name="Lights" type="Node" parent="." unique_id=1144243335]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=746193142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.081269, 4.1030445, -14.8461485)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 9.038949
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" unique_id=1694916967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5760818, 4.1030445, -14.8461485)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 9.038949
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1395674030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5957263, 4.1030445, -19.765852)
+light_color = Color(0.65809333, 0.7137786, 0.7041021, 1)
+light_energy = 4.0
+shadow_enabled = true
+omni_range = 9.038949
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1812368519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.572255, 4.1030445, -13.270977)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 9.038949
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=2018902642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.417025, 10.838234, -13.294414)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 9.038949
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=284190009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6405263, 10.661711, -13.294414)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 9.038949
