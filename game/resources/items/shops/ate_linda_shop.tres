@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drt5nt3ddch63" path="res://game/scripts/ShopItem.gd" id="1_jod66"]
 [ext_resource type="Resource" uid="uid://cjle5kmwsfk27" path="res://game/resources/items/canned_goods.tres" id="2_f5s5k"]
-[ext_resource type="Resource" uid="uid://cje1dvn2jujwn" path="res://game/resources/items/water_jugs.tres" id="2_lttth"]
+[ext_resource type="Resource" uid="uid://cekmubr42kcip" path="res://game/resources/items/water_jugs.tres" id="2_lttth"]
 [ext_resource type="Script" uid="uid://baep303p2o6o1" path="res://game/scripts/ShopData.gd" id="2_vamq0"]
 
 [sub_resource type="Resource" id="Resource_tfxak"]
