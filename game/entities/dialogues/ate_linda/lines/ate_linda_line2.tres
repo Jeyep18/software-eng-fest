@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://df65ull0l6fnm"]
+
+[ext_resource type="Texture2D" uid="uid://boh3kdg2n44sm" path="res://game/assets/images/o.png" id="1_ixc7w"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="2_r3rbf"]
+
+[resource]
+script = ExtResource("2_r3rbf")
+speaker_name = "Player"
+expression = ExtResource("1_ixc7w")
+text = "bibili po sana ako hehe... bukas po ba kayo?"
+metadata/_custom_type_script = "uid://po32410sv037"

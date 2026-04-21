@@ -6,7 +6,7 @@ extends NPC
 
 func _ready() -> void:
 	super._ready()
-	prompt_label = "Talk to Nanay"
+	prompt_label = "Talk to Ate Linda"
 
 func _pick_sequence() -> DialogueSequence:
 	if NeedsLog.is_discovered(NeedsLog.Need.ROOF):

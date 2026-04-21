@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://pmtek0fmitmn"]
+
+[ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="1_uia7q"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="2_wq8od"]
+
+[resource]
+script = ExtResource("2_wq8od")
+speaker_name = "Ate Linda"
+expression = ExtResource("1_uia7q")
+text = "Ano ho yun?"
+metadata/_custom_type_script = "uid://po32410sv037"

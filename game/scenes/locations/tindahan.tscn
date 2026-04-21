@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="3_0aq8a"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_ygoei"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_rchrt"]
+[ext_resource type="PackedScene" uid="uid://wsovjfl8f40h" path="res://game/entities/ate_linda_npc/ate_linda.tscn" id="7_61ce1"]
 
 [sub_resource type="Shader" id="Shader_tokvj"]
 code = "
@@ -141,3 +142,6 @@ light_color = Color(0.7707947, 0.73799646, 0.626923, 1)
 shadow_enabled = true
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_rchrt")]
+
+[node name="Ate_Linda" parent="." unique_id=1938827577 instance=ExtResource("7_61ce1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.146375, 0.8883978, -8.557304)
