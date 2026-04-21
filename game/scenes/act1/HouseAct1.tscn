@@ -5,6 +5,9 @@
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_q86kq"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_s3i4m"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_v1au1"]
+[ext_resource type="PackedScene" uid="uid://c7fktavqh7aoy" path="res://game/ui/pause/PauseMenu.tscn" id="6_y1jvh"]
+[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="7_uyjdx"]
+[ext_resource type="PackedScene" uid="uid://dq2ynyvl8rqbu" path="res://game/ui/HUDOverlay.tscn" id="8_uyjdx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -115,3 +118,9 @@ transition_duration = 1.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.96865845)
 shape = SubResource("BoxShape3D_dn58f")
 debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
+
+[node name="PauseMenu" parent="." unique_id=1158059127 instance=ExtResource("6_y1jvh")]
+
+[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("7_uyjdx")]
+
+[node name="HUDOverlay" parent="." unique_id=1355526644 instance=ExtResource("8_uyjdx")]

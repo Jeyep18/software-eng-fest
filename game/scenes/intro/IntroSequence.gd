@@ -44,12 +44,7 @@ const LINES: Array = [
 	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
 	{ "text": "One storm.",                           "hold": 2.4, "fade": 0.8, "style": "large"  },
 	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "Twelve hours.",                        "hold": 2.6, "fade": 0.9, "style": "small"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "Nigga si Chris.",                      "hold": 2.6, "fade": 0.9, "style": "small"  },
-	
+	{ "text": "Twelve hours.",                        "hold": 2.6, "fade": 0.9, "style": "small"  },	
 ]
 
 # ── Ready ──────────────────────────────────────────────────────────────────────

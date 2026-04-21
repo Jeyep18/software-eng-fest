@@ -6,6 +6,7 @@
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
+[ext_resource type="PackedScene" uid="uid://dq2ynyvl8rqbu" path="res://game/ui/HUDOverlay.tscn" id="7_dn58f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -118,3 +119,5 @@ shape = SubResource("BoxShape3D_dn58f")
 debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_qlj0p")]
+
+[node name="HUDOverlay" parent="." unique_id=1355526644 instance=ExtResource("7_dn58f")]

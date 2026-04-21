@@ -8,9 +8,9 @@ extends CanvasLayer
 
 # ── Node References (assign in the Inspector or via @onready) ──────────────
 @onready var panel:           Control = $Panel
-@onready var time_label:      Label   = $Panel/Header/TimeLabel
-@onready var eta_label:       Label   = $Panel/Header/ETALabel
-@onready var location_label:  Label   = $Panel/Header/LocationLabel
+#@onready var time_label:      Label   = $Panel/Header/TimeLabel
+#@onready var eta_label:       Label   = $Panel/Header/ETALabel
+#@onready var location_label:  Label   = $Panel/Header/LocationLabel
 @onready var nodes_container: Control = $Panel/MapNodes
 @onready var confirm_panel:   Control = $Panel/ConfirmPanel
 @onready var confirm_dest:    Label   = $Panel/ConfirmPanel/DestinationLabel
@@ -96,7 +96,7 @@ func _input(event: InputEvent) -> void:
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	_refresh_header()
+#	_refresh_header()
 	_refresh_all_nodes()
 	_refresh_storm_overlay()
 	confirm_panel.hide()
@@ -110,11 +110,11 @@ func close_map() -> void:
 	_selected_location = ""
 
 # ── Header Refresh ────────────────────────────────────────────────────────────
-func _refresh_header() -> void:
-	time_label.text    = GlobalTimer.get_time_string()
-	eta_label.text     = "Storm ETA: " + GlobalTimer.get_storm_eta_string()
-	location_label.text = "You are at: " + NODE_DISPLAY_NAMES.get(
-			SceneManager.current_location, SceneManager.current_location)
+#func _refresh_header() -> void:
+#	time_label.text    = GlobalTimer.get_time_string()
+#	eta_label.text     = "Storm ETA: " + GlobalTimer.get_storm_eta_string()
+#	location_label.text = "You are at: " + NODE_DISPLAY_NAMES.get(
+#			SceneManager.current_location, SceneManager.current_location)
 
 # ── Node Button Construction ───────────────────────────────────────────────────
 func _build_node_buttons() -> void:
@@ -240,8 +240,8 @@ func _connect_signals() -> void:
 	SceneManager.travel_completed.connect(_on_travel_completed)
 
 func _on_time_updated(_minute: int) -> void:
-	if visible:
-		_refresh_header()
+	pass
+#		_refresh_header()
 
 func _on_encroachment(_zone_id: String) -> void:
 	if visible:
