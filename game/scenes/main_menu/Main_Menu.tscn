@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bwgxiq87n6rr2"]
 
-[ext_resource type="PackedScene" uid="uid://bqujtorm10mxk" path="res://_raw_assets/house_map/house_inside1.glb" id="1_w5yrs"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="2_2dsls"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="3_2kasa"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="4_xkctv"]
@@ -79,7 +78,7 @@ _data = {
 
 [node name="HouseInside" type="Node3D" unique_id=1548119595]
 
-[node name="house_inside1" parent="." unique_id=1572664480 instance=ExtResource("1_w5yrs")]
+[node name="house_inside1" parent="." unique_id=1572664480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13370037, 0, -0.6912918)
 
 [node name="Lights" type="Node" parent="." unique_id=804893288]
