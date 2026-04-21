@@ -6,8 +6,12 @@
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://dq2ynyvl8rqbu" path="res://game/ui/HUDOverlay.tscn" id="7_dn58f"]
+=======
 [ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
+>>>>>>> 723d41096ec92c304b1c98f12cc3b5b520b8a578
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -126,6 +130,9 @@ debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_qlj0p")]
 
+<<<<<<< HEAD
+[node name="HUDOverlay" parent="." unique_id=1355526644 instance=ExtResource("7_dn58f")]
+=======
 [node name="door" parent="." unique_id=1970056124 instance=ExtResource("7_dn58f")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7993892, 0, -4.232849)
 door_destination = "bodega"
@@ -134,3 +141,4 @@ spawn_point_id = "from_house"
 [node name="Spawnpoint" parent="." unique_id=1429357958 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18268609, 0.008939624, -4.237865)
 spawn_id = "from_bodega"
+>>>>>>> 723d41096ec92c304b1c98f12cc3b5b520b8a578
