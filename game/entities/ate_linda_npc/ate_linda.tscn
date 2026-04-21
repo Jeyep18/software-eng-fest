@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://wsovjfl8f40h"]
+
+[ext_resource type="PackedScene" uid="uid://dgw708edian3h" path="res://game/assets/models/nanay_model.tscn" id="1_nta0v"]
+[ext_resource type="Script" uid="uid://bc88f60667dkl" path="res://game/entities/ate_linda_npc/ate_linda.gd" id="2_rw2tb"]
+[ext_resource type="Resource" uid="uid://cn5y502leh88q" path="res://game/entities/dialogues/ate_linda/sequence/ate_linda_tindahan_act1.tres" id="3_7ti20"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_oif5d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ewcw0"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e6l8e"]
+radius = 0.71533203
+
+[node name="Ate_Linda" type="CharacterBody3D" unique_id=1938827577]
+
+[node name="visuals" type="Node3D" parent="." unique_id=1058585255]
+
+[node name="nanay_model" parent="visuals" unique_id=1953470792 instance=ExtResource("1_nta0v")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1571707294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("CylinderShape3D_ewcw0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=115671592]
+script = ExtResource("2_rw2tb")
+sequence_tindahan_default = ExtResource("3_7ti20")
+dialogue_ui_scene = ExtResource("4_oif5d")
+chars_per_second = 40.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=395129141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.3057801)
+shape = SubResource("CylinderShape3D_e6l8e")
+debug_color = Color(0.78586143, 0.1424543, 0.9810607, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=570082434]
+unique_name_in_owner = true
