@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1dubyie44o62" path="res://game/scenes/world/world_item.gd" id="1_ub52d"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_ub52d"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_a7dba"]
 
 [sub_resource type="Resource" id="Resource_a7dba"]
 script = ExtResource("2_ub52d")
@@ -12,6 +13,7 @@ metadata/_custom_type_script = "uid://b51r7pisrdybh"
 [node name="WorldItem" type="Area3D" unique_id=704261374]
 script = ExtResource("1_ub52d")
 item_data = SubResource("Resource_a7dba")
+monologue_ui_scene = ExtResource("3_a7dba")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1681895725]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
