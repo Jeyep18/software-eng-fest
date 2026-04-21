@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_popvo"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_ra384"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="7_lgo0e"]
+[ext_resource type="VoxelGIData" uid="uid://6bsi8yxlare1" path="res://game/resources/voxels/pharmacy.VoxelGI_data.res" id="8_lgo0e"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_xalqm"]
 [ext_resource type="PackedScene" uid="uid://c2sp28fvd3dvj" path="res://_raw_assets/Locations/Pharmacy.glb" id="9_scsrr"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="12_lgo0e"]
+[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="12_ra384"]
 [ext_resource type="Resource" uid="uid://3nff5bac5elg" path="res://game/resources/items/banana.tres" id="13_eiweo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
@@ -87,6 +89,12 @@ volumetric_fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 0.86
 adjustment_contrast = 1.03
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_popvo"]
+size = Vector3(13.718491, 2.862793, 1.854065)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ra384"]
+size = Vector3(13.718491, 2.862793, 1.854065)
 
 [node name="Pharmacy" type="Node3D" unique_id=658136089]
 
@@ -263,19 +271,25 @@ size = Vector3(3.980301, 0.75805074, 0.70804846)
 [node name="CSGBox3D25" type="CSGBox3D" parent="Greybox/CSGCombiner3D2" unique_id=1747623457]
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("6_ra384")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.474595, 0.59140825, -7.5383444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.622947, 0.59140825, -7.5383444)
 
 [node name="Environment" type="Node" parent="." unique_id=1644650128]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1008187739]
-transform = Transform3D(-0.37305865, 0.88816893, -0.26829693, 0.27953097, 0.38333035, 0.8802957, 0.8846975, 0.25340474, -0.3912754, 0, 0, 0)
-light_color = Color(0.86, 0.84394664, 0.79980004, 1)
+transform = Transform3D(-0.37305862, 0.88816875, -0.26829684, -0.63038397, -0.030463114, 0.7756853, 0.68076646, 0.45850614, 0.5712521, 0, 0, 0)
+light_color = Color(0.4306579, 0.49029338, 0.50966644, 1)
 light_energy = 1.5
+light_volumetric_fog_energy = 0.5
 light_specular = 5.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1358151450]
 environment = SubResource("Environment_hj2km")
+
+[node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=1617716560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.314453, 6.0292053, -14.321473)
+size = Vector3(32.628906, 12.50592, 21.352661)
+data = ExtResource("8_lgo0e")
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_xalqm")]
 
@@ -285,3 +299,106 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18076801, -0.00018376112, 
 [node name="WorldItem" parent="." unique_id=704261374 instance=ExtResource("12_lgo0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.819492, 1.5753336, -7.885809)
 item_data = ExtResource("13_eiweo")
+
+[node name="InvisWall" type="CSGBox3D" parent="." unique_id=887649605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1254654, 1.1715438, -6.543525)
+visible = false
+use_collision = true
+size = Vector3(31.412094, 1.5249023, 0.12402344)
+metadata/_edit_lock_ = true
+
+[node name="InvisWall2" type="CSGBox3D" parent="." unique_id=335682493]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.339535, 1.1715438, -14.273014)
+visible = false
+use_collision = true
+size = Vector3(15.953117, 1.5249023, 0.12402344)
+metadata/_edit_lock_ = true
+
+[node name="InvisWall3" type="CSGBox3D" parent="." unique_id=348529127]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.055983, 1.1715438, -7.4321957)
+visible = false
+use_collision = true
+size = Vector3(2.2714806, 1.5249023, 0.12402344)
+metadata/_edit_lock_ = true
+
+[node name="CameraVolumes" type="Node3D" parent="." unique_id=2019644986]
+
+[node name="LeftSide" type="Area3D" parent="CameraVolumes" unique_id=85551205 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.493944, 1.1000829, -7.259305)
+script = ExtResource("12_ra384")
+z_distance = 8.0
+x_min = -10.0
+x_max = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraVolumes/LeftSide" unique_id=585645331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3592453, 0.9313965, -0.023590088)
+shape = SubResource("BoxShape3D_popvo")
+debug_color = Color(0.30250174, 0.4955213, 1, 0.41960785)
+
+[node name="RightSide" type="Area3D" parent="CameraVolumes" unique_id=1005965512 groups=["camera volume"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2214446, 1.1000829, -7.259305)
+script = ExtResource("12_ra384")
+z_distance = 4.0
+x_min = 5.0
+x_max = 17.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraVolumes/RightSide" unique_id=1143192719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3592453, 0.9313965, -0.023590088)
+shape = SubResource("BoxShape3D_ra384")
+debug_color = Color(0.8357647, 0.3004273, 0.62300706, 0.41960785)
+
+[node name="Lights" type="Node3D" parent="." unique_id=1337550945]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=1347765083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.118393, 4.020945, -10.00791)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights" unique_id=284744483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.492315, 4.606894, -7.6153736)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" unique_id=599882095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5465183, 5.9343977, -6.332438)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" unique_id=1332617990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.949357, 5.9343977, -6.332438)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1558825447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3750553, 4.020945, -10.00791)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" unique_id=451198126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8668218, 4.020945, -9.323364)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1859736184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0460825, 4.020945, -10.00791)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=1536042637]
+transform = Transform3D(1, 0, 0, 0, 0.81281614, -0.5825203, 0, 0.5825203, 0.81281614, 2.0675535, 3.848351, -8.307104)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=1152433847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0675535, 3.848351, -8.906889)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+shadow_enabled = true

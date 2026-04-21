@@ -1,0 +1,138 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dlq5d8inaey0k"
+path="res://.godot/imported/Bodega.glb-7d04c4128ae0bde43fff92bcae92901c.scn"
+
+[deps]
+
+source_file="res://_raw_assets/house_map/Bodega.glb"
+dest_files=["res://.godot/imported/Bodega.glb-7d04c4128ae0bde43fff92bcae92901c.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Armchair_07": {
+"generate/physics": true
+},
+"PATH:Balde_001": {
+"generate/physics": true
+},
+"PATH:BedCushion": {
+"generate/physics": true
+},
+"PATH:Bodega": {
+"generate/physics": true
+},
+"PATH:Ceiling_Fan_02": {
+"generate/physics": true
+},
+"PATH:Ceiling_Fan_Blades_02": {
+"generate/physics": true
+},
+"PATH:Chair_05_001": {
+"generate/physics": true
+},
+"PATH:Chair_05_002": {
+"generate/physics": true
+},
+"PATH:Chair_05_003": {
+"generate/physics": true
+},
+"PATH:Chair_05_004": {
+"generate/physics": true
+},
+"PATH:Chest_drawers_03": {
+"generate/physics": true
+},
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Cube_001": {
+"generate/physics": true
+},
+"PATH:Cube_002": {
+"generate/physics": true
+},
+"PATH:Cube_003": {
+"generate/physics": true
+},
+"PATH:Cube_004": {
+"generate/physics": true
+},
+"PATH:Cube_005": {
+"generate/physics": true
+},
+"PATH:Desk_lamp": {
+"generate/physics": true
+},
+"PATH:Drawerulit": {
+"generate/physics": true
+},
+"PATH:Drawerulit_001": {
+"generate/physics": true
+},
+"PATH:Floor": {
+"generate/physics": true
+},
+"PATH:Garbage_bags": {
+"generate/physics": true
+},
+"PATH:Garbage_bags_001": {
+"generate/physics": true
+},
+"PATH:Phone_01": {
+"generate/physics": true
+},
+"PATH:PlasticDrawer": {
+"generate/physics": true
+},
+"PATH:Radio_02": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/Low_Poly_Tools_fbx/RootNode/Wood_Saw/Wood_Saw_Material_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model_002/Low_Poly_Tools_fbx_002/RootNode_002/Tool_box/Tool_box_Material_0": {
+"generate/physics": true
+},
+"PATH:Ventilator_01": {
+"generate/physics": true
+},
+"PATH:WaterJug": {
+"generate/physics": true
+},
+"PATH:jamb door_001": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
