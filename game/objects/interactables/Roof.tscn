@@ -3,19 +3,16 @@
 [ext_resource type="Script" uid="uid://dlyxy1l8t0gfp" path="res://game/autoload/TaskObject.gd" id="1_oonsc"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_0ypb0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5p88e"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_oonsc"]
+size = Vector3(0.5463867, 0.31591797, 0.49047852)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ypb0"]
-size = Vector3(2.1108398, 1.4868164, 2.0560913)
+size = Vector3(1.0504913, 0.71325684, 0.63311005)
 
 [node name="Roof" type="StaticBody3D" unique_id=1843619503]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=949449606]
-mesh = SubResource("BoxMesh_5p88e")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1852649737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.084228516, -0.34204102, -0.05895996)
 shape = SubResource("BoxShape3D_oonsc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1391469317]
@@ -26,8 +23,9 @@ script = ExtResource("1_oonsc")
 required_item_ids = Array[String](["plywood", "nails"])
 missing_lines = Array[String](["may butas sa bubong", "kailangan ko pa ng plywood at ng pako"])
 ready_lines = Array[String](["pwede na ayusin"])
+completed_lines = Array[String](["Ayos na.."])
 monologue_ui_scene = ExtResource("2_0ypb0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1889328263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0925293, 0.2434082, -0.015472412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09064484, -0.14337158, -0.081920624)
 shape = SubResource("BoxShape3D_0ypb0")

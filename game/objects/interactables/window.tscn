@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ut5fskgnrsyt"]
+
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_stwdh"]
+[ext_resource type="Script" uid="uid://dlyxy1l8t0gfp" path="res://game/autoload/TaskObject.gd" id="3_iiqp1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_py0du"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]
+size = Vector3(1.6542816, 1.0712891, 1.1739502)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mq1j"]
+size = Vector3(1.865448, 1.1941853, 1.2081909)
+
+[node name="Window" type="StaticBody3D" unique_id=1495864148]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1882911064]
+mesh = SubResource("BoxMesh_py0du")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1645893761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006729126, -0.03564453, -0.016540527)
+shape = SubResource("BoxShape3D_cldu5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616304789]
+unique_name_in_owner = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=348564518]
+script = ExtResource("3_iiqp1")
+need = 3
+required_item_ids = Array[String](["plywood", "nails", "hammer"])
+missing_lines = Array[String](["delikado to..", "kailangan ko ayusin"])
+ready_lines = Array[String](["pwede ko na ayusin sawakas"])
+completed_lines = Array[String](["hay salamat ayos na"])
+monologue_ui_scene = ExtResource("2_stwdh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1601409854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40544593, 0.26490307, 0.10409546)
+shape = SubResource("BoxShape3D_7mq1j")
