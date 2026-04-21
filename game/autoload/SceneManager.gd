@@ -17,8 +17,9 @@ const SCENE_PATHS: Dictionary = {
 	"barangay_hall": "res://game/scenes/locations/barangay_hall.tscn",
 	"grocery":       "res://game/scenes/locations/grocery.tscn",
 	"mang_romy":     "res://game/scenes/locations/mang_romy.tscn",
-	"ate_linda":     "res://game/scenes/locations/ate_linda.tscn",
+	"ate_linda":     "res://game/scenes/locations/tindahan.tscn",
 	"hardware":      "res://game/scenes/locations/hardware.tscn",
+	"bodega":        "res://game/scenes/locations/bodega.tscn",
 }
 
 # Storm encroachment state — SceneManager reads these to block travel

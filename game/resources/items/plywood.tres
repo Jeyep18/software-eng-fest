@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://byurdrwuga6g4"]
+
+[ext_resource type="Texture2D" uid="uid://bxraovxv2v348" path="res://game/assets/images/plywood.png" id="1_xm8qu"]
+[ext_resource type="PackedScene" uid="uid://b85mpqles7lw3" path="res://_raw_assets/interactable_models/PlywoodSheets.glb" id="2_ur0vv"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_y0vm0"]
+
+[resource]
+script = ExtResource("3_y0vm0")
+item_name = "plywood"
+item_icon = ExtResource("1_xm8qu")
+item_description = "a piece of wood"
+item_model = ExtResource("2_ur0vv")
+pickup_lines = Array[String](["kahoy.. "])

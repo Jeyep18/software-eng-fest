@@ -1,26 +1,31 @@
 [gd_scene format=3 uid="uid://bdrdiyck13r11"]
 
-[ext_resource type="PackedScene" uid="uid://bqujtorm10mxk" path="res://_raw_assets/house_map/house_inside1.glb" id="1_rt03g"]
+[ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_iw5ha"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_hrxyr"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_is8m0"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://dq2ynyvl8rqbu" path="res://game/ui/HUDOverlay.tscn" id="7_dn58f"]
+=======
+[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
+[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
+>>>>>>> 723d41096ec92c304b1c98f12cc3b5b520b8a578
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qlj0p"]
-size = Vector3(6.5210648, 3.1103516, 5.2154236)
+size = Vector3(6.5210648, 3.1103516, 5.5842743)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
-size = Vector3(8.106903, 3.1496582, 10.320129)
+size = Vector3(8.106903, 3.1496582, 10.895905)
 
 [node name="HouseInside" type="Node3D" unique_id=1548119595]
 
-[node name="house_inside1" parent="." unique_id=1572664480 instance=ExtResource("1_rt03g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13370037, 0, -0.6912918)
+[node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_iw5ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_hrxyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.574519, 0.074735105, 0)
@@ -29,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.574519, 0.074735105, 0)
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=1823329168]
 transform = Transform3D(1, 0, 0, 0, -0.012251936, 0.99992496, 0, -0.99992496, -0.012251936, -3.17402, 3.0424638, -0.13396476)
-light_color = Color(0.8525233, 0.83088005, 0.81083655, 1)
+light_color = Color(0.85749084, 0.84301084, 0.6979215, 1)
 light_energy = 3.0
 shadow_enabled = true
 spot_range = 7.559709
@@ -54,15 +59,16 @@ transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.439
 light_energy = 2.108
 shadow_enabled = true
 
-[node name="VoxelGI" type="VoxelGI" parent="." unique_id=1568830526]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2047424, -3.4084015)
-size = Vector3(20, 5.4887085, 11.867706)
+[node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=1350160904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8154297, -2.4493408)
+size = Vector3(20, 12.369141, 25.848389)
 data = ExtResource("4_2sg0l")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1352635784]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.63672, 2.2067423, 1.8699625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.63672, 2.110856, 1.8699625)
 material_override = SubResource("StandardMaterial3D_2sg0l")
-size = Vector3(10.357513, 5.115967, 0.26220703)
+size = Vector3(10.357513, 13.86145, 0.26220703)
+metadata/_edit_lock_ = true
 
 [node name="InvisWall" type="CSGBox3D" parent="." unique_id=1151641536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7810345, 2.2067423, 2.0031123)
@@ -70,21 +76,25 @@ visible = false
 material_override = SubResource("StandardMaterial3D_2sg0l")
 use_collision = true
 size = Vector3(14.826706, 5.115967, 0.26220703)
+metadata/_edit_lock_ = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1651033915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3984628, 6.104459, 1.8699625)
 material_override = SubResource("StandardMaterial3D_2sg0l")
 size = Vector3(17.917526, 5.115967, 0.26220703)
+metadata/_edit_lock_ = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=154719546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.470448, 2.2067423, 1.8699625)
 material_override = SubResource("StandardMaterial3D_2sg0l")
 size = Vector3(10.357513, 5.115967, 0.26220703)
+metadata/_edit_lock_ = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=911922966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.608654, -2.5623884, 1.8699625)
 material_override = SubResource("StandardMaterial3D_2sg0l")
 size = Vector3(28.0811, 5.115967, 0.26220703)
+metadata/_edit_lock_ = true
 
 [node name="CameraVolumes" type="Node3D" parent="." unique_id=970652957]
 
@@ -99,7 +109,7 @@ x_max = -3.0
 transition_duration = 1.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraVolumes/Bedroom" unique_id=180483872]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19103622, 0.6201172, -1.2977753)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19103622, 0.6201172, -1.4822006)
 shape = SubResource("BoxShape3D_qlj0p")
 debug_color = Color(0.9907649, 0, 0.28004077, 0.41960785)
 
@@ -114,10 +124,21 @@ x_max = 6.0
 transition_duration = 1.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraVolumes/LivingRoom" unique_id=2063391908]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.96865845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.6807709)
 shape = SubResource("BoxShape3D_dn58f")
 debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_qlj0p")]
 
+<<<<<<< HEAD
 [node name="HUDOverlay" parent="." unique_id=1355526644 instance=ExtResource("7_dn58f")]
+=======
+[node name="door" parent="." unique_id=1970056124 instance=ExtResource("7_dn58f")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7993892, 0, -4.232849)
+door_destination = "bodega"
+spawn_point_id = "from_house"
+
+[node name="Spawnpoint" parent="." unique_id=1429357958 instance=ExtResource("8_y6bww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18268609, 0.008939624, -4.237865)
+spawn_id = "from_bodega"
+>>>>>>> 723d41096ec92c304b1c98f12cc3b5b520b8a578
