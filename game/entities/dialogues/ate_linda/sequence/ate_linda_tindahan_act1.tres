@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://cn5y502leh88q"]
+
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="1_vtofp"]
+[ext_resource type="Resource" uid="uid://pmtek0fmitmn" path="res://game/entities/dialogues/ate_linda/lines/ate_linda_line1.tres" id="2_mbbag"]
+[ext_resource type="Resource" uid="uid://df65ull0l6fnm" path="res://game/entities/dialogues/ate_linda/lines/ate_linda_line2.tres" id="3_7bfri"]
+[ext_resource type="Resource" uid="uid://cmw8vnrtr032h" path="res://game/entities/dialogues/ate_linda/lines/ate_linda_line3.tres" id="4_qxkq4"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_37ufo"]
+
+[resource]
+script = ExtResource("5_37ufo")
+lines = Array[ExtResource("1_vtofp")]([ExtResource("2_mbbag"), ExtResource("3_7bfri"), ExtResource("4_qxkq4")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
