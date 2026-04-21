@@ -5,7 +5,7 @@ extends Resource
 
 @export var item_name: String = "Unnamed Item"
 @export var item_icon: Texture2D
-@export_multiline var item_description: String = ""
+@export var item_description: String = ""
 @export var item_id: String = ""
 @export var item_price: int = 0
 @export var can_barter: bool = false
