@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bww8ee7xpnnwx"]
+
+[ext_resource type="Texture2D" uid="uid://d1r0psjj8o1jo" path="res://game/assets/images/flashlight.png" id="1_y4bgv"]
+[ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="2_3fkyl"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_ru8eu"]
+
+[resource]
+script = ExtResource("3_ru8eu")
+item_name = "Dead Flashlight"
+item_icon = ExtResource("1_y4bgv")
+item_description = "Flashlight na walang baterya... lang kwenta pa"
+item_id = "dead_flashlight"
+item_model = ExtResource("2_3fkyl")
+pickup_lines = Array[String](["Ayaw bumukas.."])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dhm6icg28b0ij"]
+
+[ext_resource type="Texture2D" uid="uid://c7kltcji1ismm" path="res://game/assets/images/radio.png" id="1_qo2g0"]
+[ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="2_wb3to"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_7hduk"]
+
+[resource]
+script = ExtResource("3_7hduk")
+item_name = "Working Radio"
+item_icon = ExtResource("1_qo2g0")
+item_description = "tugtugan na!"
+item_id = "working_radio"
+item_model = ExtResource("2_wb3to")
+pickup_lines = Array[String](["gumagana na! ano na kaya nangyayare?"])
+item_type = 2
