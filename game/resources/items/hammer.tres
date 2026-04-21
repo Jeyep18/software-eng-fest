@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ccxca20gf16af"]
 
-[ext_resource type="Texture2D" uid="uid://whh3ifuiqy62" path="res://game/assets/images/hammer.jpg" id="1_2dhta"]
+[ext_resource type="Texture2D" uid="uid://dk384ch1hg2yh" path="res://game/assets/images/hammer.png" id="1_sdd5c"]
 [ext_resource type="PackedScene" uid="uid://b8xynp8t2mkes" path="res://_raw_assets/interactable_models/Hammer.glb" id="2_mgtx2"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_sdd5c"]
 
 [resource]
 script = ExtResource("2_sdd5c")
 item_name = "hammer"
-item_icon = ExtResource("1_2dhta")
+item_icon = ExtResource("1_sdd5c")
 item_description = "Yung martilyo ni Tatay. Mabuti nandito pa."
 item_model = ExtResource("2_mgtx2")
 pickup_lines = Array[String](["Yung martilyo ni Tatay. ", " Mabuti nandito pa."])

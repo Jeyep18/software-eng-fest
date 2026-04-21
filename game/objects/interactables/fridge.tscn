@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://q1mqm53bb7nh"]
 
 [ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="1_riw02"]
-[ext_resource type="Script" uid="uid://cc77n6dbdkgr6" path="res://game/objects/interactables/fridge.gd" id="2_uhd8r"]
+[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="2_riw02"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]
-size = Vector3(1.1669617, 1.0712891, 1.1739502)
+size = Vector3(1.6542816, 1.0712891, 1.1739502)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mq1j"]
 size = Vector3(1.09906, 2.2901688, 1.451294)
@@ -20,8 +20,8 @@ shape = SubResource("BoxShape3D_cldu5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5949855, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=348564518]
-script = ExtResource("2_uhd8r")
-need_to_discover = 0
+script = ExtResource("2_riw02")
+monologue_lines = Array[String](["walang pagkain sa ref.."])
 monologue_ui_scene = ExtResource("3_7mq1j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1601409854]

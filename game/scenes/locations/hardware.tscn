@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://gjxpphhhyskv"]
 
+[ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="5_fltjs"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_4clnw"]
+[ext_resource type="Resource" uid="uid://byurdrwuga6g4" path="res://game/resources/items/plywood.tres" id="6_lusb0"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_7euxg"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_hx63o"]
 [ext_resource type="PackedScene" uid="uid://ccn02805xx87w" path="res://_raw_assets/Locations/HardwareStore.glb" id="9_mrv0t"]
@@ -289,3 +291,18 @@ light_energy = 2.5
 shadow_enabled = true
 spot_range = 8.818372
 spot_angle = 86.03076
+
+[node name="plywood" parent="." unique_id=704261374 instance=ExtResource("5_fltjs")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.00642, -0.0009007603, -8.140242)
+item_data = ExtResource("6_lusb0")
+
+[node name="plywood2" parent="." unique_id=1432800532 instance=ExtResource("5_fltjs")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.890614, -0.009005576, -8.198011)
+item_data = ExtResource("6_lusb0")
+
+[node name="plywood3" parent="." unique_id=733429601 instance=ExtResource("5_fltjs")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.703974, -0.084784225, -8.306307)
+item_data = ExtResource("6_lusb0")
