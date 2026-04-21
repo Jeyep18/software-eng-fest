@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dsvh0qopdxfew"]
+
+[ext_resource type="Script" uid="uid://cj6bbauiu4i1p" path="res://game/autoload/HUDOverlay.gd" id="1_rpw2s"]
+
+[node name="HUDOverlay" type="CanvasLayer" unique_id=1355526644]
+layer = 3
+script = ExtResource("1_rpw2s")
+
+[node name="TopBar" type="PanelContainer" parent="." unique_id=923465143]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar" unique_id=1254540926]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TimeBlock" type="VBoxContainer" parent="TopBar/HBoxContainer" unique_id=575698853]
+layout_mode = 2
+
+[node name="TimeIcon" type="Label" parent="TopBar/HBoxContainer/TimeBlock" unique_id=990674832]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "🕐"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="TopBar/HBoxContainer/TimeBlock" unique_id=2008104943]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "6:00 AM"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="TopBar/HBoxContainer" unique_id=1101109878]
+layout_mode = 2
+
+[node name="LocationBlock" type="VBoxContainer" parent="TopBar/HBoxContainer" unique_id=2045201172]
+layout_mode = 2
+
+[node name="LocIcon" type="Label" parent="TopBar/HBoxContainer/LocationBlock" unique_id=929687745]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "📍"
+horizontal_alignment = 1
+
+[node name="LocLabel" type="Label" parent="TopBar/HBoxContainer/LocationBlock" unique_id=1081711361]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Home"
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="TopBar/HBoxContainer" unique_id=209908473]
+layout_mode = 2
+
+[node name="ETABlock" type="VBoxContainer" parent="TopBar/HBoxContainer" unique_id=71694795]
+layout_mode = 2
+
+[node name="ETAIcon" type="Label" parent="TopBar/HBoxContainer/ETABlock" unique_id=3172661]
+layout_mode = 2
+text = "🌤"
+horizontal_alignment = 1
+
+[node name="ETALabel" type="Label" parent="TopBar/HBoxContainer/ETABlock" unique_id=283288198]
+layout_mode = 2
+text = "12h 00m"
+horizontal_alignment = 1

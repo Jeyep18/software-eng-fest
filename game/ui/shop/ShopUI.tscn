@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dd3pgvtlqnml2"]
+
+[ext_resource type="Script" uid="uid://8hdm42dlajhj" path="res://game/autoload/ShopUI.gd" id="1_2nfvn"]
+
+[node name="ShopUi" type="CanvasLayer" unique_id=1701954175]
+layer = 8
+script = ExtResource("1_2nfvn")
+
+[node name="ShopPanel" type="PanelContainer" parent="." unique_id=312253072]
+custom_minimum_size = Vector2(560, 480)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -240.0
+offset_right = 280.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPanel" unique_id=794885024]
+layout_mode = 2
+
+[node name="Header" type="VBoxContainer" parent="ShopPanel/VBoxContainer" unique_id=2089871796]
+layout_mode = 2
+
+[node name="ShopNameLabel" type="Label" parent="ShopPanel/VBoxContainer/Header" unique_id=1500439098]
+layout_mode = 2
+
+[node name="SubtitleLabel" type="Label" parent="ShopPanel/VBoxContainer/Header" unique_id=306946808]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ShopPanel/VBoxContainer" unique_id=863359607]
+layout_mode = 2
+
+[node name="CashRow" type="HBoxContainer" parent="ShopPanel/VBoxContainer" unique_id=196131864]
+layout_mode = 2
+
+[node name="CashIcon" type="Label" parent="ShopPanel/VBoxContainer/CashRow" unique_id=1554350212]
+layout_mode = 2
+text = "₱"
+
+[node name="CashLabel" type="Label" parent="ShopPanel/VBoxContainer/CashRow" unique_id=1328582989]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="ShopPanel/VBoxContainer" unique_id=1170932083]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPanel/VBoxContainer" unique_id=1802710687]
+layout_mode = 2
+
+[node name="ItemList" type="VBoxContainer" parent="ShopPanel/VBoxContainer/ScrollContainer" unique_id=395065128]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="ShopPanel/VBoxContainer" unique_id=659107884]
+layout_mode = 2
+
+[node name="FeedbackLabel" type="Label" parent="ShopPanel/VBoxContainer" unique_id=1569065705]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ShopPanel/VBoxContainer" unique_id=2007594195]
+layout_mode = 2
+text = "Close"
