@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ShopData" format=3 uid="uid://biv47oulqqv4o"]
+
+[ext_resource type="Script" uid="uid://drt5nt3ddch63" path="res://game/scripts/ShopItem.gd" id="1_nblri"]
+[ext_resource type="Resource" uid="uid://fs66jyqsgs5s" path="res://game/resources/items/medicine.tres" id="2_o07kg"]
+[ext_resource type="Script" uid="uid://baep303p2o6o1" path="res://game/scripts/ShopData.gd" id="2_ssyyv"]
+
+[sub_resource type="Resource" id="Resource_ewagm"]
+script = ExtResource("1_nblri")
+item_data = ExtResource("2_o07kg")
+price = 80
+stock = 1
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[resource]
+script = ExtResource("2_ssyyv")
+shop_name = "PharmacyShop"
+shop_subtitle = "Dito ko lang makukuha yung gamot ni lola.."
+items = Array[ExtResource("1_nblri")]([SubResource("Resource_ewagm")])
+metadata/_custom_type_script = "uid://baep303p2o6o1"

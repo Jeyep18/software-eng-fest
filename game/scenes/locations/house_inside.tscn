@@ -10,11 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
 [ext_resource type="PackedScene" uid="uid://boa547w07bf30" path="res://game/objects/interactables/Roof.tscn" id="9_u8iu7"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="10_11i80"]
-[ext_resource type="PackedScene" uid="uid://cekuiqqcccxni" path="res://game/objects/interactables/GasTank.tscn" id="11_e8rqb"]
-[ext_resource type="PackedScene" uid="uid://c4d0nxdvhfmtt" path="res://game/objects/tv.tscn" id="12_c3eoh"]
+[ext_resource type="PackedScene" path="res://game/objects/interactables/GasTank.tscn" id="11_e8rqb"]
+[ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="12_c3eoh"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="13_avy8v"]
 [ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="14_nu6qe"]
 [ext_resource type="PackedScene" uid="uid://ut5fskgnrsyt" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
+[ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="16_kgaqh"]
+[ext_resource type="PackedScene" uid="uid://bw2r7j1q04u4t" path="res://game/entities/nanay/nanay.tscn" id="18_so1b5"]
+[ext_resource type="PackedScene" uid="uid://bfuqj3eqm4sn6" path="res://game/entities/lola/lola.tscn" id="18_taj8b"]
+[ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="19_taj8b"]
+[ext_resource type="PackedScene" uid="uid://dtury4luw5qqd" path="res://game/objects/interactables/task_site.tscn" id="20_sw8kg"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="21_7ekle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -27,11 +33,11 @@ size = Vector3(8.106903, 3.1496582, 10.895905)
 
 [node name="HouseInside" type="Node3D" unique_id=1548119595]
 
-[node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_iw5ha")]
+[node name="house_inside" parent="." unique_id=28046534 instance=ExtResource("1_iw5ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_hrxyr")]
-transform = Transform3D(0.9994502, 0, 0.03315515, 0, 1, 0, -0.03315515, 0, 0.9994502, 0.65504456, 0.074735105, -7.613753)
+transform = Transform3D(0.9994502, 0, 0.03315515, 0, 1, 0, -0.03315515, 0, 0.9994502, -3.7977772, 0.074735105, 0.4219451)
 
 [node name="Lights" type="Node" parent="." unique_id=804893288]
 
@@ -146,7 +152,7 @@ spawn_id = "from_bodega"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06114936, 0.46041477, -2.778782)
 
 [node name="Fridge" parent="." unique_id=1495864148 instance=ExtResource("10_11i80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9679916, 0.5951611, -7.3513412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0087085, 0.70194197, -7.4031844)
 
 [node name="GasTank" parent="." unique_id=744970663 instance=ExtResource("11_e8rqb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9873352, 1.1920929e-07, -7.2318783)
@@ -156,7 +162,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6372705, 1.4300116, -0.5095
 
 [node name="Radio" parent="." unique_id=704261374 instance=ExtResource("13_avy8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59745455, 1.6600848, 1.7051121)
+world_item_id = "radio_home"
 item_data = ExtResource("14_nu6qe")
 
 [node name="Window" parent="." unique_id=188395029 instance=ExtResource("15_nu6qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8509126, 1.8439364, -1.2023171)
+
+[node name="Window2" parent="." unique_id=1232401100 instance=ExtResource("15_nu6qe")]
+transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.8439364, -4.9426174)
+
+[node name="Spawnpoint2" parent="." unique_id=627294345 instance=ExtResource("8_y6bww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6521201, 0, -6.817229)
+
+[node name="door2" parent="." unique_id=775457550 instance=ExtResource("16_kgaqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61578584, 0, -7.9753156)
+
+[node name="nanay" parent="." unique_id=460519671 instance=ExtResource("18_so1b5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -3.960223)
+
+[node name="Lola" parent="." unique_id=2050418706 instance=ExtResource("18_taj8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004958749, -0.0034458637, -0.539166)
+
+[node name="NarrativeShi" parent="." unique_id=842517525 instance=ExtResource("19_taj8b")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -3.2154307, 1.2702014, -2.8684487)
+monologue_lines = Array[String](["Mga lumang larawan namin...", "Kamusta na kaya si papa sa trabaho niya..."])
+
+[node name="MedicineTask" parent="." unique_id=106244337 instance=ExtResource("20_sw8kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.917082, 1.4302331, 1.0837145)
+required_item_ids = Array[String](["medicine"])
+missing_lines = Array[String](["Kailangan ko muna bumili sa botika."])
+ready_lines = Array[String](["Nabili ko na yung gamot, mabuti naman."])
+completed_lines = Array[String](["Meron na gamot si lola."])
+monologue_ui_scene = ExtResource("21_7ekle")

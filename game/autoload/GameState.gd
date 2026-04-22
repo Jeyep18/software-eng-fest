@@ -2,6 +2,7 @@
 # Autoload singleton — add to Project > Autoloads as "GameState"
 extends Node
 
+var collected_world_items: Array[String] = []
 var player_name: String = ""
 var cash_balance: int = 400
 
@@ -108,3 +109,10 @@ func _ready() -> void:
 	
 	GameState.add_cash(50)
 	print("After adding ₱50: ₱", GameState.get_cash())
+
+func mark_item_collected(item_id: String) -> void:
+	if not collected_world_items.has(item_id):
+		collected_world_items.append(item_id)
+
+func is_item_collected(item_id: String) -> bool:
+	return collected_world_items.has(item_id)

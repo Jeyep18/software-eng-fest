@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dj1j4aealjumw" path="res://game/entities/playerv2/camera_2d5_controller.gd" id="2_kjoon"]
 [ext_resource type="PackedScene" uid="uid://4egt5nehio1w" path="res://game/ui/BackpackUI/BackpackUI.tscn" id="4_8uavy"]
 [ext_resource type="PackedScene" uid="uid://ckjolpyvp2maj" path="res://game/ui/HotbarUI/HotbarUI.tscn" id="5_73qwi"]
+[ext_resource type="PackedScene" uid="uid://dsvh0qopdxfew" path="res://game/ui/HUDOverlay.tscn" id="6_73qwi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjoon"]
 radius = 0.3
@@ -57,3 +58,5 @@ text = "press E to interact"
 [node name="BackpackUi" parent="." unique_id=1631499679 instance=ExtResource("4_8uavy")]
 
 [node name="HotbarUi" parent="." unique_id=1014249989 instance=ExtResource("5_73qwi")]
+
+[node name="HUDOverlay" parent="." unique_id=1355526644 instance=ExtResource("6_73qwi")]

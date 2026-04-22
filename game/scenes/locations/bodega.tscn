@@ -117,12 +117,15 @@ spawn_point_id = "from_bodega"
 
 [node name="Hammer" parent="." unique_id=704261374 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.433703, 1.3540105, -3.0667145)
+world_item_id = "hammer_bodega"
 item_data = ExtResource("10_xmmy0")
 
 [node name="Wrench" parent="." unique_id=8092312 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6144375, 1.146833, -5.078486)
+world_item_id = "wrench_bodega"
 item_data = ExtResource("11_wwj1v")
 
 [node name="WorldItem" parent="." unique_id=67334447 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.679819, 1.6295038, -7.4330616)
+world_item_id = "dead_flashlight_bodega"
 item_data = ExtResource("12_tqvld")

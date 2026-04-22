@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dowqdxmca6ku8"]
+
+[ext_resource type="Script" uid="uid://cebouct1i37x4" path="res://game/entities/pharmacist/pharmadude.gd" id="1_8fp8e"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="2_05351"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="3_6k71h"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="3_57wd7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5b5ob"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="Resource" id="Resource_6k71h"]
+script = ExtResource("2_05351")
+speaker_name = "Pharmacy Boy"
+text = "Ano po ang inyong kailangan? Mabuti at naabutan niyo pa kami na bukas."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_iev7r"]
+script = ExtResource("3_57wd7")
+lines = Array[ExtResource("2_05351")]([SubResource("Resource_6k71h")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iev7r"]
+size = Vector3(1.4330826, 1.966919, 2.5748901)
+
+[node name="PharmaDude" type="CharacterBody3D" unique_id=1843940927]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=912694990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("CylinderShape3D_5b5ob")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1564812874]
+script = ExtResource("1_8fp8e")
+path = "res://game/resources/items/shops/PharmacyShop.tres"
+sequence_tindahan_default = SubResource("Resource_iev7r")
+dialogue_ui_scene = ExtResource("3_6k71h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=405530741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373497, 1.4834595, 1.0932252)
+shape = SubResource("BoxShape3D_iev7r")
+debug_color = Color(0.78586143, 0.1424543, 0.9810607, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=950912902]
+unique_name_in_owner = true

@@ -8,16 +8,16 @@ extends Interactable
 @export var required_item_ids: Array[String] = []
 
 @export var missing_lines: Array[String] = [
-    "I need to get some supplies first."
+    "Kailangan ko muna ng supplies."
 ]
 @export var ready_lines: Array[String] = [
-    "Alright, I have everything I need."
+    "Pwede ko na to ayusin."
 ]
 
 ## Shown when the player interacts AFTER the task is already completed.
 ## Example: "Naayos na ang bubong. Okay na."
 @export var completed_lines: Array[String] = [
-    "It's already been fixed."
+    "Naayos ko na ito."
 ]
 
 @export var chars_per_second: float = 20.0
@@ -65,7 +65,7 @@ func interact() -> void:
 			return
 
 		# CASE 2: Has all items — show ready branch.
-		if _has_all_required_items():
+		elif _has_all_required_items():
 			_showing_ready_branch = true
 			_show_line(ready_lines)
 			return
@@ -102,9 +102,24 @@ func interact() -> void:
 
 
 func _has_all_required_items() -> bool:
-	for item_id in required_item_ids:
-		if not _player_has_item(item_id):
+	# If no items are required, technically you have "all" of them. 
+	# If you want to prevent empty tasks, add: if required_item_ids.is_empty(): return false
+	
+	# We create a temporary copy of the inventory IDs to "consume" them during the check
+	# This handles cases where you need two of the same ID.
+	var current_inv_ids = []
+	for item in InventoryManager.inventory:
+		if item != null:
+			current_inv_ids.append(item.item_id)
+
+	for req_id in required_item_ids:
+		if req_id in current_inv_ids:
+			# Remove it from our temp list so it can't fulfill the NEXT requirement
+			current_inv_ids.erase(req_id)
+		else:
+			# As soon as ONE item is missing, fail immediately
 			return false
+			
 	return true
 
 
@@ -117,14 +132,14 @@ func _player_has_item(item_id: String) -> bool:
 
 func _complete_task() -> void:
 	for item_id in required_item_ids:
+		# Find the item and remove it
 		for i in range(InventoryManager.inventory.size()):
 			var item = InventoryManager.inventory[i]
-			if item.item_id == item_id:
-				if item.item_type == ItemData.ItemType.BRING_HOME \
-				or item.item_type == ItemData.ItemType.USE_IN_PLACE \
-				or item.item_type == ItemData.ItemType.COMBINE:
+			if item and item.item_id == item_id:
+				# Check types as you did before
+				if item.item_type in [ItemData.ItemType.BRING_HOME, ItemData.ItemType.USE_IN_PLACE, ItemData.ItemType.COMBINE]:
 					InventoryManager.remove_item(i)
-				break
+					break # Move to the next required_item_id
 
 	NeedsLog.resolve(need)
 	# Mark as completed so future interactions show completed_lines.

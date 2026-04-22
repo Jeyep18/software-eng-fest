@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4d0nxdvhfmtt"]
+[gd_scene format=3 uid="uid://d00irroaal1pk"]
 
 [ext_resource type="PackedScene" uid="uid://cfqx4x7dxm8er" path="res://_raw_assets/interactable_models/tv.glb" id="1_xa42e"]
 [ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="2_xa42e"]
@@ -21,7 +21,7 @@ shape = SubResource("BoxShape3D_tygdx")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1346175810]
 script = ExtResource("2_xa42e")
-monologue_lines = Array[String](["..."])
+monologue_lines = Array[String](["Signal 3 na. Magiging Signal 4 sa loob ng sampung oras. Wala tayong panahon."])
 monologue_ui_scene = ExtResource("3_jq686")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1401251886]

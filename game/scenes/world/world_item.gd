@@ -15,6 +15,8 @@ extends Interactable
 
 # --- CONFIGURATION (set these in the Inspector) ---
 
+@export var world_item_id: String = ""
+
 ## The data blueprint for this item. Drag a .tres file here.
 @export var item_data: ItemData
 
@@ -55,6 +57,10 @@ func _ready() -> void:
 	# Safety check: warn loudly if no data was assigned.
 	if item_data == null:
 		push_warning("WorldItem at " + str(global_position) + " has no ItemData assigned!")
+		return
+	
+	if world_item_id != "" and GameState.is_item_collected(world_item_id):
+		queue_free()
 		return
 
 	# Set the prompt text the player sees when nearby.
@@ -205,7 +211,9 @@ func _do_pickup() -> void:
 	var success = InventoryManager.add_item(item_data)
 
 	if success:
-		# queue_free() removes this node from the scene cleanly.
+		# ↓ ADD THIS before queue_free
+		if world_item_id != "":
+			GameState.mark_item_collected(world_item_id)
 		queue_free()
 	else:
 		print("Inventory full! Cannot pick up: " + item_data.item_name)
