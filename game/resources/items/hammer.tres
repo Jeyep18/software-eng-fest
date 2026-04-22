@@ -9,5 +9,7 @@ script = ExtResource("2_sdd5c")
 item_name = "hammer"
 item_icon = ExtResource("1_sdd5c")
 item_description = "Yung martilyo ni Tatay. Mabuti nandito pa."
+item_id = "hammer"
 item_model = ExtResource("2_mgtx2")
 pickup_lines = Array[String](["Yung martilyo ni Tatay. ", " Mabuti nandito pa.", "Magagamit ko pa ito."])
+item_type = 2

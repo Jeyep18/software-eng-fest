@@ -16,6 +16,7 @@ var _center_container:    CenterContainer
 # ── Internal State ─────────────────────────────────────────────────────────────
 var _current_shop: ShopData = null
 var _feedback_timer: SceneTreeTimer = null
+var _shop_cache: Dictionary = {}
 
 # ── Lifecycle ──────────────────────────────────────────────────────────────────
 func _ready() -> void:
@@ -115,8 +116,14 @@ func open_shop(shop_data: ShopData) -> void:
 		push_error("ShopUI.open_shop(): called with null ShopData.")
 		return
 	
-	# Duplicate so we never modify the original .tres resource
-	_current_shop = shop_data.duplicate(true)  # true = deep duplicate
+	var cache_key: String = shop_data.resource_path
+	if cache_key == "":
+		push_error("ShopUI: ShopData has no resource_path — stock persistence won't work. Save it as a .tres file.")
+		_current_shop = shop_data  # use as-is, no caching
+	else:
+		if not _shop_cache.has(cache_key):
+			_shop_cache[cache_key] = shop_data.duplicate(true)
+		_current_shop = _shop_cache[cache_key]
 	
 	shop_name_label.text   = _current_shop.shop_name
 	subtitle_label.text    = _current_shop.shop_subtitle
@@ -261,3 +268,8 @@ func _refresh_cash() -> void:
 func _on_cash_changed(new_balance: int) -> void:
 	if is_open():
 		cash_label.text = "%d" % new_balance
+
+func reset() -> void:
+	_shop_cache.clear()
+	_current_shop = null
+	close_shop()
