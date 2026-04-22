@@ -31,7 +31,7 @@ size = Vector3(6.5210648, 3.1103516, 5.5842743)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
 size = Vector3(8.106903, 3.1496582, 10.895905)
 
-[node name="HouseInside" type="Node3D" unique_id=1548119595]
+[node name="HouseInside2" type="Node3D" unique_id=1548119595]
 
 [node name="house_inside" parent="." unique_id=28046534 instance=ExtResource("1_iw5ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
@@ -173,6 +173,7 @@ transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.
 
 [node name="Spawnpoint2" parent="." unique_id=627294345 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6521201, 0, -6.817229)
+spawn_id = "main_door"
 
 [node name="door2" parent="." unique_id=775457550 instance=ExtResource("16_kgaqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61578584, 0, -7.9753156)

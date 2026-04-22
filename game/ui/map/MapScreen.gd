@@ -21,11 +21,11 @@ extends CanvasLayer
 #                         [Pharmacy]      [Grocery]
 #
 const NODE_POSITIONS: Dictionary = {
-	"home":          Vector2(500, 260),
-	"ate_linda":     Vector2(260, 160),
-	"hardware":      Vector2(740, 260),
-	"pharmacy":      Vector2(620, 420),
-	"grocery":       Vector2(860, 420),
+	"home":          Vector2(550, 260),
+	"ate_linda":     Vector2(240, 200),
+	"hardware":      Vector2(840, 240),
+	"pharmacy":      Vector2(720, 450),
+	"grocery":       Vector2(970, 450),
 }
 
 const NODE_DISPLAY_NAMES: Dictionary = {
@@ -34,14 +34,14 @@ const NODE_DISPLAY_NAMES: Dictionary = {
 	"hardware":      "Hardware Store",
 	"pharmacy":      "Botika",
 	"grocery":       "Palengke",
-}
+}	
 
-# Optional icon textures — assign in Inspector or leave null for text-only nodes
-@export var icon_home:          Texture2D = null
-@export var icon_ate_linda:     Texture2D = null
-@export var icon_hardware:      Texture2D = null
-@export var icon_pharmacy:      Texture2D = null
-@export var icon_grocery:       Texture2D = null
+## Optional icon textures — assign in Inspector or leave null for text-only nodes
+#@export var icon_home:          Texture2D = null
+#@export var icon_ate_linda:     Texture2D = null
+#@export var icon_hardware:      Texture2D = null
+#@export var icon_pharmacy:      Texture2D = null
+#@export var icon_grocery:       Texture2D = null
 
 # ── Beta road connections ─────────────────────────────────────────────────────
 const ROAD_CONNECTIONS: Array = [
@@ -101,14 +101,14 @@ func _build_road_lines() -> void:
 func _build_node_buttons() -> void:
 	var button_scene: PackedScene = preload("res://game/ui/map/MapNodeButton.tscn")
 
-	# Map each location to its optional icon texture
-	var icon_map: Dictionary = {
-		"home":          icon_home,
-		"ate_linda":     icon_ate_linda,
-		"hardware":      icon_hardware,
-		"pharmacy":      icon_pharmacy,
-		"grocery":       icon_grocery,
-	}
+	## Map each location to its optional icon texture
+	#var icon_map: Dictionary = {
+		#"home":          icon_home,
+		#"ate_linda":     icon_ate_linda,
+		#"hardware":      icon_hardware,
+		#"pharmacy":      icon_pharmacy,
+		#"grocery":       icon_grocery,
+	#}
 
 	for loc_id in NODE_POSITIONS.keys():
 		var btn: Control = button_scene.instantiate()
@@ -123,8 +123,7 @@ func _build_node_buttons() -> void:
 		
 		btn.setup(
 			loc_id,
-			NODE_DISPLAY_NAMES.get(loc_id, loc_id),
-			icon_map.get(loc_id, null)   # ← pass texture
+			NODE_DISPLAY_NAMES.get(loc_id, loc_id)   # ← pass texture
 		)
 		btn.node_selected.connect(_on_node_selected)
 		_node_buttons[loc_id] = btn
@@ -160,32 +159,33 @@ func _on_node_selected(loc_id: String) -> void:
 	_show_confirm_panel(loc_id)
 
 func _show_confirm_panel(loc_id: String) -> void:
+	# 1. Update Text & Info (Keep existing info logic)
 	var display_name: String = NODE_DISPLAY_NAMES.get(loc_id, loc_id)
-	var travel_cost:  int    = TravelCalculator.get_travel_time(
-			SceneManager.current_location, loc_id)
-	var state:        String = SceneManager.get_location_state(loc_id)
-
+	var travel_cost: int = TravelCalculator.get_travel_time(
+		SceneManager.current_location, loc_id)
+	var state: String = SceneManager.get_location_state(loc_id)
+	
 	confirm_dest.text = display_name
 	confirm_time.text = "Travel cost: ~%d min" % travel_cost
-
+	
 	if state == "danger":
-		confirm_time.text    += "  ⚠ Danger Zone"
+		confirm_time.text += "  ⚠ Danger Zone"
 		confirm_time.modulate = Color(0.95, 0.40, 0.30)
 	else:
 		confirm_time.modulate = Color.WHITE
-
-	# Position confirm panel near the selected node, avoid screen edges
-	var node_pos:   Vector2 = NODE_POSITIONS.get(loc_id, Vector2(400, 300))
-	var panel_size: Vector2 = Vector2(200, 110)
+	# 2. Position Anchored to the Right side of the screen
 	var screen_size: Vector2 = get_viewport().get_visible_rect().size
-	var target: Vector2     = node_pos + Vector2(70, -40)
-
-	if target.x + panel_size.x > screen_size.x - 20:
-		target.x = node_pos.x - panel_size.x - 70
-	target.y = clamp(target.y, 20.0, screen_size.y - panel_size.y - 20.0)
-
-	confirm_panel.position = target
-	confirm_panel.size     = panel_size
+	var panel_size: Vector2 = Vector2(220, 120) # Defined size for the pane
+	var padding: float = 40.0 # Distance from the right and top/bottom edges
+	
+	# X position: Screen width minus panel width and padding
+	var target_x: float = screen_size.x - panel_size.x - padding
+	
+	# Y position: Centered vertically (optional, or set to a specific height)
+	var target_y: float = (screen_size.y - panel_size.y) / 2.0
+	
+	confirm_panel.position = Vector2(target_x, target_y)
+	confirm_panel.size = panel_size
 	confirm_panel.show()
 
 # ── Travel Confirmation ────────────────────────────────────────────────────────
