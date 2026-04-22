@@ -11,4 +11,4 @@ item_icon = ExtResource("1_y4bgv")
 item_description = "Flashlight na walang baterya... lang kwenta pa"
 item_id = "dead_flashlight"
 item_model = ExtResource("2_3fkyl")
-pickup_lines = Array[String](["Ayaw bumukas.."])
+pickup_lines = Array[String](["Ayaw bumukas ng flashlight...", "Siguro kailangan nito ng baterya."])

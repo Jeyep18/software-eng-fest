@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dtury4luw5qqd"]
+
+[ext_resource type="Script" uid="uid://d3prswwc5srbu" path="res://game/objects/interactables/MedicineTask.gd" id="1_6ydwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sjvq"]
+size = Vector3(1.8921967, 1.1941853, 1.2081909)
+
+[node name="TaskSite" type="Area3D" unique_id=106244337]
+script = ExtResource("1_6ydwe")
+interaction_prompt = "Do Task"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1447369597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41882026, 0.26490307, 0.10409546)
+shape = SubResource("BoxShape3D_3sjvq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=90363556]
+unique_name_in_owner = true

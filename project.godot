@@ -25,7 +25,12 @@ GameState="*uid://b3n2wbiimdixf"
 TravelCalculator="*uid://bkjg6rep2nwea"
 InventoryManager="*uid://b8lxp84j6d6lx"
 EconomyManager="*uid://bgmfpcpmaqr8h"
-ShopUI="*uid://8hdm42dlajhj"
+ShopUi="*res://game/autoload/ShopUI.gd"
+StormEnroachment="*uid://c6ahd2yyvb835"
+
+[display]
+
+window/size/mode=2
 
 [filesystem]
 

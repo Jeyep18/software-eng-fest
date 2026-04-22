@@ -87,12 +87,6 @@ _subresources={
 "PATH:LabahanBasket": {
 "generate/physics": true
 },
-"PATH:Pillow": {
-"generate/physics": true
-},
-"PATH:Pillow_001": {
-"generate/physics": true
-},
 "PATH:PlasticDrawer": {
 "generate/physics": true
 },
@@ -145,15 +139,6 @@ _subresources={
 "generate/physics": true
 },
 "PATH:jamb door_002": {
-"generate/physics": true
-},
-"PATH:pillow_001": {
-"generate/physics": true
-},
-"PATH:pillow_002": {
-"generate/physics": true
-},
-"PATH:pillow_003": {
 "generate/physics": true
 },
 "PATH:shelf": {

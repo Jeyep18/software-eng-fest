@@ -25,8 +25,8 @@ shape = SubResource("CylinderShape3D_ewcw0")
 [node name="Area3D" type="Area3D" parent="." unique_id=115671592]
 script = ExtResource("2_rw2tb")
 sequence_tindahan_default = ExtResource("3_7ti20")
+shop_path = "res://game/resources/items/shops/ate_linda_shop.tres"
 dialogue_ui_scene = ExtResource("4_oif5d")
-chars_per_second = 40.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=395129141]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.3057801)

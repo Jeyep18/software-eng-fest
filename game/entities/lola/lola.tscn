@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://bfuqj3eqm4sn6"]
+
+[ext_resource type="PackedScene" uid="uid://1rg7u7aixo36" path="res://_raw_assets/npc_assets/Lola.glb" id="1_naam8"]
+[ext_resource type="Script" uid="uid://c4qspp51ffv2s" path="res://game/entities/lola/lola.gd" id="2_qlsdk"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_dw7mn"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="3_lb6m2"]
+[ext_resource type="Texture2D" uid="uid://grshlthqspq2" path="res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png" id="4_pgefp"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_dyppw"]
+[ext_resource type="Texture2D" uid="uid://b76np705x20ow" path="res://game/assets/npc_portraits/playerTalking.png" id="5_t0cy6"]
+[ext_resource type="Texture2D" uid="uid://6duadbx7anff" path="res://game/assets/npc_portraits/playerInnerThoughts.png" id="6_tkmwj"]
+
+[sub_resource type="Resource" id="Resource_adolq"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Oy apo, halika. Umupo ka muna sandali."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_q26se"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Player"
+expression = ExtResource("5_t0cy6")
+text = "Lola, okay ka lang?"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_8ka6y"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Mabuti naman. Pero yung gamot ko huwag mo kalimutan yung sa botika ha."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_ak15h"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Pag walang gamot, mahihirapan ako. Pasensya na apo."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_5d8dr"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Player"
+expression = ExtResource("6_tkmwj")
+text = "Kailangan niya ang gamot. Kailangan ko pumunta ng botika."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_qv5jj"]
+script = ExtResource("5_dyppw")
+lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_adolq"), SubResource("Resource_q26se"), SubResource("Resource_8ka6y"), SubResource("Resource_ak15h"), SubResource("Resource_5d8dr")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_dyppw"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Yung gamot, huwag mong kalimutan apo. Mahalaga yun sa akin."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_t0cy6"]
+script = ExtResource("5_dyppw")
+lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_dyppw")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_tkmwj"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Pag umulan nang malakas at walang panakip sa kisame... basa lahat tayo dito. "
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_d6pkr"]
+script = ExtResource("5_dyppw")
+lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_tkmwj")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_clmbx"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Nanay"
+expression = ExtResource("4_pgefp")
+text = "Sabi ni Nanay, wala tayong pagkain para bukas. Kailangan kahit lang de lata."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_d5nod"]
+script = ExtResource("5_dyppw")
+lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_clmbx")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_uqh7n"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Mabuti na. Nandito na tayo. Dasal lang tayo ngayon."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_twvbh"]
+script = ExtResource("5_dyppw")
+lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_uqh7n")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_naam8"]
+size = Vector3(1.1650848, 1, 0.88653564)
+
+[node name="Lola" unique_id=2050418706 instance=ExtResource("1_naam8")]
+
+[node name="Area3D" type="Area3D" parent="." index="1" unique_id=2111865161]
+script = ExtResource("2_qlsdk")
+sequence_first_meeting = SubResource("Resource_qv5jj")
+sequence_hint_medicine = SubResource("Resource_t0cy6")
+sequence_hint_roof = SubResource("Resource_d6pkr")
+sequence_hint_food = SubResource("Resource_d5nod")
+sequence_hint_all_done = SubResource("Resource_twvbh")
+dialogue_ui_scene = ExtResource("3_lb6m2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1359656039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47066498, 1, 1.0362141)
+shape = SubResource("BoxShape3D_naam8")
+debug_color = Color(0.6006748, 0.54360944, 3.85046e-07, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2" unique_id=1162190398]
+unique_name_in_owner = true

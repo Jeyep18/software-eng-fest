@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://fs66jyqsgs5s"]
+
+[ext_resource type="Texture2D" uid="uid://ciqldynmkfgvw" path="res://game/assets/images/medicine.jpg" id="1_ecwsf"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_mrb3q"]
+
+[resource]
+script = ExtResource("1_mrb3q")
+item_name = "Medicine"
+item_icon = ExtResource("1_ecwsf")
+item_description = "Medicine for lola"
+item_id = "medicine"
+item_price = 80
+item_type = 1
+metadata/_custom_type_script = "uid://b51r7pisrdybh"

@@ -48,7 +48,6 @@ const LINES: Array = [
 	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
 	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
 	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "Nigga si Chris.",                      "hold": 2.6, "fade": 0.9, "style": "small"  },
 	
 ]
 

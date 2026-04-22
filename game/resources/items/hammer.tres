@@ -10,4 +10,4 @@ item_name = "hammer"
 item_icon = ExtResource("1_sdd5c")
 item_description = "Yung martilyo ni Tatay. Mabuti nandito pa."
 item_model = ExtResource("2_mgtx2")
-pickup_lines = Array[String](["Yung martilyo ni Tatay. ", " Mabuti nandito pa."])
+pickup_lines = Array[String](["Yung martilyo ni Tatay. ", " Mabuti nandito pa.", "Magagamit ko pa ito."])

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://blir7k61n7thg"]
+
+[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="1_d7phm"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_odkp5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3iq6l"]
+size = Vector3(1.314331, 0.93011475, 1)
+
+[node name="NarrativeShi" type="Area3D" unique_id=842517525]
+script = ExtResource("1_d7phm")
+monologue_ui_scene = ExtResource("2_odkp5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1990675255]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=701417560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39056396, 0.37564087, 0)
+shape = SubResource("BoxShape3D_3iq6l")

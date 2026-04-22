@@ -1,12 +1,24 @@
 [gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://cn5y502leh88q"]
 
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="1_vtofp"]
-[ext_resource type="Resource" uid="uid://pmtek0fmitmn" path="res://game/entities/dialogues/ate_linda/lines/ate_linda_line1.tres" id="2_mbbag"]
-[ext_resource type="Resource" uid="uid://df65ull0l6fnm" path="res://game/entities/dialogues/ate_linda/lines/ate_linda_line2.tres" id="3_7bfri"]
-[ext_resource type="Resource" uid="uid://cmw8vnrtr032h" path="res://game/entities/dialogues/ate_linda/lines/ate_linda_line3.tres" id="4_qxkq4"]
+[ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="2_ylcxj"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_37ufo"]
+
+[sub_resource type="Resource" id="Resource_xc5m4"]
+script = ExtResource("1_vtofp")
+speaker_name = "Ate Linda"
+expression = ExtResource("2_ylcxj")
+text = "Oh, iho, ano ang iyong mga kailangan?"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_ylcxj"]
+script = ExtResource("1_vtofp")
+speaker_name = "Ate Linda"
+expression = ExtResource("2_ylcxj")
+text = "Pasensya na at nagtataas ako ng presyo, nagkakaubusan na kasi ngayon ng supplies."
+metadata/_custom_type_script = "uid://po32410sv037"
 
 [resource]
 script = ExtResource("5_37ufo")
-lines = Array[ExtResource("1_vtofp")]([ExtResource("2_mbbag"), ExtResource("3_7bfri"), ExtResource("4_qxkq4")])
+lines = Array[ExtResource("1_vtofp")]([SubResource("Resource_xc5m4"), SubResource("Resource_ylcxj")])
 metadata/_custom_type_script = "uid://b55uh8miobq8a"

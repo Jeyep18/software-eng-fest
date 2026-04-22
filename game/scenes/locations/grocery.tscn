@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b70hey3kcobx2"]
 
 [ext_resource type="VoxelGIData" uid="uid://daf080x3na5qv" path="res://game/resources/voxels/grocery.VoxelGI_data.res" id="2_anphp"]
+[ext_resource type="PackedScene" uid="uid://dvg3wduicy88g" path="res://game/entities/grocery_girl/grocery_girl.tscn" id="6_iva62"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_r5jgj"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_ve5we"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_eprta"]
@@ -135,3 +136,6 @@ light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
 light_energy = 5.0
 shadow_enabled = true
 omni_range = 9.038949
+
+[node name="GroceryGirl" parent="." unique_id=1526271285 instance=ExtResource("6_iva62")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, 2.2362714, 0.15920067, -18.393417)
