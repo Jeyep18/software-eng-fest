@@ -73,11 +73,15 @@ func travel_to(target_location: String, spawn_id: String = "") -> void:
 	if closed_zones.has(target_location):
 		push_warning("SceneManager: Location is closed: " + target_location)
 		return
-
+		
+	if target_location == "home" and spawn_id == "":
+		spawn_id = "main_door"
+	
 	var travel_cost: int = TravelCalculator.get_travel_time(current_location, target_location)
 	is_travelling = true
+	
 	_pending_spawn_id = spawn_id
-
+	
 	await TransitionOverlay.fade_to_black()
 	GlobalTimer.add_time(travel_cost)
 	get_tree().change_scene_to_file(SCENE_PATHS[target_location])
