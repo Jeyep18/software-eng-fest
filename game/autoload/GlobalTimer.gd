@@ -16,11 +16,11 @@ const TOTAL_MINUTES: int = 720  # 12 hours
 
 # Encroachment thresholds in minutes
 # Each entry: { "minute": int, "zone_id": String, "fired": bool }
-const THRESHOLDS: Array = [
-	{ "minute": 240, "zone_id": "outer_danger",  "fired": false },  # 4h
-	{ "minute": 360, "zone_id": "outer_closed",  "fired": false },  # 6h
-	{ "minute": 540, "zone_id": "inner_danger",  "fired": false },  # 9h
-	{ "minute": 720, "zone_id": "storm_arrival", "fired": false },  # 12h
+var THRESHOLDS: Array = [
+	{ "minute": 240, "zone_id": "outer_danger",  "fired": false },
+	{ "minute": 360, "zone_id": "outer_closed",  "fired": false },
+	{ "minute": 540, "zone_id": "inner_danger",  "fired": false },
+	{ "minute": 720, "zone_id": "storm_arrival", "fired": false },
 ]
 
 # ── State ─────────────────────────────────────────────────────────────────────

@@ -1,4 +1,3 @@
-# res://autoloads/ShopUI.gd
 # Autoload singleton — registered as "ShopUI"
 # Builds its own UI in code. No .tscn needed.
 extends CanvasLayer

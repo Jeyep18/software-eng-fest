@@ -8,4 +8,4 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	disabled = true
 	await TransitionOverlay.fade_to_black()
-	SceneManager.load_scene("act1")
+	SceneManager.load_scene("home")

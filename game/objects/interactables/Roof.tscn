@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boa547w07bf30"]
 
-[ext_resource type="Script" uid="uid://dlyxy1l8t0gfp" path="res://game/autoload/TaskObject.gd" id="1_oonsc"]
+[ext_resource type="Script" uid="uid://2q6lodcq8s8" path="res://game/objects/interactables/RoofTask.gd" id="1_4q084"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_0ypb0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oonsc"]
@@ -19,11 +19,7 @@ shape = SubResource("BoxShape3D_oonsc")
 unique_name_in_owner = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=178130038]
-script = ExtResource("1_oonsc")
-required_item_ids = Array[String](["plywood", "nails"])
-missing_lines = Array[String](["may butas sa bubong", "kailangan ko pa ng plywood at ng pako"])
-ready_lines = Array[String](["pwede na ayusin"])
-completed_lines = Array[String](["Ayos na.."])
+script = ExtResource("1_4q084")
 monologue_ui_scene = ExtResource("2_0ypb0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1889328263]

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="12_lgo0e"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="12_ra384"]
 [ext_resource type="Resource" uid="uid://3nff5bac5elg" path="res://game/resources/items/banana.tres" id="13_eiweo"]
+[ext_resource type="PackedScene" uid="uid://dowqdxmca6ku8" path="res://game/entities/pharmacist/pharma_dude.tscn" id="14_eiweo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
 albedo_texture = ExtResource("1_hvxim")
@@ -402,3 +403,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0675535, 3.848351, -8.90688
 light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
 light_energy = 1.475
 shadow_enabled = true
+
+[node name="PharmaDude" parent="." unique_id=1843940927 instance=ExtResource("14_eiweo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0044093, 1.3066115, -9.867387)

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dpak6gybwx24y"]
+
+[ext_resource type="PackedScene" uid="uid://dgw708edian3h" path="res://game/assets/models/nanay_model.tscn" id="1_7w0gv"]
+[ext_resource type="Script" uid="uid://delstptqo8m7" path="res://game/entities/hardware_girl/hardwaregirl.gd" id="2_6n27b"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_ba3tf"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_hqigv"]
+[ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="4_ii1je"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_hqigv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lk3gm"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="Resource" id="Resource_lk3gm"]
+script = ExtResource("3_ba3tf")
+speaker_name = "Hardware Girl"
+expression = ExtResource("4_ii1je")
+text = "Bili na kayo, at mag sasara na ako, halos naubos na lahat ni kapitan ang mga supplies."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_jdpt7"]
+script = ExtResource("5_hqigv")
+lines = Array[ExtResource("3_ba3tf")]([SubResource("Resource_lk3gm")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7w0gv"]
+size = Vector3(1.4330826, 1.966919, 2.5748901)
+
+[node name="HardwareGirl" type="CharacterBody3D" unique_id=2031183002]
+
+[node name="visuals" type="Node3D" parent="." unique_id=1513811005]
+
+[node name="nanay_model" parent="visuals" unique_id=1953470792 instance=ExtResource("1_7w0gv")]
+transform = Transform3D(1.3121287, 0, 0, 0, 1.4354208, 0, 0, 0, 1.3748399, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1807669333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("CylinderShape3D_lk3gm")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1531380317]
+script = ExtResource("2_6n27b")
+path = "res://game/resources/items/shops/HardwareShop.tres"
+sequence_tindahan_default = SubResource("Resource_jdpt7")
+dialogue_ui_scene = ExtResource("4_hqigv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2109509687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373497, 1.4834595, 1.0932252)
+shape = SubResource("BoxShape3D_7w0gv")
+debug_color = Color(0.78586143, 0.1424543, 0.9810607, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=285488367]
+unique_name_in_owner = true

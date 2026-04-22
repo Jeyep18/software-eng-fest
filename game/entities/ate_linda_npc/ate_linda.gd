@@ -1,13 +1,14 @@
-class_name AteLinda
+class_name ShopPeople
 extends NPC
 
 @export var sequence_tindahan_default: DialogueSequence
+@export var shop_path: String
 
 var _dialogue_completed: bool = false
 
 func _ready() -> void:
 	super._ready()
-	prompt_label = "Talk to Ate Linda"
+	prompt_label = "Buy Materials"
 
 func _pick_sequence() -> DialogueSequence:
 	_dialogue_completed = false  # reset on each new conversation
@@ -25,4 +26,5 @@ func _hide_dialogue() -> void:
 	super._hide_dialogue()
 	if _dialogue_completed:
 		_dialogue_completed = false
-		ShopUI.open_shop(preload("res://game/resources/items/shops/ate_linda_shop.tres"))
+		var shop_resource = load(shop_path)
+		ShopUi.open_shop(shop_resource)

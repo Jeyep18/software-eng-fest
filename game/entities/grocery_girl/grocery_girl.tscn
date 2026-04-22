@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dvg3wduicy88g"]
+
+[ext_resource type="PackedScene" uid="uid://dgw708edian3h" path="res://game/assets/models/nanay_model.tscn" id="1_6ry5e"]
+[ext_resource type="Script" uid="uid://dhmr3wgsmm23u" path="res://game/entities/grocery_girl/grocerygirl.gd" id="2_6qxf0"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_qjf6c"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_sfjle"]
+[ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="4_va8in"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_sfjle"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lix8p"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="Resource" id="Resource_lix8p"]
+script = ExtResource("3_qjf6c")
+speaker_name = "Grocery Girl"
+expression = ExtResource("4_va8in")
+text = "Oh, ano mga kailangan mo, bilis at may bagyo na paparating, ako'y magsasara na."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_hwteu"]
+script = ExtResource("5_sfjle")
+lines = Array[ExtResource("3_qjf6c")]([SubResource("Resource_lix8p")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwteu"]
+size = Vector3(1.4330826, 1.966919, 2.5748901)
+
+[node name="GroceryGirl" type="CharacterBody3D" unique_id=1526271285]
+
+[node name="visuals" type="Node3D" parent="." unique_id=1824783239]
+
+[node name="nanay_model" parent="visuals" unique_id=1953470792 instance=ExtResource("1_6ry5e")]
+transform = Transform3D(1.3121287, 0, 0, 0, 1.4354208, 0, 0, 0, 1.3748399, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=975627214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("CylinderShape3D_lix8p")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1209651900]
+script = ExtResource("2_6qxf0")
+path = "res://game/resources/items/shops/GroceryShop.tres"
+sequence_tindahan_default = SubResource("Resource_hwteu")
+dialogue_ui_scene = ExtResource("4_sfjle")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1836785112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373497, 1.4834595, 1.0932252)
+shape = SubResource("BoxShape3D_hwteu")
+debug_color = Color(0.78586143, 0.1424543, 0.9810607, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=647392023]
+unique_name_in_owner = true

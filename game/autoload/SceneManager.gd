@@ -7,6 +7,13 @@ var is_travelling: bool = false
 
 var _pending_spawn_id: String = ""
 
+const LOCATION_ALIASES: Dictionary = {
+	"bodega": "home",
+	"act1":   "home",
+}
+
+const HOME_ROOMS: Array[String] = ["bodega", "home", "act1"]
+
 const SCENE_PATHS: Dictionary = {
 	"intro":         "res://game/scenes/intro/IntroSequence.tscn", 
 	"main_menu":     "res://game/scenes/main_menu/Main_Menu1.tscn",
@@ -48,6 +55,14 @@ func load_scene(scene_id: String) -> void:
 # ── Location Travel (Act 2 preparation loop) ─────────────────────────────────
 
 func travel_to(target_location: String, spawn_id: String = "") -> void:
+	# Block travel to inaccessible locations
+	if not StormEnroachment.can_travel_to(target_location):
+		push_warning("SceneManager: '%s' is inaccessible — storm has closed it." % target_location)
+		# TODO: show a HUD message to the player here ("Hindi na mapuntahan — masyadong mapanganib.")
+		return
+	
+	StormEnroachment.apply_danger_penalty(target_location)
+	
 	if is_travelling:
 		return
 
@@ -69,7 +84,7 @@ func travel_to(target_location: String, spawn_id: String = "") -> void:
 	await get_tree().create_timer(0.1).timeout
 	await TransitionOverlay.fade_from_black()
 
-	current_location = target_location
+	current_location = LOCATION_ALIASES.get(target_location, target_location)
 	is_travelling = false
 	emit_signal("travel_completed", target_location)
 
@@ -112,6 +127,8 @@ func _mark_danger(location_id: String) -> void:
 		danger_zones.append(location_id)
 
 func _mark_closed(location_id: String) -> void:
+	if HOME_ROOMS.has(location_id):
+		return
 	danger_zones.erase(location_id)
 	if not closed_zones.has(location_id):
 		closed_zones.append(location_id)

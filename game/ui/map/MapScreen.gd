@@ -18,18 +18,16 @@ extends CanvasLayer
 @onready var confirm_button:  Button  = $Panel/ConfirmPanel/ConfirmButton
 @onready var cancel_button:   Button  = $Panel/ConfirmPanel/CancelButton
 @onready var storm_overlay:   Control = $Panel/MapNodes/StormOverlay
-@onready var close_hint:      Label   = $Panel/Footer/CloseHint
+@onready var close_hint: Label = $Panel/HBoxContainer/CloseHint
 
 # ── Map Node Positions (screen coordinates within the MapNodes Control) ──────
 # Based on v2.0 GDD node diagram. Adjust to match your art layout.
 # Origin (0,0) is top-left of the MapNodes container.
 const NODE_POSITIONS: Dictionary = {
 	"home":          Vector2(577.0, 313.0),
-	"mang_romy":     Vector2(222.0, 146.0),
 	"ate_linda":     Vector2(916.0, 151.0),
 	"hardware":      Vector2(218.0, 366.0),
 	"pharmacy":      Vector2(931.0, 405.0),
-	"barangay_hall": Vector2(573.0, 554.0),
 	"grocery":       Vector2(871.0, 294.0),
 }
 
