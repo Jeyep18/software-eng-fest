@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://bw2r7j1q04u4t"]
+
+[ext_resource type="PackedScene" uid="uid://bvbrqt60x5urm" path="res://_raw_assets/npc_assets/nanay.glb" id="1_xoewr"]
+[ext_resource type="Script" uid="uid://7mcn2aqtqemq" path="res://game/entities/nanay/nanay1.gd" id="2_huqek"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_dclit"]
+[ext_resource type="Texture2D" uid="uid://dsdq3wrxsk5jc" path="res://game/assets/npc_portraits/mamawoo.png" id="4_x1yr6"]
+[ext_resource type="Texture2D" uid="uid://kil18kaqrmls" path="res://game/assets/npc_portraits/playerTalking2.png" id="5_x1yr6"]
+[ext_resource type="Texture2D" uid="uid://6duadbx7anff" path="res://game/assets/npc_portraits/playerInnerThoughts.png" id="6_jfkbs"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="6_tmuxm"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="7_x1yr6"]
+
+[sub_resource type="Resource" id="Resource_dclit"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Anak kamusta, kumain ka na ba?"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_x1yr6"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Yung bubong sa sala..."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_tmuxm"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Nag-aalala na ko dun. Nasira na ng nakaraang bagyo, ngayon mas malakas pa itong darating."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_8t3t3"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "At si Lola, yung gamot niya. Malapit na maubos. Huwag mong kalimutan ha?"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_gkn0j"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Yung mga bintana rin mahina na yun. Kailangan ng plywood at pako sa hardware store."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_2bejg"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Wala narin tayo pagkain sa ref. Pumunta ka kila Ate Linda o sa palengke anak, de lata lang, kahit apat."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_6khh6"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "At yung lumang flashlight sa bodega anak, patay na ang baterya. Bilhan mo din ng bago sa tindahan."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_ucdwx"]
+script = ExtResource("3_dclit")
+speaker_name = "Player"
+expression = ExtResource("6_jfkbs")
+text = "Marami. Kulang na ang oras. Kailangan kong mag-isip kung paano ko lahat ito gagawin."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_d6eln"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Pasensya na anak, hindi ko kayang umalis ng bahay dahil wala mag aalaga sa bunso."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_dt7x6"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Ikaw lang maaasahan ko anak. Mag-ingat ka ha, bumalik ka agad."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_67bnw"]
+script = ExtResource("3_dclit")
+speaker_name = "Player"
+expression = ExtResource("5_x1yr6")
+text = "Ako na po bahala nay."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_jfkbs"]
+script = ExtResource("6_tmuxm")
+lines = Array[ExtResource("3_dclit")]([SubResource("Resource_dclit"), SubResource("Resource_x1yr6"), SubResource("Resource_tmuxm"), SubResource("Resource_8t3t3"), SubResource("Resource_gkn0j"), SubResource("Resource_2bejg"), SubResource("Resource_6khh6"), SubResource("Resource_ucdwx"), SubResource("Resource_d6eln"), SubResource("Resource_dt7x6"), SubResource("Resource_67bnw")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_wdexl"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Kamusta anak, nabili mo na ba ang mga kailangan?"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_6ed0c"]
+script = ExtResource("6_tmuxm")
+lines = Array[ExtResource("3_dclit")]([SubResource("Resource_wdexl")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_wklle"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Lumalakas na ang hangin anak, mag-ingat ka."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_2gl7e"]
+script = ExtResource("6_tmuxm")
+lines = Array[ExtResource("3_dclit")]([SubResource("Resource_wklle")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Resource_ysi4t"]
+script = ExtResource("3_dclit")
+speaker_name = "Nanay"
+expression = ExtResource("4_x1yr6")
+text = "Huwag ka nang lumabas ulit anak. Malapit na ang bagyo, dito ka nalang at para ligtas."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_2080c"]
+script = ExtResource("6_tmuxm")
+lines = Array[ExtResource("3_dclit")]([SubResource("Resource_ysi4t")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huqek"]
+size = Vector3(0.9684143, 1, 1.8972778)
+
+[node name="nanay" unique_id=460519671 instance=ExtResource("1_xoewr")]
+
+[node name="Area3D" type="Area3D" parent="." index="1" unique_id=6286404]
+script = ExtResource("2_huqek")
+sequence_pre_departure = SubResource("Resource_jfkbs")
+sequence_return_early = SubResource("Resource_6ed0c")
+sequence_return_mid = SubResource("Resource_2gl7e")
+sequence_return_late = SubResource("Resource_2080c")
+dialogue_ui_scene = ExtResource("7_x1yr6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=133347785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24555969, 0.9964307, 0.106658936)
+shape = SubResource("BoxShape3D_huqek")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2" unique_id=851626744]
+unique_name_in_owner = true

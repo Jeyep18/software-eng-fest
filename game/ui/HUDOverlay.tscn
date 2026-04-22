@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsvh0qopdxfew"]
 
-[ext_resource type="Script" uid="uid://cj6bbauiu4i1p" path="res://game/autoload/HUDOverlay.gd" id="1_rpw2s"]
+[ext_resource type="Script" path="res://game/autoload/HUDOverlay.gd" id="1_rpw2s"]
 
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1355526644]
 layer = 3
