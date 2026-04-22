@@ -59,6 +59,7 @@ func interact() -> void:
 
 #region Display
 func _show_current_line() -> void:
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	is_showing = true
 	var line: DialogueLine = _current_sequence.lines[_current_line]
 	_ui.show_line(line)
@@ -84,6 +85,7 @@ func _skip_to_line_end() -> void:
 
 
 func _hide_dialogue() -> void:
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	is_showing = false
 	if _tween and _tween.is_valid():
 		_tween.kill()
