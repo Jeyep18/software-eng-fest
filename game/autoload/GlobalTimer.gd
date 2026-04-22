@@ -74,7 +74,7 @@ func get_storm_eta_string() -> String:
 		return "Storm has arrived"
 	var hours: int = remaining / 60
 	var mins: int = remaining % 60
-	return "%dh %02dm" % [hours, mins]
+	return "%d hours %02d mins" % [hours, mins]
 
 
 # Returns 0.0 to 1.0 — useful for music bus crossfade and visual storm darkening

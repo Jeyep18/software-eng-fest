@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cekuiqqcccxni"]
+[gd_scene format=3 uid="uid://uggr7amw8oe6"]
 
 [ext_resource type="PackedScene" uid="uid://nqipqtwj2nlw" path="res://_raw_assets/interactable_models/GasTank.glb" id="1_khpck"]
 [ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="1_segoh"]
@@ -26,6 +26,7 @@ monologue_ui_scene = ExtResource("3_segoh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2027005330]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022251964, 0.57964706, 0.22564697)
 shape = SubResource("BoxShape3D_wa4q6")
+debug_color = Color(0.8804324, 0.33879918, 0, 0.41960785)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1214400493]
 unique_name_in_owner = true

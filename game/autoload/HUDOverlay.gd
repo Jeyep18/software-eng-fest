@@ -23,11 +23,9 @@
 extends CanvasLayer
 
 # ── Node References ────────────────────────────────────────────────────────────
-@onready var top_bar:      PanelContainer = $TopBar
-@onready var time_label:   Label          = $TopBar/HBoxContainer/TimeBlock/TimeLabel
-@onready var loc_label:    Label          = $TopBar/HBoxContainer/LocationBlock/LocLabel
-@onready var eta_label:    Label          = $TopBar/HBoxContainer/ETABlock/ETALabel
-@onready var eta_icon:     Label          = $TopBar/HBoxContainer/ETABlock/ETAIcon
+@onready var top_bar:      Panel = $TopBar
+@onready var time_label:   Label          = $TopBar/HBoxContainer/VBox/TimeBlock/TimeLabel
+@onready var eta_label:    Label          = $TopBar/HBoxContainer/VBox/ETABlock/ETALabel
 
 # ── Display Name Map (mirrors MapScreen) ──────────────────────────────────────
 const LOCATION_NAMES: Dictionary = {
@@ -57,9 +55,6 @@ func _ready() -> void:
 	GlobalTimer.encroachment_threshold_reached.connect(_on_encroachment)
 	GlobalTimer.storm_arrived.connect(_on_storm_arrived)
 
-	# Connect to SceneManager to update location label on travel
-	SceneManager.travel_completed.connect(_on_travel_completed)
-
 	# Connect to GameState to show/hide based on act
 	GameState.act_changed.connect(_on_act_changed)
 
@@ -76,30 +71,13 @@ func hide_hud() -> void:
 # ── Refresh ───────────────────────────────────────────────────────────────────
 func _refresh_all() -> void:
 	_refresh_time()
-	_refresh_location()
 	_refresh_eta()
 
 func _refresh_time() -> void:
 	time_label.text = GlobalTimer.get_time_string()
 
-func _refresh_location() -> void:
-	var loc_id: String = SceneManager.current_location
-	loc_label.text = LOCATION_NAMES.get(loc_id, loc_id.capitalize())
-
 func _refresh_eta() -> void:
-	var progress: float = GlobalTimer.get_storm_progress()
-	eta_label.text = GlobalTimer.get_storm_eta_string()
-
-	# Color the ETA label based on urgency
-	if progress < 0.50:
-		eta_label.add_theme_color_override("font_color", COLOR_ETA_SAFE)
-		eta_icon.text = "🌤"
-	elif progress < 0.75:
-		eta_label.add_theme_color_override("font_color", COLOR_ETA_WARN)
-		eta_icon.text = "⛅"
-	else:
-		eta_label.add_theme_color_override("font_color", COLOR_ETA_DANGER)
-		eta_icon.text = "🌀"
+	eta_label.text = GlobalTimer.get_storm_eta_string() + " remaining"
 
 # ── Signal Handlers ───────────────────────────────────────────────────────────
 func _on_time_updated(_minute: int) -> void:
@@ -114,10 +92,6 @@ func _on_encroachment(_zone_id: String) -> void:
 func _on_storm_arrived() -> void:
 	eta_label.text = "STORM HAS ARRIVED"
 	eta_label.add_theme_color_override("font_color", COLOR_ETA_DANGER)
-	eta_icon.text = "🌀"
-
-func _on_travel_completed(_location_id: String) -> void:
-	_refresh_location()
 
 func _on_act_changed(new_act: GameState.Act) -> void:
 	match new_act:

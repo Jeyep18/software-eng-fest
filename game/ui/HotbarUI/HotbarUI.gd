@@ -17,6 +17,7 @@ var selected_slot: int = 0
 var _slot_panels: Array[Panel] = []
 
 func _ready() -> void:
+	add_to_group("hotbar_ui")
 	# LOW layer number = renders BEHIND other CanvasLayers.
 	# BackpackUI and ESC menu should use a higher layer (e.g. 10).
 	layer = 1
@@ -140,3 +141,6 @@ func get_selected_item() -> ItemData:
 	if selected_slot < items.size():
 		return items[selected_slot]
 	return null
+
+func set_hotbar_visible(is_visible: bool) -> void:
+	self.visible = is_visible

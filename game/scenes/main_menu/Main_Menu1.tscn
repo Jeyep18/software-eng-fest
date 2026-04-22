@@ -17,67 +17,6 @@ size = Vector3(6.5210648, 3.1103516, 5.5842743)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
 size = Vector3(8.106903, 3.1496582, 10.895905)
 
-[sub_resource type="Animation" id="Animation_ndtma"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewportContainer/SubViewport/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.6625664, 1.4652394, 2.682346)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewportContainer/SubViewport/Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.015670996, 0.5567242, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gdrdg"]
-resource_name = "new_animation"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewportContainer/SubViewport/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.6625664, 1.4652394, 2.682346), Vector3(1.8240339, 1.3374572, -5.877038)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewportContainer/SubViewport/Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.015670996, 0.5567242, 0), Vector3(-0.034110267, 0.4258263, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n54o5"]
-_data = {
-&"RESET": SubResource("Animation_ndtma"),
-&"new_animation": SubResource("Animation_gdrdg")
-}
-
 [node name="HouseInside" type="Node3D" unique_id=1548119595]
 
 [node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_ow6fg")]
@@ -109,6 +48,13 @@ environment = ExtResource("3_n54o5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=692121294]
 transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.4397611, 0.40833047, -0.597907, 0.64220345, -0.47966847, -3.7560396, 5.09972, 0)
+light_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
+light_energy = 2.108
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=1476573651]
+transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.4397611, 0.40833047, -0.597907, 0.64220345, -0.47966847, -3.7560396, 5.09972, 0)
+light_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
 light_energy = 2.108
 shadow_enabled = true
 
@@ -205,34 +151,40 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=240193404]
-transform = Transform3D(0.8489906, -0.00828034, 0.5283429, 0, 0.9998772, 0.015670352, -0.52840793, -0.013303985, 0.8488862, -1.6625664, 1.4652394, 2.682346)
+transform = Transform3D(0.68157625, 0.13169093, 0.7197995, 0.04552215, 0.97413635, -0.22132798, -0.73032975, 0.1836187, 0.65795344, -5.783241, 1.3897203, 0.046803027)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1584692849]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1642778444]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -68.0
-offset_right = 99.0
+offset_right = 69.0
 offset_bottom = 68.0
 grow_vertical = 2
+size_flags_horizontal = 0
 
-[node name="start_button" type="Button" parent="VBoxContainer" unique_id=946051166]
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1279024292]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-text = "start"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1584692849]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="start_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=946051166]
+layout_mode = 2
+text = "START"
 script = ExtResource("9_n2j5s")
 
-[node name="load_button" type="Button" parent="VBoxContainer" unique_id=383943701]
+[node name="load_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=383943701]
 layout_mode = 2
-text = "load"
+text = "LOAD"
 
-[node name="settings_button" type="Button" parent="VBoxContainer" unique_id=894939448]
+[node name="settings_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=894939448]
 layout_mode = 2
-text = "settings"
+text = "SETTINGS"
 
-[node name="quit_button" type="Button" parent="VBoxContainer" unique_id=174355223]
+[node name="quit_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=174355223]
 layout_mode = 2
-text = "quit"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1715784096]
-libraries/ = SubResource("AnimationLibrary_n54o5")
-autoplay = &"new_animation"
+text = "QUIT"

@@ -1,83 +1,68 @@
-# MapScreen.gd
-# Attach to a CanvasLayer node named "MapScreen" in your scene tree.
-# Open/close with M key (handled by the Player or a global input handler).
-# Reads from: TravelCalculator, SceneManager, GlobalTimer
-# Calls:      SceneManager.travel_to(location_id)
+# MapScreen.gd — full replacement
 
 extends CanvasLayer
 
-# ── Node References (assign in the Inspector or via @onready) ──────────────
 @onready var panel:           Control = $Panel
-#@onready var time_label:      Label   = $Panel/Header/TimeLabel
-#@onready var eta_label:       Label   = $Panel/Header/ETALabel
-#@onready var location_label:  Label   = $Panel/Header/LocationLabel
 @onready var nodes_container: Control = $Panel/MapNodes
+@onready var road_layer:      Control = $Panel/MapNodes/RoadLayer
+@onready var storm_overlay:   Control = $Panel/MapNodes/StormOverlay
 @onready var confirm_panel:   Control = $Panel/ConfirmPanel
 @onready var confirm_dest:    Label   = $Panel/ConfirmPanel/DestinationLabel
 @onready var confirm_time:    Label   = $Panel/ConfirmPanel/TravelTimeLabel
 @onready var confirm_button:  Button  = $Panel/ConfirmPanel/ConfirmButton
 @onready var cancel_button:   Button  = $Panel/ConfirmPanel/CancelButton
-@onready var storm_overlay:   Control = $Panel/MapNodes/StormOverlay
-@onready var close_hint: Label = $Panel/HBoxContainer/CloseHint
+@onready var close_hint:      Label   = $Panel/HBoxContainer/CloseHint
 
-# ── Map Node Positions (screen coordinates within the MapNodes Control) ──────
-# Based on v2.0 GDD node diagram. Adjust to match your art layout.
-# Origin (0,0) is top-left of the MapNodes container.
+# ── Beta scope: Mang Romy and Barangay Hall are CUT ──────────────────────────
+# Layout reflects GDD v3 node diagram:
+#
+#   [Ate Linda's] ── [Home] ── [Hardware Store]
+#                                /          \
+#                         [Pharmacy]      [Grocery]
+#
 const NODE_POSITIONS: Dictionary = {
-	"home":          Vector2(577.0, 313.0),
-	"ate_linda":     Vector2(916.0, 151.0),
-	"hardware":      Vector2(218.0, 366.0),
-	"pharmacy":      Vector2(931.0, 405.0),
-	"grocery":       Vector2(871.0, 294.0),
+	"home":          Vector2(500, 260),
+	"ate_linda":     Vector2(260, 160),
+	"hardware":      Vector2(740, 260),
+	"pharmacy":      Vector2(620, 420),
+	"grocery":       Vector2(860, 420),
 }
 
-# ── Display Names ─────────────────────────────────────────────────────────────
 const NODE_DISPLAY_NAMES: Dictionary = {
 	"home":          "Home",
-	"mang_romy":     "Mang Romy's",
 	"ate_linda":     "Ate Linda's",
 	"hardware":      "Hardware Store",
-	"pharmacy":      "Pharmacy",
-	"barangay_hall": "Barangay Hall",
-	"grocery":       "Grocery / Palengke",
+	"pharmacy":      "Botika",
+	"grocery":       "Palengke",
 }
 
-# ── Road Connections for drawing road lines ───────────────────────────────────
-# Each pair draws a line between two nodes.
+# Optional icon textures — assign in Inspector or leave null for text-only nodes
+@export var icon_home:          Texture2D = null
+@export var icon_ate_linda:     Texture2D = null
+@export var icon_hardware:      Texture2D = null
+@export var icon_pharmacy:      Texture2D = null
+@export var icon_grocery:       Texture2D = null
+
+# ── Beta road connections ─────────────────────────────────────────────────────
 const ROAD_CONNECTIONS: Array = [
-	["home",      "mang_romy"],
-	["home",      "ate_linda"],
-	["home",      "hardware"],
-	["ate_linda", "hardware"],
-	["mang_romy", "ate_linda"],
-	["hardware",  "pharmacy"],
-	["hardware",  "barangay_hall"],
-	["pharmacy",  "grocery"],
-	["barangay_hall", "grocery"],
+	["home",     "ate_linda"],
+	["home",     "hardware"],
+	["hardware", "pharmacy"],
+	["hardware", "grocery"],
 ]
 
-# ── Internal State ────────────────────────────────────────────────────────────
 var _selected_location: String = ""
-var _node_buttons: Dictionary = {}   # location_id → MapNodeButton
+var _node_buttons: Dictionary = {}
 
-# ── Colors (theme constants — match your art style) ───────────────────────────
-const COLOR_ROAD:           Color = Color(0.6, 0.55, 0.45, 0.7)
-const COLOR_ROAD_SECONDARY: Color = Color(0.6, 0.55, 0.45, 0.4)
-const COLOR_STORM_OVERLAY:  Color = Color(0.88, 0.29, 0.29, 0.08)
-
-# ─────────────────────────────────────────────────────────────────────────────
+# ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
-	print("=== MAPSCREEN READY CALLED ===")
 	hide()
 	confirm_panel.hide()
-
 	_build_road_lines()
 	_build_node_buttons()
 	_connect_signals()
-
 	confirm_button.pressed.connect(_on_confirm_travel)
 	cancel_button.pressed.connect(_on_cancel_selection)
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_map"):
@@ -87,16 +72,14 @@ func _input(event: InputEvent) -> void:
 			close_map()
 		else:
 			open_map()
-	
-	# DEBUG - only log mouse clicks, not motion
-	if event is InputEventMouseButton and event.pressed:
-		print("Mouse click at: ", event.position, " visible: ", visible)
+
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-#	_refresh_header()
 	_refresh_all_nodes()
-	_refresh_storm_overlay()
+	# Trigger redraws on both drawing nodes
+	road_layer.queue_redraw()
+	storm_overlay.queue_redraw()
 	confirm_panel.hide()
 	_selected_location = ""
 	show()
@@ -107,73 +90,72 @@ func close_map() -> void:
 	confirm_panel.hide()
 	_selected_location = ""
 
-# ── Header Refresh ────────────────────────────────────────────────────────────
-#func _refresh_header() -> void:
-#	time_label.text    = GlobalTimer.get_time_string()
-#	eta_label.text     = "Storm ETA: " + GlobalTimer.get_storm_eta_string()
-#	location_label.text = "You are at: " + NODE_DISPLAY_NAMES.get(
-#			SceneManager.current_location, SceneManager.current_location)
+# ── Road Layer — pass data before first draw ──────────────────────────────────
+func _build_road_lines() -> void:
+	# Populate the RoadLayer exports so its _draw() has data to work with
+	road_layer.node_positions = NODE_POSITIONS
+	road_layer.connections    = ROAD_CONNECTIONS
+	road_layer.queue_redraw()
 
-# ── Node Button Construction ───────────────────────────────────────────────────
+# ── Node Button Construction ──────────────────────────────────────────────────
 func _build_node_buttons() -> void:
-	print("=== BUILD NODE BUTTONS CALLED ===")
 	var button_scene: PackedScene = preload("res://game/ui/map/MapNodeButton.tscn")
-	print("Button scene loaded: ", button_scene)
+
+	# Map each location to its optional icon texture
+	var icon_map: Dictionary = {
+		"home":          icon_home,
+		"ate_linda":     icon_ate_linda,
+		"hardware":      icon_hardware,
+		"pharmacy":      icon_pharmacy,
+		"grocery":       icon_grocery,
+	}
 
 	for loc_id in NODE_POSITIONS.keys():
 		var btn: Control = button_scene.instantiate()
 		nodes_container.add_child(btn)
 
 		var pos: Vector2 = NODE_POSITIONS[loc_id]
-		btn.custom_minimum_size = Vector2(110, 52)
-		btn.size = Vector2(110, 52)
-		btn.position = pos - Vector2(55, 26)
-
+		var new_size := Vector2(160, 100)
+		btn.custom_minimum_size = new_size
+		btn.size                = new_size
+		
+		btn.position = pos - (new_size / 2.0)
+		
 		btn.setup(
 			loc_id,
 			NODE_DISPLAY_NAMES.get(loc_id, loc_id),
-			TravelCalculator.get_travel_label(SceneManager.current_location, loc_id)
+			icon_map.get(loc_id, null)   # ← pass texture
 		)
 		btn.node_selected.connect(_on_node_selected)
 		_node_buttons[loc_id] = btn
-		print("Created button: ", loc_id, " size: ", btn.size, " pos: ", btn.position)
 
 func _refresh_all_nodes() -> void:
 	for loc_id in _node_buttons.keys():
 		var state: String = _get_node_display_state(loc_id)
-		var travel_label: String = TravelCalculator.get_travel_label(
-				SceneManager.current_location, loc_id)
-		_node_buttons[loc_id].refresh(state, travel_label)
+		
+		# Get the raw time instead of the full "Travel to..." sentence
+		var travel_time: int = TravelCalculator.get_travel_time(
+			SceneManager.current_location, loc_id)
+		
+		var clean_label: String = "%d min" % travel_time
+		# If it's the current location, we might want to hide the time
+		if state == "current":
+			clean_label = "Nandito ka" 
+		
+		_node_buttons[loc_id].refresh(state, clean_label)
 
 func _get_node_display_state(loc_id: String) -> String:
 	if loc_id == SceneManager.current_location:
 		return "current"
-	return SceneManager.get_location_state(loc_id)  # "open" / "danger" / "closed"
-
-# ── Road Line Drawing (uses a custom draw node) ──────────────────────────────
-# Roads are drawn on a child Control node that overrides _draw().
-# Create a child node "RoadLayer" (Control) with this script, or call
-# queue_redraw() on it whenever the map opens.
-func _build_road_lines() -> void:
-	# The actual drawing happens in RoadLayer._draw() — see MapRoadLayer.gd
-	# We just ensure it redraws when the map opens.
-	pass   # hooked via open_map() → _refresh_all_nodes()
-
-# ── Storm Overlay ─────────────────────────────────────────────────────────────
-# StormOverlay is a Control whose _draw() paints a spreading red ellipse.
-# Its coverage grows with GlobalTimer.get_storm_progress().
-func _refresh_storm_overlay() -> void:
-	storm_overlay.queue_redraw()
+	return SceneManager.get_location_state(loc_id)
 
 # ── Node Selection → Confirm Panel ───────────────────────────────────────────
 func _on_node_selected(loc_id: String) -> void:
 	if loc_id == SceneManager.current_location:
-		return   # already here — do nothing
-
+		return
 	var state: String = SceneManager.get_location_state(loc_id)
 	if state == "closed":
-		return   # closed nodes are not selectable (enforced in MapNodeButton too)
-
+		return
 	_selected_location = loc_id
 	_show_confirm_panel(loc_id)
 
@@ -184,36 +166,26 @@ func _show_confirm_panel(loc_id: String) -> void:
 	var state:        String = SceneManager.get_location_state(loc_id)
 
 	confirm_dest.text = display_name
-	confirm_time.text = "Travel time: ~%d min" % travel_cost
+	confirm_time.text = "Travel cost: ~%d min" % travel_cost
 
 	if state == "danger":
-		confirm_time.text += "\n[!] Danger Zone"
-		confirm_time.modulate = Color(0.88, 0.29, 0.29)
+		confirm_time.text    += "  ⚠ Danger Zone"
+		confirm_time.modulate = Color(0.95, 0.40, 0.30)
 	else:
 		confirm_time.modulate = Color.WHITE
 
-	# Get the node's screen position
-	var node_pos: Vector2 = NODE_POSITIONS.get(loc_id, Vector2(400, 300))
-	var panel_size: Vector2 = Vector2(200, 130)
+	# Position confirm panel near the selected node, avoid screen edges
+	var node_pos:   Vector2 = NODE_POSITIONS.get(loc_id, Vector2(400, 300))
+	var panel_size: Vector2 = Vector2(200, 110)
 	var screen_size: Vector2 = get_viewport().get_visible_rect().size
+	var target: Vector2     = node_pos + Vector2(70, -40)
 
-	# Try to place panel to the RIGHT of the node first
-	var target: Vector2 = node_pos + Vector2(70, -40)
-
-	# If it goes off the right edge, place it to the LEFT instead
 	if target.x + panel_size.x > screen_size.x - 20:
 		target.x = node_pos.x - panel_size.x - 70
-
-	# If it goes off the bottom, move it up
-	if target.y + panel_size.y > screen_size.y - 20:
-		target.y = screen_size.y - panel_size.y - 20
-
-	# If it goes off the top, move it down
-	if target.y < 20:
-		target.y = 20
+	target.y = clamp(target.y, 20.0, screen_size.y - panel_size.y - 20.0)
 
 	confirm_panel.position = target
-	confirm_panel.size = panel_size
+	confirm_panel.size     = panel_size
 	confirm_panel.show()
 
 # ── Travel Confirmation ────────────────────────────────────────────────────────
@@ -230,24 +202,20 @@ func _on_cancel_selection() -> void:
 
 # ── Signal Connections ────────────────────────────────────────────────────────
 func _connect_signals() -> void:
-	# Refresh header text on every timer tick while open
 	GlobalTimer.time_updated.connect(_on_time_updated)
-	# React to encroachment (nodes change state mid-session)
 	GlobalTimer.encroachment_threshold_reached.connect(_on_encroachment)
-	# Refresh travel times when the player arrives somewhere new
 	SceneManager.travel_completed.connect(_on_travel_completed)
 
 func _on_time_updated(_minute: int) -> void:
-	pass
-#		_refresh_header()
+	if visible:
+		storm_overlay.queue_redraw()
 
 func _on_encroachment(_zone_id: String) -> void:
 	if visible:
 		_refresh_all_nodes()
-		_refresh_storm_overlay()
+		storm_overlay.queue_redraw()
+		road_layer.queue_redraw()
 
 func _on_travel_completed(_location_id: String) -> void:
-	# Travel is done — map can be opened again (SceneManager.is_travelling is false)
-	# Refresh node travel-time labels so they reflect the new origin.
 	if visible:
 		_refresh_all_nodes()

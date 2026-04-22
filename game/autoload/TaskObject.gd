@@ -97,7 +97,7 @@ func interact() -> void:
 		if was_ready_branch:
 			_complete_task()
 		return
-
+	
 	_show_line(lines)
 
 
@@ -131,6 +131,7 @@ func _player_has_item(item_id: String) -> bool:
 
 
 func _complete_task() -> void:
+	await TransitionOverlay.fade_to_black()
 	for item_id in required_item_ids:
 		# Find the item and remove it
 		for i in range(InventoryManager.inventory.size()):
@@ -140,14 +141,18 @@ func _complete_task() -> void:
 				if item.item_type in [ItemData.ItemType.BRING_HOME, ItemData.ItemType.USE_IN_PLACE, ItemData.ItemType.COMBINE]:
 					InventoryManager.remove_item(i)
 					break # Move to the next required_item_id
-
 	NeedsLog.resolve(need)
-	# Mark as completed so future interactions show completed_lines.
+	
+	await get_tree().create_timer(0.5).timeout
+	await TransitionOverlay.fade_from_black()
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	_is_completed = true
 	print("TaskObject: Completed — ", NeedsLog.NEED_LABELS.get(need, str(need)))
 
 
 func _show_line(lines: Array[String]) -> void:
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
+	
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
@@ -172,6 +177,7 @@ func _skip_to_line_end() -> void:
 
 
 func _hide_monologue() -> void:
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	is_showing = false
 	if _tween and _tween.is_valid():
 		_tween.kill()
