@@ -67,6 +67,35 @@ adjustment_enabled = true
 adjustment_brightness = 0.86
 adjustment_contrast = 1.03
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iva62"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 5, 4)
+direction = Vector3(0, -1, 0.3)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+color = Color(0.44061285, 0.5686449, 0.5830098, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_7ekle"]
+_limits = [0.0, 0.1, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.03490137, 0.048816077), 0.39726412, 0.39726412, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea3sf"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_xd4q2"]
+material = SubResource("StandardMaterial3D_ea3sf")
+size = 0.1
+curve = SubResource("Curve_7ekle")
+
 [node name="Grocery" type="Node3D" unique_id=2043522354]
 
 [node name="Environment" type="Node" parent="." unique_id=958567759]
@@ -92,6 +121,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.438011, 0.6383518, -10.50
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_eprta")]
 
 [node name="Market" parent="." unique_id=1319487788 instance=ExtResource("9_yn1y5")]
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Market" unique_id=133056964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7755604, 6.344431, -19.470127)
+size = Vector3(31.370817, 14.688862, 18.011654)
 
 [node name="Lights" type="Node" parent="." unique_id=1144243335]
 
@@ -139,3 +172,14 @@ omni_range = 9.038949
 
 [node name="GroceryGirl" parent="." unique_id=1526271285 instance=ExtResource("6_iva62")]
 transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, 2.2362714, 0.15920067, -18.393417)
+
+[node name="Rain" type="GPUParticles3D" parent="." unique_id=1317847033]
+transform = Transform3D(1.7541407, 0, 0, 0, 2.1546223, 0, 0, 0, 1.6554832, -0.9861851, 6.15551, -10.38954)
+amount = 20
+lifetime = 0.5
+randomness = 0.77
+visibility_aabb = AABB(-4, -4, -4, 8, 10, 8)
+trail_enabled = true
+trail_lifetime = 0.09999999999999999
+process_material = SubResource("ParticleProcessMaterial_iva62")
+draw_pass_1 = SubResource("RibbonTrailMesh_xd4q2")
