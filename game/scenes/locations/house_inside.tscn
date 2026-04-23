@@ -6,21 +6,25 @@
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
+[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
 [ext_resource type="PackedScene" uid="uid://boa547w07bf30" path="res://game/objects/interactables/Roof.tscn" id="9_u8iu7"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="10_11i80"]
-[ext_resource type="PackedScene" uid="uid://cekuiqqcccxni" path="res://game/objects/interactables/GasTank.tscn" id="11_e8rqb"]
-[ext_resource type="PackedScene" uid="uid://c4d0nxdvhfmtt" path="res://game/objects/tv.tscn" id="12_c3eoh"]
-[ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="13_avy8v"]
-[ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="14_nu6qe"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
+[ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="12_c3eoh"]
+[ext_resource type="PackedScene" uid="uid://ut5fskgnrsyt" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
 [ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="16_kgaqh"]
 [ext_resource type="PackedScene" uid="uid://bw2r7j1q04u4t" path="res://game/entities/nanay/nanay.tscn" id="18_so1b5"]
 [ext_resource type="PackedScene" uid="uid://bfuqj3eqm4sn6" path="res://game/entities/lola/lola.tscn" id="18_taj8b"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="19_taj8b"]
 [ext_resource type="PackedScene" uid="uid://dtury4luw5qqd" path="res://game/objects/interactables/task_site.tscn" id="20_sw8kg"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="21_7ekle"]
+[ext_resource type="PackedScene" uid="uid://c3erci5d62sx4" path="res://game/objects/interactables/plywood_model.tscn" id="21_ea3sf"]
+[ext_resource type="PackedScene" uid="uid://cx4bgum8ioyf" path="res://game/objects/interactables/radio_task.tscn" id="22_4pas2"]
+[ext_resource type="PackedScene" uid="uid://b1ffma416b8rg" path="res://game/objects/interactables/fill_water_task.tscn" id="22_ea3sf"]
+[ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="22_pqtb6"]
+[ext_resource type="PackedScene" uid="uid://cxejp1apnerm5" path="res://game/objects/interactables/roof_fixed.tscn" id="23_4pas2"]
+[ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="23_lbc1s"]
+[ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="24_pqtb6"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ekle"]
 emission_shape = 3
@@ -77,8 +81,20 @@ draw_pass_1 = SubResource("RibbonTrailMesh_ea3sf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=307444536]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, -0.50232506)
-size = Vector3(13.862762, 9.467323, 18.011654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, -6.3883743)
+size = Vector3(13.862762, 9.467323, 6.239555)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=1629384971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1586604, 3.7336617, -3.4505157)
+size = Vector3(6.17327, 9.467323, 4.7369914)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=1157835770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7963095, 3.7336617, -3.4505157)
+size = Vector3(5.7515697, 9.467323, 4.7369914)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=975452330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, 3.0396976)
+size = Vector3(13.862762, 9.467323, 10.9276085)
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_hrxyr")]
 transform = Transform3D(0.9994502, 0, 0.03315515, 0, 1, 0, -0.03315515, 0, 0.9994502, -3.7977772, 0.074735105, 0.4219451)
@@ -187,33 +203,29 @@ debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7993892, 0, -4.232849)
 door_destination = "bodega"
 spawn_point_id = "from_house"
+prompt_label = "Go Inside"
 
 [node name="Spawnpoint" parent="." unique_id=1429357958 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18268609, 0.008939624, -4.237865)
 spawn_id = "from_bodega"
 
-[node name="Roof" parent="." unique_id=1843619503 instance=ExtResource("9_u8iu7")]
+[node name="Roof" parent="." unique_id=1843619503 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("9_u8iu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06114936, 0.46041477, -2.778782)
+completion_visual_cue = NodePath("../RoofTaskVisualCue")
 
 [node name="Fridge" parent="." unique_id=1495864148 instance=ExtResource("10_11i80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8263373, 0.70194197, -7.4031844)
 
-[node name="GasTank" parent="." unique_id=744970663 instance=ExtResource("11_e8rqb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9873352, 1.1920929e-07, -7.2318783)
-
-[node name="StaticBody3D" parent="." unique_id=1186584198 instance=ExtResource("12_c3eoh")]
+[node name="Tv" parent="." unique_id=1186584198 instance=ExtResource("12_c3eoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6372705, 1.4300116, -0.5095767)
 
-[node name="Radio" parent="." unique_id=704261374 instance=ExtResource("13_avy8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59745455, 1.6600848, 1.7051121)
-world_item_id = "radio_home"
-item_data = ExtResource("14_nu6qe")
-
-[node name="Window" parent="." unique_id=188395029 instance=ExtResource("15_nu6qe")]
+[node name="Window" parent="." unique_id=188395029 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8509126, 1.8439364, -1.2023171)
+completion_visual_cue = NodePath("../WindowTaskVisualCue")
 
-[node name="Window2" parent="." unique_id=1232401100 instance=ExtResource("15_nu6qe")]
+[node name="Window2" parent="." unique_id=1232401100 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.8439364, -4.9426174)
+completion_visual_cue = NodePath("../WindowTaskVisualCue2")
 
 [node name="Spawnpoint2" parent="." unique_id=627294345 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6521201, 0, -6.817229)
@@ -234,8 +246,79 @@ monologue_lines = Array[String](["Mga lumang larawan namin...", "Kamusta na kaya
 
 [node name="MedicineTask" parent="." unique_id=106244337 instance=ExtResource("20_sw8kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.917082, 1.4302331, 1.0837145)
-required_item_ids = Array[String](["medicine"])
-missing_lines = Array[String](["Kailangan ko muna bumili sa botika."])
-ready_lines = Array[String](["Nabili ko na yung gamot, mabuti naman."])
+interaction_prompt = "Place Lola's Medicine"
+need = 1
+required_item_ids = Array[String](["medicine", "medicine"])
+time_cost_minutes = 3
+missing_lines = Array[String](["Kailangan ko muna bumili sa botika ng dalawang gamot ni lola."])
+ready_lines = Array[String](["Nabili ko na yung mga gamot, mabuti naman."])
 completed_lines = Array[String](["Meron na gamot si lola."])
 monologue_ui_scene = ExtResource("21_7ekle")
+prompt_label = "Place Lola's Medicine"
+
+[node name="FillWaterTask" parent="." unique_id=529410105 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("22_ea3sf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.1759596, 1.2475072, -7.7489634)
+completion_visual_cue = NodePath("../WaterJugTask")
+interaction_prompt = "Fill Water Jug"
+prompt_label = "Fill Water Jug"
+
+[node name="RadioTask" parent="." unique_id=884385063 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("22_4pas2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50261533, 1.1342692, 1.6833023)
+completion_visual_cue = NodePath("../RadioTaskVisualCue")
+interaction_prompt = "Place Radio & Flashlight"
+missing_lines = Array[String](["Yung radyo at flashlight, nasaan na kaya...", "Kailangan ko muna ayusin iyon para malagay ko dito."])
+ready_lines = Array[String](["Maayos na itong radyo at flashlight, ilalagay ko muna ito dito."])
+completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balita kahit may bagyo.", "Mabuti din na may flashlight, baka biglang mawalan ng kuryente."])
+prompt_label = "Place Working Radio"
+
+[node name="WindowTaskVisualCue" type="Node3D" parent="." unique_id=1887048608]
+visible = false
+
+[node name="PlywoodModel" parent="WindowTaskVisualCue" unique_id=1162719025 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99954313, -0.030224532, 0, 0, 0, 1, -7.205164, 1.3784611, -1.012984)
+
+[node name="PlywoodModel2" parent="WindowTaskVisualCue" unique_id=612537205 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 1.7853206, -1.012984)
+
+[node name="PlywoodModel3" parent="WindowTaskVisualCue" unique_id=716939410 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 2.204906, -1.012984)
+
+[node name="PlywoodModel4" parent="WindowTaskVisualCue" unique_id=835392582 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99894756, -0.030206522, 0.03451576, 0.034499988, 0.0010432231, 0.99940413, -7.205164, 2.5553212, -1.012984)
+
+[node name="WindowTaskVisualCue2" type="Node3D" parent="." unique_id=1150518725]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.9736989, 0, -6.04982)
+visible = false
+
+[node name="PlywoodModel" parent="WindowTaskVisualCue2" unique_id=1892398999 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99954313, -0.030224532, 0, 0, 0, 1, -7.205164, 1.3784611, -1.012984)
+
+[node name="PlywoodModel2" parent="WindowTaskVisualCue2" unique_id=1659492013 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 1.7853206, -1.012984)
+
+[node name="PlywoodModel3" parent="WindowTaskVisualCue2" unique_id=89507175 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 2.204906, -1.012984)
+
+[node name="PlywoodModel4" parent="WindowTaskVisualCue2" unique_id=1093317654 instance=ExtResource("21_ea3sf")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99894756, -0.030206522, 0.03451576, 0.034499988, 0.0010432231, 0.99940413, -7.205164, 2.5553212, -1.012984)
+
+[node name="RadioTaskVisualCue" type="Node3D" parent="." unique_id=274318589]
+visible = false
+
+[node name="Radio" parent="RadioTaskVisualCue" unique_id=842637522 instance=ExtResource("22_pqtb6")]
+transform = Transform3D(-0.94495463, 0, -0.3272013, 0, 1, 0, 0.3272013, 0, -0.94495463, -0.5010699, 1.6944549, 1.744984)
+
+[node name="Flashlight" parent="RadioTaskVisualCue" unique_id=1509625496 instance=ExtResource("23_lbc1s")]
+transform = Transform3D(-0.8504624, 0, 0.5260358, 0, 1, 0, -0.5260358, 0, -0.8504624, -0.4455178, 1.1527671, 1.7482257)
+
+[node name="RoofTaskVisualCue" type="Node3D" parent="." unique_id=959512361]
+visible = false
+
+[node name="RoofFixed" parent="RoofTaskVisualCue" unique_id=1981724758 instance=ExtResource("23_4pas2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06754875, -0.5019884)
+
+[node name="WaterJugTask" type="Node3D" parent="." unique_id=1838054520]
+visible = false
+
+[node name="WaterJug" parent="WaterJugTask" unique_id=28632907 instance=ExtResource("24_pqtb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7774987, 1.4170552, -7.184457)
