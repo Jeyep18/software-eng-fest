@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cddu4ng54a3b"]
+
+[ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="1_lscw5"]
+
+[node name="RadioModel" type="Node3D" unique_id=1347192936]
+
+[node name="Radio" parent="." unique_id=842637522 instance=ExtResource("1_lscw5")]

@@ -5,60 +5,88 @@
 extends CanvasLayer
 
 # ── Node References ────────────────────────────────────────────────────────────
-# These names must match EXACTLY what you named the nodes in Step 2.
-@onready var background:  ColorRect = $Background
-@onready var line_label:  Label     = $Background/LineLabel
-@onready var skip_hint:   Label     = $Background/SkipHint
+@onready var background: ColorRect = $Background
+@onready var line_label: Label     = $Background/LineLabel
+@onready var skip_hint:  Label     = $Background/SkipHint
 
 # ── State ──────────────────────────────────────────────────────────────────────
 var _skipped: bool = false
 
 # ── Line Data ──────────────────────────────────────────────────────────────────
-# Each dictionary is one beat in the sequence.
+# Pacing logic:
+#   - "pause" beats create breathing room. Use them generously.
+#   - The sequence moves in four emotional blocks:
+#       1. Ordinary morning   — slow, warm, specific
+#       2. The bulletin       — short, clinical, abrupt
+#       3. The house          — grounded, no drama, just facts
+#       4. The handoff        — quiet pressure, then silence
 #
-# Keys:
-#   "text"  — the string displayed. Empty string = silent pause (no label shown).
-#   "hold"  — seconds the text stays fully visible before fading.
-#   "fade"  — seconds the fade-out takes.
-#   "style" — controls font size + color. See _apply_style() below.
-#             "normal"  = 15px, off-white
-#             "large"   = 22px, white
-#             "small"   = 11px, uppercase, gray
-#             "italic"  = 13px, italic, dimmer white (for Taglish lines)
-#             "pause"   = no label — just silence for "hold" seconds
+# Resist the urge to explain. Let the details do the work.
 #
 const LINES: Array = [
-	{ "text": "Every year,",                          "hold": 1.8, "fade": 0.7, "style": "normal" },
-	{ "text": "the storms come.",                     "hold": 2.0, "fade": 0.7, "style": "normal" },
-	{ "text": "",                                     "hold": 0.8, "fade": 0.0, "style": "pause"  },
-	{ "text": "They always come.",                    "hold": 2.2, "fade": 0.7, "style": "normal" },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "Sa Pilipinas,",                        "hold": 1.6, "fade": 0.6, "style": "italic" },
-	{ "text": "a typhoon is not a question of if.",   "hold": 2.0, "fade": 0.7, "style": "normal" },
-	{ "text": "It is a question of how ready you are.","hold": 2.6, "fade": 0.8, "style": "normal" },
-	{ "text": "",                                     "hold": 0.8, "fade": 0.0, "style": "pause"  },
-	{ "text": "For most families,",                   "hold": 1.8, "fade": 0.6, "style": "normal" },
-	{ "text": "readiness is a privilege.",            "hold": 2.8, "fade": 0.9, "style": "large"  },
-	{ "text": "",                                     "hold": 0.8, "fade": 0.0, "style": "pause"  },
-	{ "text": "This is the story of one family.",     "hold": 2.0, "fade": 0.7, "style": "normal" },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "One storm.",                           "hold": 2.4, "fade": 0.8, "style": "large"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "Twelve hours.",                        "hold": 2.6, "fade": 0.9, "style": "small"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	{ "text": "",                                     "hold": 0.5, "fade": 0.0, "style": "pause"  },
-	
+
+	# ── Block 1: Ordinary Morning ──────────────────────────────────────────────
+	# Opens warm. Taglish sets the register immediately.
+	# The family is introduced through texture, not description.
+
+	{ "text": "Maaga pa lang.",                        "hold": 2.0, "fade": 0.8, "style": "italic"  },
+	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
+	{ "text": "Quiet.",                                "hold": 1.4, "fade": 0.6, "style": "normal"  },
+	{ "text": "Ordinary.",                             "hold": 1.8, "fade": 0.7, "style": "normal"  },
+	{ "text": "",                                      "hold": 0.8, "fade": 0.0, "style": "pause"   },
+	{ "text": "Nanay is cooking in the kitchen.",      "hold": 2.0, "fade": 0.7, "style": "normal"  },
+	{ "text": "Lola is praying.",                      "hold": 1.8, "fade": 0.7, "style": "normal"  },
+	{ "text": "Bunso is watching cartoons on the floor.", "hold": 2.0, "fade": 0.7, "style": "normal" },
+	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
+
+	# ── Block 2: The Bulletin ──────────────────────────────────────────────────
+	# Short. Clinical. The rhythm breaks on purpose here.
+	# No adjectives. Just the numbers.
+
+	{ "text": "Then the radio.",                       "hold": 2.4, "fade": 0.9, "style": "large"   },
+	{ "text": "",                                      "hold": 0.8, "fade": 0.0, "style": "pause"   },
+	{ "text": "Signal 3.",                             "hold": 1.6, "fade": 0.6, "style": "normal"  },
+	{ "text": "Escalating to Signal 4.",               "hold": 2.0, "fade": 0.7, "style": "normal"  },
+	{ "text": "Landfall in twelve hours.",             "hold": 2.6, "fade": 0.8, "style": "normal"  },
+	{ "text": "",                                      "hold": 0.9, "fade": 0.0, "style": "pause"   },
+
+	# ── Block 3: The House ─────────────────────────────────────────────────────
+	# Each line is a fact, not a feeling.
+	# The player should feel like they're doing an inventory before
+	# they've even started playing.
+
+	{ "text": "You walk through the house.",           "hold": 1.8, "fade": 0.7, "style": "normal"  },
+	{ "text": "",                                      "hold": 0.4, "fade": 0.0, "style": "pause"   },
+	{ "text": "There is a hole in the ceiling.",       "hold": 1.8, "fade": 0.6, "style": "normal"  },
+	{ "text": "The fridge is nearly empty.",           "hold": 1.8, "fade": 0.6, "style": "normal"  },
+	{ "text": "Lola's medicine is almost gone.",       "hold": 2.0, "fade": 0.7, "style": "normal"  },
+	{ "text": "The windows are thin.",                 "hold": 2.0, "fade": 0.7, "style": "normal"  },
+	{ "text": "",                                      "hold": 0.8, "fade": 0.0, "style": "pause"   },
+
+	# ── Block 4: The Handoff ───────────────────────────────────────────────────
+	# Don't give a speech. Give the player the weight and let go.
+	# The last two lines are the game's entire premise in plain language.
+
+	{ "text": "Outside, the sky is still clear.",      "hold": 2.2, "fade": 0.8, "style": "normal"  },
+	{ "text": "",                                      "hold": 0.4, "fade": 0.0, "style": "pause"   },
+	{ "text": "It won't stay that way.",               "hold": 2.4, "fade": 0.8, "style": "normal"  },
+	{ "text": "",                                      "hold": 1.0, "fade": 0.0, "style": "pause"   },
+	{ "text": "Twelve hours.",                         "hold": 2.8, "fade": 1.0, "style": "large"   },
+	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
+	{ "text": "Do what you can",                       "hold": 1.6, "fade": 0.5, "style": "normal"  },
+	{ "text": "with what you have.",                   "hold": 2.6, "fade": 1.0, "style": "normal"  },
+
+	# ── Trailing silence before scene transition ───────────────────────────────
+	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
+	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
+	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
 ]
 
 # ── Ready ──────────────────────────────────────────────────────────────────────
 func _ready() -> void:
-	# Start with everything invisible
-	line_label.modulate.a  = 0.0
-	skip_hint.modulate.a   = 0.0
-	line_label.text        = ""
-
-	# Begin the sequence
+	line_label.modulate.a = 0.0
+	skip_hint.modulate.a  = 0.0
+	line_label.text       = ""
 	_run_sequence()
 
 # ── Input — Skip on any key or mouse click ────────────────────────────────────
@@ -72,61 +100,45 @@ func _input(event: InputEvent) -> void:
 
 # ── Main Sequence Coroutine ────────────────────────────────────────────────────
 func _run_sequence() -> void:
-	# Short silence before anything appears
 	await get_tree().create_timer(0.8).timeout
-
-	# Fade in the skip hint
 	_fade_node(skip_hint, 1.0, 1.2)
 
-	# Play each line
 	for line_data in LINES:
 		if _skipped:
 			break
 
-		# Silent pause — no label, just wait
 		if line_data["style"] == "pause":
 			await get_tree().create_timer(line_data["hold"]).timeout
 			continue
 
-		# Apply the visual style for this line
 		_apply_style(line_data["style"])
 		line_label.text = line_data["text"]
 
-		# Fade in
 		await _fade_label_in(0.6)
-
-		# Hold
 		await get_tree().create_timer(line_data["hold"]).timeout
 
-		# Fade out (skip if the player pressed skip during hold)
 		if not _skipped:
 			await _fade_label_out(line_data["fade"])
 
-		# Brief gap between lines
 		await get_tree().create_timer(0.25).timeout
 
-	# Sequence done — go to main menu
 	_end_sequence()
 
 # ── End: Fade to black and load main menu ────────────────────────────────────
 func _end_sequence() -> void:
-	line_label.text    = ""
+	line_label.text       = ""
 	line_label.modulate.a = 0.0
 	skip_hint.modulate.a  = 0.0
 
-	# Hold on black for a moment
 	await get_tree().create_timer(0.6).timeout
-
-	# Use your existing TransitionOverlay, then load the main menu
 	await TransitionOverlay.fade_to_black()
-	SceneManager.load_scene("main_menu")   # make sure "main_menu" is in SceneManager.SCENE_PATHS
+	SceneManager.load_scene("main_menu")
 
 # ── Style Application ─────────────────────────────────────────────────────────
 func _apply_style(style: String) -> void:
 	match style:
 		"normal":
 			line_label.add_theme_font_size_override("font_size", 15)
-			line_label.modulate = Color(0.91, 0.89, 0.86)   # warm off-white
 			line_label.add_theme_color_override("font_color", Color(0.91, 0.89, 0.86))
 		"large":
 			line_label.add_theme_font_size_override("font_size", 22)
@@ -134,13 +146,11 @@ func _apply_style(style: String) -> void:
 		"small":
 			line_label.add_theme_font_size_override("font_size", 11)
 			line_label.add_theme_color_override("font_color", Color(0.53, 0.53, 0.50))
-			# Uppercase is set manually in the text string if desired,
-			# or you can enable it via a LabelSettings resource.
 		"italic":
 			line_label.add_theme_font_size_override("font_size", 13)
 			line_label.add_theme_color_override("font_color", Color(0.78, 0.76, 0.72))
-			# To make it actually italic, assign an italic font variant
-			# via a LabelSettings resource on LineLabel in the Inspector.
+			# Assign an italic font variant via LabelSettings in the Inspector
+			# for this style to render correctly.
 
 # ── Tween Helpers ─────────────────────────────────────────────────────────────
 func _fade_label_in(duration: float) -> void:
@@ -159,4 +169,3 @@ func _fade_node(node: Control, target_alpha: float, duration: float) -> void:
 	var tween = create_tween()
 	tween.tween_property(node, "modulate:a", target_alpha, duration) \
 		 .set_ease(Tween.EASE_OUT)
-	# Non-awaited — runs in background

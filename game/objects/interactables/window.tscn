@@ -1,34 +1,25 @@
-[gd_scene format=3 uid="uid://iv3hybdfd3fd"]
+[gd_scene format=3 uid="uid://ut5fskgnrsyt"]
 
-[ext_resource type="Script" path="res://game/objects/interactables/WindowTask.gd" id="1_20v17"]
+[ext_resource type="Script" uid="uid://beh42wqlguqxl" path="res://game/objects/interactables/WindowTask.gd" id="1_20v17"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_stwdh"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_py0du"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]
-size = Vector3(1.6542816, 1.0712891, 1.1739502)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mq1j"]
 size = Vector3(1.865448, 1.1941853, 1.2081909)
 
-[node name="Window" type="StaticBody3D" unique_id=1495864148]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1882911064]
-visible = false
-mesh = SubResource("BoxMesh_py0du")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1645893761]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006729126, -0.03564453, -0.016540527)
-shape = SubResource("BoxShape3D_cldu5")
+[node name="Window" type="Area3D" unique_id=1382411855]
+script = ExtResource("1_20v17")
+interaction_prompt = "Board Windows"
+need = 3
+time_cost_minutes = 12
+missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko ito takpan.", "May plywood at mga pako pa kaya kami? Nasaan na kaya yung martilyo ni papa."])
+ready_lines = Array[String](["Kumpleto na mga kailangan ko, matatakpan ko na itong bintana"])
+completed_lines = Array[String](["Natakpan ko na bintana, sana kumapit ito hanggang sa matapos ang bagyo."])
+monologue_ui_scene = ExtResource("2_stwdh")
+prompt_label = "Board Windows"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616304789]
 unique_name_in_owner = true
 
-[node name="Area3D" type="Area3D" parent="." unique_id=348564518]
-script = ExtResource("1_20v17")
-missing_lines = Array[String](["Kailangan ko takpan itong bintana, lalakas ang hangin mamaya.", "Meron pa kaya kami plywood at mga pako sa bodega?"])
-monologue_ui_scene = ExtResource("2_stwdh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1601409854]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1601409854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40544593, 0.26490307, 0.10409546)
 shape = SubResource("BoxShape3D_7mq1j")

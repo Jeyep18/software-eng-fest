@@ -134,11 +134,9 @@ func open_shop(shop_data: ShopData) -> void:
 	_backdrop.show()
 	_center_container.show()
 	shop_panel.show()
-	GlobalTimer.pause_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func close_shop() -> void:
-	GlobalTimer.resume_timer()
 	shop_panel.hide()
 	_center_container.hide()   
 	_backdrop.hide()

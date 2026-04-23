@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c3erci5d62sx4"]
+
+[ext_resource type="PackedScene" uid="uid://b85mpqles7lw3" path="res://_raw_assets/interactable_models/PlywoodSheets.glb" id="1_bvj34"]
+
+[node name="PlywoodModel" type="Node3D" unique_id=1162719025]
+
+[node name="PlywoodSheets" parent="." unique_id=1550629517 instance=ExtResource("1_bvj34")]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://q1mqm53bb7nh"]
 
 [ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="1_riw02"]
-[ext_resource type="Script" path="res://game/objects/interactables/FridgeTask.gd" id="2_uwq7c"]
+[ext_resource type="Script" uid="uid://bvygk7q3cd3en" path="res://game/objects/interactables/FridgeTask.gd" id="2_uwq7c"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]
@@ -21,11 +21,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5949855, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=348564518]
 script = ExtResource("2_uwq7c")
+interaction_prompt = "Place Food"
+need = 2
 time_cost_minutes = 3
 missing_lines = Array[String](["Wala pa ring pagkain. Kailangan ng kahit apat na de lata — para kay Nanay, Lola, Bunso, at ako.", "Ate Linda o yung palengke. Mas mura sa palengke pero mabilis magsara yun."])
 ready_lines = Array[String](["Sapat na ito. Ilalagay ko na sa ref para madali makuha kapag kailangan."])
 completed_lines = Array[String](["Okay na ang pagkain. Hindi kami magugutom sa loob ng bagyo."])
 monologue_ui_scene = ExtResource("3_7mq1j")
+prompt_label = "Place Food"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1601409854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022251964, 0.57964706, 0.22564697)
