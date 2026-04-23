@@ -2,6 +2,7 @@ extends TaskObject
 
 @export var required_items: Array[String] = [
 	"medicine",
+	"medicine"
 ]
 
 func _ready() -> void:
