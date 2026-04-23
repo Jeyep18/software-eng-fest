@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_3lw5h"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="9_xmmy0"]
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="10_xmmy0"]
-[ext_resource type="Resource" uid="uid://dwlf2grpplygs" path="res://game/resources/items/wrench.tres" id="11_wwj1v"]
 [ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/dead_flashlight.tres" id="12_tqvld"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjlpf"]
@@ -119,11 +118,6 @@ spawn_point_id = "from_bodega"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.433703, 1.3540105, -3.0667145)
 world_item_id = "hammer_bodega"
 item_data = ExtResource("10_xmmy0")
-
-[node name="Wrench" parent="." unique_id=8092312 instance=ExtResource("9_xmmy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6144375, 1.146833, -5.078486)
-world_item_id = "wrench_bodega"
-item_data = ExtResource("11_wwj1v")
 
 [node name="WorldItem" parent="." unique_id=67334447 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.679819, 1.6295038, -7.4330616)
