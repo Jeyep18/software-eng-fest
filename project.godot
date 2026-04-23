@@ -26,7 +26,7 @@ TravelCalculator="*uid://bkjg6rep2nwea"
 InventoryManager="*uid://b8lxp84j6d6lx"
 EconomyManager="*uid://bgmfpcpmaqr8h"
 ShopUi="*res://game/autoload/ShopUI.gd"
-StormEnroachment="*uid://c6ahd2yyvb835"
+StormEnroachment="*res://game/autoload/StormEnroachment.gd"
 
 [display]
 

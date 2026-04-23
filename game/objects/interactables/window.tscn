@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ut5fskgnrsyt"]
+[gd_scene format=3 uid="uid://iv3hybdfd3fd"]
 
-[ext_resource type="Script" uid="uid://beh42wqlguqxl" path="res://game/objects/interactables/WindowTask.gd" id="1_20v17"]
+[ext_resource type="Script" path="res://game/objects/interactables/WindowTask.gd" id="1_20v17"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_stwdh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_py0du"]
