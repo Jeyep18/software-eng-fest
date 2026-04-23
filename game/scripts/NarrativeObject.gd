@@ -84,6 +84,7 @@ func interact() -> void:
 
 
 func _show_current_line() -> void:
+	GlobalTimer.pause_timer()
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	is_showing = true
 	_is_showing = true
@@ -109,6 +110,7 @@ func _skip_to_line_end() -> void:
 
 
 func _hide_monologue() -> void:
+	GlobalTimer.resume_timer()
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	is_showing = false
 	if _tween and _tween.is_valid():
