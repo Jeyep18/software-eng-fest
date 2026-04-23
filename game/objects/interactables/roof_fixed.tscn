@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cxejp1apnerm5"]
+
+[ext_resource type="PackedScene" uid="uid://1mx12bk38n3f" path="res://_raw_assets/interactable_models/RoofFixed.glb" id="1_iefhc"]
+
+[node name="RoofFixed" type="Node3D" unique_id=1981724758]
+
+[node name="RoofFixed2" parent="." unique_id=1894146488 instance=ExtResource("1_iefhc")]

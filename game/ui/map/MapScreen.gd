@@ -74,7 +74,6 @@ func _input(event: InputEvent) -> void:
 
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
-	GlobalTimer.pause_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_refresh_all_nodes()
 	# Trigger redraws on both drawing nodes
@@ -85,7 +84,6 @@ func open_map() -> void:
 	show()
 
 func close_map() -> void:
-	GlobalTimer.resume_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
 	confirm_panel.hide()

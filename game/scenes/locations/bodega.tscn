@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_3lw5h"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="9_xmmy0"]
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="10_xmmy0"]
+[ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="12_gjccj"]
 [ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/dead_flashlight.tres" id="12_tqvld"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjlpf"]
@@ -111,6 +112,7 @@ spawn_id = "from_house"
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.9795778, 0, -3.77945)
 door_destination = "home"
 spawn_point_id = "from_bodega"
+prompt_label = "Go back "
 
 [node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_3lw5h")]
 
@@ -123,3 +125,9 @@ item_data = ExtResource("10_xmmy0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.679819, 1.6295038, -7.4330616)
 world_item_id = "dead_flashlight_bodega"
 item_data = ExtResource("12_tqvld")
+
+[node name="Radio" parent="." unique_id=1495102883 instance=ExtResource("9_xmmy0")]
+transform = Transform3D(-0.017068435, 0, -0.9998543, 0, 1, 0, 0.9998543, 0, -0.017068435, -1.6437103, 1.3030576, -5.049503)
+world_item_id = "radio_home"
+item_data = ExtResource("12_gjccj")
+prompt_label = "Pickup radio"

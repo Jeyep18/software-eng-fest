@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cx4bgum8ioyf"]
+
+[ext_resource type="Script" uid="uid://cqur3kurowxsy" path="res://game/objects/interactables/radio_task.gd" id="1_ok0ae"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_asw55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1tvj"]
+size = Vector3(1.9556274, 1, 1)
+
+[node name="RadioTask" type="Area3D" unique_id=884385063]
+script = ExtResource("1_ok0ae")
+need = 5
+time_cost_minutes = 5
+missing_lines = Array[String](["Yung radyo, nasaan na kaya...", "Kailangan ko muna ayusin iyon para malagay ko dito."])
+ready_lines = Array[String](["Maayos na itong radyo, ilalagay ko muna ito dito."])
+completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balita kahit may bagyo."])
+monologue_ui_scene = ExtResource("2_asw55")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2138792471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47781372, 0, 0)
+shape = SubResource("BoxShape3D_g1tvj")
+debug_color = Color(0.75409603, 0.45722204, 0, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=751698250]
+unique_name_in_owner = true
