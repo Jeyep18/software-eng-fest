@@ -11,7 +11,6 @@ extends CanvasLayer
 @onready var confirm_time:    Label   = $Panel/ConfirmPanel/TravelTimeLabel
 @onready var confirm_button:  Button  = $Panel/ConfirmPanel/ConfirmButton
 @onready var cancel_button:   Button  = $Panel/ConfirmPanel/CancelButton
-@onready var close_hint:      Label   = $Panel/HBoxContainer/CloseHint
 
 # ── Beta scope: Mang Romy and Barangay Hall are CUT ──────────────────────────
 # Layout reflects GDD v3 node diagram:
@@ -176,7 +175,7 @@ func _show_confirm_panel(loc_id: String) -> void:
 	# 2. Position Anchored to the Right side of the screen
 	var screen_size: Vector2 = get_viewport().get_visible_rect().size
 	var panel_size: Vector2 = Vector2(220, 120) # Defined size for the pane
-	var padding: float = 40.0 # Distance from the right and top/bottom edges
+	var padding: float = 180.0 # Distance from the right and top/bottom edges
 	
 	# X position: Screen width minus panel width and padding
 	var target_x: float = screen_size.x - panel_size.x - padding
