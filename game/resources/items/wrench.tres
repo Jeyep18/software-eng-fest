@@ -12,5 +12,4 @@ item_description = "Wrench"
 item_id = "wrench"
 item_price = 120
 item_model = ExtResource("2_nwlb5")
-pickup_lines = Array[String](["Wrench ni tatay", "Hindi ko alam kung para saan — pero baka kailangan ng ibang tao nito"])
 metadata/_custom_type_script = "uid://b51r7pisrdybh"

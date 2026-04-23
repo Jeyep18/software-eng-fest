@@ -17,10 +17,43 @@ size = Vector3(6.5210648, 3.1103516, 5.5842743)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
 size = Vector3(8.106903, 3.1496582, 10.895905)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1v4d4"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 5, 4)
+direction = Vector3(0, -1, 0.3)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+color = Color(0.44061285, 0.5686449, 0.5830098, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_7ekle"]
+_limits = [0.0, 0.1, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.03490137, 0.048816077), 0.39726412, 0.39726412, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea3sf"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_fyk87"]
+material = SubResource("StandardMaterial3D_ea3sf")
+size = 0.3
+curve = SubResource("Curve_7ekle")
+
 [node name="HouseInside" type="Node3D" unique_id=1548119595]
 
 [node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_ow6fg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=1545298350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, -0.50232506)
+size = Vector3(13.862762, 9.467323, 18.011654)
 
 [node name="Lights" type="Node" parent="." unique_id=804893288]
 
@@ -47,15 +80,9 @@ spot_angle = 82.02
 environment = ExtResource("3_n54o5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=692121294]
-transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.4397611, 0.40833047, -0.597907, 0.64220345, -0.47966847, -3.7560396, 5.09972, 0)
-light_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
-light_energy = 2.108
-shadow_enabled = true
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=1476573651]
-transform = Transform3D(-0.051291734, -0.6278413, -0.7766495, -0.7999227, -0.4397611, 0.40833047, -0.597907, 0.64220345, -0.47966847, -3.7560396, 5.09972, 0)
-light_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
-light_energy = 2.108
+transform = Transform3D(-0.28498715, -0.5484355, -0.78613025, -0.764105, -0.36518767, 0.5317719, -0.57872766, 0.7522343, -0.31498855, -3.7560396, 5.09972, 0)
+light_color = Color(0.8452686, 0.8693299, 0.88392496, 1)
+light_energy = 4.0
 shadow_enabled = true
 
 [node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=1350160904]
@@ -147,11 +174,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1923912197]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=240193404]
-transform = Transform3D(0.68157625, 0.13169093, 0.7197995, 0.04552215, 0.97413635, -0.22132798, -0.73032975, 0.1836187, 0.65795344, -5.783241, 1.3897203, 0.046803027)
+transform = Transform3D(0.6025146, 0.13803293, 0.7860809, -0.015113643, 0.98672724, -0.16168144, -0.7979648, 0.08553487, 0.59660375, -5.783241, 1.6017874, 0.022307962)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1642778444]
 anchors_preset = 4
@@ -188,3 +215,14 @@ text = "SETTINGS"
 [node name="quit_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=174355223]
 layout_mode = 2
 text = "QUIT"
+
+[node name="Rain" type="GPUParticles3D" parent="." unique_id=1559939050]
+transform = Transform3D(1.7541407, 0, 0, 0, 2.1546223, 0, 0, 0, 1.6554832, -0.9861851, 6.15551, -4.431979)
+amount = 1500
+lifetime = 0.5
+randomness = 0.77
+visibility_aabb = AABB(-4, -4, -4, 8, 10, 8)
+trail_enabled = true
+trail_lifetime = 0.09999999999999999
+process_material = SubResource("ParticleProcessMaterial_1v4d4")
+draw_pass_1 = SubResource("RibbonTrailMesh_fyk87")

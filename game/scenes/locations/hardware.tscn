@@ -301,13 +301,13 @@ item_data = ExtResource("6_lusb0")
 
 [node name="plywood2" parent="." unique_id=1432800532 instance=ExtResource("5_fltjs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.890614, -0.009005576, -8.198011)
+transform = Transform3D(0.92681074, 0, -0.3755288, 0, 1, 0, 0.3755288, 0, 0.92681074, 16.530062, -0.009005576, -8.198011)
 world_item_id = "plywood2_hardware"
 item_data = ExtResource("6_lusb0")
 
 [node name="plywood3" parent="." unique_id=733429601 instance=ExtResource("5_fltjs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.703974, -0.084784225, -8.306307)
+transform = Transform3D(1, 0, 0, 0, 0.81368965, -0.58129954, 0, 0.58129954, 0.81368965, 18.293606, -0.084784225, -5.8422427)
 world_item_id = "plywood3_hardware"
 item_data = ExtResource("6_lusb0")
 
