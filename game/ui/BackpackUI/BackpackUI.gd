@@ -122,12 +122,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _toggle() -> void:
 	visible = !visible
 	if visible:
-		GlobalTimer.pause_timer()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		_reset_selection()
 		_redraw_backpack()
 	else:
-		GlobalTimer.resume_timer()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_reset_selection()
 

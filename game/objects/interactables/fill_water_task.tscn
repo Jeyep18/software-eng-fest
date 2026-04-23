@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b1ffma416b8rg"]
+
+[ext_resource type="Script" uid="uid://dqjrmw4p6ujy" path="res://game/objects/interactables/fill_water_task.gd" id="1_ms6ut"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_lnfpl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt076"]
+size = Vector3(1.9556274, 1, 1)
+
+[node name="FillWaterTask" type="Area3D" unique_id=529410105]
+script = ExtResource("1_ms6ut")
+need = 4
+time_cost_minutes = 10
+missing_lines = Array[String](["Nako, nasira itong lababo namin, kailangan ko ng wrench para maayos ito.", "Kailangan ko din ng water jug para may tubig kami sa bagyo."])
+ready_lines = Array[String](["Maayos ko na ang lababo, pupunuin ko narin ang water jug."])
+completed_lines = Array[String](["Maayos na lababo, nalagyan ko narin ang water jug ng tubig."])
+monologue_ui_scene = ExtResource("2_lnfpl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1307920475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47781372, 0, 0)
+shape = SubResource("BoxShape3D_jt076")
+debug_color = Color(0.75409603, 0.45722204, 0, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=200209417]
+unique_name_in_owner = true

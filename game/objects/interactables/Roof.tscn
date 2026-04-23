@@ -3,25 +3,19 @@
 [ext_resource type="Script" uid="uid://2q6lodcq8s8" path="res://game/objects/interactables/RoofTask.gd" id="1_4q084"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_0ypb0"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oonsc"]
-size = Vector3(0.5463867, 0.31591797, 0.49047852)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ypb0"]
 size = Vector3(1.0504913, 0.71325684, 0.63311005)
 
-[node name="Roof" type="StaticBody3D" unique_id=1843619503]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1852649737]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.084228516, -0.34204102, -0.05895996)
-shape = SubResource("BoxShape3D_oonsc")
+[node name="Roof" type="Area3D" unique_id=543211731]
+script = ExtResource("1_4q084")
+interaction_prompt = "Fix Broken Roof"
+missing_lines = Array[String](["Hindi pa namin naayos yung nasirang bubong noong nakaraang bagyo.", "Mahirap ito kung hindi takpan.", "Saan kaya ako makakakuha ng tarp, pati pako at martilyo. "])
+completed_lines = Array[String](["Naayos ko na ang bubong, mabuti naman at hindi na kami mababasa, sana kumapit ito."])
+monologue_ui_scene = ExtResource("2_0ypb0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1391469317]
 unique_name_in_owner = true
 
-[node name="Area3D" type="Area3D" parent="." unique_id=178130038]
-script = ExtResource("1_4q084")
-monologue_ui_scene = ExtResource("2_0ypb0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1889328263]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1889328263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09064484, -0.14337158, -0.081920624)
 shape = SubResource("BoxShape3D_0ypb0")

@@ -2,7 +2,8 @@
 class_name TaskObject
 extends Interactable
 
-@export var interaction_prompt: String = "Interact [E]"
+@export var completion_visual_cue: Node = null
+@export var interaction_prompt: String = ""
 @export var need: NeedsLog.Need = NeedsLog.Need.ROOF
 @export var required_item_ids: Array[String] = []
 
@@ -29,7 +30,7 @@ extends Interactable
 @export var completed_lines: Array[String] = [
 	"Naayos ko na ito."
 ]
-@export var chars_per_second: float = 20.0
+@export var chars_per_second: float = 40.0
 @export var monologue_ui_scene: PackedScene
 
 const PLAYER_NAME: String = "Player"
@@ -134,12 +135,16 @@ func _complete_task() -> void:
 		GlobalTimer.add_time(time_cost_minutes)
 
 	NeedsLog.resolve(need)
+	
+	if completion_visual_cue != null:
+		completion_visual_cue.visible = true
 
 	await get_tree().create_timer(0.5).timeout
 
 	# ── FADE IN — resume tick ──────────────────────────────────────────────────
 	await TransitionOverlay.fade_from_black()
 	GlobalTimer.resume_timer()   # tick resumes now — player is back in world
+	
 
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	_is_completed = true
@@ -148,7 +153,6 @@ func _complete_task() -> void:
 
 func _show_line(lines: Array[String]) -> void:
 	# Pause tick while dialogue is on screen — reading text is free.
-	GlobalTimer.pause_timer()
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	is_showing    = true
 	_is_showing   = true
@@ -171,7 +175,6 @@ func _skip_to_line_end() -> void:
 
 func _hide_monologue() -> void:
 	# Resume tick — player dismissed dialogue, back in the world.
-	GlobalTimer.resume_timer()
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	is_showing  = false
 	if _tween and _tween.is_valid():
