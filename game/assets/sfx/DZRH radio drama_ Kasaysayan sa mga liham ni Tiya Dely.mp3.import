@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de4onro1b777k"
+path="res://.godot/imported/DZRH radio drama_ Kasaysayan sa mga liham ni Tiya Dely.mp3-1285e331f73f950f4fdea938f1262ce3.mp3str"
+
+[deps]
+
+source_file="res://game/assets/sfx/DZRH radio drama_ Kasaysayan sa mga liham ni Tiya Dely.mp3"
+dest_files=["res://.godot/imported/DZRH radio drama_ Kasaysayan sa mga liham ni Tiya Dely.mp3-1285e331f73f950f4fdea938f1262ce3.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
