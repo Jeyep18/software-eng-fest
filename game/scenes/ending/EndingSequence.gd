@@ -137,14 +137,8 @@ func _ready() -> void:
 	fade_overlay.color     = Color(0, 0, 0, 1)
 	slide_label.modulate.a = 0.0
 	result_panel.hide()
-
-	# Defer the camera activation and sequence start.
-	# When loaded via change_scene_to_file(), global_transform assignments
-	# made in _ready() are silently discarded because the node hasn't
-	# entered the viewport tree yet — the position stays (0,0,0).
-	# call_deferred pushes _start to the end of the current frame,
-	# by which point all nodes are fully in the tree and transforms are valid.
-	call_deferred("_start")
+	
+	_start.call_deferred()
 
 
 # ── Deferred Start ────────────────────────────────────────────────────────────
@@ -152,16 +146,23 @@ func _ready() -> void:
 # the scene tree and global_transform assignments actually take effect.
 func _start() -> void:
 	# Now that we are in the tree, make the camera current.
+	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	TransitionOverlay.fade_from_black()
+	
+	var active_cam: Camera3D = get_viewport().get_camera_3d()
+	if active_cam != null and active_cam != ending_camera:
+		push_warning("EndingSequence: demoting leftover camera: " + active_cam.name)
+		active_cam.current = false
+		
 	ending_camera.make_current()
 
 	# Snap to the first anchor — global_transform is valid here.
-	_snap_camera_to(SLIDES[0]["anchor"])
-
-	# Extra debug — remove after confirming it works.
-	print("=== ENDING START ===")
 	print("Camera is current: ", ending_camera == get_viewport().get_camera_3d())
-	print("Camera global pos after snap: ", ending_camera.global_position)
-
+	print("Camera global pos: ", ending_camera.global_position)
+	_snap_camera_to(SLIDES[0]["anchor"])
 	_run_sequence()
 
 
