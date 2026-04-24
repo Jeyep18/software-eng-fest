@@ -116,7 +116,7 @@ bus = &"SFX"
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=567027489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.187471, 3.557139, -10.450379)
 stream = ExtResource("3_clh7r")
-volume_db = -11.85
+volume_db = -5.0
 autoplay = true
 max_distance = 10.0
 bus = &"SFX"
