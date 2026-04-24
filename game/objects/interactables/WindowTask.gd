@@ -3,7 +3,6 @@ extends TaskObject
 @export var required_items: Array[String] = [
 	"plywood",
 	"nails",
-	"nails",
 	"hammer"
 ]
 

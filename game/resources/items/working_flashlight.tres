@@ -11,4 +11,4 @@ item_icon = ExtResource("1_t78al")
 item_description = "May ilaw na woohoo"
 item_id = "working_flashlight"
 item_model = ExtResource("2_fcv52")
-item_type = 2
+item_type = 1

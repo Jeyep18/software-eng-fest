@@ -12,4 +12,4 @@ item_description = "tugtugan na!"
 item_id = "working_radio"
 item_model = ExtResource("2_wb3to")
 pickup_lines = Array[String](["gumagana na! ano na kaya nangyayare?"])
-item_type = 2
+item_type = 1

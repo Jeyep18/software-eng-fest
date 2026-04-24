@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dvsimsn4kkqmg"]
 
-[ext_resource type="Script" path="res://game/scenes/main_menu/main_menu_1.gd" id="1_fyk87"]
+[ext_resource type="Script" uid="uid://d1nx5ndlicu4x" path="res://game/scenes/main_menu/main_menu_1.gd" id="1_fyk87"]
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_ow6fg"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_n54o5"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_40lqx"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_nmekv"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_bwlk5"]
+[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_bwlk5"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_e8epe"]
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="9_64f0y"]
 [ext_resource type="Script" uid="uid://cx15idd6avcuk" path="res://game/scenes/main_menu/start_button.gd" id="9_n2j5s"]
@@ -384,6 +384,7 @@ libraries/ = SubResource("AnimationLibrary_jn6f0")
 autoplay = &"fade_in"
 
 [node name="WindowTaskVisualCue" type="Node3D" parent="." unique_id=1530682632]
+visible = false
 
 [node name="PlywoodModel" parent="WindowTaskVisualCue" unique_id=1162719025 instance=ExtResource("12_voysh")]
 transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99954313, -0.030224532, 0, 0, 0, 1, -7.205164, 1.3784611, -1.012984)
@@ -399,6 +400,7 @@ transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99894756, -0.030206522, 
 
 [node name="WindowTaskVisualCue2" type="Node3D" parent="." unique_id=791814355]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.9736989, 0, -6.04982)
+visible = false
 
 [node name="PlywoodModel" parent="WindowTaskVisualCue2" unique_id=1083636954 instance=ExtResource("12_voysh")]
 transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99954313, -0.030224532, 0, 0, 0, 1, -7.205164, 1.3784611, -1.012984)
@@ -413,6 +415,7 @@ transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -
 transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99894756, -0.030206522, 0.03451576, 0.034499988, 0.0010432231, 0.99940413, -7.205164, 2.5553212, -1.012984)
 
 [node name="RadioTaskVisualCue" type="Node3D" parent="." unique_id=1796105178]
+visible = false
 
 [node name="Radio" parent="RadioTaskVisualCue" unique_id=1481765612 instance=ExtResource("13_48t3i")]
 transform = Transform3D(-0.94495463, 0, -0.3272013, 0, 1, 0, 0.3272013, 0, -0.94495463, -0.5010699, 1.6944549, 1.744984)
@@ -421,11 +424,13 @@ transform = Transform3D(-0.94495463, 0, -0.3272013, 0, 1, 0, 0.3272013, 0, -0.94
 transform = Transform3D(-0.8504624, 0, 0.5260358, 0, 1, 0, -0.5260358, 0, -0.8504624, -0.4455178, 1.1527671, 1.7482257)
 
 [node name="RoofTaskVisualCue" type="Node3D" parent="." unique_id=1416774127]
+visible = false
 
 [node name="RoofFixed" parent="RoofTaskVisualCue" unique_id=1981724758 instance=ExtResource("15_u51cy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06754875, -0.5019884)
 
 [node name="WaterJugTask" type="Node3D" parent="." unique_id=2103605434]
+visible = false
 
 [node name="WaterJug" parent="WaterJugTask" unique_id=1392018920 instance=ExtResource("16_an0y3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7774987, 1.4170552, -7.184457)
