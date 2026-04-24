@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://bdrdiyck13r11"]
 
+[ext_resource type="Script" uid="uid://dnwtg46lqsmc2" path="res://game/scenes/locations/house_inside.gd" id="1_foea7"]
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_iw5ha"]
+[ext_resource type="AudioStream" uid="uid://dhf5s5c8rrwek" path="res://game/assets/sfx/340020__iesp__sounds-from-a-tv.wav" id="2_bt1tt"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_hrxyr"]
+[ext_resource type="AudioStream" uid="uid://de558ohiplubi" path="res://game/assets/sfx/437343__giddster__fan-heating.wav" id="3_eaxl8"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_is8m0"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
+[ext_resource type="AudioStream" uid="uid://c3aev2rnla44" path="res://game/assets/sfx/626727__catacombronson__fridge-tone.wav" id="4_ep4k0"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
 [ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
@@ -25,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://cxejp1apnerm5" path="res://game/objects/interactables/roof_fixed.tscn" id="23_4pas2"]
 [ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="23_lbc1s"]
 [ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="24_pqtb6"]
+[ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="30_ff1h5"]
+[ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="31_dpeow"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ekle"]
 emission_shape = 3
@@ -64,7 +70,48 @@ size = Vector3(6.5210648, 3.1103516, 5.5842743)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn58f"]
 size = Vector3(8.106903, 3.1496582, 10.895905)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ep4k0"]
+radius = 0.2788086
+height = 2.7495117
+
 [node name="HouseInside2" type="Node3D" unique_id=1548119595]
+script = ExtResource("1_foea7")
+
+[node name="AmbientSounds" type="Node" parent="." unique_id=610574022]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=22190459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.611944, 1.5411298, -0.44361824)
+stream = ExtResource("2_bt1tt")
+autoplay = true
+max_distance = 8.0
+bus = &"Ambience"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1720663402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.611944, 1.5411298, -1.8110836)
+stream = ExtResource("3_eaxl8")
+volume_db = 15.0
+max_db = 6.0
+autoplay = true
+max_distance = 4.0
+bus = &"Ambience"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1424361419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1990287, 1.5411298, 1.6164479)
+stream = ExtResource("3_eaxl8")
+volume_db = 20.0
+max_db = 6.0
+autoplay = true
+max_distance = 4.0
+bus = &"Ambience"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=863235108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5455718, 1.5411298, -6.9861145)
+stream = ExtResource("4_ep4k0")
+volume_db = 5.0
+max_db = 6.0
+autoplay = true
+max_distance = 3.0
+bus = &"Ambience"
 
 [node name="Rain" type="GPUParticles3D" parent="." unique_id=329248661]
 transform = Transform3D(1.7541407, 0, 0, 0, 2.1546223, 0, 0, 0, 1.6554832, -0.9861851, 6.15551, -4.431979)
@@ -77,7 +124,7 @@ trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_7ekle")
 draw_pass_1 = SubResource("RibbonTrailMesh_ea3sf")
 
-[node name="house_inside" parent="." unique_id=28046534 instance=ExtResource("1_iw5ha")]
+[node name="house_inside" parent="." unique_id=752345904 instance=ExtResource("1_iw5ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=307444536]
@@ -117,6 +164,15 @@ light_indirect_energy = 1.215
 shadow_enabled = true
 spot_range = 40.996
 spot_angle = 82.02
+
+[node name="TVLIGHT" type="SpotLight3D" parent="Lights" unique_id=1405901244]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.4900246, 1.4910579, -0.45817938)
+light_color = Color(0.6313726, 0.9411765, 0.92941177, 1)
+light_energy = 5.0
+light_volumetric_fog_energy = 1.5
+shadow_enabled = true
+spot_range = 2.091374
+spot_angle = 82.35
 
 [node name="Environment" type="Node" parent="." unique_id=613088320]
 
@@ -322,3 +378,62 @@ visible = false
 
 [node name="WaterJug" parent="WaterJugTask" unique_id=28632907 instance=ExtResource("24_pqtb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7774987, 1.4170552, -7.184457)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=393369763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08049, 0, 1.4277823)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=147383760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014770031, 0.3840108, 0.011963844)
+shape = SubResource("CapsuleShape3D_ep4k0")
+
+[node name="OutsideEnv" type="Node" parent="." unique_id=607739463]
+
+[node name="Tree" parent="OutsideEnv" unique_id=2074080577 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.606432, 0, -0.3706193)
+
+[node name="Tree2" parent="OutsideEnv" unique_id=1869895754 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.189532, -1.3127133, 1.2322526)
+
+[node name="Tree3" parent="OutsideEnv" unique_id=1987996055 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6429796, -1.3127133, -5.0176506)
+
+[node name="Tree4" parent="OutsideEnv" unique_id=1713740386 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.291256, -3.7203355, -6.8771505)
+
+[node name="Tree5" parent="OutsideEnv" unique_id=712194316 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.291256, -5.5466695, -9.786736)
+
+[node name="Tree9" parent="OutsideEnv" unique_id=373065777 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.286134, -5.5466695, -13.110418)
+
+[node name="Tree6" parent="OutsideEnv" unique_id=460211025 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.41079, -1.5740614, -13.051859)
+
+[node name="Tree7" parent="OutsideEnv" unique_id=2108723538 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.41079, -0.29060984, -19.744312)
+
+[node name="Tree8" parent="OutsideEnv" unique_id=2013619899 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.796734, -1.0941577, -21.162128)
+
+[node name="Tree10" parent="OutsideEnv" unique_id=974809240 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.427454, -1.0941577, -21.162128)
+
+[node name="Tree11" parent="OutsideEnv" unique_id=1670468746 instance=ExtResource("30_ff1h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.087633, -3.1913419, -13.717194)
+
+[node name="HouseEnv" parent="OutsideEnv" unique_id=338920394 instance=ExtResource("31_dpeow")]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="OutsideEnv" unique_id=655022436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.886025, 7.806764, -14)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+omni_range = 17.411
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="OutsideEnv" unique_id=286480562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6385894, 4.9659343, -2.394689)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 154.55

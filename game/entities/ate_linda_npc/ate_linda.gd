@@ -8,7 +8,7 @@ var _dialogue_completed: bool = false
 
 func _ready() -> void:
 	super._ready()
-	prompt_label = "Buy Materials"
+	prompt_label = "Buy from Ate Linda"
 
 func _pick_sequence() -> DialogueSequence:
 	_dialogue_completed = false  # reset on each new conversation

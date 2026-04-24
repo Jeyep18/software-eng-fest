@@ -10,4 +10,5 @@ func interact() -> void:
 		return
 	
 	await TransitionOverlay.fade_to_black()
+	AudioManager.play_sfx(preload("res://game/assets/sfx/15419__pagancow__dorm-door-opening.wav"))
 	SceneManager.travel_to(door_destination, spawn_point_id)

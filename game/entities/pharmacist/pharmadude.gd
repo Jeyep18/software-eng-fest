@@ -4,7 +4,7 @@ extends ShopPeople
 func _ready() -> void:
 	super._ready()
 	shop_path = path
-	prompt_label = "Buy Materials"
+	prompt_label = "Buy Medicine"
 
 func interact() -> void:
 	super.interact()

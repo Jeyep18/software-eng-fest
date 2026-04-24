@@ -4,6 +4,11 @@
 [ext_resource type="Script" uid="uid://1ytg0smdfvjy" path="res://game/ui/map/MapRoadLayer.gd" id="2_22ccy"]
 [ext_resource type="Texture2D" uid="uid://ykqyrns056n2" path="res://game/assets/map.png" id="3_hc5gi"]
 [ext_resource type="Script" uid="uid://dljchs54k1dc6" path="res://game/ui/map/MapStormOverlay.gd" id="3_ul25n"]
+[ext_resource type="Script" uid="uid://3pf8boewskp4" path="res://game/ui/map/end_day.gd" id="5_ul25n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_22ccy"]
+font_size = 25
+font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
 
 [node name="MapScreen" type="CanvasLayer" unique_id=1053564521]
 script = ExtResource("1_wkx60")
@@ -107,3 +112,35 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Cancel"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=210543276]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 266.0
+offset_bottom = 22.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1868126704]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1343594373]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2078263865]
+layout_mode = 2
+text = "Confident enough?"
+label_settings = SubResource("LabelSettings_22ccy")
+
+[node name="EndDay" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=355423833]
+layout_mode = 2
+text = "END THE DAY"
+script = ExtResource("5_ul25n")
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1578434258]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2

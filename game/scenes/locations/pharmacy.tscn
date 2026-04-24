@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://duelec3o3cexw"]
 
+[ext_resource type="AudioStream" uid="uid://bhryrf6qv6svw" path="res://game/assets/sfx/319336__forfie__city-sounds.wav" id="1_b23kr"]
 [ext_resource type="Texture2D" uid="uid://du4nafhdine4c" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_diff_4k.png" id="1_hvxim"]
+[ext_resource type="AudioStream" uid="uid://p0hwlcdwdf6d" path="res://game/assets/sfx/830440__joelmcdaniel__fluorescent-light-buzzing.wav" id="2_koe55"]
 [ext_resource type="Texture2D" uid="uid://cn3ifi1md8t14" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_ao_4k.png" id="2_xalqm"]
+[ext_resource type="AudioStream" uid="uid://c503t8jvnb0eh" path="res://game/assets/sfx/721615__sduggysounds__foodcourt-ambience.wav" id="3_ndmtl"]
 [ext_resource type="Texture2D" uid="uid://b06bpfvtsegu3" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_diff_4k.jpg" id="3_scsrr"]
 [ext_resource type="Texture2D" uid="uid://dm0i10xqkx0jb" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_diff_2k.png" id="4_ng0me"]
 [ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_popvo"]
@@ -14,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="12_ra384"]
 [ext_resource type="Resource" uid="uid://3nff5bac5elg" path="res://game/resources/items/banana.tres" id="13_eiweo"]
 [ext_resource type="PackedScene" uid="uid://dowqdxmca6ku8" path="res://game/entities/pharmacist/pharma_dude.tscn" id="14_eiweo"]
+[ext_resource type="PackedScene" uid="uid://cgxg2hd82077n" path="res://game/entities/chooks_to_go_seller.tscn" id="15_cu82t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
 albedo_texture = ExtResource("1_hvxim")
@@ -98,6 +102,39 @@ size = Vector3(13.718491, 2.862793, 1.854065)
 size = Vector3(13.718491, 2.862793, 1.854065)
 
 [node name="Pharmacy" type="Node3D" unique_id=658136089]
+
+[node name="AmbientSounds" type="Node" parent="." unique_id=289407803]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1878012814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.478497, 3.557139, -6.00386)
+stream = ExtResource("1_b23kr")
+volume_db = -10.0
+autoplay = true
+max_distance = 18.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1444846299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.769642, 3.557139, -6.00386)
+stream = ExtResource("1_b23kr")
+volume_db = -10.0
+autoplay = true
+max_distance = 18.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1625905188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.728641, 3.557139, -10.768003)
+stream = ExtResource("2_koe55")
+autoplay = true
+max_distance = 9.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=766555916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.048943, 3.557139, -7.794567)
+stream = ExtResource("3_ndmtl")
+volume_db = -10.0
+autoplay = true
+max_distance = 14.0
+bus = &"SFX"
 
 [node name="Greybox" type="Node3D" parent="." unique_id=1855147209]
 visible = false
@@ -387,7 +424,7 @@ light_energy = 1.475
 shadow_enabled = true
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1859736184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0460825, 4.020945, -10.00791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0460825, 3.804719, -9.072108)
 light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
 light_energy = 1.475
 shadow_enabled = true
@@ -406,3 +443,18 @@ shadow_enabled = true
 
 [node name="PharmaDude" parent="." unique_id=1843940927 instance=ExtResource("14_eiweo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0044093, 1.3066115, -9.867387)
+
+[node name="ChooksToGoSeller" parent="." unique_id=1473059641 instance=ExtResource("15_cu82t")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.326217, 0.5763234, -10.285725)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=527776166]
+transform = Transform3D(1, 0, 0, 0, 0.93570286, -0.35278895, 0, 0.35278895, 0.93570286, 7.9638577, 0.1754308, -8.263052)
+visible = false
+use_collision = true
+size = Vector3(7.0861206, 1.0788231, 1.6054039)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1368530272]
+transform = Transform3D(1, 0, 0, 0, 0.99887335, 0.047455236, 0, -0.047455236, 0.99887335, 7.9638577, 0.8970599, -8.862403)
+visible = false
+use_collision = true
+size = Vector3(7.0861206, 0.12779045, 0.09078789)

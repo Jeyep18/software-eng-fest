@@ -1,5 +1,8 @@
 [gd_scene format=4 uid="uid://gjxpphhhyskv"]
 
+[ext_resource type="Script" uid="uid://cavohnjithgvx" path="res://game/scenes/locations/hardware.gd" id="1_68viv"]
+[ext_resource type="AudioStream" uid="uid://p0hwlcdwdf6d" path="res://game/assets/sfx/830440__joelmcdaniel__fluorescent-light-buzzing.wav" id="2_mrv0t"]
+[ext_resource type="AudioStream" uid="uid://c503t8jvnb0eh" path="res://game/assets/sfx/721615__sduggysounds__foodcourt-ambience.wav" id="3_clh7r"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="5_fltjs"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_4clnw"]
 [ext_resource type="Resource" uid="uid://byurdrwuga6g4" path="res://game/resources/items/plywood.tres" id="6_lusb0"]
@@ -7,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dpak6gybwx24y" path="res://game/entities/hardware_girl/hardware_girl.tscn" id="7_lusb0"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_hx63o"]
 [ext_resource type="PackedScene" uid="uid://ccn02805xx87w" path="res://_raw_assets/Locations/HardwareStore.glb" id="9_mrv0t"]
+[ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="11_m71rt"]
 
 [sub_resource type="Shader" id="Shader_tokvj"]
 code = "
@@ -84,6 +88,38 @@ interior = true
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="Hardware" type="Node3D" unique_id=2043522354]
+script = ExtResource("1_68viv")
+
+[node name="AmbientSounds" type="Node" parent="." unique_id=1286010751]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=488761715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9174037, 3.557139, -6.00386)
+stream = ExtResource("2_mrv0t")
+autoplay = true
+max_distance = 18.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=714894437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.939375, 3.557139, -6.00386)
+stream = ExtResource("2_mrv0t")
+autoplay = true
+max_distance = 18.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=339816807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0170035, 3.557139, -17.767422)
+stream = ExtResource("2_mrv0t")
+autoplay = true
+max_distance = 18.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=567027489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.187471, 3.557139, -10.450379)
+stream = ExtResource("3_clh7r")
+volume_db = -11.85
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
 
 [node name="Environment" type="Node" parent="." unique_id=958567759]
 
@@ -183,6 +219,14 @@ spot_angle = 78.42372
 
 [node name="SpotLight3D18" type="SpotLight3D" parent="Light" unique_id=384538611]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -8.987073, 3.4562097, -8.14731)
+light_color = Color(0.8156054, 0.86813295, 0.3882016, 1)
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 8.818372
+spot_angle = 78.42372
+
+[node name="SpotLight3D19" type="SpotLight3D" parent="Light" unique_id=1952808171]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 13.801228, 3.4562097, -8.14731)
 light_color = Color(0.8156054, 0.86813295, 0.3882016, 1)
 light_energy = 5.0
 shadow_enabled = true
@@ -313,3 +357,13 @@ item_data = ExtResource("6_lusb0")
 
 [node name="HardwareGirl" parent="." unique_id=2031183002 instance=ExtResource("7_lusb0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2908497, 0, -10.150283)
+
+[node name="NarrativeShi" parent="." unique_id=842517525 instance=ExtResource("11_m71rt")]
+transform = Transform3D(0.042206936, 0, -0.9991089, 0, 1, 0, 0.9991089, 0, 0.042206936, 2.896019, 0.49417877, -7.2959094)
+monologue_lines = Array[String](["Lahat ng ito order ni kap?", "Hindi man lang siya nag tira para saaming taumbayan?"])
+chars_per_second = 40.0
+
+[node name="NarrativeShi2" parent="." unique_id=1352517274 instance=ExtResource("11_m71rt")]
+transform = Transform3D(-0.9991089, 0, -0.04220689, 0, 1, 0, 0.04220689, 0, -0.9991089, 2.896019, 1.0770836, -14.378158)
+monologue_lines = Array[String](["Paubos na nga ang mga bilihin...", "Buti naabutan ko pa na bukas itong hardware store."])
+chars_per_second = 40.0

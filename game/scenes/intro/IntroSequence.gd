@@ -29,50 +29,25 @@ const LINES: Array = [
 	# Opens warm. Taglish sets the register immediately.
 	# The family is introduced through texture, not description.
 
-	{ "text": "Maaga pa lang.",                        "hold": 2.0, "fade": 0.8, "style": "italic"  },
+	{ "text": "The flood barriers were repaired last year. The budget was approved. The funds were released.",                        "hold": 2.0, "fade": 0.8, "style": "italic"  },
 	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
-	{ "text": "Quiet.",                                "hold": 1.4, "fade": 0.6, "style": "normal"  },
-	{ "text": "Ordinary.",                             "hold": 1.8, "fade": 0.7, "style": "normal"  },
+	{ "text": "So why is the water rising?",                                "hold": 1.4, "fade": 0.6, "style": "normal"  },
+	{ "text": "",                             "hold": 1.8, "fade": 0.7, "style": "normal"  },
 	{ "text": "",                                      "hold": 0.8, "fade": 0.0, "style": "pause"   },
-	{ "text": "Nanay is cooking in the kitchen.",      "hold": 2.0, "fade": 0.7, "style": "normal"  },
-	{ "text": "Lola is praying.",                      "hold": 1.8, "fade": 0.7, "style": "normal"  },
-	{ "text": "Bunso is watching cartoons on the floor.", "hold": 2.0, "fade": 0.7, "style": "normal" },
+	{ "text": "Every year, the storm comes. Every year, the government is ready",      "hold": 2.0, "fade": 0.7, "style": "normal"  },
+	{ "text": "This year, you were not",                      "hold": 1.8, "fade": 0.7, "style": "normal"  },
 	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
 
 	# ── Block 2: The Bulletin ──────────────────────────────────────────────────
 	# Short. Clinical. The rhythm breaks on purpose here.
 	# No adjectives. Just the numbers.
 
-	{ "text": "Then the radio.",                       "hold": 2.4, "fade": 0.9, "style": "large"   },
+	{ "text": "Somewhere in the Philippines, a family prepares for the storm",                       "hold": 2.4, "fade": 0.9, "style": "large"   },
 	{ "text": "",                                      "hold": 0.8, "fade": 0.0, "style": "pause"   },
-	{ "text": "Signal 3.",                             "hold": 1.6, "fade": 0.6, "style": "normal"  },
-	{ "text": "Escalating to Signal 4.",               "hold": 2.0, "fade": 0.7, "style": "normal"  },
-	{ "text": "Landfall in twelve hours.",             "hold": 2.6, "fade": 0.8, "style": "normal"  },
+	{ "text": "Signal 3",                             "hold": 1.6, "fade": 0.6, "style": "normal"  },
+	{ "text": "Escalating to Signal 4",               "hold": 2.0, "fade": 0.7, "style": "normal"  },
+	{ "text": "Only 12 hours left",             "hold": 2.6, "fade": 0.8, "style": "normal"  },
 	{ "text": "",                                      "hold": 0.9, "fade": 0.0, "style": "pause"   },
-
-	# ── Block 3: The House ─────────────────────────────────────────────────────
-	# Each line is a fact, not a feeling.
-	# The player should feel like they're doing an inventory before
-	# they've even started playing.
-
-	{ "text": "You walk through the house.",           "hold": 1.8, "fade": 0.7, "style": "normal"  },
-	{ "text": "",                                      "hold": 0.4, "fade": 0.0, "style": "pause"   },
-	{ "text": "There is a hole in the ceiling.",       "hold": 1.8, "fade": 0.6, "style": "normal"  },
-	{ "text": "The fridge is nearly empty.",           "hold": 1.8, "fade": 0.6, "style": "normal"  },
-	{ "text": "Lola's medicine is almost gone.",       "hold": 2.0, "fade": 0.7, "style": "normal"  },
-	{ "text": "The windows are thin.",                 "hold": 2.0, "fade": 0.7, "style": "normal"  },
-	{ "text": "",                                      "hold": 0.8, "fade": 0.0, "style": "pause"   },
-
-	# ── Block 4: The Handoff ───────────────────────────────────────────────────
-	# Don't give a speech. Give the player the weight and let go.
-	# The last two lines are the game's entire premise in plain language.
-
-	{ "text": "Outside, the sky is still clear.",      "hold": 2.2, "fade": 0.8, "style": "normal"  },
-	{ "text": "",                                      "hold": 0.4, "fade": 0.0, "style": "pause"   },
-	{ "text": "It won't stay that way.",               "hold": 2.4, "fade": 0.8, "style": "normal"  },
-	{ "text": "",                                      "hold": 1.0, "fade": 0.0, "style": "pause"   },
-	{ "text": "Twelve hours.",                         "hold": 2.8, "fade": 1.0, "style": "large"   },
-	{ "text": "",                                      "hold": 0.6, "fade": 0.0, "style": "pause"   },
 	{ "text": "Do what you can",                       "hold": 1.6, "fade": 0.5, "style": "normal"  },
 	{ "text": "with what you have.",                   "hold": 2.6, "fade": 1.0, "style": "normal"  },
 
@@ -88,6 +63,8 @@ func _ready() -> void:
 	skip_hint.modulate.a  = 0.0
 	line_label.text       = ""
 	_run_sequence()
+	AudioManager.play_ambience(preload("res://game/assets/sfx/freesound_community-morning-birds-30911-FreeSoundCommunityPixabay.mp3"))
+	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 
 # ── Input — Skip on any key or mouse click ────────────────────────────────────
 func _input(event: InputEvent) -> void:
@@ -138,16 +115,16 @@ func _end_sequence() -> void:
 func _apply_style(style: String) -> void:
 	match style:
 		"normal":
-			line_label.add_theme_font_size_override("font_size", 15)
+			line_label.add_theme_font_size_override("font_size", 35)
 			line_label.add_theme_color_override("font_color", Color(0.91, 0.89, 0.86))
 		"large":
-			line_label.add_theme_font_size_override("font_size", 22)
+			line_label.add_theme_font_size_override("font_size", 35)
 			line_label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0))
 		"small":
-			line_label.add_theme_font_size_override("font_size", 11)
+			line_label.add_theme_font_size_override("font_size", 35)
 			line_label.add_theme_color_override("font_color", Color(0.53, 0.53, 0.50))
 		"italic":
-			line_label.add_theme_font_size_override("font_size", 13)
+			line_label.add_theme_font_size_override("font_size", 35)
 			line_label.add_theme_color_override("font_color", Color(0.78, 0.76, 0.72))
 			# Assign an italic font variant via LabelSettings in the Inspector
 			# for this style to render correctly.
