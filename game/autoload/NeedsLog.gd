@@ -57,13 +57,14 @@ func get_all_discovered() -> Array:
 # A need can only be resolved if it was first discovered.
 
 func resolve(need: Need) -> void:
+	# Auto-discover if not yet discovered —
+	# TaskObject may complete before player manually explores
 	if not _discovered.has(need):
-		push_warning("NeedsLog: resolve() called on undiscovered need '%s'." 
-				% NEED_LABELS.get(need, str(need)))
-		return
+		discover(need)
 	if _resolved.has(need):
 		return
 	_resolved[need] = true
+	print("NeedsLog: emitting need_resolved for: ", NEED_LABELS.get(need))
 	need_resolved.emit(need)
 
 func is_resolved(need: Need) -> bool:
