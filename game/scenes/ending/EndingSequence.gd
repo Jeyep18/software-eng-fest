@@ -301,7 +301,7 @@ func _show_result_panel() -> void:
 func _populate_result_panel() -> void:
 	var title_lbl:  Label         = result_panel.get_node("VBoxContainer/TitleLabel")
 	var sub_lbl:    Label         = result_panel.get_node("VBoxContainer/SubLabel")
-	var item_list:  VBoxContainer = result_panel.get_node("VBoxContainer/ItemList")
+	var item_list:  ItemList = result_panel.get_node("VBoxContainer/ItemList")
 	var footer_lbl: Label         = result_panel.get_node("VBoxContainer/FooterLabel")
 
 	var completed_count: int = 0

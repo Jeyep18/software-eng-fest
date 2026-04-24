@@ -8,7 +8,8 @@
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_ci5uq"]
 [ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="5_6ibw1"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_stuec"]
-[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="6_ic1yo"]
+[ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="5_xn1oe"]
+[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="6_ic1yo"]
 [ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="6_xn1oe"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="7_kbbe7"]
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="8_aymul"]
@@ -75,55 +76,62 @@ script = ExtResource("1_6ukco")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
 [node name="WindowArea" type="Node3D" parent="World3D" unique_id=1882663686]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0883017, 1.2391502, -0.2856571)
+transform = Transform3D(0.7222298, 0.09082435, 0.685664, 0, 0.99134076, -0.13131487, -0.6916532, 0.094839506, 0.7159758, -5.8916526, 1.7179644, 0.83773685)
 
-[node name="WindowTaskVisualCue" type="Node3D" parent="World3D/WindowArea" unique_id=1401958296]
+[node name="WindowTaskVisualCue" type="Node3D" parent="World3D/WindowArea" unique_id=2117896876]
+transform = Transform3D(-0.6661349, 0.0254191, 0.7453981, -0.105088875, 0.9862502, -0.12754652, -0.7383905, -0.16329625, -0.65430415, -0.07400608, -1.3030365, -3.506143)
 
 [node name="PlywoodModel" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=1162719025 instance=ExtResource("3_lj212")]
-transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99954313, -0.030224532, 0, 0, 0, 1, -7.205164, 1.3784611, -1.012984)
+transform = Transform3D(-0.030224519, 0.999543, 2.9802322e-08, -0.9995437, -0.030224532, -7.450581e-09, -3.7252903e-09, 7.450581e-09, 1, -1.2187228, 1.1504889, -0.95849824)
 
-[node name="PlywoodModel2" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=582676874 instance=ExtResource("3_lj212")]
-transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 1.7853206, -1.012984)
+[node name="PlywoodModel2" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=409569946 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224532, 0.999543, 7.450581e-09, -0.9932965, -0.030035652, -0.11162506, -0.11157401, -0.0033737645, 0.9937499, -1.2178507, 0.69983506, -0.96776897)
 
-[node name="PlywoodModel3" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=1677631533 instance=ExtResource("3_lj212")]
-transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 2.204906, -1.012984)
+[node name="PlywoodModel3" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=557639720 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224532, 0.999543, 7.450581e-09, -0.99329656, -0.030035652, -0.11162506, -0.11157401, -0.003373772, 0.9937499, -1.1859846, 1.5491087, -0.9824387)
 
-[node name="PlywoodModel4" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=624658813 instance=ExtResource("3_lj212")]
-transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99894756, -0.030206522, 0.03451576, 0.034499988, 0.0010432231, 0.99940413, -7.205164, 2.5553212, -1.012984)
+[node name="PlywoodModel4" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=409346464 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224517, 0.9995431, 3.7252903e-08, -0.9989476, -0.030206535, 0.03451578, 0.034499995, 0.0010432228, 0.99940413, -1.2235599, 0.34676456, -0.93537754)
 
 [node name="RoofArea" type="Node3D" parent="World3D" unique_id=2044074868]
-transform = Transform3D(0.99976087, -0.021867232, 0, 0.021867232, 0.99976087, 0, 0, 0, 1, -0.31257415, 0.14013362, -1.969238)
+transform = Transform3D(-0.39830586, -0.2535304, -0.88151836, 0, 0.96104205, -0.27640194, 0.91725266, -0.11009253, -0.38278872, -1.6524739, 3.813383, -3.848439)
 
 [node name="RoofTaskVisualCue" type="Node3D" parent="World3D/RoofArea" unique_id=1737201863]
+transform = Transform3D(-0.4078889, 0.019679487, 0.9128199, -0.22344814, 0.9672156, -0.12069851, -0.88526887, -0.25319916, -0.39011845, 3.2683604, -4.676665, -2.0814314)
 
 [node name="RoofFixed" parent="World3D/RoofArea/RoofTaskVisualCue" unique_id=1981724758 instance=ExtResource("4_1uubq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06754875, -0.5019884)
 
 [node name="BedroomArea" type="Node3D" parent="World3D" unique_id=119811650]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8153667, 2.0368557, 1.0987763)
+transform = Transform3D(0.0038889905, -0.37386787, 0.92747384, 0, 0.9274809, 0.3738707, -0.99999243, -0.0014539796, 0.0036069641, -6.5330877, 2.1536064, 1.3531399)
 
 [node name="MedicineTaskVisualCue" type="Node3D" parent="World3D/BedroomArea" unique_id=2076221844]
 
 [node name="KitchenArea" type="Node3D" parent="World3D" unique_id=1462759936]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75685, 1.3201734, -7.1865196)
+transform = Transform3D(0.8212383, -0.38330632, 0.4226629, 0, 0.7407532, 0.6717773, -0.57058537, -0.55168927, 0.60833484, 4.448159, 1.5744739, -2.9127576)
 
 [node name="FoodTaskVisualCue" type="Node3D" parent="World3D/KitchenArea" unique_id=439614265]
 
 [node name="WaterArea" type="Node3D" parent="World3D" unique_id=78236688]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8917582, 1.203595, -6.9054585)
+transform = Transform3D(0.6950481, -0.06323084, -0.7161774, 0, 0.99612516, -0.08794725, 0.7189633, 0.061127562, 0.69235486, 2.2195225, 1.4930148, -6.0274343)
 
-[node name="WaterTaskVisualCue" type="Node3D" parent="World3D/WaterArea" unique_id=1067699904]
+[node name="WaterTaskVisualCue" type="Node3D" parent="World3D/WaterArea" unique_id=1827025395]
+transform = Transform3D(1, 3.7252903e-09, 0, -1.1175871e-08, 1, 2.9802322e-08, 2.9802322e-08, 2.6077032e-08, 1, -1.0572722, -0.37637043, 1.8239727)
+
+[node name="WaterJug" parent="World3D/WaterArea/WaterTaskVisualCue" unique_id=1392018920 instance=ExtResource("5_xn1oe")]
+transform = Transform3D(0.7523638, 0.0025987937, 0.65874314, -0.05154245, 0.9971588, 0.05493385, -0.6567282, -0.07528335, 0.75036013, 0.91979504, 0.23014069, -2.752297)
 
 [node name="RadioArea" type="Node3D" parent="World3D" unique_id=403547612]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40099204, 1.2927852, 2.1357021)
+transform = Transform3D(0.71265024, -0.11221377, 0.6924867, 0, 0.9871238, 0.15995817, -0.7015196, -0.11399421, 0.703474, 0.15491152, 1.1160754, 2.3924148)
 
 [node name="RadioTaskVisualCue" type="Node3D" parent="World3D/RadioArea" unique_id=1262499592]
+transform = Transform3D(0.9636239, 0.008456939, -0.26712316, -0.053786024, 0.9851843, -0.16283795, 0.26178908, 0.17128222, 0.9498032, 0.69380945, -1.2046963, -2.2272735)
 
 [node name="Radio" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1481765612 instance=ExtResource("5_6ibw1")]
-transform = Transform3D(-0.94495463, 0, -0.3272013, 0, 1, 0, 0.3272013, 0, -0.94495463, -0.5010699, 1.6944549, 1.744984)
+transform = Transform3D(-0.9993163, -0.003947636, 0.036756903, -0.0038177064, 0.99998623, 0.003604244, -0.036770552, 0.0034614513, -0.99931765, -0.5933779, 1.6929674, 1.6936965)
 
 [node name="Flashlight" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1715193510 instance=ExtResource("6_xn1oe")]
-transform = Transform3D(-0.8504624, 0, 0.5260358, 0, 1, 0, -0.5260358, 0, -0.8504624, -0.4455178, 1.1527671, 1.7482257)
+transform = Transform3D(-0.5016014, -0.056919497, 0.8632245, -0.03341392, 0.99836415, 0.046414144, -0.8644531, -0.005562376, -0.5026822, -0.5990638, 1.0932446, 1.6630607)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1545298350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, -1.0246289)
@@ -238,7 +246,7 @@ omni_range = 154.55
 environment = ExtResource("3_rmxaa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=692121294]
-transform = Transform3D(-0.28498715, -0.5484355, -0.78613025, -0.764105, -0.36518767, 0.5317719, -0.57872766, 0.7522343, -0.31498855, -3.7560396, 5.09972, 0)
+transform = Transform3D(-0.2896628, -0.5506624, -0.7828579, -0.76234484, -0.361821, 0.5365778, -0.5787278, 0.7522344, -0.31498858, -3.7560396, 5.09972, 0)
 light_color = Color(0.8452686, 0.8693299, 0.88392496, 1)
 light_energy = 4.0
 shadow_enabled = true
@@ -264,12 +272,14 @@ metadata/_edit_lock_ = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1651033915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3984628, 6.104459, 1.8699625)
+visible = false
 material_override = SubResource("StandardMaterial3D_2sg0l")
 size = Vector3(17.917526, 5.115967, 0.26220703)
 metadata/_edit_lock_ = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=154719546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.470448, 2.2067423, 1.8699625)
+visible = false
 material_override = SubResource("StandardMaterial3D_2sg0l")
 size = Vector3(10.357513, 5.115967, 0.26220703)
 metadata/_edit_lock_ = true
