@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://dvsimsn4kkqmg"]
 
+[ext_resource type="Script" uid="uid://d1nx5ndlicu4x" path="res://game/scenes/main_menu/main_menu_1.gd" id="1_fyk87"]
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_ow6fg"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_n54o5"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_40lqx"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_nmekv"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_bwlk5"]
+[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_bwlk5"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_e8epe"]
+[ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="9_64f0y"]
 [ext_resource type="Script" uid="uid://cx15idd6avcuk" path="res://game/scenes/main_menu/start_button.gd" id="9_n2j5s"]
+[ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="10_4kbe1"]
+[ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="11_5bjxa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyk87"]
+transparency = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -46,9 +53,64 @@ material = SubResource("StandardMaterial3D_ea3sf")
 size = 0.3
 curve = SubResource("Curve_7ekle")
 
-[node name="HouseInside" type="Node3D" unique_id=1548119595]
+[sub_resource type="LabelSettings" id="LabelSettings_hpvqv"]
+line_spacing = 80.0
+font = ExtResource("11_5bjxa")
+font_size = 100
+font_color = Color(0.88051325, 0.89085156, 0.9155459, 1)
+shadow_size = 10
+shadow_color = Color(0.10463881, 0.239701, 0.22193775, 1)
+shadow_offset = Vector2(-5, 5)
 
-[node name="house_inside" parent="." unique_id=2084177099 instance=ExtResource("1_ow6fg")]
+[sub_resource type="LabelSettings" id="LabelSettings_jn6f0"]
+font = ExtResource("11_5bjxa")
+font_size = 45
+font_color = Color(0.7752989, 0.74258107, 0.7733152, 1)
+shadow_size = 10
+shadow_color = Color(0.10463881, 0.239701, 0.22193775, 1)
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="Animation" id="Animation_5bjxa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hpvqv"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jn6f0"]
+_data = {
+&"RESET": SubResource("Animation_5bjxa"),
+&"fade_in": SubResource("Animation_hpvqv")
+}
+
+[node name="MainMenu1" type="Node3D" unique_id=1548119595]
+script = ExtResource("1_fyk87")
+
+[node name="house_inside" parent="." unique_id=752345904 instance=ExtResource("1_ow6fg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="house_inside" unique_id=1545298350]
@@ -73,6 +135,37 @@ light_indirect_energy = 1.215
 shadow_enabled = true
 spot_range = 40.996
 spot_angle = 82.02
+
+[node name="Lightning" type="SpotLight3D" parent="Lights" unique_id=60318727]
+transform = Transform3D(0.20485541, 0.9149189, -0.34778982, 0.39795446, 0.24677695, 0.88359123, 0.8942408, -0.31941295, -0.3135425, -8.0485735, 5.2283397, -2.0376613)
+visible = false
+light_energy = 19.96
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+spot_range = 47.439
+spot_attenuation = -1.49
+spot_angle = 17.94
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Lights/Lightning" unique_id=43778197]
+transform = Transform3D(0.97642815, 0.17376277, 0.12804306, -0.21181673, 0.8854562, 0.41364285, -0.041500896, -0.43101406, 0.9013903, -0.4371984, -0.9296775, -3.0312872)
+material_override = SubResource("StandardMaterial3D_fyk87")
+size = Vector3(2.8550415, 1, 3.0115967)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1877970318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.886025, 7.806764, -14)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+omni_range = 154.55
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1315292458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6385894, 4.9659343, -2.394689)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 154.55
 
 [node name="Environment" type="Node" parent="." unique_id=613088320]
 
@@ -180,42 +273,6 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=240193404]
 transform = Transform3D(0.6025146, 0.13803293, 0.7860809, -0.015113643, 0.98672724, -0.16168144, -0.7979648, 0.08553487, 0.59660375, -5.783241, 1.6017874, 0.022307962)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1642778444]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -68.0
-offset_right = 69.0
-offset_bottom = 68.0
-grow_vertical = 2
-size_flags_horizontal = 0
-
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=1279024292]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1584692849]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="start_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=946051166]
-layout_mode = 2
-text = "START"
-script = ExtResource("9_n2j5s")
-
-[node name="load_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=383943701]
-layout_mode = 2
-text = "LOAD"
-
-[node name="settings_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=894939448]
-layout_mode = 2
-text = "SETTINGS"
-
-[node name="quit_button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=174355223]
-layout_mode = 2
-text = "QUIT"
-
 [node name="Rain" type="GPUParticles3D" parent="." unique_id=1559939050]
 transform = Transform3D(1.7541407, 0, 0, 0, 2.1546223, 0, 0, 0, 1.6554832, -0.9861851, 6.15551, -4.431979)
 amount = 1500
@@ -226,3 +283,97 @@ trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_1v4d4")
 draw_pass_1 = SubResource("RibbonTrailMesh_fyk87")
+
+[node name="Tree" parent="." unique_id=2074080577 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.606432, 0, -0.3706193)
+
+[node name="Tree2" parent="." unique_id=1229160380 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.189532, -1.3127133, 1.2322526)
+
+[node name="Tree3" parent="." unique_id=975881529 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6429796, -1.3127133, -5.0176506)
+
+[node name="Tree4" parent="." unique_id=1109776419 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.291256, -3.7203355, -6.8771505)
+
+[node name="Tree5" parent="." unique_id=1195569144 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.291256, -5.5466695, -9.786736)
+
+[node name="Tree6" parent="." unique_id=1445856672 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.41079, -1.5740614, -13.051859)
+
+[node name="Tree7" parent="." unique_id=386389733 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.41079, -0.29060984, -19.744312)
+
+[node name="Tree8" parent="." unique_id=1811217851 instance=ExtResource("9_64f0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.796734, -1.0941577, -21.162128)
+
+[node name="HouseEnv" parent="." unique_id=338920394 instance=ExtResource("10_4kbe1")]
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=1651915984]
+custom_minimum_size = Vector2(900, 600)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -300.0
+offset_right = 988.0
+offset_bottom = 300.0
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=400217613]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=843792586]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=620131320]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+text = "Bagyong 
+Bahay"
+label_settings = SubResource("LabelSettings_hpvqv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=559390626]
+layout_mode = 2
+text = "Handa ka na ba?"
+label_settings = SubResource("LabelSettings_jn6f0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=1642778444]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1584692849]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=387268695]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="start_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=946051166]
+layout_mode = 2
+text = "START"
+script = ExtResource("9_n2j5s")
+
+[node name="load_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=383943701]
+layout_mode = 2
+text = "LOAD"
+
+[node name="settings_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=894939448]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="quit_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=174355223]
+layout_mode = 2
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1684201697]
+libraries/ = SubResource("AnimationLibrary_jn6f0")
+autoplay = &"fade_in"

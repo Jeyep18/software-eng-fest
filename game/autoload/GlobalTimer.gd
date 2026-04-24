@@ -149,3 +149,10 @@ func _check_thresholds(minute: int) -> void:
 				emit_signal("storm_arrived")
 			else:
 				emit_signal("encroachment_threshold_reached", threshold["zone_id"])
+
+func force_storm_arrival() -> void:
+	var previous: int = current_minutes
+	current_minutes = TOTAL_MINUTES
+	# Fire any thresholds that were skipped.
+	for m in range(previous + 1, TOTAL_MINUTES + 1):
+		_check_thresholds(m)

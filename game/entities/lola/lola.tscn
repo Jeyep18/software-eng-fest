@@ -13,14 +13,21 @@
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
 expression = ExtResource("4_pgefp")
-text = "Oy apo, halika. Umupo ka muna sandali."
+text = "Oy apo, halika. Umupo ka muna sandali. "
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_f6xjy"]
+script = ExtResource("3_dw7mn")
+speaker_name = "Lola"
+expression = ExtResource("4_pgefp")
+text = "Apo yung bagyong paparating mag-ingat ka ha."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_q26se"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Player"
 expression = ExtResource("5_t0cy6")
-text = "Lola, okay ka lang?"
+text = "Opo Lola."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_8ka6y"]
@@ -41,12 +48,12 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dw7mn")
 speaker_name = "Player"
 expression = ExtResource("6_tkmwj")
-text = "Kailangan niya ang gamot. Kailangan ko pumunta ng botika."
+text = "Kailangan ni Lola ang gamot. Kailangan ko pumunta ng botika."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_qv5jj"]
 script = ExtResource("5_dyppw")
-lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_adolq"), SubResource("Resource_q26se"), SubResource("Resource_8ka6y"), SubResource("Resource_ak15h"), SubResource("Resource_5d8dr")])
+lines = Array[ExtResource("3_dw7mn")]([SubResource("Resource_adolq"), SubResource("Resource_f6xjy"), SubResource("Resource_q26se"), SubResource("Resource_8ka6y"), SubResource("Resource_ak15h"), SubResource("Resource_5d8dr")])
 metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="Resource" id="Resource_dyppw"]

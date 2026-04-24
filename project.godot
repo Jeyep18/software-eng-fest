@@ -15,6 +15,10 @@ run/main_scene="uid://c4d7ja1u0s1e7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bvw7wy45wf2m4"
+
 [autoload]
 
 TransitionOverlay="*uid://bx637gkf0lc65"
@@ -27,6 +31,7 @@ InventoryManager="*uid://b8lxp84j6d6lx"
 EconomyManager="*uid://bgmfpcpmaqr8h"
 ShopUi="*res://game/autoload/ShopUI.gd"
 StormEnroachment="*res://game/autoload/StormEnroachment.gd"
+AudioManager="*uid://c0lti2i34dbf0"
 
 [display]
 

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_hqigv"]
 [ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="4_ii1je"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_hqigv"]
+[ext_resource type="Texture2D" uid="uid://kil18kaqrmls" path="res://game/assets/npc_portraits/playerTalking2.png" id="5_lk3gm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lk3gm"]
 height = 1.7739258
@@ -18,9 +19,16 @@ expression = ExtResource("4_ii1je")
 text = "Bili na kayo, at mag sasara na ako, halos naubos na lahat ni kapitan ang mga supplies."
 metadata/_custom_type_script = "uid://po32410sv037"
 
+[sub_resource type="Resource" id="Resource_8a7sq"]
+script = ExtResource("3_ba3tf")
+speaker_name = "Player"
+expression = ExtResource("5_lk3gm")
+text = "Ikaw ulit?!!"
+metadata/_custom_type_script = "uid://po32410sv037"
+
 [sub_resource type="Resource" id="Resource_jdpt7"]
 script = ExtResource("5_hqigv")
-lines = Array[ExtResource("3_ba3tf")]([SubResource("Resource_lk3gm")])
+lines = Array[ExtResource("3_ba3tf")]([SubResource("Resource_lk3gm"), SubResource("Resource_8a7sq")])
 metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7w0gv"]

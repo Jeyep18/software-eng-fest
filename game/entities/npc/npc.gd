@@ -77,6 +77,7 @@ func _show_current_line() -> void:
 
 
 func _skip_to_line_end() -> void:
+	AudioManager.stop_voice()
 	if _tween and _tween.is_valid():
 		_tween.kill()
 	_ui.skip_to_end()
@@ -85,6 +86,7 @@ func _skip_to_line_end() -> void:
 
 
 func _hide_dialogue() -> void:
+	AudioManager.stop_voice()
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	is_showing = false
 	if _tween and _tween.is_valid():
@@ -106,10 +108,12 @@ func _pick_sequence() -> DialogueSequence:
 
 #region Signal Callbacks
 func _on_typewriter_finished() -> void:
+	AudioManager.stop_voice()
 	_is_typing = false
 	_ui.set_prompt_visible(true)
 
 
 func _on_player_left(_interactable: Interactable) -> void:
+	AudioManager.stop_voice()
 	_hide_dialogue()
 #endregion

@@ -4,7 +4,7 @@ extends CharacterBody3D
 const WALK_SPEED: float = 3.0
 const SPRINT_SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
-const GROUND_ACCELERATION: float = 8.0
+const GROUND_ACCELERATION: float = 12.0
 const AIR_ACCELERATION: float = 3.0
 const ROTATION_SPEED: float = 10.0
 
@@ -89,6 +89,7 @@ func _handle_movement(delta: float) -> void:
 	if direction != Vector3.ZERO:
 		if not Input.is_action_pressed("sprint"):
 			if _animation_player.current_animation != "walking":
+				#AudioManager.play_sfx(preload("res://game/assets/sfx/freesound_community-footstep-1-83098.mp3"))
 				_animation_player.play("walking")
 	
 		velocity.x = lerp(velocity.x, direction.x * _current_speed, delta * acceleration)
@@ -97,6 +98,7 @@ func _handle_movement(delta: float) -> void:
 	else:
 		if is_on_floor():
 			if _animation_player.current_animation != "idle":
+				#AudioManager.stop_sfx(true)
 				_animation_player.play("idle")
 			velocity.x = lerp(velocity.x, 0.0, delta * acceleration)
 			velocity.z = lerp(velocity.z, 0.0, delta * acceleration)

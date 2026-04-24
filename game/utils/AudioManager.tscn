@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0lti2i34dbf0"]
+
+[ext_resource type="Script" uid="uid://bw4exs52inotp" path="res://game/autoload/AudioManager.gd" id="1_02eqe"]
+
+[node name="AudioManager" type="Node" unique_id=1718590982]
+script = ExtResource("1_02eqe")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1715396958]
+autoplay = true
+bus = &"Music"
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="." unique_id=855851764]
+autoplay = true
+bus = &"Ambience"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1885179786]
+bus = &"SFX"
+
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="." unique_id=657350266]
+bus = &"Voice"
