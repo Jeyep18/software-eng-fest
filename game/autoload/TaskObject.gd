@@ -48,6 +48,15 @@ func _ready() -> void:
 	prompt_label = interaction_prompt
 	player_exited.connect(_on_player_left)
 	_setup_ui()
+	
+	# ── SYNC WITH GLOBAL STATE ────────────────────────────────────────────────
+	# Check if this task's need was already resolved in a previous visit.
+	# (Note: Replace 'is_resolved' with the actual method name your NeedsLog 
+	# uses to check if a need is complete, e.g., is_need_met, check_status, etc.)
+	if NeedsLog.is_resolved(need): 
+		_is_completed = true
+		if completion_visual_cue != null:
+			completion_visual_cue.visible = true
 
 func _setup_ui() -> void:
 	if monologue_ui_scene == null:

@@ -4,7 +4,7 @@ extends Node
 
 var collected_world_items: Array[String] = []
 var player_name: String = ""
-var cash_balance: int = 400
+var cash_balance: int = 600
 
 #region Act Tracking
 enum Act { ACT_1, ACT_2, ACT_3, ACT_4 }
@@ -103,12 +103,6 @@ func reset() -> void:
 
 func _ready() -> void:
 	print("Starting cash: ₱", GameState.get_cash())
-	
-	GameState.spend_cash(100)
-	print("After spending ₱100: ₱", GameState.get_cash())
-	
-	GameState.add_cash(50)
-	print("After adding ₱50: ₱", GameState.get_cash())
 
 func mark_item_collected(item_id: String) -> void:
 	if not collected_world_items.has(item_id):

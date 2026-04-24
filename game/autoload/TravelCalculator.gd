@@ -3,50 +3,31 @@ extends Node
 
 const MAP_GRAPH: Dictionary = {
 	"home": {
-		"mang_romy":     12,
-		"ate_linda":     12,
-		"hardware":      28,
-		"pharmacy":      28,
-		"barangay_hall": 28,
-		"grocery":       48,
-	},
-	"mang_romy": {
-		"home":          12,
-		"ate_linda":     15,
-		"hardware":      30,
+		"ate_linda":  12,   # unchanged — nearby, low pressure
+		"hardware":   30,   # up from 28 — marginal increase
+		"grocery":    55,   # up from 48 — grocery must feel far and risky
 	},
 	"ate_linda": {
-		"home":          12,
-		"mang_romy":     15,
-		"hardware":      20,
-		"pharmacy":      22,
+		"home":       12,
+		"hardware":   20,   # unchanged
+		"pharmacy":   22,   # unchanged
 	},
 	"hardware": {
-		"home":          28,
-		"ate_linda":     20,
-		"mang_romy":     30,
-		"pharmacy":      15,
-		"barangay_hall": 18,
-		"grocery":       25,
+		"home":       30,   # matches above
+		"ate_linda":  20,
+		"pharmacy":   15,   # unchanged — close together, reward efficient routing
+		"grocery":    25,   # unchanged
 	},
 	"pharmacy": {
-		"home":          28,
-		"ate_linda":     22,
-		"hardware":      15,
-		"barangay_hall": 12,
-		"grocery":       20,
-	},
-	"barangay_hall": {
-		"home":          28,
-		"hardware":      18,
-		"pharmacy":      12,
-		"grocery":       18,
+		"home":       34,   # slightly up — pharmacy + hardware + home chain
+		"ate_linda":  22,
+		"hardware":   15,
+		"grocery":    20,
 	},
 	"grocery": {
-		"home":          48,
-		"hardware":      25,
-		"pharmacy":      20,
-		"barangay_hall": 18,
+		"home":       55,   # matches above — far, closes early, creates urgency
+		"hardware":   25,
+		"pharmacy":   20,
 	},
 }
 
