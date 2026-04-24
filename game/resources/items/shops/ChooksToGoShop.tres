@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ShopData" format=3 uid="uid://bf82q6n7gsjdj"]
+
+[ext_resource type="Script" uid="uid://drt5nt3ddch63" path="res://game/scripts/ShopItem.gd" id="1_6perf"]
+[ext_resource type="Texture2D" uid="uid://bakrqxbrta6gl" path="res://game/assets/images/Whole Chicken.png" id="2_kt3sg"]
+[ext_resource type="Script" uid="uid://baep303p2o6o1" path="res://game/scripts/ShopData.gd" id="2_yf0qo"]
+[ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_smc7r"]
+[ext_resource type="Texture2D" uid="uid://b3eprd165dify" path="res://game/assets/images/Half Chicken.png" id="4_hav5r"]
+
+[sub_resource type="Resource" id="Resource_3su7f"]
+script = ExtResource("3_smc7r")
+item_name = "Whole Chicken"
+item_icon = ExtResource("2_kt3sg")
+item_description = "Malinamnam na manok ng Go To Chooks!"
+item_id = "whole_chicken"
+item_price = 250
+metadata/_custom_type_script = "uid://b51r7pisrdybh"
+
+[sub_resource type="Resource" id="Resource_mo4dh"]
+script = ExtResource("1_6perf")
+item_data = SubResource("Resource_3su7f")
+price = 250
+stock = 3
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[sub_resource type="Resource" id="Resource_yciea"]
+script = ExtResource("3_smc7r")
+item_name = "Half Chicken"
+item_icon = ExtResource("4_hav5r")
+item_description = "Kalahati lang pero masarap parin, pramis"
+item_id = "half_chicken"
+item_price = 146
+metadata/_custom_type_script = "uid://b51r7pisrdybh"
+
+[sub_resource type="Resource" id="Resource_7fb8k"]
+script = ExtResource("1_6perf")
+item_data = SubResource("Resource_yciea")
+price = 145
+stock = 2
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[resource]
+script = ExtResource("2_yf0qo")
+shop_name = "Go To Chooks"
+shop_subtitle = "Masarap kahit walang chicken"
+items = Array[ExtResource("1_6perf")]([SubResource("Resource_mo4dh"), SubResource("Resource_7fb8k")])
+metadata/_custom_type_script = "uid://baep303p2o6o1"

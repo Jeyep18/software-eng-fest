@@ -13,14 +13,14 @@
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Anak kamusta, kumain ka na ba?"
+text = "Anak kamusta, Narinig mo na ba yung balita?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_x1yr6"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Yung bubong sa sala..."
+text = "May paparating na bagyo ulit... yung bubong sa sala..."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_tmuxm"]

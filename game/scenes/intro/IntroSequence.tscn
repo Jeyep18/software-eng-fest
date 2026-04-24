@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cywe75jl6a10p" path="res://game/scenes/intro/IntroSequence.gd" id="1_olcgo"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_olcgo"]
+font_size = 30
+font_color = Color(1, 1, 1, 0.8039216)
+
 [node name="IntroSequence" type="CanvasLayer" unique_id=1696647596]
 script = ExtResource("1_olcgo")
 
@@ -33,9 +37,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -23.0
+offset_left = -357.0
+offset_top = -82.0
+offset_right = -37.0
+offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 11
-text = "click to skip"
+text = "click anywhere to skip"
+label_settings = SubResource("LabelSettings_olcgo")

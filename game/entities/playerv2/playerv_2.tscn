@@ -60,3 +60,6 @@ text = "press E to interact"
 [node name="HotbarUi" parent="." unique_id=1014249989 instance=ExtResource("5_73qwi")]
 
 [node name="HUDOverlay" parent="." unique_id=1355526644 instance=ExtResource("6_73qwi")]
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1205589617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6542678, 0)

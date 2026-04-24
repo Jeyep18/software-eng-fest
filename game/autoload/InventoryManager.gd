@@ -6,8 +6,8 @@
 extends Node
 
 # --- CONSTANTS ---
-const MAX_INVENTORY_SIZE: int = 5
-const HOTBAR_SIZE: int = 5  # Hotbar IS the full inventory for this game
+const MAX_INVENTORY_SIZE: int = 7
+const HOTBAR_SIZE: int = 7  # Hotbar IS the full inventory for this game
 
 # --- SIGNALS ---
 signal inventory_changed

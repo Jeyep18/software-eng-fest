@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://7h5k8sfxn5hs"]
+
+[ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="1_hlcqu"]
+
+[node name="HouseEnv" unique_id=338920394 instance=ExtResource("1_hlcqu")]

@@ -8,6 +8,7 @@ extends Control
 
 
 func show_line(line: DialogueLine) -> void:
+	AudioManager.play_voice(preload("res://game/assets/sfx/freesound_community-bllrr-text-loop-82399-FreesoundCommunityPixabay.mp3"))
 	_speaker_name.text = line.speaker_name
 	_speaker_dialogue.bbcode_enabled = true
 	_speaker_dialogue.text = line.text
@@ -30,6 +31,7 @@ func run_typewriter(chars_per_second: float) -> Tween:
 
 
 func skip_to_end() -> void:
+	AudioManager.stop_voice()
 	_speaker_dialogue.visible_ratio = 1.0
 
 

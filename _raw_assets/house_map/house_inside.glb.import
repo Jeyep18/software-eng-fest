@@ -129,9 +129,6 @@ _subresources={
 "PATH:Walls": {
 "generate/physics": true
 },
-"PATH:eletric fan": {
-"generate/physics": true
-},
 "PATH:jamb door": {
 "generate/physics": true
 },

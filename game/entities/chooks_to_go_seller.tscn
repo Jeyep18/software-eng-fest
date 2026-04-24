@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cgxg2hd82077n"]
+
+[ext_resource type="PackedScene" uid="uid://cxpm757kxmu1k" path="res://_raw_assets/npc_assets/ChooksToGoSeller.glb" id="1_glc6s"]
+[ext_resource type="Script" uid="uid://ciisv8srt4llc" path="res://game/entities/ChooksToGo.gd" id="2_vypco"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_ekqec"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="3_ynwsk"]
+[ext_resource type="Texture2D" uid="uid://bi43cl86r2qdu" path="res://game/assets/images/Chooks.png" id="4_mo8sm"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_htrks"]
+[ext_resource type="Texture2D" uid="uid://b76np705x20ow" path="res://game/assets/npc_portraits/playerTalking.png" id="5_mo8sm"]
+
+[sub_resource type="Resource" id="Resource_leh6v"]
+script = ExtResource("3_ekqec")
+speaker_name = "Tindero"
+expression = ExtResource("4_mo8sm")
+text = "Ano pa hinihintay mo iho, bili na ng aming malinamnam na manok!"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_uelfc"]
+script = ExtResource("3_ekqec")
+speaker_name = "Tindero"
+expression = ExtResource("4_mo8sm")
+text = "Siguradong mabubusog ka dito, promise!"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_htrks"]
+script = ExtResource("3_ekqec")
+speaker_name = "Player"
+expression = ExtResource("5_mo8sm")
+text = "VIC SOTTO?!?!"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_eclqx"]
+script = ExtResource("5_htrks")
+lines = Array[ExtResource("3_ekqec")]([SubResource("Resource_leh6v"), SubResource("Resource_uelfc"), SubResource("Resource_htrks")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_glc6s"]
+size = Vector3(3.1202774, 1.3652344, 1.8972778)
+
+[node name="ChooksToGoSeller" type="Node3D" unique_id=1473059641]
+
+[node name="ChooksToGoSeller" parent="." unique_id=1802301898 instance=ExtResource("1_glc6s")]
+transform = Transform3D(0.57906383, 0, 0, 0, 0.5488268, 0, 0, 0, 0.770404, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1836043382]
+script = ExtResource("2_vypco")
+path = "res://game/resources/items/shops/ChooksToGoShop.tres"
+sequence_tindahan_default = SubResource("Resource_eclqx")
+shop_path = "res://game/resources/items/shops/ChooksToGoShop.tres"
+dialogue_ui_scene = ExtResource("3_ynwsk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=132290425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3214912, 1.1790478, 0.106658936)
+shape = SubResource("BoxShape3D_glc6s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=92246405]
+unique_name_in_owner = true

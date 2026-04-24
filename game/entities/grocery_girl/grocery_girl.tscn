@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_qjf6c"]
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_sfjle"]
 [ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="4_va8in"]
+[ext_resource type="Texture2D" uid="uid://b76np705x20ow" path="res://game/assets/npc_portraits/playerTalking.png" id="5_lix8p"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_sfjle"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lix8p"]
@@ -18,9 +19,23 @@ expression = ExtResource("4_va8in")
 text = "Oh, ano mga kailangan mo, bilis at may bagyo na paparating, ako'y magsasara na."
 metadata/_custom_type_script = "uid://po32410sv037"
 
+[sub_resource type="Resource" id="Resource_l50sn"]
+script = ExtResource("3_qjf6c")
+speaker_name = "Player"
+expression = ExtResource("5_lix8p")
+text = "Ate Linda?? Nagtatrabaho karin pala sa hardware? Paano ka po nakarating dito?!"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Resource_sfjle"]
+script = ExtResource("3_qjf6c")
+speaker_name = "Grocery Girl"
+expression = ExtResource("4_va8in")
+text = "Sinong Ate Linda?! kita mo nag tatrabaho ako dito!"
+metadata/_custom_type_script = "uid://po32410sv037"
+
 [sub_resource type="Resource" id="Resource_hwteu"]
 script = ExtResource("5_sfjle")
-lines = Array[ExtResource("3_qjf6c")]([SubResource("Resource_lix8p")])
+lines = Array[ExtResource("3_qjf6c")]([SubResource("Resource_lix8p"), SubResource("Resource_l50sn"), SubResource("Resource_sfjle")])
 metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwteu"]
