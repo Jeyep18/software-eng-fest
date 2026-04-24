@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://c7kkn2h4p108b"]
 
+[ext_resource type="Script" uid="uid://ddni841fjhgnk" path="res://game/scenes/ending/EndingSequence.gd" id="1_6ukco"]
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="2_0axko"]
+[ext_resource type="PackedScene" uid="uid://c3erci5d62sx4" path="res://game/objects/interactables/plywood_model.tscn" id="3_lj212"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_rmxaa"]
+[ext_resource type="PackedScene" uid="uid://cxejp1apnerm5" path="res://game/objects/interactables/roof_fixed.tscn" id="4_1uubq"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_ci5uq"]
+[ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="5_6ibw1"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_stuec"]
 [ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="6_ic1yo"]
+[ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="6_xn1oe"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="7_kbbe7"]
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="8_aymul"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="9_mhti3"]
@@ -63,29 +68,69 @@ _data = {
 &"fade_in": SubResource("Animation_hpvqv")
 }
 
-[node name="EndingSequnce" type="Node" unique_id=2125907861]
+[node name="EndingSequence" type="Node" unique_id=2125907861]
+script = ExtResource("1_6ukco")
 
 [node name="World3D" parent="." unique_id=752345904 instance=ExtResource("2_0axko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)
 
-[node name="Node3D" type="Node3D" parent="World3D" unique_id=670281404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1075244, 1.4104363, -0.48760092)
+[node name="WindowArea" type="Node3D" parent="World3D" unique_id=1882663686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0883017, 1.2391502, -0.2856571)
 
-[node name="Node3D2" type="Node3D" parent="World3D" unique_id=2044074868]
+[node name="WindowTaskVisualCue" type="Node3D" parent="World3D/WindowArea" unique_id=1401958296]
 
-[node name="Node3D3" type="Node3D" parent="World3D" unique_id=119811650]
+[node name="PlywoodModel" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=1162719025 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99954313, -0.030224532, 0, 0, 0, 1, -7.205164, 1.3784611, -1.012984)
 
-[node name="Node3D4" type="Node3D" parent="World3D" unique_id=1462759936]
+[node name="PlywoodModel2" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=582676874 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 1.7853206, -1.012984)
 
-[node name="Node3D5" type="Node3D" parent="World3D" unique_id=78236688]
+[node name="PlywoodModel3" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=1677631533 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.9932964, -0.030035641, -0.11162503, -0.11157403, -0.0033738143, 0.9937504, -7.205164, 2.204906, -1.012984)
 
-[node name="Node3D6" type="Node3D" parent="World3D" unique_id=403547612]
+[node name="PlywoodModel4" parent="World3D/WindowArea/WindowTaskVisualCue" unique_id=624658813 instance=ExtResource("3_lj212")]
+transform = Transform3D(-0.030224532, 0.99954313, 0, -0.99894756, -0.030206522, 0.03451576, 0.034499988, 0.0010432231, 0.99940413, -7.205164, 2.5553212, -1.012984)
+
+[node name="RoofArea" type="Node3D" parent="World3D" unique_id=2044074868]
+transform = Transform3D(0.99976087, -0.021867232, 0, 0.021867232, 0.99976087, 0, 0, 0, 1, -0.31257415, 0.14013362, -1.969238)
+
+[node name="RoofTaskVisualCue" type="Node3D" parent="World3D/RoofArea" unique_id=1737201863]
+
+[node name="RoofFixed" parent="World3D/RoofArea/RoofTaskVisualCue" unique_id=1981724758 instance=ExtResource("4_1uubq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06754875, -0.5019884)
+
+[node name="BedroomArea" type="Node3D" parent="World3D" unique_id=119811650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8153667, 2.0368557, 1.0987763)
+
+[node name="MedicineTaskVisualCue" type="Node3D" parent="World3D/BedroomArea" unique_id=2076221844]
+
+[node name="KitchenArea" type="Node3D" parent="World3D" unique_id=1462759936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75685, 1.3201734, -7.1865196)
+
+[node name="FoodTaskVisualCue" type="Node3D" parent="World3D/KitchenArea" unique_id=439614265]
+
+[node name="WaterArea" type="Node3D" parent="World3D" unique_id=78236688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8917582, 1.203595, -6.9054585)
+
+[node name="WaterTaskVisualCue" type="Node3D" parent="World3D/WaterArea" unique_id=1067699904]
+
+[node name="RadioArea" type="Node3D" parent="World3D" unique_id=403547612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40099204, 1.2927852, 2.1357021)
+
+[node name="RadioTaskVisualCue" type="Node3D" parent="World3D/RadioArea" unique_id=1262499592]
+
+[node name="Radio" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1481765612 instance=ExtResource("5_6ibw1")]
+transform = Transform3D(-0.94495463, 0, -0.3272013, 0, 1, 0, 0.3272013, 0, -0.94495463, -0.5010699, 1.6944549, 1.744984)
+
+[node name="Flashlight" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1715193510 instance=ExtResource("6_xn1oe")]
+transform = Transform3D(-0.8504624, 0, 0.5260358, 0, 1, 0, -0.5260358, 0, -0.8504624, -0.4455178, 1.1527671, 1.7482257)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1545298350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, -1.0246289)
 size = Vector3(13.862762, 9.467323, 18.011654)
 
 [node name="EndingCamera" type="Camera3D" parent="." unique_id=892363990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6993752, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1428930652]
 layer = 10
