@@ -114,7 +114,7 @@ size = Vector3(13.576775, 3.1496582, 20.813623)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=787321524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.016917, 3.557139, -3.9762766)
 stream = ExtResource("1_0ah4r")
-volume_db = -15.0
+volume_db = -5.0
 autoplay = true
 max_distance = 12.0
 bus = &"SFX"
@@ -122,7 +122,7 @@ bus = &"SFX"
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1043336677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.939375, 3.557139, -6.00386)
 stream = ExtResource("1_0ah4r")
-volume_db = -15.0
+volume_db = -5.0
 autoplay = true
 max_distance = 18.0
 bus = &"SFX"
@@ -130,6 +130,7 @@ bus = &"SFX"
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1571548795]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2686563, 3.557139, -17.767422)
 stream = ExtResource("2_43he2")
+volume_db = 10.0
 autoplay = true
 max_distance = 18.0
 bus = &"SFX"
@@ -145,7 +146,6 @@ bus = &"SFX"
 [node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=598971773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6742296, 3.557139, -10.1871605)
 stream = ExtResource("4_43he2")
-volume_db = -10.0
 autoplay = true
 max_distance = 20.0
 bus = &"SFX"

@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.611944, 1.5411298, -0.44361
 stream = ExtResource("2_bt1tt")
 autoplay = true
 max_distance = 8.0
-bus = &"Ambience"
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1720663402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.611944, 1.5411298, -1.8110836)
@@ -94,7 +94,7 @@ volume_db = 15.0
 max_db = 6.0
 autoplay = true
 max_distance = 4.0
-bus = &"Ambience"
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1424361419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1990287, 1.5411298, 1.6164479)
@@ -103,7 +103,7 @@ volume_db = 20.0
 max_db = 6.0
 autoplay = true
 max_distance = 4.0
-bus = &"Ambience"
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=863235108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5455718, 1.5411298, -6.9861145)
@@ -112,7 +112,7 @@ volume_db = 5.0
 max_db = 6.0
 autoplay = true
 max_distance = 3.0
-bus = &"Ambience"
+bus = &"SFX"
 
 [node name="Rain" type="GPUParticles3D" parent="." unique_id=329248661]
 transform = Transform3D(1.7541407, 0, 0, 0, 2.1546223, 0, 0, 0, 1.6554832, -0.9861851, 6.15551, -4.431979)
