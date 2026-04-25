@@ -9,11 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="5_6ibw1"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_stuec"]
 [ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="5_xn1oe"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="6_ic1yo"]
+[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="6_ic1yo"]
 [ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="6_xn1oe"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="7_kbbe7"]
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="8_aymul"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="9_mhti3"]
+[ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="15_38p1u"]
+[ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="16_q3j7e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_38p1u"]
+font_size = 25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyk87"]
 transparency = 1
@@ -68,6 +73,9 @@ _data = {
 &"RESET": SubResource("Animation_5bjxa"),
 &"fade_in": SubResource("Animation_hpvqv")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38p1u"]
+albedo_color = Color(0.49208862, 0.4189518, 0.25232288, 1)
 
 [node name="EndingSequence" type="Node" unique_id=2125907861]
 script = ExtResource("1_6ukco")
@@ -125,7 +133,7 @@ transform = Transform3D(0.7523638, 0.0025987937, 0.65874314, -0.05154245, 0.9971
 transform = Transform3D(0.71265024, -0.11221377, 0.6924867, 0, 0.9871238, 0.15995817, -0.7015196, -0.11399421, 0.703474, 0.15491152, 1.1160754, 2.3924148)
 
 [node name="RadioTaskVisualCue" type="Node3D" parent="World3D/RadioArea" unique_id=1262499592]
-transform = Transform3D(0.9636239, 0.008456939, -0.26712316, -0.053786024, 0.9851843, -0.16283795, 0.26178908, 0.17128222, 0.9498032, 0.69380945, -1.2046963, -2.2272735)
+transform = Transform3D(0.9636236, 0.008456938, -0.26712304, -0.05378599, 0.9851841, -0.16283786, 0.2617889, 0.17128216, 0.9498029, 0.6938093, -1.1989343, -2.2263389)
 
 [node name="Radio" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1481765612 instance=ExtResource("5_6ibw1")]
 transform = Transform3D(-0.9993163, -0.003947636, 0.036756903, -0.0038177064, 0.99998623, 0.003604244, -0.036770552, 0.0034614513, -0.99931765, -0.5933779, 1.6929674, 1.6936965)
@@ -151,23 +159,40 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SlideLabel" type="Label" parent="CanvasLayer" unique_id=40582937]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1977650460]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SlideLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=40582937]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_38p1u")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer" unique_id=348113460]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ResultPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1388194203]
+custom_minimum_size = Vector2(500, 300)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -48.5
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 48.5
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_alignment = 1
-
-[node name="ResultPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1388194203]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ResultPanel" unique_id=525604390]
 layout_mode = 2
@@ -200,6 +225,13 @@ shadow_enabled = true
 spot_range = 7.559709
 spot_angle = 80.15625
 
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights" unique_id=23676889]
+transform = Transform3D(1, 0, 0, 0, -0.012251936, 0.99992496, 0, -0.99992496, -0.012251936, -6.851265, 3.179101, 1.5790439)
+light_color = Color(0.85749084, 0.84301084, 0.6979215, 1)
+shadow_enabled = true
+spot_range = 7.559709
+spot_angle = 80.15625
+
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1835358498]
 transform = Transform3D(1, 0, 0, 0, -0.012251936, 0.99992496, 0, -0.99992496, -0.012251936, 2.0228958, 2.917953, -2.778009)
 light_color = Color(0.8506974, 0.8458637, 0.6823066, 1)
@@ -225,16 +257,10 @@ transform = Transform3D(0.97642815, 0.17376277, 0.12804306, -0.21181673, 0.88545
 material_override = SubResource("StandardMaterial3D_fyk87")
 size = Vector3(2.8550415, 1, 3.0115967)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1877970318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.886025, 7.806764, -14)
-light_energy = 16.0
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-omni_range = 154.55
-
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1315292458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6385894, 4.9659343, -2.394689)
-light_energy = 16.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7245007, 4.9659343, -2.394689)
+light_color = Color(0.75279194, 0.44555676, 0.08305917, 1)
+light_energy = 9.68
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
@@ -246,8 +272,8 @@ omni_range = 154.55
 environment = ExtResource("3_rmxaa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=692121294]
-transform = Transform3D(-0.2896628, -0.5506624, -0.7828579, -0.76234484, -0.361821, 0.5365778, -0.5787278, 0.7522344, -0.31498858, -3.7560396, 5.09972, 0)
-light_color = Color(0.8452686, 0.8693299, 0.88392496, 1)
+transform = Transform3D(-0.06232901, -0.78421044, -0.6173569, -0.7623449, -0.3618212, 0.536578, -0.6441626, 0.5040831, -0.5752866, -3.7560396, 5.09972, 0)
+light_color = Color(0.5408206, 0.83143157, 0.7891829, 1)
 light_energy = 4.0
 shadow_enabled = true
 
@@ -371,3 +397,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.796734, -1.0941577, -21.1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1684201697]
 libraries/ = SubResource("AnimationLibrary_jn6f0")
 autoplay = &"fade_in"
+
+[node name="door2" parent="." unique_id=775457550 instance=ExtResource("15_38p1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61578584, 0, -7.9753156)
+
+[node name="fridge2" parent="door2" unique_id=1466785545 instance=ExtResource("16_q3j7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2351971, 0.0050145388, 0.6138878)
+
+[node name="Baha" type="CSGBox3D" parent="." unique_id=1448203642]
+transform = Transform3D(0.99949294, 0.029947124, -0.010666665, -0.029856984, 0.99951667, 0.008489599, 0.010915328, -0.008166861, 0.9999067, -1.0699596, -0.32782543, -4.4255567)
+material_override = SubResource("StandardMaterial3D_38p1u")
+size = Vector3(13.987015, 1, 14.058472)

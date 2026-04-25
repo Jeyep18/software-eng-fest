@@ -10,4 +10,4 @@ func _on_pressed() -> void:
 	disabled = true
 	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("home")
-	GlobalTimer.resume_timer()
+	GlobalTimer.start_fresh()

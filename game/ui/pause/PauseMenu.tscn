@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://8x3povv3cpl4" path="res://game/ui/pause/PauseMenu.gd" id="1_oetci"]
 [ext_resource type="Script" uid="uid://dsl8gs5spy4nr" path="res://game/ui/pause/ChecklistPanel.gd" id="2_26j17"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_26j17"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+
 [node name="PauseMenu" type="CanvasLayer" unique_id=1158059127]
 process_mode = 3
 script = ExtResource("1_oetci")
@@ -93,110 +98,44 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ResumePanel" type="Control" parent="ContentArea" unique_id=667964145]
-visible = false
-anchors_preset = 0
+[node name="ControlsPanel" type="Control" parent="ContentArea" unique_id=2097099020]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentArea/ResumePanel" unique_id=1783949162]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 4.0
-offset_right = 1557.0
-offset_bottom = 1071.0
-
-[node name="Label" type="Label" parent="ContentArea/ResumePanel/VBoxContainer" unique_id=121003034]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Game paused"
-
-[node name="HSeparator" type="HSeparator" parent="ContentArea/ResumePanel/VBoxContainer" unique_id=469241428]
-layout_mode = 2
-
-[node name="TimerRow" type="HBoxContainer" parent="ContentArea/ResumePanel/VBoxContainer" unique_id=497051613]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TimeCard" type="PanelContainer" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow" unique_id=831994371]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow/TimeCard" unique_id=1901563828]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TimeLabel" type="Label" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow/TimeCard/VBoxContainer" unique_id=131339583]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 30
-text = "Current Time"
-
-[node name="TimeValue" type="Label" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow/TimeCard/VBoxContainer" unique_id=1147985074]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "6:00 AM"
-
-[node name="VSeparator" type="VSeparator" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow" unique_id=1363807757]
-layout_mode = 2
-
-[node name="ETACard" type="PanelContainer" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow" unique_id=1944280085]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow/ETACard" unique_id=917506736]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-
-[node name="ETALabel" type="Label" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow/ETACard/VBoxContainer" unique_id=1583320522]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Storm ETA"
-
-[node name="ETAValue" type="Label" parent="ContentArea/ResumePanel/VBoxContainer/TimerRow/ETACard/VBoxContainer" unique_id=689851093]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "12h 00m"
-
-[node name="ResumeButton" type="Button" parent="ContentArea/ResumePanel/VBoxContainer" unique_id=1673684738]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 27
-text = "Resume Game"
-alignment = 0
-
-[node name="GoChecklistButton" type="Button" parent="ContentArea/ResumePanel/VBoxContainer" unique_id=180262042]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 27
-text = "View Checklist"
-alignment = 0
-
-[node name="GoControlsButton" type="Button" parent="ContentArea/ResumePanel/VBoxContainer" unique_id=1388050681]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 27
-text = "View Controls"
-alignment = 0
-
-[node name="ChecklistPanel" type="Control" parent="ContentArea" unique_id=1223727696]
-custom_minimum_size = Vector2(600, 400)
-anchors_preset = 0
+[node name="SettingsPanel" type="Control" parent="ContentArea" unique_id=818203311]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 232.0
+pivot_offset = Vector2(250, 0)
+
+[node name="ChecklistPanel" type="Control" parent="ContentArea" unique_id=1223727696]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 1
+anchor_left = 0.120000005
+anchor_top = 0.056
+anchor_right = 0.86100006
+anchor_bottom = 0.841
+offset_left = -0.40000916
+offset_top = 0.51999664
+offset_right = 0.8798828
+offset_bottom = -0.2800293
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_26j17")
 
-[node name="TitleLabel" type="Label" parent="ContentArea/ChecklistPanel" unique_id=1580027899]
-layout_mode = 0
-offset_right = 83.0
-offset_bottom = 49.0
-text = "Preparation Checklist
-"
+[node name="Panel" type="Panel" parent="ContentArea/ChecklistPanel" unique_id=479847882]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentArea/ChecklistPanel" unique_id=1511355849]
 layout_mode = 1
@@ -205,28 +144,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="ContentArea/ChecklistPanel/VBoxContainer" unique_id=1580027899]
+layout_mode = 2
+text = "Preparation Checklist"
+label_settings = SubResource("LabelSettings_26j17")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ContentArea/ChecklistPanel/VBoxContainer" unique_id=1553139185]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ItemList" type="ItemList" parent="ContentArea/ChecklistPanel/VBoxContainer/ScrollContainer" unique_id=348288798]
+[node name="ItemList" type="VBoxContainer" parent="ContentArea/ChecklistPanel/VBoxContainer/ScrollContainer" unique_id=222034470]
 layout_mode = 2
-
-[node name="ControlsPanel" type="Control" parent="ContentArea" unique_id=2097099020]
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SettingsPanel" type="Control" parent="ContentArea" unique_id=818203311]
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 232.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(250, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
 
 [connection signal="pressed" from="Panel/HSplitContainer/Sidebar/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Panel/HSplitContainer/Sidebar/ChecklistBtn" to="." method="_on_checklist_btn_pressed"]

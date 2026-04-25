@@ -13,6 +13,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://cru0nwp4kfqkw" path="res://game/assets/animations/Stand Up (1).fbx" id="7_inpqh"]
 [ext_resource type="AnimationLibrary" uid="uid://bd08k1w0gjms" path="res://game/assets/animations/Stop Walking.fbx" id="7_j5mky"]
 [ext_resource type="AnimationLibrary" uid="uid://da0y700c2sqno" path="res://game/assets/animations/Walking (1).fbx" id="8_inpqh"]
+[ext_resource type="PackedScene" uid="uid://c7fktavqh7aoy" path="res://game/ui/pause/PauseMenu.tscn" id="14_fd6ii"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjoon"]
 radius = 0.3
@@ -1225,3 +1226,5 @@ text = "press E to interact"
 
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1205589617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6542678, 0)
+
+[node name="PauseMenu" parent="." unique_id=1158059127 instance=ExtResource("14_fd6ii")]

@@ -56,7 +56,7 @@ extends Node
 # ── Node References ────────────────────────────────────────────────────────────
 @onready var ending_camera: Camera3D          = $EndingCamera
 @onready var fade_overlay:  ColorRect         = $CanvasLayer/FadeOverlay
-@onready var slide_label:   Label             = $CanvasLayer/SlideLabel
+@onready var slide_label:   Label             = $CanvasLayer/VBoxContainer/SlideLabel
 @onready var result_panel:  Control           = $CanvasLayer/ResultPanel
 
 @onready var anchor_windows:  Node3D = $World3D/WindowArea
@@ -77,54 +77,56 @@ const RESULT_HOLD_DURATION: float = 7.0
 var SLIDES: Array = []
 
 func _ready() -> void:
+	AudioManager.play_ambience(preload("res://game/assets/sfx/u_7hpxkdroz2-storm-461601.mp3"))
+	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 	SLIDES = [
 		{
 			"need":            NeedsLog.Need.WINDOWS,
 			"gamestate_flag":  "",
 			"anchor":          anchor_windows,
 			"visual_cue_path": "World3D/WindowArea/WindowTaskVisualCue",
-			"label_done":      "Bintana — Nasakloban ✓",
-			"label_skip":      "Bintana — Walang Proteksyon ✗",
+			"label_done":      "Matatag ang harang sa bintana, naligtas kami sa malalakas na hangin.",
+			"label_skip":      "Tuluyang lumakas ang hangin, nilamon ng ulan ang loob ng bahay.",
 		},
 		{
 			"need":            NeedsLog.Need.ROOF,
 			"gamestate_flag":  "",
 			"anchor":          anchor_roof,
 			"visual_cue_path": "World3D/RoofArea/RoofTaskVisualCue",
-			"label_done":      "Bubong — Napatakpan ✓",
-			"label_skip":      "Bubong — Butas Pa Rin ✗",
+			"label_done":      "Natakpan ang bubong sa oras, tuyo ang sahig at sala.",
+			"label_skip":      "Hindi natakpan ang bubong, nabasa ang loob ng bahay.",
 		},
 		{
 			"need":            NeedsLog.Need.MEDICINE,
 			"gamestate_flag":  "",
 			"anchor":          anchor_medicine,
 			"visual_cue_path": "World3D/BedroomArea/MedicineTaskVisualCue",
-			"label_done":      "Gamot ni Lola — Nakuha ✓",
-			"label_skip":      "Gamot ni Lola — Hindi Nakuha ✗",
+			"label_done":      "Mahimbing ang tulog ni Lola, sapat ang kanyang gamot.",
+			"label_skip":      "Hirap huminga si Lola, wala kaming naibigay na lunas.",
 		},
 		{
 			"need":            NeedsLog.Need.FOOD,
 			"gamestate_flag":  "",
 			"anchor":          anchor_food,
 			"visual_cue_path": "World3D/KitchenArea/FoodTaskVisualCue",
-			"label_done":      "Pagkain — Handa ✓",
-			"label_skip":      "Pagkain — Kulang ✗",
+			"label_done":      "May laman ang aming sikmura, may lakas kaming lumaban.",
+			"label_skip":      "Wala kaming nakain sa dumating na bagyo.",
 		},
 		{
 			"need":            NeedsLog.Need.WATER,
 			"gamestate_flag":  "",
 			"anchor":          anchor_water,
 			"visual_cue_path": "World3D/WaterArea/WaterTaskVisualCue",
-			"label_done":      "Tubig — Napuno ✓",
-			"label_skip":      "Tubig — Walang Reserba ✗",
+			"label_done":      "May malinis kaming maiinom, ligtas kami sa uhaw.",
+			"label_skip":      "Tuyo ang lalamunan, madumi ang tubig sa paligid.",
 		},
 		{
 			"need":            NeedsLog.Need.FLASHLIGHT,
 			"gamestate_flag":  "",
 			"anchor":          anchor_radio,
 			"visual_cue_path": "World3D/RadioArea/RadioTaskVisualCue",
-			"label_done":      "Radyo / Flashlight — Gumagana ✓",
-			"label_skip":      "Radyo / Flashlight — Patay ✗",
+			"label_done":      "May liwanag at balita, alam namin ang nangyayari.",
+			"label_skip":      "Nabalot kami ng dilim, bingi kami sa labas ng mundo.",
 		},
 	]
 
@@ -313,13 +315,13 @@ func _populate_result_panel() -> void:
 
 	# match cannot use SLIDES.size() as a pattern (not a constant) — use if/elif.
 	if completed_count == SLIDES.size():
-		sub_lbl.text = "Nakaligtas kayong lahat."
+		sub_lbl.text = "Nakaligtas kami lahat."
 		sub_lbl.add_theme_color_override("font_color", Color(0.55, 0.92, 0.60))
 	elif completed_count >= 4:
-		sub_lbl.text = "Nandito pa rin kayo. Sugatan, pero buhay."
+		sub_lbl.text = "Nandito pa rin kami. Sugatan, pero buhay."
 		sub_lbl.add_theme_color_override("font_color", Color(0.95, 0.80, 0.45))
 	elif completed_count >= 2:
-		sub_lbl.text = "Mahirap ang gabi. Pero hindi kayo sumuko."
+		sub_lbl.text = "Mahirap ang gabi. Pero hindi kami sumuko."
 		sub_lbl.add_theme_color_override("font_color", Color(0.90, 0.65, 0.35))
 	else:
 		sub_lbl.text = "Hindi lahat ay naihanda. Hindi lahat ay napigilan."
@@ -336,7 +338,7 @@ func _populate_result_panel() -> void:
 		var icon: Label = Label.new()
 		icon.custom_minimum_size   = Vector2(22, 0)
 		icon.horizontal_alignment  = HORIZONTAL_ALIGNMENT_CENTER
-		icon.add_theme_font_size_override("font_size", 14)
+		icon.add_theme_font_size_override("font_size", 24)
 		icon.text = "✓" if is_done else "✗"
 		icon.add_theme_color_override("font_color",
 				Color(0.55, 0.92, 0.60) if is_done else Color(0.90, 0.38, 0.38))
@@ -344,7 +346,9 @@ func _populate_result_panel() -> void:
 
 		var lbl: Label = Label.new()
 		lbl.text = slide["label_done"] if is_done else slide["label_skip"]
-		lbl.add_theme_font_size_override("font_size", 12)
+		lbl.add_theme_font_size_override("font_size", 24)
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		lbl.add_theme_color_override("font_color",
 				Color(0.85, 0.92, 0.80) if is_done else Color(0.75, 0.62, 0.60))
 		row.add_child(lbl)
@@ -352,10 +356,13 @@ func _populate_result_panel() -> void:
 		item_list.add_child(row)
 
 	footer_lbl.text = (
-		"Sa Pilipinas, humigit-kumulang 20 bagyo ang tumatalab bawat taon.\n"
-		+ "Maraming pamilya ang haharapin ang bagyo nang walang sapat na tulong.\n"
-		+ "Ang kahandaan ay hindi lamang responsibilidad ng bawat isa — ito ay karapatan."
+		"Taon-taon, 20 bagyo ang sumusubok sa ating tibay. \n"
+		+ "Habang ang mga 'flood control projects' ay matatag lamang sa mga dokumento at tarpaulin, ang taumbayan ay naiiwan pa ring lumalangoy sa baha.\n"
+		+ "Ang kaligtasan ay hindi isang pribilehiyong kailangang kitain; ito ay pananagutan ng mga nasa kapangyarihan na madalas ay bingi sa aming pagsamo."
 	)
+	footer_lbl.modulate.a = 0
+	var footer_tween = create_tween()
+	footer_tween.tween_property(footer_lbl, "modulate:a", 1.0, 2.0).set_delay(1.5)
 	footer_lbl.add_theme_color_override("font_color", Color(0.75, 0.72, 0.65))
-	footer_lbl.add_theme_font_size_override("font_size", 10)
+	footer_lbl.add_theme_font_size_override("font_size", 20)
 	footer_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
