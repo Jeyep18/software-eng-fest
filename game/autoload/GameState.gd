@@ -99,6 +99,7 @@ func reset() -> void:
 	corruption_evidence_found = false
 	corruption_evidence_shared = false
 	cash_balance = 400
+	collected_world_items.clear()
 #endregion
 
 func _ready() -> void:

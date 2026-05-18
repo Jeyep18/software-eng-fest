@@ -298,6 +298,7 @@ func _show_result_panel() -> void:
 	NeedsLog.reset()
 	EconomyManager.reset()
 	InventoryManager.inventory.clear()
+	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("main_menu")
 
 func _populate_result_panel() -> void:

@@ -9,7 +9,6 @@
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
 [ext_resource type="AudioStream" uid="uid://c3aev2rnla44" path="res://game/assets/sfx/626727__catacombronson__fridge-tone.wav" id="4_ep4k0"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
 [ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
 [ext_resource type="PackedScene" uid="uid://boa547w07bf30" path="res://game/objects/interactables/Roof.tscn" id="9_u8iu7"]
@@ -252,8 +251,6 @@ transition_duration = 1.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.6807709)
 shape = SubResource("BoxShape3D_dn58f")
 debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_qlj0p")]
 
 [node name="door" parent="." unique_id=1970056124 instance=ExtResource("7_dn58f")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7993892, 0, -4.232849)

@@ -49,6 +49,7 @@ theme_override_constants/margin_right = 10
 [node name="SpeakerName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/NameContainer/MarginContainer" unique_id=1448468044]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "MABATAKSNMGNBAJKGNBAKSNAKFNKAFN"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1500685049]
@@ -69,6 +70,11 @@ theme_override_constants/margin_right = 10
 [node name="SpeakerDialogue" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=739598144]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 text = "Hello my ni-"
 scroll_active = false

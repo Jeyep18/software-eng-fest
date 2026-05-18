@@ -20,6 +20,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="Panel" unique_id=1948263506]
+modulate = Color(1, 1, 1, 0.47843137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="HSplitContainer" type="HSplitContainer" parent="Panel" unique_id=575723378]
 layout_mode = 0
 offset_right = 40.0
@@ -112,6 +121,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 232.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(250, 0)
 
 [node name="ChecklistPanel" type="Control" parent="ContentArea" unique_id=1223727696]

@@ -123,6 +123,9 @@ func _do_restart() -> void:
 	# 4. Reset all global state
 	SceneManager.reset()
 	NeedsLog.reset()
+	ShopUi.reset()
+	InventoryManager.reset()
+	GameState.reset()
 	
 	# 5. Load home — SceneManager handles the fade-in
 	SceneManager.load_scene("home")
@@ -139,6 +142,12 @@ func _do_quit() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	await TransitionOverlay.fade_to_black()
+	
+	SceneManager.reset()
+	NeedsLog.reset()
+	ShopUi.reset()
+	InventoryManager.reset()
+	GameState.reset()
 
 	# No game state reset needed — title screen will reinitialise everything
 	SceneManager.load_scene("main_menu")

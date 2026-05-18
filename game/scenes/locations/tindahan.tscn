@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://de4onro1b777k" path="res://game/assets/sfx/DZRH radio drama_ Kasaysayan sa mga liham ni Tiya Dely.mp3" id="3_2byyo"]
 [ext_resource type="AudioStream" uid="uid://c503t8jvnb0eh" path="res://game/assets/sfx/721615__sduggysounds__foodcourt-ambience.wav" id="4_kfp1t"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_ygoei"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_rchrt"]
 [ext_resource type="PackedScene" uid="uid://wsovjfl8f40h" path="res://game/entities/ate_linda_npc/ate_linda.tscn" id="7_61ce1"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="8_0aq8a"]
 
@@ -186,8 +185,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1187935, 2.8572388, -8.715235)
 light_color = Color(0.7707947, 0.73799646, 0.626923, 1)
 shadow_enabled = true
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_rchrt")]
 
 [node name="Ate_Linda" parent="." unique_id=1938827577 instance=ExtResource("7_61ce1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.827626, 0.8883978, -10.385182)

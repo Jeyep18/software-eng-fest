@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="5_vm281"]
 [ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_3lw5h"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="7_r6dul"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_3lw5h"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="9_xmmy0"]
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="10_xmmy0"]
 [ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="12_gjccj"]
@@ -113,8 +112,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.9
 door_destination = "home"
 spawn_point_id = "from_bodega"
 prompt_label = "Go back "
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_3lw5h")]
 
 [node name="Hammer" parent="." unique_id=704261374 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.433703, 1.3540105, -3.0667145)

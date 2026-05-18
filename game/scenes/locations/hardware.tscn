@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://byurdrwuga6g4" path="res://game/resources/items/plywood.tres" id="6_lusb0"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_7euxg"]
 [ext_resource type="PackedScene" uid="uid://dpak6gybwx24y" path="res://game/entities/hardware_girl/hardware_girl.tscn" id="7_lusb0"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_hx63o"]
 [ext_resource type="PackedScene" uid="uid://ccn02805xx87w" path="res://_raw_assets/Locations/HardwareStore.glb" id="9_mrv0t"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="11_m71rt"]
 
@@ -141,8 +140,6 @@ data = SubResource("VoxelGIData_crmys")
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("7_7euxg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.932264, 0.034064054, -4.8429317)
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_hx63o")]
 
 [node name="HardwareStore" parent="." unique_id=247447579 instance=ExtResource("9_mrv0t")]
 
