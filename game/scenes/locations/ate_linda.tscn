@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_xq11p"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_scr53"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="7_0uodm"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_8p6ww"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
 albedo_texture = ExtResource("1_uhuuy")
@@ -288,5 +287,3 @@ environment = SubResource("Environment_hj2km")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8658752, 3.14888, -35.277927)
 size = Vector3(65.52045, 26.29776, 76.2637)
 data = SubResource("VoxelGIData_nlip7")
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_8p6ww")]

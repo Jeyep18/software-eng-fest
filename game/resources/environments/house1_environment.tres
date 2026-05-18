@@ -1,6 +1,6 @@
 [gd_resource type="Environment" format=3 uid="uid://cl5jberr11oyd"]
 
-[ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="1_bqqw3"]
+[ext_resource type="Texture2D" uid="uid://cf6qbng4ouro7" path="res://_raw_assets/sky_hdri/overcast_soil_puresky_4k.exr" id="1_bqqw3"]
 
 [sub_resource type="Gradient" id="Gradient_ktcou"]
 offsets = PackedFloat32Array(0, 0.19863015, 0.8630137, 1)

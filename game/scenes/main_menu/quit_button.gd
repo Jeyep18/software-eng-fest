@@ -1,13 +1,11 @@
-# start_button.gd
 extends Button
+@onready var _quit_button: Button = $"."
 
 func _ready() -> void:
 	pressed.connect(_on_pressed)
 
-
 func _on_pressed() -> void:
-	AudioManager.stop_music(true)
-	disabled = true
+	_quit_button.disabled = true
 	await TransitionOverlay.fade_to_black()
-	SceneManager.load_scene("home")
-	GlobalTimer.start_fresh()
+	get_tree().quit()
+	

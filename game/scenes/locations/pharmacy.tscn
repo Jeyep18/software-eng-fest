@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_ra384"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="7_lgo0e"]
 [ext_resource type="VoxelGIData" uid="uid://6bsi8yxlare1" path="res://game/resources/voxels/pharmacy.VoxelGI_data.res" id="8_lgo0e"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_xalqm"]
 [ext_resource type="PackedScene" uid="uid://c2sp28fvd3dvj" path="res://_raw_assets/Locations/Pharmacy.glb" id="9_scsrr"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="12_lgo0e"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="12_ra384"]
@@ -328,8 +327,6 @@ environment = SubResource("Environment_hj2km")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.314453, 6.0292053, -14.321473)
 size = Vector3(32.628906, 12.50592, 21.352661)
 data = ExtResource("8_lgo0e")
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_xalqm")]
 
 [node name="Pharmacy" parent="." unique_id=254151288 instance=ExtResource("9_scsrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18076801, -0.00018376112, 0.04223728)

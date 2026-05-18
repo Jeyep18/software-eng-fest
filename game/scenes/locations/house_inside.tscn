@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdrdiyck13r11"]
 
-[ext_resource type="Script" path="res://game/scenes/locations/house_inside.gd" id="1_foea7"]
+[ext_resource type="Script" uid="uid://dnwtg46lqsmc2" path="res://game/scenes/locations/house_inside.gd" id="1_foea7"]
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_iw5ha"]
 [ext_resource type="AudioStream" uid="uid://dhf5s5c8rrwek" path="res://game/assets/sfx/340020__iesp__sounds-from-a-tv.wav" id="2_bt1tt"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_hrxyr"]
@@ -9,13 +9,12 @@
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_2sg0l"]
 [ext_resource type="AudioStream" uid="uid://c3aev2rnla44" path="res://game/assets/sfx/626727__catacombronson__fridge-tone.wav" id="4_ep4k0"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_iw5ha"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_qlj0p"]
-[ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
+[ext_resource type="PackedScene" uid="uid://cynt7pu7ylaj6" path="res://game/objects/interactables/door.tscn" id="7_dn58f"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_y6bww"]
 [ext_resource type="PackedScene" uid="uid://boa547w07bf30" path="res://game/objects/interactables/Roof.tscn" id="9_u8iu7"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="10_11i80"]
-[ext_resource type="PackedScene" uid="uid://c4d0nxdvhfmtt" path="res://game/objects/tv.tscn" id="12_c3eoh"]
-[ext_resource type="PackedScene" uid="uid://iv3hybdfd3fd" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
+[ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="12_c3eoh"]
+[ext_resource type="PackedScene" uid="uid://ut5fskgnrsyt" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
 [ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="16_kgaqh"]
 [ext_resource type="PackedScene" uid="uid://bw2r7j1q04u4t" path="res://game/entities/nanay/nanay.tscn" id="18_so1b5"]
 [ext_resource type="PackedScene" uid="uid://bfuqj3eqm4sn6" path="res://game/entities/lola/lola.tscn" id="18_taj8b"]
@@ -31,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="24_pqtb6"]
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="30_ff1h5"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="31_dpeow"]
-[ext_resource type="PackedScene" uid="uid://c7fktavqh7aoy" path="res://game/ui/pause/PauseMenu.tscn" id="32_dpeow"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ekle"]
 emission_shape = 3
@@ -254,8 +252,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7303314, 0.3795166, 0.6807
 shape = SubResource("BoxShape3D_dn58f")
 debug_color = Color(0.87109673, 0.00049690186, 0.8486494, 0.41960785)
 
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("6_qlj0p")]
-
 [node name="door" parent="." unique_id=1970056124 instance=ExtResource("7_dn58f")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7993892, 0, -4.232849)
 door_destination = "bodega"
@@ -283,6 +279,8 @@ completion_visual_cue = NodePath("../WindowTaskVisualCue")
 [node name="Window2" parent="." unique_id=1232401100 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.8439364, -4.9426174)
 completion_visual_cue = NodePath("../WindowTaskVisualCue2")
+time_cost_minutes = 24
+missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko takpan yung dalawa naming bintana.", "May plywood at pako pa kaya kami? Nasaan na kaya yung martilyo ni papa."])
 
 [node name="Spawnpoint2" parent="." unique_id=627294345 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6521201, 0, -6.817229)
@@ -305,9 +303,9 @@ monologue_lines = Array[String](["Mga lumang larawan namin...", "Kamusta na kaya
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.917082, 1.4302331, 1.0837145)
 interaction_prompt = "Place Lola's Medicine"
 need = 1
-required_item_ids = Array[String](["medicine", "medicine"])
+required_item_ids = Array[String](["medicine"])
 time_cost_minutes = 3
-missing_lines = Array[String](["Kailangan ko muna bumili sa botika ng dalawang gamot ni lola."])
+missing_lines = Array[String](["Kailangan ko muna bumili sa botika ng gamot ni lola."])
 ready_lines = Array[String](["Nabili ko na yung mga gamot, mabuti naman."])
 completed_lines = Array[String](["Meron na gamot si lola."])
 monologue_ui_scene = ExtResource("21_7ekle")
@@ -438,5 +436,3 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 omni_range = 154.55
-
-[node name="PauseMenu" parent="." unique_id=1158059127 instance=ExtResource("32_dpeow")]

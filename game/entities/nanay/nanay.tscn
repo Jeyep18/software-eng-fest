@@ -55,14 +55,14 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "At yung lumang flashlight sa bodega anak, patay na ang baterya. Bilhan mo din ng bago sa tindahan."
+text = "At yung lumang flashlight at radyo sa bodega anak, patay na ang baterya. Bilhan mo din ng bago sa tindahan at palagay nalang sa shelf na katabi ni Lola."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ucdwx"]
 script = ExtResource("3_dclit")
 speaker_name = "Player"
 expression = ExtResource("6_jfkbs")
-text = "Marami. Kulang na ang oras. Kailangan kong mag-isip kung paano ko lahat ito gagawin."
+text = "Marami ang kailangan gawin. Kulang na ang oras. Kailangan kong mag-isip kung paano ko lahat ito gagawin."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_d6eln"]

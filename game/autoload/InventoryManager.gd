@@ -120,3 +120,8 @@ func has_item_with_id(item_id: String) -> bool:
 		if item.item_id == item_id:
 			return true
 	return false
+
+func reset() -> void:
+	inventory.clear()
+	inventory_changed.emit()
+	print("InventoryManager: Inventory cleared.")

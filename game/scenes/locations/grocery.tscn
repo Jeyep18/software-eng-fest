@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_r5jgj"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_ve5we"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="7_xd4q2"]
-[ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_eprta"]
 [ext_resource type="PackedScene" uid="uid://cbtfx45as84mq" path="res://_raw_assets/Locations/Market.glb" id="9_yn1y5"]
 
 [sub_resource type="Shader" id="Shader_tokvj"]
@@ -167,8 +166,6 @@ data = ExtResource("2_anphp")
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("7_ve5we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.438011, 0.6383518, -10.502749)
-
-[node name="MapScreen" parent="." unique_id=1053564521 instance=ExtResource("8_eprta")]
 
 [node name="Market" parent="." unique_id=1319487788 instance=ExtResource("9_yn1y5")]
 

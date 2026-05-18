@@ -130,6 +130,9 @@ func reset() -> void:
 	for threshold in THRESHOLDS:
 		threshold["fired"] = false
 
+func start_fresh() -> void:
+	reset()
+	resume_timer()
 # ── Internal ──────────────────────────────────────────────────────────────────
 func _advance_one_minute() -> void:
 	if current_minutes >= TOTAL_MINUTES:
