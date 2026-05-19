@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://donmtcwnad77r"]
 
-[ext_resource type="PackedScene" uid="uid://bqujtorm10mxk" path="res://_raw_assets/house_map/house_inside1.glb" id="1_udpik"]
+[ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_udpik"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_ibihy"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_q86kq"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_s3i4m"]

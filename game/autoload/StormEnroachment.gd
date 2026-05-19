@@ -16,7 +16,7 @@ const ENCROACHMENT_MAP: Dictionary = {
 		"inaccessible": ["grocery"]
 	},
 	"inner_danger": {
-		"danger":      ["hardware_store", "pharmacy"],
+		"danger":      ["hardware", "pharmacy"],
 		"inaccessible": ["grocery"]         # already closed, stays closed
 	},
 }
@@ -24,11 +24,11 @@ const ENCROACHMENT_MAP: Dictionary = {
 # ── State ─────────────────────────────────────────────────────────────────────
 # location_id → "open" | "danger" | "inaccessible"
 var _location_states: Dictionary = {
-	"players_home":   "open",
-	"ate_lindas":     "open",
+	"home":           "open",
+	"ate_linda":      "open",
 	"grocery":        "open",
 	"pharmacy":       "open",
-	"hardware_store": "open",
+	"hardware":       "open",
 }
 
 # Time penalty applied when entering a danger zone (minutes)
@@ -82,9 +82,9 @@ func apply_danger_penalty(location_id: String) -> void:
 
 func reset() -> void:
 	_location_states = {
-		"players_home":   "open",
-		"ate_lindas":     "open",
+		"home":           "open",
+		"ate_linda":      "open",
 		"grocery":        "open",
 		"pharmacy":       "open",
-		"hardware_store": "open",
+		"hardware":       "open",
 	}

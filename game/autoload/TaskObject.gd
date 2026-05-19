@@ -3,6 +3,8 @@ class_name TaskObject
 extends Interactable
 
 @export var completion_visual_cue: Node = null
+@export var task_cue: Node3D = null
+@export var show_cue_only_when_discovered: bool = true
 @export var interaction_prompt: String = ""
 @export var need: NeedsLog.Need = NeedsLog.Need.ROOF
 @export var required_item_ids: Array[String] = []
@@ -48,6 +50,7 @@ func _ready() -> void:
 	prompt_label = interaction_prompt
 	player_exited.connect(_on_player_left)
 	_setup_ui()
+	_connect_needs_log()
 	
 	# ── SYNC WITH GLOBAL STATE ────────────────────────────────────────────────
 	# Check if this task's need was already resolved in a previous visit.
@@ -57,6 +60,35 @@ func _ready() -> void:
 		_is_completed = true
 		if completion_visual_cue != null:
 			completion_visual_cue.visible = true
+	_update_task_cue()
+
+func _connect_needs_log() -> void:
+	if not NeedsLog.need_discovered.is_connected(_on_need_discovered):
+		NeedsLog.need_discovered.connect(_on_need_discovered)
+	if not NeedsLog.need_resolved.is_connected(_on_need_resolved):
+		NeedsLog.need_resolved.connect(_on_need_resolved)
+
+func _update_task_cue() -> void:
+	if task_cue == null:
+		return
+	var should_show := not NeedsLog.is_resolved(need)
+	if show_cue_only_when_discovered:
+		should_show = should_show and NeedsLog.is_discovered(need)
+
+	if task_cue.has_method("set_active"):
+		task_cue.set_active(should_show)
+	else:
+		task_cue.visible = should_show
+
+func _on_need_discovered(discovered_need: NeedsLog.Need) -> void:
+	if discovered_need == need:
+		_update_task_cue()
+
+func _on_need_resolved(resolved_need: NeedsLog.Need) -> void:
+	if resolved_need != need:
+		return
+	_is_completed = true
+	_update_task_cue()
 
 func _setup_ui() -> void:
 	if monologue_ui_scene == null:
@@ -144,6 +176,7 @@ func _complete_task() -> void:
 		GlobalTimer.add_time(time_cost_minutes)
 
 	NeedsLog.resolve(need)
+	_update_task_cue()
 	
 	if completion_visual_cue != null:
 		completion_visual_cue.visible = true

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="9_64f0y"]
 [ext_resource type="Script" uid="uid://cx15idd6avcuk" path="res://game/scenes/main_menu/start_button.gd" id="9_n2j5s"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="10_4kbe1"]
+[ext_resource type="PackedScene" uid="uid://bfd1ee86t2snx" path="res://game/ui/credits_modal.tscn" id="10_35tpx"]
 [ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="11_5bjxa"]
 [ext_resource type="Script" uid="uid://bktech7nkvxa6" path="res://game/scenes/main_menu/quit_button.gd" id="12_48t3i"]
 [ext_resource type="PackedScene" uid="uid://c3erci5d62sx4" path="res://game/objects/interactables/plywood_model.tscn" id="12_voysh"]
@@ -368,9 +369,9 @@ layout_mode = 2
 text = "START"
 script = ExtResource("9_n2j5s")
 
-[node name="load_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=383943701]
+[node name="credits_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=383943701]
 layout_mode = 2
-text = "LOAD"
+text = "CREDITS"
 
 [node name="settings_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=894939448]
 layout_mode = 2
@@ -380,6 +381,9 @@ text = "SETTINGS"
 layout_mode = 2
 text = "QUIT"
 script = ExtResource("12_48t3i")
+
+[node name="CreditsModal" parent="." unique_id=804369956 instance=ExtResource("10_35tpx")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1684201697]
 libraries/ = SubResource("AnimationLibrary_jn6f0")

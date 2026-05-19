@@ -20,6 +20,7 @@ var _combine_target_index: int = -1
 var _slot_panels: Array[Panel] = []
 
 func _ready() -> void:
+	add_to_group("backpack_ui")
 	layer = 10
 	visible = false
 	grid_container.columns = 4
@@ -131,14 +132,27 @@ func _unhandled_input(event: InputEvent) -> void:
 		_toggle()
 
 func _toggle() -> void:
-	visible = !visible
 	if visible:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		_reset_selection()
-		_redraw_backpack()
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		_reset_selection()
+		close_backpack()
+		return
+
+	_close_map_if_open()
+	visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_reset_selection()
+	_redraw_backpack()
+
+func close_backpack() -> void:
+	if not visible:
+		return
+	visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_reset_selection()
+
+func _close_map_if_open() -> void:
+	var map_screen = get_tree().get_first_node_in_group("map_screen")
+	if map_screen and map_screen.has_method("close_map"):
+		map_screen.close_map()
 
 func _on_inventory_changed() -> void:
 	if not visible:

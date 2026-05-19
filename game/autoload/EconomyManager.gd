@@ -80,7 +80,7 @@ func barter(npc_id: String, give_item_id: String, receive_item_data: ItemData) -
 		return false
 
 	# Guard: does player have the item to give
-	if not InventoryManager.has_item_id(give_item_id):
+	if not InventoryManager.has_item_with_id(give_item_id):
 		barter_failed.emit(give_item_id, "Player does not have required item.")
 		print("EconomyManager: Player missing required trade item: '%s'" % give_item_id)
 		return false

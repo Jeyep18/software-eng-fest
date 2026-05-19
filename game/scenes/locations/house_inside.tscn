@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dkrv78ov5l83a" path="res://_raw_assets/interactable_models/WaterJug.glb" id="24_pqtb6"]
 [ext_resource type="PackedScene" uid="uid://bag37k6dc1fq" path="res://_raw_assets/Tree.glb" id="30_ff1h5"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="31_dpeow"]
+[ext_resource type="PackedScene" uid="uid://b6qmqp5op0y5c" path="res://game/objects/interactables/TaskCue3D.tscn" id="32_taskcue"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ekle"]
 emission_shape = 3
@@ -261,9 +262,10 @@ prompt_label = "Go Inside"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18268609, 0.008939624, -4.237865)
 spawn_id = "from_bodega"
 
-[node name="Roof" parent="." unique_id=1843619503 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("9_u8iu7")]
+[node name="Roof" parent="." unique_id=1843619503 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("9_u8iu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06114936, 0.46041477, -2.778782)
 completion_visual_cue = NodePath("../RoofTaskVisualCue")
+task_cue = NodePath("../RoofTaskCue")
 
 [node name="Fridge" parent="." unique_id=1495864148 instance=ExtResource("10_11i80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8263373, 0.70194197, -7.4031844)
@@ -271,13 +273,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8263373, 0.70194197, -7.403
 [node name="Tv" parent="." unique_id=1186584198 instance=ExtResource("12_c3eoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6372705, 1.4300116, -0.5095767)
 
-[node name="Window" parent="." unique_id=188395029 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("15_nu6qe")]
+[node name="Window" parent="." unique_id=188395029 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8509126, 1.8439364, -1.2023171)
 completion_visual_cue = NodePath("../WindowTaskVisualCue")
+task_cue = NodePath("../WindowTaskCue")
 
-[node name="Window2" parent="." unique_id=1232401100 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("15_nu6qe")]
+[node name="Window2" parent="." unique_id=1232401100 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.8439364, -4.9426174)
 completion_visual_cue = NodePath("../WindowTaskVisualCue2")
+task_cue = NodePath("../WindowTaskCue2")
 time_cost_minutes = 24
 missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko [b]takpan yung dalawang bintana[/b].", "Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?"])
 
@@ -298,8 +302,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004958749, -0.0034458637, 
 transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -3.2154307, 1.2702014, -2.8684487)
 monologue_lines = Array[String](["Mga lumang larawan namin...", "Kamusta na kaya si papa sa trabaho niya..."])
 
-[node name="MedicineTask" parent="." unique_id=106244337 instance=ExtResource("20_sw8kg")]
+[node name="MedicineTask" parent="." unique_id=106244337 node_paths=PackedStringArray("task_cue") instance=ExtResource("20_sw8kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.917082, 1.4302331, 1.0837145)
+task_cue = NodePath("../MedicineTaskCue")
 interaction_prompt = "Place Lola's Medicine"
 need = 1
 required_item_ids = Array[String](["medicine"])
@@ -309,20 +314,40 @@ ready_lines = Array[String](["Nabili ko na yung [b]gamot[/b], mabuti naman."])
 completed_lines = Array[String](["Meron na gamot si lola."])
 prompt_label = "Place Lola's Medicine"
 
-[node name="FillWaterTask" parent="." unique_id=529410105 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("22_ea3sf")]
+[node name="FillWaterTask" parent="." unique_id=529410105 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("22_ea3sf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.1759596, 1.2475072, -7.7489634)
 completion_visual_cue = NodePath("../WaterJugTask")
+task_cue = NodePath("../WaterTaskCue")
 interaction_prompt = "Fill Water Jug"
 prompt_label = "Fill Water Jug"
 
-[node name="RadioTask" parent="." unique_id=884385063 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("22_4pas2")]
+[node name="RadioTask" parent="." unique_id=884385063 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("22_4pas2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50261533, 1.1342692, 1.6833023)
 completion_visual_cue = NodePath("../RadioTaskVisualCue")
+task_cue = NodePath("../RadioTaskCue")
 interaction_prompt = "Place Radio & Flashlight"
 missing_lines = Array[String](["Yung [b]radyo[/b] at [b]flashlight[/b], nasaan na kaya...", "Kailangan ko muna [b]ayusin ang radyo at flashlight[/b] para malagay ko dito."])
 ready_lines = Array[String](["Maayos na itong [b]radyo[/b] at [b]flashlight[/b], ilalagay ko muna ito dito."])
 completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balita kahit may bagyo.", "Mabuti din na may flashlight, baka biglang mawalan ng kuryente."])
 prompt_label = "Place Working Radio"
+
+[node name="RoofTaskCue" parent="." unique_id=726863625 instance=ExtResource("32_taskcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25432974, 3.1799088, -2.845928)
+
+[node name="WindowTaskCue" parent="." unique_id=2023954735 instance=ExtResource("32_taskcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2417374, 1.9832878, -1.2023171)
+
+[node name="WindowTaskCue2" parent="." unique_id=1961389787 instance=ExtResource("32_taskcue")]
+transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.9624298, -4.7983084)
+
+[node name="MedicineTaskCue" parent="." unique_id=415237868 instance=ExtResource("32_taskcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6290016, 1.9, 1.0837145)
+
+[node name="WaterTaskCue" parent="." unique_id=1132441431 instance=ExtResource("32_taskcue")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.1759596, 1.75, -7.7017813)
+
+[node name="RadioTaskCue" parent="." unique_id=1607066454 instance=ExtResource("32_taskcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50261533, 1.5837703, 1.6833023)
 
 [node name="WindowTaskVisualCue" type="Node3D" parent="." unique_id=1887048608]
 visible = false

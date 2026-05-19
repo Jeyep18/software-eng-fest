@@ -66,10 +66,12 @@ func _populate() -> void:
 		var discovered: bool        = NeedsLog.is_discovered(need)
 
 		var row := HBoxContainer.new()
+		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		row.add_theme_constant_override("separation", 8)
 
 		# Status icon
 		var icon := Label.new()
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if resolved:
 			icon.text = "✓"
 			icon.add_theme_color_override("font_color", _COL_RESOLVED)
@@ -83,9 +85,11 @@ func _populate() -> void:
 
 		# Task label
 		var lbl := Label.new()
-		lbl.text = "%s — %s  [%s]" % [item[0], item[1], item[2]]
+		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		lbl.text = item[0]
 		lbl.add_theme_color_override("font_color",
 			_COL_RESOLVED if resolved else Color.WHITE)
+		lbl.add_theme_font_size_override("font_size", 13)
 			
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

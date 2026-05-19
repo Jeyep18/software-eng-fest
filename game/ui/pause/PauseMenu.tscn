@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://c7fktavqh7aoy"]
 
 [ext_resource type="Script" uid="uid://8x3povv3cpl4" path="res://game/ui/pause/PauseMenu.gd" id="1_oetci"]
-[ext_resource type="Script" uid="uid://dsl8gs5spy4nr" path="res://game/ui/pause/ChecklistPanel.gd" id="2_26j17"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_26j17"]
-font_size = 25
-outline_size = 5
-outline_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_oetci"]
+font_size = 30
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1158059127]
 process_mode = 3
@@ -30,25 +27,23 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Panel" unique_id=575723378]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -200.5
+offset_right = 110.5
+offset_bottom = 200.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sidebar" type="VBoxContainer" parent="Panel/HSplitContainer" unique_id=1838427935]
 layout_mode = 2
-
-[node name="SidebarHeader" type="VBoxContainer" parent="Panel/HSplitContainer/Sidebar" unique_id=1385492601]
-layout_mode = 2
-
-[node name="GameTitle" type="Label" parent="Panel/HSplitContainer/Sidebar/SidebarHeader" unique_id=1797710444]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "BAGYONG BAHAY"
-
-[node name="SubTitle" type="Label" parent="Panel/HSplitContainer/Sidebar/SidebarHeader" unique_id=767658921]
-layout_mode = 2
-theme_override_font_sizes/font_size = 19
-text = "Game paused"
+theme_override_constants/separation = 10
 
 [node name="PauseBadge" type="PanelContainer" parent="Panel/HSplitContainer/Sidebar" unique_id=1835193035]
 layout_mode = 2
@@ -56,6 +51,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Panel/HSplitContainer/Sidebar/PauseBadge" unique_id=331735241]
 layout_mode = 2
 text = "PAUSED"
+label_settings = SubResource("LabelSettings_oetci")
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Panel/HSplitContainer/Sidebar" unique_id=1915275424]
 layout_mode = 2
@@ -66,26 +63,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "▶ Resume"
 
-[node name="ChecklistBtn" type="Button" parent="Panel/HSplitContainer/Sidebar" unique_id=746636472]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 27
-text = "✓ Checklist"
-
-[node name="ControlsBtn" type="Button" parent="Panel/HSplitContainer/Sidebar" unique_id=1814828853]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 27
-text = "⊞ Controls"
-
 [node name="SettingsBtn" type="Button" parent="Panel/HSplitContainer/Sidebar" unique_id=702566776]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "⚙ Settings"
-
-[node name="HSeparator" type="HSeparator" parent="Panel/HSplitContainer/Sidebar" unique_id=1178561712]
-layout_mode = 2
 
 [node name="RestartBtn" type="Button" parent="Panel/HSplitContainer/Sidebar" unique_id=226180309]
 custom_minimum_size = Vector2(0, 60)
@@ -94,8 +76,9 @@ theme_override_font_sizes/font_size = 27
 text = "↺ Restart"
 
 [node name="QuitBtn" type="Button" parent="Panel/HSplitContainer/Sidebar" unique_id=537927814]
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
-text = "Quit to title"
+text = "QUIT TO TITLE"
 
 [node name="ContentArea" type="Control" parent="." unique_id=1862655094]
 custom_minimum_size = Vector2(600, 400)
@@ -105,6 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ControlsPanel" type="Control" parent="ContentArea" unique_id=2097099020]
@@ -114,6 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="SettingsPanel" type="Control" parent="ContentArea" unique_id=818203311]
 layout_mode = 1
@@ -123,60 +108,5 @@ anchor_bottom = 1.0
 offset_left = 232.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 pivot_offset = Vector2(250, 0)
-
-[node name="ChecklistPanel" type="Control" parent="ContentArea" unique_id=1223727696]
-custom_minimum_size = Vector2(800, 800)
-layout_mode = 1
-anchor_left = 0.120000005
-anchor_top = 0.056
-anchor_right = 0.86100006
-anchor_bottom = 0.841
-offset_left = -0.40000916
-offset_top = 0.51999664
-offset_right = 0.8798828
-offset_bottom = -0.2800293
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_26j17")
-
-[node name="Panel" type="Panel" parent="ContentArea/ChecklistPanel" unique_id=479847882]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentArea/ChecklistPanel" unique_id=1511355849]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="TitleLabel" type="Label" parent="ContentArea/ChecklistPanel/VBoxContainer" unique_id=1580027899]
-layout_mode = 2
-text = "Preparation Checklist"
-label_settings = SubResource("LabelSettings_26j17")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="ContentArea/ChecklistPanel/VBoxContainer" unique_id=1553139185]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ItemList" type="VBoxContainer" parent="ContentArea/ChecklistPanel/VBoxContainer/ScrollContainer" unique_id=222034470]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 12
-
-[connection signal="pressed" from="Panel/HSplitContainer/Sidebar/ResumeBtn" to="." method="_on_resume_btn_pressed"]
-[connection signal="pressed" from="Panel/HSplitContainer/Sidebar/ChecklistBtn" to="." method="_on_checklist_btn_pressed"]
-[connection signal="pressed" from="Panel/HSplitContainer/Sidebar/ControlsBtn" to="." method="_on_controls_btn_pressed"]
-[connection signal="pressed" from="Panel/HSplitContainer/Sidebar/SettingsBtn" to="." method="_on_settings_btn_pressed"]
-[connection signal="pressed" from="Panel/HSplitContainer/Sidebar/RestartBtn" to="." method="_on_restart_btn_pressed"]
-[connection signal="pressed" from="Panel/HSplitContainer/Sidebar/QuitBtn" to="." method="_on_quit_btn_pressed"]

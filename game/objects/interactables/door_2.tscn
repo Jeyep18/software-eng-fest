@@ -320,9 +320,9 @@ _data = {
 [node name="door2" type="Area3D" unique_id=1354119428]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_a6r1q")
-door_destination = null
-spawn_point_id = null
-prompt_label = null
+door_destination = ""
+spawn_point_id = ""
+prompt_label = "[Press E to Interact]"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=302395387]
 

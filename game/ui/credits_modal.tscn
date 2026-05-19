@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bfd1ee86t2snx"]
+
+[ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="1_5y4cc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6gso"]
+font = ExtResource("1_5y4cc")
+font_size = 22
+
+[node name="CreditsModal" type="CanvasLayer" unique_id=804369956]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=596433803]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="CreditsModal" type="PanelContainer" parent="MarginContainer" unique_id=243668576]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CreditsModal" unique_id=523123842]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/CreditsModal/VBoxContainer" unique_id=789747445]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CreditsModal/VBoxContainer" unique_id=522359172]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+alignment = 1
+
+[node name="Control3" type="Control" parent="MarginContainer/CreditsModal/VBoxContainer/HBoxContainer" unique_id=1834432458]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CreditsModal/VBoxContainer/HBoxContainer" unique_id=2011982617]
+layout_mode = 2
+text = "GAME   CREDITS"
+label_settings = SubResource("LabelSettings_u6gso")
+
+[node name="Control" type="Control" parent="MarginContainer/CreditsModal/VBoxContainer/HBoxContainer" unique_id=794865523]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="close_button" type="Button" parent="MarginContainer/CreditsModal/VBoxContainer/HBoxContainer" unique_id=1500312374]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CLOSE"
+
+[node name="Control2" type="Control" parent="MarginContainer/CreditsModal/VBoxContainer/HBoxContainer" unique_id=916747351]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/CreditsModal/VBoxContainer" unique_id=6971497]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CreditsModal/VBoxContainer/ScrollContainer" unique_id=840210228]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/CreditsModal/VBoxContainer" unique_id=805750900]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2

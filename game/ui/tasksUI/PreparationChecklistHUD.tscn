@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cr7vih7tx7cip"]
+
+[ext_resource type="Script" path="res://game/ui/tasksUI/PreparationChecklistHUD.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://dsl8gs5spy4nr" path="res://game/ui/pause/ChecklistPanel.gd" id="2_list"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
+bg_color = Color(0.06, 0.065, 0.06, 0.72)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.82, 0.68, 0.42, 0.42)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PreparationChecklistHUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="ChecklistPanel" type="Control" parent="."]
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 300.0
+offset_bottom = 260.0
+script = ExtResource("2_list")
+
+[node name="Panel" type="Panel" parent="ChecklistPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChecklistPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TitleLabel" type="Label" parent="ChecklistPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Preparation Checklist"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChecklistPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="ItemList" type="VBoxContainer" parent="ChecklistPanel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 3

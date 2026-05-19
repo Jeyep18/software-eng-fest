@@ -3,49 +3,42 @@
 
 extends CanvasLayer
 
-@onready var checklist_panel: Control = $ContentArea/ChecklistPanel
 @onready var controls_panel:  Control = $ContentArea/ControlsPanel
 @onready var settings_panel:  Control = $ContentArea/SettingsPanel
 
 @onready var nav_resume:    Button = $Panel/HSplitContainer/Sidebar/ResumeBtn
-@onready var nav_checklist: Button = $Panel/HSplitContainer/Sidebar/ChecklistBtn
-@onready var nav_controls:  Button = $Panel/HSplitContainer/Sidebar/ControlsBtn
 @onready var nav_settings:  Button = $Panel/HSplitContainer/Sidebar/SettingsBtn
 @onready var nav_restart:   Button = $Panel/HSplitContainer/Sidebar/RestartBtn
 @onready var nav_quit:      Button = $Panel/HSplitContainer/Sidebar/QuitBtn
-
-# ── Checklist script reference ────────────────────────────────────────────────
-@onready var checklist_script: ChecklistPanel = $ContentArea/ChecklistPanel
 
 var _all_panels: Array[Control] = []
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	layer = 20
+	$ContentArea.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$ContentArea.set_position(Vector2(229, 0))
 	$ContentArea.set_size(Vector2(
 		get_viewport().get_visible_rect().size.x - 229,
 		get_viewport().get_visible_rect().size.y
 	))
 	var panel_size : Vector2 = $ContentArea.size
-	checklist_panel.set_size(panel_size)
 	controls_panel.set_size(panel_size)
 	settings_panel.set_size(panel_size)
+	controls_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	settings_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	_all_panels = [
-		checklist_panel,
 		controls_panel,
 		settings_panel,
 	]
 
-	checklist_panel.hide()
 	controls_panel.hide()
 	settings_panel.hide()
 	hide()
 
 	# Sidebar nav buttons
 	nav_resume.pressed.connect(_on_nav_resume)
-	nav_checklist.pressed.connect(_on_nav_checklist)
-	nav_controls.pressed.connect(_on_nav_controls)
 	nav_settings.pressed.connect(_on_nav_settings)
 	nav_restart.pressed.connect(_on_nav_restart)
 	nav_quit.pressed.connect(_on_nav_quit)
@@ -61,6 +54,7 @@ func _input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 func _open() -> void:
+	_close_gameplay_menus()
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	show()
@@ -79,14 +73,18 @@ func _show_panel(target: Control) -> void:
 		panel.hide()
 	target.show()
 
+func _close_gameplay_menus() -> void:
+	var map_screen = get_tree().get_first_node_in_group("map_screen")
+	if map_screen and map_screen.has_method("close_map"):
+		map_screen.close_map()
+
+	var backpack_ui = get_tree().get_first_node_in_group("backpack_ui")
+	if backpack_ui and backpack_ui.has_method("close_backpack"):
+		backpack_ui.close_backpack()
+
 # ── Nav handlers ──────────────────────────────────────────────────────────────
 func _on_nav_resume() -> void:
 	_close()
-
-func _on_nav_checklist() -> void:
-	_show_panel(checklist_panel)
-	if checklist_script:
-		checklist_script.refresh()
 
 func _on_nav_controls() -> void:
 	_show_panel(controls_panel)
@@ -155,7 +153,6 @@ func _do_quit() -> void:
 # ── Stubs intentionally left empty (panels have no special open logic yet) ────
 
 func _on_resume_btn_pressed()    -> void: _on_nav_resume()
-func _on_checklist_btn_pressed() -> void: _on_nav_checklist()
 func _on_controls_btn_pressed()  -> void: _on_nav_controls()
 func _on_settings_btn_pressed()  -> void: _on_nav_settings()
 func _on_restart_btn_pressed()   -> void: _on_nav_restart()

@@ -75,6 +75,7 @@ func _input(event: InputEvent) -> void:
 
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
+	_close_backpack_if_open()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_refresh_all_nodes()
 	# Trigger redraws on both drawing nodes
@@ -90,12 +91,19 @@ func close_map() -> void:
 	confirm_panel.hide()
 	_selected_location = ""
 
+func _close_backpack_if_open() -> void:
+	var backpack_ui = get_tree().get_first_node_in_group("backpack_ui")
+	if backpack_ui and backpack_ui.has_method("close_backpack"):
+		backpack_ui.close_backpack()
+
 # ── Road Layer — pass data before first draw ──────────────────────────────────
 func _build_road_lines() -> void:
 	# Populate the RoadLayer exports so its _draw() has data to work with
 	road_layer.node_positions = NODE_POSITIONS
 	road_layer.connections    = ROAD_CONNECTIONS
+	storm_overlay.node_positions = NODE_POSITIONS
 	road_layer.queue_redraw()
+	storm_overlay.queue_redraw()
 
 # ── Node Button Construction ──────────────────────────────────────────────────
 func _build_node_buttons() -> void:
@@ -153,7 +161,7 @@ func _on_node_selected(loc_id: String) -> void:
 	if loc_id == SceneManager.current_location:
 		return
 	var state: String = SceneManager.get_location_state(loc_id)
-	if state == "closed":
+	if state == "closed" or state == "inaccessible":
 		return
 	_selected_location = loc_id
 	_show_confirm_panel(loc_id)
@@ -204,6 +212,7 @@ func _on_cancel_selection() -> void:
 func _connect_signals() -> void:
 	GlobalTimer.time_updated.connect(_on_time_updated)
 	GlobalTimer.encroachment_threshold_reached.connect(_on_encroachment)
+	StormEnroachment.location_state_changed.connect(_on_location_state_changed)
 	SceneManager.travel_completed.connect(_on_travel_completed)
 
 func _on_time_updated(_minute: int) -> void:
@@ -215,6 +224,11 @@ func _on_encroachment(_zone_id: String) -> void:
 		_refresh_all_nodes()
 		storm_overlay.queue_redraw()
 		road_layer.queue_redraw()
+
+func _on_location_state_changed(_location_id: String, _new_state: String) -> void:
+	if visible:
+		_refresh_all_nodes()
+		storm_overlay.queue_redraw()
 
 func _on_travel_completed(_location_id: String) -> void:
 	if visible:

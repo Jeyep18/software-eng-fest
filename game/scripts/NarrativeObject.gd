@@ -63,6 +63,9 @@ func _setup_ui() -> void:
 
 func interact() -> void:
 	if not _is_showing:
+		if monologue_lines.is_empty():
+			push_warning("NarrativeObject '" + name + "': no monologue lines configured.")
+			return
 		_current_line = 0
 		# Discover the need on first interaction only.
 		if discovers_need and not _need_discovered:

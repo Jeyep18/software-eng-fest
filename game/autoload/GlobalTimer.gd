@@ -89,7 +89,7 @@ func add_time(minutes: int) -> void:
 	if minutes <= 0:
 		return
 	var previous: int = current_minutes
-	current_minutes = mini(current_minutes + minutes, TOTAL_MINUTES)
+	current_minutes = min(current_minutes + minutes, TOTAL_MINUTES)
 	for m in range(previous + 1, current_minutes + 1):
 		emit_signal("time_updated", m)
 		_check_thresholds(m)

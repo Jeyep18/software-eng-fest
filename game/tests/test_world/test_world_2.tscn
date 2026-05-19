@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bi7thj72onpnm"]
 
 [ext_resource type="PackedScene" uid="uid://dx3oug1d2ncup" path="res://game/objects/chair.tscn" id="3_8n8cx"]
-[ext_resource type="PackedScene" path="res://game/objects/cafeteri_acake.tscn" id="4_8n8cx"]
+[ext_resource type="PackedScene" uid="uid://5lygidd3w3bd" path="res://game/objects/table.tscn" id="4_8n8cx"]
 [ext_resource type="PackedScene" uid="uid://ci8x2vwwxqd65" path="res://game/objects/walldoor_0022.tscn" id="5_06lrm"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_06lrm"]
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="6_cmxvi"]

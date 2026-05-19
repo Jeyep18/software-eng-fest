@@ -27,6 +27,8 @@ const SCENE_PATHS: Dictionary = {
 	"ate_linda":     "res://game/scenes/locations/tindahan.tscn",
 	"hardware":      "res://game/scenes/locations/hardware.tscn",
 	"bodega":        "res://game/scenes/locations/bodega.tscn",
+	"test_room1":    "res://game/scenes/locations/room_1.tscn",
+	"test_room2":    "res://game/maps/test_map1/tindahanmo.tscn",
 
 	# ── Ending ──────────────────────────────────────────────────────────────
 	# The ending cinematic scene. Loaded automatically on storm_arrived.
@@ -106,6 +108,11 @@ func get_pending_spawn_id() -> String:
 # ── Zone State ────────────────────────────────────────────────────────────────
 
 func get_location_state(location_id: String) -> String:
+	var storm_state: String = StormEnroachment.get_state(location_id)
+	if storm_state == "inaccessible":
+		return "closed"
+	if storm_state == "danger":
+		return "danger"
 	if closed_zones.has(location_id):  return "closed"
 	if danger_zones.has(location_id):  return "danger"
 	return "open"
@@ -129,8 +136,8 @@ func _on_storm_arrived() -> void:
 	# Lock all travel
 	for loc in SCENE_PATHS.keys():
 		_mark_closed(loc)
-	
-		# Small delay so any fade currently in progress can complete cleanly,
+
+	# Small delay so any fade currently in progress can complete cleanly,
 	# then transition to the ending cinematic.
 	await get_tree().create_timer(0.5).timeout
 	await TransitionOverlay.fade_to_black()

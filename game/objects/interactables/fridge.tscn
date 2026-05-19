@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="1_riw02"]
 [ext_resource type="Script" uid="uid://bvygk7q3cd3en" path="res://game/objects/interactables/FridgeTask.gd" id="2_uwq7c"]
 [ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
+[ext_resource type="PackedScene" uid="uid://b6qmqp5op0y5c" path="res://game/objects/interactables/TaskCue3D.tscn" id="4_taskcue"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]
 size = Vector3(1.6542816, 1.0712891, 1.1739502)
@@ -19,8 +20,9 @@ shape = SubResource("BoxShape3D_cldu5")
 [node name="fridge2" parent="." unique_id=1554945471 instance=ExtResource("1_riw02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5949855, 0)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=348564518]
+[node name="Area3D" type="Area3D" parent="." unique_id=348564518 node_paths=PackedStringArray("task_cue")]
 script = ExtResource("2_uwq7c")
+task_cue = NodePath("../FoodTaskCue")
 interaction_prompt = "Place Food"
 need = 2
 time_cost_minutes = 5
@@ -36,3 +38,6 @@ shape = SubResource("BoxShape3D_7mq1j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616304789]
 unique_name_in_owner = true
+
+[node name="FoodTaskCue" parent="." unique_id=1214801977 instance=ExtResource("4_taskcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 1.0795321, 0.6166832)
