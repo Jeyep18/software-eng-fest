@@ -36,3 +36,6 @@ func _on_body_exited(body: Node3D) -> void:
 
 func interact() -> void:
 	push_warning("Interactable: interact() not implemented on " + name)
+
+func is_interaction_available() -> bool:
+	return true

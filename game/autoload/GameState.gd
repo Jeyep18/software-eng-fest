@@ -4,9 +4,13 @@ extends Node
 
 var collected_world_items: Array[String] = []
 var player_name: String = ""
-const STARTING_CASH: int = 600
+const STARTING_CASH: int = 0
 
 var cash_balance: int = STARTING_CASH
+var nanay_departure_cash_granted: bool = false
+var talked_to_lola: bool = false
+var house_tasks_unlocked: bool = false
+var house_exploration_complete: bool = false
 
 #region Act Tracking
 enum Act { ACT_1, ACT_2, ACT_3, ACT_4 }
@@ -55,6 +59,7 @@ signal act_changed(new_act: Act)
 signal act1_state_changed(new_state: Act1State)
 signal player_name_set(name: String)
 signal cash_changed(new_balance: int)
+signal guide_tasks_changed
 #endregion
 
 #region Public API
@@ -71,6 +76,25 @@ func spend_cash(amount: int) -> bool:
 
 func get_cash() -> int:
 	return cash_balance
+
+func complete_nanay_intro() -> void:
+	if house_tasks_unlocked:
+		return
+	house_tasks_unlocked = true
+	nanay_departure_cash_granted = true
+	guide_tasks_changed.emit()
+
+func complete_lola_intro() -> void:
+	if talked_to_lola:
+		return
+	talked_to_lola = true
+	guide_tasks_changed.emit()
+
+func complete_house_exploration() -> void:
+	if house_exploration_complete:
+		return
+	house_exploration_complete = true
+	guide_tasks_changed.emit()
 
 func set_player_name(new_name: String, gender: String = "kuya") -> void:
 	if new_name.strip_edges().is_empty():
@@ -101,6 +125,10 @@ func reset() -> void:
 	corruption_evidence_found = false
 	corruption_evidence_shared = false
 	cash_balance = STARTING_CASH
+	nanay_departure_cash_granted = false
+	talked_to_lola = false
+	house_tasks_unlocked = false
+	house_exploration_complete = false
 	collected_world_items.clear()
 #endregion
 

@@ -24,7 +24,14 @@ func _pick_sequence() -> DialogueSequence:
 	return sequence_hint_all_done
 
 func _hide_dialogue() -> void:
-	if not _has_met and _current_sequence == sequence_first_meeting:
+	var completed_first_meeting := (
+		not _has_met
+		and _current_sequence == sequence_first_meeting
+		and _current_sequence != null
+		and _current_line >= _current_sequence.lines.size()
+	)
+	if completed_first_meeting:
 		_has_met = true
+		GameState.complete_lola_intro()
 		NeedsLog.discover(NeedsLog.Need.MEDICINE)
 	super._hide_dialogue()

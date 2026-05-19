@@ -17,7 +17,7 @@ const _ITEMS: Array = [
 	["Get Lola's medicine", "Pharmacy", "CRITICAL", NeedsLog.Need.MEDICINE  ],
 	["Store food",          "4x canned goods",           "HIGH",     NeedsLog.Need.FOOD      ],
 	["Fill water jugs",     "Home faucet",           "HIGH",     NeedsLog.Need.WATER     ],
-	["Board windows",       "Plywood + nails + hammer",  "MED",      NeedsLog.Need.WINDOWS   ],
+	["Board both windows",  "Plywood + nails + hammer",  "MED",      NeedsLog.Need.WINDOWS   ],
 	["Assemble flashlight & Radio", "Flashlight + batteries & Radio + Batteries",    "MED",      NeedsLog.Need.FLASHLIGHT],
 ]
 
@@ -31,6 +31,7 @@ func _ready() -> void:
 	# No more dynamic ScrollContainer creation here!
 	NeedsLog.need_resolved.connect(_on_need_resolved)
 	NeedsLog.need_discovered.connect(_on_need_discovered)
+	GameState.guide_tasks_changed.connect(_on_guide_tasks_changed)
 
 	# Defer the first populate
 	call_deferred("_populate")
@@ -42,6 +43,9 @@ func _on_need_resolved(_need: NeedsLog.Need) -> void:
 	_check_completion()
 
 func _on_need_discovered(_need: NeedsLog.Need) -> void:
+	_populate()
+
+func _on_guide_tasks_changed() -> void:
 	_populate()
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -60,10 +64,14 @@ func _populate() -> void:
 		_list.remove_child(child)
 		child.queue_free()
 
+	_add_guide_tasks()
+
 	for item: Array in _ITEMS:
 		var need:     NeedsLog.Need = item[3]
-		var resolved: bool          = NeedsLog.is_resolved(need)
-		var discovered: bool        = NeedsLog.is_discovered(need)
+		var resolved: bool = NeedsLog.is_resolved(need)
+		var discovered: bool = NeedsLog.is_discovered(need)
+		if not discovered and not resolved:
+			continue
 
 		var row := HBoxContainer.new()
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -96,6 +104,40 @@ func _populate() -> void:
 		row.add_child(lbl)
 
 		_list.add_child(row)
+
+func _add_guide_tasks() -> void:
+	if not GameState.house_tasks_unlocked:
+		_add_row("Talk to Nanay", GameState.house_tasks_unlocked)
+		_add_row("Talk to Lola", GameState.talked_to_lola)
+		return
+
+	if not GameState.talked_to_lola:
+		_add_row("Talk to Lola", false)
+
+	_add_row("Explore around the house", GameState.house_exploration_complete)
+
+func _add_row(text: String, resolved: bool) -> void:
+	var row := HBoxContainer.new()
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_theme_constant_override("separation", 8)
+
+	var icon := Label.new()
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	icon.custom_minimum_size = Vector2(16, 0)
+	icon.text = "OK" if resolved else "!"
+	icon.add_theme_color_override("font_color", _COL_RESOLVED if resolved else _COL_DISCOVERED)
+	row.add_child(icon)
+
+	var lbl := Label.new()
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	lbl.text = text
+	lbl.add_theme_color_override("font_color", _COL_RESOLVED if resolved else Color.WHITE)
+	lbl.add_theme_font_size_override("font_size", 13)
+	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	row.add_child(lbl)
+
+	_list.add_child(row)
 
 func _check_completion() -> void:
 	var critical_done: bool = (

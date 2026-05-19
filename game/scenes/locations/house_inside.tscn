@@ -275,15 +275,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6372705, 1.4300116, -0.5095
 
 [node name="Window" parent="." unique_id=188395029 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8509126, 1.8439364, -1.2023171)
+window_id = "bedroom_window"
 completion_visual_cue = NodePath("../WindowTaskVisualCue")
 task_cue = NodePath("../WindowTaskCue")
 
 [node name="Window2" parent="." unique_id=1232401100 node_paths=PackedStringArray("completion_visual_cue", "task_cue") instance=ExtResource("15_nu6qe")]
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.8439364, -4.9426174)
+window_id = "living_room_window"
 completion_visual_cue = NodePath("../WindowTaskVisualCue2")
 task_cue = NodePath("../WindowTaskCue2")
-time_cost_minutes = 24
-missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko [b]takpan yung dalawang bintana[/b].", "Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?"])
+missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko [b]takpan itong bintana[/b].", "Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?"])
 
 [node name="Spawnpoint2" parent="." unique_id=627294345 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6521201, 0, -6.817229)
@@ -305,6 +306,7 @@ monologue_lines = Array[String](["Mga lumang larawan namin...", "Kamusta na kaya
 [node name="MedicineTask" parent="." unique_id=106244337 node_paths=PackedStringArray("task_cue") instance=ExtResource("20_sw8kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.917082, 1.4302331, 1.0837145)
 task_cue = NodePath("../MedicineTaskCue")
+discover_on_interact = false
 interaction_prompt = "Place Lola's Medicine"
 need = 1
 required_item_ids = Array[String](["medicine"])
@@ -332,10 +334,10 @@ completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balit
 prompt_label = "Place Working Radio"
 
 [node name="RoofTaskCue" parent="." unique_id=726863625 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25432974, 3.0519698, -2.845928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5532892, 0.70479643, -2.845928)
 
 [node name="WindowTaskCue" parent="." unique_id=2023954735 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2417374, 1.9832878, -1.2023171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2417374, 1.2498862, -1.2023171)
 
 [node name="WindowTaskCue2" parent="." unique_id=1961389787 instance=ExtResource("32_taskcue")]
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0192323, 1.4046286, -4.7983084)

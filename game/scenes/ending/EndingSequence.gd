@@ -87,7 +87,7 @@ func _ready() -> void:
 			"anchor":          anchor_windows,
 			"visual_cue_path": "World3D/WindowArea/WindowTaskVisualCue",
 			"label_done":      "Matatag ang harang sa bintana, naligtas kami sa malalakas na hangin.",
-			"label_skip":      "Tuluyang lumakas ang hangin, nilamon ng ulan ang loob ng bahay.",
+			"label_skip":      "Hindi natakpan ang dalawang bintana, kaya pinasok ng hangin at ulan ang bahay.",
 		},
 		{
 			"need":            NeedsLog.Need.ROOF,
@@ -409,7 +409,7 @@ func _format_minutes(minutes: int) -> String:
 func _populate_result_panel() -> void:
 	var title_lbl:  Label         = result_panel.get_node("VBoxContainer/TitleLabel")
 	var sub_lbl:    Label         = result_panel.get_node("VBoxContainer/SubLabel")
-	var item_list:  ItemList = result_panel.get_node("VBoxContainer/ItemList")
+	var item_list:  VBoxContainer = result_panel.get_node("VBoxContainer/ItemList")
 	var footer_lbl: Label         = result_panel.get_node("VBoxContainer/FooterLabel")
 
 	var completed_count: int = 0

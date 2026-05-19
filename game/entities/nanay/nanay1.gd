@@ -2,49 +2,42 @@ class_name Nanay1
 extends NPC
 
 @export var sequence_pre_departure: DialogueSequence
-@export var sequence_return_early: DialogueSequence   # 0–4 hrs
-@export var sequence_return_mid: DialogueSequence     # 4–8 hrs
-@export var sequence_return_late: DialogueSequence    # 8+ hrs
-
-var _has_departed: bool = false
+@export var sequence_return_early: DialogueSequence
+@export var sequence_return_mid: DialogueSequence
+@export var sequence_return_late: DialogueSequence
+@export var cash_to_grant: int = 600
 
 func _ready() -> void:
 	super._ready()
 	prompt_label = "Talk to Nanay"
 
 func _pick_sequence() -> DialogueSequence:
-	if not _has_departed:
-		# Pre-departure: always start with pre_departure.
-		# Briefing is auto-chained in _hide_dialogue — never picked manually.
+	if not GameState.house_tasks_unlocked:
 		return sequence_pre_departure
-		notify_departed()
-	var elapsed_hrs: float = GlobalTimer.elapsed_minutes / 60.0
+
+	var elapsed_hrs: float = GlobalTimer.current_minutes / 60.0
 	if elapsed_hrs >= 8.0:
 		return sequence_return_late
 	if elapsed_hrs >= 4.0:
 		return sequence_return_mid
 	return sequence_return_early
-	
 
 func _hide_dialogue() -> void:
-	# When pre_departure finishes, chain directly into briefing.
-	# Does NOT call super — keeps the UI alive and transitions seamlessly.
-	if _current_sequence == sequence_pre_departure:
-		_current_sequence = sequence_pre_departure
-		_current_line = 0
-		_show_current_line()
-		_discover_all_needs()
-		return
-
-func _discover_all_needs() -> void:
-	NeedsLog.discover(NeedsLog.Need.ROOF)
-	NeedsLog.discover(NeedsLog.Need.MEDICINE)
-	NeedsLog.discover(NeedsLog.Need.FOOD)
-	NeedsLog.discover(NeedsLog.Need.WINDOWS)
-	NeedsLog.discover(NeedsLog.Need.WATER)
-	NeedsLog.discover(NeedsLog.Need.FLASHLIGHT)
+	var completed_pre_departure := (
+		_current_sequence == sequence_pre_departure
+		and _current_sequence != null
+		and _current_line >= _current_sequence.lines.size()
+	)
+	if completed_pre_departure:
+		_grant_departure_cash()
 
 	super._hide_dialogue()
 
+func _grant_departure_cash() -> void:
+	if GameState.nanay_departure_cash_granted:
+		return
+	GameState.add_cash(cash_to_grant)
+	GameState.complete_nanay_intro()
+
 func notify_departed() -> void:
-	_has_departed = true
+	GameState.complete_nanay_intro()

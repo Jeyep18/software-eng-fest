@@ -146,7 +146,17 @@ func _resolve_interaction_target() -> void:
 		_rewire_prompt_signal(null)
 		return
 
+	_nearby_interactables = _nearby_interactables.filter(func(interactable: Interactable) -> bool:
+		return is_instance_valid(interactable)
+	)
+	if _nearby_interactables.is_empty():
+		_rewire_prompt_signal(null)
+		return
+
 	if _nearby_interactables.size() == 1:
+		if not _nearby_interactables[0].is_interaction_available():
+			_rewire_prompt_signal(null)
+			return
 		_current_target = _nearby_interactables[0]
 		%InteractText.text = _current_target.prompt_label
 		if not _prompt_suppressed:
@@ -158,6 +168,9 @@ func _resolve_interaction_target() -> void:
 	var best_distance: float = INF
 
 	for interactable: Interactable in _nearby_interactables:
+		if not interactable.is_interaction_available():
+			continue
+
 		var to_target: Vector3 = interactable.global_position - global_position
 		var dot: float = to_target.normalized().dot(Vector3(_facing_direction, 0.0, 0.0))
 

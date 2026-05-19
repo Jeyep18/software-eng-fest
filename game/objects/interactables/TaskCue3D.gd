@@ -14,7 +14,9 @@ var _pulse_tween: Tween = null
 var _is_active: bool = false
 
 func _ready() -> void:
-	set_active(false)
+	var should_stay_active := _is_active or visible
+	_is_active = not should_stay_active
+	set_active(should_stay_active)
 
 func set_active(active: bool) -> void:
 	if _is_active == active and visible == active:

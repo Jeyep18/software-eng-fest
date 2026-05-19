@@ -28,13 +28,15 @@ const NEED_LABELS: Dictionary = {
 #region Internal State
 # Tracks which needs have been discovered and which have been resolved.
 
-var _discovered: Dictionary = {}  # Need (int) → true
-var _resolved: Dictionary = {}    # Need (int) → true
+var _discovered: Dictionary = {}  # Need (int) -> true
+var _resolved: Dictionary = {}    # Need (int) -> true
+var _boarded_windows: Dictionary = {} # window_id (String) -> true
 #endregion
 
 #region Signals
 signal need_discovered(need: Need)
 signal need_resolved(need: Need)
+signal window_boarded(window_id: String, boarded_count: int)
 #endregion
 
 #region Public API — Discovery
@@ -44,6 +46,8 @@ func discover(need: Need) -> void:
 		return
 	_discovered[need] = true
 	need_discovered.emit(need)
+	if _discovered.size() >= Need.size():
+		GameState.complete_house_exploration()
 
 func is_discovered(need: Need) -> bool:
 	return _discovered.has(need)
@@ -74,6 +78,27 @@ func get_all_resolved() -> Array:
 	return _resolved.keys()
 #endregion
 
+#region Public API - Window Progress
+func board_window(window_id: String) -> void:
+	if window_id.strip_edges().is_empty():
+		push_warning("NeedsLog: board_window called with an empty window_id.")
+		return
+	if _boarded_windows.has(window_id):
+		return
+
+	_boarded_windows[window_id] = true
+	window_boarded.emit(window_id, _boarded_windows.size())
+
+	if _boarded_windows.size() >= 2:
+		resolve(Need.WINDOWS)
+
+func is_window_boarded(window_id: String) -> bool:
+	return _boarded_windows.has(window_id)
+
+func boarded_window_count() -> int:
+	return _boarded_windows.size()
+#endregion
+
 #region Public API — Queries
 
 func get_unresolved_discovered() -> Array:
@@ -98,6 +123,7 @@ func all_critical_discovered() -> bool:
 func reset() -> void:
 	_discovered.clear()
 	_resolved.clear()
+	_boarded_windows.clear()
 #endregion
 
 func debug_print_status() -> void:

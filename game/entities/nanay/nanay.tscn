@@ -20,49 +20,49 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "May paparating na bagyo ulit... yung bubong sa sala..."
+text = "May paparating na bagyo ulit... kailangan nating maghanda."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_tmuxm"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Nag-aalala na ko dun. Nasira na ng nakaraang bagyo, ngayon mas malakas pa itong darating."
+text = "Mas malakas daw ito kaysa dati, kaya kailangan nating maging maingat."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_8t3t3"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "At si Lola, yung [b]gamot[/b] niya. Malapit na maubos. Huwag mong kalimutan ha?"
+text = "May kailangan tayong bilhin bago lumakas ang bagyo. Ito ang pera, anak."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_gkn0j"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Yung mga [b]bintana[/b] rin mahina na yun. Kailangan ng [b]plywood[/b] at [b]pako[/b] sa [b]hardware store[/b]."
+text = "Pag may nakita kang kailangang ayusin sa bahay, bilhin mo agad ang kailangan."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_2bejg"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Wala na rin tayo pagkain sa [b]ref[/b]. Pumunta ka kila [b]Ate Linda[/b] o sa [b]palengke[/b] anak, [b]de lata[/b] lang, kahit [b]apat[/b]."
+text = "[i]Inabot ni Nanay ang pera para sa mga kailangang bilhin.[/i]"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_6khh6"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "At yung lumang [b]flashlight[/b] at [b]radyo[/b] sa [b]bodega[/b] anak, patay na ang [b]baterya[/b]. Bilhan mo din ng bago sa [b]tindahan[/b] at palagay na lang sa [b]shelf na katabi ni Lola[/b]."
+text = "Kasya dapat yan kung maingat ka sa pagbili. Mag-ingat ka ha."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ucdwx"]
 script = ExtResource("3_dclit")
 speaker_name = "Player"
 expression = ExtResource("6_jfkbs")
-text = "Marami ang kailangan gawin. [i]Kulang na ang oras.[/i] Kailangan kong mag-isip kung paano ko lahat ito gagawin."
+text = "Opo Nay. Hahanapin ko kung ano ang kailangan ihanda."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_d6eln"]

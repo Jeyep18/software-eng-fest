@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr7vih7tx7cip"]
 
-[ext_resource type="Script" path="res://game/ui/tasksUI/PreparationChecklistHUD.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://jgtb0pdhcveh" path="res://game/ui/tasksUI/PreparationChecklistHUD.gd" id="1_hud"]
 [ext_resource type="Script" uid="uid://dsl8gs5spy4nr" path="res://game/ui/pause/ChecklistPanel.gd" id="2_list"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
@@ -15,17 +15,47 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[node name="PreparationChecklistHUD" type="CanvasLayer"]
+[node name="PreparationChecklistHUD" type="CanvasLayer" unique_id=545485734]
 script = ExtResource("1_hud")
 
-[node name="ChecklistPanel" type="Control" parent="."]
+[node name="CashPanel" type="Panel" parent="." unique_id=1634344460]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 300.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="CashPanel" unique_id=1152476359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = -10.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="CashLabel" type="Label" parent="CashPanel/MarginContainer" unique_id=413346095]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Pera: PHP 0"
+
+[node name="ChecklistPanel" type="Control" parent="." unique_id=1871499557]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 16.0
 offset_top = 72.0
 offset_right = 300.0
-offset_bottom = 260.0
+offset_bottom = 296.0
 script = ExtResource("2_list")
 
-[node name="Panel" type="Panel" parent="ChecklistPanel"]
+[node name="Panel" type="Panel" parent="ChecklistPanel" unique_id=1858934153]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ChecklistPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ChecklistPanel" unique_id=74418978]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,18 +77,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="TitleLabel" type="Label" parent="ChecklistPanel/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="ChecklistPanel/VBoxContainer" unique_id=1582230961]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Preparation Checklist"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ChecklistPanel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ChecklistPanel/VBoxContainer" unique_id=1530565610]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 0
 
-[node name="ItemList" type="VBoxContainer" parent="ChecklistPanel/VBoxContainer/ScrollContainer"]
+[node name="ItemList" type="VBoxContainer" parent="ChecklistPanel/VBoxContainer/ScrollContainer" unique_id=2017474875]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

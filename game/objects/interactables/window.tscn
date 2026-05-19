@@ -8,14 +8,14 @@ size = Vector3(1.865448, 1.1941853, 1.2081909)
 
 [node name="Window" type="Area3D" unique_id=1382411855]
 script = ExtResource("1_20v17")
-interaction_prompt = "Board Windows"
+interaction_prompt = "Board Window"
 need = 3
 time_cost_minutes = 12
 missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko [b]takpan ang bintana[/b].", "Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?"])
 ready_lines = Array[String](["Kumpleto na mga kailangan ko, matatakpan ko na itong [b]bintana[/b]."])
 completed_lines = Array[String](["Natakpan ko na bintana, sana kumapit ito hanggang sa matapos ang bagyo."])
 monologue_ui_scene = ExtResource("2_stwdh")
-prompt_label = "Board Windows"
+prompt_label = "Board Window"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616304789]
 unique_name_in_owner = true

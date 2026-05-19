@@ -3,7 +3,8 @@ extends Interactable
 
 @export var completion_visual_cue: Node = null
 @export var task_cue: Node3D = null
-@export var show_cue_only_when_discovered: bool = true
+@export var show_cue_only_when_discovered: bool = false
+@export var discover_on_interact: bool = true
 @export var interaction_prompt: String = ""
 @export var need: NeedsLog.Need = NeedsLog.Need.ROOF
 @export var required_item_ids: Array[String] = []
@@ -47,6 +48,9 @@ func _ready() -> void:
 	_update_task_cue()
 
 func interact() -> void:
+	if not is_interaction_available():
+		return
+
 	if not _is_showing:
 		_begin_dialogue()
 		return
@@ -62,6 +66,8 @@ func _connect_needs_log() -> void:
 		NeedsLog.need_discovered.connect(_on_need_discovered)
 	if not NeedsLog.need_resolved.is_connected(_on_need_resolved):
 		NeedsLog.need_resolved.connect(_on_need_resolved)
+	if not GameState.guide_tasks_changed.is_connected(_on_guide_tasks_changed):
+		GameState.guide_tasks_changed.connect(_on_guide_tasks_changed)
 
 func _sync_completion_state() -> void:
 	if not NeedsLog.is_resolved(need):
@@ -87,9 +93,12 @@ func _begin_dialogue() -> void:
 		_showing_ready_branch = false
 	elif _has_all_required_items():
 		_showing_ready_branch = true
+		if discover_on_interact:
+			NeedsLog.discover(need)
 	else:
 		_showing_ready_branch = false
-		NeedsLog.discover(need)
+		if discover_on_interact:
+			NeedsLog.discover(need)
 
 	_show_line(_get_active_lines())
 
@@ -168,7 +177,7 @@ func _update_task_cue() -> void:
 	if task_cue == null:
 		return
 
-	var should_show := not NeedsLog.is_resolved(need)
+	var should_show := GameState.house_tasks_unlocked and not NeedsLog.is_resolved(need)
 	if show_cue_only_when_discovered:
 		should_show = should_show and NeedsLog.is_discovered(need)
 
@@ -178,6 +187,11 @@ func _update_task_cue() -> void:
 		task_cue.visible = should_show
 
 func _show_line(lines: Array[String]) -> void:
+	if lines.is_empty():
+		push_warning("TaskObject: no dialogue lines configured on " + name)
+		_hide_monologue()
+		return
+
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	is_showing = true
 	_is_showing = true
@@ -223,6 +237,12 @@ func _on_need_resolved(resolved_need: NeedsLog.Need) -> void:
 		return
 
 	_is_completed = true
+	_update_task_cue()
+
+func is_interaction_available() -> bool:
+	return GameState.house_tasks_unlocked or _is_completed
+
+func _on_guide_tasks_changed() -> void:
 	_update_task_cue()
 
 func _on_typewriter_finished() -> void:
