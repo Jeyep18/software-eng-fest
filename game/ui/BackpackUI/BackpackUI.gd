@@ -10,8 +10,10 @@ extends CanvasLayer
 @onready var combine_label: Label          = $BackpackPanel/CombineBar/CombineLabel
 @onready var combine_button: Button        = $BackpackPanel/CombineBar/CombineButton
 @onready var backpack_panel: Panel         = $BackpackPanel
+@onready var discard_slot: Panel           = $BackpackPanel/DiscardSlot
 
 const ITEMS_PATH: String = "res://game/resources/items/"
+const INVENTORY_DRAG_SLOT_SCRIPT = preload("res://game/ui/BackpackUI/InventoryDragSlot.gd")
 
 var _selected_index: int = -1
 var _combine_target_index: int = -1
@@ -28,6 +30,7 @@ func _ready() -> void:
 	_setup_panel_layout()
 
 	InventoryManager.inventory_changed.connect(_on_inventory_changed)
+	InventoryManager.discard_changed.connect(_on_discard_changed)
 	if is_instance_valid(combine_button):
 		combine_button.pressed.connect(_on_combine_pressed)
 	_hide_combine_bar()
@@ -75,7 +78,7 @@ func _setup_panel_layout() -> void:
 	var info_bar = $BackpackPanel/InfoBar
 	info_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12)
 	info_bar.set_anchor_and_offset(SIDE_TOP,    0, 238)
-	info_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12)
+	info_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -116)
 	info_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 318)
 	info_bar.add_theme_constant_override("separation", 8)
 	info_bar.alignment = BoxContainer.ALIGNMENT_BEGIN
@@ -115,6 +118,14 @@ func _setup_panel_layout() -> void:
 	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 400)
 	combine_bar.add_theme_constant_override("separation", 10)
 
+	if is_instance_valid(discard_slot):
+		discard_slot.mouse_filter = Control.MOUSE_FILTER_STOP
+		discard_slot.z_index = 10
+		discard_slot.set_anchor_and_offset(SIDE_LEFT, 1, -108)
+		discard_slot.set_anchor_and_offset(SIDE_TOP, 0, 238)
+		discard_slot.set_anchor_and_offset(SIDE_RIGHT, 1, -12)
+		discard_slot.set_anchor_and_offset(SIDE_BOTTOM, 0, 318)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_backpack"):
 		_toggle()
@@ -139,6 +150,11 @@ func _on_inventory_changed() -> void:
 		_combine_target_index = -1
 	_redraw_backpack()
 
+func _on_discard_changed() -> void:
+	if not visible:
+		return
+	_refresh_info_bar()
+
 func _redraw_backpack() -> void:
 	for child in grid_container.get_children():
 		child.queue_free()
@@ -159,6 +175,8 @@ func _redraw_backpack() -> void:
 
 func _create_slot(item: ItemData, index: int) -> Panel:
 	var panel = Panel.new()
+	panel.set_script(INVENTORY_DRAG_SLOT_SCRIPT)
+	panel.call("setup", self, index, item)
 	panel.custom_minimum_size = Vector2(88, 88)
 
 	var style = StyleBoxFlat.new()

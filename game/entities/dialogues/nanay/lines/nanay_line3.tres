@@ -7,5 +7,5 @@
 script = ExtResource("1_rlyjs")
 speaker_name = "OHNANAY"
 expression = ExtResource("1_7offp")
-text = "nak ikaw na mag ayuos ng bubong, matsalab nak"
+text = "Nak, ikaw na mag-ayos ng [b]bubong[/b]. Salamat, nak."
 metadata/_custom_type_script = "uid://po32410sv037"

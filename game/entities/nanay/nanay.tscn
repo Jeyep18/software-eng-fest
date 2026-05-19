@@ -34,35 +34,35 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "At si Lola, yung gamot niya. Malapit na maubos. Huwag mong kalimutan ha?"
+text = "At si Lola, yung [b]gamot[/b] niya. Malapit na maubos. Huwag mong kalimutan ha?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_gkn0j"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Yung mga bintana rin mahina na yun. Kailangan ng plywood at pako sa hardware store."
+text = "Yung mga [b]bintana[/b] rin mahina na yun. Kailangan ng [b]plywood[/b] at [b]pako[/b] sa [b]hardware store[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_2bejg"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "Wala narin tayo pagkain sa ref. Pumunta ka kila Ate Linda o sa palengke anak, de lata lang, kahit apat."
+text = "Wala na rin tayo pagkain sa [b]ref[/b]. Pumunta ka kila [b]Ate Linda[/b] o sa [b]palengke[/b] anak, [b]de lata[/b] lang, kahit [b]apat[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_6khh6"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
 expression = ExtResource("4_x1yr6")
-text = "At yung lumang flashlight at radyo sa bodega anak, patay na ang baterya. Bilhan mo din ng bago sa tindahan at palagay nalang sa shelf na katabi ni Lola."
+text = "At yung lumang [b]flashlight[/b] at [b]radyo[/b] sa [b]bodega[/b] anak, patay na ang [b]baterya[/b]. Bilhan mo din ng bago sa [b]tindahan[/b] at palagay na lang sa [b]shelf na katabi ni Lola[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ucdwx"]
 script = ExtResource("3_dclit")
 speaker_name = "Player"
 expression = ExtResource("6_jfkbs")
-text = "Marami ang kailangan gawin. Kulang na ang oras. Kailangan kong mag-isip kung paano ko lahat ito gagawin."
+text = "Marami ang kailangan gawin. [i]Kulang na ang oras.[/i] Kailangan kong mag-isip kung paano ko lahat ito gagawin."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_d6eln"]

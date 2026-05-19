@@ -12,9 +12,11 @@ const HOTBAR_SIZE: int = 7  # Hotbar IS the full inventory for this game
 # --- SIGNALS ---
 signal inventory_changed
 signal item_combined(result_item: ItemData)  # Emitted when a combine succeeds
+signal discard_changed
 
 # --- DATA ---
 var inventory: Array[ItemData] = []
+var discard_held_item: ItemData = null
 
 # --- COMBINE RECIPES ---
 # Key format: "item_id_a+item_id_b" (always sorted alphabetically so order doesn't matter)
@@ -44,6 +46,40 @@ func remove_item(index: int) -> ItemData:
 	inventory.remove_at(index)
 	inventory_changed.emit()
 	return removed
+
+func move_item_to_discard(index: int) -> bool:
+	if index < 0 or index >= inventory.size():
+		push_error("InventoryManager: Invalid discard index: " + str(index))
+		return false
+
+	var incoming_item = inventory[index]
+	var discarded_item = discard_held_item
+	inventory.remove_at(index)
+	discard_held_item = incoming_item
+
+	inventory_changed.emit()
+	discard_changed.emit()
+
+	if discarded_item != null:
+		print("InventoryManager: Discarded permanently: ", discarded_item.item_name)
+	print("InventoryManager: Holding for discard: ", discard_held_item.item_name)
+	return true
+
+func restore_discard_item() -> bool:
+	if discard_held_item == null:
+		return false
+	if inventory.size() >= MAX_INVENTORY_SIZE:
+		print("InventoryManager: Inventory is full. Cannot restore discard item.")
+		return false
+
+	var restored_item = discard_held_item
+	discard_held_item = null
+	inventory.append(restored_item)
+
+	inventory_changed.emit()
+	discard_changed.emit()
+	print("InventoryManager: Restored discard item: ", restored_item.item_name)
+	return true
 
 func remove_item_by_id(item_id: String) -> bool:
 	for i in range(inventory.size()):
@@ -123,5 +159,7 @@ func has_item_with_id(item_id: String) -> bool:
 
 func reset() -> void:
 	inventory.clear()
+	discard_held_item = null
 	inventory_changed.emit()
+	discard_changed.emit()
 	print("InventoryManager: Inventory cleared.")

@@ -16,7 +16,7 @@ radius = 0.3671875
 script = ExtResource("3_ba3tf")
 speaker_name = "Hardware Girl"
 expression = ExtResource("4_ii1je")
-text = "Bili na kayo, at mag sasara na ako, halos naubos na lahat ni kapitan ang mga supplies."
+text = "Bili na kayo, at magsasara na ako. Halos naubos na lahat ni Kapitan ang mga [b]supplies[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_8a7sq"]

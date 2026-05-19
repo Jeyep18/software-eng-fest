@@ -10,8 +10,8 @@ size = Vector3(1.9556274, 1, 1)
 script = ExtResource("1_ms6ut")
 need = 4
 time_cost_minutes = 10
-missing_lines = Array[String](["Nako, nasira itong lababo namin, kailangan ko ng wrench para maayos ito.", "Kailangan ko din ng water jug para may tubig kami sa bagyo."])
-ready_lines = Array[String](["Maayos ko na ang lababo, pupunuin ko narin ang water jug."])
+missing_lines = Array[String](["Nako, nasira itong [b]lababo[/b] namin, kailangan ko ng [b]wrench[/b] para maayos ito.", "Kailangan ko din ng [b]water jug[/b] para may tubig kami sa bagyo."])
+ready_lines = Array[String](["Maayos ko na ang [b]lababo[/b], pupunuin ko na rin ang [b]water jug[/b]."])
 completed_lines = Array[String](["Maayos na lababo, nalagyan ko narin ang water jug ng tubig."])
 monologue_ui_scene = ExtResource("2_lnfpl")
 

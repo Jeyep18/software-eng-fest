@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("1_vtofp")
 speaker_name = "Ate Linda"
 expression = ExtResource("2_ylcxj")
-text = "Pasensya na at nagtataas ako ng presyo, nagkakaubusan na kasi ngayon ng supplies."
+text = "Pasensya na at nagtataas ako ng presyo, nagkakaubusan na kasi ngayon ng [b]supplies[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [resource]

@@ -7,5 +7,5 @@
 script = ExtResource("1_2gbmo")
 speaker_name = "Nanay"
 expression = ExtResource("1_bwimg")
-text = "Anak, yung bubong sa sala... nag-aalala na ko dun."
+text = "Anak, yung [b]bubong sa sala[/b]... [i]nag-aalala na ko dun.[/i]"
 metadata/_custom_type_script = "uid://po32410sv037"

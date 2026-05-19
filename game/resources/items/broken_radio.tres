@@ -11,4 +11,4 @@ item_icon = ExtResource("1_pm04t")
 item_description = "Di nagana na radyo.."
 item_id = "broken_radio"
 item_model = ExtResource("2_kvd67")
-pickup_lines = Array[String](["Kulang baterya.. makikinig pa naman sana ako ki laufey"])
+pickup_lines = Array[String](["Kulang ito ng [b]baterya[/b]... [i]Sayang, makikinig pa naman sana ako.[/i]"])

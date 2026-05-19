@@ -15,12 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="10_11i80"]
 [ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="12_c3eoh"]
 [ext_resource type="PackedScene" uid="uid://ut5fskgnrsyt" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
-[ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="16_kgaqh"]
+[ext_resource type="PackedScene" uid="uid://du3ghcn42crwi" path="res://game/objects/interactables/main_door.tscn" id="16_lwh48"]
 [ext_resource type="PackedScene" uid="uid://bw2r7j1q04u4t" path="res://game/entities/nanay/nanay.tscn" id="18_so1b5"]
 [ext_resource type="PackedScene" uid="uid://bfuqj3eqm4sn6" path="res://game/entities/lola/lola.tscn" id="18_taj8b"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="19_taj8b"]
 [ext_resource type="PackedScene" uid="uid://dtury4luw5qqd" path="res://game/objects/interactables/task_site.tscn" id="20_sw8kg"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="21_7ekle"]
 [ext_resource type="PackedScene" uid="uid://c3erci5d62sx4" path="res://game/objects/interactables/plywood_model.tscn" id="21_ea3sf"]
 [ext_resource type="PackedScene" uid="uid://cx4bgum8ioyf" path="res://game/objects/interactables/radio_task.tscn" id="22_4pas2"]
 [ext_resource type="PackedScene" uid="uid://b1ffma416b8rg" path="res://game/objects/interactables/fill_water_task.tscn" id="22_ea3sf"]
@@ -280,14 +279,14 @@ completion_visual_cue = NodePath("../WindowTaskVisualCue")
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.8439364, -4.9426174)
 completion_visual_cue = NodePath("../WindowTaskVisualCue2")
 time_cost_minutes = 24
-missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko takpan yung dalawa naming bintana.", "May plywood at pako pa kaya kami? Nasaan na kaya yung martilyo ni papa."])
+missing_lines = Array[String](["Lalakas ang hangin mamaya, kailangan ko [b]takpan yung dalawang bintana[/b].", "Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?"])
 
 [node name="Spawnpoint2" parent="." unique_id=627294345 instance=ExtResource("8_y6bww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6521201, 0, -6.817229)
 spawn_id = "main_door"
 
-[node name="door2" parent="." unique_id=775457550 instance=ExtResource("16_kgaqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61578584, 0, -7.9753156)
+[node name="Main_Door" parent="." unique_id=113227790 instance=ExtResource("16_lwh48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6029743, 0.038558364, -7.9746633)
 
 [node name="nanay" parent="." unique_id=460519671 instance=ExtResource("18_so1b5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -3.960223)
@@ -305,10 +304,9 @@ interaction_prompt = "Place Lola's Medicine"
 need = 1
 required_item_ids = Array[String](["medicine"])
 time_cost_minutes = 3
-missing_lines = Array[String](["Kailangan ko muna bumili sa botika ng gamot ni lola."])
-ready_lines = Array[String](["Nabili ko na yung mga gamot, mabuti naman."])
+missing_lines = Array[String](["Kailangan ko muna bumili sa [b]botika[/b] ng [b]gamot ni Lola[/b]."])
+ready_lines = Array[String](["Nabili ko na yung [b]gamot[/b], mabuti naman."])
 completed_lines = Array[String](["Meron na gamot si lola."])
-monologue_ui_scene = ExtResource("21_7ekle")
 prompt_label = "Place Lola's Medicine"
 
 [node name="FillWaterTask" parent="." unique_id=529410105 node_paths=PackedStringArray("completion_visual_cue") instance=ExtResource("22_ea3sf")]
@@ -321,8 +319,8 @@ prompt_label = "Fill Water Jug"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50261533, 1.1342692, 1.6833023)
 completion_visual_cue = NodePath("../RadioTaskVisualCue")
 interaction_prompt = "Place Radio & Flashlight"
-missing_lines = Array[String](["Yung radyo at flashlight, nasaan na kaya...", "Kailangan ko muna ayusin iyon para malagay ko dito."])
-ready_lines = Array[String](["Maayos na itong radyo at flashlight, ilalagay ko muna ito dito."])
+missing_lines = Array[String](["Yung [b]radyo[/b] at [b]flashlight[/b], nasaan na kaya...", "Kailangan ko muna [b]ayusin ang radyo at flashlight[/b] para malagay ko dito."])
+ready_lines = Array[String](["Maayos na itong [b]radyo[/b] at [b]flashlight[/b], ilalagay ko muna ito dito."])
 completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balita kahit may bagyo.", "Mabuti din na may flashlight, baka biglang mawalan ng kuryente."])
 prompt_label = "Place Working Radio"
 

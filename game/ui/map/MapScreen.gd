@@ -55,6 +55,7 @@ var _node_buttons: Dictionary = {}
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	add_to_group("map_screen")
 	hide()
 	confirm_panel.hide()
 	_build_road_lines()

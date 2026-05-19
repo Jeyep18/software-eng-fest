@@ -11,5 +11,5 @@ item_icon = ExtResource("1_qo2g0")
 item_description = "tugtugan na!"
 item_id = "working_radio"
 item_model = ExtResource("2_wb3to")
-pickup_lines = Array[String](["gumagana na! ano na kaya nangyayare?"])
+pickup_lines = Array[String](["Gumagana na ang [b]radyo[/b]! Kailangan ko itong ilagay sa [b]shelf na katabi ni Lola[/b]."])
 item_type = 1

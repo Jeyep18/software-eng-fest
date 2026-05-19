@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
 expression = ExtResource("4_pgefp")
-text = "Mabuti naman. Pero yung gamot ko huwag mo kalimutan yung sa botika ha. "
+text = "Mabuti naman. Pero yung [b]gamot[/b] ko huwag mo kalimutan yung sa [b]botika[/b] ha. "
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ak15h"]
@@ -48,14 +48,14 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dw7mn")
 speaker_name = "Player"
 expression = ExtResource("6_tkmwj")
-text = "Kailangan ni Lola ang gamot. Kailangan ko pumunta ng botika."
+text = "Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ebi62"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
 expression = ExtResource("4_pgefp")
-text = "Sige na apo, pakilagay nalang sa may drawer sa higaan yung aking gamot. "
+text = "Sige na apo, pakilagay na lang sa [b]drawer sa higaan[/b] yung aking [b]gamot[/b]. "
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_qv5jj"]
@@ -67,7 +67,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
 expression = ExtResource("4_pgefp")
-text = "Yung gamot, huwag mong kalimutan apo. Mahalaga yun sa akin."
+text = "Yung [b]gamot[/b], huwag mong kalimutan apo. [i]Mahalaga yun sa akin.[/i]"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_t0cy6"]
@@ -79,7 +79,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
 expression = ExtResource("4_pgefp")
-text = "Pag umulan nang malakas at walang panakip sa kisame... basa lahat tayo dito. "
+text = "Pag umulan nang malakas at walang [b]panakip sa kisame[/b]... [i]basa lahat tayo dito.[/i] "
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_d6pkr"]
@@ -91,7 +91,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 script = ExtResource("3_dw7mn")
 speaker_name = "Nanay"
 expression = ExtResource("4_pgefp")
-text = "Sabi ni Nanay, wala tayong pagkain para bukas. Kailangan kahit lang de lata."
+text = "Sabi ni Nanay, wala tayong [b]pagkain[/b] para bukas. Kailangan kahit [b]de lata[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_d5nod"]

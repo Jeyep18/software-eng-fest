@@ -11,4 +11,4 @@ item_icon = ExtResource("1_5872u")
 item_description = "batteries.."
 item_id = "batteries"
 item_model = ExtResource("2_n4ryt")
-pickup_lines = Array[String](["Pwede ko to magamit"])
+pickup_lines = Array[String](["Pwede ko itong magamit sa [b]flashlight[/b] o [b]radyo[/b]."])

@@ -9,7 +9,7 @@ size = Vector3(1.0504913, 0.71325684, 0.63311005)
 [node name="Roof" type="Area3D" unique_id=543211731]
 script = ExtResource("1_4q084")
 interaction_prompt = "Fix Broken Roof"
-missing_lines = Array[String](["Hindi pa namin naayos yung nasirang bubong noong nakaraang bagyo.", "Mahirap ito kung hindi takpan.", "Saan kaya ako makakakuha ng tarp, pati pako at martilyo. "])
+missing_lines = Array[String](["Hindi pa namin naayos yung nasirang [b]bubong[/b] noong nakaraang bagyo.", "[i]Mahirap ito kung hindi takpan.[/i]", "Kailangan ko ng [b]tarp[/b], [b]pako[/b], at [b]martilyo[/b] para maayos ito."])
 completed_lines = Array[String](["Naayos ko na ang bubong, mabuti naman at hindi na kami mababasa, sana kumapit ito."])
 monologue_ui_scene = ExtResource("2_0ypb0")
 

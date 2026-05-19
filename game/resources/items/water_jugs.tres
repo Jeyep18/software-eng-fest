@@ -11,4 +11,4 @@ item_icon = ExtResource("1_mpute")
 item_description = "water containers "
 item_id = "water_jug"
 item_model = ExtResource("1_0eav8")
-pickup_lines = Array[String](["Mga banga — walang laman", "Puwede ko itong punuin sa gripo", "Libre pa"])
+pickup_lines = Array[String](["Mga [b]water jug[/b] — walang laman.", "Puwede ko itong punuin sa [b]gripo[/b].", "[i]Libre pa.[/i]"])
