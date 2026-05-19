@@ -32,6 +32,7 @@ EconomyManager="*uid://bgmfpcpmaqr8h"
 ShopUi="*res://game/autoload/ShopUI.gd"
 StormEnroachment="*res://game/autoload/StormEnroachment.gd"
 AudioManager="*uid://c0lti2i34dbf0"
+LeaderboardManager="*res://game/autoload/LeaderboardManager.gd"
 
 [display]
 

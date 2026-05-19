@@ -1,0 +1,92 @@
+extends CanvasLayer
+
+@onready var close_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/close_button
+@onready var clear_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/clear_button
+@onready var rows_container: VBoxContainer = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer
+@onready var empty_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer/EmptyLabel
+
+var _clear_armed: bool = false
+
+func _ready() -> void:
+	close_button.pressed.connect(close)
+	clear_button.pressed.connect(_on_clear_pressed)
+	if not LeaderboardManager.entries_changed.is_connected(_refresh):
+		LeaderboardManager.entries_changed.connect(_refresh)
+	hide()
+
+func open() -> void:
+	_clear_armed = false
+	_update_clear_button()
+	_refresh()
+	show()
+
+func close() -> void:
+	hide()
+
+func _refresh() -> void:
+	for child in rows_container.get_children():
+		if child != empty_label:
+			rows_container.remove_child(child)
+			child.queue_free()
+
+	var entries: Array[Dictionary] = LeaderboardManager.get_entries()
+	empty_label.visible = entries.is_empty()
+	clear_button.disabled = entries.is_empty()
+
+	if entries.is_empty():
+		return
+
+	_add_header_row()
+	for i in range(entries.size()):
+		_add_entry_row(i + 1, entries[i])
+
+func _add_header_row() -> void:
+	var row := _make_row()
+	_add_cell(row, "Rank", 58, true)
+	_add_cell(row, "Player", 190, true)
+	_add_cell(row, "Tasks", 90, true)
+	_add_cell(row, "Time Left", 120, true)
+	rows_container.add_child(row)
+
+func _add_entry_row(rank: int, entry: Dictionary) -> void:
+	var row := _make_row()
+	_add_cell(row, "#" + str(rank), 58, false)
+	_add_cell(row, str(entry.get("player_name", "Player")), 190, false)
+	_add_cell(row, "%d / %d" % [int(entry.get("tasks_completed", 0)), NeedsLog.Need.size()], 90, false)
+	_add_cell(row, _format_minutes(int(entry.get("remaining_minutes", 0))), 120, false)
+	rows_container.add_child(row)
+
+func _make_row() -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.custom_minimum_size = Vector2(0, 34)
+	row.add_theme_constant_override("separation", 14)
+	return row
+
+func _add_cell(row: HBoxContainer, text: String, min_width: float, is_header: bool) -> void:
+	var label := Label.new()
+	label.text = text
+	label.custom_minimum_size = Vector2(min_width, 0)
+	label.clip_text = true
+	label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	label.add_theme_font_size_override("font_size", 18 if is_header else 16)
+	label.add_theme_color_override("font_color", Color(0.95, 0.91, 0.82) if is_header else Color(0.84, 0.84, 0.78))
+	row.add_child(label)
+
+func _format_minutes(minutes: int) -> String:
+	var safe_minutes: int = max(minutes, 0)
+	var hours: int = safe_minutes / 60
+	var mins: int = safe_minutes % 60
+	return "%dh %02dm" % [hours, mins]
+
+func _on_clear_pressed() -> void:
+	if not _clear_armed:
+		_clear_armed = true
+		_update_clear_button()
+		return
+
+	LeaderboardManager.clear_entries()
+	_clear_armed = false
+	_update_clear_button()
+
+func _update_clear_button() -> void:
+	clear_button.text = "CONFIRM CLEAR" if _clear_armed else "CLEAR"

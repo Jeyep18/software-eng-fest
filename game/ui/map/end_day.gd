@@ -12,6 +12,8 @@ func _ready() -> void:
 	pressed.connect(_on_end_day_pressed)
 
 func _on_end_day_pressed() -> void:
+	LeaderboardManager.snapshot_remaining_time(GlobalTimer.TOTAL_MINUTES - GlobalTimer.current_minutes)
+
 	# 1. Close the map UI first.
 	#    MapScreen.close_map() restores mouse mode and hides the panel.
 	#    We reach it via the scene tree rather than a hardcoded path so

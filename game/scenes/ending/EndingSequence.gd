@@ -75,6 +75,7 @@ const LABEL_FADE_OUT:       float = 0.35
 const RESULT_HOLD_DURATION: float = 7.0
 
 var SLIDES: Array = []
+var _leaderboard_score_saved: bool = false
 
 func _ready() -> void:
 	AudioManager.play_ambience(preload("res://game/assets/sfx/u_7hpxkdroz2-storm-461601.mp3"))
@@ -293,6 +294,8 @@ func _show_result_panel() -> void:
 	await tween.finished
 	await get_tree().create_timer(RESULT_HOLD_DURATION).timeout
 	await _fade(1.0)
+	result_panel.hide()
+	await _submit_leaderboard_score()
 	GameState.reset()
 	GlobalTimer.reset()
 	NeedsLog.reset()
@@ -300,6 +303,108 @@ func _show_result_panel() -> void:
 	InventoryManager.inventory.clear()
 	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("main_menu")
+
+func _submit_leaderboard_score() -> void:
+	if _leaderboard_score_saved:
+		return
+
+	var tasks_completed: int = NeedsLog.get_all_resolved().size()
+	var remaining_minutes: int = LeaderboardManager.consume_remaining_time_snapshot()
+	var prompt_layer := _create_leaderboard_prompt(tasks_completed, remaining_minutes)
+	var name_input: LineEdit = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/NameInput")
+	var submit_button: Button = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/ButtonRow/SubmitButton")
+
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	name_input.text_changed.connect(func(new_text: String) -> void:
+		submit_button.disabled = new_text.strip_edges().is_empty()
+	)
+	name_input.text_submitted.connect(func(_new_text: String) -> void:
+		if not submit_button.disabled:
+			submit_button.pressed.emit()
+	)
+
+	add_child(prompt_layer)
+	name_input.call_deferred("grab_focus")
+	await submit_button.pressed
+
+	var player_name: String = name_input.text.strip_edges()
+	if player_name.is_empty():
+		player_name = "Player"
+
+	LeaderboardManager.record_run(player_name, tasks_completed, remaining_minutes)
+	_leaderboard_score_saved = true
+	prompt_layer.queue_free()
+
+func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) -> CanvasLayer:
+	var layer := CanvasLayer.new()
+	layer.name = "LeaderboardNamePrompt"
+	layer.layer = 50
+
+	var panel := PanelContainer.new()
+	panel.name = "Panel"
+	panel.custom_minimum_size = Vector2(520, 260)
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.offset_left = -260
+	panel.offset_top = -130
+	panel.offset_right = 260
+	panel.offset_bottom = 130
+	layer.add_child(panel)
+
+	var margin := MarginContainer.new()
+	margin.name = "MarginContainer"
+	margin.add_theme_constant_override("margin_left", 28)
+	margin.add_theme_constant_override("margin_top", 24)
+	margin.add_theme_constant_override("margin_right", 28)
+	margin.add_theme_constant_override("margin_bottom", 24)
+	panel.add_child(margin)
+
+	var box := VBoxContainer.new()
+	box.name = "VBoxContainer"
+	box.add_theme_constant_override("separation", 14)
+	margin.add_child(box)
+
+	var title := Label.new()
+	title.text = "SAVE YOUR RUN"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 28)
+	box.add_child(title)
+
+	var summary := Label.new()
+	summary.text = "Tasks: %d / %d    Time left: %s" % [
+		tasks_completed,
+		NeedsLog.Need.size(),
+		_format_minutes(remaining_minutes),
+	]
+	summary.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	summary.add_theme_font_size_override("font_size", 18)
+	box.add_child(summary)
+
+	var name_input := LineEdit.new()
+	name_input.name = "NameInput"
+	name_input.placeholder_text = "Enter player name"
+	name_input.max_length = 24
+	name_input.custom_minimum_size = Vector2(0, 42)
+	box.add_child(name_input)
+
+	var button_row := HBoxContainer.new()
+	button_row.name = "ButtonRow"
+	button_row.alignment = BoxContainer.ALIGNMENT_END
+	box.add_child(button_row)
+
+	var submit_button := Button.new()
+	submit_button.name = "SubmitButton"
+	submit_button.text = "SAVE"
+	submit_button.disabled = true
+	submit_button.custom_minimum_size = Vector2(130, 42)
+	button_row.add_child(submit_button)
+
+	return layer
+
+func _format_minutes(minutes: int) -> String:
+	var safe_minutes: int = max(minutes, 0)
+	var hours: int = safe_minutes / 60
+	var mins: int = safe_minutes % 60
+	return "%dh %02dm" % [hours, mins]
 
 func _populate_result_panel() -> void:
 	var title_lbl:  Label         = result_panel.get_node("VBoxContainer/TitleLabel")
