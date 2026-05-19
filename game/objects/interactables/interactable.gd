@@ -19,6 +19,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("player"):
 		return
+	if not body.has_method("_on_interactable_entered") or not body.has_method("_on_interactable_exited"):
+		push_warning("Interactable: player body is missing interactable callbacks: " + body.name)
+		return
 	if not player_entered.is_connected(body._on_interactable_entered):
 		player_entered.connect(body._on_interactable_entered)
 	if not player_exited.is_connected(body._on_interactable_exited):

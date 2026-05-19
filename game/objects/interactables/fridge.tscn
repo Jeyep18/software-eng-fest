@@ -40,4 +40,4 @@ shape = SubResource("BoxShape3D_7mq1j")
 unique_name_in_owner = true
 
 [node name="FoodTaskCue" parent="." unique_id=1214801977 instance=ExtResource("4_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 1.0795321, 0.6166832)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 1.0795321, 0.73639184)

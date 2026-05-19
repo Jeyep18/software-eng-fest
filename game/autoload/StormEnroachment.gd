@@ -39,7 +39,8 @@ signal location_state_changed(location_id: String, new_state: String)
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
-	GlobalTimer.encroachment_threshold_reached.connect(_on_threshold_reached)
+	if not GlobalTimer.encroachment_threshold_reached.is_connected(_on_threshold_reached):
+		GlobalTimer.encroachment_threshold_reached.connect(_on_threshold_reached)
 
 # ── Signal Handler ────────────────────────────────────────────────────────────
 func _on_threshold_reached(zone_id: String) -> void:

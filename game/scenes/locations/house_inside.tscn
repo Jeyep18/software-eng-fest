@@ -332,22 +332,22 @@ completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balit
 prompt_label = "Place Working Radio"
 
 [node name="RoofTaskCue" parent="." unique_id=726863625 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25432974, 3.1799088, -2.845928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25432974, 3.0519698, -2.845928)
 
 [node name="WindowTaskCue" parent="." unique_id=2023954735 instance=ExtResource("32_taskcue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2417374, 1.9832878, -1.2023171)
 
 [node name="WindowTaskCue2" parent="." unique_id=1961389787 instance=ExtResource("32_taskcue")]
-transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0902195, 1.9624298, -4.7983084)
+transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0192323, 1.4046286, -4.7983084)
 
 [node name="MedicineTaskCue" parent="." unique_id=415237868 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6290016, 1.9, 1.0837145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6397557, 2.151703, 1.0837145)
 
 [node name="WaterTaskCue" parent="." unique_id=1132441431 instance=ExtResource("32_taskcue")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.1759596, 1.75, -7.7017813)
 
 [node name="RadioTaskCue" parent="." unique_id=1607066454 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50261533, 1.5837703, 1.6833023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50261533, 1.6706651, 1.6833023)
 
 [node name="WindowTaskVisualCue" type="Node3D" parent="." unique_id=1887048608]
 visible = false

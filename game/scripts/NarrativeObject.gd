@@ -48,7 +48,8 @@ var _need_discovered: bool = false
 func _ready() -> void:
 	super._ready()
 	prompt_label = interaction_prompt
-	player_exited.connect(_on_player_left)
+	if not player_exited.is_connected(_on_player_left):
+		player_exited.connect(_on_player_left)
 	_setup_ui()
 
 

@@ -45,8 +45,10 @@ signal travel_completed(location_id: String)
 
 func _ready() -> void:
 	# Listen for encroachment from GlobalTimer
-	GlobalTimer.encroachment_threshold_reached.connect(_on_encroachment)
-	GlobalTimer.storm_arrived.connect(_on_storm_arrived)
+	if not GlobalTimer.encroachment_threshold_reached.is_connected(_on_encroachment):
+		GlobalTimer.encroachment_threshold_reached.connect(_on_encroachment)
+	if not GlobalTimer.storm_arrived.is_connected(_on_storm_arrived):
+		GlobalTimer.storm_arrived.connect(_on_storm_arrived)
 
 
 # ── Scene Loading (Act transitions — menu → act1, act1 → storm) ──────────────

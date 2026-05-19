@@ -373,9 +373,10 @@ script = ExtResource("9_n2j5s")
 layout_mode = 2
 text = "CREDITS"
 
-[node name="settings_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=894939448]
+[node name="leaderboards_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=894939448]
 layout_mode = 2
-text = "SETTINGS"
+text = "LEADERBOARDS
+"
 
 [node name="quit_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=174355223]
 layout_mode = 2

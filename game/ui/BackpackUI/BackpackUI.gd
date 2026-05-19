@@ -47,17 +47,7 @@ func _setup_panel_layout() -> void:
 	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  210)
 
 	# Give the panel a dark background style
-	var panel_style = StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.1, 0.1, 0.1, 0.95)
-	panel_style.corner_radius_top_left     = 12
-	panel_style.corner_radius_top_right    = 12
-	panel_style.corner_radius_bottom_left  = 12
-	panel_style.corner_radius_bottom_right = 12
-	panel_style.border_width_left   = 1
-	panel_style.border_width_right  = 1
-	panel_style.border_width_top    = 1
-	panel_style.border_width_bottom = 1
-	panel_style.border_color = Color(1, 1, 1, 0.15)
+	var panel_style := _make_panel_style(Color(0.1, 0.1, 0.1, 0.95), Color(1, 1, 1, 0.15), 1, 12)
 	backpack_panel.add_theme_stylebox_override("panel", panel_style)
 
 	# TitleBar — sits at the top
@@ -193,17 +183,8 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 	panel.call("setup", self, index, item)
 	panel.custom_minimum_size = Vector2(88, 88)
 
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.14, 0.14, 0.14, 0.92) if item != null else Color(0.08, 0.08, 0.08, 0.6)
-	style.corner_radius_top_left     = 8
-	style.corner_radius_top_right    = 8
-	style.corner_radius_bottom_left  = 8
-	style.corner_radius_bottom_right = 8
-	style.border_width_left   = 1
-	style.border_width_right  = 1
-	style.border_width_top    = 1
-	style.border_width_bottom = 1
-	style.border_color = Color(1, 1, 1, 0.12)
+	var slot_bg: Color = Color(0.14, 0.14, 0.14, 0.92) if item != null else Color(0.08, 0.08, 0.08, 0.6)
+	var style := _make_panel_style(slot_bg, Color(1, 1, 1, 0.12), 1, 8)
 	panel.add_theme_stylebox_override("panel", style)
 
 	if item != null:
@@ -233,17 +214,37 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		panel.mouse_filter = Control.MOUSE_FILTER_STOP
 		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
-		var captured_index = index
-		panel.gui_input.connect(func(event: InputEvent):
-			if event is InputEventMouseButton \
-			and event.button_index == MOUSE_BUTTON_LEFT \
-			and event.pressed:
-				_on_slot_clicked(captured_index)
-		)
+		panel.gui_input.connect(_on_slot_gui_input.bind(index))
 	else:
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	return panel
+
+func _make_panel_style(bg_color: Color, border_color: Color, border_width: int, radius: int) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = bg_color
+	style.border_color = border_color
+	_set_uniform_border_width(style, border_width)
+	_set_uniform_corner_radius(style, radius)
+	return style
+
+func _set_uniform_border_width(style: StyleBoxFlat, width: int) -> void:
+	style.border_width_left = width
+	style.border_width_right = width
+	style.border_width_top = width
+	style.border_width_bottom = width
+
+func _set_uniform_corner_radius(style: StyleBoxFlat, radius: int) -> void:
+	style.corner_radius_top_left = radius
+	style.corner_radius_top_right = radius
+	style.corner_radius_bottom_left = radius
+	style.corner_radius_bottom_right = radius
+
+func _on_slot_gui_input(event: InputEvent, index: int) -> void:
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed:
+		_on_slot_clicked(index)
 
 func _on_slot_clicked(index: int) -> void:
 	if _selected_index == -1:
@@ -275,24 +276,15 @@ func _update_slot_highlights() -> void:
 		var style = panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 		if i == _selected_index:
 			style.border_color = Color(1.0, 1.0, 1.0, 0.9)
-			style.border_width_left   = 2
-			style.border_width_right  = 2
-			style.border_width_top    = 2
-			style.border_width_bottom = 2
+			_set_uniform_border_width(style, 2)
 			style.bg_color = Color(0.22, 0.22, 0.22, 0.95)
 		elif i == _combine_target_index:
 			style.border_color = Color(0.3, 0.9, 0.6, 0.95)
-			style.border_width_left   = 2
-			style.border_width_right  = 2
-			style.border_width_top    = 2
-			style.border_width_bottom = 2
+			_set_uniform_border_width(style, 2)
 			style.bg_color = Color(0.1, 0.22, 0.16, 0.95)
 		else:
 			style.border_color = Color(1, 1, 1, 0.1)
-			style.border_width_left   = 1
-			style.border_width_right  = 1
-			style.border_width_top    = 1
-			style.border_width_bottom = 1
+			_set_uniform_border_width(style, 1)
 			style.bg_color = Color(0.14, 0.14, 0.14, 0.92) if i < items.size() else Color(0.08, 0.08, 0.08, 0.6)
 		panel.add_theme_stylebox_override("panel", style)
 

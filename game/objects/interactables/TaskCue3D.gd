@@ -40,11 +40,16 @@ func _start_pulse() -> void:
 	_pulse_tween.set_loops()
 	_pulse_tween.set_trans(Tween.TRANS_SINE)
 	_pulse_tween.set_ease(Tween.EASE_IN_OUT)
+
+	_pulse_light_to(max_light_energy)
+	_pulse_particles_to(max_particle_amount)
+	_pulse_light_to(min_light_energy)
+	_pulse_particles_to(min_particle_amount)
+
+func _pulse_light_to(energy: float) -> void:
 	if is_instance_valid(_light):
-		_pulse_tween.tween_property(_light, "light_energy", max_light_energy, pulse_duration)
+		_pulse_tween.tween_property(_light, "light_energy", energy, pulse_duration)
+
+func _pulse_particles_to(amount: int) -> void:
 	if is_instance_valid(_particles):
-		_pulse_tween.parallel().tween_property(_particles, "amount", max_particle_amount, pulse_duration)
-	if is_instance_valid(_light):
-		_pulse_tween.tween_property(_light, "light_energy", min_light_energy, pulse_duration)
-	if is_instance_valid(_particles):
-		_pulse_tween.parallel().tween_property(_particles, "amount", min_particle_amount, pulse_duration)
+		_pulse_tween.parallel().tween_property(_particles, "amount", amount, pulse_duration)
