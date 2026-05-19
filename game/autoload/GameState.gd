@@ -4,7 +4,9 @@ extends Node
 
 var collected_world_items: Array[String] = []
 var player_name: String = ""
-var cash_balance: int = 600
+const STARTING_CASH: int = 600
+
+var cash_balance: int = STARTING_CASH
 
 #region Act Tracking
 enum Act { ACT_1, ACT_2, ACT_3, ACT_4 }
@@ -98,7 +100,7 @@ func reset() -> void:
 	child_rescued_during_storm = false
 	corruption_evidence_found = false
 	corruption_evidence_shared = false
-	cash_balance = 400
+	cash_balance = STARTING_CASH
 	collected_world_items.clear()
 #endregion
 
