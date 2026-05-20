@@ -12,6 +12,7 @@ var _current_speed: float = WALK_SPEED
 var _is_mouse_captured: bool = true
 var _facing_direction: float = 1.0
 var _is_input_locked: bool = false
+var _is_movement_locked: bool = false
 var _previous_target: Interactable = null
 var _prompt_suppressed: bool = false
 var _nearby_interactables: Array[Interactable] = []
@@ -30,6 +31,7 @@ const ANIM_RUN:        String = "Running (1)/mixamo_com"
 const ANIM_STAND_UP:   String = "Stand Up (1)/mixamo_com"
 
 func _ready() -> void:
+	add_to_group("player")
 	_capture_mouse()
 	_animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -76,7 +78,8 @@ func _apply_gravity(delta: float) -> void:
 
 
 func _handle_movement(delta: float) -> void:
-	if _is_input_locked:
+	if _is_input_locked or _is_movement_locked:
+		_stop_horizontal_movement(delta)
 		return
 
 	var is_sprinting: bool = Input.is_action_pressed("sprint")
@@ -107,6 +110,23 @@ func _handle_movement(delta: float) -> void:
 				_play(ANIM_IDLE)
 				_was_moving = false
 #endregion
+
+func set_movement_locked(is_locked: bool) -> void:
+	_is_movement_locked = is_locked
+	if is_locked:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if _animation_player != null:
+			_play(ANIM_IDLE)
+		_was_moving = false
+
+func _stop_horizontal_movement(delta: float) -> void:
+	var acceleration: float = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+	velocity.x = lerp(velocity.x, 0.0, delta * acceleration)
+	velocity.z = lerp(velocity.z, 0.0, delta * acceleration)
+	if _was_moving:
+		_play(ANIM_IDLE)
+		_was_moving = false
 
 
 #region Rotation
@@ -213,6 +233,8 @@ func _on_prompt_visibility_changed(should_show: bool) -> void:
 
 
 func _handle_interact_input() -> void:
+	if _is_interaction_blocked_by_ui():
+		return
 	if _current_target == null:
 		return
 
@@ -232,3 +254,6 @@ func _on_interactable_entered(interactable: Interactable) -> void:
 func _on_interactable_exited(interactable: Interactable) -> void:
 	_nearby_interactables.erase(interactable)
 #endregion
+
+func _is_interaction_blocked_by_ui() -> bool:
+	return get_node_or_null("/root/ShopUi") != null and ShopUi.is_open()

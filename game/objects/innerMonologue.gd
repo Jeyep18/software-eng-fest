@@ -52,6 +52,7 @@ func _show_current_line() -> void:
 	if not _paused_timer:
 		GlobalTimer.pause_timer()
 		_paused_timer = true
+	get_tree().call_group("player", "set_movement_locked", true)
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
@@ -72,6 +73,7 @@ func _skip_to_line_end() -> void:
 	_is_typing = false
 
 func _hide_monologue() -> void:
+	get_tree().call_group("player", "set_movement_locked", false)
 	is_showing = false
 	if _tween and _tween.is_valid():
 		_tween.kill()

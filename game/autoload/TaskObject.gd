@@ -200,6 +200,7 @@ func _show_line(lines: Array[String]) -> void:
 		return
 
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
+	get_tree().call_group("player", "set_movement_locked", true)
 	if not _paused_timer_for_dialogue:
 		GlobalTimer.pause_timer()
 		_paused_timer_for_dialogue = true
@@ -226,6 +227,7 @@ func _skip_to_line_end() -> void:
 
 func _hide_monologue() -> void:
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
+	get_tree().call_group("player", "set_movement_locked", false)
 	is_showing = false
 
 	if _tween and _tween.is_valid():

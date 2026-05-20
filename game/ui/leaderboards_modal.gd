@@ -7,11 +7,8 @@ extends CanvasLayer
 @onready var empty_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer/EmptyLabel
 
 var _clear_armed: bool = false
-var _difficulty_buttons: HBoxContainer
-var _selected_difficulty: String = "standard"
 
 func _ready() -> void:
-	_build_difficulty_tabs()
 	close_button.pressed.connect(close)
 	clear_button.pressed.connect(_on_clear_pressed)
 	if not LeaderboardManager.entries_changed.is_connected(_refresh):
@@ -20,9 +17,7 @@ func _ready() -> void:
 
 func open() -> void:
 	_clear_armed = false
-	_selected_difficulty = GameState.get_difficulty_id()
 	_update_clear_button()
-	_refresh_difficulty_tabs()
 	_refresh()
 	show()
 
@@ -30,13 +25,13 @@ func close() -> void:
 	hide()
 
 func _refresh() -> void:
-	title_label.text = "LEADERBOARDS - " + _difficulty_label(_selected_difficulty)
+	title_label.text = "LEADERBOARDS"
 	for child in rows_container.get_children():
 		if child != empty_label:
 			rows_container.remove_child(child)
 			child.queue_free()
 
-	var entries: Array[Dictionary] = LeaderboardManager.get_entries_for_difficulty(_selected_difficulty)
+	var entries: Array[Dictionary] = LeaderboardManager.get_ranked_entries()
 	empty_label.visible = entries.is_empty()
 	clear_button.disabled = entries.is_empty()
 
@@ -51,6 +46,8 @@ func _add_header_row() -> void:
 	var row := _make_row()
 	_add_cell(row, "Rank", 58, true)
 	_add_cell(row, "Player", 190, true)
+	_add_cell(row, "Difficulty", 130, true)
+	_add_cell(row, "Score", 90, true)
 	_add_cell(row, "Tasks", 90, true)
 	_add_cell(row, "Time Left", 120, true)
 	rows_container.add_child(row)
@@ -59,6 +56,8 @@ func _add_entry_row(rank: int, entry: Dictionary) -> void:
 	var row := _make_row()
 	_add_cell(row, "#" + str(rank), 58, false)
 	_add_cell(row, str(entry.get("player_name", "Player")), 190, false)
+	_add_cell(row, _difficulty_label_with_multiplier(str(entry.get("difficulty", "standard"))), 130, false)
+	_add_cell(row, "%d" % roundi(float(entry.get("score", 0.0))), 90, false)
 	_add_cell(row, "%d / %d" % [int(entry.get("tasks_completed", 0)), NeedsLog.Need.size()], 90, false)
 	_add_cell(row, _format_minutes(int(entry.get("remaining_minutes", 0))), 120, false)
 	rows_container.add_child(row)
@@ -91,43 +90,12 @@ func _on_clear_pressed() -> void:
 		_update_clear_button()
 		return
 
-	LeaderboardManager.clear_entries(_selected_difficulty)
+	LeaderboardManager.clear_entries()
 	_clear_armed = false
 	_update_clear_button()
 
 func _update_clear_button() -> void:
 	clear_button.text = "CONFIRM CLEAR" if _clear_armed else "CLEAR"
-
-func _build_difficulty_tabs() -> void:
-	_difficulty_buttons = HBoxContainer.new()
-	_difficulty_buttons.name = "DifficultyTabs"
-	_difficulty_buttons.alignment = BoxContainer.ALIGNMENT_CENTER
-	_difficulty_buttons.add_theme_constant_override("separation", 8)
-
-	var parent_box: VBoxContainer = $MarginContainer/LeaderboardsModal/VBoxContainer
-	parent_box.add_child(_difficulty_buttons)
-	parent_box.move_child(_difficulty_buttons, 2)
-
-	for difficulty_id in ["story", "standard", "challenge"]:
-		var button := Button.new()
-		button.text = _difficulty_label(difficulty_id)
-		button.toggle_mode = true
-		button.pressed.connect(_on_difficulty_tab_pressed.bind(difficulty_id))
-		_difficulty_buttons.add_child(button)
-
-func _on_difficulty_tab_pressed(difficulty_id: String) -> void:
-	_selected_difficulty = difficulty_id
-	_clear_armed = false
-	_update_clear_button()
-	_refresh_difficulty_tabs()
-	_refresh()
-
-func _refresh_difficulty_tabs() -> void:
-	if _difficulty_buttons == null:
-		return
-	for child in _difficulty_buttons.get_children():
-		if child is Button:
-			child.button_pressed = child.text == _difficulty_label(_selected_difficulty)
 
 func _difficulty_label(difficulty_id: String) -> String:
 	match difficulty_id:
@@ -137,3 +105,6 @@ func _difficulty_label(difficulty_id: String) -> String:
 			return "Challenge"
 		_:
 			return "Standard"
+
+func _difficulty_label_with_multiplier(difficulty_id: String) -> String:
+	return "%s x%.2f" % [_difficulty_label(difficulty_id), GameState.get_difficulty_score_multiplier(difficulty_id)]

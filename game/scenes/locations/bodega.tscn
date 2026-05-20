@@ -117,14 +117,17 @@ prompt_label = "Go back "
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.433703, 1.3540105, -3.0667145)
 world_item_id = "hammer_bodega"
 item_data = ExtResource("10_xmmy0")
+require_pickup_confirmation = true
 
 [node name="WorldItem" parent="." unique_id=67334447 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.679819, 1.6295038, -7.4330616)
 world_item_id = "dead_flashlight_bodega"
 item_data = ExtResource("12_tqvld")
+require_pickup_confirmation = true
 
 [node name="Radio" parent="." unique_id=1495102883 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(-0.017068435, 0, -0.9998543, 0, 1, 0, 0.9998543, 0, -0.017068435, -1.6437103, 1.3030576, -5.049503)
 world_item_id = "radio_home"
 item_data = ExtResource("12_gjccj")
+require_pickup_confirmation = true
 prompt_label = "Pickup radio"

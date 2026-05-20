@@ -86,7 +86,9 @@ func travel_to(target_location: String, spawn_id: String = "") -> void:
 	if target_location == "home" and spawn_id == "":
 		spawn_id = "main_door"
 	
-	var travel_cost: int = TravelCalculator.get_travel_time(current_location, target_location)
+	var origin_for_travel: String = LOCATION_ALIASES.get(current_location, current_location)
+	var target_for_travel: String = LOCATION_ALIASES.get(target_location, target_location)
+	var travel_cost: int = TravelCalculator.get_travel_time(origin_for_travel, target_for_travel)
 	is_travelling = true
 	
 	_pending_spawn_id = spawn_id

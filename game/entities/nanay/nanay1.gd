@@ -36,7 +36,9 @@ func _hide_dialogue() -> void:
 func _grant_departure_cash() -> void:
 	if GameState.nanay_departure_cash_granted:
 		return
-	GameState.add_cash(GameState.get_departure_cash())
+	var departure_cash := GameState.get_departure_cash()
+	GameState.add_cash(departure_cash)
+	get_tree().call_group("preparation_checklist_hud", "show_cash_gain", departure_cash)
 	GameState.complete_nanay_intro()
 
 func notify_departed() -> void:

@@ -23,7 +23,13 @@ const DIFFICULTY_LABELS: Dictionary = {
 const DIFFICULTY_SECONDS_PER_MINUTE: Dictionary = {
 	Difficulty.STORY: 2.0,
 	Difficulty.STANDARD: 1.5,
-	Difficulty.CHALLENGE: 0.5,
+	Difficulty.CHALLENGE: 0.8,
+}
+
+const DIFFICULTY_SCORE_MULTIPLIERS: Dictionary = {
+	Difficulty.STORY: 0.85,
+	Difficulty.STANDARD: 1.0,
+	Difficulty.CHALLENGE: 1.25,
 }
 
 const DIFFICULTY_DEPARTURE_CASH: Dictionary = {
@@ -120,6 +126,14 @@ func get_seconds_per_game_minute() -> float:
 
 func get_departure_cash() -> int:
 	return int(DIFFICULTY_DEPARTURE_CASH.get(selected_difficulty, 700))
+
+func get_difficulty_score_multiplier(difficulty_id: String = "") -> float:
+	if difficulty_id.is_empty():
+		return float(DIFFICULTY_SCORE_MULTIPLIERS.get(selected_difficulty, 1.0))
+	for difficulty in DIFFICULTY_IDS.keys():
+		if DIFFICULTY_IDS[difficulty] == difficulty_id:
+			return float(DIFFICULTY_SCORE_MULTIPLIERS.get(difficulty, 1.0))
+	return 1.0
 
 func complete_nanay_intro() -> void:
 	if house_tasks_unlocked:

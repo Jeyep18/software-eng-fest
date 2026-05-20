@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var combine_button: Button        = $BackpackPanel/CombineBar/CombineButton
 @onready var backpack_panel: Panel         = $BackpackPanel
 @onready var discard_slot: Panel           = $BackpackPanel/DiscardSlot
+@onready var discard_prompt: Label         = $BackpackPanel/DiscardPrompt
 
 const ITEMS_PATH: String = "res://game/resources/items/"
 const INVENTORY_DRAG_SLOT_SCRIPT = preload("res://game/ui/BackpackUI/InventoryDragSlot.gd")
@@ -44,7 +45,7 @@ func _setup_panel_layout() -> void:
 	backpack_panel.set_anchor_and_offset(SIDE_LEFT,   0.5, -230)
 	backpack_panel.set_anchor_and_offset(SIDE_TOP,    0.5, -210)
 	backpack_panel.set_anchor_and_offset(SIDE_RIGHT,  0.5,  230)
-	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  210)
+	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  240)
 
 	# Give the panel a dark background style
 	var panel_style := _make_panel_style(Color(0.1, 0.1, 0.1, 0.95), Color(1, 1, 1, 0.15), 1, 12)
@@ -104,9 +105,9 @@ func _setup_panel_layout() -> void:
 
 	# CombineBar — sits at the very bottom
 	combine_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12)
-	combine_bar.set_anchor_and_offset(SIDE_TOP,    0, 330)
+	combine_bar.set_anchor_and_offset(SIDE_TOP,    0, 360)
 	combine_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12)
-	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 400)
+	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 430)
 	combine_bar.add_theme_constant_override("separation", 10)
 
 	if is_instance_valid(discard_slot):
@@ -116,6 +117,14 @@ func _setup_panel_layout() -> void:
 		discard_slot.set_anchor_and_offset(SIDE_TOP, 0, 238)
 		discard_slot.set_anchor_and_offset(SIDE_RIGHT, 1, -12)
 		discard_slot.set_anchor_and_offset(SIDE_BOTTOM, 0, 318)
+
+	if is_instance_valid(discard_prompt):
+		discard_prompt.set_anchor_and_offset(SIDE_LEFT, 0, 12)
+		discard_prompt.set_anchor_and_offset(SIDE_TOP, 0, 322)
+		discard_prompt.set_anchor_and_offset(SIDE_RIGHT, 1, -12)
+		discard_prompt.set_anchor_and_offset(SIDE_BOTTOM, 0, 354)
+		discard_prompt.add_theme_font_size_override("font_size", 12)
+		discard_prompt.add_theme_color_override("font_color", Color(1, 1, 1, 0.68))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_backpack"):
@@ -128,7 +137,6 @@ func _toggle() -> void:
 
 	_close_map_if_open()
 	visible = true
-	GlobalTimer.pause_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_reset_selection()
 	_redraw_backpack()
@@ -137,7 +145,6 @@ func close_backpack() -> void:
 	if not visible:
 		return
 	visible = false
-	GlobalTimer.resume_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_reset_selection()
 

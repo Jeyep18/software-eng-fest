@@ -64,6 +64,7 @@ func _show_current_line() -> void:
 		GlobalTimer.pause_timer()
 		_paused_timer = true
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
+	get_tree().call_group("player", "set_movement_locked", true)
 	is_showing = true
 	var line: DialogueLine = _current_sequence.lines[_current_line]
 	_ui.show_line(line)
@@ -92,6 +93,7 @@ func _skip_to_line_end() -> void:
 func _hide_dialogue() -> void:
 	AudioManager.stop_voice()
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
+	get_tree().call_group("player", "set_movement_locked", false)
 	is_showing = false
 	if _tween and _tween.is_valid():
 		_tween.kill()

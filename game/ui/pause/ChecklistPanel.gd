@@ -4,6 +4,7 @@ extends Control
 
 signal all_tasks_completed
 signal critical_tasks_completed
+signal checklist_content_changed
 
 # Completion state guards — prevent signals from firing repeatedly
 var _critical_emitted: bool = false
@@ -13,12 +14,12 @@ var _all_emitted:      bool = false
 
 const _ITEMS: Array = [
 	# [label,                  hint,                        priority,   Need enum         ]
-	["Patch the roof",      "Tarp + nails + hammer",     "CRITICAL", NeedsLog.Need.ROOF      ],
-	["Get Lola's medicine", "Pharmacy", "CRITICAL", NeedsLog.Need.MEDICINE  ],
-	["Store food",          "4x canned goods",           "HIGH",     NeedsLog.Need.FOOD      ],
-	["Fill water jugs",     "Home faucet",           "HIGH",     NeedsLog.Need.WATER     ],
-	["Board both windows",  "Plywood + nails + hammer",  "MED",      NeedsLog.Need.WINDOWS   ],
-	["Assemble flashlight & Radio", "Flashlight + batteries & Radio + Batteries",    "MED",      NeedsLog.Need.FLASHLIGHT],
+	["Patch the roof",      "Tarp + nails + hammer",     "", NeedsLog.Need.ROOF      ],
+	["Get Lola's medicine", "Pharmacy",                   "", NeedsLog.Need.MEDICINE  ],
+	["Store food",         "4x canned goods",            "", NeedsLog.Need.FOOD      ],
+	["Fill water jugs",    "Home faucet",                "", NeedsLog.Need.WATER     ],
+	["Board both windows", "Plywood + nails + hammer",   "", NeedsLog.Need.WINDOWS   ],
+	["Assemble flashlight & radio", "Flashlight + batteries; radio + batteries", "", NeedsLog.Need.FLASHLIGHT],
 ]
 
 # ── Colours ───────────────────────────────────────────────────────────────────
@@ -94,7 +95,7 @@ func _populate() -> void:
 		# Task label
 		var lbl := Label.new()
 		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		lbl.text = item[0]
+		lbl.text = "%s (%s)" % [item[0], item[1]]
 		lbl.add_theme_color_override("font_color",
 			_COL_RESOLVED if resolved else Color.WHITE)
 		lbl.add_theme_font_size_override("font_size", 13)
@@ -104,6 +105,11 @@ func _populate() -> void:
 		row.add_child(lbl)
 
 		_list.add_child(row)
+
+	call_deferred("_emit_checklist_content_changed")
+
+func _emit_checklist_content_changed() -> void:
+	checklist_content_changed.emit()
 
 func _add_guide_tasks() -> void:
 	if not GameState.house_tasks_unlocked:
