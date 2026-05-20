@@ -43,7 +43,7 @@ environment = ExtResource("2_6nx7l")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=212964027]
 transform = Transform3D(-0.71763337, -0.6957744, -0.030009696, -0.35483178, 0.3282214, 0.8754228, -0.5992469, 0.6388811, -0.4824255, -6.081403, 5.172868, 0)
 visible = false
-light_energy = 2.108
+light_energy = 1.55
 shadow_enabled = true
 
 [node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=2004242436]

@@ -1,0 +1,45 @@
+[gd_resource type="Environment" format=3 uid="uid://da3ce0283oavb"]
+
+[ext_resource type="Texture2D" uid="uid://cf6qbng4ouro7" path="res://_raw_assets/sky_hdri/overcast_soil_puresky_4k.exr" id="1_overcast"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_storm_shop"]
+panorama = ExtResource("1_overcast")
+energy_multiplier = 0.38
+
+[sub_resource type="Sky" id="Sky_storm_shop"]
+sky_material = SubResource("PanoramaSkyMaterial_storm_shop")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_storm_shop")
+ambient_light_source = 3
+ambient_light_color = Color(0.455, 0.52, 0.58, 1)
+ambient_light_sky_contribution = 0.55
+ambient_light_energy = 0.72
+reflected_light_source = 1
+tonemap_mode = 4
+tonemap_exposure = 0.48
+ssao_enabled = true
+ssao_radius = 1.55
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_energy = 0.25
+glow_enabled = true
+glow_levels/1 = 0.45
+glow_levels/2 = 0.35
+glow_levels/3 = 0.2
+glow_normalized = true
+glow_intensity = 0.08
+glow_bloom = 0.35
+fog_light_color = Color(0.43, 0.55, 0.62, 1)
+fog_light_energy = 0.08
+fog_aerial_perspective = 0.35
+fog_sky_affect = 0.08
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.018
+volumetric_fog_albedo = Color(0.56, 0.66, 0.72, 1)
+volumetric_fog_ambient_inject = 0.38
+volumetric_fog_sky_affect = 0.08
+adjustment_enabled = true
+adjustment_brightness = 0.82
+adjustment_contrast = 1.08

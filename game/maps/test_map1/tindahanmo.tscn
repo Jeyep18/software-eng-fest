@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="3_ddds0"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="4_fkfki"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="5_fkfki"]
+[ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
+
 
 [sub_resource type="Shader" id="Shader_tokvj"]
 code = "
@@ -92,4 +94,4 @@ light_specular = 5.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=729410430]
-environment = SubResource("Environment_7oi2m")
+environment = ExtResource("storm_env")

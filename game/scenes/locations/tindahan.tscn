@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_ygoei"]
 [ext_resource type="PackedScene" uid="uid://wsovjfl8f40h" path="res://game/entities/ate_linda_npc/ate_linda.tscn" id="7_61ce1"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="8_0aq8a"]
+[ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
+
 
 [sub_resource type="Shader" id="Shader_tokvj"]
 code = "
@@ -137,7 +139,7 @@ light_specular = 5.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=173007157]
-environment = SubResource("Environment_swj85")
+environment = ExtResource("storm_env")
 
 [node name="InvisWall" type="CSGBox3D" parent="." unique_id=1343420685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1254654, 1.1715438, -6.543525)

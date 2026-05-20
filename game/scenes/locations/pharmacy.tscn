@@ -17,6 +17,8 @@
 [ext_resource type="Resource" uid="uid://3nff5bac5elg" path="res://game/resources/items/banana.tres" id="13_eiweo"]
 [ext_resource type="PackedScene" uid="uid://dowqdxmca6ku8" path="res://game/entities/pharmacist/pharma_dude.tscn" id="14_eiweo"]
 [ext_resource type="PackedScene" uid="uid://cgxg2hd82077n" path="res://game/entities/chooks_to_go_seller.tscn" id="15_cu82t"]
+[ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
 albedo_texture = ExtResource("1_hvxim")
@@ -321,7 +323,7 @@ light_specular = 5.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1358151450]
-environment = SubResource("Environment_hj2km")
+environment = ExtResource("storm_env")
 
 [node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=1617716560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.314453, 6.0292053, -14.321473)

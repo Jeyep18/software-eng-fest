@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_3ys6i"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_1okjx"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_obyax"]
+[ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mq8r4"]
 albedo_texture = ExtResource("1_p83xj")
@@ -140,7 +142,7 @@ light_specular = 5.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2029722894]
-environment = SubResource("Environment_o40fb")
+environment = ExtResource("storm_env")
 
 [node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=979950094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8658752, 3.14888, -35.277927)

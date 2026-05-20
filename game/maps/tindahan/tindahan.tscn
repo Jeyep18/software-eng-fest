@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="5_g7enk"]
 [ext_resource type="VoxelGIData" uid="uid://cely5hhtplkk" path="res://game/maps/tindahan/tindahan.VoxelGI_data.res" id="5_vqu4v"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="6_g7enk"]
+[ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
+
 
 [sub_resource type="Shader" id="Shader_tokvj"]
 code = "
@@ -84,7 +86,7 @@ light_specular = 5.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=173007157]
-environment = SubResource("Environment_swj85")
+environment = ExtResource("storm_env")
 
 [node name="VoxelGI" type="VoxelGI" parent="Environment" unique_id=208952996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8658752, 3.14888, -35.277927)

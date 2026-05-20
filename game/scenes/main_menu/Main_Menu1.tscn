@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://cx15idd6avcuk" path="res://game/scenes/main_menu/start_button.gd" id="9_n2j5s"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="10_4kbe1"]
 [ext_resource type="PackedScene" uid="uid://bfd1ee86t2snx" path="res://game/ui/credits_modal.tscn" id="10_35tpx"]
-[ext_resource type="PackedScene" path="res://game/ui/leaderboards_modal.tscn" id="11_leaderboards"]
 [ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="11_5bjxa"]
+[ext_resource type="PackedScene" path="res://game/ui/leaderboards_modal.tscn" id="11_leaderboards"]
 [ext_resource type="Script" uid="uid://bktech7nkvxa6" path="res://game/scenes/main_menu/quit_button.gd" id="12_48t3i"]
 [ext_resource type="PackedScene" uid="uid://c3erci5d62sx4" path="res://game/objects/interactables/plywood_model.tscn" id="12_voysh"]
 [ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="13_48t3i"]
@@ -145,9 +145,9 @@ spot_range = 40.996
 spot_angle = 82.02
 
 [node name="Lightning" type="SpotLight3D" parent="Lights" unique_id=60318727]
-transform = Transform3D(0.20485541, 0.9149189, -0.34778982, 0.39795446, 0.24677695, 0.88359123, 0.8942408, -0.31941295, -0.3135425, -8.0485735, 5.2283397, -2.0376613)
+transform = Transform3D(0.20485541, 0.9149189, -0.34778982, 0.39795446, 0.24677695, 0.88359123, 0.8942408, -0.31941295, -0.31354246, -8.525959, 5.793953, -2.0376613)
 visible = false
-light_energy = 19.96
+light_energy = 16.0
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 16.0
 shadow_enabled = true
@@ -386,7 +386,7 @@ script = ExtResource("12_48t3i")
 [node name="CreditsModal" parent="." unique_id=804369956 instance=ExtResource("10_35tpx")]
 visible = false
 
-[node name="LeaderboardsModal" parent="." instance=ExtResource("11_leaderboards")]
+[node name="LeaderboardsModal" parent="." unique_id=1574016214 instance=ExtResource("11_leaderboards")]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1684201697]
