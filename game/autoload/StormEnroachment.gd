@@ -82,10 +82,14 @@ func apply_danger_penalty(location_id: String) -> void:
 				% [location_id, DANGER_TIME_PENALTY])
 
 func reset() -> void:
-	_location_states = {
+	var default_states: Dictionary = {
 		"home":           "open",
 		"ate_linda":      "open",
 		"grocery":        "open",
 		"pharmacy":       "open",
 		"hardware":       "open",
 	}
+	for location_id in default_states.keys():
+		if _location_states.get(location_id, "open") != default_states[location_id]:
+			location_state_changed.emit(location_id, default_states[location_id])
+	_location_states = default_states

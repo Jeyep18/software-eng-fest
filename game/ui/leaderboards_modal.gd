@@ -2,12 +2,16 @@ extends CanvasLayer
 
 @onready var close_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/close_button
 @onready var clear_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/clear_button
+@onready var title_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/TitleLabel
 @onready var rows_container: VBoxContainer = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer
 @onready var empty_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer/EmptyLabel
 
 var _clear_armed: bool = false
+var _difficulty_buttons: HBoxContainer
+var _selected_difficulty: String = "standard"
 
 func _ready() -> void:
+	_build_difficulty_tabs()
 	close_button.pressed.connect(close)
 	clear_button.pressed.connect(_on_clear_pressed)
 	if not LeaderboardManager.entries_changed.is_connected(_refresh):
@@ -16,7 +20,9 @@ func _ready() -> void:
 
 func open() -> void:
 	_clear_armed = false
+	_selected_difficulty = GameState.get_difficulty_id()
 	_update_clear_button()
+	_refresh_difficulty_tabs()
 	_refresh()
 	show()
 
@@ -24,12 +30,13 @@ func close() -> void:
 	hide()
 
 func _refresh() -> void:
+	title_label.text = "LEADERBOARDS - " + _difficulty_label(_selected_difficulty)
 	for child in rows_container.get_children():
 		if child != empty_label:
 			rows_container.remove_child(child)
 			child.queue_free()
 
-	var entries: Array[Dictionary] = LeaderboardManager.get_entries()
+	var entries: Array[Dictionary] = LeaderboardManager.get_entries_for_difficulty(_selected_difficulty)
 	empty_label.visible = entries.is_empty()
 	clear_button.disabled = entries.is_empty()
 
@@ -84,9 +91,49 @@ func _on_clear_pressed() -> void:
 		_update_clear_button()
 		return
 
-	LeaderboardManager.clear_entries()
+	LeaderboardManager.clear_entries(_selected_difficulty)
 	_clear_armed = false
 	_update_clear_button()
 
 func _update_clear_button() -> void:
 	clear_button.text = "CONFIRM CLEAR" if _clear_armed else "CLEAR"
+
+func _build_difficulty_tabs() -> void:
+	_difficulty_buttons = HBoxContainer.new()
+	_difficulty_buttons.name = "DifficultyTabs"
+	_difficulty_buttons.alignment = BoxContainer.ALIGNMENT_CENTER
+	_difficulty_buttons.add_theme_constant_override("separation", 8)
+
+	var parent_box: VBoxContainer = $MarginContainer/LeaderboardsModal/VBoxContainer
+	parent_box.add_child(_difficulty_buttons)
+	parent_box.move_child(_difficulty_buttons, 2)
+
+	for difficulty_id in ["story", "standard", "challenge"]:
+		var button := Button.new()
+		button.text = _difficulty_label(difficulty_id)
+		button.toggle_mode = true
+		button.pressed.connect(_on_difficulty_tab_pressed.bind(difficulty_id))
+		_difficulty_buttons.add_child(button)
+
+func _on_difficulty_tab_pressed(difficulty_id: String) -> void:
+	_selected_difficulty = difficulty_id
+	_clear_armed = false
+	_update_clear_button()
+	_refresh_difficulty_tabs()
+	_refresh()
+
+func _refresh_difficulty_tabs() -> void:
+	if _difficulty_buttons == null:
+		return
+	for child in _difficulty_buttons.get_children():
+		if child is Button:
+			child.button_pressed = child.text == _difficulty_label(_selected_difficulty)
+
+func _difficulty_label(difficulty_id: String) -> String:
+	match difficulty_id:
+		"story":
+			return "Story"
+		"challenge":
+			return "Challenge"
+		_:
+			return "Standard"

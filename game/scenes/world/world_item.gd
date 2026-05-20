@@ -45,6 +45,7 @@ var _is_typing: bool = false
 
 # Reference to the active tween (for the typewriter animation).
 var _tween: Tween = null
+var _paused_timer: bool = false
 
 # --- READY ---
 func _ready() -> void:
@@ -156,6 +157,9 @@ func interact() -> void:
 # These mirror the Fridge script exactly, just using item_data.pickup_lines.
 
 func _show_current_line() -> void:
+	if not _paused_timer:
+		GlobalTimer.pause_timer()
+		_paused_timer = true
 	is_showing = true  # inherited from Interactable
 	_is_showing = true
 	_is_typing = true
@@ -188,6 +192,9 @@ func _hide_monologue() -> void:
 	_is_showing = false
 	_is_typing = false
 	_current_line = 0
+	if _paused_timer:
+		GlobalTimer.resume_timer()
+		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 
 

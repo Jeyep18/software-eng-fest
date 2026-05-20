@@ -16,7 +16,13 @@ signal discard_changed
 
 # --- DATA ---
 var inventory: Array[ItemData] = []
+var item_quantities: Array[int] = []
 var discard_held_item: ItemData = null
+var discard_held_quantity: int = 0
+
+const STACKABLE_ITEM_IDS: Dictionary = {
+	"canned_goods": 99,
+}
 
 # --- COMBINE RECIPES ---
 # Key format: "item_id_a+item_id_b" (always sorted alphabetically so order doesn't matter)
@@ -31,10 +37,18 @@ var _combine_recipes: Dictionary = {
 # --- PUBLIC FUNCTIONS ---
 
 func add_item(item: ItemData) -> bool:
+	if item != null and _is_stackable(item.item_id):
+		for i in range(inventory.size()):
+			if inventory[i] != null and inventory[i].item_id == item.item_id:
+				item_quantities[i] += 1
+				inventory_changed.emit()
+				return true
+
 	if inventory.size() >= MAX_INVENTORY_SIZE:
 		print("InventoryManager: Inventory is full.")
 		return false
 	inventory.append(item)
+	item_quantities.append(1)
 	inventory_changed.emit()
 	return true
 
@@ -43,7 +57,47 @@ func remove_item(index: int) -> ItemData:
 		push_error("InventoryManager: Invalid index: " + str(index))
 		return null
 	var removed = inventory[index]
+	if item_quantities[index] > 1:
+		item_quantities[index] -= 1
+	else:
+		inventory.remove_at(index)
+		item_quantities.remove_at(index)
+	inventory_changed.emit()
+	return removed
+
+func remove_item_quantity(index: int, amount: int) -> ItemData:
+	if index < 0 or index >= inventory.size():
+		push_error("InventoryManager: Invalid index: " + str(index))
+		return null
+	if amount <= 0:
+		return inventory[index]
+	var removed = inventory[index]
+	item_quantities[index] -= amount
+	if item_quantities[index] <= 0:
+		inventory.remove_at(index)
+		item_quantities.remove_at(index)
+	inventory_changed.emit()
+	return removed
+
+func get_item_quantity(index: int) -> int:
+	if index < 0 or index >= item_quantities.size():
+		return 0
+	return item_quantities[index]
+
+func get_total_quantity(item_id: String) -> int:
+	var total: int = 0
+	for i in range(inventory.size()):
+		if inventory[i] != null and inventory[i].item_id == item_id:
+			total += item_quantities[i]
+	return total
+
+func _is_stackable(item_id: String) -> bool:
+	return STACKABLE_ITEM_IDS.has(item_id)
+
+func _remove_slot(index: int) -> ItemData:
+	var removed = inventory[index]
 	inventory.remove_at(index)
+	item_quantities.remove_at(index)
 	inventory_changed.emit()
 	return removed
 
@@ -53,9 +107,12 @@ func move_item_to_discard(index: int) -> bool:
 		return false
 
 	var incoming_item = inventory[index]
+	var incoming_quantity = item_quantities[index]
 	var discarded_item = discard_held_item
 	inventory.remove_at(index)
+	item_quantities.remove_at(index)
 	discard_held_item = incoming_item
+	discard_held_quantity = incoming_quantity
 
 	inventory_changed.emit()
 	discard_changed.emit()
@@ -73,8 +130,11 @@ func restore_discard_item() -> bool:
 		return false
 
 	var restored_item = discard_held_item
+	var restored_quantity = max(discard_held_quantity, 1)
 	discard_held_item = null
+	discard_held_quantity = 0
 	inventory.append(restored_item)
+	item_quantities.append(restored_quantity)
 
 	inventory_changed.emit()
 	discard_changed.emit()
@@ -84,8 +144,7 @@ func restore_discard_item() -> bool:
 func remove_item_by_id(item_id: String) -> bool:
 	for i in range(inventory.size()):
 		if inventory[i].item_id == item_id:
-			inventory.remove_at(i)
-			inventory_changed.emit()
+			remove_item(i)
 			return true
 	return false
 
@@ -129,11 +188,12 @@ func combine_items(index_a: int, index_b: int, result_item_data: ItemData) -> bo
 	# Remove higher index first to avoid shifting issues
 	var higher = max(index_a, index_b)
 	var lower  = min(index_a, index_b)
-	inventory.remove_at(higher)
-	inventory.remove_at(lower)
+	_remove_slot(higher)
+	_remove_slot(lower)
 
 	# Add the combined result
 	inventory.append(result_item_data)
+	item_quantities.append(1)
 
 	inventory_changed.emit()
 	item_combined.emit(result_item_data)
@@ -159,7 +219,9 @@ func has_item_with_id(item_id: String) -> bool:
 
 func reset() -> void:
 	inventory.clear()
+	item_quantities.clear()
 	discard_held_item = null
+	discard_held_quantity = 0
 	inventory_changed.emit()
 	discard_changed.emit()
 	print("InventoryManager: Inventory cleared.")

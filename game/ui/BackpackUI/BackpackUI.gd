@@ -128,6 +128,7 @@ func _toggle() -> void:
 
 	_close_map_if_open()
 	visible = true
+	GlobalTimer.pause_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_reset_selection()
 	_redraw_backpack()
@@ -136,6 +137,7 @@ func close_backpack() -> void:
 	if not visible:
 		return
 	visible = false
+	GlobalTimer.resume_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_reset_selection()
 
@@ -210,6 +212,20 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		name_label.modulate = Color(1, 1, 1, 0.85)
 		name_label.mouse_filter = Control.MOUSE_FILTER_PASS
 		panel.add_child(name_label)
+
+		var quantity: int = InventoryManager.get_item_quantity(index)
+		if quantity > 1:
+			var quantity_label = Label.new()
+			quantity_label.text = "x%d" % quantity
+			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+			quantity_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			quantity_label.offset_top = 4
+			quantity_label.offset_right = -6
+			quantity_label.add_theme_font_size_override("font_size", 12)
+			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62))
+			quantity_label.mouse_filter = Control.MOUSE_FILTER_PASS
+			panel.add_child(quantity_label)
 
 		panel.mouse_filter = Control.MOUSE_FILTER_STOP
 		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND

@@ -49,5 +49,6 @@ func _refresh() -> void:
 		return
 
 	icon.texture = item.item_icon
-	label.text = item.item_name
-	label.visible = item.item_icon == null
+	var quantity_suffix := " x%d" % InventoryManager.discard_held_quantity if InventoryManager.discard_held_quantity > 1 else ""
+	label.text = item.item_name + quantity_suffix
+	label.visible = item.item_icon == null or InventoryManager.discard_held_quantity > 1

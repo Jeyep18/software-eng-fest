@@ -39,6 +39,7 @@ var _current_line: int = 0
 var _is_showing: bool = false
 var _is_typing: bool = false
 var _tween: Tween = null
+var _paused_timer: bool = false
 # Tracks if we already discovered the need this session.
 # WHY: We only want NeedsLog.discover() to fire on first interaction,
 # not every time the player re-reads the object.
@@ -89,6 +90,9 @@ func interact() -> void:
 
 func _show_current_line() -> void:
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
+	if not _paused_timer:
+		GlobalTimer.pause_timer()
+		_paused_timer = true
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
@@ -121,6 +125,9 @@ func _hide_monologue() -> void:
 	_is_showing = false
 	_is_typing = false
 	_current_line = 0
+	if _paused_timer:
+		GlobalTimer.resume_timer()
+		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 
 

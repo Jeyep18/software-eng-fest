@@ -134,13 +134,17 @@ func open_shop(shop_data: ShopData) -> void:
 	_backdrop.show()
 	_center_container.show()
 	shop_panel.show()
+	GlobalTimer.pause_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func close_shop() -> void:
+	var was_open := is_open()
 	shop_panel.hide()
 	_center_container.hide()   
 	_backdrop.hide()
 	_current_shop = null
+	if was_open:
+		GlobalTimer.resume_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func is_open() -> bool:

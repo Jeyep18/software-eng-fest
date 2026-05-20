@@ -40,7 +40,7 @@ var THRESHOLDS: Array = [
 # ── Tick Configuration ────────────────────────────────────────────────────────
 # 1.0 = 1 real second per game minute (festival default).
 # Lower = faster clock. Raise for slower pacing in playtesting.
-const SECONDS_PER_GAME_MINUTE: float = 1.0
+var seconds_per_game_minute: float = 1.5
 
 # ── State ─────────────────────────────────────────────────────────────────────
 var current_minutes: int  = 0
@@ -64,8 +64,8 @@ func _process(delta: float) -> void:
 	_tick_accumulator += delta
 
 	# Convert accumulated real seconds to whole game minutes.
-	while _tick_accumulator >= SECONDS_PER_GAME_MINUTE:
-		_tick_accumulator -= SECONDS_PER_GAME_MINUTE
+	while _tick_accumulator >= seconds_per_game_minute:
+		_tick_accumulator -= seconds_per_game_minute
 		_advance_one_minute()
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -127,12 +127,19 @@ func reset() -> void:
 	is_paused          = true
 	_tick_accumulator  = 0.0
 	_pause_stack       = 0
+	apply_difficulty_settings()
 	for threshold in THRESHOLDS:
 		threshold["fired"] = false
 
 func start_fresh() -> void:
 	reset()
 	resume_timer()
+
+func apply_difficulty_settings() -> void:
+	if get_node_or_null("/root/GameState") != null:
+		seconds_per_game_minute = GameState.get_seconds_per_game_minute()
+	else:
+		seconds_per_game_minute = 1.5
 # ── Internal ──────────────────────────────────────────────────────────────────
 func _advance_one_minute() -> void:
 	if current_minutes >= TOTAL_MINUTES:

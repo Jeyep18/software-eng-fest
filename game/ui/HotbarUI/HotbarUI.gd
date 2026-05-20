@@ -121,6 +121,19 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		name_label.modulate = Color(1, 1, 1, 0.85)
 		panel.add_child(name_label)
 
+		var quantity: int = InventoryManager.get_item_quantity(index)
+		if quantity > 1:
+			var quantity_label = Label.new()
+			quantity_label.text = "x%d" % quantity
+			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+			quantity_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			quantity_label.offset_top = 2
+			quantity_label.offset_right = -4
+			quantity_label.add_theme_font_size_override("font_size", 10)
+			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62))
+			panel.add_child(quantity_label)
+
 	# Slot number badge (bottom-right corner)
 	var num_label = Label.new()
 	num_label.text = str(index + 1)

@@ -36,6 +36,7 @@ var _is_typing: bool = false
 var _tween: Tween = null
 var _showing_ready_branch: bool = false
 var _is_completed: bool = false
+var _paused_timer_for_dialogue: bool = false
 
 func _ready() -> void:
 	super._ready()
@@ -123,15 +124,12 @@ func _get_active_lines() -> Array[String]:
 	return missing_lines
 
 func _has_all_required_items() -> bool:
-	var current_inv_ids: Array[String] = []
-	for item in InventoryManager.inventory:
-		if item != null:
-			current_inv_ids.append(item.item_id)
-
+	var required_counts: Dictionary = {}
 	for req_id in required_item_ids:
-		if req_id in current_inv_ids:
-			current_inv_ids.erase(req_id)
-		else:
+		required_counts[req_id] = int(required_counts.get(req_id, 0)) + 1
+
+	for req_id in required_counts.keys():
+		if InventoryManager.get_total_quantity(req_id) < int(required_counts[req_id]):
 			return false
 
 	return true
@@ -153,12 +151,21 @@ func _complete_task() -> void:
 			" | Burst cost: %d min" % time_cost_minutes)
 
 func _consume_required_items() -> void:
+	var required_counts: Dictionary = {}
 	for item_id in required_item_ids:
-		for i in range(InventoryManager.inventory.size()):
+		required_counts[item_id] = int(required_counts.get(item_id, 0)) + 1
+
+	for item_id in required_counts.keys():
+		var remaining: int = int(required_counts[item_id])
+		for i in range(InventoryManager.inventory.size() - 1, -1, -1):
 			var item = InventoryManager.inventory[i]
 			if item and item.item_id == item_id and _can_consume_task_item(item):
-				InventoryManager.remove_item(i)
-				break
+				var available: int = InventoryManager.get_item_quantity(i)
+				var to_remove: int = mini(available, remaining)
+				InventoryManager.remove_item_quantity(i, to_remove)
+				remaining -= to_remove
+				if remaining <= 0:
+					break
 
 func _can_consume_task_item(item: ItemData) -> bool:
 	return item.item_type in CONSUMABLE_TASK_ITEM_TYPES
@@ -193,6 +200,9 @@ func _show_line(lines: Array[String]) -> void:
 		return
 
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
+	if not _paused_timer_for_dialogue:
+		GlobalTimer.pause_timer()
+		_paused_timer_for_dialogue = true
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
@@ -226,6 +236,9 @@ func _hide_monologue() -> void:
 	_is_typing = false
 	_current_line = 0
 	_showing_ready_branch = false
+	if _paused_timer_for_dialogue:
+		GlobalTimer.resume_timer()
+		_paused_timer_for_dialogue = false
 	prompt_visibility_changed.emit(true)
 
 func _on_need_discovered(discovered_need: NeedsLog.Need) -> void:

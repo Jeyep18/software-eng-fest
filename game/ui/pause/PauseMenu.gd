@@ -96,6 +96,8 @@ func _prepare_scene_exit() -> void:
 
 func _reset_global_state() -> void:
 	SceneManager.reset()
+	StormEnroachment.reset()
+	GlobalTimer.reset()
 	NeedsLog.reset()
 	ShopUi.reset()
 	InventoryManager.reset()
