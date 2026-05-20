@@ -296,11 +296,13 @@ func _show_result_panel() -> void:
 	await _fade(1.0)
 	result_panel.hide()
 	await _submit_leaderboard_score()
+	SceneManager.reset()
+	StormEnroachment.reset()
 	GameState.reset()
 	GlobalTimer.reset()
 	NeedsLog.reset()
 	EconomyManager.reset()
-	InventoryManager.inventory.clear()
+	InventoryManager.reset()
 	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("main_menu")
 
@@ -331,7 +333,7 @@ func _submit_leaderboard_score() -> void:
 	if player_name.is_empty():
 		player_name = "Player"
 
-	LeaderboardManager.record_run(player_name, tasks_completed, remaining_minutes)
+	LeaderboardManager.record_run(player_name, tasks_completed, remaining_minutes, GameState.get_difficulty_id())
 	_leaderboard_score_saved = true
 	prompt_layer.queue_free()
 
@@ -370,7 +372,8 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	box.add_child(title)
 
 	var summary := Label.new()
-	summary.text = "Tasks: %d / %d    Time left: %s" % [
+	summary.text = "Mode: %s    Tasks: %d / %d    Time left: %s" % [
+		GameState.get_difficulty_label(),
 		tasks_completed,
 		NeedsLog.Need.size(),
 		_format_minutes(remaining_minutes),

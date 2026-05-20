@@ -26,9 +26,16 @@ expression = ExtResource("5_lk3gm")
 text = "Ikaw ulit?!!"
 metadata/_custom_type_script = "uid://po32410sv037"
 
+[sub_resource type="Resource" id="Resource_hqigv"]
+script = ExtResource("3_ba3tf")
+speaker_name = "Hardware Girl"
+expression = ExtResource("4_ii1je")
+text = "Pero i-check mo sa una unahan baka ay mayroon pa tira-tirang [b]plywood[/b] doon."
+metadata/_custom_type_script = "uid://po32410sv037"
+
 [sub_resource type="Resource" id="Resource_jdpt7"]
 script = ExtResource("5_hqigv")
-lines = Array[ExtResource("3_ba3tf")]([SubResource("Resource_lk3gm"), SubResource("Resource_8a7sq")])
+lines = Array[ExtResource("3_ba3tf")]([SubResource("Resource_lk3gm"), SubResource("Resource_8a7sq"), SubResource("Resource_hqigv")])
 metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7w0gv"]

@@ -12,6 +12,7 @@ var _current_line: int = 0
 var _is_showing: bool = false
 var _is_typing: bool = false
 var _tween: Tween = null
+var _paused_timer: bool = false
 
 
 #region Lifecycle
@@ -59,6 +60,9 @@ func interact() -> void:
 
 #region Display
 func _show_current_line() -> void:
+	if not _paused_timer:
+		GlobalTimer.pause_timer()
+		_paused_timer = true
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	is_showing = true
 	var line: DialogueLine = _current_sequence.lines[_current_line]
@@ -95,6 +99,9 @@ func _hide_dialogue() -> void:
 	_is_showing = false
 	_is_typing = false
 	_current_line = 0
+	if _paused_timer:
+		GlobalTimer.resume_timer()
+		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 #endregion
 

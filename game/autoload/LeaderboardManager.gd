@@ -11,20 +11,22 @@ var _pending_remaining_minutes: int = -1
 func _ready() -> void:
 	_load_entries()
 
-func record_run(player_name: String, tasks_completed: int, remaining_minutes: int) -> void:
+func record_run(player_name: String, tasks_completed: int, remaining_minutes: int, difficulty_id: String = "") -> void:
 	var clean_name: String = player_name.strip_edges()
 	if clean_name.is_empty():
 		clean_name = "Player"
+	if difficulty_id.is_empty():
+		difficulty_id = GameState.get_difficulty_id()
 
 	_entries.append({
 		"player_name": clean_name,
 		"tasks_completed": max(tasks_completed, 0),
 		"remaining_minutes": clampi(remaining_minutes, 0, GlobalTimer.TOTAL_MINUTES),
+		"difficulty": difficulty_id,
 		"recorded_at": Time.get_datetime_string_from_system(false, true),
 	})
 	_sort_entries()
-	if _entries.size() > MAX_ENTRIES:
-		_entries.resize(MAX_ENTRIES)
+	_trim_entries_for_difficulty(difficulty_id)
 	_save_entries()
 	entries_changed.emit()
 
@@ -34,8 +36,20 @@ func get_entries() -> Array[Dictionary]:
 		copy.append(entry.duplicate(true))
 	return copy
 
-func clear_entries() -> void:
-	_entries.clear()
+func get_entries_for_difficulty(difficulty_id: String) -> Array[Dictionary]:
+	var filtered: Array[Dictionary] = []
+	for entry in _entries:
+		if str(entry.get("difficulty", "standard")) == difficulty_id:
+			filtered.append(entry.duplicate(true))
+	return filtered
+
+func clear_entries(difficulty_id: String = "") -> void:
+	if difficulty_id.is_empty():
+		_entries.clear()
+	else:
+		for i in range(_entries.size() - 1, -1, -1):
+			if str(_entries[i].get("difficulty", "standard")) == difficulty_id:
+				_entries.remove_at(i)
 	_save_entries()
 	entries_changed.emit()
 
@@ -83,6 +97,7 @@ func _sanitize_entry(entry: Dictionary) -> Dictionary:
 		"player_name": str(entry.get("player_name", "Player")).strip_edges(),
 		"tasks_completed": max(int(entry.get("tasks_completed", 0)), 0),
 		"remaining_minutes": clampi(int(entry.get("remaining_minutes", 0)), 0, GlobalTimer.TOTAL_MINUTES),
+		"difficulty": str(entry.get("difficulty", "standard")),
 		"recorded_at": str(entry.get("recorded_at", "")),
 	}
 
@@ -101,3 +116,15 @@ func _compare_entries(a: Dictionary, b: Dictionary) -> bool:
 		return a_remaining > b_remaining
 
 	return str(a.get("recorded_at", "")) > str(b.get("recorded_at", ""))
+
+func _trim_entries_for_difficulty(difficulty_id: String) -> void:
+	var seen: int = 0
+	var remove_indices: Array[int] = []
+	for i in range(_entries.size()):
+		if str(_entries[i].get("difficulty", "standard")) != difficulty_id:
+			continue
+		seen += 1
+		if seen > MAX_ENTRIES:
+			remove_indices.append(i)
+	for i in range(remove_indices.size() - 1, -1, -1):
+		_entries.remove_at(remove_indices[i])

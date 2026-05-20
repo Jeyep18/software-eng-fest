@@ -36,7 +36,7 @@ func _hide_dialogue() -> void:
 func _grant_departure_cash() -> void:
 	if GameState.nanay_departure_cash_granted:
 		return
-	GameState.add_cash(cash_to_grant)
+	GameState.add_cash(GameState.get_departure_cash())
 	GameState.complete_nanay_intro()
 
 func notify_departed() -> void:

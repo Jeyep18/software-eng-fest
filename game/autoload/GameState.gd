@@ -6,7 +6,34 @@ var collected_world_items: Array[String] = []
 var player_name: String = ""
 const STARTING_CASH: int = 0
 
+enum Difficulty { STORY, STANDARD, CHALLENGE }
+
+const DIFFICULTY_IDS: Dictionary = {
+	Difficulty.STORY: "story",
+	Difficulty.STANDARD: "standard",
+	Difficulty.CHALLENGE: "challenge",
+}
+
+const DIFFICULTY_LABELS: Dictionary = {
+	Difficulty.STORY: "Story",
+	Difficulty.STANDARD: "Standard",
+	Difficulty.CHALLENGE: "Challenge",
+}
+
+const DIFFICULTY_SECONDS_PER_MINUTE: Dictionary = {
+	Difficulty.STORY: 2.0,
+	Difficulty.STANDARD: 1.5,
+	Difficulty.CHALLENGE: 0.5,
+}
+
+const DIFFICULTY_DEPARTURE_CASH: Dictionary = {
+	Difficulty.STORY: 800,
+	Difficulty.STANDARD: 700,
+	Difficulty.CHALLENGE: 600,
+}
+
 var cash_balance: int = STARTING_CASH
+var selected_difficulty: Difficulty = Difficulty.STANDARD
 var nanay_departure_cash_granted: bool = false
 var talked_to_lola: bool = false
 var house_tasks_unlocked: bool = false
@@ -76,6 +103,23 @@ func spend_cash(amount: int) -> bool:
 
 func get_cash() -> int:
 	return cash_balance
+
+func set_difficulty(difficulty: Difficulty) -> void:
+	selected_difficulty = difficulty
+	if get_node_or_null("/root/GlobalTimer") != null:
+		GlobalTimer.apply_difficulty_settings()
+
+func get_difficulty_id() -> String:
+	return DIFFICULTY_IDS.get(selected_difficulty, "standard")
+
+func get_difficulty_label() -> String:
+	return DIFFICULTY_LABELS.get(selected_difficulty, "Standard")
+
+func get_seconds_per_game_minute() -> float:
+	return float(DIFFICULTY_SECONDS_PER_MINUTE.get(selected_difficulty, 1.5))
+
+func get_departure_cash() -> int:
+	return int(DIFFICULTY_DEPARTURE_CASH.get(selected_difficulty, 700))
 
 func complete_nanay_intro() -> void:
 	if house_tasks_unlocked:

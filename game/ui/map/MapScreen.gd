@@ -76,6 +76,7 @@ func _input(event: InputEvent) -> void:
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
 	_close_backpack_if_open()
+	GlobalTimer.pause_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_refresh_all_nodes()
 	# Trigger redraws on both drawing nodes
@@ -86,6 +87,8 @@ func open_map() -> void:
 	show()
 
 func close_map() -> void:
+	if visible:
+		GlobalTimer.resume_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
 	confirm_panel.hide()
@@ -179,6 +182,9 @@ func _show_confirm_panel(loc_id: String) -> void:
 	if state == "danger":
 		confirm_time.text += "  ⚠ Danger Zone"
 		confirm_time.modulate = Color(0.95, 0.40, 0.30)
+	elif loc_id == "grocery":
+		confirm_time.text += "  Closes early"
+		confirm_time.modulate = Color(1.0, 0.86, 0.42)
 	else:
 		confirm_time.modulate = Color.WHITE
 	# 2. Position Anchored to the Right side of the screen

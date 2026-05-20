@@ -18,6 +18,7 @@ var _current_line: int = 0
 var _is_showing: bool = false
 var _is_typing: bool = false
 var _tween: Tween = null
+var _paused_timer: bool = false
 
 func _ready() -> void:
 	super._ready()
@@ -48,6 +49,9 @@ func interact() -> void:
 	_show_current_line()
 
 func _show_current_line() -> void:
+	if not _paused_timer:
+		GlobalTimer.pause_timer()
+		_paused_timer = true
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
@@ -75,6 +79,9 @@ func _hide_monologue() -> void:
 	_is_showing = false
 	_is_typing = false
 	_current_line = 0
+	if _paused_timer:
+		GlobalTimer.resume_timer()
+		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 
 func _on_typewriter_finished() -> void:
