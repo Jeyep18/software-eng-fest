@@ -22,6 +22,7 @@ var discard_held_quantity: int = 0
 
 const STACKABLE_ITEM_IDS: Dictionary = {
 	"canned_goods": 99,
+	"nails": 99,
 }
 
 # --- COMBINE RECIPES ---
@@ -210,6 +211,15 @@ func get_item_count() -> int:
 
 func is_full() -> bool:
 	return inventory.size() >= MAX_INVENTORY_SIZE
+
+func can_accept_item(item: ItemData) -> bool:
+	if item == null:
+		return false
+	if _is_stackable(item.item_id):
+		for inventory_item in inventory:
+			if inventory_item != null and inventory_item.item_id == item.item_id:
+				return true
+	return not is_full()
 
 func has_item_with_id(item_id: String) -> bool:
 	for item in inventory:

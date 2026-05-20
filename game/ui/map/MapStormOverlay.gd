@@ -11,6 +11,7 @@ const STORM_EDGE: Color = Color(0.95, 0.18, 0.12, 0.55)
 const DANGER_MARKER: Color = Color(0.95, 0.25, 0.16, 0.74)
 const CLOSED_MARKER: Color = Color(0.42, 0.03, 0.04, 0.82)
 const TEXT_COLOR: Color = Color(0.95, 0.22, 0.15, 0.90)
+const STORM_TEXT_COLOR: Color = Color(1.0, 0.88, 0.78, 0.95)
 
 var node_positions: Dictionary = {}
 
@@ -28,6 +29,7 @@ func _draw() -> void:
 	var storm_radius: float = _storm_radius_at(travel_t, storm_center)
 
 	_draw_storm_body(storm_center, storm_radius, travel_t)
+	_draw_centered_text("STORM", storm_center + Vector2(0.0, 6.0), 18, STORM_TEXT_COLOR)
 	_draw_active_location_markers(minute)
 
 	if minute >= STORM_ARRIVAL_MINUTE:
@@ -111,8 +113,8 @@ func _draw_node_marker(center: Vector2, label: String, color: Color) -> void:
 	draw_rect(marker_rect, Color(0.95, 0.85, 0.78, 0.55), false, 1.0)
 	_draw_centered_text(label, marker_rect.position + Vector2(marker_rect.size.x * 0.5, 16.0), 11)
 
-func _draw_centered_text(text: String, baseline_center: Vector2, font_size: int) -> void:
+func _draw_centered_text(text: String, baseline_center: Vector2, font_size: int, color: Color = TEXT_COLOR) -> void:
 	var font := ThemeDB.fallback_font
 	var text_size := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
 	draw_string(font, baseline_center - Vector2(text_size.x * 0.5, 0.0), text,
-			HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, TEXT_COLOR)
+			HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, color)

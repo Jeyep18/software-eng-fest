@@ -43,11 +43,10 @@ func _close() -> void:
 func _setup_content_area() -> void:
 	var content_area: Control = $ContentArea
 	content_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	content_area.position = Vector2(SIDEBAR_WIDTH, 0.0)
-	content_area.size = Vector2(
-		get_viewport().get_visible_rect().size.x - SIDEBAR_WIDTH,
-		get_viewport().get_visible_rect().size.y
-	)
+	content_area.set_anchor_and_offset(SIDE_LEFT, 0.0, SIDEBAR_WIDTH)
+	content_area.set_anchor_and_offset(SIDE_TOP, 0.0, 0.0)
+	content_area.set_anchor_and_offset(SIDE_RIGHT, 1.0, 0.0)
+	content_area.set_anchor_and_offset(SIDE_BOTTOM, 1.0, 0.0)
 
 func _setup_panels() -> void:
 	_all_panels = [
@@ -56,7 +55,7 @@ func _setup_panels() -> void:
 	]
 
 	for panel in _all_panels:
-		panel.size = $ContentArea.size
+		panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		panel.hide()
 

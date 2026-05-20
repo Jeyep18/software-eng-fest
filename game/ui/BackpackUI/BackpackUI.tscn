@@ -91,6 +91,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Discard"
 
+[node name="DiscardPrompt" type="Label" parent="BackpackPanel" unique_id=1804431921]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Drag item to discard slot if you want to discard it."
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="InfoBar" type="HBoxContainer" parent="BackpackPanel" unique_id=1240186118]
 layout_mode = 0
 offset_right = 40.0

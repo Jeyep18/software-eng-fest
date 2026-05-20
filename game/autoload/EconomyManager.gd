@@ -42,7 +42,7 @@ func purchase(item_data: ItemData) -> bool:
 		return false
 
 	# Guard: is inventory full
-	if InventoryManager.is_full():
+	if not InventoryManager.can_accept_item(item_data):
 		# Refund the cash — we already spent it above
 		GameState.add_cash(item_data.item_price)
 		purchase_failed.emit(item_data.item_id, "Inventory full.")

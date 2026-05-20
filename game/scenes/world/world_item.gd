@@ -24,6 +24,7 @@ extends Interactable
 ## WHY: Same as the Fridge — we instantiate our own copy of the UI
 ## so each item is self-contained and doesn't conflict with others.
 @export var monologue_ui_scene: PackedScene
+@export var require_pickup_confirmation: bool = false
 
 # --- CONSTANTS ---
 # The speaker name shown in the monologue box during pickup.
@@ -46,6 +47,10 @@ var _is_typing: bool = false
 # Reference to the active tween (for the typewriter animation).
 var _tween: Tween = null
 var _paused_timer: bool = false
+var _awaiting_pickup_confirmation: bool = false
+var _confirm_modal: Control = null
+var _confirm_message: Label = null
+var _canvas_layer: CanvasLayer = null
 
 # --- READY ---
 func _ready() -> void:
@@ -113,9 +118,9 @@ func _setup_ui() -> void:
 	# We need a CanvasLayer to hold the UI.
 	# WHY: CanvasLayer keeps UI drawn on top of the 3D world, fixed to screen.
 	# Without it, the UI would exist in 3D space and look broken.
-	var canvas = CanvasLayer.new()
-	add_child(canvas)
-	canvas.add_child(_ui)
+	_canvas_layer = CanvasLayer.new()
+	add_child(_canvas_layer)
+	_canvas_layer.add_child(_ui)
 
 	_ui.hide_ui()
 
@@ -124,9 +129,12 @@ func _setup_ui() -> void:
 # This is the function Interactable defines and your player calls.
 # The player presses E → player calls interact() on the current Interactable.
 func interact() -> void:
+	if _awaiting_pickup_confirmation:
+		return
+
 	# CASE 1: No pickup lines defined — skip monologue, pick up immediately.
 	if item_data.pickup_lines.size() == 0:
-		_do_pickup()
+		_prompt_or_pickup()
 		return
 
 	# CASE 2: Monologue not started yet — show the first line.
@@ -145,8 +153,11 @@ func interact() -> void:
 
 	# CASE 5: No more lines — monologue is done, pick up the item.
 	if _current_line >= item_data.pickup_lines.size():
-		_hide_monologue()
-		_do_pickup()  # ← THIS is when the item actually gets picked up.
+		if require_pickup_confirmation:
+			_show_pickup_confirmation()
+		else:
+			_hide_monologue()
+			_do_pickup()  # ← THIS is when the item actually gets picked up.
 		return
 
 	# Otherwise show the next line.
@@ -160,6 +171,7 @@ func _show_current_line() -> void:
 	if not _paused_timer:
 		GlobalTimer.pause_timer()
 		_paused_timer = true
+	get_tree().call_group("player", "set_movement_locked", true)
 	is_showing = true  # inherited from Interactable
 	_is_showing = true
 	_is_typing = true
@@ -195,7 +207,129 @@ func _hide_monologue() -> void:
 	if _paused_timer:
 		GlobalTimer.resume_timer()
 		_paused_timer = false
+	get_tree().call_group("player", "set_movement_locked", false)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	prompt_visibility_changed.emit(true)
+
+func _show_pickup_confirmation() -> void:
+	_awaiting_pickup_confirmation = true
+	is_showing = true
+	_is_showing = true
+	_is_typing = false
+	if _ui != null:
+		_ui.hide_ui()
+	_show_confirm_dialog()
+	prompt_visibility_changed.emit(false)
+
+func _prompt_or_pickup() -> void:
+	if require_pickup_confirmation:
+		if _ui == null:
+			_setup_ui()
+		if not _paused_timer:
+			GlobalTimer.pause_timer()
+			_paused_timer = true
+		get_tree().call_group("player", "set_movement_locked", true)
+		_show_pickup_confirmation()
+	else:
+		_do_pickup()
+
+func _confirm_pickup() -> void:
+	_awaiting_pickup_confirmation = false
+	_hide_monologue()
+	_do_pickup()
+
+func _show_confirm_dialog() -> void:
+	if _canvas_layer == null:
+		_canvas_layer = CanvasLayer.new()
+		add_child(_canvas_layer)
+	if _confirm_modal == null:
+		_build_confirm_modal()
+	_confirm_message.text = "Pick up %s?" % item_data.item_name
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_confirm_modal.show()
+	_confirm_modal.grab_focus()
+
+func _build_confirm_modal() -> void:
+	_confirm_modal = Control.new()
+	_confirm_modal.name = "PickupConfirmModal"
+	_confirm_modal.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_confirm_modal.focus_mode = Control.FOCUS_ALL
+	_confirm_modal.mouse_filter = Control.MOUSE_FILTER_STOP
+	_confirm_modal.gui_input.connect(_on_confirm_modal_gui_input)
+	_canvas_layer.add_child(_confirm_modal)
+
+	var backdrop := ColorRect.new()
+	backdrop.color = Color(0, 0, 0, 0.45)
+	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
+	_confirm_modal.add_child(backdrop)
+
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_confirm_modal.add_child(center)
+
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(320, 150)
+	panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	center.add_child(panel)
+
+	var content := VBoxContainer.new()
+	content.add_theme_constant_override("separation", 14)
+	panel.add_child(content)
+
+	var title := Label.new()
+	title.text = "Pick Up Item?"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 20)
+	content.add_child(title)
+
+	_confirm_message = Label.new()
+	_confirm_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_confirm_message.add_theme_font_size_override("font_size", 16)
+	content.add_child(_confirm_message)
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_CENTER
+	actions.add_theme_constant_override("separation", 12)
+	content.add_child(actions)
+
+	var leave_button := Button.new()
+	leave_button.text = "Leave"
+	leave_button.focus_mode = Control.FOCUS_NONE
+	leave_button.custom_minimum_size = Vector2(100, 36)
+	leave_button.pressed.connect(_on_pickup_cancelled)
+	actions.add_child(leave_button)
+
+	var pickup_button := Button.new()
+	pickup_button.text = "Pick Up"
+	pickup_button.focus_mode = Control.FOCUS_NONE
+	pickup_button.custom_minimum_size = Vector2(100, 36)
+	pickup_button.pressed.connect(_on_pickup_confirmed)
+	actions.add_child(pickup_button)
+
+	_confirm_modal.hide()
+
+func _on_confirm_modal_gui_input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventJoypadButton:
+		_confirm_modal.accept_event()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not _awaiting_pickup_confirmation:
+		return
+	if event is InputEventKey or event is InputEventJoypadButton:
+		get_viewport().set_input_as_handled()
+
+func _on_pickup_confirmed() -> void:
+	if _confirm_modal != null:
+		_confirm_modal.hide()
+	_confirm_pickup()
+
+func _on_pickup_cancelled() -> void:
+	if _confirm_modal != null:
+		_confirm_modal.hide()
+	_awaiting_pickup_confirmation = false
+	_hide_monologue()
 
 
 func _on_typewriter_finished() -> void:
@@ -207,6 +341,9 @@ func _on_player_left(_interactable: Interactable) -> void:
 	# If the player walks away during the monologue, close it.
 	# The item stays in the world — they didn't finish reading.
 	if _is_showing:
+		_awaiting_pickup_confirmation = false
+		if _confirm_modal != null and _confirm_modal.visible:
+			_confirm_modal.hide()
 		_hide_monologue()
 
 

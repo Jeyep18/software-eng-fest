@@ -26,6 +26,7 @@ const HEAD_BOB_AMPLITUDE : float = 0.08
 var _current_speed : float = WALK_SPEED
 var _head_bob_time : float = 0.0
 var _is_mouse_captured : bool = true
+var _is_movement_locked: bool = false
 
 # flashlight variables
 const FLASHLIGHT_ROTATION_SMOOTHNESS : float = 10.0
@@ -50,6 +51,7 @@ const FLASHLIGHT_POSITION_SMOOTHNESS : float = 8.0
 
 
 func _ready() -> void:
+	add_to_group("player")
 	_capture_mouse()
 	_initialize_flashlight()
 
@@ -84,6 +86,8 @@ func _apply_gravity(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 func _handle_jump() -> void:
+	if _is_movement_locked:
+		return
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -91,6 +95,12 @@ func _handle_sprint() -> void:
 	_current_speed = SPRINT_SPEED if Input.is_action_pressed("sprint") else WALK_SPEED
 
 func _handle_movement(delta: float) -> void:
+	if _is_movement_locked:
+		var acceleration: float = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		velocity.x = lerp(velocity.x, 0.0, delta * acceleration)
+		velocity.z = lerp(velocity.z, 0.0, delta * acceleration)
+		return
+
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (_head.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 	
@@ -179,11 +189,22 @@ func _toggle_mouse_capture() -> void:
 	else:
 		_capture_mouse()
 
+func set_movement_locked(is_locked: bool) -> void:
+	_is_movement_locked = is_locked
+	if is_locked:
+		velocity.x = 0.0
+		velocity.z = 0.0
+
 func _captureSeeCast() -> void:
 	%InteractText.hide()
+	if _is_interaction_blocked_by_ui():
+		return
 	if %SeeCast.is_colliding():
 		var target = %SeeCast.get_collider()
 		if target != null and target.has_method("interact"):
 			%InteractText.show()
 			if Input.is_action_just_pressed("interact"):
 				target.interact()
+
+func _is_interaction_blocked_by_ui() -> bool:
+	return get_node_or_null("/root/ShopUi") != null and ShopUi.is_open()
