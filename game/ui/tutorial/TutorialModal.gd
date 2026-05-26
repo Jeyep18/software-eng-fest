@@ -3,8 +3,9 @@ extends CanvasLayer
 
 signal closed
 
-const PREF_PATH: String = "user://tutorial_controls_hidden.save"
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+
+static var _hidden_for_session: bool = false
 
 var _previous_paused: bool = false
 var _pause_game: bool = false
@@ -40,12 +41,10 @@ func close() -> void:
 		_on_close.call()
 
 static func should_show_on_start() -> bool:
-	return not FileAccess.file_exists(PREF_PATH)
+	return not _hidden_for_session
 
 static func mark_do_not_show_again() -> void:
-	var file := FileAccess.open(PREF_PATH, FileAccess.WRITE)
-	if file != null:
-		file.store_string("hidden")
+	_hidden_for_session = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not visible:
@@ -72,12 +71,12 @@ func _build_ui() -> void:
 
 	var panel := PanelContainer.new()
 	panel.name = "Panel"
-	panel.custom_minimum_size = Vector2(760, 600)
+	panel.custom_minimum_size = Vector2(980, 760)
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	panel.offset_left = -380
-	panel.offset_top = -300
-	panel.offset_right = 380
-	panel.offset_bottom = 300
+	panel.offset_left = -490
+	panel.offset_top = -380
+	panel.offset_right = 490
+	panel.offset_bottom = 380
 	UI_STYLE.apply_panel(panel)
 	root.add_child(panel)
 
@@ -89,13 +88,13 @@ func _build_ui() -> void:
 	panel.add_child(margin)
 
 	var layout := VBoxContainer.new()
-	layout.add_theme_constant_override("separation", 14)
+	layout.add_theme_constant_override("separation", 16)
 	margin.add_child(layout)
 
 	var title := Label.new()
 	title.text = "Tutorial and Controls"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 30)
+	title.add_theme_font_size_override("font_size", 38)
 	UI_STYLE.apply_label(title, false, true)
 	layout.add_child(title)
 
@@ -103,7 +102,7 @@ func _build_ui() -> void:
 	subtitle.text = "Prepare your home before the storm arrives. Watch your time, money, and checklist."
 	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.add_theme_font_size_override("font_size", 15)
+	subtitle.add_theme_font_size_override("font_size", 18)
 	UI_STYLE.apply_label(subtitle, true)
 	layout.add_child(subtitle)
 
@@ -114,7 +113,7 @@ func _build_ui() -> void:
 
 	var content := VBoxContainer.new()
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	content.add_theme_constant_override("separation", 10)
+	content.add_theme_constant_override("separation", 12)
 	scroll.add_child(content)
 
 	_add_section(content, "Move and Interact", [
@@ -133,15 +132,27 @@ func _build_ui() -> void:
 		"When a valid result appears, press Combine. Examples include putting batteries with a flashlight or radio.",
 		"Drag unwanted items to the discard area only when you are sure you do not need them."
 	])
+	_add_image_card(
+		content,
+		"res://game/assets/tutorial/combine_items_example.png",
+		"Combining items shows the result before you commit."
+	)
 	_add_section(content, "Tasks and Shops", [
 		"Task spots tell you what they need, such as food, water, medicine, plywood, or working equipment.",
+		"Look for glowing indicators around the house. They mark where preparation tasks can be completed.",
 		"Stand near a task spot and press E. If you have the required item, the task can be completed.",
 		"At shops, use cash from Nanay to buy supplies. Your cash and checklist stay visible during preparation."
 	])
+	_add_image_card(
+		content,
+		"res://game/assets/tutorial/task_indicator_example.png",
+		"Glowing task indicators show where an item should go."
+	)
 	_add_section(content, "Storm and Travel", [
 		"The map lets you travel to stores and return home, but travel costs time.",
 		"As the storm worsens, some places become dangerous or close completely.",
-		"Return home and finish the most important preparations before time runs out."
+		"Return home and finish the most important preparations before time runs out.",
+		"If you feel confident, finished all the tasks, or want to give up early, use End the Day on the map to let the storm arrive."
 	])
 
 	var footer := HBoxContainer.new()
@@ -186,7 +197,7 @@ func _add_section(parent: VBoxContainer, heading: String, lines: Array[String]) 
 
 	var title := Label.new()
 	title.text = heading
-	title.add_theme_font_size_override("font_size", 17)
+	title.add_theme_font_size_override("font_size", 22)
 	UI_STYLE.apply_label(title, false, true)
 	layout.add_child(title)
 
@@ -194,9 +205,41 @@ func _add_section(parent: VBoxContainer, heading: String, lines: Array[String]) 
 		var label := Label.new()
 		label.text = "- " + line
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.add_theme_font_size_override("font_size", 14)
+		label.add_theme_font_size_override("font_size", 17)
 		UI_STYLE.apply_label(label)
 		layout.add_child(label)
+
+func _add_image_card(parent: VBoxContainer, image_path: String, caption: String) -> void:
+	var box := PanelContainer.new()
+	box.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(1, 1, 1, 0.035), UI_STYLE.BORDER_SOFT, 6))
+	parent.add_child(box)
+
+	var margin := MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 12)
+	margin.add_theme_constant_override("margin_top", 12)
+	margin.add_theme_constant_override("margin_right", 12)
+	margin.add_theme_constant_override("margin_bottom", 12)
+	box.add_child(margin)
+
+	var layout := VBoxContainer.new()
+	layout.add_theme_constant_override("separation", 8)
+	margin.add_child(layout)
+
+	var image := TextureRect.new()
+	image.texture = load(image_path)
+	image.custom_minimum_size = Vector2(0, 360)
+	image.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	image.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	layout.add_child(image)
+
+	var label := Label.new()
+	label.text = caption
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.add_theme_font_size_override("font_size", 16)
+	UI_STYLE.apply_label(label, true)
+	layout.add_child(label)
 
 func _grab_continue_focus() -> void:
 	var button := get_node_or_null("Root/Panel/MarginContainer/VBoxContainer/HBoxContainer/ContinueButton") as Button

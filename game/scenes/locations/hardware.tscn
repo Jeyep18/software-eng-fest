@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dpak6gybwx24y" path="res://game/entities/hardware_girl/hardware_girl.tscn" id="7_lusb0"]
 [ext_resource type="PackedScene" uid="uid://ccn02805xx87w" path="res://_raw_assets/Locations/HardwareStore.glb" id="9_mrv0t"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="11_m71rt"]
+[ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="12_rain"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 
@@ -90,6 +91,11 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="Hardware" type="Node3D" unique_id=2043522354]
 script = ExtResource("1_68viv")
+
+[node name="StormRainLayer" parent="." instance=ExtResource("12_rain")]
+transform = Transform3D(1.35, 0, 0, 0, 1.25, 0, 0, 0, 1.35, 1.5, 7.4, -3.0)
+intensity_bias = 0.08
+max_amount = 240
 
 [node name="AmbientSounds" type="Node" parent="." unique_id=1286010751]
 

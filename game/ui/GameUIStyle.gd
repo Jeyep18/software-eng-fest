@@ -1,6 +1,10 @@
 class_name GameUIStyle
 extends RefCounted
 
+const FONT_REGULAR: FontFile = preload("res://game/assets/fonts/inter/Inter-Regular.ttf")
+const FONT_SEMIBOLD: FontFile = preload("res://game/assets/fonts/inter/Inter-SemiBold.ttf")
+const SFX = preload("res://game/audio/Sfx.gd")
+
 const PANEL_BG: Color = Color(0.075, 0.08, 0.085, 0.96)
 const PANEL_BG_SOFT: Color = Color(0.075, 0.08, 0.085, 0.82)
 const SECTION_BG: Color = Color(1, 1, 1, 0.045)
@@ -33,6 +37,7 @@ static func button_style(bg_color: Color, border_color: Color = BORDER_SOFT) -> 
 	return style
 
 static func apply_button(button: Button) -> void:
+	button.add_theme_font_override("font", FONT_SEMIBOLD)
 	button.add_theme_stylebox_override("normal", button_style(Color(0.13, 0.14, 0.15, 0.95)))
 	button.add_theme_stylebox_override("hover", button_style(Color(0.18, 0.19, 0.19, 0.98), BORDER))
 	button.add_theme_stylebox_override("pressed", button_style(Color(0.10, 0.11, 0.12, 0.98), BORDER))
@@ -43,6 +48,7 @@ static func apply_button(button: Button) -> void:
 	button.add_theme_color_override("font_disabled_color", Color(1, 1, 1, 0.35))
 	if not button.has_theme_font_size_override("font_size"):
 		button.add_theme_font_size_override("font_size", 16)
+	SFX.wire_button(button)
 
 static func apply_panel(panel: Control, soft: bool = false) -> void:
 	var bg := PANEL_BG_SOFT if soft else PANEL_BG
@@ -52,6 +58,7 @@ static func apply_panel(panel: Control, soft: bool = false) -> void:
 		(panel as PanelContainer).add_theme_stylebox_override("panel", panel_style(bg))
 
 static func apply_label(label: Label, muted: bool = false, accent: bool = false) -> void:
+	label.add_theme_font_override("font", FONT_REGULAR)
 	label.add_theme_color_override("font_color", ACCENT if accent else (TEXT_MUTED if muted else TEXT))
 
 static func apply_tree(root: Node) -> void:

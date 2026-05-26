@@ -15,6 +15,10 @@ var _sfx_tween: Tween = null
 var _voice_should_loop: bool = false
 
 const FADE_DURATION: float = 1.5   # seconds for crossfade
+const SETTINGS_PATH: String = "user://audio_settings.cfg"
+const BUS_NAMES: Array[StringName] = [&"Master", &"Music", &"Ambience", &"SFX", &"Voice"]
+
+var _default_bus_volumes: Dictionary = {}
 
 # ── PUBLIC API ────────────────────────────────────────────────────────────────
 
@@ -30,6 +34,70 @@ func play_music(stream: AudioStream, fade_in: bool = true) -> void:
 	if fade_in:
 		_music_tween = create_tween()
 		_music_tween.tween_property(_music_player, "volume_db", 0.0, FADE_DURATION)
+
+func _ready() -> void:
+	_capture_default_bus_volumes()
+	_load_audio_settings()
+
+func set_bus_volume_percent(bus_name: StringName, percent: float) -> void:
+	var bus_index := AudioServer.get_bus_index(bus_name)
+	if bus_index == -1:
+		return
+	var clamped := clampf(percent, 0.0, 1.0)
+	var volume_db := -80.0 if clamped <= 0.0 else linear_to_db(clamped)
+	AudioServer.set_bus_volume_db(bus_index, volume_db)
+	_save_audio_settings()
+
+func get_bus_volume_percent(bus_name: StringName) -> float:
+	var bus_index := AudioServer.get_bus_index(bus_name)
+	if bus_index == -1:
+		return 1.0
+	var volume_db := AudioServer.get_bus_volume_db(bus_index)
+	if volume_db <= -79.0:
+		return 0.0
+	return clampf(db_to_linear(volume_db), 0.0, 1.0)
+
+func get_music_time_remaining() -> float:
+	if _music_player.stream == null:
+		return -1.0
+	var length := _music_player.stream.get_length()
+	if length <= 0.0:
+		return -1.0
+	if not _music_player.playing:
+		return 0.0
+	return maxf(length - _music_player.get_playback_position(), 0.0)
+
+func reset_audio_settings() -> void:
+	for bus_name in BUS_NAMES:
+		var bus_index := AudioServer.get_bus_index(bus_name)
+		if bus_index != -1 and _default_bus_volumes.has(bus_name):
+			AudioServer.set_bus_volume_db(bus_index, float(_default_bus_volumes[bus_name]))
+	_save_audio_settings()
+
+func _capture_default_bus_volumes() -> void:
+	for bus_name in BUS_NAMES:
+		var bus_index := AudioServer.get_bus_index(bus_name)
+		if bus_index != -1:
+			_default_bus_volumes[bus_name] = AudioServer.get_bus_volume_db(bus_index)
+
+func _load_audio_settings() -> void:
+	var config := ConfigFile.new()
+	if config.load(SETTINGS_PATH) != OK:
+		return
+	for bus_name in BUS_NAMES:
+		var bus_index := AudioServer.get_bus_index(bus_name)
+		if bus_index == -1:
+			continue
+		var volume_db := float(config.get_value("buses", String(bus_name), AudioServer.get_bus_volume_db(bus_index)))
+		AudioServer.set_bus_volume_db(bus_index, volume_db)
+
+func _save_audio_settings() -> void:
+	var config := ConfigFile.new()
+	for bus_name in BUS_NAMES:
+		var bus_index := AudioServer.get_bus_index(bus_name)
+		if bus_index != -1:
+			config.set_value("buses", String(bus_name), AudioServer.get_bus_volume_db(bus_index))
+	config.save(SETTINGS_PATH)
 
 ## Stop music, with optional fade-out.
 func stop_music(fade_out: bool = true) -> void:
@@ -65,13 +133,18 @@ func stop_ambience(fade_out: bool = true) -> void:
 	_ambience_player.stop()
 
 ## Fire a one-shot SFX. Safe to call from anywhere.
-func play_sfx(stream: AudioStream, volume_db: float = 0.0) -> void:
+func play_sfx(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> void:
 	if stream == null:
 		push_warning("AudioManager.play_sfx: null stream passed")
 		return
-	_sfx_player.volume_db = volume_db
-	_sfx_player.stream    = stream
-	_sfx_player.play()
+	var player := AudioStreamPlayer.new()
+	player.bus = "SFX"
+	player.stream = stream
+	player.volume_db = volume_db
+	player.pitch_scale = pitch_scale
+	player.finished.connect(player.queue_free)
+	add_child(player)
+	player.play()
 
 ## Play a voice/talking sound. Set loop_until_stopped for typewriter chatter.
 func play_voice(stream: AudioStream, loop_until_stopped: bool = false) -> void:

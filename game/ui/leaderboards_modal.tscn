@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://game/ui/leaderboards_modal.gd" id="1_leaderboards"]
-[ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="2_font"]
+[ext_resource type="FontFile" uid="uid://dixkmkm3avqjn" path="res://game/assets/fonts/inter/Inter-SemiBold.ttf" id="2_font"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font = ExtResource("2_font")
@@ -17,10 +17,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 1050
-theme_override_constants/margin_top = 190
-theme_override_constants/margin_right = 160
-theme_override_constants/margin_bottom = 180
+theme_override_constants/margin_left = 430
+theme_override_constants/margin_top = 170
+theme_override_constants/margin_right = 430
+theme_override_constants/margin_bottom = 170
 
 [node name="LeaderboardsModal" type="PanelContainer" parent="MarginContainer" unique_id=101001003]
 mouse_filter = 0
@@ -28,48 +28,55 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/LeaderboardsModal" unique_id=101001004]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
 [node name="TopSpacer" type="Control" parent="MarginContainer/LeaderboardsModal/VBoxContainer" unique_id=101001005]
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 
 [node name="Header" type="HBoxContainer" parent="MarginContainer/LeaderboardsModal/VBoxContainer" unique_id=101001006]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
 
 [node name="LeftSpacer" type="Control" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001007]
-custom_minimum_size = Vector2(24, 0)
+custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001008]
 layout_mode = 2
+size_flags_vertical = 4
 text = "LEADERBOARDS"
 label_settings = SubResource("LabelSettings_title")
+vertical_alignment = 1
 
 [node name="HeaderFill" type="Control" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001009]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="clear_button" type="Button" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001010]
+custom_minimum_size = Vector2(132, 44)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "CLEAR"
 
 [node name="close_button" type="Button" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001011]
+custom_minimum_size = Vector2(104, 44)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "CLOSE"
 
 [node name="RightSpacer" type="Control" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001012]
-custom_minimum_size = Vector2(10, 0)
+custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/LeaderboardsModal/VBoxContainer" unique_id=101001013]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
 
 [node name="RowsContainer" type="VBoxContainer" parent="MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer" unique_id=101001014]
 layout_mode = 2
@@ -84,5 +91,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BottomSpacer" type="Control" parent="MarginContainer/LeaderboardsModal/VBoxContainer" unique_id=101001016]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(25, 24)
 layout_mode = 2

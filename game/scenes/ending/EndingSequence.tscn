@@ -160,24 +160,28 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1977650460]
-anchors_preset = 7
+anchors_preset = 12
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -520.0
+offset_top = -170.0
+offset_right = 520.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="SlideLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=40582937]
+custom_minimum_size = Vector2(1040, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 label_settings = SubResource("LabelSettings_38p1u")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Control" type="Control" parent="CanvasLayer/VBoxContainer" unique_id=348113460]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="ResultPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1388194203]

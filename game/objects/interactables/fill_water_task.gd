@@ -12,3 +12,6 @@ func _ready() -> void:
 
 func interact() -> void:
 	super.interact()
+
+func _play_completion_sfx() -> void:
+	SFX.water_fill()

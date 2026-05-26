@@ -23,6 +23,7 @@ extends Interactable
 @export var monologue_ui_scene: PackedScene
 
 const PLAYER_NAME: String = "Player"
+const SFX = preload("res://game/audio/Sfx.gd")
 const CONSUMABLE_TASK_ITEM_TYPES: Array[int] = [
 	ItemData.ItemType.BRING_HOME,
 	ItemData.ItemType.USE_IN_PLACE,
@@ -144,6 +145,7 @@ func _complete_task() -> void:
 	await TransitionOverlay.fade_to_black()
 
 	_consume_required_items()
+	await _play_completion_sfx()
 	_apply_completion_state()
 
 	await get_tree().create_timer(0.5).timeout
@@ -185,6 +187,15 @@ func _apply_completion_state() -> void:
 
 	if completion_visual_cue != null:
 		completion_visual_cue.visible = true
+
+func _play_completion_sfx() -> void:
+	SFX.item_touch(-12.0)
+
+func _play_hammer_completion_sfx() -> void:
+	for i in range(3):
+		SFX.hammer()
+		if i < 2:
+			await get_tree().create_timer(0.34).timeout
 
 func _update_task_cue() -> void:
 	if task_cue == null:

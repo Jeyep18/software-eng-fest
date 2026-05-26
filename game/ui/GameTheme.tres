@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3]
+
+[ext_resource type="FontFile" uid="uid://bl4tf4ak7hq7v" path="res://game/assets/fonts/inter/Inter-Regular.ttf" id="1_regular"]
+
+[resource]
+default_font = ExtResource("1_regular")
+default_font_size = 16

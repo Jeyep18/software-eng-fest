@@ -53,11 +53,16 @@
 
 extends Node
 
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
+const ENDING_STORM: AudioStream = preload("res://game/assets/sfx/soundreality-rain-thunder-sfx-525011.mp3")
+
 # ── Node References ────────────────────────────────────────────────────────────
 @onready var ending_camera: Camera3D          = $EndingCamera
 @onready var fade_overlay:  ColorRect         = $CanvasLayer/FadeOverlay
 @onready var slide_label:   Label             = $CanvasLayer/VBoxContainer/SlideLabel
 @onready var result_panel:  Control           = $CanvasLayer/ResultPanel
+@onready var lightning:     SpotLight3D       = $Lights/Lightning
 
 @onready var anchor_windows:  Node3D = $World3D/WindowArea
 @onready var anchor_roof:     Node3D = $World3D/RoofArea
@@ -72,13 +77,30 @@ const CAMERA_MOVE_DURATION: float = 1.4
 const SLIDE_HOLD_DURATION:  float = 2.6
 const LABEL_FADE_IN:        float = 0.35
 const LABEL_FADE_OUT:       float = 0.35
-const RESULT_HOLD_DURATION: float = 7.0
+const RESULT_HOLD_DURATION: float = 12.0
+const RESULT_TITLE_DELAY: float = 0.6
+const RESULT_SUBTITLE_DELAY: float = 2.0
+const RESULT_BODY_DELAY: float = 3.6
+const RESULT_CREDIT_DELAY: float = 7.2
+const RESULT_TEXT_FADE_IN: float = 1.8
+const LIGHTNING_MIN_DELAY: float = 3.5
+const LIGHTNING_MAX_DELAY: float = 8.5
+const LIGHTNING_FLASH_ENERGY: float = 18.0
+const LIGHTNING_FLASH_DURATION: float = 0.08
+const LIGHTNING_DOUBLE_FLASH_CHANCE: float = 0.45
+const LIGHTNING_DOUBLE_FLASH_DELAY: float = 0.12
+const WIND_GUST_MIN_INTERVAL: float = 8.0
+const WIND_GUST_CHANCE_DONE: float = 0.12
+const WIND_GUST_CHANCE_FAILED: float = 0.28
 
 var SLIDES: Array = []
 var _leaderboard_score_saved: bool = false
+var _lightning_active: bool = true
+var _next_wind_gust_time: float = 0.0
+var _credit_label: Label = null
 
 func _ready() -> void:
-	AudioManager.play_ambience(preload("res://game/assets/sfx/u_7hpxkdroz2-storm-461601.mp3"))
+	AudioManager.play_ambience(ENDING_STORM)
 	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 	SLIDES = [
 		{
@@ -139,9 +161,16 @@ func _ready() -> void:
 
 	fade_overlay.color     = Color(0, 0, 0, 1)
 	slide_label.modulate.a = 0.0
+	lightning.visible = false
+	lightning.light_energy = 0.0
+	_apply_result_ui_style()
 	result_panel.hide()
 	
+	_run_lightning_loop()
 	_start.call_deferred()
+
+func _exit_tree() -> void:
+	_lightning_active = false
 
 
 # ── Deferred Start ────────────────────────────────────────────────────────────
@@ -180,6 +209,7 @@ func _run_sequence() -> void:
 		_apply_visual_cue(slide, is_done)
 
 		# Reveal the room.
+		_play_slide_sfx(slide, is_done)
 		await _fade(0.0)
 
 		# Cinematic camera move (skip on first beat — already snapped).
@@ -190,6 +220,10 @@ func _run_sequence() -> void:
 
 		# Show the status label (non-blocking fade-in).
 		_start_label(slide["label_done"] if is_done else slide["label_skip"], is_done)
+		if not is_done:
+			_flash_lightning(14.0, 0.12)
+		elif randf() < 0.35:
+			_flash_lightning(8.0, 0.09)
 
 		# Hold on the room.
 		await get_tree().create_timer(SLIDE_HOLD_DURATION).timeout
@@ -284,13 +318,13 @@ func _fade_out_label() -> void:
 # ── Result Panel ───────────────────────────────────────────────────────────────
 func _show_result_panel() -> void:
 	_populate_result_panel()
-	await _fade(0.0)
+	fade_overlay.color.a = 1.0
 	result_panel.show()
-	result_panel.modulate.a = 0.0
-	var tween: Tween = create_tween()
-	tween.tween_property(result_panel, "modulate:a", 1.0, 0.8)
-	await tween.finished
-	await get_tree().create_timer(RESULT_HOLD_DURATION).timeout
+	result_panel.modulate.a = 1.0
+	await _reveal_result_message()
+	var music_remaining := AudioManager.get_music_time_remaining()
+	var final_hold := RESULT_HOLD_DURATION if music_remaining < 0.0 else maxf(music_remaining - FADE_DURATION, 0.0)
+	await get_tree().create_timer(final_hold).timeout
 	await _fade(1.0)
 	result_panel.hide()
 	await _submit_leaderboard_score()
@@ -332,6 +366,7 @@ func _submit_leaderboard_score() -> void:
 		player_name = "Player"
 
 	LeaderboardManager.record_run(player_name, tasks_completed, remaining_minutes, GameState.get_difficulty_id())
+	SFX.ui_click()
 	_leaderboard_score_saved = true
 	prompt_layer.queue_free()
 
@@ -349,6 +384,7 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	panel.offset_right = 260
 	panel.offset_bottom = 130
 	layer.add_child(panel)
+	UI_STYLE.apply_panel(panel)
 
 	var margin := MarginContainer.new()
 	margin.name = "MarginContainer"
@@ -368,6 +404,7 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 28)
 	box.add_child(title)
+	UI_STYLE.apply_label(title, false, true)
 
 	var summary := Label.new()
 	summary.text = "Mode: %s    Tasks: %d / %d    Time left: %s" % [
@@ -379,12 +416,17 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	summary.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	summary.add_theme_font_size_override("font_size", 18)
 	box.add_child(summary)
+	UI_STYLE.apply_label(summary, true)
 
 	var name_input := LineEdit.new()
 	name_input.name = "NameInput"
 	name_input.placeholder_text = "Enter player name"
 	name_input.max_length = 24
 	name_input.custom_minimum_size = Vector2(0, 42)
+	name_input.add_theme_color_override("font_color", UI_STYLE.TEXT)
+	name_input.add_theme_color_override("font_placeholder_color", UI_STYLE.TEXT_MUTED)
+	name_input.add_theme_stylebox_override("normal", UI_STYLE.button_style(Color(0.08, 0.09, 0.10, 0.95)))
+	name_input.add_theme_stylebox_override("focus", UI_STYLE.button_style(Color(0.10, 0.11, 0.12, 0.98), UI_STYLE.BORDER))
 	box.add_child(name_input)
 
 	var button_row := HBoxContainer.new()
@@ -398,6 +440,7 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	submit_button.disabled = true
 	submit_button.custom_minimum_size = Vector2(130, 42)
 	button_row.add_child(submit_button)
+	UI_STYLE.apply_button(submit_button)
 
 	return layer
 
@@ -412,64 +455,159 @@ func _populate_result_panel() -> void:
 	var sub_lbl:    Label         = result_panel.get_node("VBoxContainer/SubLabel")
 	var item_list:  VBoxContainer = result_panel.get_node("VBoxContainer/ItemList")
 	var footer_lbl: Label         = result_panel.get_node("VBoxContainer/FooterLabel")
+	var box := result_panel.get_node("VBoxContainer") as VBoxContainer
 
-	var completed_count: int = 0
+	var final_completed_count: int = 0
 	for slide in SLIDES:
 		if _check_slide_done(slide):
-			completed_count += 1
+			final_completed_count += 1
 
 	title_lbl.text = "Dumating ang Bagyo."
+	title_lbl.modulate.a = 0.0
 
-	# match cannot use SLIDES.size() as a pattern (not a constant) — use if/elif.
-	if completed_count == SLIDES.size():
+	if final_completed_count == SLIDES.size():
 		sub_lbl.text = "Nakaligtas kami lahat."
-		sub_lbl.add_theme_color_override("font_color", Color(0.55, 0.92, 0.60))
-	elif completed_count >= 4:
+		sub_lbl.add_theme_color_override("font_color", Color(0.70, 0.86, 0.68))
+	elif final_completed_count >= 4:
 		sub_lbl.text = "Nandito pa rin kami. Sugatan, pero buhay."
-		sub_lbl.add_theme_color_override("font_color", Color(0.95, 0.80, 0.45))
-	elif completed_count >= 2:
+		sub_lbl.add_theme_color_override("font_color", Color(0.86, 0.74, 0.52))
+	elif final_completed_count >= 2:
 		sub_lbl.text = "Mahirap ang gabi. Pero hindi kami sumuko."
-		sub_lbl.add_theme_color_override("font_color", Color(0.90, 0.65, 0.35))
+		sub_lbl.add_theme_color_override("font_color", Color(0.82, 0.66, 0.48))
 	else:
 		sub_lbl.text = "Hindi lahat ay naihanda. Hindi lahat ay napigilan."
-		sub_lbl.add_theme_color_override("font_color", Color(0.90, 0.38, 0.38))
+		sub_lbl.add_theme_color_override("font_color", Color(0.82, 0.44, 0.42))
+	sub_lbl.modulate.a = 0.0
 
 	for child in item_list.get_children():
 		child.queue_free()
-
-	for slide in SLIDES:
-		var is_done: bool      = _check_slide_done(slide)
-		var row: HBoxContainer = HBoxContainer.new()
-		row.add_theme_constant_override("separation", 10)
-
-		var icon: Label = Label.new()
-		icon.custom_minimum_size   = Vector2(22, 0)
-		icon.horizontal_alignment  = HORIZONTAL_ALIGNMENT_CENTER
-		icon.add_theme_font_size_override("font_size", 24)
-		icon.text = "✓" if is_done else "✗"
-		icon.add_theme_color_override("font_color",
-				Color(0.55, 0.92, 0.60) if is_done else Color(0.90, 0.38, 0.38))
-		row.add_child(icon)
-
-		var lbl: Label = Label.new()
-		lbl.text = slide["label_done"] if is_done else slide["label_skip"]
-		lbl.add_theme_font_size_override("font_size", 24)
-		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		lbl.add_theme_color_override("font_color",
-				Color(0.85, 0.92, 0.80) if is_done else Color(0.75, 0.62, 0.60))
-		row.add_child(lbl)
-
-		item_list.add_child(row)
+	item_list.hide()
 
 	footer_lbl.text = (
-		"Taon-taon, 20 bagyo ang sumusubok sa ating tibay. \n"
-		+ "Habang ang mga 'flood control projects' ay matatag lamang sa mga dokumento at tarpaulin, ang taumbayan ay naiiwan pa ring lumalangoy sa baha.\n"
-		+ "Ang kaligtasan ay hindi isang pribilehiyong kailangang kitain; ito ay pananagutan ng mga nasa kapangyarihan na madalas ay bingi sa aming pagsamo."
+		"Every year, an average of 20 typhoons test our resilience. But while \"flood control projects\" remain sturdy only on paper and political tarpaulins, ordinary citizens are left to swim for their lives.\n\n"
+		+ "Safety is not a privilege to be earned. It is a basic accountability of those in power."
 	)
 	footer_lbl.modulate.a = 0
-	var footer_tween = create_tween()
-	footer_tween.tween_property(footer_lbl, "modulate:a", 1.0, 2.0).set_delay(1.5)
-	footer_lbl.add_theme_color_override("font_color", Color(0.75, 0.72, 0.65))
-	footer_lbl.add_theme_font_size_override("font_size", 20)
+	footer_lbl.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+	footer_lbl.add_theme_color_override("font_color", Color(0.82, 0.80, 0.72))
+	footer_lbl.add_theme_font_size_override("font_size", 22)
 	footer_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	footer_lbl.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	footer_lbl.custom_minimum_size = Vector2(720, 0)
+	footer_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	footer_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
+	if _credit_label == null:
+		_credit_label = Label.new()
+		_credit_label.name = "CreditLabel"
+		_credit_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_credit_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(_credit_label)
+
+	_credit_label.text = "3 Netherite Ingots - Ateneo de Naga University Software Festival 2026"
+	_credit_label.modulate.a = 0.0
+	_credit_label.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+	_credit_label.add_theme_font_size_override("font_size", 14)
+	_credit_label.add_theme_color_override("font_color", Color(0.42, 0.42, 0.39))
+
+func _apply_result_ui_style() -> void:
+	UI_STYLE.apply_tree(result_panel)
+	result_panel.custom_minimum_size = Vector2(760, 470)
+	result_panel.set_anchors_preset(Control.PRESET_CENTER)
+	result_panel.offset_left = -380.0
+	result_panel.offset_top = -235.0
+	result_panel.offset_right = 380.0
+	result_panel.offset_bottom = 235.0
+	result_panel.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+
+	var box := result_panel.get_node("VBoxContainer") as VBoxContainer
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	box.add_theme_constant_override("separation", 16)
+
+	var title_lbl := result_panel.get_node("VBoxContainer/TitleLabel") as Label
+	title_lbl.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	title_lbl.add_theme_font_size_override("font_size", 34)
+	title_lbl.add_theme_color_override("font_color", Color(0.94, 0.94, 0.90))
+
+	var sub_lbl := result_panel.get_node("VBoxContainer/SubLabel") as Label
+	sub_lbl.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	sub_lbl.add_theme_font_size_override("font_size", 20)
+
+	var item_list := result_panel.get_node("VBoxContainer/ItemList") as VBoxContainer
+	item_list.add_theme_constant_override("separation", 8)
+	item_list.hide()
+
+	var separator := result_panel.get_node_or_null("VBoxContainer/HSeparator") as HSeparator
+	if separator != null:
+		separator.hide()
+
+	var separator_2 := result_panel.get_node_or_null("VBoxContainer/HSeparator2") as HSeparator
+	if separator_2 != null:
+		separator_2.hide()
+
+	var footer_lbl := result_panel.get_node("VBoxContainer/FooterLabel") as Label
+	footer_lbl.custom_minimum_size = Vector2(720, 250)
+	footer_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	footer_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	slide_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	slide_label.add_theme_font_size_override("font_size", 26)
+	slide_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+
+func _reveal_result_message() -> void:
+	var title_lbl := result_panel.get_node("VBoxContainer/TitleLabel") as Label
+	var sub_lbl := result_panel.get_node("VBoxContainer/SubLabel") as Label
+	var footer_lbl := result_panel.get_node("VBoxContainer/FooterLabel") as Label
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(title_lbl, "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_TITLE_DELAY)
+	tween.tween_property(sub_lbl, "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_SUBTITLE_DELAY)
+	tween.tween_property(footer_lbl, "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_BODY_DELAY)
+	if _credit_label != null:
+		tween.tween_property(_credit_label, "modulate:a", 0.58, RESULT_TEXT_FADE_IN).set_delay(RESULT_CREDIT_DELAY)
+	await tween.finished
+
+func _play_slide_sfx(_slide: Dictionary, is_done: bool) -> void:
+	_try_play_wind_gust(is_done)
+	if not is_done:
+		SFX.thunder_close(-11.0)
+
+func _try_play_wind_gust(is_done: bool) -> void:
+	var now := float(Time.get_ticks_msec()) / 1000.0
+	if now < _next_wind_gust_time:
+		return
+
+	var chance := WIND_GUST_CHANCE_DONE if is_done else WIND_GUST_CHANCE_FAILED
+	if randf() > chance:
+		return
+
+	_next_wind_gust_time = now + WIND_GUST_MIN_INTERVAL
+	SFX.wind_gust(-21.0)
+
+func _flash_lightning(energy: float = 6.0, duration: float = 0.14) -> void:
+	if lightning == null:
+		return
+	lightning.visible = true
+	lightning.light_energy = energy
+	lightning.light_indirect_energy = energy * 0.65
+	lightning.light_volumetric_fog_energy = energy * 0.4
+	var tween := create_tween()
+	tween.tween_property(lightning, "light_energy", 0.0, duration)
+	tween.parallel().tween_property(lightning, "light_indirect_energy", 0.0, duration)
+	tween.parallel().tween_property(lightning, "light_volumetric_fog_energy", 0.0, duration)
+	tween.finished.connect(func() -> void:
+		if lightning != null:
+			lightning.visible = false
+	)
+
+func _run_lightning_loop() -> void:
+	while _lightning_active:
+		await get_tree().create_timer(randf_range(LIGHTNING_MIN_DELAY, LIGHTNING_MAX_DELAY)).timeout
+		if not _lightning_active:
+			return
+		_flash_lightning(LIGHTNING_FLASH_ENERGY, LIGHTNING_FLASH_DURATION)
+		if randf() <= LIGHTNING_DOUBLE_FLASH_CHANCE:
+			await get_tree().create_timer(LIGHTNING_DOUBLE_FLASH_DELAY).timeout
+			if not _lightning_active:
+				return
+			_flash_lightning(LIGHTNING_FLASH_ENERGY * 0.65, LIGHTNING_FLASH_DURATION * 0.85)

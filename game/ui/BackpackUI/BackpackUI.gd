@@ -16,6 +16,7 @@ extends CanvasLayer
 const ITEMS_PATH: String = "res://game/resources/items/"
 const INVENTORY_DRAG_SLOT_SCRIPT = preload("res://game/ui/BackpackUI/InventoryDragSlot.gd")
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
 
 var _selected_index: int = -1
 var _combine_target_index: int = -1
@@ -144,6 +145,7 @@ func _toggle() -> void:
 		return
 
 	_close_map_if_open()
+	SFX.inventory_open()
 	visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_reset_selection()
@@ -152,6 +154,7 @@ func _toggle() -> void:
 func close_backpack() -> void:
 	if not visible:
 		return
+	SFX.inventory_close()
 	visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_reset_selection()

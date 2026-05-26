@@ -3,6 +3,7 @@
 extends CanvasLayer
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
 
 @onready var panel:           Control = $Panel
 @onready var nodes_container: Control = $Panel/MapNodes
@@ -80,6 +81,7 @@ func _input(event: InputEvent) -> void:
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
 	_close_backpack_if_open()
+	SFX.map_open()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_refresh_all_nodes()
 	# Trigger redraws on both drawing nodes
@@ -91,6 +93,8 @@ func open_map() -> void:
 	show()
 
 func close_map() -> void:
+	if visible:
+		SFX.map_open()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
 	confirm_panel.hide()

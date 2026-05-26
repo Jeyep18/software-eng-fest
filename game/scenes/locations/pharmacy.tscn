@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://3nff5bac5elg" path="res://game/resources/items/banana.tres" id="13_eiweo"]
 [ext_resource type="PackedScene" uid="uid://dowqdxmca6ku8" path="res://game/entities/pharmacist/pharma_dude.tscn" id="14_eiweo"]
 [ext_resource type="PackedScene" uid="uid://cgxg2hd82077n" path="res://game/entities/chooks_to_go_seller.tscn" id="15_cu82t"]
+[ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="16_rain"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 
@@ -103,6 +104,11 @@ size = Vector3(13.718491, 2.862793, 1.854065)
 size = Vector3(13.718491, 2.862793, 1.854065)
 
 [node name="Pharmacy" type="Node3D" unique_id=658136089]
+
+[node name="StormRainLayer" parent="." instance=ExtResource("16_rain")]
+transform = Transform3D(1.25, 0, 0, 0, 1.2, 0, 0, 0, 1.25, 0, 7.2, -2.5)
+intensity_bias = 0.08
+max_amount = 220
 
 [node name="AmbientSounds" type="Node" parent="." unique_id=289407803]
 

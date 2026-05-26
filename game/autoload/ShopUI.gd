@@ -3,6 +3,7 @@
 extends CanvasLayer
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
 
 # ── Node References (built in _ready, not @onready) ──────────────────────────
 var shop_panel:      PanelContainer
@@ -244,15 +245,18 @@ func _apply_shop_style() -> void:
 
 # ── Purchase ───────────────────────────────────────────────────────────────────
 func _on_buy_pressed(shop_item: ShopItem) -> void:
+	SFX.shop_beep()
 	var original_price := shop_item.item_data.item_price
 	shop_item.item_data.item_price = shop_item.price
 	var success := EconomyManager.purchase(shop_item.item_data)
 	shop_item.item_data.item_price = original_price
 
 	if success:
+		SFX.purchase_success()
 		shop_item.consume_stock()
 		_show_feedback("Nabili! " + shop_item.item_data.item_name + " — nasa bag mo na.", Color(0.5, 0.9, 0.5))
 	else:
+		SFX.ui_error()
 		if InventoryManager.is_full():
 			_show_feedback("Puno na ang bag mo. Mag-iwan muna ng item.", Color(0.9, 0.5, 0.3))
 		elif GameState.get_cash() < shop_item.price:

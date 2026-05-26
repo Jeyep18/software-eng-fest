@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfd1ee86t2snx"]
 
-[ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="1_5y4cc"]
+[ext_resource type="FontFile" uid="uid://dixkmkm3avqjn" path="res://game/assets/fonts/inter/Inter-SemiBold.ttf" id="1_5y4cc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u6gso"]
 font = ExtResource("1_5y4cc")

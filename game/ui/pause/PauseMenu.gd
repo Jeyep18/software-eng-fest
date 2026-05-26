@@ -14,11 +14,13 @@ const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/Tutori
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 
 var _all_panels: Array[Control] = []
+var _audio_settings_panel: AudioSettingsPanel
 
 func _ready() -> void:
 	layer = 20
 	_setup_content_area()
 	_setup_panels()
+	_setup_settings_panel()
 	_connect_nav_buttons()
 	_apply_pause_style()
 	hide()
@@ -39,6 +41,8 @@ func _open() -> void:
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	show()
+	for panel in _all_panels:
+		panel.hide()
 
 func _close() -> void:
 	hide()
@@ -60,8 +64,20 @@ func _setup_panels() -> void:
 
 	for panel in _all_panels:
 		panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		panel.mouse_filter = Control.MOUSE_FILTER_STOP
 		panel.hide()
+
+func _setup_settings_panel() -> void:
+	_audio_settings_panel = AudioSettingsPanel.new()
+	_audio_settings_panel.show_close_button = true
+	_audio_settings_panel.custom_minimum_size = Vector2(460, 320)
+	_audio_settings_panel.set_anchors_preset(Control.PRESET_CENTER)
+	_audio_settings_panel.offset_left = -230.0
+	_audio_settings_panel.offset_top = -160.0
+	_audio_settings_panel.offset_right = 230.0
+	_audio_settings_panel.offset_bottom = 160.0
+	_audio_settings_panel.close_requested.connect(func() -> void: settings_panel.hide())
+	settings_panel.add_child(_audio_settings_panel)
 
 func _apply_pause_style() -> void:
 	var overlay_panel := $Panel/Panel as Panel

@@ -5,9 +5,11 @@
 [ext_resource type="VoxelGIData" uid="uid://daf080x3na5qv" path="res://game/resources/voxels/grocery.VoxelGI_data.res" id="2_anphp"]
 [ext_resource type="AudioStream" uid="uid://ctry6xjenggdl" path="res://game/assets/sfx/217464__klankbeeld__marketcalm-140205_0059.wav" id="3_0ah4r"]
 [ext_resource type="AudioStream" uid="uid://dj4gcw82x5jtq" path="res://game/assets/sfx/523722__klankbeeld__room-tone-wind-rain-long-200216_0114.ogg" id="4_43he2"]
+[ext_resource type="AudioStream" path="res://game/assets/sfx/freesound_community-057519_train-announcement-44505.mp3" id="5_train"]
 [ext_resource type="PackedScene" uid="uid://dvg3wduicy88g" path="res://game/entities/grocery_girl/grocery_girl.tscn" id="6_iva62"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_ve5we"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="7_xd4q2"]
+[ext_resource type="Script" path="res://game/weather/StormRainController.gd" id="8_rain"]
 [ext_resource type="PackedScene" uid="uid://cbtfx45as84mq" path="res://_raw_assets/Locations/Market.glb" id="9_yn1y5"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
@@ -87,6 +89,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6742296, 3.557139, -10.1871
 stream = ExtResource("4_43he2")
 autoplay = true
 max_distance = 20.0
+bus = &"SFX"
+
+[node name="TrainAnnouncement" type="AudioStreamPlayer3D" parent="AmbientSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, 3.2, -12.0)
+stream = ExtResource("5_train")
+volume_db = -14.0
+autoplay = true
+max_distance = 24.0
 bus = &"SFX"
 
 [node name="Environment" type="Node" parent="." unique_id=958567759]
@@ -188,6 +198,11 @@ trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_iva62")
 draw_pass_1 = SubResource("RibbonTrailMesh_xd4q2")
+script = ExtResource("8_rain")
+visibility_threshold = 0.02
+intensity_bias = 0.18
+min_amount = 40
+max_amount = 380
 
 [node name="CameraVolumes" type="Node3D" parent="." unique_id=16314476]
 

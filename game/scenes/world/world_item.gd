@@ -13,6 +13,9 @@
 class_name WorldItem
 extends Interactable
 
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
+
 # --- CONFIGURATION (set these in the Inspector) ---
 
 @export var world_item_id: String = ""
@@ -241,7 +244,7 @@ func _show_confirm_dialog() -> void:
 		add_child(_canvas_layer)
 	if _confirm_modal == null:
 		_build_confirm_modal()
-	_confirm_message.text = "Pick up %s?" % item_data.item_name
+	_confirm_message.text = item_data.item_description if item_data.item_description.strip_edges() != "" else "Add this item to your backpack?"
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_confirm_modal.show()
 	_confirm_modal.grab_focus()
@@ -256,7 +259,7 @@ func _build_confirm_modal() -> void:
 	_canvas_layer.add_child(_confirm_modal)
 
 	var backdrop := ColorRect.new()
-	backdrop.color = Color(0, 0, 0, 0.45)
+	backdrop.color = Color(0.02, 0.025, 0.03, 0.68)
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
 	_confirm_modal.add_child(backdrop)
@@ -267,42 +270,88 @@ func _build_confirm_modal() -> void:
 	_confirm_modal.add_child(center)
 
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(320, 150)
+	panel.custom_minimum_size = Vector2(460, 250)
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	UI_STYLE.apply_panel(panel)
 	center.add_child(panel)
 
+	var margin := MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 24)
+	margin.add_theme_constant_override("margin_top", 22)
+	margin.add_theme_constant_override("margin_right", 24)
+	margin.add_theme_constant_override("margin_bottom", 22)
+	panel.add_child(margin)
+
 	var content := VBoxContainer.new()
-	content.add_theme_constant_override("separation", 14)
-	panel.add_child(content)
+	content.add_theme_constant_override("separation", 16)
+	margin.add_child(content)
 
 	var title := Label.new()
-	title.text = "Pick Up Item?"
+	title.text = "Pick Up Item"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 20)
+	title.add_theme_font_size_override("font_size", 24)
+	UI_STYLE.apply_label(title, false, true)
 	content.add_child(title)
 
+	var item_row := HBoxContainer.new()
+	item_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	item_row.add_theme_constant_override("separation", 14)
+	content.add_child(item_row)
+
+	var icon_panel := PanelContainer.new()
+	icon_panel.custom_minimum_size = Vector2(76, 76)
+	icon_panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER_SOFT, 6))
+	item_row.add_child(icon_panel)
+
+	var icon_margin := MarginContainer.new()
+	icon_margin.add_theme_constant_override("margin_left", 8)
+	icon_margin.add_theme_constant_override("margin_top", 8)
+	icon_margin.add_theme_constant_override("margin_right", 8)
+	icon_margin.add_theme_constant_override("margin_bottom", 8)
+	icon_panel.add_child(icon_margin)
+
+	var icon := TextureRect.new()
+	icon.texture = item_data.item_icon
+	icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon_margin.add_child(icon)
+
+	var text_stack := VBoxContainer.new()
+	text_stack.custom_minimum_size = Vector2(270, 0)
+	text_stack.add_theme_constant_override("separation", 5)
+	item_row.add_child(text_stack)
+
+	var item_name := Label.new()
+	item_name.text = item_data.item_name
+	item_name.add_theme_font_size_override("font_size", 19)
+	UI_STYLE.apply_label(item_name)
+	text_stack.add_child(item_name)
+
 	_confirm_message = Label.new()
-	_confirm_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_confirm_message.add_theme_font_size_override("font_size", 16)
-	content.add_child(_confirm_message)
+	_confirm_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_confirm_message.add_theme_font_size_override("font_size", 14)
+	UI_STYLE.apply_label(_confirm_message, true)
+	text_stack.add_child(_confirm_message)
 
 	var actions := HBoxContainer.new()
-	actions.alignment = BoxContainer.ALIGNMENT_CENTER
+	actions.alignment = BoxContainer.ALIGNMENT_END
 	actions.add_theme_constant_override("separation", 12)
 	content.add_child(actions)
 
 	var leave_button := Button.new()
 	leave_button.text = "Leave"
 	leave_button.focus_mode = Control.FOCUS_NONE
-	leave_button.custom_minimum_size = Vector2(100, 36)
+	leave_button.custom_minimum_size = Vector2(112, 42)
 	leave_button.pressed.connect(_on_pickup_cancelled)
+	UI_STYLE.apply_button(leave_button)
 	actions.add_child(leave_button)
 
 	var pickup_button := Button.new()
 	pickup_button.text = "Pick Up"
 	pickup_button.focus_mode = Control.FOCUS_NONE
-	pickup_button.custom_minimum_size = Vector2(100, 36)
+	pickup_button.custom_minimum_size = Vector2(112, 42)
 	pickup_button.pressed.connect(_on_pickup_confirmed)
+	UI_STYLE.apply_button(pickup_button)
 	actions.add_child(pickup_button)
 
 	_confirm_modal.hide()
@@ -352,6 +401,7 @@ func _do_pickup() -> void:
 	var success = InventoryManager.add_item(item_data)
 
 	if success:
+		SFX.item_touch()
 		# ↓ ADD THIS before queue_free
 		if world_item_id != "":
 			GameState.mark_item_collected(world_item_id)

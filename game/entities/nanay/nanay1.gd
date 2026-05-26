@@ -1,6 +1,8 @@
 class_name Nanay1
 extends NPC
 
+const SFX = preload("res://game/audio/Sfx.gd")
+
 @export var sequence_pre_departure: DialogueSequence
 @export var sequence_return_early: DialogueSequence
 @export var sequence_return_mid: DialogueSequence
@@ -38,6 +40,7 @@ func _grant_departure_cash() -> void:
 		return
 	var departure_cash := GameState.get_departure_cash()
 	GameState.add_cash(departure_cash)
+	SFX.cash_gain()
 	get_tree().call_group("preparation_checklist_hud", "show_cash_gain", departure_cash)
 	GameState.complete_nanay_intro()
 

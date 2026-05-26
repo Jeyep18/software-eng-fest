@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="10_11i80"]
 [ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="12_c3eoh"]
 [ext_resource type="PackedScene" uid="uid://ut5fskgnrsyt" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
+[ext_resource type="Script" path="res://game/weather/StormRainController.gd" id="15_rain"]
 [ext_resource type="PackedScene" uid="uid://du3ghcn42crwi" path="res://game/objects/interactables/main_door.tscn" id="16_lwh48"]
 [ext_resource type="PackedScene" uid="uid://bw2r7j1q04u4t" path="res://game/entities/nanay/nanay.tscn" id="18_so1b5"]
 [ext_resource type="PackedScene" uid="uid://bfuqj3eqm4sn6" path="res://game/entities/lola/lola.tscn" id="18_taj8b"]
@@ -122,6 +123,10 @@ trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_7ekle")
 draw_pass_1 = SubResource("RibbonTrailMesh_ea3sf")
+script = ExtResource("15_rain")
+visibility_threshold = 0.18
+min_amount = 12
+max_amount = 140
 
 [node name="house_inside" parent="." unique_id=752345904 instance=ExtResource("1_iw5ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5223038)

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_ygoei"]
 [ext_resource type="PackedScene" uid="uid://wsovjfl8f40h" path="res://game/entities/ate_linda_npc/ate_linda.tscn" id="7_61ce1"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="8_0aq8a"]
+[ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="9_rain"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 
@@ -78,6 +79,11 @@ adjustment_contrast = 1.03
 size = Vector3(9.728727, 2.862793, 1.854065)
 
 [node name="Tindahan" type="Node3D" unique_id=1154781179]
+
+[node name="StormRainLayer" parent="." instance=ExtResource("9_rain")]
+transform = Transform3D(1.15, 0, 0, 0, 1.2, 0, 0, 0, 1.15, 0, 7.0, -2.0)
+intensity_bias = 0.04
+max_amount = 180
 
 [node name="AmbientSounds" type="Node" parent="." unique_id=1258454364]
 

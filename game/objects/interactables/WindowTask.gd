@@ -25,6 +25,9 @@ func _sync_completion_state() -> void:
 	_is_completed = true
 	if completion_visual_cue != null:
 		completion_visual_cue.visible = true
+
+func _play_completion_sfx() -> void:
+	await _play_hammer_completion_sfx()
 	_update_task_cue()
 
 func _apply_completion_state() -> void:
