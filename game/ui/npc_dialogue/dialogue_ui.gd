@@ -9,7 +9,7 @@ extends Control
 const GAMEPLAY_HINT_COLOR: String = "#e0b45b"
 
 func show_line(line: DialogueLine) -> void:
-	AudioManager.play_voice(preload("res://game/assets/sfx/freesound_community-bllrr-text-loop-82399-FreesoundCommunityPixabay.mp3"))
+	AudioManager.play_voice(preload("res://game/assets/sfx/freesound_community-bllrr-text-loop-82399-FreesoundCommunityPixabay.mp3"), true)
 	_speaker_name.text = line.speaker_name
 	_speaker_dialogue.bbcode_enabled = true
 	_speaker_dialogue.parse_bbcode(_format_dialogue_text(line.text))

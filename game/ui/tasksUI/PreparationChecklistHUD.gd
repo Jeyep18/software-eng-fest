@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+
 @onready var cash_label: Label = $CashPanel/MarginContainer/CashLabel
 @onready var checklist_panel: ChecklistPanel = $ChecklistPanel
 @onready var checklist_background: Panel = $ChecklistPanel/Panel
@@ -20,6 +22,7 @@ func _ready() -> void:
 	_on_cash_changed(GameState.get_cash())
 	if cash_gain_label != null:
 		cash_gain_label.hide()
+	_apply_hud_style()
 	call_deferred("_schedule_checklist_resize")
 
 func _set_mouse_filter_recursive(node: Node) -> void:
@@ -31,6 +34,13 @@ func _set_mouse_filter_recursive(node: Node) -> void:
 func _on_cash_changed(new_balance: int) -> void:
 	if cash_label != null:
 		cash_label.text = "Pera: PHP %d" % new_balance
+
+func _apply_hud_style() -> void:
+	UI_STYLE.apply_panel($CashPanel, true)
+	UI_STYLE.apply_panel(checklist_background, true)
+	UI_STYLE.apply_label(cash_label)
+	UI_STYLE.apply_label(checklist_title, false, true)
+	UI_STYLE.apply_label(cash_gain_label, false, true)
 
 func _on_checklist_content_changed() -> void:
 	call_deferred("_schedule_checklist_resize")

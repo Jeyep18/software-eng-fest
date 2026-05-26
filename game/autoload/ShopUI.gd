@@ -2,6 +2,8 @@
 # Builds its own UI in code. No .tscn needed.
 extends CanvasLayer
 
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+
 # ── Node References (built in _ready, not @onready) ──────────────────────────
 var shop_panel:      PanelContainer
 var shop_name_label: Label
@@ -109,6 +111,7 @@ func _build_ui() -> void:
 	close_button.text = "Exit"
 	close_button.custom_minimum_size = Vector2(0, 42)
 	root_vbox.add_child(close_button)
+	_apply_shop_style()
 
 # ── Public API ─────────────────────────────────────────────────────────────────
 func open_shop(shop_data: ShopData) -> void:
@@ -226,8 +229,18 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 
 	buy_btn.add_theme_font_size_override("font_size", 16)
 	buy_btn.custom_minimum_size = Vector2(110, 42)
+	UI_STYLE.apply_button(buy_btn)
 	row.add_child(buy_btn)
 	return row
+
+func _apply_shop_style() -> void:
+	_backdrop.color = Color(0.02, 0.025, 0.03, 0.74)
+	UI_STYLE.apply_panel(shop_panel)
+	UI_STYLE.apply_label(shop_name_label, false, true)
+	UI_STYLE.apply_label(subtitle_label, true)
+	UI_STYLE.apply_label(cash_label)
+	UI_STYLE.apply_label(feedback_label)
+	UI_STYLE.apply_button(close_button)
 
 # ── Purchase ───────────────────────────────────────────────────────────────────
 func _on_buy_pressed(shop_item: ShopItem) -> void:

@@ -7,6 +7,7 @@ const JUMP_VELOCITY: float = 4.5
 const GROUND_ACCELERATION: float = 12.0
 const AIR_ACCELERATION: float = 3.0
 const ROTATION_SPEED: float = 10.0
+const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
 
 var _current_speed: float = WALK_SPEED
 var _is_mouse_captured: bool = true
@@ -53,8 +54,20 @@ func _play(anim_name: String) -> void:
 func _on_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		ANIM_STAND_UP:
-			_is_input_locked = false
 			_play(ANIM_IDLE)
+			_show_start_tutorial_if_needed()
+
+func _show_start_tutorial_if_needed() -> void:
+	if not TutorialModal.should_show_on_start():
+		_is_input_locked = false
+		return
+
+	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()
+	add_child(tutorial)
+	var unlock_input := func() -> void:
+		_is_input_locked = false
+		tutorial.queue_free()
+	tutorial.open(true, true, unlock_input, true)
 
 
 func _unhandled_input(event: InputEvent) -> void:

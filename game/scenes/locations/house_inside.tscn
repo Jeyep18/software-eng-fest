@@ -334,7 +334,7 @@ completed_lines = Array[String](["May radyo na kami, makakakuha na kami ng balit
 prompt_label = "Place Working Radio"
 
 [node name="RoofTaskCue" parent="." unique_id=726863625 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5532892, 0.70479643, -2.845928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34570074, 0.14361024, -2.845928)
 
 [node name="WindowTaskCue" parent="." unique_id=2023954735 instance=ExtResource("32_taskcue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2417374, 1.2498862, -1.2023171)

@@ -78,8 +78,6 @@ func get_state(location_id: String) -> String:
 func apply_danger_penalty(location_id: String) -> void:
 	if get_state(location_id) == "danger":
 		GlobalTimer.add_time(DANGER_TIME_PENALTY)
-		push_warning("StormEncroachment: Danger zone penalty applied for '%s' (+%d min)." 
-				% [location_id, DANGER_TIME_PENALTY])
 
 func reset() -> void:
 	var default_states: Dictionary = {

@@ -35,7 +35,6 @@ func _setup_ui() -> void:
 	_ui.hide_ui()
 
 func interact() -> void:
-	NeedsLog.debug_print_status()
 	if not _is_showing:
 		_current_line = 0
 		_show_current_line()

@@ -43,7 +43,7 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://game/assets/animations/PlayerAnimations/mixamo_com.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://cgc7k32rwe2c2",
+"save_to_file/path": "uid://bpqpnecyvnopp",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

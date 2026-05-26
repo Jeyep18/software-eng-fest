@@ -69,6 +69,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "⚙ Settings"
 
+[node name="TutorialBtn" type="Button" parent="Panel/HSplitContainer/Sidebar"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Tutorial"
+
 [node name="RestartBtn" type="Button" parent="Panel/HSplitContainer/Sidebar" unique_id=226180309]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2

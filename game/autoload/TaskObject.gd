@@ -36,6 +36,7 @@ var _is_typing: bool = false
 var _tween: Tween = null
 var _showing_ready_branch: bool = false
 var _is_completed: bool = false
+var _is_completing: bool = false
 var _paused_timer_for_dialogue: bool = false
 
 func _ready() -> void:
@@ -135,6 +136,10 @@ func _has_all_required_items() -> bool:
 	return true
 
 func _complete_task() -> void:
+	if _is_completed or _is_completing:
+		return
+
+	_is_completing = true
 	GlobalTimer.pause_timer()
 	await TransitionOverlay.fade_to_black()
 
@@ -149,6 +154,7 @@ func _complete_task() -> void:
 	_is_completed = true
 	print("TaskObject: Completed - ", NeedsLog.NEED_LABELS.get(need, str(need)),
 			" | Burst cost: %d min" % time_cost_minutes)
+	_is_completing = false
 
 func _consume_required_items() -> void:
 	var required_counts: Dictionary = {}
@@ -255,6 +261,9 @@ func _on_need_resolved(resolved_need: NeedsLog.Need) -> void:
 	_update_task_cue()
 
 func is_interaction_available() -> bool:
+	if _is_completing:
+		return false
+
 	return GameState.house_tasks_unlocked or _is_completed
 
 func _on_guide_tasks_changed() -> void:

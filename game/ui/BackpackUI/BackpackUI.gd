@@ -15,6 +15,7 @@ extends CanvasLayer
 
 const ITEMS_PATH: String = "res://game/resources/items/"
 const INVENTORY_DRAG_SLOT_SCRIPT = preload("res://game/ui/BackpackUI/InventoryDragSlot.gd")
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 
 var _selected_index: int = -1
 var _combine_target_index: int = -1
@@ -35,6 +36,7 @@ func _ready() -> void:
 	InventoryManager.discard_changed.connect(_on_discard_changed)
 	if is_instance_valid(combine_button):
 		combine_button.pressed.connect(_on_combine_pressed)
+	_apply_backpack_style()
 	_hide_combine_bar()
 
 func _setup_panel_layout() -> void:
@@ -48,7 +50,7 @@ func _setup_panel_layout() -> void:
 	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  240)
 
 	# Give the panel a dark background style
-	var panel_style := _make_panel_style(Color(0.1, 0.1, 0.1, 0.95), Color(1, 1, 1, 0.15), 1, 12)
+	var panel_style := UI_STYLE.panel_style()
 	backpack_panel.add_theme_stylebox_override("panel", panel_style)
 
 	# TitleBar — sits at the top
@@ -125,6 +127,12 @@ func _setup_panel_layout() -> void:
 		discard_prompt.set_anchor_and_offset(SIDE_BOTTOM, 0, 354)
 		discard_prompt.add_theme_font_size_override("font_size", 12)
 		discard_prompt.add_theme_color_override("font_color", Color(1, 1, 1, 0.68))
+
+func _apply_backpack_style() -> void:
+	UI_STYLE.apply_tree(backpack_panel)
+	UI_STYLE.apply_button(combine_button)
+	UI_STYLE.apply_label($BackpackPanel/TitleBar/TitleLabel, false, true)
+	UI_STYLE.apply_label(count_label, true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_backpack"):

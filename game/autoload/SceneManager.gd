@@ -57,13 +57,17 @@ func load_scene(scene_id: String) -> void:
 	if not SCENE_PATHS.has(scene_id):
 		push_error("SceneManager: Unknown scene ID: " + scene_id)
 		return
-	get_tree().change_scene_to_file(SCENE_PATHS[scene_id])
+	if not _change_scene(SCENE_PATHS[scene_id]):
+		return
 	await get_tree().create_timer(0.1).timeout
 	await TransitionOverlay.fade_from_black()
 	
 # ── Location Travel (Act 2 preparation loop) ─────────────────────────────────
 
-func travel_to(target_location: String, spawn_id: String = "") -> void:
+func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost: int = -1) -> void:
+	if is_travelling:
+		return
+
 	# Block travel to inaccessible locations
 	if not StormEnroachment.can_travel_to(target_location):
 		push_warning("SceneManager: '%s' is inaccessible — storm has closed it." % target_location)
@@ -72,11 +76,8 @@ func travel_to(target_location: String, spawn_id: String = "") -> void:
 	
 	StormEnroachment.apply_danger_penalty(target_location)
 	
-	if is_travelling:
-		return
-
 	if not SCENE_PATHS.has(target_location):
-		print("Scene not yet built for: ", target_location)
+		push_warning("SceneManager: scene not yet built for: " + target_location)
 		return
 
 	if closed_zones.has(target_location):
@@ -88,14 +89,17 @@ func travel_to(target_location: String, spawn_id: String = "") -> void:
 	
 	var origin_for_travel: String = LOCATION_ALIASES.get(current_location, current_location)
 	var target_for_travel: String = LOCATION_ALIASES.get(target_location, target_location)
-	var travel_cost: int = TravelCalculator.get_travel_time(origin_for_travel, target_for_travel)
+	var travel_cost: int = fixed_travel_cost if fixed_travel_cost >= 0 else TravelCalculator.get_travel_time(origin_for_travel, target_for_travel)
 	is_travelling = true
 	
 	_pending_spawn_id = spawn_id
 	
 	await TransitionOverlay.fade_to_black()
 	GlobalTimer.add_time(travel_cost)
-	get_tree().change_scene_to_file(SCENE_PATHS[target_location])
+	if not _change_scene(SCENE_PATHS[target_location]):
+		is_travelling = false
+		await TransitionOverlay.fade_from_black()
+		return
 	await get_tree().create_timer(0.1).timeout
 	await TransitionOverlay.fade_from_black()
 
@@ -145,7 +149,7 @@ func _on_storm_arrived() -> void:
 	# then transition to the ending cinematic.
 	await get_tree().create_timer(0.5).timeout
 	await TransitionOverlay.fade_to_black()
-	get_tree().change_scene_to_file(SCENE_PATHS["ending"])
+	_change_scene(SCENE_PATHS["ending"])
 	# NOTE: EndingSequence._ready() handles its own fade-in.
 	# We do NOT call fade_from_black() here — EndingSequence owns that.
 
@@ -169,3 +173,10 @@ func reset() -> void:
 	_pending_spawn_id = ""
 	danger_zones.clear()
 	closed_zones.clear()
+
+func _change_scene(scene_path: String) -> bool:
+	var error := get_tree().change_scene_to_file(scene_path)
+	if error != OK:
+		push_error("SceneManager: Failed to load scene '%s' (error %d)." % [scene_path, error])
+		return false
+	return true

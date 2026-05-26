@@ -12,6 +12,7 @@ extends Node
 var _music_tween:    Tween = null
 var _ambience_tween: Tween = null
 var _sfx_tween: Tween = null
+var _voice_should_loop: bool = false
 
 const FADE_DURATION: float = 1.5   # seconds for crossfade
 
@@ -72,15 +73,23 @@ func play_sfx(stream: AudioStream, volume_db: float = 0.0) -> void:
 	_sfx_player.stream    = stream
 	_sfx_player.play()
 
-## Fire a one-shot voice/talking sound.
-func play_voice(stream: AudioStream) -> void:
+## Play a voice/talking sound. Set loop_until_stopped for typewriter chatter.
+func play_voice(stream: AudioStream, loop_until_stopped: bool = false) -> void:
 	if stream == null:
 		return
+	_voice_should_loop = loop_until_stopped
 	_voice_player.stream = stream
 	_voice_player.play()
+	if not _voice_player.finished.is_connected(_on_voice_finished):
+		_voice_player.finished.connect(_on_voice_finished)
 
 func stop_voice() -> void:
+	_voice_should_loop = false
 	_voice_player.stop()
+
+func _on_voice_finished() -> void:
+	if _voice_should_loop and _voice_player.stream != null:
+		_voice_player.play()
 	
 func stop_sfx(fade_out: bool = true) -> void:
 	if fade_out:
@@ -94,4 +103,4 @@ func stop_all() -> void:
 	stop_music(false)
 	stop_ambience(false)
 	_sfx_player.stop()
-	_voice_player.stop()
+	stop_voice()

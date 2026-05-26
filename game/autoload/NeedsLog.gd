@@ -68,7 +68,6 @@ func resolve(need: Need) -> void:
 	if _resolved.has(need):
 		return
 	_resolved[need] = true
-	print("NeedsLog: emitting need_resolved for: ", NEED_LABELS.get(need))
 	need_resolved.emit(need)
 
 func is_resolved(need: Need) -> bool:
@@ -125,18 +124,3 @@ func reset() -> void:
 	_resolved.clear()
 	_boarded_windows.clear()
 #endregion
-
-func debug_print_status() -> void:
-	print("=== NeedsLog Status ===")
-	if _discovered.is_empty():
-		print("  No needs discovered yet.")
-		return
-	for need in Need.values():
-		if not _discovered.has(need):
-			continue
-		var label: String = NEED_LABELS.get(need, str(need))
-		if _resolved.has(need):
-			print("  [RESOLVED]   ", label)
-		else:
-			print("  [UNRESOLVED] ", label)
-	print("=======================")

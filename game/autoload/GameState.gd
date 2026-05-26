@@ -190,9 +190,6 @@ func reset() -> void:
 	collected_world_items.clear()
 #endregion
 
-func _ready() -> void:
-	print("Starting cash: ₱", GameState.get_cash())
-
 func mark_item_collected(item_id: String) -> void:
 	if not collected_world_items.has(item_id):
 		collected_world_items.append(item_id)

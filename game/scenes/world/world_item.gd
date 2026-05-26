@@ -84,14 +84,14 @@ func _ready() -> void:
 
 	# Listen for when the player walks away mid-dialogue.
 	# This uses the inherited signal from Interactable.
-	player_exited.connect(_on_player_left)
+	if not player_exited.is_connected(_on_player_left):
+		player_exited.connect(_on_player_left)
 
 
 # --- MODEL LOADING ---
 func _load_model() -> void:
 	# If no model is assigned in ItemData, there's nothing to load.
 	if item_data.item_model == null:
-		push_warning("WorldItem '" + item_data.item_name + "' has no item_model assigned.")
 		return
 
 	# Instantiate the PackedScene (the .glb file) into an actual node.
@@ -101,9 +101,6 @@ func _load_model() -> void:
 
 	# Add the model as a child of this WorldItem node.
 	add_child(model_instance)
-
-	# Optional: print confirmation during development so you know it worked.
-	print("WorldItem: Loaded model for '" + item_data.item_name + "'")
 
 
 # --- UI SETUP ---
@@ -360,4 +357,4 @@ func _do_pickup() -> void:
 			GameState.mark_item_collected(world_item_id)
 		queue_free()
 	else:
-		print("Inventory full! Cannot pick up: " + item_data.item_name)
+		push_warning("WorldItem: inventory full, cannot pick up: " + item_data.item_name)

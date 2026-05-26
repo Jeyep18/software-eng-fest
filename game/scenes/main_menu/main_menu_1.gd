@@ -14,8 +14,12 @@ extends Node3D
 @onready var menu_buttons: VBoxContainer = $VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer
 @onready var lightning: SpotLight3D = $Lights/Lightning
 
+const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+
 var difficulty_selector: OptionButton
 var difficulty_label: Label
+var tutorial_button: Button
 var _lightning_active: bool = true
 
 # MainMenu.gd
@@ -23,6 +27,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_setup_lightning()
 	_setup_difficulty_selector()
+	_setup_tutorial_button()
+	_apply_menu_ui_style()
 	leaderboards_button.pressed.connect(_on_leaderboards_pressed)
 	await TransitionOverlay.fade_from_black()
 	AudioManager.play_ambience(preload("res://game/assets/sfx/u_7hpxkdroz2-storm-461601.mp3"))
@@ -50,6 +56,31 @@ func _setup_difficulty_selector() -> void:
 	menu_buttons.add_child(difficulty_row)
 	menu_buttons.move_child(difficulty_row, 1)
 
+func _setup_tutorial_button() -> void:
+	tutorial_button = Button.new()
+	tutorial_button.name = "tutorial_button"
+	tutorial_button.text = "TUTORIAL / CONTROLS"
+	tutorial_button.pressed.connect(_on_tutorial_pressed)
+	menu_buttons.add_child(tutorial_button)
+	menu_buttons.move_child(tutorial_button, menu_buttons.get_child_count() - 2)
+
+func _apply_menu_ui_style() -> void:
+	for child in menu_buttons.get_children():
+		if child is Button:
+			UI_STYLE.apply_button(child)
+			child.custom_minimum_size = Vector2(220, 44)
+		elif child is HBoxContainer:
+			for row_child in child.get_children():
+				if row_child is Label:
+					UI_STYLE.apply_label(row_child, false, true)
+				elif row_child is OptionButton:
+					UI_STYLE.apply_button(row_child)
+
+	var title := $VBoxContainer/VBoxContainer/RichTextLabel as Label
+	var subtitle := $VBoxContainer/VBoxContainer/RichTextLabel2 as Label
+	UI_STYLE.apply_label(title, false, true)
+	UI_STYLE.apply_label(subtitle, true)
+
 func _on_difficulty_selected(index: int) -> void:
 	var difficulty := difficulty_selector.get_item_id(index)
 	GameState.set_difficulty(difficulty)
@@ -57,6 +88,13 @@ func _on_difficulty_selected(index: int) -> void:
 func _on_leaderboards_pressed() -> void:
 	if leaderboards_modal.has_method("open"):
 		leaderboards_modal.open()
+
+func _on_tutorial_pressed() -> void:
+	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()
+	add_child(tutorial)
+	tutorial.open(false, false, func() -> void:
+		tutorial.queue_free()
+	)
 
 func _exit_tree() -> void:
 	_lightning_active = false

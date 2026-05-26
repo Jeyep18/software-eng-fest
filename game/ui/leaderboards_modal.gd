@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+
 @onready var close_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/close_button
 @onready var clear_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/clear_button
 @onready var title_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/TitleLabel
@@ -13,6 +15,7 @@ func _ready() -> void:
 	clear_button.pressed.connect(_on_clear_pressed)
 	if not LeaderboardManager.entries_changed.is_connected(_refresh):
 		LeaderboardManager.entries_changed.connect(_refresh)
+	_apply_leaderboard_style()
 	hide()
 
 func open() -> void:
@@ -108,3 +111,11 @@ func _difficulty_label(difficulty_id: String) -> String:
 
 func _difficulty_label_with_multiplier(difficulty_id: String) -> String:
 	return "%s x%.2f" % [_difficulty_label(difficulty_id), GameState.get_difficulty_score_multiplier(difficulty_id)]
+
+func _apply_leaderboard_style() -> void:
+	var panel := $MarginContainer/LeaderboardsModal as PanelContainer
+	UI_STYLE.apply_panel(panel)
+	UI_STYLE.apply_button(close_button)
+	UI_STYLE.apply_button(clear_button)
+	UI_STYLE.apply_label(title_label, false, true)
+	UI_STYLE.apply_label(empty_label, true)

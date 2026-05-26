@@ -60,8 +60,6 @@ var _current_volume: CameraVolume = null
 func _ready() -> void:
 	if not follow_target:
 		follow_target = get_parent() as Node3D
-		if follow_target:
-			push_warning("Camera: follow_target auto-assigned to parent. Set explicitly.")
 	
 	_active_z_distance = default_z_distance
 	_active_height_offset = default_height_offset
@@ -88,8 +86,10 @@ func _connect_to_volumes() -> void:
 	for volume: Node in volumes:
 		if volume is CameraVolume:
 			var cv: CameraVolume = volume as CameraVolume
-			cv.player_entered_volume.connect(_on_volume_entered)
-			cv.player_exited_volume.connect(_on_volume_exited)
+			if not cv.player_entered_volume.is_connected(_on_volume_entered):
+				cv.player_entered_volume.connect(_on_volume_entered)
+			if not cv.player_exited_volume.is_connected(_on_volume_exited):
+				cv.player_exited_volume.connect(_on_volume_exited)
 
 
 func _on_volume_entered(volume: CameraVolume) -> void:

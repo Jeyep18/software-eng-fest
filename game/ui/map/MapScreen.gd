@@ -2,6 +2,8 @@
 
 extends CanvasLayer
 
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+
 @onready var panel:           Control = $Panel
 @onready var nodes_container: Control = $Panel/MapNodes
 @onready var road_layer:      Control = $Panel/MapNodes/RoadLayer
@@ -51,6 +53,7 @@ const ROAD_CONNECTIONS: Array = [
 ]
 
 var _selected_location: String = ""
+var _selected_travel_cost: int = -1
 var _node_buttons: Dictionary = {}
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
@@ -63,6 +66,7 @@ func _ready() -> void:
 	_connect_signals()
 	confirm_button.pressed.connect(_on_confirm_travel)
 	cancel_button.pressed.connect(_on_cancel_selection)
+	_apply_map_style()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_map"):
@@ -83,6 +87,7 @@ func open_map() -> void:
 	storm_overlay.queue_redraw()
 	confirm_panel.hide()
 	_selected_location = ""
+	_selected_travel_cost = -1
 	show()
 
 func close_map() -> void:
@@ -90,6 +95,7 @@ func close_map() -> void:
 	hide()
 	confirm_panel.hide()
 	_selected_location = ""
+	_selected_travel_cost = -1
 
 func _close_backpack_if_open() -> void:
 	var backpack_ui = get_tree().get_first_node_in_group("backpack_ui")
@@ -171,6 +177,7 @@ func _show_confirm_panel(loc_id: String) -> void:
 	var display_name: String = NODE_DISPLAY_NAMES.get(loc_id, loc_id)
 	var travel_cost: int = TravelCalculator.get_travel_time(
 		SceneManager.current_location, loc_id)
+	_selected_travel_cost = travel_cost
 	var state: String = SceneManager.get_location_state(loc_id)
 	
 	confirm_dest.text = display_name
@@ -204,12 +211,14 @@ func _on_confirm_travel() -> void:
 	if _selected_location.is_empty():
 		return
 	var dest: String = _selected_location
+	var travel_cost: int = _selected_travel_cost
 	close_map()
-	SceneManager.travel_to(dest)
+	SceneManager.travel_to(dest, "", travel_cost)
 
 func _on_cancel_selection() -> void:
 	confirm_panel.hide()
 	_selected_location = ""
+	_selected_travel_cost = -1
 
 # ── Signal Connections ────────────────────────────────────────────────────────
 func _connect_signals() -> void:
@@ -236,3 +245,16 @@ func _on_location_state_changed(_location_id: String, _new_state: String) -> voi
 func _on_travel_completed(_location_id: String) -> void:
 	if visible:
 		_refresh_all_nodes()
+
+func _apply_map_style() -> void:
+	UI_STYLE.apply_panel(confirm_panel)
+	UI_STYLE.apply_label(confirm_dest, false, true)
+	UI_STYLE.apply_label(confirm_time)
+	UI_STYLE.apply_button(confirm_button)
+	UI_STYLE.apply_button(cancel_button)
+	var end_day := get_node_or_null("VBoxContainer/HBoxContainer/EndDay") as Button
+	if end_day != null:
+		UI_STYLE.apply_button(end_day)
+	var title := get_node_or_null("VBoxContainer/HBoxContainer/Label") as Label
+	if title != null:
+		UI_STYLE.apply_label(title, false, true)

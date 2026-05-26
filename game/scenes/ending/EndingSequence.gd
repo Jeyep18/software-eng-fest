@@ -163,8 +163,6 @@ func _start() -> void:
 	ending_camera.make_current()
 
 	# Snap to the first anchor — global_transform is valid here.
-	print("Camera is current: ", ending_camera == get_viewport().get_camera_3d())
-	print("Camera global pos: ", ending_camera.global_position)
 	_snap_camera_to(SLIDES[0]["anchor"])
 	_run_sequence()
 

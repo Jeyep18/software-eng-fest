@@ -5,10 +5,13 @@ extends CanvasLayer
 
 @onready var nav_resume: Button = $Panel/HSplitContainer/Sidebar/ResumeBtn
 @onready var nav_settings: Button = $Panel/HSplitContainer/Sidebar/SettingsBtn
+@onready var nav_tutorial: Button = $Panel/HSplitContainer/Sidebar/TutorialBtn
 @onready var nav_restart: Button = $Panel/HSplitContainer/Sidebar/RestartBtn
 @onready var nav_quit: Button = $Panel/HSplitContainer/Sidebar/QuitBtn
 
 const SIDEBAR_WIDTH: float = 229.0
+const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 
 var _all_panels: Array[Control] = []
 
@@ -17,6 +20,7 @@ func _ready() -> void:
 	_setup_content_area()
 	_setup_panels()
 	_connect_nav_buttons()
+	_apply_pause_style()
 	hide()
 
 func _input(event: InputEvent) -> void:
@@ -59,9 +63,20 @@ func _setup_panels() -> void:
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		panel.hide()
 
+func _apply_pause_style() -> void:
+	var overlay_panel := $Panel/Panel as Panel
+	overlay_panel.modulate = Color(1, 1, 1, 1)
+	overlay_panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.02, 0.025, 0.03, 0.74), Color(1, 1, 1, 0.04), 0))
+	UI_STYLE.apply_tree($Panel/HSplitContainer/Sidebar)
+	var badge := $Panel/HSplitContainer/Sidebar/PauseBadge as PanelContainer
+	UI_STYLE.apply_panel(badge)
+	var pause_label := $Panel/HSplitContainer/Sidebar/PauseBadge/Label as Label
+	UI_STYLE.apply_label(pause_label, false, true)
+
 func _connect_nav_buttons() -> void:
 	nav_resume.pressed.connect(_on_nav_resume)
 	nav_settings.pressed.connect(_on_nav_settings)
+	nav_tutorial.pressed.connect(_on_nav_tutorial)
 	nav_restart.pressed.connect(_on_nav_restart)
 	nav_quit.pressed.connect(_on_nav_quit)
 
@@ -110,6 +125,13 @@ func _on_nav_controls() -> void:
 
 func _on_nav_settings() -> void:
 	_show_panel(settings_panel)
+
+func _on_nav_tutorial() -> void:
+	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()
+	add_child(tutorial)
+	tutorial.open(false, false, func() -> void:
+		tutorial.queue_free()
+	)
 
 func _on_nav_restart() -> void:
 	if not is_inside_tree():

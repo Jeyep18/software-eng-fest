@@ -5,6 +5,8 @@
 
 extends Node
 
+const DEBUG_LOGGING: bool = false
+
 # --- CONSTANTS ---
 const MAX_INVENTORY_SIZE: int = 7
 const HOTBAR_SIZE: int = 7  # Hotbar IS the full inventory for this game
@@ -46,7 +48,7 @@ func add_item(item: ItemData) -> bool:
 				return true
 
 	if inventory.size() >= MAX_INVENTORY_SIZE:
-		print("InventoryManager: Inventory is full.")
+		_debug_log("InventoryManager: Inventory is full.")
 		return false
 	inventory.append(item)
 	item_quantities.append(1)
@@ -119,15 +121,15 @@ func move_item_to_discard(index: int) -> bool:
 	discard_changed.emit()
 
 	if discarded_item != null:
-		print("InventoryManager: Discarded permanently: ", discarded_item.item_name)
-	print("InventoryManager: Holding for discard: ", discard_held_item.item_name)
+		_debug_log("InventoryManager: Discarded permanently: " + discarded_item.item_name)
+	_debug_log("InventoryManager: Holding for discard: " + discard_held_item.item_name)
 	return true
 
 func restore_discard_item() -> bool:
 	if discard_held_item == null:
 		return false
 	if inventory.size() >= MAX_INVENTORY_SIZE:
-		print("InventoryManager: Inventory is full. Cannot restore discard item.")
+		_debug_log("InventoryManager: Inventory is full. Cannot restore discard item.")
 		return false
 
 	var restored_item = discard_held_item
@@ -139,7 +141,7 @@ func restore_discard_item() -> bool:
 
 	inventory_changed.emit()
 	discard_changed.emit()
-	print("InventoryManager: Restored discard item: ", restored_item.item_name)
+	_debug_log("InventoryManager: Restored discard item: " + restored_item.item_name)
 	return true
 
 func remove_item_by_id(item_id: String) -> bool:
@@ -198,7 +200,7 @@ func combine_items(index_a: int, index_b: int, result_item_data: ItemData) -> bo
 
 	inventory_changed.emit()
 	item_combined.emit(result_item_data)
-	print("InventoryManager: Combined → ", result_item_data.item_name)
+	_debug_log("InventoryManager: Combined -> " + result_item_data.item_name)
 	return true
 
 # --- QUERIES ---
@@ -234,4 +236,8 @@ func reset() -> void:
 	discard_held_quantity = 0
 	inventory_changed.emit()
 	discard_changed.emit()
-	print("InventoryManager: Inventory cleared.")
+	_debug_log("InventoryManager: Inventory cleared.")
+
+func _debug_log(message: String) -> void:
+	if DEBUG_LOGGING:
+		print(message)
