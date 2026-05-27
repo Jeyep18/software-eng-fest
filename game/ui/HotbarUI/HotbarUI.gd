@@ -23,6 +23,7 @@ func _ready() -> void:
 	layer = 1
 
 	InventoryManager.inventory_changed.connect(_redraw_hotbar)
+	LocalizationManager.language_changed.connect(func(_language_id: String) -> void: _redraw_hotbar())
 	_redraw_hotbar()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -112,7 +113,7 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		panel.add_child(icon)
 
 		var name_label = Label.new()
-		name_label.text = item.item_name
+		name_label.text = item.get_item_name()
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		name_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
 		name_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

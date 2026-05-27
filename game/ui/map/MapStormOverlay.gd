@@ -18,6 +18,7 @@ var node_positions: Dictionary = {}
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	LocalizationManager.language_changed.connect(func(_language_id: String) -> void: queue_redraw())
 
 func _draw() -> void:
 	if size == Vector2.ZERO:
@@ -29,12 +30,12 @@ func _draw() -> void:
 	var storm_radius: float = _storm_radius_at(travel_t, storm_center)
 
 	_draw_storm_body(storm_center, storm_radius, travel_t)
-	_draw_centered_text("STORM", storm_center + Vector2(0.0, 6.0), 18, STORM_TEXT_COLOR)
+	_draw_centered_text(LocalizationManager.translate("STORM"), storm_center + Vector2(0.0, 6.0), 18, STORM_TEXT_COLOR)
 	_draw_active_location_markers(minute)
 
 	if minute >= STORM_ARRIVAL_MINUTE:
 		draw_rect(Rect2(Vector2.ZERO, size), Color(0.12, 0.02, 0.02, 0.52))
-		_draw_centered_text("STORM HAS ARRIVED", Vector2(size.x * 0.5, size.y * 0.5), 18)
+		_draw_centered_text(LocalizationManager.translate("STORM HAS ARRIVED"), Vector2(size.x * 0.5, size.y * 0.5), 18)
 
 func _storm_center_at(t: float) -> Vector2:
 	var grocery := _node_pos("grocery", Vector2(size.x * 0.84, size.y * 0.68))
@@ -77,13 +78,13 @@ func _draw_active_location_markers(minute: int) -> void:
 	if minute >= OUTER_DANGER_MINUTE:
 		var grocery := _node_pos("grocery", Vector2(size.x * 0.84, size.y * 0.68))
 		if minute >= OUTER_CLOSED_MINUTE:
-			_draw_node_marker(grocery, "Closed", CLOSED_MARKER)
+			_draw_node_marker(grocery, LocalizationManager.translate("Closed"), CLOSED_MARKER)
 		else:
-			_draw_node_marker(grocery, "Danger", DANGER_MARKER)
+			_draw_node_marker(grocery, LocalizationManager.translate("Danger"), DANGER_MARKER)
 
 	if minute >= INNER_DANGER_MINUTE:
-		_draw_node_marker(_node_pos("hardware", Vector2(size.x * 0.73, size.y * 0.40)), "Danger", DANGER_MARKER)
-		_draw_node_marker(_node_pos("pharmacy", Vector2(size.x * 0.63, size.y * 0.72)), "Danger", DANGER_MARKER)
+		_draw_node_marker(_node_pos("hardware", Vector2(size.x * 0.73, size.y * 0.40)), LocalizationManager.translate("Danger"), DANGER_MARKER)
+		_draw_node_marker(_node_pos("pharmacy", Vector2(size.x * 0.63, size.y * 0.72)), LocalizationManager.translate("Danger"), DANGER_MARKER)
 
 func _quadratic_bezier(a: Vector2, b: Vector2, c: Vector2, t: float) -> Vector2:
 	var one_minus_t: float = 1.0 - clamp(t, 0.0, 1.0)

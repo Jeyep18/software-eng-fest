@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://bvw7wy45wf2m4"
 
 [autoload]
 
+LocalizationManager="*res://game/autoload/LocalizationManager.gd"
 TransitionOverlay="*uid://bx637gkf0lc65"
 GlobalTimer="*uid://evkdxftbiln"
 SceneManager="*uid://byw1611rs1g8q"

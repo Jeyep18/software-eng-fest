@@ -30,6 +30,7 @@ func _ready() -> void:
 	shop_panel.hide()
 	close_button.pressed.connect(close_shop)
 	GameState.cash_changed.connect(_on_cash_changed)
+	LocalizationManager.language_changed.connect(_on_language_changed)
 
 func _build_ui() -> void:
 	# ── Full-screen dimmed backdrop ───────────────────────────────────────────
@@ -77,8 +78,10 @@ func _build_ui() -> void:
 	root_vbox.add_child(cash_row)
 
 	var cash_icon := Label.new()
+	cash_icon.name = "CashIcon"
 	cash_icon.text = "Cash:  ₱"
 	cash_icon.add_theme_font_size_override("font_size", 18)
+	cash_icon.text = LocalizationManager.translate("Cash:  " + char(0x20B1))
 	cash_row.add_child(cash_icon)
 
 	cash_label = Label.new()
@@ -129,8 +132,8 @@ func open_shop(shop_data: ShopData) -> void:
 			_shop_cache[cache_key] = shop_data.duplicate(true)
 		_current_shop = _shop_cache[cache_key]
 	
-	shop_name_label.text   = _current_shop.shop_name
-	subtitle_label.text    = _current_shop.shop_subtitle
+	shop_name_label.text   = _current_shop.get_shop_name()
+	subtitle_label.text    = _current_shop.get_shop_subtitle()
 	subtitle_label.visible = _current_shop.shop_subtitle != ""
 	_refresh_cash()
 	_rebuild_item_list()
@@ -184,12 +187,12 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 	var text_col := VBoxContainer.new()
 	text_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var name_lbl := Label.new()
-	name_lbl.text = shop_item.item_data.item_name if shop_item.item_data else "???"
+	name_lbl.text = shop_item.item_data.get_item_name() if shop_item.item_data else "???"
 	name_lbl.add_theme_font_size_override("font_size", 18)
 	text_col.add_child(name_lbl)
 	if shop_item.item_data and shop_item.item_data.item_description != "":
 		var desc := Label.new()
-		desc.text = shop_item.item_data.item_description
+		desc.text = shop_item.item_data.get_item_description()
 		desc.add_theme_font_size_override("font_size", 14)
 		desc.modulate = Color(1, 1, 1, 0.55)
 		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -254,15 +257,15 @@ func _on_buy_pressed(shop_item: ShopItem) -> void:
 	if success:
 		SFX.purchase_success()
 		shop_item.consume_stock()
-		_show_feedback("Nabili! " + shop_item.item_data.item_name + " — nasa bag mo na.", Color(0.5, 0.9, 0.5))
+		_show_feedback(LocalizationManager.trf("Nabili! %s — nasa bag mo na.", [shop_item.item_data.get_item_name()]), Color(0.5, 0.9, 0.5))
 	else:
 		SFX.ui_error()
 		if InventoryManager.is_full():
-			_show_feedback("Puno na ang bag mo. Mag-iwan muna ng item.", Color(0.9, 0.5, 0.3))
+			_show_feedback(LocalizationManager.translate("Puno na ang bag mo. Mag-iwan muna ng item."), Color(0.9, 0.5, 0.3))
 		elif GameState.get_cash() < shop_item.price:
-			_show_feedback("Hindi sapat ang pera. Kulang ng ₱%d." % (shop_item.price - GameState.get_cash()), Color(0.9, 0.4, 0.4))
+			_show_feedback(LocalizationManager.trf("Hindi sapat ang pera. Kulang ng ₱%d.", [shop_item.price - GameState.get_cash()]), Color(0.9, 0.4, 0.4))
 		else:
-			_show_feedback("Hindi nabili.", Color(0.9, 0.4, 0.4))
+			_show_feedback(LocalizationManager.translate("Hindi nabili."), Color(0.9, 0.4, 0.4))
 	_rebuild_item_list()
 
 # ── Feedback ───────────────────────────────────────────────────────────────────
@@ -291,3 +294,13 @@ func reset() -> void:
 	_shop_cache.clear()
 	_current_shop = null
 	close_shop()
+
+func _on_language_changed(_language_id: String) -> void:
+	var cash_icon := shop_panel.find_child("CashIcon", true, false) as Label
+	if cash_icon != null:
+		cash_icon.text = LocalizationManager.translate("Cash:  " + char(0x20B1))
+	if is_open() and _current_shop != null:
+		shop_name_label.text = _current_shop.get_shop_name()
+		subtitle_label.text = _current_shop.get_shop_subtitle()
+		_rebuild_item_list()
+		_clear_feedback()

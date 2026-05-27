@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var backpack_panel: Panel         = $BackpackPanel
 @onready var discard_slot: Panel           = $BackpackPanel/DiscardSlot
 @onready var discard_prompt: Label         = $BackpackPanel/DiscardPrompt
+@onready var title_label: Label            = $BackpackPanel/TitleBar/TitleLabel
 
 const ITEMS_PATH: String = "res://game/resources/items/"
 const INVENTORY_DRAG_SLOT_SCRIPT = preload("res://game/ui/BackpackUI/InventoryDragSlot.gd")
@@ -37,6 +38,7 @@ func _ready() -> void:
 	InventoryManager.discard_changed.connect(_on_discard_changed)
 	if is_instance_valid(combine_button):
 		combine_button.pressed.connect(_on_combine_pressed)
+	LocalizationManager.language_changed.connect(_on_language_changed)
 	_apply_backpack_style()
 	_hide_combine_bar()
 
@@ -132,8 +134,15 @@ func _setup_panel_layout() -> void:
 func _apply_backpack_style() -> void:
 	UI_STYLE.apply_tree(backpack_panel)
 	UI_STYLE.apply_button(combine_button)
-	UI_STYLE.apply_label($BackpackPanel/TitleBar/TitleLabel, false, true)
+	_refresh_static_text()
 	UI_STYLE.apply_label(count_label, true)
+
+func _refresh_static_text() -> void:
+	if is_instance_valid(title_label):
+		title_label.text = LocalizationManager.translate("Inventory")
+		UI_STYLE.apply_label(title_label, false, true)
+	if is_instance_valid(discard_prompt):
+		discard_prompt.text = LocalizationManager.translate("Drag item to discard slot if you want to discard it.")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_backpack"):
@@ -221,7 +230,7 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		panel.add_child(icon)
 
 		var name_label = Label.new()
-		name_label.text = item.item_name
+		name_label.text = item.get_item_name()
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		name_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
 		name_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -329,12 +338,12 @@ func _refresh_info_bar() -> void:
 	if display_index >= 0 and display_index < items.size():
 		var item = items[display_index]
 		if is_instance_valid(info_icon): info_icon.texture = item.item_icon
-		if is_instance_valid(info_name): info_name.text = item.item_name
-		if is_instance_valid(info_desc): info_desc.text = item.item_description if item.item_description != "" else "No description."
+		if is_instance_valid(info_name): info_name.text = item.get_item_name()
+		if is_instance_valid(info_desc): info_desc.text = item.get_item_description() if item.item_description != "" else LocalizationManager.translate("No description.")
 	else:
 		if is_instance_valid(info_icon): info_icon.texture = null
 		if is_instance_valid(info_name): info_name.text = ""
-		if is_instance_valid(info_desc): info_desc.text = "Click an item to inspect.\nClick a second item to combine."
+		if is_instance_valid(info_desc): info_desc.text = LocalizationManager.translate("Click an item to inspect.\nClick a second item to combine.")
 
 func _refresh_combine_bar() -> void:
 	if _selected_index == -1 or _combine_target_index == -1:
@@ -345,14 +354,14 @@ func _refresh_combine_bar() -> void:
 
 	if result_id == "":
 		combine_bar.visible = true
-		combine_label.text = "These items can't be combined."
+		combine_label.text = LocalizationManager.translate("These items can't be combined.")
 		if is_instance_valid(combine_button):
 			combine_button.visible = false
 	else:
 		combine_bar.visible = true
 		var result_item = _load_item_by_id(result_id)
-		var result_name = result_item.item_name if result_item else result_id
-		combine_label.text = "Combine -> " + result_name
+		var result_name = result_item.get_item_name() if result_item else result_id
+		combine_label.text = LocalizationManager.trf("Combine -> %s", [result_name])
 		if is_instance_valid(combine_button):
 			combine_button.text = "Combine"
 			combine_button.visible = true
@@ -396,3 +405,8 @@ func _load_item_by_id(item_id: String) -> ItemData:
 			   "\nMake sure your file is named exactly '" + item_id + ".tres'" +
 			   "\nand lives in " + ITEMS_PATH)
 	return null
+
+func _on_language_changed(_language_id: String) -> void:
+	_refresh_static_text()
+	if visible:
+		_redraw_backpack()

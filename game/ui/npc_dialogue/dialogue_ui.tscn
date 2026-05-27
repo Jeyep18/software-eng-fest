@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 5
 [node name="InteractPrompt" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer2" unique_id=28763757]
 unique_name_in_owner = true
 clip_contents = false
-custom_minimum_size = Vector2(165, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 bbcode_enabled = true

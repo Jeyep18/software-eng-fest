@@ -23,6 +23,9 @@ const NEED_LABELS: Dictionary = {
 	Need.WATER:      "Tubig — no filled water containers",
 	Need.FLASHLIGHT: "Flashlight — dead batteries",
 }
+
+func get_need_label(need: Need) -> String:
+	return LocalizationManager.translate(NEED_LABELS.get(need, str(need)))
 #endregion
 
 #region Internal State

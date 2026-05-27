@@ -15,3 +15,9 @@ extends Resource
 
 ## The list of items this shop sells.
 @export var items: Array[ShopItem] = []
+
+func get_shop_name() -> String:
+	return LocalizationManager.translate(shop_name)
+
+func get_shop_subtitle() -> String:
+	return LocalizationManager.translate(shop_subtitle)

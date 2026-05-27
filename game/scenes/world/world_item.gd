@@ -74,7 +74,7 @@ func _ready() -> void:
 
 	# Set the prompt text the player sees when nearby.
 	# This uses the inherited 'prompt_label' variable from Interactable.
-	prompt_label = "Press E to pick up " + item_data.item_name
+	prompt_label = "Press E to pick up " + item_data.get_item_name()
 
 	# Load the 3D model if one is assigned in the ItemData.
 	_load_model()
@@ -176,7 +176,7 @@ func _show_current_line() -> void:
 	_is_showing = true
 	_is_typing = true
 
-	var line: String = item_data.pickup_lines[_current_line]
+	var line: String = item_data.get_pickup_line(_current_line)
 	_ui.show_line(line, SPEAKER_NAME)
 	_ui.set_prompt_visible(false)
 	prompt_visibility_changed.emit(false)
@@ -244,7 +244,7 @@ func _show_confirm_dialog() -> void:
 		add_child(_canvas_layer)
 	if _confirm_modal == null:
 		_build_confirm_modal()
-	_confirm_message.text = item_data.item_description if item_data.item_description.strip_edges() != "" else "Add this item to your backpack?"
+	_confirm_message.text = item_data.get_item_description() if item_data.item_description.strip_edges() != "" else LocalizationManager.translate("Add this item to your backpack?")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_confirm_modal.show()
 	_confirm_modal.grab_focus()
@@ -322,7 +322,7 @@ func _build_confirm_modal() -> void:
 	item_row.add_child(text_stack)
 
 	var item_name := Label.new()
-	item_name.text = item_data.item_name
+	item_name.text = item_data.get_item_name()
 	item_name.add_theme_font_size_override("font_size", 19)
 	UI_STYLE.apply_label(item_name)
 	text_stack.add_child(item_name)

@@ -33,6 +33,7 @@ func _ready() -> void:
 	NeedsLog.need_resolved.connect(_on_need_resolved)
 	NeedsLog.need_discovered.connect(_on_need_discovered)
 	GameState.guide_tasks_changed.connect(_on_guide_tasks_changed)
+	LocalizationManager.language_changed.connect(_on_language_changed)
 
 	# Defer the first populate
 	call_deferred("_populate")
@@ -90,15 +91,16 @@ func _populate() -> void:
 		else:
 			icon.text = "○"
 			icon.add_theme_color_override("font_color", _COL_UNDISCOVERED)
+		icon.add_theme_font_size_override("font_size", 17)
 		row.add_child(icon)
 
 		# Task label
 		var lbl := Label.new()
 		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		lbl.text = "%s (%s)" % [item[0], item[1]]
+		lbl.text = "%s (%s)" % [LocalizationManager.translate(item[0]), LocalizationManager.translate(item[1])]
 		lbl.add_theme_color_override("font_color",
 			_COL_RESOLVED if resolved else Color.WHITE)
-		lbl.add_theme_font_size_override("font_size", 13)
+		lbl.add_theme_font_size_override("font_size", 17)
 			
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -132,13 +134,14 @@ func _add_row(text: String, resolved: bool) -> void:
 	icon.custom_minimum_size = Vector2(16, 0)
 	icon.text = "OK" if resolved else "!"
 	icon.add_theme_color_override("font_color", _COL_RESOLVED if resolved else _COL_DISCOVERED)
+	icon.add_theme_font_size_override("font_size", 17)
 	row.add_child(icon)
 
 	var lbl := Label.new()
 	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	lbl.text = text
+	lbl.text = LocalizationManager.translate(text)
 	lbl.add_theme_color_override("font_color", _COL_RESOLVED if resolved else Color.WHITE)
-	lbl.add_theme_font_size_override("font_size", 13)
+	lbl.add_theme_font_size_override("font_size", 17)
 	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	row.add_child(lbl)
@@ -165,3 +168,6 @@ func _check_completion() -> void:
 	elif critical_done and not _critical_emitted:
 		_critical_emitted = true
 		critical_tasks_completed.emit()
+
+func _on_language_changed(_language_id: String) -> void:
+	_populate()

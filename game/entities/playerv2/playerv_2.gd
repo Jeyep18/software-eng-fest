@@ -8,6 +8,7 @@ const GROUND_ACCELERATION: float = 12.0
 const AIR_ACCELERATION: float = 3.0
 const ROTATION_SPEED: float = 10.0
 const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
+const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 
 var _current_speed: float = WALK_SPEED
 var _is_mouse_captured: bool = true
@@ -33,6 +34,7 @@ const ANIM_STAND_UP:   String = "Stand Up (1)/mixamo_com"
 
 func _ready() -> void:
 	add_to_group("player")
+	_setup_interact_prompt_style()
 	_capture_mouse()
 	_animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -44,6 +46,50 @@ func _ready() -> void:
 		_is_input_locked = false
 		_play(ANIM_IDLE)
 
+func _setup_interact_prompt_style() -> void:
+	var prompt_layer := get_node_or_null("CanvasLayer") as CanvasLayer
+	var prompt_box := get_node_or_null("CanvasLayer/BoxContainer") as BoxContainer
+	var prompt_label := get_node_or_null("CanvasLayer/BoxContainer/InteractText") as Label
+	if prompt_layer == null or prompt_box == null or prompt_label == null:
+		return
+
+	var old_shadow := prompt_layer.get_node_or_null("InteractPromptShadow")
+	if old_shadow != null:
+		old_shadow.queue_free()
+
+	var prompt_background := prompt_layer.get_node_or_null("InteractPromptBackground") as ColorRect
+	if prompt_background == null:
+		prompt_background = ColorRect.new()
+		prompt_background.name = "InteractPromptBackground"
+		prompt_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		prompt_background.set_anchors_preset(Control.PRESET_CENTER)
+		prompt_background.color = Color(0, 0, 0, 0.42)
+		prompt_background.hide()
+		prompt_layer.add_child(prompt_background)
+		prompt_layer.move_child(prompt_background, prompt_box.get_index())
+
+	prompt_background.offset_left = -86.0
+	prompt_background.offset_top = -12.0
+	prompt_background.offset_right = 86.0
+	prompt_background.offset_bottom = 12.0
+	prompt_box.offset_left = prompt_background.offset_left
+	prompt_box.offset_top = prompt_background.offset_top
+	prompt_box.offset_right = prompt_background.offset_right
+	prompt_box.offset_bottom = prompt_background.offset_bottom
+	prompt_box.alignment = BoxContainer.ALIGNMENT_CENTER
+	prompt_box.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	prompt_box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	prompt_label.custom_minimum_size = Vector2(172.0, 24.0)
+	prompt_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	prompt_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	prompt_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	prompt_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	prompt_label.add_theme_font_size_override("font_size", 15)
+	prompt_label.add_theme_color_override("font_color", Color.WHITE)
+	prompt_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
+	prompt_label.add_theme_constant_override("shadow_offset_x", 1)
+	prompt_label.add_theme_constant_override("shadow_offset_y", 1)
 
 # ── Safe play wrapper — avoids restarting an already-playing animation ────────
 func _play(anim_name: String) -> void:
@@ -173,7 +219,7 @@ func _toggle_mouse_capture() -> void:
 #region Interaction
 func _resolve_interaction_target() -> void:
 	_current_target = null
-	%InteractText.hide()
+	_set_interact_prompt_visible(false)
 
 	if _is_input_locked or _nearby_interactables.is_empty():
 		_rewire_prompt_signal(null)
@@ -193,7 +239,7 @@ func _resolve_interaction_target() -> void:
 		_current_target = _nearby_interactables[0]
 		%InteractText.text = _current_target.prompt_label
 		if not _prompt_suppressed:
-			%InteractText.show()
+			_set_interact_prompt_visible(true)
 		_rewire_prompt_signal(_current_target)
 		return
 
@@ -217,7 +263,7 @@ func _resolve_interaction_target() -> void:
 		_current_target = best_target
 		%InteractText.text = _current_target.prompt_label
 		if not _prompt_suppressed:
-			%InteractText.show()
+			_set_interact_prompt_visible(true)
 
 	_rewire_prompt_signal(_current_target)
 
@@ -239,10 +285,13 @@ func _rewire_prompt_signal(new_target: Interactable) -> void:
 
 func _on_prompt_visibility_changed(should_show: bool) -> void:
 	_prompt_suppressed = not should_show
-	if should_show:
-		%InteractText.show()
-	else:
-		%InteractText.hide()
+	_set_interact_prompt_visible(should_show)
+
+func _set_interact_prompt_visible(should_show: bool) -> void:
+	%InteractText.visible = should_show
+	var prompt_background := get_node_or_null("CanvasLayer/InteractPromptBackground") as ColorRect
+	if prompt_background != null:
+		prompt_background.visible = should_show
 
 
 func _handle_interact_input() -> void:

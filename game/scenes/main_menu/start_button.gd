@@ -6,16 +6,6 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	AudioManager.stop_music(true)
-	disabled = true
-	await TransitionOverlay.fade_to_black()
-	SceneManager.reset()
-	StormEnroachment.reset()
-	NeedsLog.reset()
-	ShopUi.reset()
-	InventoryManager.reset()
-	var selected_difficulty := GameState.selected_difficulty
-	GameState.reset()
-	GameState.set_difficulty(selected_difficulty)
-	SceneManager.load_scene("home")
-	GlobalTimer.start_fresh()
+	var menu := get_tree().current_scene
+	if menu != null and menu.has_method("request_start_game"):
+		menu.request_start_game(self)

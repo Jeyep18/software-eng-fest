@@ -16,6 +16,7 @@ const BUSES: Array[Dictionary] = [
 
 var show_close_button: bool = true
 var _sliders: Dictionary = {}
+var _language_selector: OptionButton
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -41,6 +42,8 @@ func _build() -> void:
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	UI_STYLE.apply_label(title, true, true)
 	box.add_child(title)
+
+	box.add_child(_make_language_row())
 
 	for bus_data in BUSES:
 		box.add_child(_make_volume_row(bus_data["name"], bus_data["label"]))
@@ -97,6 +100,28 @@ func _make_volume_row(bus_name: StringName, label_text: String) -> Control:
 
 	return row
 
+func _make_language_row() -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+
+	var label := Label.new()
+	label.text = "Language"
+	label.custom_minimum_size = Vector2(100, 0)
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	UI_STYLE.apply_label(label)
+	row.add_child(label)
+
+	_language_selector = OptionButton.new()
+	_language_selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_language_selector.add_item(str(LocalizationManager.LANGUAGE_LABELS[LocalizationManager.LANGUAGE_ENGLISH]), 0)
+	_language_selector.add_item(str(LocalizationManager.LANGUAGE_LABELS[LocalizationManager.LANGUAGE_TAGALOG]), 1)
+	_language_selector.select(LocalizationManager.get_language_index())
+	_language_selector.item_selected.connect(_on_language_selected)
+	UI_STYLE.apply_button(_language_selector)
+	row.add_child(_language_selector)
+
+	return row
+
 func _sync_from_audio_manager() -> void:
 	for bus_name in _sliders.keys():
 		var slider := _sliders[bus_name] as HSlider
@@ -110,6 +135,9 @@ func _on_slider_changed(value: float, bus_name: StringName) -> void:
 func _on_reset_pressed() -> void:
 	AudioManager.reset_audio_settings()
 	_sync_from_audio_manager()
+
+func _on_language_selected(index: int) -> void:
+	LocalizationManager.set_language(LocalizationManager.get_language_from_index(index))
 
 func _update_percent_label(slider: HSlider) -> void:
 	var percent := slider.get_parent().get_node_or_null("Percent") as Label

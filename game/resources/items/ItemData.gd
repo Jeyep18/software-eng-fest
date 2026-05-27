@@ -25,5 +25,16 @@ enum ItemType {
 }
 @export var item_type: ItemType = ItemType.BRING_HOME
 
+func get_item_name() -> String:
+	return LocalizationManager.translate(item_name)
+
+func get_item_description() -> String:
+	return LocalizationManager.translate(item_description)
+
+func get_pickup_line(index: int) -> String:
+	if index < 0 or index >= pickup_lines.size():
+		return ""
+	return LocalizationManager.translate(pickup_lines[index])
+
 func use() -> void:
 	pass

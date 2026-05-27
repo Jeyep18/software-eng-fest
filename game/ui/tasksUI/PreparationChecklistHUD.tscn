@@ -21,8 +21,8 @@ script = ExtResource("1_hud")
 [node name="CashPanel" type="Panel" parent="." unique_id=1634344460]
 offset_left = 16.0
 offset_top = 24.0
-offset_right = 300.0
-offset_bottom = 62.0
+offset_right = 360.0
+offset_bottom = 74.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
 
 [node name="MarginContainer" type="MarginContainer" parent="CashPanel" unique_id=1152476359]
@@ -43,16 +43,16 @@ theme_override_constants/margin_bottom = 6
 
 [node name="CashLabel" type="Label" parent="CashPanel/MarginContainer" unique_id=413346095]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 22
 text = "Pera: PHP 0"
 
 [node name="ChecklistPanel" type="Control" parent="." unique_id=1871499557]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0
-offset_top = 72.0
-offset_right = 300.0
-offset_bottom = 296.0
+offset_top = 86.0
+offset_right = 360.0
+offset_bottom = 330.0
 script = ExtResource("2_list")
 
 [node name="Panel" type="Panel" parent="ChecklistPanel" unique_id=1858934153]
@@ -79,8 +79,8 @@ theme_override_constants/separation = 5
 
 [node name="TitleLabel" type="Label" parent="ChecklistPanel/VBoxContainer" unique_id=1582230961]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-text = "Preparation Checklist"
+theme_override_font_sizes/font_size = 22
+text = "OBJECTIVES"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ChecklistPanel/VBoxContainer" unique_id=1530565610]
 layout_mode = 2

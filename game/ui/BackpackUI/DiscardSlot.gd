@@ -16,6 +16,7 @@ func _ready() -> void:
 
 	if not InventoryManager.discard_changed.is_connected(_refresh):
 		InventoryManager.discard_changed.connect(_refresh)
+	LocalizationManager.language_changed.connect(func(_language_id: String) -> void: _refresh())
 	_refresh()
 
 func _gui_input(event: InputEvent) -> void:
@@ -50,5 +51,5 @@ func _refresh() -> void:
 
 	icon.texture = item.item_icon
 	var quantity_suffix := " x%d" % InventoryManager.discard_held_quantity if InventoryManager.discard_held_quantity > 1 else ""
-	label.text = item.item_name + quantity_suffix
+	label.text = item.get_item_name() + quantity_suffix
 	label.visible = item.item_icon == null or InventoryManager.discard_held_quantity > 1

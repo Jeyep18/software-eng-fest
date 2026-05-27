@@ -4,7 +4,7 @@ const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 const TABLE_WIDTH: float = 900.0
 const ROW_BG: Color = Color(1, 1, 1, 0.035)
 const ROW_BG_ALT: Color = Color(1, 1, 1, 0.065)
-const HEADER_BG: Color = Color(0.98, 0.78, 0.38, 0.16)
+const HEADER_BG: Color = Color(0.122, 0.486, 0.404, 0.18)
 
 @onready var close_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/close_button
 @onready var clear_button: Button = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/clear_button
@@ -104,7 +104,7 @@ func _add_cell(row: HBoxContainer, text: String, min_width: float, is_header: bo
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD if is_header else UI_STYLE.FONT_REGULAR)
 	label.add_theme_font_size_override("font_size", 15 if is_header else 16)
-	label.add_theme_color_override("font_color", Color(1.0, 0.90, 0.62) if is_header else Color(0.88, 0.87, 0.81))
+	label.add_theme_color_override("font_color", UI_STYLE.ACCENT if is_header else Color(0.88, 0.87, 0.81))
 	row.add_child(label)
 
 func _format_minutes(minutes: int) -> String:
@@ -140,7 +140,7 @@ func _difficulty_label_with_multiplier(difficulty_id: String) -> String:
 
 func _apply_leaderboard_style() -> void:
 	var panel := $MarginContainer/LeaderboardsModal as PanelContainer
-	panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.025, 0.028, 0.03, 0.94), Color(0.98, 0.78, 0.38, 0.46), 8))
+	panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.025, 0.028, 0.03, 0.94), UI_STYLE.BORDER, 8))
 	UI_STYLE.apply_button(close_button)
 	UI_STYLE.apply_button(clear_button)
 	UI_STYLE.apply_label(title_label, false, true)

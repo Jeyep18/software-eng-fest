@@ -13,6 +13,7 @@ const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 
 # ── State ──────────────────────────────────────────────────────────────────────
 var _skipped: bool = false
+var _skip_enabled: bool = false
 var _studio_kicker: Label
 var _studio_label: Label
 
@@ -73,7 +74,7 @@ func _ready() -> void:
 
 # ── Input — Skip on any key or mouse click ────────────────────────────────────
 func _input(event: InputEvent) -> void:
-	if _skipped:
+	if _skipped or not _skip_enabled:
 		return
 	if event.is_action_pressed("ui_accept") \
 	or event.is_action_pressed("ui_cancel") \
@@ -102,6 +103,7 @@ func _run_sequence() -> void:
 		await _end_sequence()
 		return
 
+	_skip_enabled = true
 	AudioManager.play_ambience(preload("res://game/assets/sfx/freesound_community-morning-birds-30911-FreeSoundCommunityPixabay.mp3"))
 	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 	await _wait_or_skip(0.8)
@@ -146,14 +148,20 @@ func _show_card(text: String, style: String, hold: float, fade: float) -> void:
 	_apply_style(style)
 	line_label.text = text
 	await _fade_label_in(0.8)
-	await _wait_or_skip(hold)
-	if not _skipped:
-		await _fade_label_out(fade)
-	await _wait_or_skip(0.3)
+	await _wait_for_duration(hold)
+	await _fade_label_out(fade)
+	await _wait_for_duration(0.3)
 
 func _wait_or_skip(duration: float) -> void:
 	var remaining := duration
 	while remaining > 0.0 and not _skipped:
+		var step := minf(remaining, 0.05)
+		await get_tree().create_timer(step).timeout
+		remaining -= step
+
+func _wait_for_duration(duration: float) -> void:
+	var remaining := duration
+	while remaining > 0.0:
 		var step := minf(remaining, 0.05)
 		await get_tree().create_timer(step).timeout
 		remaining -= step
@@ -222,9 +230,7 @@ func _setup_studio_splash() -> void:
 	background.add_child(_studio_label)
 
 func _run_studio_splash() -> void:
-	await _wait_or_skip(0.5)
-	if _skipped:
-		return
+	await _wait_for_duration(0.5)
 
 	var intro_tween := create_tween()
 	intro_tween.set_parallel(true)
@@ -233,12 +239,8 @@ func _run_studio_splash() -> void:
 	intro_tween.tween_property(_studio_kicker, "modulate:a", 1.0, 0.9)
 	intro_tween.tween_property(_studio_label, "modulate:a", 1.0, 1.0)
 	await intro_tween.finished
-	if _skipped:
-		return
 
-	await _wait_or_skip(2.4)
-	if _skipped:
-		return
+	await _wait_for_duration(2.4)
 	var outro_tween := create_tween()
 	outro_tween.set_parallel(true)
 	outro_tween.set_trans(Tween.TRANS_CUBIC)

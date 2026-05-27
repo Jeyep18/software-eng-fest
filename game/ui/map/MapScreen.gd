@@ -65,6 +65,7 @@ func _ready() -> void:
 	_build_road_lines()
 	_build_node_buttons()
 	_connect_signals()
+	LocalizationManager.language_changed.connect(_on_language_changed)
 	confirm_button.pressed.connect(_on_confirm_travel)
 	cancel_button.pressed.connect(_on_cancel_selection)
 	_apply_map_style()
@@ -157,7 +158,7 @@ func _refresh_all_nodes() -> void:
 		var clean_label: String = "%d min" % travel_time
 		# If it's the current location, we might want to hide the time
 		if state == "current":
-			clean_label = "Nandito ka" 
+			clean_label = LocalizationManager.translate("Nandito ka")
 		
 		_node_buttons[loc_id].refresh(state, clean_label)
 
@@ -178,20 +179,20 @@ func _on_node_selected(loc_id: String) -> void:
 
 func _show_confirm_panel(loc_id: String) -> void:
 	# 1. Update Text & Info (Keep existing info logic)
-	var display_name: String = NODE_DISPLAY_NAMES.get(loc_id, loc_id)
+	var display_name: String = LocalizationManager.translate(NODE_DISPLAY_NAMES.get(loc_id, loc_id))
 	var travel_cost: int = TravelCalculator.get_travel_time(
 		SceneManager.current_location, loc_id)
 	_selected_travel_cost = travel_cost
 	var state: String = SceneManager.get_location_state(loc_id)
 	
 	confirm_dest.text = display_name
-	confirm_time.text = "Travel cost: ~%d min" % travel_cost
+	confirm_time.text = LocalizationManager.trf("Travel cost: ~%d min", [travel_cost])
 	
 	if state == "danger":
-		confirm_time.text += "  ⚠ Danger Zone"
+		confirm_time.text += LocalizationManager.translate("  ⚠ Danger Zone")
 		confirm_time.modulate = Color(0.95, 0.40, 0.30)
 	elif loc_id == "grocery":
-		confirm_time.text += "  Closes early"
+		confirm_time.text += LocalizationManager.translate("  Closes early")
 		confirm_time.modulate = Color(1.0, 0.86, 0.42)
 	else:
 		confirm_time.modulate = Color.WHITE
@@ -250,6 +251,14 @@ func _on_travel_completed(_location_id: String) -> void:
 	if visible:
 		_refresh_all_nodes()
 
+func _on_language_changed(_language_id: String) -> void:
+	_refresh_static_text()
+	if visible:
+		_refresh_all_nodes()
+		storm_overlay.queue_redraw()
+		if not _selected_location.is_empty():
+			_show_confirm_panel(_selected_location)
+
 func _apply_map_style() -> void:
 	UI_STYLE.apply_panel(confirm_panel)
 	UI_STYLE.apply_label(confirm_dest, false, true)
@@ -261,4 +270,10 @@ func _apply_map_style() -> void:
 		UI_STYLE.apply_button(end_day)
 	var title := get_node_or_null("VBoxContainer/HBoxContainer/Label") as Label
 	if title != null:
+		_refresh_static_text()
 		UI_STYLE.apply_label(title, false, true)
+
+func _refresh_static_text() -> void:
+	var title := get_node_or_null("VBoxContainer/HBoxContainer/Label") as Label
+	if title != null:
+		title.text = LocalizationManager.translate("Confident enough?")

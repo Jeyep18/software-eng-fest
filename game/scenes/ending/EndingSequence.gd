@@ -219,7 +219,7 @@ func _run_sequence() -> void:
 			await get_tree().create_timer(0.15).timeout
 
 		# Show the status label (non-blocking fade-in).
-		_start_label(slide["label_done"] if is_done else slide["label_skip"], is_done)
+		_start_label(LocalizationManager.translate(slide["label_done"] if is_done else slide["label_skip"]), is_done)
 		if not is_done:
 			_flash_lightning(14.0, 0.12)
 		elif randf() < 0.35:
@@ -400,19 +400,19 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	margin.add_child(box)
 
 	var title := Label.new()
-	title.text = "SAVE YOUR RUN"
+	title.text = LocalizationManager.translate("SAVE YOUR RUN")
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 28)
 	box.add_child(title)
 	UI_STYLE.apply_label(title, false, true)
 
 	var summary := Label.new()
-	summary.text = "Mode: %s    Tasks: %d / %d    Time left: %s" % [
+	summary.text = LocalizationManager.trf("Mode: %s    Tasks: %d / %d    Time left: %s", [
 		GameState.get_difficulty_label(),
 		tasks_completed,
 		NeedsLog.Need.size(),
 		_format_minutes(remaining_minutes),
-	]
+	])
 	summary.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	summary.add_theme_font_size_override("font_size", 18)
 	box.add_child(summary)
@@ -420,7 +420,7 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 
 	var name_input := LineEdit.new()
 	name_input.name = "NameInput"
-	name_input.placeholder_text = "Enter player name"
+	name_input.placeholder_text = LocalizationManager.translate("Enter player name")
 	name_input.max_length = 24
 	name_input.custom_minimum_size = Vector2(0, 42)
 	name_input.add_theme_color_override("font_color", UI_STYLE.TEXT)
@@ -462,20 +462,20 @@ func _populate_result_panel() -> void:
 		if _check_slide_done(slide):
 			final_completed_count += 1
 
-	title_lbl.text = "Dumating ang Bagyo."
+	title_lbl.text = LocalizationManager.translate("Dumating ang Bagyo.")
 	title_lbl.modulate.a = 0.0
 
 	if final_completed_count == SLIDES.size():
-		sub_lbl.text = "Nakaligtas kami lahat."
+		sub_lbl.text = LocalizationManager.translate("Nakaligtas kami lahat.")
 		sub_lbl.add_theme_color_override("font_color", Color(0.70, 0.86, 0.68))
 	elif final_completed_count >= 4:
-		sub_lbl.text = "Nandito pa rin kami. Sugatan, pero buhay."
+		sub_lbl.text = LocalizationManager.translate("Nandito pa rin kami. Sugatan, pero buhay.")
 		sub_lbl.add_theme_color_override("font_color", Color(0.86, 0.74, 0.52))
 	elif final_completed_count >= 2:
-		sub_lbl.text = "Mahirap ang gabi. Pero hindi kami sumuko."
+		sub_lbl.text = LocalizationManager.translate("Mahirap ang gabi. Pero hindi kami sumuko.")
 		sub_lbl.add_theme_color_override("font_color", Color(0.82, 0.66, 0.48))
 	else:
-		sub_lbl.text = "Hindi lahat ay naihanda. Hindi lahat ay napigilan."
+		sub_lbl.text = LocalizationManager.translate("Hindi lahat ay naihanda. Hindi lahat ay napigilan.")
 		sub_lbl.add_theme_color_override("font_color", Color(0.82, 0.44, 0.42))
 	sub_lbl.modulate.a = 0.0
 
@@ -484,13 +484,14 @@ func _populate_result_panel() -> void:
 	item_list.hide()
 
 	footer_lbl.text = (
-		"Every year, an average of 20 typhoons test our resilience. But while \"flood control projects\" remain sturdy only on paper and political tarpaulins, ordinary citizens are left to swim for their lives.\n\n"
-		+ "Safety is not a privilege to be earned. It is a basic accountability of those in power."
+		LocalizationManager.translate("Every year, an average of 20 typhoons test our resilience. But while \"flood control projects\" remain sturdy only on paper and political tarpaulins, ordinary citizens are left to swim for their lives.")
+		+ "\n\n"
+		+ LocalizationManager.translate("Safety is not a privilege to be earned. It is a basic accountability of those in power.")
 	)
 	footer_lbl.modulate.a = 0
 	footer_lbl.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
 	footer_lbl.add_theme_color_override("font_color", Color(0.82, 0.80, 0.72))
-	footer_lbl.add_theme_font_size_override("font_size", 22)
+	footer_lbl.add_theme_font_size_override("font_size", 28)
 	footer_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	footer_lbl.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	footer_lbl.custom_minimum_size = Vector2(720, 0)
@@ -507,8 +508,8 @@ func _populate_result_panel() -> void:
 	_credit_label.text = "3 Netherite Ingots - Ateneo de Naga University Software Festival 2026"
 	_credit_label.modulate.a = 0.0
 	_credit_label.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
-	_credit_label.add_theme_font_size_override("font_size", 14)
-	_credit_label.add_theme_color_override("font_color", Color(0.42, 0.42, 0.39))
+	_credit_label.add_theme_font_size_override("font_size", 20)
+	_credit_label.add_theme_color_override("font_color", Color(0.58, 0.58, 0.53))
 
 func _apply_result_ui_style() -> void:
 	UI_STYLE.apply_tree(result_panel)

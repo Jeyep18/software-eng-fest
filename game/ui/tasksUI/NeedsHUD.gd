@@ -16,6 +16,7 @@ func _ready() -> void:
 	# need_resolved fires when a task is completed.
 	NeedsLog.need_discovered.connect(_on_needs_changed)
 	NeedsLog.need_resolved.connect(_on_needs_changed)
+	LocalizationManager.language_changed.connect(_on_language_changed)
 
 	# Draw once at start (will be empty, but ensures clean state).
 	_redraw()
@@ -24,6 +25,9 @@ func _ready() -> void:
 # Called when either signal fires. The argument is the Need enum value
 # but we don't need it — we just redraw the whole list from scratch.
 func _on_needs_changed(_need: NeedsLog.Need) -> void:
+	_redraw()
+
+func _on_language_changed(_language_id: String) -> void:
 	_redraw()
 
 
@@ -42,6 +46,6 @@ func _redraw() -> void:
 	# Build one Label per active task.
 	for need in active_needs:
 		var label = Label.new()
-		label.text = "- " + NeedsLog.NEED_LABELS.get(need, str(need))
+		label.text = "- " + NeedsLog.get_need_label(need)
 		label.add_theme_font_size_override("font_size", 13)
 		task_list.add_child(label)

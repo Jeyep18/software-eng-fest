@@ -36,7 +36,7 @@ func _build() -> void:
 
 	# 2. THE "NANDITO KA" INDICATOR
 	_current_label = Label.new()
-	_current_label.text = "Nandito ka"
+	_current_label.text = LocalizationManager.translate("Nandito ka")
 	_current_label.custom_minimum_size = Vector2(110, 24)
 	_current_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_current_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -66,6 +66,7 @@ func setup(loc_id: String, _display_name: String) -> void:
 
 func refresh(state: String, _travel_label: String) -> void:
 	if is_instance_valid(_current_label):
+		_current_label.text = LocalizationManager.translate("Nandito ka")
 		_current_label.position = (size - _current_label.size) * 0.5
 	_apply_state(state)
 
