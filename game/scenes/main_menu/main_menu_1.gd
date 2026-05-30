@@ -35,6 +35,8 @@ const BUTTON_TEXT: Color = Color(0.886, 0.91, 0.941)
 const BUTTON_MUTED: Color = Color(0.60, 0.68, 0.70)
 const BUTTON_WIDTH: float = 244.0
 const BUTTON_HEIGHT: float = 48.0
+const DIFFICULTY_BUTTON_WIDTH: float = 280.0
+const DIFFICULTY_BUTTON_HEIGHT: float = 56.0
 
 var tutorial_button: Button
 var replay_intro_button: Button
@@ -109,12 +111,12 @@ func _setup_settings_panel() -> void:
 	_settings_layer.add_child(dim)
 
 	_settings_panel = AudioSettingsPanel.new()
-	_settings_panel.custom_minimum_size = Vector2(460, 340)
+	_settings_panel.custom_minimum_size = Vector2(620, 540)
 	_settings_panel.set_anchors_preset(Control.PRESET_CENTER)
-	_settings_panel.offset_left = -230.0
-	_settings_panel.offset_top = -170.0
-	_settings_panel.offset_right = 230.0
-	_settings_panel.offset_bottom = 170.0
+	_settings_panel.offset_left = -310.0
+	_settings_panel.offset_top = -270.0
+	_settings_panel.offset_right = 310.0
+	_settings_panel.offset_bottom = 270.0
 	_settings_panel.close_requested.connect(_on_settings_close_requested)
 	_settings_layer.add_child(_settings_panel)
 
@@ -194,27 +196,27 @@ func _setup_difficulty_overlay() -> void:
 	_difficulty_layer.add_child(center)
 
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(430, 360)
+	panel.custom_minimum_size = Vector2(560, 440)
 	UI_STYLE.apply_panel(panel)
 	center.add_child(panel)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 34)
-	margin.add_theme_constant_override("margin_top", 30)
-	margin.add_theme_constant_override("margin_right", 34)
-	margin.add_theme_constant_override("margin_bottom", 30)
+	margin.add_theme_constant_override("margin_left", 42)
+	margin.add_theme_constant_override("margin_top", 36)
+	margin.add_theme_constant_override("margin_right", 42)
+	margin.add_theme_constant_override("margin_bottom", 36)
 	panel.add_child(margin)
 
 	var box := VBoxContainer.new()
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	box.add_theme_constant_override("separation", 14)
+	box.add_theme_constant_override("separation", 18)
 	margin.add_child(box)
 
 	var title := Label.new()
 	title.text = "CHOOSE DIFFICULTY"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
-	title.add_theme_font_size_override("font_size", 24)
+	title.add_theme_font_size_override("font_size", 30)
 	title.add_theme_color_override("font_color", STORM_ACCENT)
 	box.add_child(title)
 
@@ -222,7 +224,7 @@ func _setup_difficulty_overlay() -> void:
 	subtitle.text = "The storm will not wait."
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
-	subtitle.add_theme_font_size_override("font_size", 14)
+	subtitle.add_theme_font_size_override("font_size", 22)
 	subtitle.add_theme_color_override("font_color", BUTTON_MUTED)
 	box.add_child(subtitle)
 
@@ -232,10 +234,11 @@ func _setup_difficulty_overlay() -> void:
 
 	var cancel := Button.new()
 	cancel.text = "CANCEL"
-	cancel.custom_minimum_size = Vector2(BUTTON_WIDTH, 42)
+	cancel.custom_minimum_size = Vector2(DIFFICULTY_BUTTON_WIDTH, 50)
 	cancel.pressed.connect(_hide_difficulty_overlay)
 	box.add_child(cancel)
 	_apply_main_menu_button_style(cancel)
+	cancel.add_theme_font_size_override("font_size", 24)
 
 func _setup_loading_layer() -> void:
 	_loading_layer = CanvasLayer.new()
@@ -273,10 +276,11 @@ func _show_loading_hint() -> void:
 func _add_difficulty_button(parent: VBoxContainer, label: String, difficulty: GameState.Difficulty) -> void:
 	var button := Button.new()
 	button.text = label
-	button.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
+	button.custom_minimum_size = Vector2(DIFFICULTY_BUTTON_WIDTH, DIFFICULTY_BUTTON_HEIGHT)
 	button.pressed.connect(_on_difficulty_confirmed.bind(difficulty))
 	parent.add_child(button)
 	_apply_main_menu_button_style(button)
+	button.add_theme_font_size_override("font_size", 24)
 
 func _reorder_menu_buttons() -> void:
 	var order: Array[Control] = [

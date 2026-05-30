@@ -58,6 +58,7 @@ func _on_do_not_show_pressed() -> void:
 	close()
 
 func _build_ui() -> void:
+	var scale := VisualSettings.get_ui_scale()
 	var root := Control.new()
 	root.name = "Root"
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -71,30 +72,30 @@ func _build_ui() -> void:
 
 	var panel := PanelContainer.new()
 	panel.name = "Panel"
-	panel.custom_minimum_size = Vector2(980, 760)
+	panel.custom_minimum_size = Vector2(980, 760) * scale
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	panel.offset_left = -490
-	panel.offset_top = -380
-	panel.offset_right = 490
-	panel.offset_bottom = 380
+	panel.offset_left = -490 * scale
+	panel.offset_top = -380 * scale
+	panel.offset_right = 490 * scale
+	panel.offset_bottom = 380 * scale
 	UI_STYLE.apply_panel(panel)
 	root.add_child(panel)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 26)
-	margin.add_theme_constant_override("margin_top", 22)
-	margin.add_theme_constant_override("margin_right", 26)
-	margin.add_theme_constant_override("margin_bottom", 22)
+	margin.add_theme_constant_override("margin_left", int(roundi(26.0 * scale)))
+	margin.add_theme_constant_override("margin_top", int(roundi(22.0 * scale)))
+	margin.add_theme_constant_override("margin_right", int(roundi(26.0 * scale)))
+	margin.add_theme_constant_override("margin_bottom", int(roundi(22.0 * scale)))
 	panel.add_child(margin)
 
 	var layout := VBoxContainer.new()
-	layout.add_theme_constant_override("separation", 16)
+	layout.add_theme_constant_override("separation", int(roundi(16.0 * scale)))
 	margin.add_child(layout)
 
 	var title := Label.new()
 	title.text = "Tutorial and Controls"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 38)
+	title.add_theme_font_size_override("font_size", int(roundi(38.0 * scale)))
 	UI_STYLE.apply_label(title, false, true)
 	layout.add_child(title)
 
@@ -102,7 +103,7 @@ func _build_ui() -> void:
 	subtitle.text = "Prepare your home before the storm arrives. Watch your time, money, and checklist."
 	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.add_theme_font_size_override("font_size", 18)
+	subtitle.add_theme_font_size_override("font_size", int(roundi(18.0 * scale)))
 	UI_STYLE.apply_label(subtitle, true)
 	layout.add_child(subtitle)
 
@@ -113,7 +114,7 @@ func _build_ui() -> void:
 
 	var content := VBoxContainer.new()
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	content.add_theme_constant_override("separation", 12)
+	content.add_theme_constant_override("separation", int(roundi(12.0 * scale)))
 	scroll.add_child(content)
 
 	_add_section(content, "Move and Interact", [
@@ -157,12 +158,12 @@ func _build_ui() -> void:
 
 	var footer := HBoxContainer.new()
 	footer.alignment = BoxContainer.ALIGNMENT_END
-	footer.add_theme_constant_override("separation", 12)
+	footer.add_theme_constant_override("separation", int(roundi(12.0 * scale)))
 	layout.add_child(footer)
 
 	_do_not_show_button = Button.new()
 	_do_not_show_button.text = "Do not show again"
-	_do_not_show_button.custom_minimum_size = Vector2(180, 44)
+	_do_not_show_button.custom_minimum_size = Vector2(180, 44) * scale
 	_do_not_show_button.pressed.connect(_on_do_not_show_pressed)
 	UI_STYLE.apply_button(_do_not_show_button)
 	footer.add_child(_do_not_show_button)
@@ -174,30 +175,31 @@ func _build_ui() -> void:
 	var close_button := Button.new()
 	close_button.name = "ContinueButton"
 	close_button.text = "Continue"
-	close_button.custom_minimum_size = Vector2(140, 44)
+	close_button.custom_minimum_size = Vector2(140, 44) * scale
 	close_button.pressed.connect(close)
 	UI_STYLE.apply_button(close_button)
 	footer.add_child(close_button)
 
 func _add_section(parent: VBoxContainer, heading: String, lines: Array[String]) -> void:
+	var scale := VisualSettings.get_ui_scale()
 	var box := PanelContainer.new()
 	box.add_theme_stylebox_override("panel", UI_STYLE.panel_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER_SOFT, 6))
 	parent.add_child(box)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 14)
-	margin.add_theme_constant_override("margin_top", 10)
-	margin.add_theme_constant_override("margin_right", 14)
-	margin.add_theme_constant_override("margin_bottom", 10)
+	margin.add_theme_constant_override("margin_left", int(roundi(14.0 * scale)))
+	margin.add_theme_constant_override("margin_top", int(roundi(10.0 * scale)))
+	margin.add_theme_constant_override("margin_right", int(roundi(14.0 * scale)))
+	margin.add_theme_constant_override("margin_bottom", int(roundi(10.0 * scale)))
 	box.add_child(margin)
 
 	var layout := VBoxContainer.new()
-	layout.add_theme_constant_override("separation", 5)
+	layout.add_theme_constant_override("separation", int(roundi(5.0 * scale)))
 	margin.add_child(layout)
 
 	var title := Label.new()
 	title.text = heading
-	title.add_theme_font_size_override("font_size", 22)
+	title.add_theme_font_size_override("font_size", int(roundi(22.0 * scale)))
 	UI_STYLE.apply_label(title, false, true)
 	layout.add_child(title)
 
@@ -205,29 +207,30 @@ func _add_section(parent: VBoxContainer, heading: String, lines: Array[String]) 
 		var label := Label.new()
 		label.text = "- " + line
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.add_theme_font_size_override("font_size", 17)
+		label.add_theme_font_size_override("font_size", int(roundi(17.0 * scale)))
 		UI_STYLE.apply_label(label)
 		layout.add_child(label)
 
 func _add_image_card(parent: VBoxContainer, image_path: String, caption: String) -> void:
+	var scale := VisualSettings.get_ui_scale()
 	var box := PanelContainer.new()
 	box.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(1, 1, 1, 0.035), UI_STYLE.BORDER_SOFT, 6))
 	parent.add_child(box)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 12)
-	margin.add_theme_constant_override("margin_top", 12)
-	margin.add_theme_constant_override("margin_right", 12)
-	margin.add_theme_constant_override("margin_bottom", 12)
+	margin.add_theme_constant_override("margin_left", int(roundi(12.0 * scale)))
+	margin.add_theme_constant_override("margin_top", int(roundi(12.0 * scale)))
+	margin.add_theme_constant_override("margin_right", int(roundi(12.0 * scale)))
+	margin.add_theme_constant_override("margin_bottom", int(roundi(12.0 * scale)))
 	box.add_child(margin)
 
 	var layout := VBoxContainer.new()
-	layout.add_theme_constant_override("separation", 8)
+	layout.add_theme_constant_override("separation", int(roundi(8.0 * scale)))
 	margin.add_child(layout)
 
 	var image := TextureRect.new()
 	image.texture = load(image_path)
-	image.custom_minimum_size = Vector2(0, 360)
+	image.custom_minimum_size = Vector2(0, 360) * scale
 	image.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	image.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -237,7 +240,7 @@ func _add_image_card(parent: VBoxContainer, image_path: String, caption: String)
 	label.text = caption
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_font_size_override("font_size", 16)
+	label.add_theme_font_size_override("font_size", int(roundi(16.0 * scale)))
 	UI_STYLE.apply_label(label, true)
 	layout.add_child(label)
 

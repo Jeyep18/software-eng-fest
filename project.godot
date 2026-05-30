@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://bvw7wy45wf2m4"
 
 [autoload]
 
+VisualSettings="*res://game/autoload/VisualSettings.gd"
 LocalizationManager="*res://game/autoload/LocalizationManager.gd"
 TransitionOverlay="*uid://bx637gkf0lc65"
 GlobalTimer="*uid://evkdxftbiln"
@@ -35,6 +36,7 @@ StormEnroachment="*res://game/autoload/StormEnroachment.gd"
 AudioManager="*uid://c0lti2i34dbf0"
 StormAudioController="*res://game/autoload/StormAudioController.gd"
 LeaderboardManager="*res://game/autoload/LeaderboardManager.gd"
+VhsCrtOverlay="*res://game/autoload/VhsCrtOverlay.gd"
 
 [display]
 

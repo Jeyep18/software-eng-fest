@@ -26,6 +26,8 @@ extends CanvasLayer
 @onready var top_bar:      Panel = $TopBar
 @onready var time_label:   Label          = $TopBar/HBoxContainer/VBox/TimeBlock/TimeLabel
 @onready var eta_label:    Label          = $TopBar/HBoxContainer/VBox/ETABlock/ETALabel
+@onready var controls_container: HBoxContainer = $VBoxContainer
+@onready var controls_label: Label = $VBoxContainer/Label
 
 # ── Display Name Map (mirrors MapScreen) ──────────────────────────────────────
 const LOCATION_NAMES: Dictionary = {
@@ -56,10 +58,12 @@ func _ready() -> void:
 	GlobalTimer.encroachment_threshold_reached.connect(_on_encroachment)
 	GlobalTimer.storm_arrived.connect(_on_storm_arrived)
 	LocalizationManager.language_changed.connect(_on_language_changed)
+	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 
 	# Connect to GameState to show/hide based on act
 	GameState.act_changed.connect(_on_act_changed)
 
+	_apply_ui_scale()
 	show_hud()
 
 # ── Public API ─────────────────────────────────────────────────────────────────
@@ -108,6 +112,30 @@ func _on_act_changed(new_act: GameState.Act) -> void:
 func _on_language_changed(_language_id: String) -> void:
 	if top_bar.visible:
 		_refresh_all()
+
+func _on_ui_scale_changed(_scale: float) -> void:
+	_apply_ui_scale()
+
+func _apply_ui_scale() -> void:
+	var scale := VisualSettings.get_ui_scale()
+	var viewport_width := get_viewport().get_visible_rect().size.x
+
+	top_bar.offset_left = viewport_width - (300.0 * scale) - 36.0
+	top_bar.offset_top = 24.0
+	top_bar.offset_right = viewport_width - 24.0
+	top_bar.offset_bottom = 24.0
+
+	var top_bar_content := $TopBar/HBoxContainer as HBoxContainer
+	top_bar_content.offset_left = -292.0 * scale
+	top_bar_content.offset_bottom = 150.0 * scale
+	($TopBar/HBoxContainer/VBox as VBoxContainer).custom_minimum_size = Vector2(0.0, 150.0 * scale)
+	time_label.label_settings.font_size = int(roundi(70.0 * scale))
+	eta_label.label_settings.font_size = int(roundi(25.0 * scale))
+
+	controls_container.offset_top = -178.0 * scale
+	controls_container.offset_right = 260.0 * scale
+	($VBoxContainer/Control as Control).custom_minimum_size = Vector2(50.0 * scale, 0.0)
+	controls_label.add_theme_font_size_override("font_size", int(roundi(16.0 * scale)))
 
 func _setup_vignette_overlay() -> void:
 	var existing := get_node_or_null("GameplayVignetteLayer") as CanvasLayer

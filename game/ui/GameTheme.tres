@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3]
 
-[ext_resource type="FontFile" path="res://game/assets/fonts/traveling_typewriter/TravelingTypewriter.ttf" id="1_regular"]
+[ext_resource type="FontFile" path="res://game/assets/fonts/easvhs/eas-vhs.ttf" id="1_regular"]
 
 [resource]
 default_font = ExtResource("1_regular")

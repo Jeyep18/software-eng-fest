@@ -175,6 +175,14 @@ light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 omni_range = 154.55
 
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights" unique_id=2044458290]
+transform = Transform3D(-0.5227367, -0.010444704, 0.8524302, -0.8524942, 0.0064045372, -0.5226975, 0, -0.99992496, -0.012251937, -31.098797, 13.328908, -19.01983)
+light_color = Color(0.85749084, 0.84301084, 0.6979215, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 26.390833
+spot_angle = 80.15625
+
 [node name="Environment" type="Node" parent="." unique_id=613088320]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=19579548]

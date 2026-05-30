@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="10_11i80"]
 [ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="12_c3eoh"]
 [ext_resource type="PackedScene" uid="uid://ut5fskgnrsyt" path="res://game/objects/interactables/window.tscn" id="15_nu6qe"]
-[ext_resource type="Script" path="res://game/weather/StormRainController.gd" id="15_rain"]
+[ext_resource type="Script" uid="uid://dsw88c6jb2vwj" path="res://game/weather/StormRainController.gd" id="15_rain"]
 [ext_resource type="PackedScene" uid="uid://du3ghcn42crwi" path="res://game/objects/interactables/main_door.tscn" id="16_lwh48"]
 [ext_resource type="PackedScene" uid="uid://bw2r7j1q04u4t" path="res://game/entities/nanay/nanay.tscn" id="18_so1b5"]
 [ext_resource type="PackedScene" uid="uid://bfuqj3eqm4sn6" path="res://game/entities/lola/lola.tscn" id="18_taj8b"]
@@ -158,6 +158,14 @@ light_color = Color(0.85749084, 0.84301084, 0.6979215, 1)
 light_energy = 3.0
 shadow_enabled = true
 spot_range = 7.559709
+spot_angle = 80.15625
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights" unique_id=1242664035]
+transform = Transform3D(-0.5227367, -0.010444704, 0.8524302, -0.8524942, 0.0064045372, -0.5226975, 0, -0.99992496, -0.012251937, -31.098797, 13.328908, -19.01983)
+light_color = Color(0.85749084, 0.84301084, 0.6979215, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 26.390833
 spot_angle = 80.15625
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1835358498]
@@ -342,7 +350,7 @@ prompt_label = "Place Working Radio"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34570074, 0.14361024, -2.845928)
 
 [node name="WindowTaskCue" parent="." unique_id=2023954735 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2417374, 1.2498862, -1.2023171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87383, 1.4026453, -0.37651414)
 
 [node name="WindowTaskCue2" parent="." unique_id=1961389787 instance=ExtResource("32_taskcue")]
 transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0192323, 1.4046286, -4.7983084)

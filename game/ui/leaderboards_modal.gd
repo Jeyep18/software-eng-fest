@@ -11,20 +11,22 @@ const HEADER_BG: Color = Color(0.122, 0.486, 0.404, 0.18)
 @onready var title_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/Header/TitleLabel
 @onready var rows_container: VBoxContainer = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer
 @onready var empty_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer/EmptyLabel
+@onready var margin_container: MarginContainer = $MarginContainer
 
 var _clear_armed: bool = false
 
 func _ready() -> void:
 	close_button.pressed.connect(close)
 	clear_button.pressed.connect(_on_clear_pressed)
-	rows_container.custom_minimum_size = Vector2(TABLE_WIDTH, 0)
+	rows_container.custom_minimum_size = Vector2(_table_width(), 0)
 	rows_container.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	rows_container.add_theme_constant_override("separation", 7)
-	empty_label.custom_minimum_size = Vector2(TABLE_WIDTH, 220)
+	empty_label.custom_minimum_size = Vector2(_table_width(), VisualSettings.scaled(220.0))
 	empty_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	empty_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	if not LeaderboardManager.entries_changed.is_connected(_refresh):
 		LeaderboardManager.entries_changed.connect(_refresh)
+	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 	_apply_leaderboard_style()
 	hide()
 
@@ -57,40 +59,40 @@ func _refresh() -> void:
 
 func _add_header_row() -> void:
 	var row := _make_row(true)
-	_add_cell(row, "Rank", 72, true)
-	_add_cell(row, "Player", 220, true)
-	_add_cell(row, "Difficulty", 180, true)
-	_add_cell(row, "Score", 110, true)
-	_add_cell(row, "Tasks", 100, true)
-	_add_cell(row, "Time Left", 140, true)
+	_add_cell(row, "Rank", 72 * VisualSettings.get_ui_scale(), true)
+	_add_cell(row, "Player", 220 * VisualSettings.get_ui_scale(), true)
+	_add_cell(row, "Difficulty", 180 * VisualSettings.get_ui_scale(), true)
+	_add_cell(row, "Score", 110 * VisualSettings.get_ui_scale(), true)
+	_add_cell(row, "Tasks", 100 * VisualSettings.get_ui_scale(), true)
+	_add_cell(row, "Time Left", 140 * VisualSettings.get_ui_scale(), true)
 
 func _add_entry_row(rank: int, entry: Dictionary) -> void:
 	var row := _make_row(false, rank % 2 == 0)
-	_add_cell(row, "#" + str(rank), 72, false)
-	_add_cell(row, str(entry.get("player_name", "Player")), 220, false)
-	_add_cell(row, _difficulty_label_with_multiplier(str(entry.get("difficulty", "standard"))), 180, false)
-	_add_cell(row, "%d" % roundi(float(entry.get("score", 0.0))), 110, false)
-	_add_cell(row, "%d / %d" % [int(entry.get("tasks_completed", 0)), NeedsLog.Need.size()], 100, false)
-	_add_cell(row, _format_minutes(int(entry.get("remaining_minutes", 0))), 140, false)
+	_add_cell(row, "#" + str(rank), 72 * VisualSettings.get_ui_scale(), false)
+	_add_cell(row, str(entry.get("player_name", "Player")), 220 * VisualSettings.get_ui_scale(), false)
+	_add_cell(row, _difficulty_label_with_multiplier(str(entry.get("difficulty", "standard"))), 180 * VisualSettings.get_ui_scale(), false)
+	_add_cell(row, "%d" % roundi(float(entry.get("score", 0.0))), 110 * VisualSettings.get_ui_scale(), false)
+	_add_cell(row, "%d / %d" % [int(entry.get("tasks_completed", 0)), NeedsLog.Need.size()], 100 * VisualSettings.get_ui_scale(), false)
+	_add_cell(row, _format_minutes(int(entry.get("remaining_minutes", 0))), 140 * VisualSettings.get_ui_scale(), false)
 
 func _make_row(is_header: bool = false, alternate: bool = false) -> HBoxContainer:
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(TABLE_WIDTH, 40 if is_header else 38)
+	panel.custom_minimum_size = Vector2(_table_width(), VisualSettings.scaled(40.0 if is_header else 38.0))
 	panel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	var bg := HEADER_BG if is_header else (ROW_BG_ALT if alternate else ROW_BG)
 	panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(bg, Color(1, 1, 1, 0.07), 6))
 	rows_container.add_child(panel)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 14)
-	margin.add_theme_constant_override("margin_right", 14)
-	margin.add_theme_constant_override("margin_top", 5)
-	margin.add_theme_constant_override("margin_bottom", 5)
+	margin.add_theme_constant_override("margin_left", int(roundi(14.0 * VisualSettings.get_ui_scale())))
+	margin.add_theme_constant_override("margin_right", int(roundi(14.0 * VisualSettings.get_ui_scale())))
+	margin.add_theme_constant_override("margin_top", int(roundi(5.0 * VisualSettings.get_ui_scale())))
+	margin.add_theme_constant_override("margin_bottom", int(roundi(5.0 * VisualSettings.get_ui_scale())))
 	panel.add_child(margin)
 
 	var row := HBoxContainer.new()
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_theme_constant_override("separation", 10)
+	row.add_theme_constant_override("separation", int(roundi(10.0 * VisualSettings.get_ui_scale())))
 	margin.add_child(row)
 	return row
 
@@ -103,7 +105,7 @@ func _add_cell(row: HBoxContainer, text: String, min_width: float, is_header: bo
 	label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD if is_header else UI_STYLE.FONT_REGULAR)
-	label.add_theme_font_size_override("font_size", 15 if is_header else 16)
+	label.add_theme_font_size_override("font_size", int(roundi((15.0 if is_header else 16.0) * VisualSettings.get_ui_scale())))
 	label.add_theme_color_override("font_color", UI_STYLE.ACCENT if is_header else Color(0.88, 0.87, 0.81))
 	row.add_child(label)
 
@@ -139,10 +141,28 @@ func _difficulty_label_with_multiplier(difficulty_id: String) -> String:
 	return "%s x%.2f" % [_difficulty_label(difficulty_id), GameState.get_difficulty_score_multiplier(difficulty_id)]
 
 func _apply_leaderboard_style() -> void:
+	var scale := VisualSettings.get_ui_scale()
+	var horizontal_margin := maxi(40, int(roundi(430.0 - ((_table_width() - TABLE_WIDTH) * 0.5))))
+	margin_container.add_theme_constant_override("margin_left", horizontal_margin)
+	margin_container.add_theme_constant_override("margin_right", horizontal_margin)
+	margin_container.add_theme_constant_override("margin_top", maxi(36, int(roundi(170.0 / scale))))
+	margin_container.add_theme_constant_override("margin_bottom", maxi(36, int(roundi(170.0 / scale))))
 	var panel := $MarginContainer/LeaderboardsModal as PanelContainer
 	panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.025, 0.028, 0.03, 0.94), UI_STYLE.BORDER, 8))
 	UI_STYLE.apply_button(close_button)
 	UI_STYLE.apply_button(clear_button)
+	close_button.custom_minimum_size = Vector2(104, 44) * scale
+	clear_button.custom_minimum_size = Vector2(132, 44) * scale
 	UI_STYLE.apply_label(title_label, false, true)
 	UI_STYLE.apply_label(empty_label, true)
-	title_label.add_theme_font_size_override("font_size", 24)
+	title_label.add_theme_font_size_override("font_size", int(roundi(24.0 * scale)))
+
+func _table_width() -> float:
+	return TABLE_WIDTH * VisualSettings.get_ui_scale()
+
+func _on_ui_scale_changed(_scale: float) -> void:
+	rows_container.custom_minimum_size = Vector2(_table_width(), 0)
+	empty_label.custom_minimum_size = Vector2(_table_width(), VisualSettings.scaled(220.0))
+	_apply_leaderboard_style()
+	if visible:
+		_refresh()

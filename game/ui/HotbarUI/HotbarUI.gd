@@ -9,6 +9,13 @@
 extends CanvasLayer
 
 @onready var slot_container: HBoxContainer = $HotbarRoot/SlotContainer
+@onready var hotbar_bg: Panel = $HotbarRoot/HotbarBG
+@onready var hotbar_root: Control = $HotbarRoot
+
+const BASE_SLOT_SIZE: float = 62.0
+const BASE_SLOT_GAP: float = 8.0
+const BASE_VERTICAL_PADDING: float = 10.0
+const BASE_BOTTOM_MARGIN: float = 18.0
 
 # The currently "held" / selected slot index (0-7)
 var selected_slot: int = 0
@@ -24,6 +31,11 @@ func _ready() -> void:
 
 	InventoryManager.inventory_changed.connect(_redraw_hotbar)
 	LocalizationManager.language_changed.connect(func(_language_id: String) -> void: _redraw_hotbar())
+	VisualSettings.ui_scale_changed.connect(func(_scale: float) -> void:
+		_apply_ui_scale()
+		_redraw_hotbar()
+	)
+	_apply_ui_scale()
 	_redraw_hotbar()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -85,7 +97,8 @@ func _redraw_hotbar() -> void:
 
 func _create_slot(item: ItemData, index: int) -> Panel:
 	var panel = Panel.new()
-	panel.custom_minimum_size = Vector2(54, 54)
+	var ui_scale := VisualSettings.get_ui_scale()
+	panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * ui_scale
 
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color(0.13, 0.13, 0.13, 0.85)
@@ -106,10 +119,10 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		icon.offset_left   = 5
-		icon.offset_top    = 5
-		icon.offset_right  = -5
-		icon.offset_bottom = -16
+		icon.offset_left   = 5 * ui_scale
+		icon.offset_top    = 5 * ui_scale
+		icon.offset_right  = -5 * ui_scale
+		icon.offset_bottom = -16 * ui_scale
 		panel.add_child(icon)
 
 		var name_label = Label.new()
@@ -117,8 +130,8 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		name_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
 		name_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		name_label.offset_bottom = -2
-		name_label.add_theme_font_size_override("font_size", 8)
+		name_label.offset_bottom = -2 * ui_scale
+		name_label.add_theme_font_size_override("font_size", int(roundi(8.0 * ui_scale)))
 		name_label.modulate = Color(1, 1, 1, 0.85)
 		panel.add_child(name_label)
 
@@ -129,9 +142,9 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 			quantity_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-			quantity_label.offset_top = 2
-			quantity_label.offset_right = -4
-			quantity_label.add_theme_font_size_override("font_size", 10)
+			quantity_label.offset_top = 2 * ui_scale
+			quantity_label.offset_right = -4 * ui_scale
+			quantity_label.add_theme_font_size_override("font_size", int(roundi(10.0 * ui_scale)))
 			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62))
 			panel.add_child(quantity_label)
 
@@ -141,9 +154,9 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 	num_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	num_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
 	num_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	num_label.offset_right  = -4
-	num_label.offset_bottom = -2
-	num_label.add_theme_font_size_override("font_size", 8)
+	num_label.offset_right  = -4 * ui_scale
+	num_label.offset_bottom = -2 * ui_scale
+	num_label.add_theme_font_size_override("font_size", int(roundi(8.0 * ui_scale)))
 	num_label.modulate = Color(1, 1, 1, 0.28)
 	panel.add_child(num_label)
 
@@ -158,3 +171,34 @@ func get_selected_item() -> ItemData:
 
 func set_hotbar_visible(is_visible: bool) -> void:
 	self.visible = is_visible
+
+func _apply_ui_scale() -> void:
+	var scale: float = VisualSettings.get_ui_scale()
+	var slot_count: int = InventoryManager.MAX_INVENTORY_SIZE
+	var gap: float = BASE_SLOT_GAP * scale
+	var slot_size: float = BASE_SLOT_SIZE * scale
+	var width: float = (slot_size * float(slot_count)) + (gap * float(max(slot_count - 1, 0)))
+	var height: float = slot_size + (BASE_VERTICAL_PADDING * 2.0 * scale)
+
+	hotbar_root.anchor_left = 0.5
+	hotbar_root.anchor_right = 0.5
+	hotbar_root.anchor_top = 1.0
+	hotbar_root.anchor_bottom = 1.0
+	hotbar_root.offset_left = -width * 0.5
+	hotbar_root.offset_right = width * 0.5
+	hotbar_root.offset_top = -(height + BASE_BOTTOM_MARGIN * scale)
+	hotbar_root.offset_bottom = -BASE_BOTTOM_MARGIN * scale
+
+	hotbar_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	hotbar_bg.offset_left = 0.0
+	hotbar_bg.offset_top = 0.0
+	hotbar_bg.offset_right = 0.0
+	hotbar_bg.offset_bottom = 0.0
+	hotbar_bg.custom_minimum_size = Vector2(width, height)
+
+	slot_container.set_anchors_preset(Control.PRESET_CENTER)
+	slot_container.offset_left = -width * 0.5
+	slot_container.offset_right = width * 0.5
+	slot_container.offset_top = -slot_size * 0.5
+	slot_container.offset_bottom = slot_size * 0.5
+	slot_container.add_theme_constant_override("separation", int(roundi(gap)))

@@ -9,6 +9,7 @@ const AIR_ACCELERATION: float = 3.0
 const ROTATION_SPEED: float = 10.0
 const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
 
 var _current_speed: float = WALK_SPEED
 var _is_mouse_captured: bool = true
@@ -40,6 +41,7 @@ func _ready() -> void:
 
 	if not SceneManager.has_played_opening:
 		_is_input_locked = true
+		SFX.rooster_morning()
 		_play(ANIM_STAND_UP)
 		SceneManager.has_played_opening = true
 	else:

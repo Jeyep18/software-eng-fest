@@ -17,6 +17,8 @@ const BUSES: Array[Dictionary] = [
 var show_close_button: bool = true
 var _sliders: Dictionary = {}
 var _language_selector: OptionButton
+var _vhs_crt_toggle: CheckBox
+var _ui_scale_selector: OptionButton
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -24,6 +26,8 @@ func _ready() -> void:
 	UI_STYLE.apply_panel(self)
 	_build()
 	_sync_from_audio_manager()
+	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
+	_apply_ui_scale()
 
 func _build() -> void:
 	var margin := MarginContainer.new()
@@ -38,12 +42,14 @@ func _build() -> void:
 	margin.add_child(box)
 
 	var title := Label.new()
-	title.text = "Audio Settings"
+	title.text = "Settings"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	UI_STYLE.apply_label(title, true, true)
 	box.add_child(title)
 
 	box.add_child(_make_language_row())
+	box.add_child(_make_vhs_crt_row())
+	box.add_child(_make_ui_scale_row())
 
 	for bus_data in BUSES:
 		box.add_child(_make_volume_row(bus_data["name"], bus_data["label"]))
@@ -122,11 +128,63 @@ func _make_language_row() -> Control:
 
 	return row
 
+func _make_vhs_crt_row() -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+
+	var label := Label.new()
+	label.text = "VHS / CRT"
+	label.custom_minimum_size = Vector2(100, 0)
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	UI_STYLE.apply_label(label)
+	row.add_child(label)
+
+	_vhs_crt_toggle = CheckBox.new()
+	_vhs_crt_toggle.text = "Enabled"
+	_vhs_crt_toggle.button_pressed = VisualSettings.is_vhs_crt_enabled()
+	_vhs_crt_toggle.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_vhs_crt_toggle.toggled.connect(_on_vhs_crt_toggled)
+	UI_STYLE.apply_button(_vhs_crt_toggle)
+	SFX.wire_button(_vhs_crt_toggle)
+	row.add_child(_vhs_crt_toggle)
+
+	return row
+
+func _make_ui_scale_row() -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+
+	var label := Label.new()
+	label.text = "UI Scale"
+	label.custom_minimum_size = Vector2(100, 0)
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	UI_STYLE.apply_label(label)
+	row.add_child(label)
+
+	_ui_scale_selector = OptionButton.new()
+	_ui_scale_selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for percent in [100, 125, 140, 150, 175]:
+		_ui_scale_selector.add_item("%d%%" % percent, percent)
+		if percent == VisualSettings.get_ui_scale_percent():
+			_ui_scale_selector.select(_ui_scale_selector.item_count - 1)
+	_ui_scale_selector.item_selected.connect(_on_ui_scale_selected)
+	UI_STYLE.apply_button(_ui_scale_selector)
+	row.add_child(_ui_scale_selector)
+
+	return row
+
 func _sync_from_audio_manager() -> void:
 	for bus_name in _sliders.keys():
 		var slider := _sliders[bus_name] as HSlider
 		slider.set_value_no_signal(roundf(AudioManager.get_bus_volume_percent(bus_name) * 100.0))
 		_update_percent_label(slider)
+	if _vhs_crt_toggle != null:
+		_vhs_crt_toggle.set_pressed_no_signal(VisualSettings.is_vhs_crt_enabled())
+	if _ui_scale_selector != null:
+		for i in range(_ui_scale_selector.item_count):
+			if _ui_scale_selector.get_item_id(i) == VisualSettings.get_ui_scale_percent():
+				_ui_scale_selector.select(i)
+				break
 
 func _on_slider_changed(value: float, bus_name: StringName) -> void:
 	AudioManager.set_bus_volume_percent(bus_name, value / 100.0)
@@ -134,12 +192,38 @@ func _on_slider_changed(value: float, bus_name: StringName) -> void:
 
 func _on_reset_pressed() -> void:
 	AudioManager.reset_audio_settings()
+	VisualSettings.reset_visual_settings()
 	_sync_from_audio_manager()
 
 func _on_language_selected(index: int) -> void:
 	LocalizationManager.set_language(LocalizationManager.get_language_from_index(index))
 
+func _on_vhs_crt_toggled(enabled: bool) -> void:
+	VisualSettings.set_vhs_crt_enabled(enabled)
+
+func _on_ui_scale_selected(index: int) -> void:
+	VisualSettings.set_ui_scale_percent(_ui_scale_selector.get_item_id(index))
+
 func _update_percent_label(slider: HSlider) -> void:
 	var percent := slider.get_parent().get_node_or_null("Percent") as Label
 	if percent != null:
 		percent.text = "%d%%" % int(roundf(slider.value))
+
+func _on_ui_scale_changed(_scale: float) -> void:
+	_apply_ui_scale()
+
+func _apply_ui_scale() -> void:
+	var scale := VisualSettings.get_ui_scale()
+	_apply_font_scale_recursive(self, scale)
+
+func _apply_font_scale_recursive(node: Node, scale: float) -> void:
+	if node is Label:
+		var label := node as Label
+		var base_size := 18.0
+		if label.text == "Settings":
+			base_size = 24.0
+		label.add_theme_font_size_override("font_size", int(roundi(base_size * scale)))
+	elif node is Button:
+		(node as Button).add_theme_font_size_override("font_size", int(roundi(18.0 * scale)))
+	for child in node.get_children():
+		_apply_font_scale_recursive(child, scale)

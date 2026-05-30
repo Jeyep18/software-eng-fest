@@ -31,6 +31,7 @@ func _ready() -> void:
 	close_button.pressed.connect(close_shop)
 	GameState.cash_changed.connect(_on_cash_changed)
 	LocalizationManager.language_changed.connect(_on_language_changed)
+	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 
 func _build_ui() -> void:
 	# ── Full-screen dimmed backdrop ───────────────────────────────────────────
@@ -48,11 +49,11 @@ func _build_ui() -> void:
 
 	# ── Root panel ────────────────────────────────────────────────────────────
 	shop_panel = PanelContainer.new()
-	shop_panel.custom_minimum_size = Vector2(620, 520)
+	shop_panel.custom_minimum_size = VisualSettings.scaled_vector(Vector2(620, 520))
 	_center_container.add_child(shop_panel)      # ← parented to CenterContainer
 
 	var root_vbox := VBoxContainer.new()
-	root_vbox.add_theme_constant_override("separation", 8)
+	root_vbox.add_theme_constant_override("separation", int(roundi(8.0 * VisualSettings.get_ui_scale())))
 	shop_panel.add_child(root_vbox)
 
 	# ── Header ────────────────────────────────────────────────────────────────
@@ -60,12 +61,12 @@ func _build_ui() -> void:
 	root_vbox.add_child(header)
 
 	shop_name_label = Label.new()
-	shop_name_label.add_theme_font_size_override("font_size", 24)
+	shop_name_label.add_theme_font_size_override("font_size", int(roundi(24.0 * VisualSettings.get_ui_scale())))
 	shop_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	header.add_child(shop_name_label)
 
 	subtitle_label = Label.new()
-	subtitle_label.add_theme_font_size_override("font_size", 16)
+	subtitle_label.add_theme_font_size_override("font_size", int(roundi(16.0 * VisualSettings.get_ui_scale())))
 	subtitle_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle_label.modulate = Color(1, 1, 1, 0.6)
 	subtitle_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -80,25 +81,25 @@ func _build_ui() -> void:
 	var cash_icon := Label.new()
 	cash_icon.name = "CashIcon"
 	cash_icon.text = "Cash:  ₱"
-	cash_icon.add_theme_font_size_override("font_size", 18)
+	cash_icon.add_theme_font_size_override("font_size", int(roundi(18.0 * VisualSettings.get_ui_scale())))
 	cash_icon.text = LocalizationManager.translate("Cash:  " + char(0x20B1))
 	cash_row.add_child(cash_icon)
 
 	cash_label = Label.new()
-	cash_label.add_theme_font_size_override("font_size", 18)
+	cash_label.add_theme_font_size_override("font_size", int(roundi(18.0 * VisualSettings.get_ui_scale())))
 	cash_row.add_child(cash_label)
 
 	root_vbox.add_child(HSeparator.new())
 
 	# ── Scroll + item list ────────────────────────────────────────────────────
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(0, 240)
+	scroll.custom_minimum_size = VisualSettings.scaled_vector(Vector2(0, 240))
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	root_vbox.add_child(scroll)
 
 	item_list = VBoxContainer.new()
 	item_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	item_list.add_theme_constant_override("separation", 6)
+	item_list.add_theme_constant_override("separation", int(roundi(6.0 * VisualSettings.get_ui_scale())))
 	scroll.add_child(item_list)
 
 	root_vbox.add_child(HSeparator.new())
@@ -106,14 +107,14 @@ func _build_ui() -> void:
 	# ── Feedback label ────────────────────────────────────────────────────────
 	feedback_label = Label.new()
 	feedback_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	feedback_label.add_theme_font_size_override("font_size", 16)
+	feedback_label.add_theme_font_size_override("font_size", int(roundi(16.0 * VisualSettings.get_ui_scale())))
 	feedback_label.hide()
 	root_vbox.add_child(feedback_label)
 
 	# ── Close button ──────────────────────────────────────────────────────────
 	close_button = Button.new()
 	close_button.text = "Exit"
-	close_button.custom_minimum_size = Vector2(0, 42)
+	close_button.custom_minimum_size = VisualSettings.scaled_vector(Vector2(0, 42))
 	root_vbox.add_child(close_button)
 	_apply_shop_style()
 
@@ -170,13 +171,14 @@ func _rebuild_item_list() -> void:
 		item_list.add_child(_build_item_row(shop_item))
 
 func _build_item_row(shop_item: ShopItem) -> Control:
+	var scale := VisualSettings.get_ui_scale()
 	var row := HBoxContainer.new()
-	row.custom_minimum_size = Vector2(0, 72)
-	row.add_theme_constant_override("separation", 10)
+	row.custom_minimum_size = Vector2(0, 72) * scale
+	row.add_theme_constant_override("separation", int(roundi(10.0 * scale)))
 
 	# Icon
 	var icon := TextureRect.new()
-	icon.custom_minimum_size = Vector2(52, 52)
+	icon.custom_minimum_size = Vector2(52, 52) * scale
 	icon.expand_mode  = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	if shop_item.item_data and shop_item.item_data.item_icon:
@@ -188,12 +190,12 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 	text_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var name_lbl := Label.new()
 	name_lbl.text = shop_item.item_data.get_item_name() if shop_item.item_data else "???"
-	name_lbl.add_theme_font_size_override("font_size", 18)
+	name_lbl.add_theme_font_size_override("font_size", int(roundi(18.0 * scale)))
 	text_col.add_child(name_lbl)
 	if shop_item.item_data and shop_item.item_data.item_description != "":
 		var desc := Label.new()
 		desc.text = shop_item.item_data.get_item_description()
-		desc.add_theme_font_size_override("font_size", 14)
+		desc.add_theme_font_size_override("font_size", int(roundi(14.0 * scale)))
 		desc.modulate = Color(1, 1, 1, 0.55)
 		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		text_col.add_child(desc)
@@ -203,9 +205,9 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 	if shop_item.stock != -1:
 		var stock_lbl := Label.new()
 		stock_lbl.text = "x%d" % shop_item.stock
-		stock_lbl.add_theme_font_size_override("font_size", 15)
+		stock_lbl.add_theme_font_size_override("font_size", int(roundi(15.0 * scale)))
 		stock_lbl.modulate = Color(1, 1, 1, 0.55)
-		stock_lbl.custom_minimum_size = Vector2(32, 0)
+		stock_lbl.custom_minimum_size = Vector2(32, 0) * scale
 		stock_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		row.add_child(stock_lbl)
 
@@ -231,8 +233,8 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 		var captured := shop_item
 		buy_btn.pressed.connect(func() -> void: _on_buy_pressed(captured))
 
-	buy_btn.add_theme_font_size_override("font_size", 16)
-	buy_btn.custom_minimum_size = Vector2(110, 42)
+	buy_btn.add_theme_font_size_override("font_size", int(roundi(16.0 * scale)))
+	buy_btn.custom_minimum_size = Vector2(110, 42) * scale
 	UI_STYLE.apply_button(buy_btn)
 	row.add_child(buy_btn)
 	return row
@@ -304,3 +306,11 @@ func _on_language_changed(_language_id: String) -> void:
 		subtitle_label.text = _current_shop.get_shop_subtitle()
 		_rebuild_item_list()
 		_clear_feedback()
+
+func _on_ui_scale_changed(_scale: float) -> void:
+	if shop_panel != null:
+		shop_panel.custom_minimum_size = VisualSettings.scaled_vector(Vector2(620, 520))
+	if close_button != null:
+		close_button.custom_minimum_size = VisualSettings.scaled_vector(Vector2(0, 42))
+	if is_open() and _current_shop != null:
+		_rebuild_item_list()

@@ -1,8 +1,8 @@
 class_name GameUIStyle
 extends RefCounted
 
-const FONT_REGULAR: FontFile = preload("res://game/assets/fonts/traveling_typewriter/TravelingTypewriter.ttf")
-const FONT_SEMIBOLD: FontFile = preload("res://game/assets/fonts/another_typewriter/atwriter.ttf")
+const FONT_REGULAR: FontFile = preload("res://game/assets/fonts/easvhs/eas-vhs.ttf")
+const FONT_SEMIBOLD: FontFile = preload("res://game/assets/fonts/easvhs/eas-vhs.ttf")
 const SFX = preload("res://game/audio/Sfx.gd")
 
 const PANEL_BG: Color = Color(0.075, 0.08, 0.085, 0.96)

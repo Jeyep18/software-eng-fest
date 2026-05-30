@@ -91,7 +91,7 @@ func _populate() -> void:
 		else:
 			icon.text = "○"
 			icon.add_theme_color_override("font_color", _COL_UNDISCOVERED)
-		icon.add_theme_font_size_override("font_size", 17)
+		icon.add_theme_font_size_override("font_size", int(roundi(17.0 * VisualSettings.get_ui_scale())))
 		row.add_child(icon)
 
 		# Task label
@@ -100,7 +100,7 @@ func _populate() -> void:
 		lbl.text = "%s (%s)" % [LocalizationManager.translate(item[0]), LocalizationManager.translate(item[1])]
 		lbl.add_theme_color_override("font_color",
 			_COL_RESOLVED if resolved else Color.WHITE)
-		lbl.add_theme_font_size_override("font_size", 17)
+		lbl.add_theme_font_size_override("font_size", int(roundi(17.0 * VisualSettings.get_ui_scale())))
 			
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -131,17 +131,17 @@ func _add_row(text: String, resolved: bool) -> void:
 
 	var icon := Label.new()
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	icon.custom_minimum_size = Vector2(16, 0)
+	icon.custom_minimum_size = VisualSettings.scaled_vector(Vector2(16, 0))
 	icon.text = "OK" if resolved else "!"
 	icon.add_theme_color_override("font_color", _COL_RESOLVED if resolved else _COL_DISCOVERED)
-	icon.add_theme_font_size_override("font_size", 17)
+	icon.add_theme_font_size_override("font_size", int(roundi(17.0 * VisualSettings.get_ui_scale())))
 	row.add_child(icon)
 
 	var lbl := Label.new()
 	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	lbl.text = LocalizationManager.translate(text)
 	lbl.add_theme_color_override("font_color", _COL_RESOLVED if resolved else Color.WHITE)
-	lbl.add_theme_font_size_override("font_size", 17)
+	lbl.add_theme_font_size_override("font_size", int(roundi(17.0 * VisualSettings.get_ui_scale())))
 	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	row.add_child(lbl)

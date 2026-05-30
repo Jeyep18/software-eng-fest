@@ -18,6 +18,7 @@ const HAMMER: AudioStream = preload("res://game/assets/sfx/freesound_community-h
 const WIND_GUST: AudioStream = preload("res://game/assets/sfx/dragon-studio-gust-of-wind-511325.mp3")
 const THUNDER_DISTANT: AudioStream = preload("res://game/assets/sfx/freesound_community-027958_distant-thunderwav-79709.mp3")
 const THUNDER_CLOSE: AudioStream = preload("res://game/assets/sfx/u_vrs223ln83-loud-thunder-439064.mp3")
+const ROOSTER_MORNING: AudioStream = preload("res://game/assets/sfx/freesound_community-rooster-crowing_27112016-processed-101724.mp3")
 
 static func play(stream: AudioStream, volume_db: float = -6.0, pitch_variation: float = 0.0) -> void:
 	if Engine.is_editor_hint() or stream == null:
@@ -44,6 +45,7 @@ static func hammer() -> void: play(HAMMER, -9.0, 0.02)
 static func thunder_close(volume_db: float = -8.0) -> void: play(THUNDER_CLOSE, volume_db, 0.04)
 static func thunder_distant(volume_db: float = -16.0) -> void: play(THUNDER_DISTANT, volume_db, 0.05)
 static func wind_gust(volume_db: float = -15.0) -> void: play(WIND_GUST, volume_db, 0.05)
+static func rooster_morning() -> void: play(ROOSTER_MORNING, -9.0, 0.02)
 
 static func wire_button(button: Button, cancel: bool = false) -> void:
 	if button == null or button.has_meta("sfx_wired"):
