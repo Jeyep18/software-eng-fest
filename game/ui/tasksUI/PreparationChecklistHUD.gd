@@ -246,7 +246,12 @@ func _on_side_objective_started(label: String) -> void:
 	_refresh_compact_objectives(false)
 
 func _schedule_checklist_resize() -> void:
-	await get_tree().process_frame
+	var tree := get_tree()
+	if tree == null:
+		return
+	await tree.process_frame
+	if not is_inside_tree():
+		return
 	_resize_checklist_card()
 
 func _resize_checklist_card() -> void:
