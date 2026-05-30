@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ccn02805xx87w" path="res://_raw_assets/Locations/HardwareStore.glb" id="9_mrv0t"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="11_m71rt"]
 [ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="12_rain"]
+[ext_resource type="PackedScene" path="res://game/entities/story_npcs/tatay_jun.tscn" id="13_tatay"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 
@@ -362,6 +363,9 @@ item_data = ExtResource("6_lusb0")
 
 [node name="HardwareGirl" parent="." unique_id=2031183002 instance=ExtResource("7_lusb0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2908497, 0, -10.150283)
+
+[node name="TatayJun" parent="." instance=ExtResource("13_tatay")]
+transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, 13.8, 0, -8.6)
 
 [node name="NarrativeShi" parent="." unique_id=842517525 instance=ExtResource("11_m71rt")]
 transform = Transform3D(0.042206936, 0, -0.9991089, 0, 1, 0, 0.9991089, 0, 0.042206936, 2.896019, 0.49417877, -7.2959094)

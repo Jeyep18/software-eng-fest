@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://wsovjfl8f40h" path="res://game/entities/ate_linda_npc/ate_linda.tscn" id="7_61ce1"]
 [ext_resource type="PackedScene" uid="uid://blir7k61n7thg" path="res://game/objects/interactables/narrativeshi.tscn" id="8_0aq8a"]
 [ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="9_rain"]
+[ext_resource type="PackedScene" path="res://game/entities/quest_npcs/mang_nestor.tscn" id="10_nestor"]
+[ext_resource type="PackedScene" path="res://game/entities/story_npcs/tape_neighbor.tscn" id="11_neighbor"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 
@@ -196,6 +198,12 @@ shadow_enabled = true
 
 [node name="Ate_Linda" parent="." unique_id=1938827577 instance=ExtResource("7_61ce1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.827626, 0.8883978, -10.385182)
+
+[node name="MangNestor" parent="." instance=ExtResource("10_nestor")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, 10.8, 0.8, -8.8)
+
+[node name="TapeNeighbor" parent="." instance=ExtResource("11_neighbor")]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 7.2, 0.78, -8.9)
 
 [node name="NarrativeShi" parent="." unique_id=842517525 instance=ExtResource("8_0aq8a")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.006405, 2.1556566, -8.412394)

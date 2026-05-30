@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="7_xd4q2"]
 [ext_resource type="Script" path="res://game/weather/StormRainController.gd" id="8_rain"]
 [ext_resource type="PackedScene" uid="uid://cbtfx45as84mq" path="res://_raw_assets/Locations/Market.glb" id="9_yn1y5"]
+[ext_resource type="PackedScene" path="res://game/entities/story_npcs/palengke_queue_man.tscn" id="10_queue"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iva62"]
@@ -282,3 +283,6 @@ size = Vector3(0.3725834, 2.3295898, 18.839783)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.769861, 1.3711485, -15.732109)
 use_collision = true
 size = Vector3(0.3725834, 2.3295898, 18.839783)
+
+[node name="PalengkeQueueMan" parent="." instance=ExtResource("10_queue")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.0, 0.16, -15.6)

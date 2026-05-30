@@ -415,6 +415,7 @@ func _on_difficulty_confirmed(difficulty: GameState.Difficulty) -> void:
 	SceneManager.reset()
 	StormEnroachment.reset()
 	NeedsLog.reset()
+	SideQuestLog.reset()
 	ShopUi.reset()
 	InventoryManager.reset()
 	GameState.reset()

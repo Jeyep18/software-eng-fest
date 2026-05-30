@@ -51,5 +51,6 @@ func _refresh() -> void:
 
 	icon.texture = item.item_icon
 	var quantity_suffix := " x%d" % InventoryManager.discard_held_quantity if InventoryManager.discard_held_quantity > 1 else ""
-	label.text = item.get_item_name() + quantity_suffix
-	label.visible = item.item_icon == null or InventoryManager.discard_held_quantity > 1
+	var warning_prefix := "May be needed: " if InventoryManager.is_critical_item_id(item.item_id) else ""
+	label.text = warning_prefix + item.get_item_name() + quantity_suffix
+	label.visible = item.item_icon == null or InventoryManager.discard_held_quantity > 1 or InventoryManager.is_critical_item_id(item.item_id)

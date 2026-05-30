@@ -333,6 +333,7 @@ func _show_result_panel() -> void:
 	GameState.reset()
 	GlobalTimer.reset()
 	NeedsLog.reset()
+	SideQuestLog.reset()
 	EconomyManager.reset()
 	InventoryManager.reset()
 	await TransitionOverlay.fade_to_black()

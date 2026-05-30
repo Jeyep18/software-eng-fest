@@ -9,18 +9,18 @@ const MAP_GRAPH: Dictionary = {
 	},
 	"ate_linda": {
 		"home":       12,
-		"hardware":   20,   # unchanged
-		"pharmacy":   22,   # unchanged
+		"hardware":   16,
+		"pharmacy":   18,
 	},
 	"hardware": {
 		"home":       30,   # matches above
-		"ate_linda":  20,
+		"ate_linda":  16,
 		"pharmacy":   15,   # unchanged — close together, reward efficient routing
 		"grocery":    25,   # unchanged
 	},
 	"pharmacy": {
 		"home":       34,   # slightly up — pharmacy + hardware + home chain
-		"ate_linda":  22,
+		"ate_linda":  18,
 		"hardware":   15,
 		"grocery":    20,
 	},

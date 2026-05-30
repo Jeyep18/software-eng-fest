@@ -129,6 +129,7 @@ func _reset_global_state() -> void:
 	StormEnroachment.reset()
 	GlobalTimer.reset()
 	NeedsLog.reset()
+	SideQuestLog.reset()
 	ShopUi.reset()
 	InventoryManager.reset()
 	GameState.reset()

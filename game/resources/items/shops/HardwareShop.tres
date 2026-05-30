@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://5st8s2a2t2vs" path="res://game/resources/items/batteries.tres" id="4_jpaar"]
 [ext_resource type="Resource" uid="uid://txgoi7uiy07h" path="res://game/resources/items/tarp.tres" id="5_qxklv"]
 [ext_resource type="Resource" uid="uid://dwlf2grpplygs" path="res://game/resources/items/wrench.tres" id="6_jpaar"]
+[ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="7_hammer"]
 
 [sub_resource type="Resource" id="Resource_imf10"]
 script = ExtResource("1_pqv5y")
@@ -43,9 +44,16 @@ price = 75
 stock = 1
 metadata/_custom_type_script = "uid://drt5nt3ddch63"
 
+[sub_resource type="Resource" id="Resource_hammer_backup"]
+script = ExtResource("1_pqv5y")
+item_data = ExtResource("7_hammer")
+price = 95
+stock = 1
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
 [resource]
 script = ExtResource("2_hsn26")
 shop_name = "Hardware Store"
 shop_subtitle = "Ano kaya pwede ko bilihin para sa pagayos ng bahay."
-items = Array[ExtResource("1_pqv5y")]([SubResource("Resource_imf10"), SubResource("Resource_ntabo"), SubResource("Resource_ebsxb"), SubResource("Resource_g8ctj"), SubResource("Resource_qxklv")])
+items = Array[ExtResource("1_pqv5y")]([SubResource("Resource_imf10"), SubResource("Resource_ntabo"), SubResource("Resource_ebsxb"), SubResource("Resource_g8ctj"), SubResource("Resource_qxklv"), SubResource("Resource_hammer_backup")])
 metadata/_custom_type_script = "uid://baep303p2o6o1"

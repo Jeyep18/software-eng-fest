@@ -1,0 +1,110 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://_raw_assets/player_assets/mixamo_base.glb" id="1_model"]
+[ext_resource type="Script" path="res://game/entities/quest_npcs/MangNestor.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_line"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_ui"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_seq"]
+[ext_resource type="Resource" uid="uid://txgoi7uiy07h" path="res://game/resources/items/tarp.tres" id="6_tarp"]
+
+[sub_resource type="CylinderShape3D" id="BodyShape"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="BoxShape3D" id="InteractShape"]
+size = Vector3(1.6, 2.0, 2.2)
+
+[sub_resource type="Resource" id="OfferLine1"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Anak, pwede bang makisuyo? Hindi ako makaalis, hinihintay ko pa asawa ko."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="OfferLine2"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Bilhan mo sana ako ng Half Chicken sa Go To Chooks. Nasa tabi lang iyon ng Botika, doon sa may Pharmacy."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="OfferLine3"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Eto, PHP 150. Ikaw na bahala sa sukli. Basta sana makauwi kami na may hapunan."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="OfferSequence"]
+script = ExtResource("5_seq")
+lines = Array[ExtResource("3_line")]([SubResource("OfferLine1"), SubResource("OfferLine2"), SubResource("OfferLine3")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="WaitingLine"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Wala pa? Sige, anak. Nagtitiwala pa rin ako sa'yo. Go To Chooks iyon, katabi lang ng Pharmacy."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="WaitingSequence"]
+script = ExtResource("5_seq")
+lines = Array[ExtResource("3_line")]([SubResource("WaitingLine")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="CompleteLine"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Ay, salamat. Hindi ko sinabi kanina, pero may extra tarp ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="CompleteSequence"]
+script = ExtResource("5_seq")
+lines = Array[ExtResource("3_line")]([SubResource("CompleteLine")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="FullInventoryLine"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Naku, puno ang dala mo. Magbawas ka muna para maabot ko sa'yo itong tarp."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="FullInventorySequence"]
+script = ExtResource("5_seq")
+lines = Array[ExtResource("3_line")]([SubResource("FullInventoryLine")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="DoneLine"]
+script = ExtResource("3_line")
+speaker_name = "Mang Nestor"
+text = "Salamat ulit, anak. Umuwi ka na rin bago tuluyang lumakas ang hangin."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="DoneSequence"]
+script = ExtResource("5_seq")
+lines = Array[ExtResource("3_line")]([SubResource("DoneLine")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[node name="MangNestor" type="CharacterBody3D"]
+
+[node name="visuals" type="Node3D" parent="."]
+
+[node name="mixamo_base" parent="visuals" instance=ExtResource("1_model")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("BodyShape")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_script")
+offer_sequence = SubResource("OfferSequence")
+waiting_sequence = SubResource("WaitingSequence")
+complete_sequence = SubResource("CompleteSequence")
+full_inventory_sequence = SubResource("FullInventorySequence")
+done_sequence = SubResource("DoneSequence")
+tarp_reward = ExtResource("6_tarp")
+dialogue_ui_scene = ExtResource("4_ui")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.1)
+shape = SubResource("InteractShape")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true

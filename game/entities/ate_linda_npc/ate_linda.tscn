@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://wsovjfl8f40h"]
 
 [ext_resource type="PackedScene" uid="uid://dgw708edian3h" path="res://game/assets/models/nanay_model.tscn" id="1_nta0v"]
-[ext_resource type="Script" uid="uid://bc88f60667dkl" path="res://game/entities/ate_linda_npc/ate_linda.gd" id="2_rw2tb"]
+[ext_resource type="Script" path="res://game/entities/ate_linda_npc/AteLindaQuestShop.gd" id="2_rw2tb"]
 [ext_resource type="Resource" uid="uid://cn5y502leh88q" path="res://game/entities/dialogues/ate_linda/sequence/ate_linda_tindahan_act1.tres" id="3_7ti20"]
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_oif5d"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="5_line"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="6_seq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ewcw0"]
 height = 1.7739258
@@ -11,6 +13,51 @@ radius = 0.3671875
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_e6l8e"]
 radius = 1.1030273
+
+[sub_resource type="Resource" id="Line_trade_1"]
+script = ExtResource("5_line")
+speaker_name = "Ate Linda"
+text = "Iho, kung may martilyo ka sana, maayos ko itong istante. Kapag natulungan mo ako, bababaan ko presyo ko sa'yo."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Line_trade_2"]
+script = ExtResource("5_line")
+speaker_name = "Ate Linda"
+text = "Ipapahiram mo? Sige, utang na loob ko 'to. Ibababa ko presyo, pero kailangan mo ng pamalit kung aayusin mo pa bahay n'yo."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Seq_trade"]
+script = ExtResource("6_seq")
+lines = Array[ExtResource("5_line")]([SubResource("Line_trade_1"), SubResource("Line_trade_2")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Line_discounted"]
+script = ExtResource("5_line")
+speaker_name = "Ate Linda"
+text = "Salamat, iho. Para sa'yo, mas mababa na presyo."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Seq_discounted"]
+script = ExtResource("6_seq")
+lines = Array[ExtResource("5_line")]([SubResource("Line_discounted")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[sub_resource type="Resource" id="Line_no_hammer_1"]
+script = ExtResource("5_line")
+speaker_name = "Ate Linda"
+text = "Oh, iho, ano ang iyong mga kailangan?"
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Line_no_hammer_2"]
+script = ExtResource("5_line")
+speaker_name = "Ate Linda"
+text = "Pasensya na at mataas presyo. Kung may martilyo ka sana para dito sa istante, bababaan ko presyo ko sa'yo."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Seq_no_hammer"]
+script = ExtResource("6_seq")
+lines = Array[ExtResource("5_line")]([SubResource("Line_no_hammer_1"), SubResource("Line_no_hammer_2")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [node name="Ate_Linda" type="CharacterBody3D" unique_id=1938827577]
 
@@ -26,6 +73,10 @@ shape = SubResource("CylinderShape3D_ewcw0")
 script = ExtResource("2_rw2tb")
 sequence_tindahan_default = ExtResource("3_7ti20")
 shop_path = "res://game/resources/items/shops/ate_linda_shop.tres"
+discounted_shop_path = "res://game/resources/items/shops/ate_linda_shop_discounted.tres"
+trade_offer_sequence = SubResource("Seq_trade")
+discounted_sequence = SubResource("Seq_discounted")
+no_hammer_sequence = SubResource("Seq_no_hammer")
 dialogue_ui_scene = ExtResource("4_oif5d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=395129141]

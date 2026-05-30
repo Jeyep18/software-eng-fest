@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ShopData" format=3]
+
+[ext_resource type="Script" uid="uid://drt5nt3ddch63" path="res://game/scripts/ShopItem.gd" id="1_discount"]
+[ext_resource type="Resource" uid="uid://cjle5kmwsfk27" path="res://game/resources/items/canned_goods.tres" id="2_canned"]
+[ext_resource type="Resource" uid="uid://cekmubr42kcip" path="res://game/resources/items/water_jugs.tres" id="3_water"]
+[ext_resource type="Resource" uid="uid://fs66jyqsgs5s" path="res://game/resources/items/medicine.tres" id="4_meds"]
+[ext_resource type="Script" uid="uid://baep303p2o6o1" path="res://game/scripts/ShopData.gd" id="5_shop"]
+
+[sub_resource type="Resource" id="Resource_discount_canned"]
+script = ExtResource("1_discount")
+item_data = ExtResource("2_canned")
+price = 55
+stock = 4
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[sub_resource type="Resource" id="Resource_discount_water"]
+script = ExtResource("1_discount")
+item_data = ExtResource("3_water")
+price = 55
+stock = 1
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[sub_resource type="Resource" id="Resource_discount_meds"]
+script = ExtResource("1_discount")
+item_data = ExtResource("4_meds")
+price = 60
+stock = 1
+metadata/_custom_type_script = "uid://drt5nt3ddch63"
+
+[resource]
+script = ExtResource("5_shop")
+shop_name = "Ate Linda's Sari-sari"
+shop_subtitle = "Tinulungan mo si Ate Linda, kaya binabaan niya presyo para sa'yo."
+items = Array[ExtResource("1_discount")]([SubResource("Resource_discount_canned"), SubResource("Resource_discount_water"), SubResource("Resource_discount_meds")])
+metadata/_custom_type_script = "uid://baep303p2o6o1"

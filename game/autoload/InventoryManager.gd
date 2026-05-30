@@ -27,6 +27,18 @@ const STACKABLE_ITEM_IDS: Dictionary = {
 	"nails": 99,
 }
 
+const CRITICAL_ITEM_IDS: Dictionary = {
+	"hammer": true,
+	"tarp": true,
+	"medicine": true,
+	"water_jug": true,
+	"plywood": true,
+	"nails": true,
+	"batteries": true,
+	"broken_radio": true,
+	"dead_flashlight": true,
+}
+
 # --- COMBINE RECIPES ---
 # Key format: "item_id_a+item_id_b" (always sorted alphabetically so order doesn't matter)
 # Value: the item_id string of the result item
@@ -228,6 +240,9 @@ func has_item_with_id(item_id: String) -> bool:
 		if item.item_id == item_id:
 			return true
 	return false
+
+func is_critical_item_id(item_id: String) -> bool:
+	return CRITICAL_ITEM_IDS.has(item_id)
 
 func reset() -> void:
 	inventory.clear()

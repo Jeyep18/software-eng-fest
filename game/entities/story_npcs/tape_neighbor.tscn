@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://_raw_assets/player_assets/mixamo_base.glb" id="1_model"]
+[ext_resource type="Script" path="res://game/entities/npc/StoryNPC.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_line"]
+[ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_ui"]
+[ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_seq"]
+
+[sub_resource type="CylinderShape3D" id="BodyShape"]
+height = 1.7739258
+radius = 0.3671875
+
+[sub_resource type="BoxShape3D" id="InteractShape"]
+size = Vector3(1.5, 2.0, 2.1)
+
+[sub_resource type="Resource" id="Line1"]
+script = ExtResource("3_line")
+speaker_name = "Kapitbahay"
+text = "Nag-tape na ako ng bintana. Hindi ko alam kung science o dasal ang gumagana."
+metadata/_custom_type_script = "uid://po32410sv037"
+
+[sub_resource type="Resource" id="Sequence"]
+script = ExtResource("5_seq")
+lines = Array[ExtResource("3_line")]([SubResource("Line1")])
+metadata/_custom_type_script = "uid://b55uh8miobq8a"
+
+[node name="TapeNeighbor" type="CharacterBody3D"]
+
+[node name="visuals" type="Node3D" parent="."]
+
+[node name="mixamo_base" parent="visuals" instance=ExtResource("1_model")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
+shape = SubResource("BodyShape")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_script")
+default_sequence = SubResource("Sequence")
+dialogue_ui_scene = ExtResource("4_ui")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.1)
+shape = SubResource("InteractShape")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true

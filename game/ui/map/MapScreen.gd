@@ -49,6 +49,7 @@ const NODE_DISPLAY_NAMES: Dictionary = {
 const ROAD_CONNECTIONS: Array = [
 	["home",     "ate_linda"],
 	["home",     "hardware"],
+	["ate_linda", "pharmacy"],
 	["hardware", "pharmacy"],
 	["hardware", "grocery"],
 ]

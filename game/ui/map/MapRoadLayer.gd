@@ -13,6 +13,7 @@ const WIDTH_SECONDARY: float = 1.8
 const PRIMARY_CONNECTIONS: Array = [
 	["home",     "ate_linda"],
 	["home",     "hardware"],
+	["ate_linda", "pharmacy"],
 	["hardware", "pharmacy"],
 	["hardware", "grocery"],
 ]

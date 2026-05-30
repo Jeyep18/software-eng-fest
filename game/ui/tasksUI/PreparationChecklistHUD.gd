@@ -41,6 +41,10 @@ func _ready() -> void:
 		NeedsLog.need_resolved.connect(_on_need_resolved)
 	if not GameState.guide_tasks_changed.is_connected(_on_guide_tasks_changed):
 		GameState.guide_tasks_changed.connect(_on_guide_tasks_changed)
+	if not SideQuestLog.side_objectives_changed.is_connected(_on_side_objectives_changed):
+		SideQuestLog.side_objectives_changed.connect(_on_side_objectives_changed)
+	if not SideQuestLog.side_objective_started.is_connected(_on_side_objective_started):
+		SideQuestLog.side_objective_started.connect(_on_side_objective_started)
 	LocalizationManager.language_changed.connect(_on_language_changed)
 	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 	_on_cash_changed(GameState.get_cash())
@@ -219,6 +223,28 @@ func _on_checklist_content_changed() -> void:
 func _on_guide_tasks_changed() -> void:
 	_refresh_compact_objectives(true)
 
+func _on_side_objectives_changed() -> void:
+	_refresh_compact_objectives(true)
+
+func _on_side_objective_started(label: String) -> void:
+	if _objective_notice == null or _objective_notice_body == null:
+		return
+	_objective_notice_body.text = LocalizationManager.translate(label)
+	_objective_notice.visible = true
+	_objective_notice.modulate.a = 0.0
+	SFX.objective_notice()
+	if _objective_notice_tween != null and _objective_notice_tween.is_valid():
+		_objective_notice_tween.kill()
+	_objective_notice_tween = create_tween()
+	_objective_notice_tween.tween_property(_objective_notice, "modulate:a", 1.0, 0.28)
+	_objective_notice_tween.tween_interval(2.0)
+	_objective_notice_tween.tween_property(_objective_notice, "modulate:a", 0.0, 0.55)
+	_objective_notice_tween.finished.connect(func() -> void:
+		if _objective_notice != null:
+			_objective_notice.visible = false
+	)
+	_refresh_compact_objectives(false)
+
 func _schedule_checklist_resize() -> void:
 	await get_tree().process_frame
 	_resize_checklist_card()
@@ -354,6 +380,9 @@ func _get_active_objectives() -> Array[Dictionary]:
 		var need: NeedsLog.Need = data["need"]
 		if NeedsLog.is_discovered(need) and not NeedsLog.is_resolved(need):
 			result.append({ "key": "need_%d" % int(need), "label": str(data["label"]) })
+
+	for data in SideQuestLog.get_active_objectives():
+		result.append(data)
 
 	if result.is_empty():
 		result.append({ "key": "all_done", "label": "All discovered objectives complete" })
