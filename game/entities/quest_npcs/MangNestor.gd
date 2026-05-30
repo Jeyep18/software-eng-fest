@@ -40,9 +40,19 @@ func _pick_sequence() -> DialogueSequence:
 func _on_dialogue_completed() -> void:
 	match _pending_action:
 		"start":
+			show_choice_prompt("Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?", "Accept", "Not now")
+		"complete":
+			show_choice_prompt("Give the Half Chicken to Mang Nestor?", "Give", "Keep it")
+
+func _on_choice_accepted() -> void:
+	match _pending_action:
+		"start":
 			_start_quest()
 		"complete":
 			_complete_quest()
+	_pending_action = ""
+
+func _on_choice_declined() -> void:
 	_pending_action = ""
 
 func _start_quest() -> void:

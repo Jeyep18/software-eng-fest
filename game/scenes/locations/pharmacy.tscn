@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dm0i10xqkx0jb" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_diff_2k.png" id="4_ng0me"]
 [ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_popvo"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_ra384"]
-[ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="7_lgo0e"]
 [ext_resource type="VoxelGIData" uid="uid://6bsi8yxlare1" path="res://game/resources/voxels/pharmacy.VoxelGI_data.res" id="8_lgo0e"]
 [ext_resource type="PackedScene" uid="uid://c2sp28fvd3dvj" path="res://_raw_assets/Locations/Pharmacy.glb" id="9_scsrr"]
 [ext_resource type="PackedScene" uid="uid://byndmu8g5ae3g" path="res://game/scenes/world/WorldItem.tscn" id="12_lgo0e"]
@@ -19,8 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cgxg2hd82077n" path="res://game/entities/chooks_to_go_seller.tscn" id="15_cu82t"]
 [ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="16_rain"]
 [ext_resource type="PackedScene" path="res://game/entities/story_npcs/ate_maribel.tscn" id="17_maribel"]
-[ext_resource type="Environment" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
-
+[ext_resource type="Environment" uid="uid://da3ce0283oavb" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
 albedo_texture = ExtResource("1_hvxim")
@@ -38,66 +36,6 @@ albedo_texture = ExtResource("4_ng0me")
 roughness_texture = ExtResource("5_popvo")
 uv1_scale = Vector3(2, 2, 2)
 
-[sub_resource type="Shader" id="Shader_tokvj"]
-code = "
-// NOTE: Shader automatically converted from Godot Engine 4.6.1.stable's PanoramaSkyMaterial.
-
-shader_type sky;
-
-uniform sampler2D source_panorama : filter_linear, source_color, hint_default_black;
-uniform float exposure : hint_range(0, 128) = 1.0;
-uniform float speed = 0.002;
-
-
-void sky() {
-	vec2 skyCoords = vec2(SKY_COORDS.x + TIME * speed, SKY_COORDS.y);
-	
-	COLOR = texture(source_panorama, skyCoords).rgb * exposure;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4c1a"]
-shader = SubResource("Shader_tokvj")
-shader_parameter/source_panorama = ExtResource("7_lgo0e")
-shader_parameter/exposure = 0.50000002375
-shader_parameter/speed = 0.002
-
-[sub_resource type="Sky" id="Sky_8xu8h"]
-sky_material = SubResource("ShaderMaterial_b4c1a")
-
-[sub_resource type="Environment" id="Environment_hj2km"]
-background_mode = 2
-sky = SubResource("Sky_8xu8h")
-ambient_light_source = 3
-ambient_light_color = Color(0.80096257, 0.72272694, 0.64580935, 1)
-reflected_light_source = 2
-tonemap_mode = 3
-tonemap_exposure = 0.6
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-sdfgi_energy = 0.3
-glow_enabled = true
-glow_levels/1 = 1.0
-glow_levels/2 = 1.0
-glow_levels/3 = 1.0
-glow_levels/4 = 1.0
-glow_levels/5 = 1.0
-glow_levels/6 = 1.0
-glow_levels/7 = 1.0
-glow_normalized = true
-glow_bloom = 1.0
-fog_light_energy = 0.0
-fog_sky_affect = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0258
-volumetric_fog_albedo = Color(0.8380194, 0.8287581, 0.8117101, 1)
-volumetric_fog_ambient_inject = 0.5
-volumetric_fog_sky_affect = 0.0
-adjustment_enabled = true
-adjustment_brightness = 0.86
-adjustment_contrast = 1.03
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_popvo"]
 size = Vector3(13.718491, 2.862793, 1.854065)
 
@@ -106,7 +44,7 @@ size = Vector3(13.718491, 2.862793, 1.854065)
 
 [node name="Pharmacy" type="Node3D" unique_id=658136089]
 
-[node name="StormRainLayer" parent="." instance=ExtResource("16_rain")]
+[node name="StormRainLayer" parent="." unique_id=40312604 instance=ExtResource("16_rain")]
 transform = Transform3D(1.25, 0, 0, 0, 1.2, 0, 0, 0, 1.25, 0, 7.2, -2.5)
 intensity_bias = 0.08
 max_amount = 220
@@ -453,8 +391,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0044093, 1.3066115, -9.8673
 [node name="ChooksToGoSeller" parent="." unique_id=1473059641 instance=ExtResource("15_cu82t")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.326217, 0.5763234, -10.285725)
 
-[node name="AteMaribel" parent="." instance=ExtResource("17_maribel")]
-transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 9.7, 0.58, -10.1)
+[node name="AteMaribel" parent="." unique_id=537630652 instance=ExtResource("17_maribel")]
+transform = Transform3D(0.9998716, 0, 0.01602149, 0, 1, 0, -0.01602149, 0, 0.9998716, 9.22367, 0.6815432, -8.216555)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=527776166]
 transform = Transform3D(1, 0, 0, 0, 0.93570286, -0.35278895, 0, 0.35278895, 0.93570286, 7.9638577, 0.1754308, -8.263052)

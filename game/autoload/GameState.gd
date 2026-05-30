@@ -45,6 +45,8 @@ var talked_to_lola: bool = false
 var house_tasks_unlocked: bool = false
 var house_exploration_complete: bool = false
 var ate_linda_discount_unlocked: bool = false
+var grocery_donation_given: bool = false
+var tindahan_smoke_break_taken: bool = false
 
 #region Act Tracking
 enum Act { ACT_1, ACT_2, ACT_3, ACT_4 }
@@ -189,6 +191,8 @@ func reset() -> void:
 	house_tasks_unlocked = false
 	house_exploration_complete = false
 	ate_linda_discount_unlocked = false
+	grocery_donation_given = false
+	tindahan_smoke_break_taken = false
 	collected_world_items.clear()
 #endregion
 
