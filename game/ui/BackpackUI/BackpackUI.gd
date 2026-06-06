@@ -116,6 +116,10 @@ func _setup_panel_layout() -> void:
 	combine_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * scale)
 	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 430 * scale)
 	combine_bar.add_theme_constant_override("separation", int(roundi(10.0 * scale)))
+	combine_label.add_theme_font_size_override("font_size", int(roundi(16.0 * scale)))
+	combine_label.add_theme_color_override("font_color", Color(1, 1, 1, 0.9))
+	combine_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	combine_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 	if is_instance_valid(discard_slot):
 		discard_slot.mouse_filter = Control.MOUSE_FILTER_STOP

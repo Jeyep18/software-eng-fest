@@ -65,15 +65,16 @@ func _setup_interact_prompt_style() -> void:
 		prompt_background.name = "InteractPromptBackground"
 		prompt_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		prompt_background.set_anchors_preset(Control.PRESET_CENTER)
-		prompt_background.color = Color(0, 0, 0, 0.42)
+		prompt_background.color = Color(0, 0, 0, 0.68)
 		prompt_background.hide()
 		prompt_layer.add_child(prompt_background)
 		prompt_layer.move_child(prompt_background, prompt_box.get_index())
 
-	prompt_background.offset_left = -86.0
-	prompt_background.offset_top = -12.0
-	prompt_background.offset_right = 86.0
-	prompt_background.offset_bottom = 12.0
+	prompt_background.color = Color(0, 0, 0, 0.68)
+	prompt_background.offset_left = -118.0
+	prompt_background.offset_top = -18.0
+	prompt_background.offset_right = 118.0
+	prompt_background.offset_bottom = 18.0
 	prompt_box.offset_left = prompt_background.offset_left
 	prompt_box.offset_top = prompt_background.offset_top
 	prompt_box.offset_right = prompt_background.offset_right
@@ -81,17 +82,17 @@ func _setup_interact_prompt_style() -> void:
 	prompt_box.alignment = BoxContainer.ALIGNMENT_CENTER
 	prompt_box.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	prompt_box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	prompt_label.custom_minimum_size = Vector2(172.0, 24.0)
+	prompt_label.custom_minimum_size = Vector2(236.0, 36.0)
 	prompt_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	prompt_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	prompt_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	prompt_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
-	prompt_label.add_theme_font_size_override("font_size", 15)
+	prompt_label.add_theme_font_size_override("font_size", 19)
 	prompt_label.add_theme_color_override("font_color", Color.WHITE)
 	prompt_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
-	prompt_label.add_theme_constant_override("shadow_offset_x", 1)
-	prompt_label.add_theme_constant_override("shadow_offset_y", 1)
+	prompt_label.add_theme_constant_override("shadow_offset_x", 2)
+	prompt_label.add_theme_constant_override("shadow_offset_y", 2)
 
 # ── Safe play wrapper — avoids restarting an already-playing animation ────────
 func _play(anim_name: String) -> void:

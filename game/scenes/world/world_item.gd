@@ -172,6 +172,7 @@ func _show_current_line() -> void:
 		GlobalTimer.pause_timer()
 		_paused_timer = true
 	get_tree().call_group("player", "set_movement_locked", true)
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	is_showing = true  # inherited from Interactable
 	_is_showing = true
 	_is_typing = true
@@ -208,6 +209,7 @@ func _hide_monologue() -> void:
 		GlobalTimer.resume_timer()
 		_paused_timer = false
 	get_tree().call_group("player", "set_movement_locked", false)
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	prompt_visibility_changed.emit(true)
 
@@ -218,6 +220,7 @@ func _show_pickup_confirmation() -> void:
 	_is_typing = false
 	if _ui != null:
 		_ui.hide_ui()
+	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	_show_confirm_dialog()
 	prompt_visibility_changed.emit(false)
 

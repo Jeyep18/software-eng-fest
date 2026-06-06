@@ -139,13 +139,13 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.827626, 0.8883978, -10.385182)
 
 [node name="MangNestor" parent="." unique_id=700514226 instance=ExtResource("10_nestor")]
-transform = Transform3D(0.9846314, 0, -0.17464499, 0, 1, 0, 0.17464499, 0, 0.9846314, 10.307398, 0.51232105, -7.293873)
+transform = Transform3D(0.9846314, 0, -0.17464499, 0, 1, 0, 0.17464499, 0, 0.9846314, 10.307398, 0.51232105, -7.942025)
 
 [node name="TapeNeighbor" parent="." unique_id=879700908 instance=ExtResource("11_neighbor")]
 transform = Transform3D(0.9767509, 0, -0.21437722, 0, 1, 0, 0.21437722, 0, 0.9767509, 7.2, 0.52798235, -7.6164675)
 
-[node name="SmokeBreakNPC" parent="." instance=ExtResource("12_smoke")]
-transform = Transform3D(0.9767509, 0, -0.21437722, 0, 1, 0, 0.21437722, 0, 0.9767509, 8.7, 0.53, -7.7)
+[node name="SmokeBreakNPC" parent="." unique_id=1179564317 instance=ExtResource("12_smoke")]
+transform = Transform3D(0.9767509, 0, -0.21437722, 0, 1, 0, 0.21437722, 0, 0.9767509, 17.444233, 0.53, -7.7)
 
 [node name="NarrativeShi" parent="." unique_id=842517525 instance=ExtResource("8_0aq8a")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.363316, 2.1556566, -8.412394)

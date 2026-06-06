@@ -290,11 +290,11 @@ size = Vector3(0.3725834, 2.3295898, 18.839783)
 [node name="PalengkeQueueMan" parent="." unique_id=1134235835 instance=ExtResource("10_queue")]
 transform = Transform3D(-0.3145227, 0, -0.94924986, 0, 1, 0, 0.94924986, 0, -0.3145227, 5.956321, 0.6043366, -15.400898)
 
-[node name="PanicBuyer" parent="." instance=ExtResource("11_panic")]
-transform = Transform3D(-0.3145227, 0, -0.94924986, 0, 1, 0, 0.94924986, 0, -0.3145227, 1.6, 0.6, -15.0)
+[node name="PanicBuyer" parent="." unique_id=1089617733 instance=ExtResource("11_panic")]
+transform = Transform3D(-0.78890175, 0, 0.61451936, 0, 1, 0, -0.61451936, 0, -0.78890175, 1.6, 0.6, -15.643545)
 
-[node name="WetParent" parent="." instance=ExtResource("12_parent")]
-transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -3.7, 0.6, -13.7)
+[node name="WetParent" parent="." unique_id=1502875760 instance=ExtResource("12_parent")]
+transform = Transform3D(0.9254545, 0, -0.37885863, 0, 1, 0, 0.37885863, 0, 0.9254545, -7.506515, 0.6, -9.746655)
 
-[node name="MoneyBeggar" parent="." instance=ExtResource("13_beggar")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -7.2, 0.6, -10.8)
+[node name="MoneyBeggar" parent="." unique_id=1036601875 instance=ExtResource("13_beggar")]
+transform = Transform3D(0.9976545, 0, 0.06845063, 0, 1, 0, -0.06845063, 0, 0.9976545, -10.395251, 0.6, -15.790375)

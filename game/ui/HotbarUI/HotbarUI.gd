@@ -137,16 +137,38 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 
 		var quantity: int = InventoryManager.get_item_quantity(index)
 		if quantity > 1:
+			var quantity_badge = PanelContainer.new()
+			quantity_badge.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+			quantity_badge.offset_left = -30 * ui_scale
+			quantity_badge.offset_top = 2 * ui_scale
+			quantity_badge.offset_right = -2 * ui_scale
+			quantity_badge.offset_bottom = 24 * ui_scale
+			quantity_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			var badge_style := StyleBoxFlat.new()
+			badge_style.bg_color = Color(0.03, 0.025, 0.015, 0.95)
+			badge_style.border_color = Color(1.0, 0.86, 0.28, 1.0)
+			badge_style.border_width_left = 1
+			badge_style.border_width_right = 1
+			badge_style.border_width_top = 1
+			badge_style.border_width_bottom = 1
+			badge_style.corner_radius_top_left = 5
+			badge_style.corner_radius_top_right = 5
+			badge_style.corner_radius_bottom_left = 5
+			badge_style.corner_radius_bottom_right = 5
+			quantity_badge.add_theme_stylebox_override("panel", badge_style)
+			panel.add_child(quantity_badge)
+
 			var quantity_label = Label.new()
-			quantity_label.text = "x%d" % quantity
-			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
-			quantity_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-			quantity_label.offset_top = 2 * ui_scale
-			quantity_label.offset_right = -4 * ui_scale
-			quantity_label.add_theme_font_size_override("font_size", int(roundi(10.0 * ui_scale)))
-			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62))
-			panel.add_child(quantity_label)
+			quantity_label.text = str(quantity)
+			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			quantity_label.add_theme_font_size_override("font_size", int(roundi(15.0 * ui_scale)))
+			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.95, 0.58))
+			quantity_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 1))
+			quantity_label.add_theme_constant_override("shadow_offset_x", 1)
+			quantity_label.add_theme_constant_override("shadow_offset_y", 1)
+			quantity_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			quantity_badge.add_child(quantity_label)
 
 	# Slot number badge (bottom-right corner)
 	var num_label = Label.new()

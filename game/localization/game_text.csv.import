@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d0njllxairjxr"
+
+[deps]
+
+files=["res://game/localization/game_text.key.translation", "res://game/localization/game_text.source.translation", "res://game/localization/game_text.english.translation", "res://game/localization/game_text.tagalog.translation", "res://game/localization/game_text.notes.translation"]
+
+source_file="res://game/localization/game_text.csv"
+dest_files=["res://game/localization/game_text.key.translation", "res://game/localization/game_text.source.translation", "res://game/localization/game_text.english.translation", "res://game/localization/game_text.tagalog.translation", "res://game/localization/game_text.notes.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

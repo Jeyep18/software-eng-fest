@@ -305,8 +305,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2
 [node name="TatayJun" parent="." unique_id=2108885044 instance=ExtResource("13_tatay")]
 transform = Transform3D(0.99794257, 0, -0.06411429, 0, 1, 0, 0.06411429, 0, 0.99794257, -6.675338, 0.020390034, -7.273602)
 
-[node name="KapsWorker" parent="." instance=ExtResource("14_worker")]
-transform = Transform3D(0.042206936, 0, -0.9991089, 0, 1, 0, 0.9991089, 0, 0.042206936, 4.0, 0.02, -7.4)
+[node name="KapsWorker" parent="." unique_id=790701237 instance=ExtResource("14_worker")]
+transform = Transform3D(0.96976143, 0, 0.24405509, 0, 1, 0, -0.24405509, 0, 0.96976143, 0.9182321, 0.02, -7.2835903)
 
 [node name="NarrativeShi" parent="." unique_id=842517525 instance=ExtResource("11_m71rt")]
 transform = Transform3D(0.042206936, 0, -0.9991089, 0, 1, 0, 0.9991089, 0, 0.042206936, 2.896019, 0.49417877, -7.2959094)
