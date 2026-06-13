@@ -10,7 +10,9 @@ func _ready() -> void:
 	layer = 90
 	_build_overlay()
 	_apply_visibility()
+	_apply_quality_profile()
 	VisualSettings.vhs_crt_enabled_changed.connect(_on_vhs_crt_enabled_changed)
+	VisualSettings.quality_preset_changed.connect(_on_quality_preset_changed)
 
 func _build_overlay() -> void:
 	_material = ShaderMaterial.new()
@@ -28,5 +30,15 @@ func _build_overlay() -> void:
 func _apply_visibility() -> void:
 	_overlay.visible = VisualSettings.is_vhs_crt_enabled()
 
+func _apply_quality_profile() -> void:
+	if _material == null:
+		return
+	var profile := VisualSettings.get_vhs_shader_profile()
+	for key in profile.keys():
+		_material.set_shader_parameter(String(key), profile[key])
+
 func _on_vhs_crt_enabled_changed(_enabled: bool) -> void:
 	_apply_visibility()
+
+func _on_quality_preset_changed(_preset: StringName) -> void:
+	_apply_quality_profile()

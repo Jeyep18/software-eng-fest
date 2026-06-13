@@ -14,6 +14,7 @@ var _heavy_player: AudioStreamPlayer
 var _rumble_player: AudioStreamPlayer
 var _train_player: AudioStreamPlayer
 var _one_shot_timer: float = 0.0
+var _fade_tweens: Dictionary = {}
 
 func _ready() -> void:
 	_rain_player = _make_loop_player(LIGHT_RAIN, "StormLightRain")
@@ -103,8 +104,19 @@ func _location_bias(location: String) -> float:
 func _fade_to(player: AudioStreamPlayer, volume_db: float, immediate: bool = false) -> void:
 	if player == null:
 		return
+	if is_equal_approx(player.volume_db, volume_db):
+		return
+	var previous_tween := _fade_tweens.get(player) as Tween
+	if previous_tween != null and previous_tween.is_valid():
+		previous_tween.kill()
 	if immediate:
 		player.volume_db = volume_db
+		_fade_tweens.erase(player)
 		return
 	var tween := create_tween()
+	_fade_tweens[player] = tween
 	tween.tween_property(player, "volume_db", volume_db, 1.25)
+	tween.finished.connect(func() -> void:
+		if _fade_tweens.get(player) == tween:
+			_fade_tweens.erase(player)
+	)

@@ -17,6 +17,7 @@ const BUSES: Array[Dictionary] = [
 var show_close_button: bool = true
 var _sliders: Dictionary = {}
 var _language_selector: OptionButton
+var _quality_selector: OptionButton
 var _vhs_crt_toggle: CheckBox
 var _ui_scale_selector: OptionButton
 
@@ -27,6 +28,7 @@ func _ready() -> void:
 	_build()
 	_sync_from_audio_manager()
 	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
+	VisualSettings.quality_preset_changed.connect(_on_quality_preset_changed)
 	_apply_ui_scale()
 
 func _build() -> void:
@@ -48,6 +50,7 @@ func _build() -> void:
 	box.add_child(title)
 
 	box.add_child(_make_language_row())
+	box.add_child(_make_quality_row())
 	box.add_child(_make_vhs_crt_row())
 	box.add_child(_make_ui_scale_row())
 
@@ -128,6 +131,36 @@ func _make_language_row() -> Control:
 
 	return row
 
+func _make_quality_row() -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+
+	var label := Label.new()
+	label.text = "Visual Quality"
+	label.custom_minimum_size = Vector2(100, 0)
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	UI_STYLE.apply_label(label)
+	row.add_child(label)
+
+	_quality_selector = OptionButton.new()
+	_quality_selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var presets: Array[StringName] = [
+		VisualSettings.QUALITY_HIGH,
+		VisualSettings.QUALITY_BALANCED,
+		VisualSettings.QUALITY_PERFORMANCE,
+	]
+	for preset in presets:
+		_quality_selector.add_item(VisualSettings.get_quality_label(preset))
+		_quality_selector.set_item_metadata(_quality_selector.item_count - 1, preset)
+		if preset == VisualSettings.get_quality_preset():
+			_quality_selector.select(_quality_selector.item_count - 1)
+	_quality_selector.item_selected.connect(_on_quality_selected)
+	UI_STYLE.apply_button(_quality_selector)
+	SFX.wire_button(_quality_selector)
+	row.add_child(_quality_selector)
+
+	return row
+
 func _make_vhs_crt_row() -> Control:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
@@ -180,6 +213,8 @@ func _sync_from_audio_manager() -> void:
 		_update_percent_label(slider)
 	if _vhs_crt_toggle != null:
 		_vhs_crt_toggle.set_pressed_no_signal(VisualSettings.is_vhs_crt_enabled())
+	if _quality_selector != null:
+		_select_quality_without_signal(VisualSettings.get_quality_preset())
 	if _ui_scale_selector != null:
 		for i in range(_ui_scale_selector.item_count):
 			if _ui_scale_selector.get_item_id(i) == VisualSettings.get_ui_scale_percent():
@@ -197,6 +232,20 @@ func _on_reset_pressed() -> void:
 
 func _on_language_selected(index: int) -> void:
 	LocalizationManager.set_language(LocalizationManager.get_language_from_index(index))
+
+func _on_quality_selected(index: int) -> void:
+	VisualSettings.set_quality_preset(_quality_selector.get_item_metadata(index))
+
+func _on_quality_preset_changed(preset: StringName) -> void:
+	_select_quality_without_signal(preset)
+
+func _select_quality_without_signal(preset: StringName) -> void:
+	if _quality_selector == null:
+		return
+	for i in range(_quality_selector.item_count):
+		if _quality_selector.get_item_metadata(i) == preset:
+			_quality_selector.select(i)
+			return
 
 func _on_vhs_crt_toggled(enabled: bool) -> void:
 	VisualSettings.set_vhs_crt_enabled(enabled)

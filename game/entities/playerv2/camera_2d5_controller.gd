@@ -69,6 +69,7 @@ func _ready() -> void:
 		_camera.look_at(follow_target.global_position + Vector3(0, _active_height_offset, 0), Vector3.UP)
 		
 	_setup_depth_of_field()
+	VisualSettings.quality_preset_changed.connect(_on_quality_preset_changed)
 	_connect_to_volumes()
 
 
@@ -229,8 +230,16 @@ func _detect_landing() -> void:
 #region Setup
 func _setup_depth_of_field() -> void:
 	var attributes := CameraAttributesPractical.new()
-	attributes.dof_blur_far_enabled = true
+	attributes.dof_blur_far_enabled = VisualSettings.should_use_camera_depth_of_field()
 	attributes.dof_blur_far_distance = blur_far_distance
 	attributes.dof_blur_far_transition = blur_far_transition
 	_camera.attributes = attributes
+
+func _on_quality_preset_changed(_preset: StringName) -> void:
+	if _camera == null:
+		return
+	if _camera.attributes == null:
+		_setup_depth_of_field()
+		return
+	_camera.attributes.dof_blur_far_enabled = VisualSettings.should_use_camera_depth_of_field()
 #endregion

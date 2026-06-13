@@ -111,12 +111,12 @@ func _setup_settings_panel() -> void:
 	_settings_layer.add_child(dim)
 
 	_settings_panel = AudioSettingsPanel.new()
-	_settings_panel.custom_minimum_size = Vector2(620, 540)
+	_settings_panel.custom_minimum_size = Vector2(620, 580)
 	_settings_panel.set_anchors_preset(Control.PRESET_CENTER)
 	_settings_panel.offset_left = -310.0
-	_settings_panel.offset_top = -270.0
+	_settings_panel.offset_top = -290.0
 	_settings_panel.offset_right = 310.0
-	_settings_panel.offset_bottom = 270.0
+	_settings_panel.offset_bottom = 290.0
 	_settings_panel.close_requested.connect(_on_settings_close_requested)
 	_settings_layer.add_child(_settings_panel)
 

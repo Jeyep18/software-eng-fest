@@ -22,6 +22,9 @@ const SFX = preload("res://game/audio/Sfx.gd")
 var _selected_index: int = -1
 var _combine_target_index: int = -1
 var _slot_panels: Array[Panel] = []
+var _slot_items: Array[ItemData] = []
+var _slot_quantities: Array[int] = []
+var _item_cache: Dictionary = {}
 
 func _ready() -> void:
 	add_to_group("backpack_ui")
@@ -195,27 +198,45 @@ func _on_discard_changed() -> void:
 	_refresh_info_bar()
 
 func _redraw_backpack() -> void:
-	for child in grid_container.get_children():
-		child.queue_free()
-	_slot_panels.clear()
-
 	var items = InventoryManager.get_all_items()
 	count_label.text = str(items.size()) + " / " + str(InventoryManager.MAX_INVENTORY_SIZE)
+	_ensure_slot_nodes()
 
 	for i in range(InventoryManager.MAX_INVENTORY_SIZE):
 		var item: ItemData = items[i] if i < items.size() else null
-		var slot = _create_slot(item, i)
-		grid_container.add_child(slot)
-		_slot_panels.append(slot)
+		var quantity := InventoryManager.get_item_quantity(i)
+		if _slot_items[i] != item or _slot_quantities[i] != quantity:
+			_refresh_slot(_slot_panels[i], item, quantity, i)
+			_slot_items[i] = item
+			_slot_quantities[i] = quantity
 
 	_update_slot_highlights()
 	_refresh_info_bar()
 	_refresh_combine_bar()
 
-func _create_slot(item: ItemData, index: int) -> Panel:
+func _ensure_slot_nodes() -> void:
+	while _slot_panels.size() < InventoryManager.MAX_INVENTORY_SIZE:
+		var index := _slot_panels.size()
+		var slot := _create_slot(index)
+		grid_container.add_child(slot)
+		_slot_panels.append(slot)
+		_slot_items.append(null)
+		_slot_quantities.append(-1)
+
+func _create_slot(index: int) -> Panel:
 	var scale := VisualSettings.get_ui_scale()
 	var panel = Panel.new()
 	panel.set_script(INVENTORY_DRAG_SLOT_SCRIPT)
+	panel.call("setup", self, index, null)
+	panel.custom_minimum_size = Vector2(88, 88) * scale
+	panel.gui_input.connect(_on_slot_gui_input.bind(index))
+	return panel
+
+func _refresh_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> void:
+	var scale := VisualSettings.get_ui_scale()
+	for child in panel.get_children():
+		child.queue_free()
+
 	panel.call("setup", self, index, item)
 	panel.custom_minimum_size = Vector2(88, 88) * scale
 
@@ -247,7 +268,6 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		name_label.mouse_filter = Control.MOUSE_FILTER_PASS
 		panel.add_child(name_label)
 
-		var quantity: int = InventoryManager.get_item_quantity(index)
 		if quantity > 1:
 			var quantity_label = Label.new()
 			quantity_label.text = "x%d" % quantity
@@ -263,12 +283,8 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 
 		panel.mouse_filter = Control.MOUSE_FILTER_STOP
 		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-
-		panel.gui_input.connect(_on_slot_gui_input.bind(index))
 	else:
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	return panel
 
 func _make_panel_style(bg_color: Color, border_color: Color, border_width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
@@ -400,10 +416,14 @@ func _on_combine_pressed() -> void:
 	InventoryManager.combine_items(a, b, result_item)
 
 func _load_item_by_id(item_id: String) -> ItemData:
+	if _item_cache.has(item_id):
+		return _item_cache[item_id] as ItemData
 	# Try the primary path first
 	var path = ITEMS_PATH + item_id + ".tres"
 	if ResourceLoader.exists(path):
-		return load(path) as ItemData
+		var item := ResourceLoader.load(path) as ItemData
+		_item_cache[item_id] = item
+		return item
 
 	# WHY this fallback: if your .tres files are in a subfolder or have
 	# a different structure, this will print the attempted path so you
@@ -420,5 +440,8 @@ func _on_language_changed(_language_id: String) -> void:
 
 func _on_ui_scale_changed(_scale: float) -> void:
 	_setup_panel_layout()
+	for i in range(_slot_panels.size()):
+		_slot_items[i] = null
+		_slot_quantities[i] = -1
 	if visible:
 		_redraw_backpack()

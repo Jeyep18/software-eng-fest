@@ -22,6 +22,10 @@ var selected_slot: int = 0
 
 # Track slot Panel nodes so we can update selection highlight without full rebuild
 var _slot_panels: Array[Panel] = []
+var _slot_items: Array[ItemData] = []
+var _slot_quantities: Array[int] = []
+var _normal_style: StyleBoxFlat
+var _selected_style: StyleBoxFlat
 
 func _ready() -> void:
 	add_to_group("hotbar_ui")
@@ -36,6 +40,7 @@ func _ready() -> void:
 		_redraw_hotbar()
 	)
 	_apply_ui_scale()
+	_rebuild_style_cache()
 	_redraw_hotbar()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -61,57 +66,48 @@ func _update_selection_highlight() -> void:
 		var panel = _slot_panels[i]
 		if not is_instance_valid(panel):
 			continue
-		var style = panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 		if i == selected_slot:
-			style.border_color = Color(1.0, 0.85, 0.3, 1.0)  # warm yellow highlight
-			style.border_width_left   = 2
-			style.border_width_right  = 2
-			style.border_width_top    = 2
-			style.border_width_bottom = 2
-			style.bg_color = Color(0.25, 0.22, 0.08, 0.9)
+			panel.add_theme_stylebox_override("panel", _selected_style)
 		else:
-			style.border_color = Color(1, 1, 1, 0.12)
-			style.border_width_left   = 1
-			style.border_width_right  = 1
-			style.border_width_top    = 1
-			style.border_width_bottom = 1
-			style.bg_color = Color(0.13, 0.13, 0.13, 0.85)
-		panel.add_theme_stylebox_override("panel", style)
+			panel.add_theme_stylebox_override("panel", _normal_style)
 
 func _redraw_hotbar() -> void:
-	for child in slot_container.get_children():
-		child.queue_free()
-	_slot_panels.clear()
-
 	var items = InventoryManager.get_all_items()
+	_ensure_slot_nodes()
 
 	for i in range(InventoryManager.MAX_INVENTORY_SIZE):
 		var item: ItemData = null
 		if i < items.size():
 			item = items[i]
-		var slot = _create_slot(item, i)
-		slot_container.add_child(slot)
-		_slot_panels.append(slot)
+		var quantity := InventoryManager.get_item_quantity(i)
+		if _slot_items[i] != item or _slot_quantities[i] != quantity:
+			_update_slot(_slot_panels[i], item, quantity, i)
+			_slot_items[i] = item
+			_slot_quantities[i] = quantity
 
 	_update_selection_highlight()
 
-func _create_slot(item: ItemData, index: int) -> Panel:
+func _ensure_slot_nodes() -> void:
+	while _slot_panels.size() < InventoryManager.MAX_INVENTORY_SIZE:
+		var index := _slot_panels.size()
+		var slot := _create_slot(index)
+		slot_container.add_child(slot)
+		_slot_panels.append(slot)
+		_slot_items.append(null)
+		_slot_quantities.append(-1)
+
+func _create_slot(index: int) -> Panel:
 	var panel = Panel.new()
 	var ui_scale := VisualSettings.get_ui_scale()
 	panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * ui_scale
+	panel.add_theme_stylebox_override("panel", _normal_style)
+	panel.set_meta("slot_index", index)
+	return panel
 
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.13, 0.13, 0.13, 0.85)
-	style.corner_radius_top_left    = 7
-	style.corner_radius_top_right   = 7
-	style.corner_radius_bottom_left = 7
-	style.corner_radius_bottom_right= 7
-	style.border_width_left   = 1
-	style.border_width_right  = 1
-	style.border_width_top    = 1
-	style.border_width_bottom = 1
-	style.border_color = Color(1, 1, 1, 0.12)
-	panel.add_theme_stylebox_override("panel", style)
+func _update_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> void:
+	var ui_scale := VisualSettings.get_ui_scale()
+	for child in panel.get_children():
+		child.queue_free()
 
 	if item != null:
 		var icon = TextureRect.new()
@@ -135,7 +131,6 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 		name_label.modulate = Color(1, 1, 1, 0.85)
 		panel.add_child(name_label)
 
-		var quantity: int = InventoryManager.get_item_quantity(index)
 		if quantity > 1:
 			var quantity_badge = PanelContainer.new()
 			quantity_badge.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
@@ -182,8 +177,6 @@ func _create_slot(item: ItemData, index: int) -> Panel:
 	num_label.modulate = Color(1, 1, 1, 0.28)
 	panel.add_child(num_label)
 
-	return panel
-
 # Returns the ItemData in the currently selected slot, or null if empty
 func get_selected_item() -> ItemData:
 	var items = InventoryManager.get_all_items()
@@ -196,6 +189,7 @@ func set_hotbar_visible(is_visible: bool) -> void:
 
 func _apply_ui_scale() -> void:
 	var scale: float = VisualSettings.get_ui_scale()
+	_rebuild_style_cache()
 	var slot_count: int = InventoryManager.MAX_INVENTORY_SIZE
 	var gap: float = BASE_SLOT_GAP * scale
 	var slot_size: float = BASE_SLOT_SIZE * scale
@@ -224,3 +218,30 @@ func _apply_ui_scale() -> void:
 	slot_container.offset_top = -slot_size * 0.5
 	slot_container.offset_bottom = slot_size * 0.5
 	slot_container.add_theme_constant_override("separation", int(roundi(gap)))
+	for i in range(_slot_panels.size()):
+		var panel := _slot_panels[i]
+		panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * scale
+		_slot_items[i] = null
+		_slot_quantities[i] = -1
+	_redraw_hotbar()
+
+func _rebuild_style_cache() -> void:
+	_normal_style = StyleBoxFlat.new()
+	_normal_style.bg_color = Color(0.13, 0.13, 0.13, 0.85)
+	_normal_style.corner_radius_top_left = 7
+	_normal_style.corner_radius_top_right = 7
+	_normal_style.corner_radius_bottom_left = 7
+	_normal_style.corner_radius_bottom_right = 7
+	_normal_style.border_width_left = 1
+	_normal_style.border_width_right = 1
+	_normal_style.border_width_top = 1
+	_normal_style.border_width_bottom = 1
+	_normal_style.border_color = Color(1, 1, 1, 0.12)
+
+	_selected_style = _normal_style.duplicate() as StyleBoxFlat
+	_selected_style.border_color = Color(1.0, 0.85, 0.3, 1.0)
+	_selected_style.border_width_left = 2
+	_selected_style.border_width_right = 2
+	_selected_style.border_width_top = 2
+	_selected_style.border_width_bottom = 2
+	_selected_style.bg_color = Color(0.25, 0.22, 0.08, 0.9)

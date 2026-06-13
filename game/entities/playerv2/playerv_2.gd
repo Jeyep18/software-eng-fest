@@ -24,12 +24,16 @@ var _prompt_suppressed: bool = false
 var _nearby_interactables: Array[Interactable] = []
 var _current_target: Interactable = null
 var _desired_step_direction: Vector3 = Vector3.ZERO
+var _interaction_dirty: bool = true
+var _last_prompt_visible: bool = false
 
 # Track previous movement state to trigger transition animations correctly.
 var _was_moving: bool = false
 
 @onready var _animation_player: AnimationPlayer = $"visuals/simple-character-psx/AnimationPlayer"
 @onready var _visuals: Node3D = $visuals
+@onready var _interact_text: Label = %InteractText
+@onready var _interact_prompt_background: ColorRect = get_node_or_null("CanvasLayer/InteractPromptBackground") as ColorRect
 
 # ── Animation name constants — change library names here if you named them differently ──
 const ANIM_IDLE:       String = "Idle/mixamo_com"
@@ -73,6 +77,7 @@ func _setup_interact_prompt_style() -> void:
 		prompt_background.hide()
 		prompt_layer.add_child(prompt_background)
 		prompt_layer.move_child(prompt_background, prompt_box.get_index())
+	_interact_prompt_background = prompt_background
 
 	prompt_background.color = Color(0, 0, 0, 0.68)
 	prompt_background.offset_left = -118.0
@@ -134,7 +139,8 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_handle_movement(delta)
 	_update_facing_direction()
-	_resolve_interaction_target()
+	if _interaction_dirty:
+		_resolve_interaction_target()
 	_handle_interact_input()
 	move_and_slide()
 	_try_step_up(delta, was_on_floor, previous_position)
@@ -225,6 +231,8 @@ func _try_step_up(delta: float, was_on_floor: bool, previous_position: Vector3) 
 	velocity.y = 0.0
 
 func set_movement_locked(is_locked: bool) -> void:
+	if _is_movement_locked != is_locked:
+		_interaction_dirty = true
 	_is_movement_locked = is_locked
 	if is_locked:
 		velocity.x = 0.0
@@ -251,7 +259,10 @@ func _update_character_rotation_to_movement(move_direction: Vector3, delta: floa
 func _update_facing_direction() -> void:
 	var input_x: float = Input.get_axis("move_left", "move_right")
 	if input_x != 0.0:
-		_facing_direction = sign(input_x)
+		var next_facing := sign(input_x)
+		if not is_equal_approx(_facing_direction, next_facing):
+			_facing_direction = next_facing
+			_interaction_dirty = true
 #endregion
 
 
@@ -272,6 +283,7 @@ func _toggle_mouse_capture() -> void:
 
 #region Interaction
 func _resolve_interaction_target() -> void:
+	_interaction_dirty = false
 	_current_target = null
 	_set_interact_prompt_visible(false)
 
@@ -291,7 +303,7 @@ func _resolve_interaction_target() -> void:
 			_rewire_prompt_signal(null)
 			return
 		_current_target = _nearby_interactables[0]
-		%InteractText.text = _current_target.prompt_label
+		_set_interact_prompt_text(_current_target.prompt_label)
 		if not _prompt_suppressed:
 			_set_interact_prompt_visible(true)
 		_rewire_prompt_signal(_current_target)
@@ -315,7 +327,7 @@ func _resolve_interaction_target() -> void:
 
 	if best_target != null:
 		_current_target = best_target
-		%InteractText.text = _current_target.prompt_label
+		_set_interact_prompt_text(_current_target.prompt_label)
 		if not _prompt_suppressed:
 			_set_interact_prompt_visible(true)
 
@@ -342,10 +354,16 @@ func _on_prompt_visibility_changed(should_show: bool) -> void:
 	_set_interact_prompt_visible(should_show)
 
 func _set_interact_prompt_visible(should_show: bool) -> void:
-	%InteractText.visible = should_show
-	var prompt_background := get_node_or_null("CanvasLayer/InteractPromptBackground") as ColorRect
-	if prompt_background != null:
-		prompt_background.visible = should_show
+	if _last_prompt_visible == should_show:
+		return
+	_last_prompt_visible = should_show
+	_interact_text.visible = should_show
+	if _interact_prompt_background != null:
+		_interact_prompt_background.visible = should_show
+
+func _set_interact_prompt_text(text: String) -> void:
+	if _interact_text.text != text:
+		_interact_text.text = text
 
 
 func _handle_interact_input() -> void:
@@ -365,10 +383,12 @@ func _handle_interact_input() -> void:
 func _on_interactable_entered(interactable: Interactable) -> void:
 	if not _nearby_interactables.has(interactable):
 		_nearby_interactables.append(interactable)
+		_interaction_dirty = true
 
 
 func _on_interactable_exited(interactable: Interactable) -> void:
 	_nearby_interactables.erase(interactable)
+	_interaction_dirty = true
 #endregion
 
 func _is_interaction_blocked_by_ui() -> bool:
