@@ -123,6 +123,13 @@ material_override = SubResource("StandardMaterial3D_crmys")
 use_collision = true
 size = Vector3(34.85069, 4.6997223, 0.366333)
 
+[node name="CSGBox3D8" type="CSGBox3D" parent="InvisWalls" unique_id=1851096858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.231403, 1.9091294, -8.751923)
+visible = false
+material_override = SubResource("StandardMaterial3D_crmys")
+use_collision = true
+size = Vector3(4.8985662, 4.6997223, 0.366333)
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="InvisWalls" unique_id=1723900113]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.685184, 1.7644572, -2.367859)
 material_override = SubResource("StandardMaterial3D_crmys")
