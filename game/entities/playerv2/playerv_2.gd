@@ -259,7 +259,7 @@ func _update_character_rotation_to_movement(move_direction: Vector3, delta: floa
 func _update_facing_direction() -> void:
 	var input_x: float = Input.get_axis("move_left", "move_right")
 	if input_x != 0.0:
-		var next_facing := sign(input_x)
+		var next_facing: float = sign(input_x)
 		if not is_equal_approx(_facing_direction, next_facing):
 			_facing_direction = next_facing
 			_interaction_dirty = true
