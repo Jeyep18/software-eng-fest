@@ -44,6 +44,7 @@ const ANIM_STAND_UP:   String = "Stand Up (1)/mixamo_com"
 func _ready() -> void:
 	add_to_group("player")
 	_setup_interact_prompt_style()
+	_force_interact_prompt_visible(false)
 	_capture_mouse()
 	_animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -356,12 +357,16 @@ func _on_prompt_visibility_changed(should_show: bool) -> void:
 func _set_interact_prompt_visible(should_show: bool) -> void:
 	if _last_prompt_visible == should_show:
 		return
+	_force_interact_prompt_visible(should_show)
+
+func _force_interact_prompt_visible(should_show: bool) -> void:
 	_last_prompt_visible = should_show
 	_interact_text.visible = should_show
 	if _interact_prompt_background != null:
 		_interact_prompt_background.visible = should_show
 
 func _set_interact_prompt_text(text: String) -> void:
+	text = LocalizationManager.translate(text)
 	if _interact_text.text != text:
 		_interact_text.text = text
 

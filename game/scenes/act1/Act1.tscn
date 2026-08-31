@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_80egk"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="2_1kl2d"]
-[ext_resource type="VoxelGIData" uid="uid://c7bx8hixmt3r4" path="res://game/maps/house/house_1.VoxelGI_data.res" id="3_arbvm"]
+[ext_resource type="VoxelGIData" uid="uid://c7bx8hixmt3r4" path="res://game/resources/voxels/house_1.VoxelGI_data.res" id="3_arbvm"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="4_foylt"]
 [ext_resource type="PackedScene" uid="uid://6bc76ruqkrog" path="res://game/entities/nanay_npc/Nanay.tscn" id="6_si113"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="7_6gc21"]

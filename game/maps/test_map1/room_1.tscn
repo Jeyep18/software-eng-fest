@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_hrr0m"]
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="2_2237b"]
-[ext_resource type="VoxelGIData" uid="uid://cqj5cl3lk1ixu" path="res://game/maps/test_map1/room_1.VoxelGI_data.res" id="2_wwvr2"]
+[ext_resource type="VoxelGIData" uid="uid://cqj5cl3lk1ixu" path="res://game/resources/voxels/room_1.VoxelGI_data.res" id="2_wwvr2"]
 [ext_resource type="PackedScene" uid="uid://lapvjimh6af4" path="res://game/objects/innerdialogue.tscn" id="3_2m77p"]
 [ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="4_wiix6"]
 [ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_lhrku"]

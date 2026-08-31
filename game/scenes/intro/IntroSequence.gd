@@ -53,11 +53,10 @@ const LINES: Array = [
 	{ "text": "", "hold": 1.0, "fade": 0.0, "style": "pause" },
 	{ "text": "Signal No. 4.", "hold": 2.4, "fade": 0.8, "style": "normal" },
 	{ "text": "Landfall in exactly 12 hours.", "hold": 3.2, "fade": 0.9, "style": "large" },
-	{ "text": "", "hold": 1.1, "fade": 0.0, "style": "pause" },
-	{ "text": "Do what you can with what you have left.", "hold": 3.6, "fade": 1.1, "style": "normal" },
+	{ "text": "", "hold": 1.0, "fade": 0.0, "style": "pause" },
+	{ "text": "Do what you can with what you have left.", "hold": 2.0, "fade": 1.1, "style": "normal" },
 
 	# ── Trailing silence before scene transition ───────────────────────────────
-	{ "text": "", "hold": 0.7, "fade": 0.0, "style": "pause" },
 	{ "text": "", "hold": 0.7, "fade": 0.0, "style": "pause" },
 ]
 

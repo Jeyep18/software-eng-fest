@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://uggr7amw8oe6" path="res://game/objects/interactables/GasTank.tscn" id="14_yvhk5"]
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="15_yvhk5"]
 [ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="16_xudhu"]
-[ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/tv.tscn" id="17_6ggnl"]
+[ext_resource type="PackedScene" uid="uid://d00irroaal1pk" path="res://game/objects/interactables/tv.tscn" id="17_6ggnl"]
 [ext_resource type="Resource" uid="uid://cekmubr42kcip" path="res://game/resources/items/water_jugs.tres" id="18_aebbe"]
 [ext_resource type="Resource" uid="uid://dwlf2grpplygs" path="res://game/resources/items/wrench.tres" id="19_r37rf"]
 [ext_resource type="Resource" uid="uid://byurdrwuga6g4" path="res://game/resources/items/plywood.tres" id="20_dvpop"]
@@ -170,7 +170,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.120887, 1.4548455, -0
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.118592, 1.0365231, -0.7901567)
 door_destination = "act1"
 spawn_point_id = "from_room_2"
-prompt_label = "[Press E to Interact]"
 
 [node name="Spawnpoint" parent="door2" unique_id=1429357958 instance=ExtResource("6_elbau")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.71437967, 0.5716187)
