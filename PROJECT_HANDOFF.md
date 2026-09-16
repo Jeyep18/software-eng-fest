@@ -1,5 +1,7 @@
 # Bagyong Bahay Project Handoff
 
+> **Historical snapshot — 2026-08-31.** For current guidance, start with [README.md](README.md), [AGENTS.md](AGENTS.md), and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), audited 2026-09-16. The text below is preserved as history, not current operating instructions. In particular, README is now populated; the current menu starts directly at home with the clock running; legacy outcome fields do not establish implemented ending branches; and the proposed Godot 4.7 migration is unverified. Historical branch/remote/backup statements below are dated observations, not live status.
+
 Last updated: 2026-08-31  
 Current branch: `dev`  
 Latest backed-up commit before this handoff: `de80cf5 Backup before Godot 4.7 upgrade`  
