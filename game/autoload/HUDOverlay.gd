@@ -1,24 +1,6 @@
-# HUDOverlay.gd — Autoload Singleton
-# Persistent top-bar HUD. Always visible during Act 2 and beyond.
-# Displays: current in-game time | current location | storm ETA
-#
-# SCENE TREE (HUDOverlay.tscn):
-#   HUDOverlay (CanvasLayer, layer = 5)
-#     └── TopBar (PanelContainer, anchored full-width at top)
-#           └── HBoxContainer
-#                 ├── TimeBlock (VBoxContainer)
-#                 │     ├── TimeIcon  (Label — "🕐" or a TextureRect)
-#                 │     └── TimeLabel (Label)
-#                 ├── VSeparator
-#                 ├── LocationBlock (VBoxContainer)
-#                 │     ├── LocIcon   (Label — "📍")
-#                 │     └── LocLabel  (Label)
-#                 ├── VSeparator
-#                 └── ETABlock (VBoxContainer)
-#                       ├── ETAIcon   (Label — "⚠" or storm icon)
-#                       └── ETALabel  (Label)
-#
-# Register in Project > Autoloads as "HUDOverlay"
+# HUDOverlay.gd — scene-owned CanvasLayer, not a registered autoload.
+# Instanced by PlayerV2; displays time, storm ETA and control hints from startup.
+# Node paths below match game/ui/HUDOverlay.tscn.
 
 extends CanvasLayer
 

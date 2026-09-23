@@ -125,11 +125,14 @@ func _get_active_lines() -> Array[String]:
 		return ready_lines
 	return missing_lines
 
-func _has_all_required_items() -> bool:
+func _get_required_item_counts() -> Dictionary:
 	var required_counts: Dictionary = {}
-	for req_id in required_item_ids:
-		required_counts[req_id] = int(required_counts.get(req_id, 0)) + 1
+	for item_id in required_item_ids:
+		required_counts[item_id] = int(required_counts.get(item_id, 0)) + 1
+	return required_counts
 
+func _has_all_required_items() -> bool:
+	var required_counts: Dictionary = _get_required_item_counts()
 	for req_id in required_counts.keys():
 		if InventoryManager.get_total_quantity(req_id) < int(required_counts[req_id]):
 			return false
@@ -159,9 +162,7 @@ func _complete_task() -> void:
 	_is_completing = false
 
 func _consume_required_items() -> void:
-	var required_counts: Dictionary = {}
-	for item_id in required_item_ids:
-		required_counts[item_id] = int(required_counts.get(item_id, 0)) + 1
+	var required_counts: Dictionary = _get_required_item_counts()
 
 	for item_id in required_counts.keys():
 		var remaining: int = int(required_counts[item_id])

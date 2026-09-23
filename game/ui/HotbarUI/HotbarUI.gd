@@ -1,8 +1,8 @@
-# FILE: res://scripts/HotbarUI.gd
+# FILE: res://game/ui/HotbarUI/HotbarUI.gd
 # ATTACH TO: Root CanvasLayer of HotbarUI.tscn
-# PURPOSE: Always-visible hotbar at the bottom of the screen.
-# - Never hides (no tab toggle)
-# - Shows 8 slots (the full inventory)
+# PURPOSE: Inventory hotbar at the bottom of the screen.
+# - Displays the full inventory; dialogue/task flows can temporarily hide it.
+# - Uses InventoryManager's slot capacity.
 # - Highlights the currently selected slot
 # - Sits at a LOW layer value so backpack/ESC menu render on top
 
@@ -17,7 +17,7 @@ const BASE_SLOT_GAP: float = 8.0
 const BASE_VERTICAL_PADDING: float = 10.0
 const BASE_BOTTOM_MARGIN: float = 18.0
 
-# The currently "held" / selected slot index (0-7)
+# Zero-based index of the currently selected inventory slot.
 var selected_slot: int = 0
 
 # Track slot Panel nodes so we can update selection highlight without full rebuild
@@ -44,18 +44,22 @@ func _ready() -> void:
 	_redraw_hotbar()
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Number keys 1-8 select a slot
-	for i in range(8):
+	# Number keys select the slots defined by inventory capacity.
+	for i in range(InventoryManager.MAX_INVENTORY_SIZE):
 		if event.is_action_pressed("hotbar_slot_" + str(i + 1)):
 			_select_slot(i)
 			return
+	# Preserve the existing key 8 alias for the last slot without an eighth slot.
+	if event.is_action_pressed("hotbar_slot_8"):
+		_select_slot(InventoryManager.MAX_INVENTORY_SIZE - 1)
+		return
 
 	# Mouse scroll to cycle through slots
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_select_slot((selected_slot - 1 + 8) % 8)
+			_select_slot((selected_slot - 1 + InventoryManager.MAX_INVENTORY_SIZE) % InventoryManager.MAX_INVENTORY_SIZE)
 		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_select_slot((selected_slot + 1) % 8)
+			_select_slot((selected_slot + 1) % InventoryManager.MAX_INVENTORY_SIZE)
 
 func _select_slot(index: int) -> void:
 	selected_slot = clamp(index, 0, InventoryManager.MAX_INVENTORY_SIZE - 1)

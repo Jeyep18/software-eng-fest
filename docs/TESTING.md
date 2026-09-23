@@ -2,7 +2,7 @@
 
 ## Current strategy and evidence
 
-No automated test framework, assertion-based test suite or CI test workflow was found in the inspected repository. `game/tests/test_world/test_world.tscn`, `test_world_2.tscn` and their scene resources are exploratory 3D content, not GUT/GdUnit/custom automated tests. Do not report them as a passing suite.
+The initial documentation audit found no automated tests. A focused no-framework regression scene has since been added at `game/tests/cleanup_regression.tscn`; no third-party test framework or CI test workflow is configured. `game/tests/test_world/test_world.tscn`, `test_world_2.tscn` and their scene resources are exploratory 3D content, not GUT/GdUnit/custom automated tests. Do not report them as a passing suite.
 
 Verification should distinguish five kinds of evidence:
 
@@ -17,6 +17,22 @@ Verification should distinguish five kinds of evidence:
 The documentation audit on 2026-09-16–17 used static inspection. The installed engine version was verified as `4.6.1.stable.official.14d19694e` and Git LFS as 3.7.1. No editor import, headless project execution, export or gameplay test was run because the task prohibited writes to import/cache/generated files. Runtime quality and successful export remain **Unknown / Needs verification**.
 
 ## Script and scene validation for future development
+
+### Focused cleanup regression scene
+
+After importing a disposable project copy with its LFS assets, run:
+
+```powershell
+# Use a separate user-data directory; this assignment is for this shell session.
+$env:APPDATA = Join-Path $env:TEMP 'bagyong-regression-userdata'
+Godot_v4.6.1-stable_win64_console.exe --headless --path 'C:\path\to\disposable-project-copy' --scene res://game/tests/cleanup_regression.tscn
+```
+
+The runner returns nonzero on failed assertions and prints its check count. It covers inventory rejection without mutation/signals, both combination recipes in both orders, successful signal ordering, full inventory/stack/discard handling, real hotbar input handlers, task requirement quantities/tool consumption, window state and side-quest readiness. These are targeted automated checks, not a full dialogue/interaction playthrough.
+
+The null-result combination test deliberately exercises the existing `push_error` diagnostic; rejected invalid requests also warn. Inspect the assertion summary and unexpected script errors, not just whether the log contains the word ERROR. Run as a scene so Godot initializes the configured autoloads before loading the test's dependent Resource classes.
+
+### General import validation
 
 During ordinary development, open the project in Godot 4.6.1, wait for imports, inspect parser/import errors and run affected scenes. For a command-line import pass, the following is a **suggested future command, not a test run by this audit**:
 
@@ -65,7 +81,7 @@ Choose checks relevant to the change. These are procedures to execute, not claim
 
 ### Existing edge cases worth preserving in reports
 
-- `InventoryManager.MAX_INVENTORY_SIZE` is **7**. Hotbar slot construction uses that constant, but its comment/input loop/wheel wrap still reference eight. Key 8 clamps to the last slot. Exercise selection boundaries before changing this behavior.
+- `InventoryManager.MAX_INVENTORY_SIZE` is **7**. Slot construction, selection and wheel wrap use this capacity. Key 8 explicitly aliases the last slot. Exercise both wrapping directions and the alias before changing controls.
 - `TutorialModal` suppression is a static session flag; it is not written to settings. Verify it separately from disk persistence.
 - `AudioSettingsPanel` Reset resets audio and visual settings, not language. UI scale is 100–175%, default 140%; quality defaults High and VHS defaults enabled.
 - `AudioManager.play_sfx` creates temporary players, whereas `stop_sfx` and `stop_all` stop the fixed SFX player. Do not assume these helpers silence every active one-shot.
@@ -98,3 +114,19 @@ Inspect `git diff --check`, the changed-file list and the diff for unintended sc
 All eight requested guides were reviewed against implementation and each other. An independent review caught and corrected an erroneous PlayerV2 jump test and the AudioManager scene-folder description. Other corrected historical assumptions include Act1 startup/timer behavior, HUD registration, inventory capacity and plans presented as completed systems.
 
 The local-link check examined 46 links with no missing targets; the controls anchors were also checked. A scan of 87 code-formatted repository paths found only the two explicitly documented missing scene paths (each mentioned in architecture and roadmap). `git diff --check` passed. The changed-file inventory contained nine Markdown files only: the eight requested guides plus a historical-status notice added to `PROJECT_HANDOFF.md`. No gameplay, scene, resource, asset, shader, addon or project-setting edits were made. No runtime verification is implied by these checks.
+
+### Conservative cleanup validation — 2026-09-17
+
+The documentation was checkpointed locally as `ab25f2a` on `dev` before implementation. No push was performed. Validation used Godot `4.6.1.stable.official.14d19694e` in a disposable copy with isolated runtime user data.
+
+- A fresh-cache import exited 1 during resource import before any production edits. The log included initial UID/font-cache errors and ended during import without a clear final cause; clean-checkout import remains unresolved.
+- Seeding the disposable copy with the existing `.godot` cache allowed the baseline editor/import pass to exit 0 without script/parse errors. This does not establish fresh-import success.
+- Baseline headless samples loaded intro, menu, home, hardware, pharmacy, grocery and ending. Tindahan emitted missing-greybox and vanished-node recovery errors. Forced exits reported leaked objects/resources before changes.
+- The focused regression scene passed **92 assertions with zero failures**. The deliberate null-result diagnostic and existing shutdown resource warnings are separate from assertion failures.
+- Independent review found no actionable defects in the changed production scripts and focused tests. Existing gameplay scenes, resources, assets, project settings, Input Map and save formats were not edited.
+- A disposable, script-driven integration smoke passed intro skip → menu → home, map/backpack clock continuity, hardware travel and return spawn, pause, restart into a second home instance with a fresh clock, and forced storm → ending. It used accelerated time and suppressed the startup tutorial through its existing session API; it does not verify normal timing or tutorial interaction.
+- The same smoke passed at checkpoint `ab25f2a` and with the cleanup. Both emitted `PreparationChecklistHUD._schedule_checklist_resize` line 249's null `get_tree()` error during restart, plus shutdown resource warnings. These are pre-existing lifecycle findings, deliberately outside this pass.
+
+No manual visual/audio playthrough, complete dialogue/task interaction sequence, Nestor reward turn-in or exported-build test was performed. The focused window and quest tests establish state-helper behavior only. Existing missing-resource and lifecycle issues are not claimed fixed by this cleanup.
+
+Final recheck on 2026-09-23 synchronized all changed scripts and the regression scene into the disposable copy. Godot 4.6.1 editor/import exited 0 with no script/parse errors, but was not clean: editor cache/settings access, certificate-store, empty-mesh and a gravel normal-texture load error were logged. These asset/environment diagnostics were not repaired or conclusively classified by this script cleanup. The regression scene then exited 0 with **92 checks, 0 failures**, with expected invalid-input diagnostics and shutdown resource warnings. `git diff --check` passed. Implementation remains uncommitted; the rollback point is still `ab25f2a`.

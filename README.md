@@ -40,7 +40,7 @@ The configured main scene is [IntroSequence.tscn](game/scenes/intro/IntroSequenc
 | Escape | Pause/resume via `ui_cancel`; player also has an `escape` mouse-capture handler |
 | Mouse | UI choices, shop purchases, inventory selection and drag-to-discard |
 
-The Input Map also defines jump, crouch, flashlight, and hotbar key 8. The active PlayerV2 does not implement jump/crouch/flashlight actions. Key 8 clamps to the seventh slot; wheel cycling retains eight-slot arithmetic. Map and backpack currently leave time running.
+The Input Map also defines jump, crouch, flashlight, and hotbar key 8. The active PlayerV2 does not implement jump/crouch/flashlight actions. Key 8 explicitly selects the seventh slot; wheel cycling wraps across all seven slots. Map and backpack currently leave time running.
 
 ## Project structure
 
@@ -52,7 +52,7 @@ The Input Map also defines jump, crouch, flashlight, and hotbar key 8. The activ
 - `game/ui/`, `game/audio/`, `game/weather/`, `game/shaders/`: presentation.
 - `game/localization/`: English/Tagalog CSV and [text editing guide](game/localization/README.md).
 - `game/assets/`, `_raw_assets/`: assets; both are referenced by runtime scenes.
-- `game/maps/`, `game/tests/`: supporting and exploratory scenes, not an automated test suite.
+- `game/maps/`, `game/tests/`: supporting/exploratory scenes and a focused cleanup regression scene.
 
 ## Major systems
 
@@ -74,8 +74,7 @@ Read [development](docs/DEVELOPMENT.md) for conventions and workflows, [testing]
 
 ## Known limitations
 
-- `tindahan.tscn` contains a reference to a missing greybox scene; the `test_room2` route also targets a missing file. Runtime loading/recovery has not been verified in this audit.
+- `tindahan.tscn` contains a missing greybox reference that produces a Godot resource error/recovery warning; the `test_room2` route also targets a missing file. These pre-existing issues remain unresolved.
 - Gameplay sessions cannot be saved/resumed. Disk persistence covers settings and local leaderboard entries.
-- Seven-slot inventory and eight-slot input arithmetic disagree.
 - Localization is implemented, but complete dynamic-text coverage is not established.
-- No automated test framework or CI test workflow was found. See the [roadmap](docs/ROADMAP.md) for verified issues and explicitly proposed follow-up work.
+- No third-party automated test framework or CI test workflow is configured; a focused headless regression scene is available. See the [roadmap](docs/ROADMAP.md) for verified issues and explicitly proposed follow-up work.

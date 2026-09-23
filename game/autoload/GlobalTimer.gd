@@ -1,21 +1,9 @@
 # GlobalTimer.gd — Autoload Singleton
-# The central 12-hour in-game clock for Bagyong Bahay.
-#
-# TICK SYSTEM (Option A):
-#   - 1 real second = 1 game minute, always.
-#   - Time ticks automatically via _process(delta).
-#   - is_paused = true ONLY during: UI screens (map, inventory, shop, dialogue),
-#     the TransitionOverlay fade, and Act 1 (before departure).
-#   - Time runs freely while the player walks, examines, or stands in any location.
-#   - Travel and task completions still call add_time() for their burst cost —
-#     those minutes are added instantly on top of the passive tick.
-#
-# HOW TO PAUSE THE CLOCK:
-#   GlobalTimer.pause_timer()   — call when opening any UI or starting a fade
-#   GlobalTimer.resume_timer()  — call when closing UI or fade completes
-#
-# ANYTHING that calls pause_timer() must call resume_timer() when done,
-# or the clock will stay frozen. Use a try/finally pattern if needed.
+# Central 12-hour clock. Difficulty controls seconds per game minute.
+# New runs call start_fresh() on entering home; map/backpack and fades do not
+# pause the clock themselves. Dialogue, shops and tasks acquire timer pauses;
+# PauseMenu separately pauses the SceneTree. Burst costs apply even when paused.
+# Pair each pause_timer() with resume_timer() when that owner finishes.
 
 extends Node
 
@@ -38,21 +26,21 @@ var THRESHOLDS: Array = [
 ]
 
 # ── Tick Configuration ────────────────────────────────────────────────────────
-# 1.0 = 1 real second per game minute (festival default).
+# Standard defaults to 1.5 real seconds per game minute; GameState sets difficulty.
 # Lower = faster clock. Raise for slower pacing in playtesting.
 var seconds_per_game_minute: float = 1.5
 
 # ── State ─────────────────────────────────────────────────────────────────────
 var current_minutes: int  = 0
-var is_paused:       bool = true   # starts paused — resumed on Act 2 departure
+var is_paused:       bool = true   # starts paused until a run starts
 
 # Accumulates fractional seconds between whole-minute ticks.
 var _tick_accumulator: float = 0.0
 
 # Tracks how many UI layers have requested a pause.
 # This prevents a resume() from one system unpausing a clock that another
-# system (e.g. map open while shop also open) still wants paused.
-# Call pause_timer() when opening any UI, resume_timer() when closing it.
+# system with an outstanding pause still wants paused.
+# Only release pauses acquired by the corresponding flow.
 var _pause_stack: int = 0
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────

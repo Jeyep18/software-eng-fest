@@ -2,6 +2,8 @@
 
 Static source audit: 2026-09-16–17. This document describes the checked-in Godot project, not a proposed design. No runtime playthrough was performed for this audit. Paths are repository-relative; `res://` is the repository root in Godot.
 
+Subsequent conservative cleanup on 2026-09-17 added inventory boundary validation, consistent hotbar wrapping, shared private task requirement counting and removal of redundant quest refresh/pass-through code. Ownership, schemas, balance and lifecycle sequences remain unchanged. Follow-up Godot validation is recorded separately in [TESTING.md](TESTING.md).
+
 ## Runtime shape and entry flow
 
 `project.godot` declares Godot 4.6 / Forward Plus, a 1920×1080 canvas-items viewport, and the main scene UID resolving to `game/scenes/intro/IntroSequence.tscn`. The project uses GDScript, scene composition, custom Resource classes and autoload singletons. There is no separate application server or gameplay database in this architecture.
@@ -129,9 +131,9 @@ The house window IDs are `bedroom_window` and `living_room_window`. Hammer is TO
 
 `ItemData` (`game/resources/items/ItemData.gd`) defines ID, localized name/description/pickup lines, icon, model PackedScene, price, barter flag and type. IDs are string contracts across inventory, recipes, task requirements and quests. ItemData.use() is empty; the generic inventory use method still removes an item after calling it.
 
-InventoryManager owns seven slots in parallel `inventory` and `item_quantities` arrays. Canned goods and nails stack; other items occupy individual slots. The stack dictionary contains 99 values but add_item does not enforce those limits. The hotbar represents the full inventory, not a separate allocation. Legacy eight-slot comments/input bindings should not be treated as capacity.
+InventoryManager owns seven slots in parallel `inventory` and `item_quantities` arrays. Canned goods and nails stack; other items occupy individual slots. The stack dictionary contains 99 values but add_item does not enforce those limits. The hotbar represents the full inventory, not a separate allocation. Hotbar selection and wheel wrapping use the same capacity; key 8 remains an explicit alias for the seventh slot.
 
-Recipes are `batteries + dead_flashlight → working_flashlight` and `batteries + broken_radio → working_radio`. The backpack UI checks combinations and loads result data; InventoryManager removes both source slots and emits inventory and combination signals. Public combine mutation trusts caller validation beyond a non-null result. The discard slot holds one recoverable stack; replacing it permanently discards the previous stack.
+Recipes are `batteries + dead_flashlight → working_flashlight` and `batteries + broken_radio → working_radio`. The backpack UI checks combinations and loads result data; InventoryManager removes both source slots and emits inventory and combination signals. The manager rejects null additions and validates distinct in-range non-null source slots, a known recipe and its matching result ID before combining. Invalid requests leave state and signals unchanged; successful combinations preserve the existing three inventory notifications followed by item_combined. The discard slot holds one recoverable stack; replacing it permanently discards the previous stack.
 
 WorldItem optionally displays pickup dialogue/confirmation, adds its ItemData and queues itself for deletion. A nonempty `world_item_id` is remembered in GameState so revisiting the scene does not respawn it. This persistence lasts for the current run only.
 
@@ -141,7 +143,7 @@ ShopUi temporarily substitutes the shop price on ItemData, invokes EconomyManage
 
 ## Side quests and shop NPCs
 
-`SideQuestLog` stores the Mang Nestor quest as not_started, active, ready_to_turn_in or completed. It observes inventory changes and updates readiness when half_chicken appears/disappears, emitting objective signals consumed by checklist UI.
+`SideQuestLog` stores the Mang Nestor quest as not_started, active, ready_to_turn_in or completed. It is the inventory-change subscriber for quest readiness (Mang Nestor does not duplicate that subscription) and updates readiness when half_chicken appears/disappears, emitting objective signals consumed by checklist UI.
 
 - Mang Nestor acceptance gives 150 cash once. Go To Chooks sells half chicken for 145. Return consumes chicken, adds tarp, grants another 5 and completes the quest. Current behavior leaves 10 cash above the player's pre-quest balance.
 - AteLindaQuestShop consumes a hammer to unlock a discounted catalogue; it uses GameState's discount flag rather than EconomyManager.barter.
@@ -215,9 +217,9 @@ Player collision probes and camera follow run in physics updates; lighting, voxe
 - SceneManager and StormEnroachment duplicate zone state. Keep consumers and reset paths consistent if changing closure behavior.
 - Transition/task/dialogue pause ownership is manual. Several interactable classes lack exit-tree cleanup for an outstanding timer pause. Scene replacement during a modal and deadline transitions require runtime testing.
 - Full-inventory barter and Mang Nestor reward checks occur before removing the outgoing item; they reject exchanges that could otherwise free a slot.
-- Public inventory APIs expose mutable arrays and assume valid caller inputs in several operations. Recipe validity is not rechecked in the combine mutation.
+- Public inventory APIs still expose mutable arrays; direct external array mutation can violate invariants. Add/combine boundary validation does not encapsulate those arrays.
 - `ShopItem.reset_stock()` is a stub; active stock reset comes from clearing ShopUi's duplicate cache.
-- `tindahan.tscn` retains a stale text reference to `game/maps/tindahan/tinadahan_greybox.tscn`; `SceneManager.SCENE_PATHS.test_room2` points to absent `game/maps/test_map1/tindahanmo.tscn`. UID-based editor resolution and actual scene loading need verification before treating either as repaired.
+- `tindahan.tscn` references missing `game/maps/tindahan/tinadahan_greybox.tscn`; the cleanup baseline reproduced missing-resource and vanished-node recovery errors. `SceneManager.SCENE_PATHS.test_room2` points to absent `game/maps/test_map1/tindahanmo.tscn`, still used by an older Act1 door. Neither route was repaired; a replacement needs scene-design evidence.
 - Historical scene registries, act fields, duplicate monologue implementations and first-person controller coexist with the active flow. Their presence alone does not establish player-facing features.
 
 ## Verification scope

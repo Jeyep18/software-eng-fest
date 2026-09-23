@@ -15,9 +15,6 @@ func _ready() -> void:
 		NeedsLog.window_boarded.connect(_on_window_boarded)
 	_sync_completion_state()
 
-func interact() -> void:
-	super.interact()
-
 func _sync_completion_state() -> void:
 	if not NeedsLog.is_window_boarded(window_id):
 		return

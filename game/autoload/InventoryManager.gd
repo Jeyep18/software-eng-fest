@@ -1,4 +1,4 @@
-# FILE: res://autoloads/InventoryManager.gd
+# FILE: res://game/autoload/InventoryManager.gd
 # PURPOSE: Single source of truth for all inventory data.
 # Handles add, remove, use, and combine operations.
 # HOW TO REGISTER: Project > Project Settings > Autoload > select this file > name "InventoryManager"
@@ -9,7 +9,7 @@ const DEBUG_LOGGING: bool = false
 
 # --- CONSTANTS ---
 const MAX_INVENTORY_SIZE: int = 7
-const HOTBAR_SIZE: int = 7  # Hotbar IS the full inventory for this game
+const HOTBAR_SIZE: int = MAX_INVENTORY_SIZE  # Hotbar represents the full inventory.
 
 # --- SIGNALS ---
 signal inventory_changed
@@ -52,7 +52,10 @@ var _combine_recipes: Dictionary = {
 # --- PUBLIC FUNCTIONS ---
 
 func add_item(item: ItemData) -> bool:
-	if item != null and _is_stackable(item.item_id):
+	if item == null:
+		push_warning("InventoryManager: Cannot add a null item.")
+		return false
+	if _is_stackable(item.item_id):
 		for i in range(inventory.size()):
 			if inventory[i] != null and inventory[i].item_id == item.item_id:
 				item_quantities[i] += 1
@@ -181,14 +184,16 @@ func get_combine_result(index_a: int, index_b: int) -> String:
 		return ""
 	if index_a == index_b:
 		return ""
+	if inventory[index_a] == null or inventory[index_b] == null:
+		return ""
 
-	var id_a = inventory[index_a].item_id
-	var id_b = inventory[index_b].item_id
+	var id_a: String = inventory[index_a].item_id
+	var id_b: String = inventory[index_b].item_id
 
 	# Sort alphabetically so "batteries+dead_flashlight" == "dead_flashlight+batteries"
-	var sorted_ids = [id_a, id_b]
+	var sorted_ids: Array[String] = [id_a, id_b]
 	sorted_ids.sort()
-	var key = sorted_ids[0] + "+" + sorted_ids[1]
+	var key: String = sorted_ids[0] + "+" + sorted_ids[1]
 
 	return _combine_recipes.get(key, "")
 
@@ -199,10 +204,14 @@ func combine_items(index_a: int, index_b: int, result_item_data: ItemData) -> bo
 	if result_item_data == null:
 		push_error("InventoryManager: combine_items called with null result data")
 		return false
+	var expected_result_id: String = get_combine_result(index_a, index_b)
+	if expected_result_id.is_empty() or result_item_data.item_id != expected_result_id:
+		push_warning("InventoryManager: Invalid combination or mismatched result item.")
+		return false
 
 	# Remove higher index first to avoid shifting issues
-	var higher = max(index_a, index_b)
-	var lower  = min(index_a, index_b)
+	var higher: int = maxi(index_a, index_b)
+	var lower: int = mini(index_a, index_b)
 	_remove_slot(higher)
 	_remove_slot(lower)
 

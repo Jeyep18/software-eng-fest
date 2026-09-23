@@ -14,8 +14,6 @@ var _pending_action: String = ""
 func _ready() -> void:
 	super._ready()
 	prompt_label = "Talk to Mang Nestor"
-	if not InventoryManager.inventory_changed.is_connected(_on_inventory_changed):
-		InventoryManager.inventory_changed.connect(_on_inventory_changed)
 
 func _pick_sequence() -> DialogueSequence:
 	_pending_action = ""
@@ -79,6 +77,3 @@ func _complete_quest() -> void:
 		GameState.add_cash(sukli_amount)
 		get_tree().call_group("preparation_checklist_hud", "show_cash_gain", sukli_amount)
 	SideQuestLog.complete_mang_nestor_chicken()
-
-func _on_inventory_changed() -> void:
-	SideQuestLog.refresh_mang_nestor_chicken()

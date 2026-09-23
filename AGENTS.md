@@ -45,7 +45,7 @@ Use existing direct manager APIs for actions and signals for notifications: `inv
 
 - **Implemented:** PlayerV2 movement/sprint/step-up; camera volumes; proximity interaction; dialogue; six household needs; shopping, inventory and two combine recipes; side quests; timed travel/storm; endings; audio/settings/localization; local leaderboard.
 - **Partial/legacy:** old first-person controller, act enums/outcome flags and unused barter API. They do not establish active combat, four playable acts, or a complete branching rescue story.
-- **Not present:** full gameplay save/load, combat/enemy navigation, multiplayer, automated test framework.
+- **Not present:** full gameplay save/load, combat/enemy navigation, multiplayer, third-party automated test framework. Focused built-in regression checks now live in `game/tests/cleanup_regression.tscn`.
 - `GameState`, `NeedsLog`, `InventoryManager` and `SideQuestLog` hold session truth. UI must not create competing inventory or objective state. Inventory has **seven slots**; only canned goods and nails stack.
 - `GlobalTimer` has a 720-minute limit and reference-counted pause API. Pair every pause/resume and handle cleanup. Scene-tree pause is separate. The current map, backpack and fades do **not** pause the clock. New runs start the clock immediately in the house.
 - Preserve stable item IDs, world-item IDs, window IDs and location IDs across resources/callers. `water_jugs.tres` uses item ID `water_jug`.
@@ -78,7 +78,7 @@ Never hardcode or expose secrets. Keep diffs focused, avoid unrelated formatting
 
 Review changes to global resets, timer/scene transitions, player input/physics, resource schemas, localization source keys and persisted settings/scores carefully. Never silently change persistence formats. Significant refactors need a stated problem, affected systems, alternatives, risks and preserved behavior; record the decision.
 
-Known issues are recorded in [architecture](docs/ARCHITECTURE.md) and [roadmap](docs/ROADMAP.md): missing tindahan greybox path and debug `test_room2` target; seven-slot inventory versus eight-slot input logic; overlapping transition/pause lifecycle risks; legacy state/comments. These notes do not authorize unrelated fixes.
+Known issues are recorded in [architecture](docs/ARCHITECTURE.md) and [roadmap](docs/ROADMAP.md): missing tindahan greybox path and debug `test_room2` target; overlapping transition/pause lifecycle risks; legacy state/comments. These notes do not authorize unrelated fixes.
 
 ## Completion and documentation maintenance
 
