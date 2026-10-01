@@ -3,7 +3,7 @@
 # New runs call start_fresh() on entering home; map/backpack and fades do not
 # pause the clock themselves. Dialogue, shops and tasks acquire timer pauses;
 # PauseMenu separately pauses the SceneTree. Burst costs apply even when paused.
-# Pair each pause_timer() with resume_timer() when that owner finishes.
+# Pair pause_timer(self) with resume_timer(self); scene exit also releases it.
 
 extends Node
 
@@ -42,6 +42,7 @@ var _tick_accumulator: float = 0.0
 # system with an outstanding pause still wants paused.
 # Only release pauses acquired by the corresponding flow.
 var _pause_stack: int = 0
+var _pause_owners: Dictionary = {}
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _process(delta: float) -> void:
@@ -58,14 +59,26 @@ func _process(delta: float) -> void:
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-## Pause the clock. Safe to call multiple times (uses a stack).
-## Always pair with resume_timer().
-func pause_timer() -> void:
+## One pause per supplied owner; anonymous calls retain the legacy counter API.
+## Release explicitly when closing UI. Scene exit releases owned pauses too.
+func pause_timer(pause_owner: Node = null) -> void:
+	# Scene-owned pauses are idempotent and cannot survive their owner or a reset.
+	if pause_owner != null:
+		if _pause_owners.has(pause_owner):
+			return
+		_pause_owners[pause_owner] = true
+		pause_owner.tree_exiting.connect(resume_timer.bind(pause_owner), CONNECT_ONE_SHOT)
 	_pause_stack += 1
 	is_paused = true
 
 ## Resume the clock. Only actually unpauses when all pausers have resumed.
-func resume_timer() -> void:
+func resume_timer(pause_owner: Node = null) -> void:
+	if pause_owner != null:
+		if not _pause_owners.erase(pause_owner):
+			return
+		var release := resume_timer.bind(pause_owner)
+		if pause_owner.tree_exiting.is_connected(release):
+			pause_owner.tree_exiting.disconnect(release)
 	_pause_stack = max(_pause_stack - 1, 0)
 	if _pause_stack == 0 and current_minutes < TOTAL_MINUTES:
 		is_paused = false
@@ -88,6 +101,8 @@ func add_time(minutes: int) -> void:
 ## Game starts at 6:00 AM — current_minutes=0 → "6:00 AM".
 func get_time_string() -> String:
 	var total:   int = current_minutes + 360   # 360 min = 6:00 AM offset
+	# Whole hours; the remaining minutes are formatted separately.
+	@warning_ignore("integer_division")
 	var hour_24: int = (total / 60) % 24
 	var minute:  int = total % 60
 	var hour_12: int = hour_24 % 12
@@ -101,6 +116,8 @@ func get_storm_eta_string() -> String:
 	var remaining: int = TOTAL_MINUTES - current_minutes
 	if remaining <= 0:
 		return "Storm has arrived"
+	# Whole hours; the remaining minutes are formatted separately.
+	@warning_ignore("integer_division")
 	var hours: int = remaining / 60
 	var mins:  int = remaining % 60
 	return "%dh %02dm" % [hours, mins]
@@ -111,6 +128,9 @@ func get_storm_progress() -> float:
 
 # ── Reset ─────────────────────────────────────────────────────────────────────
 func reset() -> void:
+	for pause_owner: Node in _pause_owners:
+		pause_owner.tree_exiting.disconnect(resume_timer.bind(pause_owner))
+	_pause_owners.clear()
 	current_minutes    = 0
 	is_paused          = true
 	_tick_accumulator  = 0.0
@@ -142,7 +162,6 @@ func _check_thresholds(minute: int) -> void:
 			threshold["fired"] = true
 			if threshold["zone_id"] == "storm_arrival":
 				# Freeze everything — storm has arrived.
-				_pause_stack = 0
 				is_paused    = true
 				emit_signal("storm_arrived")
 			else:

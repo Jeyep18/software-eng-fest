@@ -11,12 +11,19 @@ var _choice_body: Label = null
 var _choice_accept_button: Button = null
 var _choice_decline_button: Button = null
 var _choice_paused_timer: bool = false
+var _choice_source: String = ""
+var _choice_values: Array = []
+var _accept_source: String = "Accept"
+var _decline_source: String = "Decline"
 
 func _ready() -> void:
 	super._ready()
 	prompt_label = quest_prompt
+	LocalizationManager.language_changed.connect(_refresh_choice_text)
 
 func interact() -> void:
+	if _choice_modal != null and _choice_modal.visible:
+		return
 	if _is_showing and not _is_typing and _current_sequence != null:
 		_dialogue_completed = _current_line >= _current_sequence.lines.size() - 1
 	super.interact()
@@ -28,19 +35,28 @@ func _hide_dialogue() -> void:
 	_dialogue_completed = false
 	_on_dialogue_completed()
 
-func show_choice_prompt(body: String, accept_text: String = "Accept", decline_text: String = "Decline") -> void:
+func show_choice_prompt(body: String, accept_text: String = "Accept", decline_text: String = "Decline", values: Array = []) -> void:
 	if _choice_modal == null:
 		_build_choice_prompt()
-	_choice_body.text = LocalizationManager.translate(body)
-	_choice_accept_button.text = LocalizationManager.translate(accept_text)
-	_choice_decline_button.text = LocalizationManager.translate(decline_text)
+	_choice_source = body
+	_choice_values = values
+	_accept_source = accept_text
+	_decline_source = decline_text
+	_refresh_choice_text()
 	_choice_modal.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	if not _choice_paused_timer:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_choice_paused_timer = true
+
+func _refresh_choice_text(_language_id: String = "") -> void:
+	if _choice_body == null:
+		return
+	_choice_body.text = LocalizationManager.translate(_choice_source) if _choice_values.is_empty() else LocalizationManager.trf(_choice_source, _choice_values)
+	_choice_accept_button.text = LocalizationManager.translate(_accept_source)
+	_choice_decline_button.text = LocalizationManager.translate(_decline_source)
 
 func _build_choice_prompt() -> void:
 	_choice_modal = Control.new()
@@ -105,7 +121,7 @@ func _close_choice_prompt() -> void:
 	if _choice_modal != null:
 		_choice_modal.hide()
 	if _choice_paused_timer:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_choice_paused_timer = false
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	get_tree().call_group("player", "set_movement_locked", false)

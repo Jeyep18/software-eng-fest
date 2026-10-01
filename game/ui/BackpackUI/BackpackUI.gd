@@ -47,15 +47,15 @@ func _ready() -> void:
 	_hide_combine_bar()
 
 func _setup_panel_layout() -> void:
-	var scale := VisualSettings.get_ui_scale()
+	var ui_scale := VisualSettings.get_ui_scale()
 	# Size the main panel
-	backpack_panel.custom_minimum_size = Vector2(460, 450) * scale
+	backpack_panel.custom_minimum_size = Vector2(460, 450) * ui_scale
 
 	# Anchor the panel to the CENTER of the screen
-	backpack_panel.set_anchor_and_offset(SIDE_LEFT,   0.5, -230 * scale)
-	backpack_panel.set_anchor_and_offset(SIDE_TOP,    0.5, -210 * scale)
-	backpack_panel.set_anchor_and_offset(SIDE_RIGHT,  0.5,  230 * scale)
-	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  240 * scale)
+	backpack_panel.set_anchor_and_offset(SIDE_LEFT,   0.5, -230 * ui_scale)
+	backpack_panel.set_anchor_and_offset(SIDE_TOP,    0.5, -210 * ui_scale)
+	backpack_panel.set_anchor_and_offset(SIDE_RIGHT,  0.5,  230 * ui_scale)
+	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  240 * ui_scale)
 
 	# Give the panel a dark background style
 	var panel_style := UI_STYLE.panel_style()
@@ -63,30 +63,30 @@ func _setup_panel_layout() -> void:
 
 	# TitleBar — sits at the top
 	var title_bar = $BackpackPanel/TitleBar
-	title_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * scale)
-	title_bar.set_anchor_and_offset(SIDE_TOP,    0, 12 * scale)
-	title_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * scale)
-	title_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 40 * scale)
+	title_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	title_bar.set_anchor_and_offset(SIDE_TOP,    0, 12 * ui_scale)
+	title_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * ui_scale)
+	title_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 40 * ui_scale)
 
 	# GridContainer — sits below title bar
-	grid_container.set_anchor_and_offset(SIDE_LEFT,   0, 12 * scale)
-	grid_container.set_anchor_and_offset(SIDE_TOP,    0, 48 * scale)
-	grid_container.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * scale)
-	grid_container.set_anchor_and_offset(SIDE_BOTTOM, 0, 230 * scale)
-	grid_container.add_theme_constant_override("h_separation", int(roundi(8.0 * scale)))
-	grid_container.add_theme_constant_override("v_separation", int(roundi(8.0 * scale)))
+	grid_container.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	grid_container.set_anchor_and_offset(SIDE_TOP,    0, 48 * ui_scale)
+	grid_container.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * ui_scale)
+	grid_container.set_anchor_and_offset(SIDE_BOTTOM, 0, 230 * ui_scale)
+	grid_container.add_theme_constant_override("h_separation", int(roundi(8.0 * ui_scale)))
+	grid_container.add_theme_constant_override("v_separation", int(roundi(8.0 * ui_scale)))
 
 	# InfoBar — sits below the grid
 	var info_bar = $BackpackPanel/InfoBar
-	info_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * scale)
-	info_bar.set_anchor_and_offset(SIDE_TOP,    0, 238 * scale)
-	info_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -116 * scale)
-	info_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 318 * scale)
-	info_bar.add_theme_constant_override("separation", int(roundi(8.0 * scale)))
+	info_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	info_bar.set_anchor_and_offset(SIDE_TOP,    0, 238 * ui_scale)
+	info_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -116 * ui_scale)
+	info_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 318 * ui_scale)
+	info_bar.add_theme_constant_override("separation", int(roundi(8.0 * ui_scale)))
 	info_bar.alignment = BoxContainer.ALIGNMENT_BEGIN
 
 	# InfoIcon — fixed size inside InfoBar
-	info_icon.custom_minimum_size = Vector2(52, 52) * scale
+	info_icon.custom_minimum_size = Vector2(52, 52) * ui_scale
 	info_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	info_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
@@ -106,20 +106,20 @@ func _setup_panel_layout() -> void:
 
 	info_name.autowrap_mode = TextServer.AUTOWRAP_OFF
 	info_name.clip_text = true
-	info_name.add_theme_font_size_override("font_size", int(roundi(13.0 * scale)))
+	info_name.add_theme_font_size_override("font_size", int(roundi(13.0 * ui_scale)))
 
 	info_desc.autowrap_mode = TextServer.AUTOWRAP_WORD
-	info_desc.add_theme_font_size_override("font_size", int(roundi(11.0 * scale)))
+	info_desc.add_theme_font_size_override("font_size", int(roundi(11.0 * ui_scale)))
 	info_desc.modulate = Color(1, 1, 1, 0.55)
 	info_desc.custom_minimum_size = Vector2(0, 0)
 
 	# CombineBar — sits at the very bottom
-	combine_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * scale)
-	combine_bar.set_anchor_and_offset(SIDE_TOP,    0, 360 * scale)
-	combine_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * scale)
-	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 430 * scale)
-	combine_bar.add_theme_constant_override("separation", int(roundi(10.0 * scale)))
-	combine_label.add_theme_font_size_override("font_size", int(roundi(16.0 * scale)))
+	combine_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	combine_bar.set_anchor_and_offset(SIDE_TOP,    0, 360 * ui_scale)
+	combine_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * ui_scale)
+	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 430 * ui_scale)
+	combine_bar.add_theme_constant_override("separation", int(roundi(10.0 * ui_scale)))
+	combine_label.add_theme_font_size_override("font_size", int(roundi(16.0 * ui_scale)))
 	combine_label.add_theme_color_override("font_color", Color(1, 1, 1, 0.9))
 	combine_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	combine_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -127,17 +127,17 @@ func _setup_panel_layout() -> void:
 	if is_instance_valid(discard_slot):
 		discard_slot.mouse_filter = Control.MOUSE_FILTER_STOP
 		discard_slot.z_index = 10
-		discard_slot.set_anchor_and_offset(SIDE_LEFT, 1, -108 * scale)
-		discard_slot.set_anchor_and_offset(SIDE_TOP, 0, 238 * scale)
-		discard_slot.set_anchor_and_offset(SIDE_RIGHT, 1, -12 * scale)
-		discard_slot.set_anchor_and_offset(SIDE_BOTTOM, 0, 318 * scale)
+		discard_slot.set_anchor_and_offset(SIDE_LEFT, 1, -108 * ui_scale)
+		discard_slot.set_anchor_and_offset(SIDE_TOP, 0, 238 * ui_scale)
+		discard_slot.set_anchor_and_offset(SIDE_RIGHT, 1, -12 * ui_scale)
+		discard_slot.set_anchor_and_offset(SIDE_BOTTOM, 0, 318 * ui_scale)
 
 	if is_instance_valid(discard_prompt):
-		discard_prompt.set_anchor_and_offset(SIDE_LEFT, 0, 12 * scale)
-		discard_prompt.set_anchor_and_offset(SIDE_TOP, 0, 322 * scale)
-		discard_prompt.set_anchor_and_offset(SIDE_RIGHT, 1, -12 * scale)
-		discard_prompt.set_anchor_and_offset(SIDE_BOTTOM, 0, 354 * scale)
-		discard_prompt.add_theme_font_size_override("font_size", int(roundi(12.0 * scale)))
+		discard_prompt.set_anchor_and_offset(SIDE_LEFT, 0, 12 * ui_scale)
+		discard_prompt.set_anchor_and_offset(SIDE_TOP, 0, 322 * ui_scale)
+		discard_prompt.set_anchor_and_offset(SIDE_RIGHT, 1, -12 * ui_scale)
+		discard_prompt.set_anchor_and_offset(SIDE_BOTTOM, 0, 354 * ui_scale)
+		discard_prompt.add_theme_font_size_override("font_size", int(roundi(12.0 * ui_scale)))
 		discard_prompt.add_theme_color_override("font_color", Color(1, 1, 1, 0.68))
 
 func _apply_backpack_style() -> void:
@@ -224,21 +224,21 @@ func _ensure_slot_nodes() -> void:
 		_slot_quantities.append(-1)
 
 func _create_slot(index: int) -> Panel:
-	var scale := VisualSettings.get_ui_scale()
+	var ui_scale := VisualSettings.get_ui_scale()
 	var panel = Panel.new()
 	panel.set_script(INVENTORY_DRAG_SLOT_SCRIPT)
 	panel.call("setup", self, index, null)
-	panel.custom_minimum_size = Vector2(88, 88) * scale
+	panel.custom_minimum_size = Vector2(88, 88) * ui_scale
 	panel.gui_input.connect(_on_slot_gui_input.bind(index))
 	return panel
 
 func _refresh_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> void:
-	var scale := VisualSettings.get_ui_scale()
+	var ui_scale := VisualSettings.get_ui_scale()
 	for child in panel.get_children():
 		child.queue_free()
 
 	panel.call("setup", self, index, item)
-	panel.custom_minimum_size = Vector2(88, 88) * scale
+	panel.custom_minimum_size = Vector2(88, 88) * ui_scale
 
 	var slot_bg: Color = Color(0.14, 0.14, 0.14, 0.92) if item != null else Color(0.08, 0.08, 0.08, 0.6)
 	var style := _make_panel_style(slot_bg, Color(1, 1, 1, 0.12), 1, 8)
@@ -250,20 +250,21 @@ func _refresh_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> v
 		icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		icon.offset_left   = 8 * scale
-		icon.offset_top    = 8 * scale
-		icon.offset_right  = -8 * scale
-		icon.offset_bottom = -22 * scale
+		icon.offset_left   = 8 * ui_scale
+		icon.offset_top    = 8 * ui_scale
+		icon.offset_right  = -8 * ui_scale
+		icon.offset_bottom = -22 * ui_scale
 		icon.mouse_filter  = Control.MOUSE_FILTER_PASS
 		panel.add_child(icon)
 
 		var name_label = Label.new()
 		name_label.text = item.get_item_name()
+		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		name_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
 		name_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		name_label.offset_bottom = -3 * scale
-		name_label.add_theme_font_size_override("font_size", int(roundi(9.0 * scale)))
+		name_label.offset_bottom = -3 * ui_scale
+		name_label.add_theme_font_size_override("font_size", int(roundi(9.0 * ui_scale)))
 		name_label.modulate = Color(1, 1, 1, 0.85)
 		name_label.mouse_filter = Control.MOUSE_FILTER_PASS
 		panel.add_child(name_label)
@@ -274,9 +275,9 @@ func _refresh_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> v
 			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 			quantity_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-			quantity_label.offset_top = 4 * scale
-			quantity_label.offset_right = -6 * scale
-			quantity_label.add_theme_font_size_override("font_size", int(roundi(12.0 * scale)))
+			quantity_label.offset_top = 4 * ui_scale
+			quantity_label.offset_right = -6 * ui_scale
+			quantity_label.add_theme_font_size_override("font_size", int(roundi(12.0 * ui_scale)))
 			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62))
 			quantity_label.mouse_filter = Control.MOUSE_FILTER_PASS
 			panel.add_child(quantity_label)

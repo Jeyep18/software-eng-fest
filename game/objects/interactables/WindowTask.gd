@@ -28,15 +28,14 @@ func _play_completion_sfx() -> void:
 	_update_task_cue()
 
 func _apply_completion_state() -> void:
-	if time_cost_minutes > 0:
-		GlobalTimer.add_time(time_cost_minutes)
-
 	NeedsLog.discover(need)
 	NeedsLog.board_window(window_id)
 	_update_task_cue()
 
 	if completion_visual_cue != null:
 		completion_visual_cue.visible = true
+	if time_cost_minutes > 0:
+		GlobalTimer.add_time(time_cost_minutes)
 
 func _update_task_cue() -> void:
 	if task_cue == null:

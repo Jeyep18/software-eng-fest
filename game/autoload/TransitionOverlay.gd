@@ -15,16 +15,22 @@ func _ready() -> void:
 
 
 func fade_to_black() -> void:
-	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-	tween = create_tween()
-	tween.tween_property(overlay, "color:a", 1.0, 0.6)\
-		 .set_ease(Tween.EASE_IN)
-	await tween.finished
+	await _fade(1.0)
 
 
 func fade_from_black() -> void:
-	tween = create_tween()
-	tween.tween_property(overlay, "color:a", 0.0, 0.6)\
-		 .set_ease(Tween.EASE_OUT)
-	await tween.finished
-	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	await _fade(0.0)
+
+func _fade(alpha: float) -> void:
+	if tween != null and tween.is_valid():
+		tween.kill()
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	var active_tween := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween = active_tween
+	active_tween.tween_property(overlay, "color:a", alpha, 0.6).set_ease(
+		Tween.EASE_IN if alpha == 1.0 else Tween.EASE_OUT)
+	# Killed tweens never emit finished. Let superseded callers resume and cancel.
+	while active_tween.is_valid() and active_tween.is_running():
+		await get_tree().process_frame
+	if tween == active_tween and alpha == 0.0:
+		overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE

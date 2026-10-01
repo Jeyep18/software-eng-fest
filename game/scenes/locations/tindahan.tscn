@@ -2,7 +2,6 @@
 
 [ext_resource type="AudioStream" uid="uid://bhryrf6qv6svw" path="res://game/assets/sfx/319336__forfie__city-sounds.wav" id="1_2byyo"]
 [ext_resource type="PackedScene" uid="uid://dtqgjfxxnejci" path="res://_raw_assets/Locations/tindahan.glb" id="1_61ce1"]
-[ext_resource type="PackedScene" uid="uid://cab67kn2yu0wv" path="res://game/maps/tindahan/tinadahan_greybox.tscn" id="1_rchrt"]
 [ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_61ce1"]
 [ext_resource type="AudioStream" uid="uid://p0hwlcdwdf6d" path="res://game/assets/sfx/830440__joelmcdaniel__fluorescent-light-buzzing.wav" id="2_eurmr"]
 [ext_resource type="AudioStream" uid="uid://de4onro1b777k" path="res://game/assets/sfx/DZRH radio drama_ Kasaysayan sa mga liham ni Tiya Dely.mp3" id="3_2byyo"]
@@ -69,9 +68,6 @@ bus = &"SFX"
 
 [node name="tindahan" parent="." unique_id=1107860213 instance=ExtResource("1_61ce1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036268234, -0.072064996, 0.022230148)
-
-[node name="TinadahanGreybox" parent="." unique_id=167651465 instance=ExtResource("1_rchrt")]
-visible = false
 
 [node name="playerv2" parent="." unique_id=566430605 instance=ExtResource("2_61ce1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1296325, 0.5370202, -6.8962994)

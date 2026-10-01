@@ -127,6 +127,7 @@ func _update_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> vo
 
 		var name_label = Label.new()
 		name_label.text = item.get_item_name()
+		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		name_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
 		name_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -188,17 +189,19 @@ func get_selected_item() -> ItemData:
 		return items[selected_slot]
 	return null
 
+# Keep the public parameter name; this sets visibility rather than querying it.
+@warning_ignore("shadowed_variable_base_class")
 func set_hotbar_visible(is_visible: bool) -> void:
 	self.visible = is_visible
 
 func _apply_ui_scale() -> void:
-	var scale: float = VisualSettings.get_ui_scale()
+	var ui_scale: float = VisualSettings.get_ui_scale()
 	_rebuild_style_cache()
 	var slot_count: int = InventoryManager.MAX_INVENTORY_SIZE
-	var gap: float = BASE_SLOT_GAP * scale
-	var slot_size: float = BASE_SLOT_SIZE * scale
+	var gap: float = BASE_SLOT_GAP * ui_scale
+	var slot_size: float = BASE_SLOT_SIZE * ui_scale
 	var width: float = (slot_size * float(slot_count)) + (gap * float(max(slot_count - 1, 0)))
-	var height: float = slot_size + (BASE_VERTICAL_PADDING * 2.0 * scale)
+	var height: float = slot_size + (BASE_VERTICAL_PADDING * 2.0 * ui_scale)
 
 	hotbar_root.anchor_left = 0.5
 	hotbar_root.anchor_right = 0.5
@@ -206,8 +209,8 @@ func _apply_ui_scale() -> void:
 	hotbar_root.anchor_bottom = 1.0
 	hotbar_root.offset_left = -width * 0.5
 	hotbar_root.offset_right = width * 0.5
-	hotbar_root.offset_top = -(height + BASE_BOTTOM_MARGIN * scale)
-	hotbar_root.offset_bottom = -BASE_BOTTOM_MARGIN * scale
+	hotbar_root.offset_top = -(height + BASE_BOTTOM_MARGIN * ui_scale)
+	hotbar_root.offset_bottom = -BASE_BOTTOM_MARGIN * ui_scale
 
 	hotbar_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	hotbar_bg.offset_left = 0.0
@@ -224,7 +227,7 @@ func _apply_ui_scale() -> void:
 	slot_container.add_theme_constant_override("separation", int(roundi(gap)))
 	for i in range(_slot_panels.size()):
 		var panel := _slot_panels[i]
-		panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * scale
+		panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * ui_scale
 		_slot_items[i] = null
 		_slot_quantities[i] = -1
 	_redraw_hotbar()

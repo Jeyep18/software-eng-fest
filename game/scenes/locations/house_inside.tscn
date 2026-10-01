@@ -350,10 +350,10 @@ prompt_label = "Place Working Radio"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34570074, 0.14361024, -2.845928)
 
 [node name="WindowTaskCue" parent="." unique_id=2023954735 instance=ExtResource("32_taskcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87383, 1.4026453, -0.37651414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.792376, 1.4026453, -1.1357098)
 
 [node name="WindowTaskCue2" parent="." unique_id=1961389787 instance=ExtResource("32_taskcue")]
-transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 5.0192323, 1.4046286, -4.7983084)
+transform = Transform3D(-0.98051536, 0, 0.19644234, 0, 1, 0, -0.19644234, 0, -0.98051536, 4.962534, 1.5892502, -5.5259457)
 
 [node name="MedicineTaskCue" parent="." unique_id=415237868 instance=ExtResource("32_taskcue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6397557, 2.151703, 1.0837145)

@@ -117,6 +117,18 @@ Positive: clear separation of menu input layout and environmental motion. Tradeo
 
 Original layered UI parallax proposal; no prior numbered ADR.
 
+## Milestone 1 — Retire the obsolete shop route
+
+Milestone 1 route decision, accepted 2026-09-24: the user explicitly selected retirement of the old door and `test_room2` route. The alternative was redirecting the old door to the current Tindahan, which would require deciding obsolete spawn/location semantics. Removed only that door subtree and mapping; current home/map routes remain. The missing hidden Tindahan greybox reference was separately removed because the current scene already has its GLB and collision imports; no deleted prototype geometry was restored. Godot 4.6.1 remains the target for this baseline.
+
+## Milestone 2 — Deadline priority and pause ownership
+
+Accepted 2026-09-25 through the approved Milestone 2 plan. Storm arrival supersedes travel and other pending fades. Completed task state is committed before its time charge; work interrupted before that commit retains its supplies. Reset invalidates pending transitions. Map/backpack time pressure remains unchanged.
+
+Use a generation in the existing SceneManager and replaceable tweens in TransitionOverlay. A transition queue/new coordinator was unnecessary for the current single-scene loop; keeping the old fixed delay would not prevent stale continuations. Canceled fades must settle their callers, since killed Godot tweens do not emit `finished`.
+
+The existing GlobalTimer accepts an optional Node owner. Owned pauses are idempotent, release on scene exit and are disconnected on reset. This avoids duplicated teardown logic across NPC/task/item classes and protects new runs from old-node cleanup. Anonymous pause/resume calls retain compatibility. Quest choices block reopening dialogue over the same owner. No resource IDs, persistence formats, dependencies or autoload registrations change.
+
 ## Choices whose rationale is not established
 
 The repository demonstrates autoload-based session state, duplicated shop resources, a directed travel graph, seven inventory slots, and local JSON scores. It does not establish all original alternatives or reasons behind those choices. Do not fabricate Accepted ADRs for them. A 4.7 engine upgrade was mentioned in the old handoff, but acceptance/completion remains **Unknown / Needs verification**.

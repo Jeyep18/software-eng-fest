@@ -67,7 +67,7 @@ These are the 17 registered autoload names, in `project.godot` order. Their scri
 | Standard | 1.5 | 700 | 1.00 |
 | Challenge | 0.8 | 600 | 1.25 |
 
-`pause_timer()` increments a counter; `resume_timer()` decrements it and resumes at zero, clearing fractional accumulated time. NPC dialogue, task dialogue/completion, shops and relevant modals explicitly manage this counter. Map and backpack opening do not pause the clock. `TransitionOverlay` itself does not pause time. PauseMenu uses SceneTree pause. These distinctions supersede stale GlobalTimer comments claiming that all maps/fades pause.
+`pause_timer(self)` acquires one idempotent pause per Node. `resume_timer(self)` releases only that owner's pause; `tree_exiting` releases it automatically. Reset disconnects and clears ownership before old scenes leave, preventing a stale release from unpausing a new run. Anonymous calls retain the legacy counter API. At zero, the timer resumes only before the deadline. Map/backpack and fades still do not pause the clock. PauseMenu uses separate SceneTree pause.
 
 | Elapsed minutes | Implemented storm change |
 | ---: | --- |
@@ -80,9 +80,9 @@ These are the 17 registered autoload names, in `project.godot` order. Their scri
 
 `MapScreen` samples and caches a displayed travel cost, then passes it to `SceneManager.travel_to()` so confirmation uses the sample shown. Dangerous destinations additionally cost 15 minutes; the map labels danger but its numerical travel estimate excludes that penalty.
 
-SceneManager checks availability, applies danger penalty, validates destination and closed state, chooses a spawn, fades out, adds travel minutes, changes the whole scene, fades in and emits `travel_completed`. It aliases `bodega` and `act1` to home for travel accounting. `SpawnPoint` markers inspect its pending spawn ID, position the first player-group node and clear the request. Home defaults to `main_door` when no spawn is supplied.
+SceneManager validates availability/path/closed state and acquires the travel lock before applying danger penalties. It then fades out, charges travel time, replaces the scene, fades in and emits `travel_completed`. Generation checks after waits and time charges prevent a superseded operation from changing scenes or reporting arrival. It aliases `bodega` and `act1` to home for travel accounting. Spawn markers consume pending IDs; home defaults to `main_door`.
 
-Storm arrival closes registered non-home destinations, waits 0.5 seconds and fades to EndingSequence. EndingSequence owns its fade-in. There is no central transition queue or cancellation token shared by travel, tasks and storm ending; coroutine overlap near the deadline needs runtime verification.
+Storm arrival takes priority immediately: it invalidates previous transitions, clears travel/spawn state, closes the global shop, unpauses the scene tree and fades to EndingSequence. The ending owns its fade-in. `SceneManager.reset()` invalidates pending work. `TransitionOverlay` replaces its previous tween and lets canceled callers resume rather than waiting forever on a killed tween's `finished` signal. Task and smoke-break continuations check the same generation. Tasks consume supplies and commit their results after completion sounds but before charging time; a deadline triggered by the charge therefore sees the completed result. An interrupted, uncommitted task retains its supplies. No transition queue or new manager was added.
 
 ## World and player composition
 
@@ -145,7 +145,7 @@ ShopUi temporarily substitutes the shop price on ItemData, invokes EconomyManage
 
 `SideQuestLog` stores the Mang Nestor quest as not_started, active, ready_to_turn_in or completed. It is the inventory-change subscriber for quest readiness (Mang Nestor does not duplicate that subscription) and updates readiness when half_chicken appears/disappears, emitting objective signals consumed by checklist UI.
 
-- Mang Nestor acceptance gives 150 cash once. Go To Chooks sells half chicken for 145. Return consumes chicken, adds tarp, grants another 5 and completes the quest. Current behavior leaves 10 cash above the player's pre-quest balance.
+- Mang Nestor acceptance gives 150 cash once. Go To Chooks sells half chicken for 145. Return consumes chicken, adds tarp, grants another 5 and completes the quest. A full backpack can turn in the non-stacking chicken because it frees the tarp's slot. Completed quests reject repeated turn-ins. Current behavior leaves 10 cash above the player's pre-quest balance.
 - AteLindaQuestShop consumes a hammer to unlock a discounted catalogue; it uses GameState's discount flag rather than EconomyManager.barter.
 - MoneyBeggar optionally spends 20 cash and records a donation flag.
 - SmokeBreakNPC optionally adds 20 minutes with a fade and records a one-time flag.
@@ -161,7 +161,7 @@ HUDOverlay reads clock/ETA; preparation/checklist interfaces combine need state,
 
 TransitionOverlay is layer 10; ShopUi is layer 8; VhsCrtOverlay is layer 90. The VHS shader effect is separate from menu/HUD vignette overlays. Thus toggling VHS is not equivalent to disabling every screen-darkening effect.
 
-LocalizationManager loads `game/localization/game_text.csv` and supports exact-source and key-based lookup, formatted translations and automatic tree localization on node addition/language changes. Item and dialogue resources use translation getters. Dynamically assigned text needs explicit translation or a compatible refresh path; intro narrative assignments are not fully covered by automatic localization.
+LocalizationManager loads `game/localization/game_text.csv` and supports exact-source and key-based lookup, formatted translations and automatic tree localization on node addition/language changes. It tracks its last rendered value so a later dynamic assignment is not overwritten by an old source string. Quest choices retain source/format values and refresh on language changes. Five choice prompts have English/Tagalog rows; action-button translations remain as authored. Backpack/hotbar names wrap inside slots. Intro narrative coverage remains incomplete; this is not a full translation rewrite.
 
 ## Audio and weather
 
@@ -188,7 +188,7 @@ The managers load these files during `_ready()`. Settings use ConfigFile section
 
 Leaderboard storage is a JSON array of dictionaries with `player_name`, `tasks_completed`, `remaining_minutes`, `difficulty`, `score`, and `recorded_at`. Loading checks the top-level array and dictionary entries, supplies missing-key defaults, clamps remaining minutes, and recalculates scores from current difficulty multipliers. Unreadable/invalid files warn and yield an empty list. There is no explicit schema version or migration system in these persistence implementations. The location is Godot's project-specific `user://`, not a repository save directory.
 
-These files persist preferences and completed scores. They are **not a gameplay save/resume system**. Current inventory, scene position, elapsed time and quest progress live in memory. New-run reset in the menu and post-ending reset are separate code paths and do not reset identical systems; for example the menu resets ShopUi, while the ending resets EconomyManager. Future run-state additions must account for both paths.
+These files persist preferences and completed scores. They are **not a gameplay save/resume system**. Current inventory, scene position, elapsed time and quest progress live in memory. New-run reset in the menu and post-ending reset remain separate code paths. Both now reset ShopUi's stock cache; future state additions must still account for all reset paths.
 
 ## Boundaries and verified maintenance concerns
 
@@ -215,16 +215,18 @@ Player collision probes and camera follow run in physics updates; lighting, voxe
 ### Existing debt
 
 - SceneManager and StormEnroachment duplicate zone state. Keep consumers and reset paths consistent if changing closure behavior.
-- Transition/task/dialogue pause ownership is manual. Several interactable classes lack exit-tree cleanup for an outstanding timer pause. Scene replacement during a modal and deadline transitions require runtime testing.
-- Full-inventory barter and Mang Nestor reward checks occur before removing the outgoing item; they reject exchanges that could otherwise free a slot.
+- Milestone 2 covers owned-pause cleanup and deadline/reset cancellation with focused runtime checks. Anonymous legacy timer calls still require explicit pairing; use Node ownership for new scene-owned pauses.
+- The unused EconomyManager barter API still checks capacity before removing the outgoing item. Mang Nestor's active quest exchange is corrected.
 - Public inventory APIs still expose mutable arrays; direct external array mutation can violate invariants. Add/combine boundary validation does not encapsulate those arrays.
 - `ShopItem.reset_stock()` is a stub; active stock reset comes from clearing ShopUi's duplicate cache.
-- `tindahan.tscn` references missing `game/maps/tindahan/tinadahan_greybox.tscn`; the cleanup baseline reproduced missing-resource and vanished-node recovery errors. `SceneManager.SCENE_PATHS.test_room2` points to absent `game/maps/test_map1/tindahanmo.tscn`, still used by an older Act1 door. Neither route was repaired; a replacement needs scene-design evidence.
+- Milestone 1 removed Tindahan's missing hidden greybox instance; the current GLB and its imported collisions remain. The user chose to retire `test_room2` and its old `Act1.tscn` door rather than redirect it. Current map travel to the shop uses `ate_linda`.
 - Historical scene registries, act fields, duplicate monologue implementations and first-person controller coexist with the active flow. Their presence alone does not establish player-facing features.
 
 ## Verification scope
 
-Architecture claims were checked against project configuration, GDScript, `.tscn` and `.tres` text, with presentation findings cross-checked by a separate audit. No engine run, import, cache rebuild, gameplay modification or automated test execution was part of this documentation audit. Unknown / Needs verification: real-device rendering and audio balance; complete playable-path usability; deadline coroutine ordering; overlapping modals; fresh-import behavior of stale UID/path references.
+Milestone 1 follow-up (2026-09-24): the checklist checks scene-tree membership before deferred resize work; localization holds a weak reference for deferred node localization so freed temporary controls are safely skipped. Neither change alters task state, translations or pause ownership. Warning cleanup preserves intentional integer division and asynchronous task hooks. See [TESTING.md](TESTING.md) for fresh-import, language-server, regression and normal-timing integration evidence and its limits.
+
+The original documentation audit used static inspection. Subsequent Milestone 1/2 engine runs are recorded in [TESTING.md](TESTING.md). Broader manual usability/audio, exhaustive modal combinations, complete translation coverage and distribution testing remain separate verification work.
 
 ## Planned architecture and change policy
 

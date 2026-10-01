@@ -19,7 +19,7 @@ func _pick_sequence() -> DialogueSequence:
 
 func _on_dialogue_completed() -> void:
 	if _pending_donation:
-		show_choice_prompt("Give PHP %d?" % donation_amount, "Give", "Sorry")
+		show_choice_prompt("Give PHP %d?", "Give", "Sorry", [donation_amount])
 
 func _on_choice_accepted() -> void:
 	if GameState.grocery_donation_given:

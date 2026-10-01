@@ -8,6 +8,8 @@ var is_showing: bool = false
 
 signal player_entered(interactable: Interactable)
 signal player_exited(interactable: Interactable)
+# Emitted by interaction subclasses and observed by PlayerV2.
+@warning_ignore("unused_signal")
 signal prompt_visibility_changed(should_show: bool)
 
 

@@ -129,7 +129,7 @@ func _show_start_tutorial_if_needed() -> void:
 	tutorial.open(true, true, unlock_input, true)
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("escape"):
 		_toggle_mouse_capture()
 

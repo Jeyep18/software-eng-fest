@@ -54,7 +54,7 @@ var current_act: Act = Act.ACT_1
 
 func advance_act() -> void:
 	if current_act < Act.ACT_4:
-		current_act += 1
+		current_act = (current_act + 1) as Act
 		act_changed.emit(current_act)
 #endregion
 
@@ -157,6 +157,8 @@ func complete_house_exploration() -> void:
 	house_exploration_complete = true
 	guide_tasks_changed.emit()
 
+# Retained for compatibility with the existing player-name API.
+@warning_ignore("unused_parameter")
 func set_player_name(new_name: String, gender: String = "kuya") -> void:
 	if new_name.strip_edges().is_empty():
 		push_warning("GameState: set_player_name called with empty string.")

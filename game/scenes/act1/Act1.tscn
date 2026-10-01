@@ -402,16 +402,6 @@ prompt_label = "go outside"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7112652, 0.45330334)
 spawn_id = "from_room_1"
 
-[node name="door3" parent="." unique_id=1354119428 instance=ExtResource("8_v4kln")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 5.9985394, 1.1184278, -7.569474)
-door_destination = "test_room2"
-spawn_point_id = "from_kitchen"
-prompt_label = "go outside"
-
-[node name="Spawnpoint" parent="door3" unique_id=2018403674 instance=ExtResource("9_660nt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6981559, 0.5523958)
-spawn_id = "from_room_2"
-
 [node name="door4" parent="." unique_id=2093224633 instance=ExtResource("8_v4kln")]
 transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -0.45931447, 1.1215087, -4.2425966)
 door_destination = "tindahan"

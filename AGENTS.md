@@ -47,7 +47,7 @@ Use existing direct manager APIs for actions and signals for notifications: `inv
 - **Partial/legacy:** old first-person controller, act enums/outcome flags and unused barter API. They do not establish active combat, four playable acts, or a complete branching rescue story.
 - **Not present:** full gameplay save/load, combat/enemy navigation, multiplayer, third-party automated test framework. Focused built-in regression checks now live in `game/tests/cleanup_regression.tscn`.
 - `GameState`, `NeedsLog`, `InventoryManager` and `SideQuestLog` hold session truth. UI must not create competing inventory or objective state. Inventory has **seven slots**; only canned goods and nails stack.
-- `GlobalTimer` has a 720-minute limit and reference-counted pause API. Pair every pause/resume and handle cleanup. Scene-tree pause is separate. The current map, backpack and fades do **not** pause the clock. New runs start the clock immediately in the house.
+- `GlobalTimer` has a 720-minute limit. Use `pause_timer(self)` / `resume_timer(self)` for one pause per Node; scene exit releases it and reset disconnects old owners. Anonymous calls retain the legacy counter API. Scene-tree pause is separate. Map, backpack and fades do **not** pause the clock. New runs start the clock immediately in the house.
 - Preserve stable item IDs, world-item IDs, window IDs and location IDs across resources/callers. `water_jugs.tres` uses item ID `water_jug`.
 
 ## Scenes, resources, input and physics
@@ -78,7 +78,9 @@ Never hardcode or expose secrets. Keep diffs focused, avoid unrelated formatting
 
 Review changes to global resets, timer/scene transitions, player input/physics, resource schemas, localization source keys and persisted settings/scores carefully. Never silently change persistence formats. Significant refactors need a stated problem, affected systems, alternatives, risks and preserved behavior; record the decision.
 
-Known issues are recorded in [architecture](docs/ARCHITECTURE.md) and [roadmap](docs/ROADMAP.md): missing tindahan greybox path and debug `test_room2` target; overlapping transition/pause lifecycle risks; legacy state/comments. These notes do not authorize unrelated fixes.
+Known issues are recorded in [architecture](docs/ARCHITECTURE.md) and [roadmap](docs/ROADMAP.md): overlapping transition/pause lifecycle risks and legacy state/comments. Milestone 1 removed the missing hidden Tindahan greybox reference and retired `test_room2` with its old Act1 door. These notes do not authorize unrelated fixes.
+
+Milestone 2 makes storm arrival supersede travel/fades and reset invalidate pending continuations through `SceneManager.transition_generation`. Preserve checks after awaits and time charges. Completed task results must be committed before charging deadline-crossing time. Canceled fades must return to callers rather than wait on a killed tween's `finished` signal. Targeted cases pass; broader manual/input coverage remains separate.
 
 ## Completion and documentation maintenance
 

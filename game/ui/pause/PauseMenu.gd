@@ -37,6 +37,8 @@ func _input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 func _open() -> void:
+	if SceneManager.storm_transition_pending:
+		return
 	_close_gameplay_menus()
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -154,7 +154,7 @@ func _ready() -> void:
 	]
 
 	get_tree().paused = false
-	GlobalTimer.pause_timer()
+	GlobalTimer.pause_timer(self)
 
 	# Hide ALL visual cues before anything fades in.
 	_hide_all_visual_cues()
@@ -335,6 +335,7 @@ func _show_result_panel() -> void:
 	NeedsLog.reset()
 	SideQuestLog.reset()
 	EconomyManager.reset()
+	ShopUi.reset()
 	InventoryManager.reset()
 	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("main_menu")
@@ -447,6 +448,8 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 
 func _format_minutes(minutes: int) -> String:
 	var safe_minutes: int = max(minutes, 0)
+	# Whole hours; the remainder below supplies the minutes.
+	@warning_ignore("integer_division")
 	var hours: int = safe_minutes / 60
 	var mins: int = safe_minutes % 60
 	return "%dh %02dm" % [hours, mins]

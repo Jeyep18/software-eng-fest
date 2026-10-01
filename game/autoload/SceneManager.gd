@@ -4,6 +4,8 @@ extends Node
 var has_played_opening: bool = false
 var current_location: String = "home"
 var is_travelling: bool = false
+var storm_transition_pending: bool = false
+var transition_generation: int = 0
 
 var _pending_spawn_id: String = ""
 
@@ -28,7 +30,6 @@ const SCENE_PATHS: Dictionary = {
 	"hardware":      "res://game/scenes/locations/hardware.tscn",
 	"bodega":        "res://game/scenes/locations/bodega.tscn",
 	"test_room1":    "res://game/scenes/locations/room_1.tscn",
-	"test_room2":    "res://game/maps/test_map1/tindahanmo.tscn",
 
 	# ── Ending ──────────────────────────────────────────────────────────────
 	# The ending cinematic scene. Loaded automatically on storm_arrived.
@@ -54,18 +55,26 @@ func _ready() -> void:
 # ── Scene Loading (Act transitions — menu → act1, act1 → storm) ──────────────
 
 func load_scene(scene_id: String) -> void:
+	if storm_transition_pending:
+		return
 	if not SCENE_PATHS.has(scene_id):
 		push_error("SceneManager: Unknown scene ID: " + scene_id)
 		return
+	transition_generation += 1
+	var generation := transition_generation
+	is_travelling = false
+	clear_pending_spawn()
 	if not _change_scene(SCENE_PATHS[scene_id]):
 		return
 	await get_tree().create_timer(0.1).timeout
+	if generation != transition_generation:
+		return
 	await TransitionOverlay.fade_from_black()
 	
 # ── Location Travel (Act 2 preparation loop) ─────────────────────────────────
 
 func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost: int = -1) -> void:
-	if is_travelling:
+	if is_travelling or storm_transition_pending:
 		return
 
 	# Block travel to inaccessible locations
@@ -73,8 +82,6 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 		push_warning("SceneManager: '%s' is inaccessible — storm has closed it." % target_location)
 		# TODO: show a HUD message to the player here ("Hindi na mapuntahan — masyadong mapanganib.")
 		return
-	
-	StormEnroachment.apply_danger_penalty(target_location)
 	
 	if not SCENE_PATHS.has(target_location):
 		push_warning("SceneManager: scene not yet built for: " + target_location)
@@ -91,17 +98,31 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 	var target_for_travel: String = LOCATION_ALIASES.get(target_location, target_location)
 	var travel_cost: int = fixed_travel_cost if fixed_travel_cost >= 0 else TravelCalculator.get_travel_time(origin_for_travel, target_for_travel)
 	is_travelling = true
+	transition_generation += 1
+	var generation := transition_generation
 	
 	_pending_spawn_id = spawn_id
+	StormEnroachment.apply_danger_penalty(target_location)
+	if generation != transition_generation:
+		return
 	
 	await TransitionOverlay.fade_to_black()
+	if generation != transition_generation:
+		return
 	GlobalTimer.add_time(travel_cost)
+	if generation != transition_generation:
+		return
 	if not _change_scene(SCENE_PATHS[target_location]):
 		is_travelling = false
+		clear_pending_spawn()
 		await TransitionOverlay.fade_from_black()
 		return
 	await get_tree().create_timer(0.1).timeout
+	if generation != transition_generation:
+		return
 	await TransitionOverlay.fade_from_black()
+	if generation != transition_generation:
+		return
 
 	current_location = LOCATION_ALIASES.get(target_location, target_location)
 	is_travelling = false
@@ -141,14 +162,23 @@ func _on_encroachment(zone_id: String) -> void:
 
 
 func _on_storm_arrived() -> void:
+	if storm_transition_pending:
+		return
+	storm_transition_pending = true
+	transition_generation += 1
+	var generation := transition_generation
+	is_travelling = false
+	clear_pending_spawn()
+	ShopUi.close_shop()
+	get_tree().paused = false
 	# Lock all travel
 	for loc in SCENE_PATHS.keys():
 		_mark_closed(loc)
 
-	# Small delay so any fade currently in progress can complete cleanly,
-	# then transition to the ending cinematic.
-	await get_tree().create_timer(0.5).timeout
+	# Storm owns the transition; travel/task callers stop at their next await.
 	await TransitionOverlay.fade_to_black()
+	if generation != transition_generation:
+		return
 	_change_scene(SCENE_PATHS["ending"])
 	# NOTE: EndingSequence._ready() handles its own fade-in.
 	# We do NOT call fade_from_black() here — EndingSequence owns that.
@@ -167,6 +197,8 @@ func _mark_closed(location_id: String) -> void:
 
 # Add to SceneManager.gd
 func reset() -> void:
+	transition_generation += 1
+	storm_transition_pending = false
 	current_location  = "home"
 	is_travelling     = false
 	has_played_opening = false

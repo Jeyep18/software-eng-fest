@@ -19,18 +19,27 @@ func _pick_sequence() -> DialogueSequence:
 
 func _on_dialogue_completed() -> void:
 	if _pending_smoke:
-		show_choice_prompt("Smoke with him and lose %d minutes?" % time_cost_minutes, "Smoke", "No thanks")
+		show_choice_prompt("Smoke with him and lose %d minutes?", "Smoke", "No thanks", [time_cost_minutes])
 
 func _on_choice_accepted() -> void:
-	if GameState.tindahan_smoke_break_taken:
+	if GameState.tindahan_smoke_break_taken or SceneManager.storm_transition_pending:
 		return
 	GameState.tindahan_smoke_break_taken = true
+	var generation := SceneManager.transition_generation
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	await TransitionOverlay.fade_to_black()
+	if generation != SceneManager.transition_generation:
+		return
 	GlobalTimer.add_time(time_cost_minutes)
+	if generation != SceneManager.transition_generation:
+		return
 	await get_tree().create_timer(0.5).timeout
+	if generation != SceneManager.transition_generation:
+		return
 	await TransitionOverlay.fade_from_black()
+	if generation != SceneManager.transition_generation:
+		return
 	get_tree().call_group("player", "set_movement_locked", false)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	_pending_smoke = false

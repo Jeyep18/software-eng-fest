@@ -50,7 +50,7 @@ func interact() -> void:
 
 func _show_current_line() -> void:
 	if not _paused_timer:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_paused_timer = true
 	get_tree().call_group("player", "set_movement_locked", true)
 	if _current_line == 0:
@@ -59,10 +59,6 @@ func _show_current_line() -> void:
 	is_showing = true
 	_is_showing = true
 	_is_typing = true
-	
-	var speaker: String = GameState.player_name \
-		if not GameState.player_name.is_empty() \
-		else "..."
 	
 	var line: String = monologue_lines[_current_line]
 	_ui.show_line(line, PLAYER_NAME)
@@ -91,7 +87,7 @@ func _hide_monologue() -> void:
 	_is_typing = false
 	_current_line = 0
 	if _paused_timer:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 

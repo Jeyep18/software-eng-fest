@@ -4,20 +4,20 @@ Audited 2026-09-16–17. This file describes future work, not implemented archit
 
 ## Current stage and priority
 
-Current apparent stage: playable festival/beta preparation loop. The current approved priority is conservative GDScript cleanup that preserves gameplay. Release date and subsequent milestones remain **Unknown / Needs verification**.
+Current apparent stage: playable festival/beta preparation loop. Milestones 1 and 2 are implemented with targeted Godot 4.6.1 validation; broader manual playtesting remains necessary. Milestone 3 distribution/presentation validation is in progress; Windows Application Control blocks standalone launch on the test machine. Release date remains **Unknown / Needs verification**.
 
 The milestones below are **audit-proposed stabilization work**, not recovered commitments. Their ordering is a recommendation based on verified source risks; it does not establish a scheduled release plan.
 
-## Milestone 1 — Establish a reproducible playable baseline (proposed)
+## Milestone 1 — Establish a reproducible playable baseline (implemented 2026-09-24)
 
-Goal: verify the current preparation loop from a fresh checkout and resolve confirmed blockers in a separately authorized implementation task.
+Goal: verify the current preparation loop from a fresh checkout and resolve confirmed blockers. The user authorized this implementation and explicitly chose to retire the old `test_room2` door/route.
 
 ### Required
 
-- [ ] Investigate the missing greybox path in `game/scenes/locations/tindahan.tscn`; choose the correct replacement by scene inspection and verify fresh-import travel to Ate Linda.
-- [ ] Remove or redirect the missing `test_room2` route only after deciding whether that debug destination is still wanted.
-- [ ] Run the [testing guide](TESTING.md) through startup, tasks, travel, ending and second-run reset; record results and actual failures.
-- [ ] Confirm Godot 4.6.1 as the release target or approve a separate migration plan. The old 4.7 intention is not a completed upgrade.
+- [x] Remove the broken hidden greybox reference in `tindahan.tscn`; retain the actual GLB/collisions and verify travel, spawn floor support and Ate Linda's shop from a freshly imported copy.
+- [x] Retire `test_room2` and the old `Act1.tscn` door, as explicitly selected by the user.
+- [x] Exercise startup, dialogue, shopping, task completion, travel, ending and second-run reset with the normal-timing scripted smoke; record results and manual verification limits in [TESTING.md](TESTING.md).
+- [x] Retain Godot 4.6.1 / Forward Plus as the target for this baseline. No 4.7 migration was performed.
 
 ### Optional
 
@@ -25,18 +25,18 @@ Goal: verify the current preparation loop from a fresh checkout and resolve conf
 
 ### Completion criteria
 
-The normal route is demonstrated in the target engine, each failing path has a recorded resolution, and results distinguish static checks from runtime playtests.
+The normal route is demonstrated in the target engine, each failing path has a recorded resolution, and results distinguish static checks from runtime playtests. Scripted checks and rendered captures establish the baseline, not full manual acceptance: movement/camera edge cases, audio, every quest/ending and exports still need their own checks. Initial raw-asset import diagnostics and shutdown leak warnings are documented rather than claimed fixed.
 
-## Milestone 2 — Resolve interaction and state edge cases (proposed)
+## Milestone 2 — Resolve interaction and state edge cases (implemented 2026-09-25)
 
 Goal: test and address concrete consistency risks without broad refactoring.
 
 ### Required
 
 - [x] Align seven-slot hotbar selection with inventory capacity; preserve key 8 as the last-slot alias.
-- [ ] Reproduce storm arrival during travel/task/dialogue/modal activity; decide and test transition and pause ownership behavior.
-- [ ] Exercise full-inventory quest turn-in, repeated interactions, stock resets and return visits.
-- [ ] Audit dynamic localization and long text in both languages, including intended button-language scope.
+- [x] Exercise storm arrival during travel/task/dialogue/modal activity; enforce storm priority, cancel superseded transitions and release scene-owned timer pauses safely.
+- [x] Exercise full-inventory quest turn-in, repeated interactions, stock resets and return visits. Correct Nestor's capacity check, duplicate choice/dialogue interaction and stale shop purchases.
+- [x] Audit dynamic localization and long text in both languages, including intended button-language scope. Correct stale text restoration, five quest prompts and overflowing slot names; retain authored English action labels.
 
 ### Optional
 
@@ -46,7 +46,9 @@ Goal: test and address concrete consistency risks without broad refactoring.
 
 Each reported bug has a reproduction and relevant verification, and intentional behavior such as an unpaused map/backpack is preserved or explicitly changed.
 
-## Milestone 3 — Validate distribution and presentation (proposed)
+Milestone 2 evidence: 97 focused checks passed, including deadline travel/task/modal cases, reset cancellation, quest exchange and stock revisits. English/Tagalog captures at 100%/175% UI scale were inspected, with 8 scene/layout assertions passed. See [TESTING.md](TESTING.md) for exact evidence and limits. This is a bounded audit, not exhaustive localization, manual acceptance or export validation.
+
+## Milestone 3 — Validate distribution and presentation (in progress 2026-09-26)
 
 Goal: establish evidence for a downloadable Windows build and readable presentation.
 
@@ -62,15 +64,15 @@ Goal: establish evidence for a downloadable Windows build and readable presentat
 
 ### Completion criteria
 
-An actual exported build has recorded smoke-test results and any hardware claims include measurements. This documentation audit supplies neither.
+An actual exported build has recorded smoke-test results and any hardware claims include measurements. A Windows candidate is exported and the missing raw localization CSV is explicitly included. Standalone execution remains blocked by Windows Application Control; source-run tests do not fulfill exported-build acceptance. See [TESTING.md](TESTING.md) for the bounded presentation matrix, measurements and remaining checks. No minimum/recommended hardware specification is established by a single-machine sample.
 
 ## Backlog by proposed priority
 
 | Priority | Candidate work | Basis |
 | --- | --- | --- |
-| High | Scene-reference repair and complete manual playthrough | Two missing paths remain; headless checks do not establish visual usability |
-| High | Deadline/transition and pause lifecycle checks | Hotbar bounds are fixed; broader lifecycle risks remain |
-| Medium | Localization scope/coverage, capacity-sensitive quest rewards, repeat-run reset coverage | Existing code paths and historical intent require testing |
+| High | Complete manual playthrough and investigate remaining raw-asset import diagnostics | The two planned scene-reference defects are resolved; scripted checks/captures do not establish all player interactions |
+| High | Broader manual playthrough after deadline/pause fixes | Targeted Milestone 2 cases pass; arbitrary overlapping inputs still need manual playtesting |
+| Medium | Complete localization coverage and presentation matrix | Five choice prompts and dynamic assignment are fixed; intro narration and broader UI/accessibility remain outside the bounded audit |
 | Medium | Remaining mutable inventory ownership and duplicate storm-state review | Add/combine validation is implemented; live arrays and duplicate storm state remain |
 | Low / nice to have | Extend targeted checks as needed and establish a measured performance baseline | Focused regression scene exists; hardware benchmarks do not |
 
@@ -78,14 +80,14 @@ An actual exported build has recorded smoke-test results and any hardware claims
 
 **Static defects confirmed in source:**
 
-- `game/scenes/locations/tindahan.tscn` references missing `res://game/maps/tindahan/tinadahan_greybox.tscn`. The cleanup baseline reproduced the missing-resource error and vanished-node recovery warning in Godot 4.6.1; the scene path was deliberately left unchanged.
-- `SceneManager.SCENE_PATHS.test_room2` targets missing `res://game/maps/test_map1/tindahanmo.tscn`.
+- Resolved in Milestone 1: the missing hidden Tindahan greybox reference was removed; the visible model was retained.
+- Retired in Milestone 1 by user decision: `test_room2` and its old Act1 door.
 - Resolved in the conservative cleanup: wheel wrapping now uses seven slots and key 8 explicitly aliases the last slot.
 - Corrected the touched hotbar, timer and HUD comments to describe current capacity, pause/startup behavior and scene ownership. Other legacy comments still require source verification.
 
-**Runtime follow-up:** the accelerated integration smoke passed travel, restart, second-run clock and ending checks both before and after cleanup. Both versions emitted a null-tree error from `PreparationChecklistHUD._schedule_checklist_resize` during restart. Investigate its deferred resize lifecycle separately; this cleanup does not change it. See [TESTING.md](TESTING.md) for the smoke's limits.
+**Runtime fixes in Milestone 1:** checklist resize now checks tree membership before `get_tree()` and after waiting a frame. Deferred localization now uses a weak reference to skip controls freed before the callback. Normal-timing smoke tests cover the lifecycle cases and logs are inspected separately from assertion results. See [TESTING.md](TESTING.md) for results and limits.
 
-**Source risks, not runtime-reproduced bugs in this audit:** deadline coroutines can overlap scene changes/fades; scene-owned dialogues have distributed pause/lock cleanup; multiple overlapping targets can retain a stale nearest selection; Nestor turn-in checks capacity before removing the outgoing chicken. See architecture for exact owners. Do not report these as verified fixed or as observed crashes.
+**Milestone 2 fixes:** deadline transitions now have priority/cancellation checks; the timer centrally releases Node-owned pauses on scene exit/reset; Nestor accepts a full-backpack exchange; duplicate shop opens and stale stock callbacks are guarded; dynamic localization no longer restores obsolete text. The travel regression also covers a freed animated objective-row callback. Multiple overlapping targets can still retain a stale nearest selection; that separate source risk was not reproduced or changed here.
 
 The old danger-zone reset complaint is historical; current menu/restart code resets both scene and storm managers. Keep a second-run regression check rather than treating that old report as proof the bug is still present.
 

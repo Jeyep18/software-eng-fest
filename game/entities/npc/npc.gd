@@ -37,6 +37,8 @@ func _setup_ui() -> void:
 
 #region Interact Override
 func interact() -> void:
+	if SceneManager.storm_transition_pending:
+		return
 	if not _is_showing:
 		_current_sequence = _pick_sequence()
 		if _current_sequence == null or _current_sequence.lines.is_empty():
@@ -61,7 +63,7 @@ func interact() -> void:
 #region Display
 func _show_current_line() -> void:
 	if not _paused_timer:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_paused_timer = true
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
@@ -102,7 +104,7 @@ func _hide_dialogue() -> void:
 	_is_typing = false
 	_current_line = 0
 	if _paused_timer:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 #endregion

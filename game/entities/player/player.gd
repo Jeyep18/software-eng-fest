@@ -96,9 +96,9 @@ func _handle_sprint() -> void:
 
 func _handle_movement(delta: float) -> void:
 	if _is_movement_locked:
-		var acceleration: float = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
-		velocity.x = lerp(velocity.x, 0.0, delta * acceleration)
-		velocity.z = lerp(velocity.z, 0.0, delta * acceleration)
+		var stopping_acceleration: float = GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		velocity.x = lerp(velocity.x, 0.0, delta * stopping_acceleration)
+		velocity.z = lerp(velocity.z, 0.0, delta * stopping_acceleration)
 		return
 
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

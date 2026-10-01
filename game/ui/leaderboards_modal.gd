@@ -111,6 +111,8 @@ func _add_cell(row: HBoxContainer, text: String, min_width: float, is_header: bo
 
 func _format_minutes(minutes: int) -> String:
 	var safe_minutes: int = max(minutes, 0)
+	# Whole hours; the remaining minutes are formatted separately.
+	@warning_ignore("integer_division")
 	var hours: int = safe_minutes / 60
 	var mins: int = safe_minutes % 60
 	return "%dh %02dm" % [hours, mins]
@@ -141,21 +143,21 @@ func _difficulty_label_with_multiplier(difficulty_id: String) -> String:
 	return "%s x%.2f" % [_difficulty_label(difficulty_id), GameState.get_difficulty_score_multiplier(difficulty_id)]
 
 func _apply_leaderboard_style() -> void:
-	var scale := VisualSettings.get_ui_scale()
+	var ui_scale := VisualSettings.get_ui_scale()
 	var horizontal_margin := maxi(40, int(roundi(430.0 - ((_table_width() - TABLE_WIDTH) * 0.5))))
 	margin_container.add_theme_constant_override("margin_left", horizontal_margin)
 	margin_container.add_theme_constant_override("margin_right", horizontal_margin)
-	margin_container.add_theme_constant_override("margin_top", maxi(36, int(roundi(170.0 / scale))))
-	margin_container.add_theme_constant_override("margin_bottom", maxi(36, int(roundi(170.0 / scale))))
+	margin_container.add_theme_constant_override("margin_top", maxi(36, int(roundi(170.0 / ui_scale))))
+	margin_container.add_theme_constant_override("margin_bottom", maxi(36, int(roundi(170.0 / ui_scale))))
 	var panel := $MarginContainer/LeaderboardsModal as PanelContainer
 	panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.025, 0.028, 0.03, 0.94), UI_STYLE.BORDER, 8))
 	UI_STYLE.apply_button(close_button)
 	UI_STYLE.apply_button(clear_button)
-	close_button.custom_minimum_size = Vector2(104, 44) * scale
-	clear_button.custom_minimum_size = Vector2(132, 44) * scale
+	close_button.custom_minimum_size = Vector2(104, 44) * ui_scale
+	clear_button.custom_minimum_size = Vector2(132, 44) * ui_scale
 	UI_STYLE.apply_label(title_label, false, true)
 	UI_STYLE.apply_label(empty_label, true)
-	title_label.add_theme_font_size_override("font_size", int(roundi(24.0 * scale)))
+	title_label.add_theme_font_size_override("font_size", int(roundi(24.0 * ui_scale)))
 
 func _table_width() -> float:
 	return TABLE_WIDTH * VisualSettings.get_ui_scale()

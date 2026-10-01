@@ -424,3 +424,8 @@ ui,ui.kapag_may_nakuha_kang_extra_isipin_mo_rin_kung_s.54d58d95,"Kapag may nakuh
 dialogue,dialogue.ohnanay.5ac2abe4,OHNanay,OHNanay,OHNanay,
 dialogue,dialogue.ohnanay.3c2c2d4d,OHNANAY,OHNANAY,OHNANAY,
 ui,ui.ate_linda.4c43a37c,Ate linda,Ate linda,Ate linda,
+ui,ui.nestor_accept_prompt,Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?,Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?,Tanggapin ang PHP 150 ni Mang Nestor at bumili ng Half Chicken sa Go To Chooks sa tabi ng botika?,
+ui,ui.nestor_turn_in_prompt,Give the Half Chicken to Mang Nestor?,Give the Half Chicken to Mang Nestor?,Ibigay ang Half Chicken kay Mang Nestor?,
+ui,ui.linda_trade_prompt,Give Ate Linda your hammer so she lowers her prices?,Give Ate Linda your hammer so she lowers her prices?,Ibigay kay Ate Linda ang iyong martilyo para babaan niya ang mga presyo?,
+ui,ui.smoke_choice_prompt,Smoke with him and lose %d minutes?,Smoke with him and lose %d minutes?,Manigarilyo kasama niya at gumugol ng %d minuto?,Keep %d placeholder
+ui,ui.donation_choice_prompt,Give PHP %d?,Give PHP %d?,Magbigay ng PHP %d?,Keep %d placeholder

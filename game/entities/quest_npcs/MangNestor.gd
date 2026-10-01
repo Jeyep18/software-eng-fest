@@ -24,7 +24,8 @@ func _pick_sequence() -> DialogueSequence:
 		return done_sequence
 
 	if state == SideQuestLog.STATE_READY_TO_TURN_IN:
-		if not InventoryManager.can_accept_item(tarp_reward):
+		# Half chicken does not stack; turning it in frees the reward's slot.
+		if tarp_reward == null:
 			return full_inventory_sequence
 		_pending_action = "complete"
 		return complete_sequence
@@ -61,13 +62,13 @@ func _start_quest() -> void:
 		get_tree().call_group("preparation_checklist_hud", "show_cash_gain", quest_cash_amount)
 
 func _complete_quest() -> void:
+	if SideQuestLog.get_quest_state(SideQuestLog.QUEST_MANG_NESTOR_CHICKEN) != SideQuestLog.STATE_READY_TO_TURN_IN:
+		return
 	if tarp_reward == null:
 		push_error("MangNestor: tarp_reward is not assigned.")
 		return
 	if not InventoryManager.has_item_with_id("half_chicken"):
 		SideQuestLog.refresh_mang_nestor_chicken()
-		return
-	if not InventoryManager.can_accept_item(tarp_reward):
 		return
 	if not InventoryManager.remove_item_by_id("half_chicken"):
 		return

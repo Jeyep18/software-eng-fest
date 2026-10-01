@@ -74,7 +74,7 @@ Read [development](docs/DEVELOPMENT.md) for conventions and workflows, [testing]
 
 ## Known limitations
 
-- `tindahan.tscn` contains a missing greybox reference that produces a Godot resource error/recovery warning; the `test_room2` route also targets a missing file. These pre-existing issues remain unresolved.
+- Milestone 1 removed Tindahan's broken hidden greybox reference and retired the unused `test_room2` route/old Act1 door. Normal-timing scripted validation is available in `game/tests/milestone1_smoke.tscn`; full manual coverage remains separate.
 - Gameplay sessions cannot be saved/resumed. Disk persistence covers settings and local leaderboard entries.
 - Localization is implemented, but complete dynamic-text coverage is not established.
 - No third-party automated test framework or CI test workflow is configured; a focused headless regression scene is available. See the [roadmap](docs/ROADMAP.md) for verified issues and explicitly proposed follow-up work.

@@ -262,17 +262,17 @@ func _on_ui_scale_changed(_scale: float) -> void:
 	_apply_ui_scale()
 
 func _apply_ui_scale() -> void:
-	var scale := VisualSettings.get_ui_scale()
-	_apply_font_scale_recursive(self, scale)
+	var ui_scale := VisualSettings.get_ui_scale()
+	_apply_font_scale_recursive(self, ui_scale)
 
-func _apply_font_scale_recursive(node: Node, scale: float) -> void:
+func _apply_font_scale_recursive(node: Node, ui_scale: float) -> void:
 	if node is Label:
 		var label := node as Label
 		var base_size := 18.0
 		if label.text == "Settings":
 			base_size = 24.0
-		label.add_theme_font_size_override("font_size", int(roundi(base_size * scale)))
+		label.add_theme_font_size_override("font_size", int(roundi(base_size * ui_scale)))
 	elif node is Button:
-		(node as Button).add_theme_font_size_override("font_size", int(roundi(18.0 * scale)))
+		(node as Button).add_theme_font_size_override("font_size", int(roundi(18.0 * ui_scale)))
 	for child in node.get_children():
-		_apply_font_scale_recursive(child, scale)
+		_apply_font_scale_recursive(child, ui_scale)

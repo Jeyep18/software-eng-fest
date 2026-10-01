@@ -169,7 +169,7 @@ func interact() -> void:
 
 func _show_current_line() -> void:
 	if not _paused_timer:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_paused_timer = true
 	get_tree().call_group("player", "set_movement_locked", true)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
@@ -206,7 +206,7 @@ func _hide_monologue() -> void:
 	_is_typing = false
 	_current_line = 0
 	if _paused_timer:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_paused_timer = false
 	get_tree().call_group("player", "set_movement_locked", false)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
@@ -229,7 +229,7 @@ func _prompt_or_pickup() -> void:
 		if _ui == null:
 			_setup_ui()
 		if not _paused_timer:
-			GlobalTimer.pause_timer()
+			GlobalTimer.pause_timer(self)
 			_paused_timer = true
 		get_tree().call_group("player", "set_movement_locked", true)
 		_show_pickup_confirmation()

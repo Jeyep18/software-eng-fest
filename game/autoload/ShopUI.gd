@@ -120,6 +120,8 @@ func _build_ui() -> void:
 
 # ── Public API ─────────────────────────────────────────────────────────────────
 func open_shop(shop_data: ShopData) -> void:
+	if SceneManager.storm_transition_pending:
+		return
 	if shop_data == null:
 		push_error("ShopUI.open_shop(): called with null ShopData.")
 		return
@@ -142,7 +144,7 @@ func open_shop(shop_data: ShopData) -> void:
 	_backdrop.show()
 	_center_container.show()
 	shop_panel.show()
-	GlobalTimer.pause_timer()
+	GlobalTimer.pause_timer(self)
 	get_tree().call_group("player", "set_movement_locked", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -153,7 +155,7 @@ func close_shop() -> void:
 	_backdrop.hide()
 	_current_shop = null
 	if was_open:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		get_tree().call_group("player", "set_movement_locked", false)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -171,14 +173,14 @@ func _rebuild_item_list() -> void:
 		item_list.add_child(_build_item_row(shop_item))
 
 func _build_item_row(shop_item: ShopItem) -> Control:
-	var scale := VisualSettings.get_ui_scale()
+	var ui_scale := VisualSettings.get_ui_scale()
 	var row := HBoxContainer.new()
-	row.custom_minimum_size = Vector2(0, 72) * scale
-	row.add_theme_constant_override("separation", int(roundi(10.0 * scale)))
+	row.custom_minimum_size = Vector2(0, 72) * ui_scale
+	row.add_theme_constant_override("separation", int(roundi(10.0 * ui_scale)))
 
 	# Icon
 	var icon := TextureRect.new()
-	icon.custom_minimum_size = Vector2(52, 52) * scale
+	icon.custom_minimum_size = Vector2(52, 52) * ui_scale
 	icon.expand_mode  = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	if shop_item.item_data and shop_item.item_data.item_icon:
@@ -190,12 +192,12 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 	text_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var name_lbl := Label.new()
 	name_lbl.text = shop_item.item_data.get_item_name() if shop_item.item_data else "???"
-	name_lbl.add_theme_font_size_override("font_size", int(roundi(18.0 * scale)))
+	name_lbl.add_theme_font_size_override("font_size", int(roundi(18.0 * ui_scale)))
 	text_col.add_child(name_lbl)
 	if shop_item.item_data and shop_item.item_data.item_description != "":
 		var desc := Label.new()
 		desc.text = shop_item.item_data.get_item_description()
-		desc.add_theme_font_size_override("font_size", int(roundi(14.0 * scale)))
+		desc.add_theme_font_size_override("font_size", int(roundi(14.0 * ui_scale)))
 		desc.modulate = Color(1, 1, 1, 0.55)
 		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		text_col.add_child(desc)
@@ -205,9 +207,9 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 	if shop_item.stock != -1:
 		var stock_lbl := Label.new()
 		stock_lbl.text = "x%d" % shop_item.stock
-		stock_lbl.add_theme_font_size_override("font_size", int(roundi(15.0 * scale)))
+		stock_lbl.add_theme_font_size_override("font_size", int(roundi(15.0 * ui_scale)))
 		stock_lbl.modulate = Color(1, 1, 1, 0.55)
-		stock_lbl.custom_minimum_size = Vector2(32, 0) * scale
+		stock_lbl.custom_minimum_size = Vector2(32, 0) * ui_scale
 		stock_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		row.add_child(stock_lbl)
 
@@ -233,8 +235,8 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 		var captured := shop_item
 		buy_btn.pressed.connect(func() -> void: _on_buy_pressed(captured))
 
-	buy_btn.add_theme_font_size_override("font_size", int(roundi(16.0 * scale)))
-	buy_btn.custom_minimum_size = Vector2(110, 42) * scale
+	buy_btn.add_theme_font_size_override("font_size", int(roundi(16.0 * ui_scale)))
+	buy_btn.custom_minimum_size = Vector2(110, 42) * ui_scale
 	UI_STYLE.apply_button(buy_btn)
 	row.add_child(buy_btn)
 	return row
@@ -250,6 +252,10 @@ func _apply_shop_style() -> void:
 
 # ── Purchase ───────────────────────────────────────────────────────────────────
 func _on_buy_pressed(shop_item: ShopItem) -> void:
+	if not is_open() or _current_shop == null or shop_item == null:
+		return
+	if not _current_shop.items.has(shop_item) or not shop_item.is_in_stock():
+		return
 	SFX.shop_beep()
 	var original_price := shop_item.item_data.item_price
 	shop_item.item_data.item_price = shop_item.price

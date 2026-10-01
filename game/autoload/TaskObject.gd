@@ -140,25 +140,47 @@ func _has_all_required_items() -> bool:
 	return true
 
 func _complete_task() -> void:
-	if _is_completed or _is_completing:
+	if _is_completed or _is_completing or SceneManager.storm_transition_pending:
 		return
 
 	_is_completing = true
-	GlobalTimer.pause_timer()
+	var generation := SceneManager.transition_generation
+	GlobalTimer.pause_timer(self)
 	await TransitionOverlay.fade_to_black()
+	if generation != SceneManager.transition_generation:
+		_cancel_completion()
+		return
 
-	_consume_required_items()
+	# RoofTask and WindowTask override this hook with timed hammer sounds.
+	@warning_ignore("redundant_await")
 	await _play_completion_sfx()
+	if generation != SceneManager.transition_generation:
+		_cancel_completion()
+		return
+	_consume_required_items()
 	_apply_completion_state()
+	if generation != SceneManager.transition_generation:
+		_cancel_completion()
+		return
 
 	await get_tree().create_timer(0.5).timeout
+	if generation != SceneManager.transition_generation:
+		_cancel_completion()
+		return
 	await TransitionOverlay.fade_from_black()
-	GlobalTimer.resume_timer()
+	if generation != SceneManager.transition_generation:
+		_cancel_completion()
+		return
+	GlobalTimer.resume_timer(self)
 
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	_is_completed = true
 	print("TaskObject: Completed - ", NeedsLog.NEED_LABELS.get(need, str(need)),
 			" | Burst cost: %d min" % time_cost_minutes)
+	_is_completing = false
+
+func _cancel_completion() -> void:
+	GlobalTimer.resume_timer(self)
 	_is_completing = false
 
 func _consume_required_items() -> void:
@@ -180,14 +202,14 @@ func _can_consume_task_item(item: ItemData) -> bool:
 	return item.item_type in CONSUMABLE_TASK_ITEM_TYPES
 
 func _apply_completion_state() -> void:
-	if time_cost_minutes > 0:
-		GlobalTimer.add_time(time_cost_minutes)
-
 	NeedsLog.resolve(need)
 	_update_task_cue()
 
 	if completion_visual_cue != null:
 		completion_visual_cue.visible = true
+	# The ending must observe the completed task when its cost reaches the deadline.
+	if time_cost_minutes > 0:
+		GlobalTimer.add_time(time_cost_minutes)
 
 func _play_completion_sfx() -> void:
 	SFX.item_touch(-12.0)
@@ -220,7 +242,7 @@ func _show_line(lines: Array[String]) -> void:
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	if not _paused_timer_for_dialogue:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_paused_timer_for_dialogue = true
 	is_showing = true
 	_is_showing = true
@@ -257,7 +279,7 @@ func _hide_monologue() -> void:
 	_current_line = 0
 	_showing_ready_branch = false
 	if _paused_timer_for_dialogue:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_paused_timer_for_dialogue = false
 	prompt_visibility_changed.emit(true)
 
@@ -273,7 +295,7 @@ func _on_need_resolved(resolved_need: NeedsLog.Need) -> void:
 	_update_task_cue()
 
 func is_interaction_available() -> bool:
-	if _is_completing:
+	if _is_completing or SceneManager.storm_transition_pending:
 		return false
 
 	return GameState.house_tasks_unlocked or _is_completed

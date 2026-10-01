@@ -146,7 +146,9 @@ func _csv_value(row: PackedStringArray, column_index: Dictionary, column_name: S
 
 
 func _on_node_added(node: Node) -> void:
-	_localize_node.call_deferred(node)
+	# Temporary UI may be freed before the deferred localization runs.
+	var node_ref: WeakRef = weakref(node)
+	(func() -> void: _localize_node(node_ref.get_ref())).call_deferred()
 
 
 func _on_language_changed(_language_id: String) -> void:
@@ -163,6 +165,7 @@ func _localize_node(node: Node) -> void:
 
 func _localize_property(node: Node, property_name: StringName) -> void:
 	var source_meta := "_localization_source_" + str(property_name)
+	var rendered_meta := "_localization_rendered_" + str(property_name)
 	var current_value: Variant = node.get(property_name)
 	if typeof(current_value) != TYPE_STRING:
 		return
@@ -171,7 +174,7 @@ func _localize_property(node: Node, property_name: StringName) -> void:
 	var source_text := current_text
 	if node.has_meta(source_meta):
 		source_text = str(node.get_meta(source_meta))
-		if current_text != translate(source_text) and _has_translation(current_text):
+		if current_text != str(node.get_meta(rendered_meta, current_text)):
 			source_text = current_text
 			node.set_meta(source_meta, source_text)
 	elif _has_translation(current_text):
@@ -180,6 +183,7 @@ func _localize_property(node: Node, property_name: StringName) -> void:
 		return
 
 	var translated := translate(source_text)
+	node.set_meta(rendered_meta, translated)
 	if translated != current_text:
 		node.set(property_name, translated)
 

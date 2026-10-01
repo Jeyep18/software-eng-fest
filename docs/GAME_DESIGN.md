@@ -17,6 +17,7 @@ These are synthesized from the current loop and the selected histories below, no
 - **Meaningful voluntary choices:** accept/decline prompts allow trades, entrusted-money errands, donation and smoke-break choices. These are specific authored interactions, not a general reputation/morale simulation.
 - **Storm pressure made visible and audible:** the clock, map restrictions, rain, thunder and ending shots communicate approaching danger.
 - **Readable bilingual play:** English/Tagalog and adjustable UI presentation support accessibility. Complete translation and accessibility coverage remain unverified.
+- **Milestone 2 deadline behavior:** storm arrival takes priority over travel; tasks completed at the deadline count toward the ending, while interrupted uncommitted tasks retain their supplies. A full backpack can exchange Nestor's chicken for the tarp. Quest prompts switch languages, while existing English action labels remain authored choices.
 
 ## Current gameplay loop
 

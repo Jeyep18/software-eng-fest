@@ -4,7 +4,6 @@ extends Control
 @onready var _speaker_name: Label = %SpeakerName
 @onready var _speaker_dialog: RichTextLabel = %SpeakerDialougue
 @onready var _interact_prompt: Control = %InteractPrompt
-@onready var _speaker_image: TextureRect = %SpeakerImage
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 const GAMEPLAY_HINT_COLOR: String = "#e0b45b"
@@ -36,6 +35,8 @@ func skip_to_end() -> void:
 	AudioManager.stop_voice()
 	_speaker_dialog.visible_ratio = 1.0
 
+# Keep the public parameter name; this sets visibility rather than querying it.
+@warning_ignore("shadowed_variable_base_class")
 func set_prompt_visible(is_visible: bool) -> void:
 	_interact_prompt.visible = is_visible
 

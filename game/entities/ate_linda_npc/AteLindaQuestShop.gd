@@ -19,8 +19,11 @@ var _choice_paused_timer: bool = false
 func _ready() -> void:
 	super._ready()
 	prompt_label = "Talk to Ate Linda"
+	LocalizationManager.language_changed.connect(_refresh_trade_text)
 
 func interact() -> void:
+	if _choice_modal != null and _choice_modal.visible:
+		return
 	if _is_showing and not _is_typing and _current_sequence != null:
 		_dialogue_completed = _current_line >= _current_sequence.lines.size() - 1
 	super.interact()
@@ -65,16 +68,21 @@ func _complete_hammer_trade() -> void:
 func _show_trade_prompt() -> void:
 	if _choice_modal == null:
 		_build_trade_prompt()
-	_choice_body.text = LocalizationManager.translate("Give Ate Linda your hammer so she lowers her prices?")
-	_choice_accept_button.text = LocalizationManager.translate("Trade")
-	_choice_decline_button.text = LocalizationManager.translate("Not now")
+	_refresh_trade_text()
 	_choice_modal.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	if not _choice_paused_timer:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_choice_paused_timer = true
+
+func _refresh_trade_text(_language_id: String = "") -> void:
+	if _choice_body == null:
+		return
+	_choice_body.text = LocalizationManager.translate("Give Ate Linda your hammer so she lowers her prices?")
+	_choice_accept_button.text = LocalizationManager.translate("Trade")
+	_choice_decline_button.text = LocalizationManager.translate("Not now")
 
 func _build_trade_prompt() -> void:
 	_choice_modal = Control.new()
@@ -139,7 +147,7 @@ func _close_trade_prompt() -> void:
 	if _choice_modal != null:
 		_choice_modal.hide()
 	if _choice_paused_timer:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_choice_paused_timer = false
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	get_tree().call_group("player", "set_movement_locked", false)

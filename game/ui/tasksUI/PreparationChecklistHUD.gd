@@ -246,10 +246,10 @@ func _on_side_objective_started(label: String) -> void:
 	_refresh_compact_objectives(false)
 
 func _schedule_checklist_resize() -> void:
-	var tree := get_tree()
-	if tree == null:
+	# Deferred requests can outlive the HUD's membership in the scene tree.
+	if not is_inside_tree():
 		return
-	await tree.process_frame
+	await get_tree().process_frame
 	if not is_inside_tree():
 		return
 	_resize_checklist_card()
@@ -316,29 +316,29 @@ func _on_ui_scale_changed(_scale: float) -> void:
 	call_deferred("_schedule_checklist_resize")
 
 func _apply_ui_scale() -> void:
-	var scale := VisualSettings.get_ui_scale()
+	var ui_scale := VisualSettings.get_ui_scale()
 	$CashPanel.offset_left = 16.0
 	$CashPanel.offset_top = 24.0
-	$CashPanel.offset_right = 16.0 + (344.0 * scale)
-	$CashPanel.offset_bottom = 24.0 + (50.0 * scale)
+	$CashPanel.offset_right = 16.0 + (344.0 * ui_scale)
+	$CashPanel.offset_bottom = 24.0 + (50.0 * ui_scale)
 	checklist_panel.offset_left = 16.0
-	checklist_panel.offset_top = 86.0 * scale
-	checklist_panel.offset_right = 16.0 + (292.0 * scale)
-	cash_label.add_theme_font_size_override("font_size", int(roundi(22.0 * scale)))
-	checklist_title.add_theme_font_size_override("font_size", int(roundi(18.0 * scale)))
+	checklist_panel.offset_top = 86.0 * ui_scale
+	checklist_panel.offset_right = 16.0 + (292.0 * ui_scale)
+	cash_label.add_theme_font_size_override("font_size", int(roundi(22.0 * ui_scale)))
+	checklist_title.add_theme_font_size_override("font_size", int(roundi(18.0 * ui_scale)))
 	if objective_box != null:
-		objective_box.add_theme_constant_override("separation", int(roundi(3.0 * scale)))
-	checklist_items.add_theme_constant_override("separation", int(roundi(2.0 * scale)))
-	cash_gain_label.add_theme_font_size_override("font_size", int(roundi(30.0 * scale)))
+		objective_box.add_theme_constant_override("separation", int(roundi(3.0 * ui_scale)))
+	checklist_items.add_theme_constant_override("separation", int(roundi(2.0 * ui_scale)))
+	cash_gain_label.add_theme_font_size_override("font_size", int(roundi(30.0 * ui_scale)))
 	cash_gain_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	cash_gain_label.anchor_left = 0.335
 	cash_gain_label.anchor_right = 0.665
 	cash_gain_label.anchor_top = 0.25
 	cash_gain_label.anchor_bottom = 0.25
 	cash_gain_label.offset_left = 0.0
-	cash_gain_label.offset_top = -48.0 * scale
+	cash_gain_label.offset_top = -48.0 * ui_scale
 	cash_gain_label.offset_right = 0.0
-	cash_gain_label.offset_bottom = 58.0 * scale
+	cash_gain_label.offset_bottom = 58.0 * ui_scale
 	for child in checklist_items.get_children():
 		if child is HBoxContainer:
 			_apply_objective_row_scale(child as HBoxContainer)
@@ -429,15 +429,15 @@ func _make_objective_row(key: String, text: String) -> HBoxContainer:
 	return row
 
 func _apply_objective_row_scale(row: HBoxContainer) -> void:
-	var scale := VisualSettings.get_ui_scale()
-	row.add_theme_constant_override("separation", int(roundi(5.0 * scale)))
+	var ui_scale := VisualSettings.get_ui_scale()
+	row.add_theme_constant_override("separation", int(roundi(5.0 * ui_scale)))
 	var icon := row.get_node_or_null("Icon") as Label
 	if icon != null:
-		icon.custom_minimum_size = Vector2(15.0 * scale, 0.0)
-		icon.add_theme_font_size_override("font_size", int(roundi(14.0 * scale)))
+		icon.custom_minimum_size = Vector2(15.0 * ui_scale, 0.0)
+		icon.add_theme_font_size_override("font_size", int(roundi(14.0 * ui_scale)))
 	var label := row.get_node_or_null("Label") as Label
 	if label != null:
-		label.add_theme_font_size_override("font_size", int(roundi(14.0 * scale)))
+		label.add_theme_font_size_override("font_size", int(roundi(14.0 * ui_scale)))
 
 func _find_objective_row(key: String) -> HBoxContainer:
 	for child in checklist_items.get_children():
@@ -456,10 +456,12 @@ func _remove_objective_row(row: Control, animate_removed: bool) -> void:
 		return
 	var tween := create_tween()
 	_objective_row_tweens[key] = tween
+	var row_ref: WeakRef = weakref(row)
 	tween.tween_property(row, "modulate:a", 0.0, 1.2)
 	tween.finished.connect(func() -> void:
 		_objective_row_tweens.erase(key)
-		if is_instance_valid(row):
-			row.queue_free()
+		var remaining_row: Control = row_ref.get_ref()
+		if remaining_row != null:
+			remaining_row.queue_free()
 		call_deferred("_schedule_checklist_resize")
 	)

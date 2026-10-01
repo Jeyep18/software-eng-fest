@@ -92,7 +92,7 @@ func _show_current_line() -> void:
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	if not _paused_timer:
-		GlobalTimer.pause_timer()
+		GlobalTimer.pause_timer(self)
 		_paused_timer = true
 	is_showing = true
 	_is_showing = true
@@ -128,7 +128,7 @@ func _hide_monologue() -> void:
 	_is_typing = false
 	_current_line = 0
 	if _paused_timer:
-		GlobalTimer.resume_timer()
+		GlobalTimer.resume_timer(self)
 		_paused_timer = false
 	prompt_visibility_changed.emit(true)
 
