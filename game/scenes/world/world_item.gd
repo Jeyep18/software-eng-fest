@@ -78,6 +78,8 @@ func _ready() -> void:
 
 	# Load the 3D model if one is assigned in the ItemData.
 	_load_model()
+	if require_pickup_confirmation:
+		VisualSettings.ui_scale_changed.connect(_on_pickup_ui_scale_changed)
 
 	# Set up the MonologueUI if pickup lines exist.
 	# WHY: If the item has no pickup_lines, we skip the monologue entirely
@@ -252,7 +254,22 @@ func _show_confirm_dialog() -> void:
 	_confirm_modal.show()
 	_confirm_modal.grab_focus()
 
+func _on_pickup_ui_scale_changed(_scale: float) -> void:
+	if _confirm_modal == null:
+		return
+	var previous_modal := _confirm_modal
+	var was_visible := previous_modal.visible
+	previous_modal.hide()
+	_build_confirm_modal()
+	if was_visible:
+		_confirm_message.text = item_data.get_item_description() if item_data.item_description.strip_edges() != "" else LocalizationManager.translate("Add this item to your backpack?")
+		CursorState.request_visible(_confirm_modal)
+		_confirm_modal.show()
+		_confirm_modal.grab_focus()
+	previous_modal.queue_free()
+
 func _build_confirm_modal() -> void:
+	var ui_scale := VisualSettings.get_ui_scale()
 	_confirm_modal = Control.new()
 	_confirm_modal.name = "PickupConfirmModal"
 	_confirm_modal.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -273,44 +290,44 @@ func _build_confirm_modal() -> void:
 	_confirm_modal.add_child(center)
 
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(460, 250)
+	panel.custom_minimum_size = Vector2(460, 250) * ui_scale
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	UI_STYLE.apply_panel(panel)
 	center.add_child(panel)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 24)
-	margin.add_theme_constant_override("margin_top", 22)
-	margin.add_theme_constant_override("margin_right", 24)
-	margin.add_theme_constant_override("margin_bottom", 22)
+	margin.add_theme_constant_override("margin_left", roundi(24 * ui_scale))
+	margin.add_theme_constant_override("margin_top", roundi(22 * ui_scale))
+	margin.add_theme_constant_override("margin_right", roundi(24 * ui_scale))
+	margin.add_theme_constant_override("margin_bottom", roundi(22 * ui_scale))
 	panel.add_child(margin)
 
 	var content := VBoxContainer.new()
-	content.add_theme_constant_override("separation", 16)
+	content.add_theme_constant_override("separation", roundi(16 * ui_scale))
 	margin.add_child(content)
 
 	var title := Label.new()
 	title.text = "Pick Up Item"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 24)
+	title.add_theme_font_size_override("font_size", roundi(24 * ui_scale))
 	UI_STYLE.apply_label(title, false, true)
 	content.add_child(title)
 
 	var item_row := HBoxContainer.new()
 	item_row.alignment = BoxContainer.ALIGNMENT_CENTER
-	item_row.add_theme_constant_override("separation", 14)
+	item_row.add_theme_constant_override("separation", roundi(14 * ui_scale))
 	content.add_child(item_row)
 
 	var icon_panel := PanelContainer.new()
-	icon_panel.custom_minimum_size = Vector2(76, 76)
+	icon_panel.custom_minimum_size = Vector2(76, 76) * ui_scale
 	icon_panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER_SOFT, 6))
 	item_row.add_child(icon_panel)
 
 	var icon_margin := MarginContainer.new()
-	icon_margin.add_theme_constant_override("margin_left", 8)
-	icon_margin.add_theme_constant_override("margin_top", 8)
-	icon_margin.add_theme_constant_override("margin_right", 8)
-	icon_margin.add_theme_constant_override("margin_bottom", 8)
+	icon_margin.add_theme_constant_override("margin_left", roundi(8 * ui_scale))
+	icon_margin.add_theme_constant_override("margin_top", roundi(8 * ui_scale))
+	icon_margin.add_theme_constant_override("margin_right", roundi(8 * ui_scale))
+	icon_margin.add_theme_constant_override("margin_bottom", roundi(8 * ui_scale))
 	icon_panel.add_child(icon_margin)
 
 	var icon := TextureRect.new()
@@ -320,41 +337,43 @@ func _build_confirm_modal() -> void:
 	icon_margin.add_child(icon)
 
 	var text_stack := VBoxContainer.new()
-	text_stack.custom_minimum_size = Vector2(270, 0)
-	text_stack.add_theme_constant_override("separation", 5)
+	text_stack.custom_minimum_size = Vector2(270, 0) * ui_scale
+	text_stack.add_theme_constant_override("separation", roundi(5 * ui_scale))
 	item_row.add_child(text_stack)
 
 	var item_name := Label.new()
 	item_name.text = item_data.get_item_name()
-	item_name.add_theme_font_size_override("font_size", 19)
+	item_name.add_theme_font_size_override("font_size", roundi(19 * ui_scale))
 	UI_STYLE.apply_label(item_name)
 	text_stack.add_child(item_name)
 
 	_confirm_message = Label.new()
 	_confirm_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_confirm_message.add_theme_font_size_override("font_size", 14)
+	_confirm_message.add_theme_font_size_override("font_size", roundi(18 * ui_scale))
 	UI_STYLE.apply_label(_confirm_message, true)
 	text_stack.add_child(_confirm_message)
 
 	var actions := HBoxContainer.new()
 	actions.alignment = BoxContainer.ALIGNMENT_END
-	actions.add_theme_constant_override("separation", 12)
+	actions.add_theme_constant_override("separation", roundi(12 * ui_scale))
 	content.add_child(actions)
 
 	var leave_button := Button.new()
 	leave_button.text = "Leave"
 	leave_button.focus_mode = Control.FOCUS_NONE
-	leave_button.custom_minimum_size = Vector2(112, 42)
+	leave_button.custom_minimum_size = Vector2(112, 42) * ui_scale
 	leave_button.pressed.connect(_on_pickup_cancelled)
 	UI_STYLE.apply_button(leave_button)
+	leave_button.add_theme_font_size_override("font_size", roundi(20 * ui_scale))
 	actions.add_child(leave_button)
 
 	var pickup_button := Button.new()
 	pickup_button.text = "Pick Up"
 	pickup_button.focus_mode = Control.FOCUS_NONE
-	pickup_button.custom_minimum_size = Vector2(112, 42)
+	pickup_button.custom_minimum_size = Vector2(112, 42) * ui_scale
 	pickup_button.pressed.connect(_on_pickup_confirmed)
 	UI_STYLE.apply_button(pickup_button)
+	pickup_button.add_theme_font_size_override("font_size", roundi(20 * ui_scale))
 	actions.add_child(pickup_button)
 
 	_confirm_modal.hide()

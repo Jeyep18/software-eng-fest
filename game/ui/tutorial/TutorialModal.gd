@@ -70,12 +70,14 @@ func _build_ui() -> void:
 
 	var panel := PanelContainer.new()
 	panel.name = "Panel"
-	panel.custom_minimum_size = Vector2(980, 760) * ui_scale
+	var viewport_size := get_viewport().get_visible_rect().size
+	var panel_size := (Vector2(980, 760) * ui_scale).min(viewport_size - Vector2(48, 48))
+	panel.custom_minimum_size = panel_size
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	panel.offset_left = -490 * ui_scale
-	panel.offset_top = -380 * ui_scale
-	panel.offset_right = 490 * ui_scale
-	panel.offset_bottom = 380 * ui_scale
+	panel.offset_left = -panel_size.x * 0.5
+	panel.offset_top = -panel_size.y * 0.5
+	panel.offset_right = panel_size.x * 0.5
+	panel.offset_bottom = panel_size.y * 0.5
 	UI_STYLE.apply_panel(panel)
 	root.add_child(panel)
 

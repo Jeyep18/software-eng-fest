@@ -22,15 +22,12 @@ extends Node3D
 @onready var credits_modal: CanvasLayer = $CreditsModal
 @onready var menu_buttons: VBoxContainer = $VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer
 @onready var lightning: SpotLight3D = $Lights/Lightning
-@onready var title_label: Label = $VBoxContainer/VBoxContainer/RichTextLabel
-@onready var subtitle_label: Label = $VBoxContainer/VBoxContainer/RichTextLabel2
 @onready var menu_camera: Camera3D = $SubViewportContainer/SubViewport/Camera3D
 
 const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 const STORM_ACCENT: Color = Color(0.122, 0.486, 0.404)
-const TITLE_TEXT: Color = Color(0.506, 0.776, 0.714)
 const BUTTON_TEXT: Color = Color(0.886, 0.91, 0.941)
 const BUTTON_MUTED: Color = Color(0.60, 0.68, 0.70)
 const BUTTON_WIDTH: float = 244.0
@@ -364,60 +361,17 @@ func _apply_menu_ui_style() -> void:
 			child.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
 
 	_apply_main_menu_button_style(replay_intro_button)
-	if title_label.label_settings != null:
-		title_label.label_settings.font_color = TITLE_TEXT
-		title_label.label_settings.outline_size = 5
-		title_label.label_settings.outline_color = STORM_ACCENT
-		title_label.label_settings.shadow_color = Color(0.0, 0.04, 0.035, 0.68)
-	if subtitle_label.label_settings != null:
-		subtitle_label.label_settings.font_color = TITLE_TEXT
-		subtitle_label.label_settings.font_size = 30
-		subtitle_label.label_settings.outline_size = 3
-		subtitle_label.label_settings.outline_color = STORM_ACCENT
-		subtitle_label.label_settings.shadow_color = Color(0.0, 0.04, 0.035, 0.68)
-	subtitle_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle_label.custom_minimum_size = Vector2(420, 34)
 
 func _apply_main_menu_button_style(button: Button) -> void:
-	button.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	UI_STYLE.apply_button(button)
 	button.add_theme_font_size_override("font_size", 20)
-	button.add_theme_color_override("font_color", BUTTON_TEXT)
-	button.add_theme_color_override("font_hover_color", BUTTON_TEXT)
-	button.add_theme_color_override("font_pressed_color", BUTTON_TEXT)
-	button.add_theme_color_override("font_disabled_color", Color(1, 1, 1, 0.35))
-	var empty := StyleBoxEmpty.new()
-	button.add_theme_stylebox_override("normal", empty)
-	button.add_theme_stylebox_override("hover", empty)
-	button.add_theme_stylebox_override("pressed", empty)
-	button.add_theme_stylebox_override("focus", empty)
-	button.add_theme_stylebox_override("disabled", empty)
+	button.add_theme_stylebox_override("normal", UI_STYLE.button_style(Color(0.035, 0.075, 0.07, 0.86), UI_STYLE.BORDER_SOFT))
 	button.mouse_entered.connect(_on_menu_button_hovered.bind(button, true))
 	button.mouse_exited.connect(_on_menu_button_hovered.bind(button, false))
 	button.button_down.connect(_on_menu_button_pressed.bind(button))
 	button.button_up.connect(_on_menu_button_released.bind(button))
-	SFX.wire_button(button)
-	_ensure_button_hover_fill(button)
-
-func _ensure_button_hover_fill(button: Button) -> ColorRect:
-	var fill := button.get_node_or_null("HoverFill") as ColorRect
-	if fill == null:
-		fill = ColorRect.new()
-		fill.name = "HoverFill"
-		fill.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		fill.show_behind_parent = true
-		fill.color = Color(STORM_ACCENT.r, STORM_ACCENT.g, STORM_ACCENT.b, 0.22)
-		fill.set_anchors_preset(Control.PRESET_FULL_RECT)
-		fill.offset_left = 0.0
-		fill.offset_top = 0.0
-		fill.offset_right = 0.0
-		fill.offset_bottom = 0.0
-		fill.scale.x = 0.0
-		button.add_child(fill)
-	button.clip_contents = true
-	return fill
 
 func _on_menu_button_hovered(button: Button, is_hovered: bool) -> void:
-	var fill := _ensure_button_hover_fill(button)
 	if not button.has_meta("menu_base_position_x"):
 		button.set_meta("menu_base_position_x", button.position.x)
 	var base_x := float(button.get_meta("menu_base_position_x"))
@@ -425,7 +379,6 @@ func _on_menu_button_hovered(button: Button, is_hovered: bool) -> void:
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(fill, "scale:x", 1.0 if is_hovered else 0.0, 0.18)
 	tween.tween_property(button, "scale", Vector2(1.04, 1.04) if is_hovered else Vector2.ONE, 0.18)
 	tween.tween_property(button, "position:x", base_x + (8.0 if is_hovered else 0.0), 0.18)
 

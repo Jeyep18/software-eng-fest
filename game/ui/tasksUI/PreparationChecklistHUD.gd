@@ -26,6 +26,7 @@ var _objective_notice: Control = null
 var _objective_notice_title: Label = null
 var _objective_notice_body: Label = null
 var _objective_notice_tween: Tween = null
+var _objective_notice_near_checklist: bool = false
 var _objective_row_tweens: Dictionary = {}
 
 func _ready() -> void:
@@ -196,26 +197,17 @@ func _make_horizontal_shadow_texture(alpha: float) -> GradientTexture2D:
 	return texture
 
 func _on_need_discovered(need: NeedsLog.Need) -> void:
-	if _objective_notice == null or _objective_notice_body == null:
-		return
-	_objective_notice_body.text = NeedsLog.get_need_label(need)
-	_objective_notice.visible = true
-	_objective_notice.modulate.a = 0.0
-	SFX.objective_notice()
-	if _objective_notice_tween != null and _objective_notice_tween.is_valid():
-		_objective_notice_tween.kill()
-	_objective_notice_tween = create_tween()
-	_objective_notice_tween.tween_property(_objective_notice, "modulate:a", 1.0, 0.28)
-	_objective_notice_tween.tween_interval(2.0)
-	_objective_notice_tween.tween_property(_objective_notice, "modulate:a", 0.0, 0.55)
-	_objective_notice_tween.finished.connect(func() -> void:
-		if _objective_notice != null:
-			_objective_notice.visible = false
-	)
+	_show_objective_notice(LocalizationManager.translate("NEW OBJECTIVE"), NeedsLog.get_need_label(need), false)
 	_refresh_compact_objectives(false)
 
-func _on_need_resolved(_need: NeedsLog.Need) -> void:
+func _on_need_resolved(need: NeedsLog.Need) -> void:
 	_refresh_compact_objectives(true)
+	var completed_label := NeedsLog.get_need_label(need)
+	for objective in PREPARATION_OBJECTIVES:
+		if objective["need"] == need:
+			completed_label = LocalizationManager.translate(str(objective["label"]))
+			break
+	_show_objective_notice(LocalizationManager.translate("TASK COMPLETE"), completed_label, true)
 
 func _on_checklist_content_changed() -> void:
 	_refresh_compact_objectives(false)
@@ -227,9 +219,17 @@ func _on_side_objectives_changed() -> void:
 	_refresh_compact_objectives(true)
 
 func _on_side_objective_started(label: String) -> void:
+	_show_objective_notice(LocalizationManager.translate("NEW OBJECTIVE"), LocalizationManager.translate(label), false)
+	_refresh_compact_objectives(false)
+
+func _show_objective_notice(title: String, body: String, near_checklist: bool) -> void:
 	if _objective_notice == null or _objective_notice_body == null:
 		return
-	_objective_notice_body.text = LocalizationManager.translate(label)
+	_objective_notice_title.text = title
+	_objective_notice_body.text = body
+	_objective_notice_title.add_theme_color_override("font_color", Color(0.93, 0.77, 0.43) if near_checklist else UI_STYLE.ACCENT)
+	_objective_notice_near_checklist = near_checklist
+	_position_objective_notice()
 	_objective_notice.visible = true
 	_objective_notice.modulate.a = 0.0
 	SFX.objective_notice()
@@ -243,7 +243,38 @@ func _on_side_objective_started(label: String) -> void:
 		if _objective_notice != null:
 			_objective_notice.visible = false
 	)
-	_refresh_compact_objectives(false)
+
+func _position_objective_notice() -> void:
+	if _objective_notice == null:
+		return
+	if not _objective_notice_near_checklist:
+		_objective_notice.anchor_left = 0.335
+		_objective_notice.anchor_right = 0.665
+		_objective_notice.anchor_top = 0.25
+		_objective_notice.anchor_bottom = 0.25
+		_objective_notice.offset_left = 0.0
+		_objective_notice.offset_right = 0.0
+		_objective_notice.offset_top = -48.0
+		_objective_notice.offset_bottom = 58.0
+		_objective_notice_title.add_theme_font_size_override("font_size", 30)
+		_objective_notice_body.add_theme_font_size_override("font_size", 22)
+		return
+
+	var ui_scale := VisualSettings.get_ui_scale()
+	var viewport_width := get_viewport().get_visible_rect().size.x
+	var left := checklist_panel.offset_right + 12.0
+	var top := checklist_panel.offset_top + 8.0
+	var width := 320.0 * ui_scale
+	if left + width > viewport_width - 16.0:
+		left = checklist_panel.offset_left
+		top = checklist_panel.offset_bottom + 10.0
+	_objective_notice.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_objective_notice.offset_left = left
+	_objective_notice.offset_right = minf(left + width, viewport_width - 16.0)
+	_objective_notice.offset_top = top
+	_objective_notice.offset_bottom = top + 76.0 * ui_scale
+	_objective_notice_title.add_theme_font_size_override("font_size", roundi(20.0 * ui_scale))
+	_objective_notice_body.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
 
 func _schedule_checklist_resize() -> void:
 	# Deferred requests can outlive the HUD's membership in the scene tree.
@@ -312,6 +343,7 @@ func _on_language_changed(_language_id: String) -> void:
 
 func _on_ui_scale_changed(_scale: float) -> void:
 	_apply_ui_scale()
+	_position_objective_notice()
 	_refresh_compact_objectives(false)
 	call_deferred("_schedule_checklist_resize")
 

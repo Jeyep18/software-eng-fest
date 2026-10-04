@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6duadbx7anff" path="res://game/assets/npc_portraits/playerInnerThoughts.png" id="2_3haje"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3haje"]
-font_size = 20
+font_size = 22
 
 [node name="monologue_ui" type="Control" unique_id=53010592]
 layout_mode = 3
@@ -22,9 +22,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 400
+theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 400
+theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 40
 
 [node name="MainHBox" type="HBoxContainer" parent="OuterMargin" unique_id=767943596]
@@ -65,7 +65,6 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 layout_mode = 2
 text = "Player"
-label_settings = SubResource("LabelSettings_3haje")
 
 [node name="DialogueBG" type="PanelContainer" parent="OuterMargin/MainHBox/TextStack" unique_id=89098929]
 layout_mode = 2
@@ -85,12 +84,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
+fit_content = true
+scroll_active = false
 text = "DialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogue"
 
 [node name="InteractPrompt" type="Label" parent="OuterMargin/MainHBox/TextStack/DialogueBG/DialoguePadding/DialogueContent" unique_id=116430138]

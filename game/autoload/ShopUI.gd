@@ -4,6 +4,7 @@ extends CanvasLayer
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
+const PANEL_FADE_DURATION: float = 0.15
 
 # ── Node References (built in _ready, not @onready) ──────────────────────────
 var shop_panel:      PanelContainer
@@ -20,6 +21,9 @@ var _center_container:    CenterContainer
 var _current_shop: ShopData = null
 var _feedback_timer: SceneTreeTimer = null
 var _shop_cache: Dictionary = {}
+var _panel_tween: Tween
+var _input_blocker: Control
+var _closing: bool = false
 
 # ── Lifecycle ──────────────────────────────────────────────────────────────────
 func _ready() -> void:
@@ -49,7 +53,7 @@ func _build_ui() -> void:
 
 	# ── Root panel ────────────────────────────────────────────────────────────
 	shop_panel = PanelContainer.new()
-	shop_panel.custom_minimum_size = VisualSettings.scaled_vector(Vector2(620, 520))
+	shop_panel.custom_minimum_size = VisualSettings.scaled_vector(Vector2(620, 520)).min(get_viewport().get_visible_rect().size - Vector2(48, 48))
 	_center_container.add_child(shop_panel)      # ← parented to CenterContainer
 
 	var root_vbox := VBoxContainer.new()
@@ -117,6 +121,11 @@ func _build_ui() -> void:
 	close_button.custom_minimum_size = VisualSettings.scaled_vector(Vector2(0, 42))
 	root_vbox.add_child(close_button)
 	_apply_shop_style()
+	_input_blocker = Control.new()
+	_input_blocker.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_input_blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_input_blocker)
+	_input_blocker.hide()
 
 # ── Public API ─────────────────────────────────────────────────────────────────
 func open_shop(shop_data: ShopData) -> void:
@@ -125,6 +134,10 @@ func open_shop(shop_data: ShopData) -> void:
 	if shop_data == null:
 		push_error("ShopUI.open_shop(): called with null ShopData.")
 		return
+	var was_open := is_open()
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
+	_closing = false
 	
 	var cache_key: String = shop_data.resource_path
 	if cache_key == "":
@@ -147,20 +160,50 @@ func open_shop(shop_data: ShopData) -> void:
 	GlobalTimer.pause_timer(self)
 	get_tree().call_group("player", "set_movement_locked", true)
 	CursorState.request_visible(self)
+	if was_open:
+		_backdrop.modulate.a = 1.0
+		_center_container.modulate.a = 1.0
+		_input_blocker.hide()
+		return
+	_backdrop.modulate.a = 0.0
+	_center_container.modulate.a = 0.0
+	_input_blocker.show()
+	_panel_tween = create_tween().set_parallel(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_panel_tween.tween_property(_backdrop, "modulate:a", 1.0, PANEL_FADE_DURATION)
+	_panel_tween.tween_property(_center_container, "modulate:a", 1.0, PANEL_FADE_DURATION)
+	_panel_tween.finished.connect(func() -> void: _input_blocker.hide())
 
-func close_shop() -> void:
-	var was_open := is_open()
-	shop_panel.hide()
-	_center_container.hide()   
-	_backdrop.hide()
-	_current_shop = null
+func close_shop(immediate: bool = false) -> void:
+	if _closing and not immediate:
+		return
+	var was_open := is_open() or _closing
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
 	if was_open:
 		GlobalTimer.resume_timer(self)
+	if immediate or not was_open:
+		_finish_close(was_open)
+		return
+	_closing = true
+	_input_blocker.show()
+	_panel_tween = create_tween().set_parallel(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_panel_tween.tween_property(_backdrop, "modulate:a", 0.0, PANEL_FADE_DURATION)
+	_panel_tween.tween_property(_center_container, "modulate:a", 0.0, PANEL_FADE_DURATION)
+	_panel_tween.finished.connect(func() -> void: _finish_close(true))
+
+func _finish_close(was_open: bool) -> void:
+	shop_panel.hide()
+	_center_container.hide()
+	_backdrop.hide()
+	_input_blocker.hide()
+	_current_shop = null
+	_closing = false
+	CursorState.release_visible(self)
+	if was_open:
 		get_tree().call_group("player", "set_movement_locked", false)
-		CursorState.release_visible(self)
 
 func is_open() -> bool:
-	return shop_panel.visible
+	return shop_panel.visible and not _closing
 
 # ── Input ──────────────────────────────────────────────────────────────────────
 # ── UI Build ───────────────────────────────────────────────────────────────────
@@ -300,8 +343,7 @@ func _on_cash_changed(new_balance: int) -> void:
 
 func reset() -> void:
 	_shop_cache.clear()
-	_current_shop = null
-	close_shop()
+	close_shop(true)
 
 func _on_language_changed(_language_id: String) -> void:
 	var cash_icon := shop_panel.find_child("CashIcon", true, false) as Label
@@ -315,7 +357,7 @@ func _on_language_changed(_language_id: String) -> void:
 
 func _on_ui_scale_changed(_scale: float) -> void:
 	if shop_panel != null:
-		shop_panel.custom_minimum_size = VisualSettings.scaled_vector(Vector2(620, 520))
+		shop_panel.custom_minimum_size = VisualSettings.scaled_vector(Vector2(620, 520)).min(get_viewport().get_visible_rect().size - Vector2(48, 48))
 	if close_button != null:
 		close_button.custom_minimum_size = VisualSettings.scaled_vector(Vector2(0, 42))
 	if is_open() and _current_shop != null:

@@ -47,7 +47,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 4
 text = "LEADERBOARDS"
-label_settings = SubResource("LabelSettings_title")
 vertical_alignment = 1
 
 [node name="HeaderFill" type="Control" parent="MarginContainer/LeaderboardsModal/VBoxContainer/Header" unique_id=101001009]

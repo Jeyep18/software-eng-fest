@@ -10,12 +10,12 @@ extends CanvasLayer
 @onready var skip_hint:  Label     = $Background/SkipHint
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const STUDIO_TITLE = preload("res://game/assets/branding/studio_title.png")
 
 # ── State ──────────────────────────────────────────────────────────────────────
 var _skipped: bool = false
 var _skip_enabled: bool = false
-var _studio_kicker: Label
-var _studio_label: Label
+var _studio_label: TextureRect
 
 const CONTENT_WARNING: String = "CONTENT WARNING\n\nBagyong Bahay contains themes of natural disasters, systemic poverty, and government neglect.\n\nCertain endings lead to heavy, grief-driven outcomes."
 const DEDICATION: String = "This game is dedicated to every Filipino family that has had to brave the storm with far too little."
@@ -134,8 +134,6 @@ func _end_sequence() -> void:
 	line_label.text       = ""
 	line_label.modulate.a = 0.0
 	skip_hint.modulate.a  = 0.0
-	if _studio_kicker != null:
-		_studio_kicker.modulate.a = 0.0
 	if _studio_label != null:
 		_studio_label.modulate.a = 0.0
 
@@ -202,30 +200,21 @@ func _setup_font_overrides() -> void:
 	skip_hint.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
 
 func _setup_studio_splash() -> void:
-	_studio_kicker = Label.new()
-	_studio_kicker.name = "StudioSplashKicker"
-	_studio_kicker.text = "developed by"
-	_studio_kicker.modulate = Color(1, 1, 1, 0)
-	_studio_kicker.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_studio_kicker.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_studio_kicker.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
-	_studio_kicker.add_theme_font_size_override("font_size", 20)
-	_studio_kicker.add_theme_color_override("font_color", Color.WHITE)
-	_studio_kicker.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_studio_kicker.offset_top = -74.0
-	_studio_kicker.offset_bottom = -74.0
-	background.add_child(_studio_kicker)
-
-	_studio_label = Label.new()
-	_studio_label.name = "StudioSplashLabel"
-	_studio_label.text = "3 Netherite Ingots"
+	_studio_label = TextureRect.new()
+	_studio_label.name = "StudioSplashImage"
+	# The supplied PNG has a white strip in its final pixel column.
+	var studio_art := AtlasTexture.new()
+	studio_art.atlas = STUDIO_TITLE
+	studio_art.region = Rect2(0, 0, STUDIO_TITLE.get_width() - 1, STUDIO_TITLE.get_height())
+	studio_art.filter_clip = true
+	_studio_label.texture = studio_art
 	_studio_label.modulate = Color(1, 1, 1, 0)
-	_studio_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_studio_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_studio_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
-	_studio_label.add_theme_font_size_override("font_size", 54)
-	_studio_label.add_theme_color_override("font_color", Color.WHITE)
-	_studio_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_studio_label.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_studio_label.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_studio_label.anchor_left = 0.2
+	_studio_label.anchor_top = 0.28
+	_studio_label.anchor_right = 0.8
+	_studio_label.anchor_bottom = 0.78
 	background.add_child(_studio_label)
 
 func _run_studio_splash() -> void:
@@ -235,7 +224,6 @@ func _run_studio_splash() -> void:
 	intro_tween.set_parallel(true)
 	intro_tween.set_trans(Tween.TRANS_CUBIC)
 	intro_tween.set_ease(Tween.EASE_OUT)
-	intro_tween.tween_property(_studio_kicker, "modulate:a", 1.0, 0.9)
 	intro_tween.tween_property(_studio_label, "modulate:a", 1.0, 1.0)
 	await intro_tween.finished
 
@@ -244,7 +232,6 @@ func _run_studio_splash() -> void:
 	outro_tween.set_parallel(true)
 	outro_tween.set_trans(Tween.TRANS_CUBIC)
 	outro_tween.set_ease(Tween.EASE_IN)
-	outro_tween.tween_property(_studio_kicker, "modulate:a", 0.0, 0.8)
 	outro_tween.tween_property(_studio_label, "modulate:a", 0.0, 0.8)
 	await outro_tween.finished
 

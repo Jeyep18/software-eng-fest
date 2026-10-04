@@ -268,6 +268,31 @@ Travel completed in 1.35–1.79 seconds. Worst frames were 165–665 ms across t
 
 This runner reused an imported disposable copy and did not execute the blocked standalone EXE. It did not move the camera/player, control thermals or background load, record GPU execution time, cover every location, or test weaker hardware. These results do not establish minimum requirements or complete Milestone 3.
 
+### Cursor, UI and branding pass — 2026-10-02
+
+The pre-change checkpoint is local commit `6880587`. The UI implementation was checked while uncommitted with Godot `4.6.1.stable.official.14d19694e` in a disposable project copy (`%LOCALAPPDATA%\Temp\bagyong-ui-check-22a13371c34642c8a4240afa61424ded`). Test scores/settings used isolated `APPDATA` and `LOCALAPPDATA` under `C:\Temp\bbui`. Source files were synced into the copy before the final import and runs; visual probes that are not listed below as repository scenes exist only in that copy. Logs are under `C:\Temp\bbui\final-*.txt`.
+
+| Check | Result |
+| --- | --- |
+| Editor import | Exit 0; no logged parser/import errors or warnings. It reused the disposable copy's prior import cache. |
+| `cursor_state_regression.tscn` | Graphical run exit 0; owner/idempotence assertions passed. Headless mode cannot retain captured mouse mode, so this scene must be run graphically. |
+| Disposable cursor integration | 20 checks, 0 failures: map/backpack swaps, pause over map/shop/quest/pickup UI, nested tutorial Escape and scene exit. |
+| `score_calculation_regression.tscn` | 4 checks, 0 failures; displayed calculation matches the persisted score. |
+| `cleanup_regression.tscn` | 92 checks, 0 failures; its null-combination error is intentional. |
+| `milestone2_regression.tscn` | 97 checks, 0 failures. |
+| `milestone1_smoke.tscn` | 54 checks, 0 failures. |
+| Disposable rendered map/shop/quest/backpack matrix | 24 checks, 0 failures at each of 1280×720, 1920×1080 and 2560×1080, across English/Tagalog and 100%, 140%, 175% UI scale. The 1280 window scales the 1920×1080 logical canvas; the wide window expands the viewport to 2560×1080. |
+| Additional rendered probes | Reopened leaderboard Close button remained enabled; localized task-complete notice passed 12 checks/0 failures; six pickup cue attachments and active/hidden states passed 9 checks/0 failures. Menu, settings, tutorial, dialogue, ending, leaderboard, splash and cue captures were inspected. Splash image alpha reached 1 and returned to 0. |
+| Quality/VHS comparison | Balanced with VHS on and Performance with VHS off each passed 8 rendered map/shop/quest/backpack checks at 140% scale. High with VHS on was included in the main matrix. |
+
+The final runtime logs contained no script/parser errors or failed assertions. Existing shutdown ObjectDB/resource-retention diagnostics remain. These scripted and rendered checks do not establish manual movement/proximity, audible hover/focus quality, every ending, physical-screen readability on other displays, or a packaged build. The earlier standalone Windows acceptance block remains separate.
+
+### Screenshot-driven UI follow-up — 2026-10-02
+
+The supplied studio PNG's final pixel column is white; the splash now excludes that column at render time and has no separate "developed by" label. A rendered fade probe confirmed the artwork reaches full opacity and fades out without the white edge. Menu captures at 1920×1080 show the larger title centered above its buttons with a shorter gap.
+
+In the same disposable Godot 4.6.1 copy, a focused rendered probe passed at 1920×1080 and a 1280×720 window (1920×1080 logical canvas). At 100%/140%/175% UI scale, empty inventory help had 22/33/45 logical pixels between its instruction and discard prompt, and the pickup description measured 18/25/32px. Changing scale while the pickup prompt was visible rebuilt it without losing cursor ownership. At 140% global scale, dialogue renders at 125%; dialogue and monologue captures at 140% and 175% stayed clear of the scaled bottom-left controls. The long Tagalog monologue fitted without scrolling after enabling content sizing. The disposable copy's graphical Milestone 2 UI probe passed 24 checks with no failures after these edits. Final editor import exited 0 with no parser/import warnings or errors. Logs are `C:\Temp\bbui\tweak-*.txt`; the focused probe and its screenshots exist only in the disposable project/user-data copy. Existing shutdown resource-retention warnings remain. Manual play and an exported build were not tested in this follow-up.
+
 ### Pharmacy Lottohan — 2026-10-04
 
 Run `game/tests/scratch_lotto_regression.tscn` in an imported disposable copy with isolated `APPDATA`, `LOCALAPPDATA` and `BAGYONG_ISOLATED_SMOKE` pointing to Godot's isolated user-data directory. Use `--headless` for the rules and cash/lifecycle checks. Use `--windowed --resolution 1280x720 -- --visual-only` for the Forward Plus visual probe; it resizes the window to 1280×720 and 1920×1080, captures English and Tagalog at 100% and 175% UI scale with VHS enabled, and checks counter overlap, movement lock, cursor, map/backpack conflicts and Escape behavior. The project uses a 1920×1080 logical canvas at both window sizes; the probe saves copies scaled to the physical window size for review.

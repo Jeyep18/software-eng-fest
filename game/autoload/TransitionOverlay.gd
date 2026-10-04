@@ -5,7 +5,7 @@ var overlay: ColorRect
 var tween: Tween
 
 func _ready() -> void:
-	layer = 10  # always on top of everything
+	layer = 100  # Cover the VHS layer and every interactive panel during scene fades.
 
 	overlay = ColorRect.new()
 	overlay.color = Color(0, 0, 0, 0)

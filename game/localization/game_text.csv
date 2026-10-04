@@ -312,6 +312,12 @@ ui,ui.restart.e70027b3,↺ Restart,↺ Restart,↺ Restart,
 ui,ui.quit_to_title.c0985200,QUIT TO TITLE,QUIT TO TITLE,QUIT TO TITLE,
 task,task.objectives.e64e22b1,OBJECTIVES,OBJECTIVES,OBJECTIVES,
 task,task.new_objective.0ae9b5a8,NEW OBJECTIVE,NEW OBJECTIVE,NEW OBJECTIVE,
+task,task.task_complete,TASK COMPLETE,TASK COMPLETE,NATAPOS NA GAWAIN,
+ending,ending.run_summary,RUN SUMMARY,RUN SUMMARY,BUOD NG PAGHAHANDA,
+ending,ending.prepared_count,Prepared: %d / %d,Prepared: %d / %d,Naihanda: %d / %d,Preserve format placeholders.
+ending,ending.mode_label,Mode: %s,Mode: %s,Antas: %s,Preserve format placeholder.
+ending,ending.time_left_label,Time left: %s,Time left: %s,Natitirang oras: %s,Preserve format placeholder.
+ending,ending.score_label,Score: %d,Score: %d,Puntos: %d,Preserve format placeholder.
 ui,ui.d_php.656ddf63,+%d PHP,+%d PHP,+%d PHP,Preserve format placeholders.
 shop,shop.pera_php_0.487d352f,Pera: PHP 0,Pera: PHP 0,Pera: PHP 0,
 ui,ui.700_php.edbc2030,+700 PHP,+700 PHP,+700 PHP,
@@ -429,11 +435,6 @@ ui,ui.nestor_turn_in_prompt,Give the Half Chicken to Mang Nestor?,Give the Half 
 ui,ui.linda_trade_prompt,Give Ate Linda your hammer so she lowers her prices?,Give Ate Linda your hammer so she lowers her prices?,Ibigay kay Ate Linda ang iyong martilyo para babaan niya ang mga presyo?,
 ui,ui.smoke_choice_prompt,Smoke with him and lose %d minutes?,Smoke with him and lose %d minutes?,Manigarilyo kasama niya at gumugol ng %d minuto?,Keep %d placeholder
 ui,ui.donation_choice_prompt,Give PHP %d?,Give PHP %d?,Magbigay ng PHP %d?,Keep %d placeholder
-ending,ending.run_summary,RUN SUMMARY,RUN SUMMARY,BUOD NG PAGHAHANDA,
-ending,ending.prepared_count,Prepared: %d / %d,Prepared: %d / %d,Naihanda: %d / %d,Preserve format placeholders.
-ending,ending.mode_label,Mode: %s,Mode: %s,Antas: %s,Preserve format placeholder.
-ending,ending.time_left_label,Time left: %s,Time left: %s,Natitirang oras: %s,Preserve format placeholder.
-ending,ending.score_label,Score: %d,Score: %d,Puntos: %d,Preserve format placeholder.
 prompt,lotto.prompt,Play Suerte Scratch (₱50),Play Suerte Scratch (₱50),Maglaro ng Suerte Scratch (₱50),
 ui,lotto.title,LOTTOHAN,LOTTOHAN,LOTTOHAN,
 ui,lotto.rule,Match three fruit in either row. Each matching row pays.,Match three fruit in either row. Each matching row pays.,Pagtugmain ang tatlong prutas sa alinmang hanay. May premyo ang bawat tugmang hanay.,

@@ -76,41 +76,45 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ConfirmPanel" type="PanelContainer" parent="Panel" unique_id=1649256256]
-custom_minimum_size = Vector2(200, 130)
+custom_minimum_size = Vector2(340, 160)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -65.0
-offset_right = 100.0
-offset_bottom = 65.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 340.0
+offset_bottom = 160.0
 
-[node name="DestinationLabel" type="Label" parent="Panel/ConfirmPanel" unique_id=1698369465]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/ConfirmPanel"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ConfirmPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DestinationLabel" type="Label" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer" unique_id=1698369465]
+layout_mode = 2
 text = "Destination: "
 
-[node name="TravelTimeLabel" type="Label" parent="Panel/ConfirmPanel" unique_id=120153686]
+[node name="TravelTimeLabel" type="Label" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer" unique_id=120153686]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
 text = "Travel Time:"
+autowrap_mode = 3
 
-[node name="ConfirmButton" type="Button" parent="Panel/ConfirmPanel" unique_id=2013624972]
+[node name="ButtonRow" type="HBoxContainer" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
+theme_override_constants/separation = 12
+
+[node name="ConfirmButton" type="Button" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=2013624972]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Confirm"
 
-[node name="CancelButton" type="Button" parent="Panel/ConfirmPanel" unique_id=476906034]
+[node name="CancelButton" type="Button" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=476906034]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_horizontal = 3
 text = "Cancel"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=210543276]

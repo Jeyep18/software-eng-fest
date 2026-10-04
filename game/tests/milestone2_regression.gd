@@ -352,6 +352,7 @@ func _test_visuals() -> void:
 			await _capture("map_" + suffix)
 			var time_label: Label = map.confirm_time
 			_check(map.confirm_panel.get_global_rect().encloses(time_label.get_global_rect()), "map travel text stays in confirmation panel " + suffix)
+			_check(map.panel.get_global_rect().encloses(map.confirm_panel.get_global_rect()), "map confirmation stays on screen " + suffix)
 			map.close_map()
 			ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
 			await _capture("shop_" + suffix)
@@ -368,6 +369,7 @@ func _test_visuals() -> void:
 			backpack._toggle()
 			backpack._on_slot_clicked(0)
 			await _capture("backpack_" + suffix)
+			_check(backpack.info_name.size.y > 1.0, "selected item name remains visible " + suffix)
 			backpack.close_backpack()
 	VisualSettings.set_ui_scale_percent(140)
 	LocalizationManager.set_language("english")

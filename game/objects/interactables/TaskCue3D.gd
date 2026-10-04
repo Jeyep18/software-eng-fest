@@ -2,10 +2,10 @@ class_name TaskCue3D
 extends Node3D
 
 @export var pulse_duration: float = 0.7
-@export var min_light_energy: float = 0.05
-@export var max_light_energy: float = 0.16
-@export var min_particle_amount: int = 5
-@export var max_particle_amount: int = 10
+@export var min_light_energy: float = 0.65
+@export var max_light_energy: float = 1.6
+@export var min_particle_amount: int = 10
+@export var max_particle_amount: int = 18
 
 @onready var _light: OmniLight3D = $OmniLight3D
 @onready var _particles: GPUParticles3D = $HintParticles

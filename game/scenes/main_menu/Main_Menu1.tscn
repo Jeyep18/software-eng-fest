@@ -11,7 +11,8 @@
 [ext_resource type="Script" uid="uid://cx15idd6avcuk" path="res://game/scenes/main_menu/start_button.gd" id="9_n2j5s"]
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="10_4kbe1"]
 [ext_resource type="PackedScene" uid="uid://bfd1ee86t2snx" path="res://game/ui/credits_modal.tscn" id="10_35tpx"]
-[ext_resource type="FontFile" uid="uid://bevxguba7gkt2" path="res://game/assets/fonts/bates_shower/Bates Shower.ttf" id="11_5bjxa"]
+[ext_resource type="Texture2D" path="res://game/assets/branding/game_title.png" id="11_title"]
+[ext_resource type="Shader" path="res://game/shaders/title_white_key.gdshader" id="11_title_key"]
 [ext_resource type="PackedScene" path="res://game/ui/leaderboards_modal.tscn" id="11_leaderboards"]
 [ext_resource type="Script" uid="uid://bktech7nkvxa6" path="res://game/scenes/main_menu/quit_button.gd" id="12_48t3i"]
 [ext_resource type="PackedScene" uid="uid://c3erci5d62sx4" path="res://game/objects/interactables/plywood_model.tscn" id="12_voysh"]
@@ -61,22 +62,8 @@ material = SubResource("StandardMaterial3D_ea3sf")
 size = 0.3
 curve = SubResource("Curve_7ekle")
 
-[sub_resource type="LabelSettings" id="LabelSettings_hpvqv"]
-line_spacing = 80.0
-font = ExtResource("11_5bjxa")
-font_size = 100
-font_color = Color(0.88051325, 0.89085156, 0.9155459, 1)
-shadow_size = 10
-shadow_color = Color(0.10463881, 0.239701, 0.22193775, 1)
-shadow_offset = Vector2(-5, 5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jn6f0"]
-font = ExtResource("11_5bjxa")
-font_size = 45
-font_color = Color(0.7752989, 0.74258107, 0.7733152, 1)
-shadow_size = 10
-shadow_color = Color(0.10463881, 0.239701, 0.22193775, 1)
-shadow_offset = Vector2(-5, 5)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_title_key"]
+shader = ExtResource("11_title_key")
 
 [sub_resource type="Animation" id="Animation_5bjxa"]
 length = 0.001
@@ -337,28 +324,20 @@ offset_bottom = 300.0
 grow_vertical = 2
 
 [node name="Control" type="Control" parent="VBoxContainer" unique_id=400217613]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=843792586]
 layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=620131320]
-custom_minimum_size = Vector2(0, 400)
+[node name="TitleArt" type="TextureRect" parent="VBoxContainer/VBoxContainer" unique_id=620131320]
+custom_minimum_size = Vector2(500, 390)
 layout_mode = 2
-text = "Bagyong 
-Bahay"
-label_settings = SubResource("LabelSettings_hpvqv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RichTextLabel2" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=559390626]
-layout_mode = 2
-text = "Handa ka na ba?"
-label_settings = SubResource("LabelSettings_jn6f0")
-horizontal_alignment = 1
-vertical_alignment = 1
+material = SubResource("ShaderMaterial_title_key")
+texture = ExtResource("11_title")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=1642778444]
 layout_mode = 2
@@ -370,7 +349,7 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="Control" type="Control" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=387268695]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 
 [node name="start_button" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=946051166]

@@ -4,16 +4,17 @@ extends CanvasLayer
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
+const PANEL_FADE_DURATION: float = 0.15
 
 @onready var panel:           Control = $Panel
 @onready var nodes_container: Control = $Panel/MapNodes
 @onready var road_layer:      Control = $Panel/MapNodes/RoadLayer
 @onready var storm_overlay:   Control = $Panel/MapNodes/StormOverlay
 @onready var confirm_panel:   Control = $Panel/ConfirmPanel
-@onready var confirm_dest:    Label   = $Panel/ConfirmPanel/DestinationLabel
-@onready var confirm_time:    Label   = $Panel/ConfirmPanel/TravelTimeLabel
-@onready var confirm_button:  Button  = $Panel/ConfirmPanel/ConfirmButton
-@onready var cancel_button:   Button  = $Panel/ConfirmPanel/CancelButton
+@onready var confirm_dest:    Label   = $Panel/ConfirmPanel/MarginContainer/VBoxContainer/DestinationLabel
+@onready var confirm_time:    Label   = $Panel/ConfirmPanel/MarginContainer/VBoxContainer/TravelTimeLabel
+@onready var confirm_button:  Button  = $Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow/ConfirmButton
+@onready var cancel_button:   Button  = $Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow/CancelButton
 
 # ── Beta scope: Mang Romy and Barangay Hall are CUT ──────────────────────────
 # Layout reflects GDD v3 node diagram:
@@ -57,6 +58,10 @@ const ROAD_CONNECTIONS: Array = [
 var _selected_location: String = ""
 var _selected_travel_cost: int = -1
 var _node_buttons: Dictionary = {}
+var _panel_tween: Tween = null
+var _closing: bool = false
+var _transitioning: bool = false
+var _input_blocker: Control = null
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
@@ -70,8 +75,15 @@ func _ready() -> void:
 	confirm_button.pressed.connect(_on_confirm_travel)
 	cancel_button.pressed.connect(_on_cancel_selection)
 	_apply_map_style()
+	_input_blocker = Control.new()
+	_input_blocker.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_input_blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_input_blocker)
+	_input_blocker.hide()
 
 func _input(event: InputEvent) -> void:
+	if _transitioning:
+		return
 	if event.is_action_pressed("open_map"):
 		if SceneManager.is_travelling:
 			return
@@ -84,9 +96,15 @@ func _input(event: InputEvent) -> void:
 func open_map() -> void:
 	if get_tree().get_first_node_in_group("lotto_ui") != null:
 		return
+	var was_visible := visible
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
+	_closing = false
+	_transitioning = true
+	_input_blocker.show()
+	CursorState.request_visible(self)
 	_close_backpack_if_open()
 	SFX.map_open()
-	CursorState.request_visible(self)
 	_refresh_all_nodes()
 	# Trigger redraws on both drawing nodes
 	road_layer.queue_redraw()
@@ -95,15 +113,41 @@ func open_map() -> void:
 	_selected_location = ""
 	_selected_travel_cost = -1
 	show()
+	if not was_visible:
+		$TextureRect.modulate.a = 0.0
+		panel.modulate.a = 0.0
+	panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_panel_tween = create_tween().set_parallel(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_panel_tween.tween_property($TextureRect, "modulate:a", 1.0, PANEL_FADE_DURATION)
+	_panel_tween.tween_property(panel, "modulate:a", 1.0, PANEL_FADE_DURATION)
+	_panel_tween.finished.connect(func() -> void:
+		_transitioning = false
+		_input_blocker.hide()
+	)
 
 func close_map() -> void:
-	if visible:
-		SFX.map_open()
-	CursorState.release_visible(self)
-	hide()
+	if not visible or _closing:
+		return
+	SFX.map_open()
+	_closing = true
+	_transitioning = true
+	_input_blocker.show()
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
 	confirm_panel.hide()
 	_selected_location = ""
 	_selected_travel_cost = -1
+	_panel_tween = create_tween().set_parallel(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_panel_tween.tween_property($TextureRect, "modulate:a", 0.0, PANEL_FADE_DURATION)
+	_panel_tween.tween_property(panel, "modulate:a", 0.0, PANEL_FADE_DURATION)
+	_panel_tween.finished.connect(func() -> void:
+		hide()
+		_closing = false
+		_transitioning = false
+		_input_blocker.hide()
+		CursorState.release_visible(self)
+	)
 
 func _close_backpack_if_open() -> void:
 	var backpack_ui = get_tree().get_first_node_in_group("backpack_ui")
@@ -201,8 +245,8 @@ func _show_confirm_panel(loc_id: String) -> void:
 		confirm_time.modulate = Color.WHITE
 	# 2. Position Anchored to the Right side of the screen
 	var screen_size: Vector2 = get_viewport().get_visible_rect().size
-	var panel_size: Vector2 = Vector2(220, 120) # Defined size for the pane
-	var padding: float = 180.0 # Distance from the right and top/bottom edges
+	var panel_size: Vector2 = Vector2(340, 160)
+	var padding: float = 32.0
 	
 	# X position: Screen width minus panel width and padding
 	var target_x: float = screen_size.x - panel_size.x - padding

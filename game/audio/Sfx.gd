@@ -52,6 +52,10 @@ static func wire_button(button: Button, cancel: bool = false) -> void:
 		return
 	button.set_meta("sfx_wired", true)
 	button.mouse_entered.connect(func() -> void: ui_hover())
+	button.focus_entered.connect(func() -> void:
+		if not button.disabled and not button.get_global_rect().has_point(button.get_global_mouse_position()):
+			ui_hover()
+	)
 	button.pressed.connect(func() -> void:
 		if cancel:
 			ui_cancel()

@@ -7,7 +7,7 @@ uniform bool overlay = true;
 uniform float scanlines_opacity : hint_range(0.0, 1.0) = 0.06;
 uniform float scanlines_width : hint_range(0.0, 0.5) = 0.12;
 uniform float grille_opacity : hint_range(0.0, 1.0) = 0.035;
-uniform vec2 resolution = vec2(960.0, 540.0);
+uniform vec2 resolution = vec2(1280.0, 720.0);
 
 uniform bool pixelate = true;
 
@@ -15,14 +15,14 @@ uniform bool roll = true;
 uniform float roll_speed = 1.6;
 uniform float roll_size : hint_range(0.0, 100.0) = 5.0;
 uniform float roll_variation : hint_range(0.1, 5.0) = 1.65;
-uniform float distort_intensity : hint_range(0.0, 0.2) = 0.004;
+uniform float distort_intensity : hint_range(0.0, 0.2) = 0.002;
 
 uniform float noise_opacity : hint_range(0.0, 1.0) = 0.035;
 uniform float noise_speed = 1.4;
 
 uniform float static_noise_intensity : hint_range(0.0, 1.0) = 0.006;
 
-uniform float aberration : hint_range(-1.0, 1.0) = 0.0025;
+uniform float aberration : hint_range(-1.0, 1.0) = 0.00125;
 uniform float brightness = 1.04;
 uniform bool discolor = true;
 

@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://ccxca20gf16af" path="res://game/resources/items/hammer.tres" id="10_xmmy0"]
 [ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="12_gjccj"]
 [ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/dead_flashlight.tres" id="12_tqvld"]
+[ext_resource type="PackedScene" uid="uid://b6qmqp5op0y5c" path="res://game/objects/interactables/TaskCue3D.tscn" id="13_pickup_cue"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjlpf"]
 albedo_color = Color(0, 0, 0, 1)
@@ -119,11 +120,17 @@ world_item_id = "hammer_bodega"
 item_data = ExtResource("10_xmmy0")
 require_pickup_confirmation = true
 
+[node name="PickupCue" parent="Hammer" instance=ExtResource("13_pickup_cue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
 [node name="WorldItem" parent="." unique_id=67334447 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.679819, 1.6295038, -7.4330616)
 world_item_id = "dead_flashlight_bodega"
 item_data = ExtResource("12_tqvld")
 require_pickup_confirmation = true
+
+[node name="PickupCue" parent="WorldItem" instance=ExtResource("13_pickup_cue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 
 [node name="Radio" parent="." unique_id=1495102883 instance=ExtResource("9_xmmy0")]
 transform = Transform3D(-0.017068435, 0, -0.9998543, 0, 1, 0, 0.9998543, 0, -0.017068435, -1.6437103, 1.3030576, -5.049503)
@@ -131,3 +138,6 @@ world_item_id = "radio_home"
 item_data = ExtResource("12_gjccj")
 require_pickup_confirmation = true
 prompt_label = "Pickup radio"
+
+[node name="PickupCue" parent="Radio" instance=ExtResource("13_pickup_cue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
