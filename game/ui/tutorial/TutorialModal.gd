@@ -9,23 +9,22 @@ static var _hidden_for_session: bool = false
 
 var _previous_paused: bool = false
 var _pause_game: bool = false
-var _capture_mouse_on_close: bool = false
 var _on_close: Callable = Callable()
 var _do_not_show_button: Button
 
 func _ready() -> void:
 	layer = 80
+	add_to_group("tutorial_modal")
 	hide()
 	_build_ui()
 
 func open(show_do_not_show: bool = false, pause_game: bool = true, on_close: Callable = Callable(), capture_mouse_on_close: bool = false) -> void:
 	_pause_game = pause_game
-	_capture_mouse_on_close = capture_mouse_on_close
 	_on_close = on_close
 	_previous_paused = get_tree().paused
 	if pause_game:
 		get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(self)
 	_do_not_show_button.visible = show_do_not_show
 	show()
 	_grab_continue_focus()
@@ -34,8 +33,7 @@ func close() -> void:
 	hide()
 	if _pause_game:
 		get_tree().paused = _previous_paused
-	if _capture_mouse_on_close and not get_tree().paused:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	CursorState.release_visible(self)
 	closed.emit()
 	if _on_close.is_valid():
 		_on_close.call()

@@ -129,6 +129,12 @@ Use a generation in the existing SceneManager and replaceable tweens in Transiti
 
 The existing GlobalTimer accepts an optional Node owner. Owned pauses are idempotent, release on scene exit and are disconnected on reset. This avoids duplicated teardown logic across NPC/task/item classes and protects new runs from old-node cleanup. Anonymous pause/resume calls retain compatibility. Quest choices block reopening dialogue over the same owner. No resource IDs, persistence formats, dependencies or autoload registrations change.
 
+## Dev Mode — Session access and release gate
+
+Accepted 2026-10-04 through the approved Dev Mode plan. A menu-only code would be visible in a shipped client and could not distinguish developers from players. Editor-only access would prevent testing exported builds; allowing all debug exports would expose the tools in debug playtest packages. The chosen gate allows editor runs and a separately tagged internal debug export. Every dev command rechecks the gate, unlock and enabled toggle. Public release exports deny the tools even if the internal tag is present. This is an access boundary for unmodified packages, not tamper resistance against locally edited binaries.
+
+The mode shares existing cash, timer, travel and pause owners. Its session unlock is never persisted. Enabling it marks the run unranked, with both ending UI and leaderboard recording guards. Clock rewind resets storm thresholds and closures without resetting preparation progress; after storm arrival it is denied. The extra autoload and export preset keep this policy explicit without changing normal difficulty or save formats.
+
 ## Choices whose rationale is not established
 
 The repository demonstrates autoload-based session state, duplicated shop resources, a directed travel graph, seven inventory slots, and local JSON scores. It does not establish all original alternatives or reasons behind those choices. Do not fabricate Accepted ADRs for them. A 4.7 engine upgrade was mentioned in the old handoff, but acceptance/completion remains **Unknown / Needs verification**.

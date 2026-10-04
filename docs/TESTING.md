@@ -267,3 +267,40 @@ A profiling runner in the existing disposable project at `C:\Users\john2\AppData
 Travel completed in 1.35–1.79 seconds. Worst frames were 165–665 ms across the two passes. The second pass recorded every frame over 100 ms at overlay alpha 1.0, during the black transition. `SceneManager._change_scene()` calls `change_scene_to_file()` during that fade, consistent with scene loading as the source of the stalls. The fixed views show no measured steady-frame problem on this GPU. Prioritize scene-loading work only if black-screen travel latency is unacceptable in manual testing; do not change lighting, rain, VoxelGI or player loops based on these samples.
 
 This runner reused an imported disposable copy and did not execute the blocked standalone EXE. It did not move the camera/player, control thermals or background load, record GPU execution time, cover every location, or test weaker hardware. These results do not establish minimum requirements or complete Milestone 3.
+
+### Pharmacy Lottohan — 2026-10-04
+
+Run `game/tests/scratch_lotto_regression.tscn` in an imported disposable copy with isolated `APPDATA`, `LOCALAPPDATA` and `BAGYONG_ISOLATED_SMOKE` pointing to Godot's isolated user-data directory. Use `--headless` for the rules and cash/lifecycle checks. Use `--windowed --resolution 1280x720 -- --visual-only` for the Forward Plus visual probe; it resizes the window to 1280×720 and 1920×1080, captures English and Tagalog at 100% and 175% UI scale with VHS enabled, and checks counter overlap, movement lock, cursor, map/backpack conflicts and Escape behavior. The project uses a 1920×1080 logical canvas at both window sizes; the probe saves copies scaled to the physical window size for review.
+
+The focused checks cover all eight fruit prizes in both rows, two winning rows, weighted seeded draws and calculated odds, insufficient cash, repeated buys/reveals, Buy Again, clock progression, storm purchase guard, one-time payout on close/storm and scene exit. Rendered captures were also inspected for legibility. These source-runtime checks do not replace a manual walk-up or packaged Windows acceptance.
+
+Godot 4.6.1 imported the three supplied PNGs and loaded the pharmacy scene in the disposable copy. Final focused run: **41 checks, 0 failures**. Final Forward Plus visual run: **23 checks, 0 failures**; eight language/scale/resolution captures plus the revealed result were inspected, including the shortened Tagalog footer. Existing ObjectDB/resource-retention warnings appeared at shutdown. This pass did not run a manual walk-up or an exported executable.
+
+### Dev Mode verification — 2026-10-04
+
+Use isolated `APPDATA` and `LOCALAPPDATA` for any source or packaged test that reaches the leaderboard. Run `game/tests/dev_mode_regression.tscn` in Godot 4.6.1 for authorization, cash, timer ownership/rewind, storm thresholds, teleport, and unranked score guards. Check the log for script errors as well as the test summary.
+
+Manually type `HELLOWORLD` at the idle main menu; partial/wrong sequences, delays over five seconds, active overlays and focused text fields must not unlock. The unlocked Settings toggle should appear in editor or tagged internal debug builds only. Enabling it should reveal the right-side Dev Mode panel in Pause, and toggling it off should release a developer clock pause while leaving the current run unranked. Check Escape/cursor behavior, English and Tagalog, 100% and 175% UI scale, and 1280×720 and 1920×1080 windows. Restart and return to title should keep session access; a new process should start locked.
+
+Export the tagged `Windows Desktop Internal Dev` preset with `--export-debug`, the ordinary `Windows Desktop` preset with `--export-debug`, and the public preset with `--export-release`. Test outside the source tree with isolated user data. The internal build must allow the sequence and commands; the other two must not. In a disposable release test package, invoke the DevMode command API directly and confirm cash, time and location stay unchanged. Also try forged Dev Mode values in saved settings; they must not grant access. If Windows Application Control blocks the EXE, report packaged-runtime acceptance as unverified and retry only through an authorized machine or approved signing/distribution path.
+
+Implementation check on 2026-10-04 used Godot `4.6.1.stable.official.14d19694e`, a disposable project copy at `C:\Temp\bagyong-devmode-check-20261004-01`, and isolated `APPDATA`/`LOCALAPPDATA`. The final import and all three normal exports exited successfully with no script/parser errors. Each export manifest includes the raw `game_text.csv`. Logs are under `C:\Temp\bagyong-devmode-*.log`.
+
+| Check | Result |
+| --- | --- |
+| `dev_mode_regression.tscn` in the editor runtime | 47 checks, 0 failures, including focused input, overlay clearing, clock rewind and pause ownership, closed-location teleport, and score rejection after disabling Dev Mode. |
+| Existing regressions | Cleanup 92, Milestone 1 54, Milestone 2 97, score calculation 4, and scratch lotto 41 checks, all with 0 failures. The graphical cursor ownership regression exited 0. Cleanup's null-combination error is intentional. |
+| Rendered UI probe in the disposable copy | 15 checks, 0 failures. Menu Settings and pause Dev panel were captured and visually inspected in English and Tagalog at 100%/175% scale and 1280×720/1920×1080. The probe exercised the Settings toggle, pause ownership, and the Escape handler. This was scripted input and screenshot review, not a manual playthrough. |
+| Disposable run-lifecycle probe | 9 checks, 0 failures. Return to title kept unlock/toggle and cleared per-run state; a new run and Restart kept the toggle and started unranked. |
+| Normal packaged builds | Internal debug and ordinary debug started headlessly and exited 0. The public release started outside the source tree with isolated user data; its engine log contained no script/parser errors. |
+| Final ordinary debug verification package | 10 checks, 0 failures: no Dev Mode UI or command access. |
+| Final public release verification package | 10 checks, 0 failures: direct unlock, cash, timer, clock-reset, teleport, and guarded travel calls leave state unchanged. |
+| Internal debug verification package | Before the final availability hardening and expanded tests, it passed 43 checks with no failures. A second process started locked with forged `dev_mode` keys in saved settings. The rebuilt final verification EXE was blocked before startup by Windows Code Integrity (`CreateProcess failed, error 4551`, event 3077), so its final packaged command flow remains unverified. Its normal final internal debug build did start. |
+
+Existing ObjectDB/resource-retention diagnostics still appear at process shutdown. Packaged UI navigation by physical mouse/keyboard, and the final internal debug command flow, still need acceptance on an authorized machine or through an approved signing path. No Windows policy was changed for this check.
+
+### Pause layout and Lottohan balance — 2026-10-04
+
+In a disposable Godot 4.6.1 copy with isolated user data, the scratch lotto regression passed **41 checks** and its Forward Plus visual probe passed **23 checks** at 1280×720 and 1920×1080, English/Tagalog and 100%/175% UI scale. The updated weights give an 8.6079296% chance of at least one matching row and ₱22.13084 expected payout per ₱50 ticket. The Dev Mode regression still passed **47 checks**.
+
+A disposable pause-layout probe passed at 1280×720 with **0 failures**. It checked that the idle navigation, Settings card and Dev Mode card are centered; tabs overlap each open card by 12 logical pixels; and Resume closes the menu and unpauses. Captures were visually inspected in both languages at 100% and 175% scale. This was scripted scene interaction and image review, not a physical mouse/keyboard playthrough or packaged build.

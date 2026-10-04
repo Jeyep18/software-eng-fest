@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cgxg2hd82077n" path="res://game/entities/chooks_to_go_seller.tscn" id="15_cu82t"]
 [ext_resource type="PackedScene" path="res://game/weather/StormRainLayer.tscn" id="16_rain"]
 [ext_resource type="PackedScene" path="res://game/entities/story_npcs/ate_maribel.tscn" id="17_maribel"]
+[ext_resource type="Script" path="res://game/objects/interactables/Lottohan.gd" id="18_lottohan"]
+[ext_resource type="Script" path="res://game/ui/lotto/ScratchLottoUI.gd" id="19_lotto_ui"]
 [ext_resource type="Environment" uid="uid://da3ce0283oavb" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
@@ -41,6 +43,9 @@ size = Vector3(13.718491, 2.862793, 1.854065)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ra384"]
 size = Vector3(13.718491, 2.862793, 1.854065)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lottohan"]
+size = Vector3(3.8, 2.0, 1.7)
 
 [node name="Pharmacy" type="Node3D" unique_id=658136089]
 
@@ -405,3 +410,14 @@ transform = Transform3D(1, 0, 0, 0, 0.99887335, 0.047455236, 0, -0.047455236, 0.
 visible = false
 use_collision = true
 size = Vector3(7.0861206, 0.12779045, 0.09078789)
+
+[node name="Lottohan" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18, 1.05, -7.5)
+script = ExtResource("18_lottohan")
+prompt_label = "Play Suerte Scratch (₱50)"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lottohan"]
+shape = SubResource("BoxShape3D_lottohan")
+
+[node name="LottoUI" type="CanvasLayer" parent="Lottohan"]
+script = ExtResource("19_lotto_ui")

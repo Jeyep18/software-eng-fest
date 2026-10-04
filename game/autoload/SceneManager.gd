@@ -73,12 +73,14 @@ func load_scene(scene_id: String) -> void:
 	
 # ── Location Travel (Act 2 preparation loop) ─────────────────────────────────
 
-func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost: int = -1) -> void:
+func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost: int = -1, dev_teleport: bool = false) -> void:
 	if is_travelling or storm_transition_pending:
+		return
+	if dev_teleport and (not DevMode.can_use() or not DevMode.is_valid_destination(target_location)):
 		return
 
 	# Block travel to inaccessible locations
-	if not StormEnroachment.can_travel_to(target_location):
+	if not dev_teleport and not StormEnroachment.can_travel_to(target_location):
 		push_warning("SceneManager: '%s' is inaccessible — storm has closed it." % target_location)
 		# TODO: show a HUD message to the player here ("Hindi na mapuntahan — masyadong mapanganib.")
 		return
@@ -87,7 +89,7 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 		push_warning("SceneManager: scene not yet built for: " + target_location)
 		return
 
-	if closed_zones.has(target_location):
+	if not dev_teleport and closed_zones.has(target_location):
 		push_warning("SceneManager: Location is closed: " + target_location)
 		return
 		
@@ -102,7 +104,8 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 	var generation := transition_generation
 	
 	_pending_spawn_id = spawn_id
-	StormEnroachment.apply_danger_penalty(target_location)
+	if not dev_teleport:
+		StormEnroachment.apply_danger_penalty(target_location)
 	if generation != transition_generation:
 		return
 	

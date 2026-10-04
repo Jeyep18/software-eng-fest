@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/tests/score_calculation_regression.gd" id="1_score"]
+
+[node name="ScoreCalculationRegression" type="Node"]
+script = ExtResource("1_score")

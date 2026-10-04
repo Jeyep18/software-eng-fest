@@ -33,10 +33,11 @@ The intro presents studio/Godot/warning/dedication beats, then skippable narrati
 
 ## Autoload ownership
 
-These are the 17 registered autoload names, in `project.godot` order. Their scripts are under `game/autoload/`; AudioManager is registered through `game/utils/AudioManager.tscn`, which owns its dedicated audio players. Early managers guard or defer accesses where later autoloads are not ready; preserve initialization order when changing dependencies.
+These are the 19 registered autoload names, in `project.godot` order. Their scripts are under `game/autoload/`; AudioManager is registered through `game/utils/AudioManager.tscn`, which owns its dedicated audio players. Early managers guard or defer accesses where later autoloads are not ready; preserve initialization order when changing dependencies.
 
 | Autoload | Responsibility and owned state |
 | --- | --- |
+| `CursorState` | Owns global mouse mode; UI requests release when the owner exits. |
 | `VisualSettings` | Quality preset, VHS toggle and UI scale; persists settings and applies scene-node quality changes. |
 | `LocalizationManager` | English/Tagalog choice, CSV text lookup and automatic control localization. |
 | `TransitionOverlay` | Global black fade CanvasLayer; manages overlay alpha and mouse interception. |
@@ -44,6 +45,7 @@ These are the 17 registered autoload names, in `project.godot` order. Their scri
 | `SceneManager` | Scene path registry, current location, travel lock, spawn request and additional zone arrays. |
 | `NeedsLog` | Discovered/resolved need sets and individually boarded window IDs. |
 | `GameState` | Cash, difficulty, guide/quest flags, collected world IDs, historical act/outcome state. |
+| `DevMode` | Session unlock, guarded commands, clock pause and per-run ranking state. |
 | `TravelCalculator` | Five-location weighted graph, shortest paths and randomized travel costs. |
 | `InventoryManager` | Seven item slots, quantities, combine recipes and one recoverable discard stack. |
 | `SideQuestLog` | Mang Nestor chicken quest state and objective events. |
@@ -67,7 +69,7 @@ These are the 17 registered autoload names, in `project.godot` order. Their scri
 | Standard | 1.5 | 700 | 1.00 |
 | Challenge | 0.8 | 600 | 1.25 |
 
-`pause_timer(self)` acquires one idempotent pause per Node. `resume_timer(self)` releases only that owner's pause; `tree_exiting` releases it automatically. Reset disconnects and clears ownership before old scenes leave, preventing a stale release from unpausing a new run. Anonymous calls retain the legacy counter API. At zero, the timer resumes only before the deadline. Map/backpack and fades still do not pause the clock. PauseMenu uses separate SceneTree pause.
+`pause_timer(self)` acquires one idempotent pause per Node. `resume_timer(self)` releases only that owner's pause; `tree_exiting` releases it automatically. Reset disconnects and clears ownership before old scenes leave, preventing a stale release from unpausing a new run. Anonymous calls retain the legacy counter API. At zero, the timer resumes only before the deadline. Map/backpack and fades still do not pause the clock. PauseMenu uses separate SceneTree pause. Dev Mode has its own timer pause owner; clock rewind preserves other owners and preparation progress while resetting storm thresholds and closures.
 
 | Elapsed minutes | Implemented storm change |
 | ---: | --- |
@@ -80,7 +82,7 @@ These are the 17 registered autoload names, in `project.godot` order. Their scri
 
 `MapScreen` samples and caches a displayed travel cost, then passes it to `SceneManager.travel_to()` so confirmation uses the sample shown. Dangerous destinations additionally cost 15 minutes; the map labels danger but its numerical travel estimate excludes that penalty.
 
-SceneManager validates availability/path/closed state and acquires the travel lock before applying danger penalties. It then fades out, charges travel time, replaces the scene, fades in and emits `travel_completed`. Generation checks after waits and time charges prevent a superseded operation from changing scenes or reporting arrival. It aliases `bodega` and `act1` to home for travel accounting. Spawn markers consume pending IDs; home defaults to `main_door`.
+SceneManager validates availability/path/closed state and acquires the travel lock before applying danger penalties. It then fades out, charges travel time, replaces the scene, fades in and emits `travel_completed`. Generation checks after waits and time charges prevent a superseded operation from changing scenes or reporting arrival. It aliases `bodega` and `act1` to home for travel accounting. Spawn markers consume pending IDs; home defaults to `main_door`. Guarded Dev Mode teleport reuses the transition, skips time and danger charges, and permits closed locations on its six-location whitelist.
 
 Storm arrival takes priority immediately: it invalidates previous transitions, clears travel/spawn state, closes the global shop, unpauses the scene tree and fades to EndingSequence. The ending owns its fade-in. `SceneManager.reset()` invalidates pending work. `TransitionOverlay` replaces its previous tween and lets canceled callers resume rather than waiting forever on a killed tween's `finished` signal. Task and smoke-break continuations check the same generation. Tasks consume supplies and commit their results after completion sounds but before charging time; a deadline triggered by the charge therefore sees the completed result. An interrupted, uncommitted task retains its supplies. No transition queue or new manager was added.
 
@@ -141,6 +143,8 @@ ShopData owns a shop label/subtitle and ShopItem resources. ShopItem pairs ItemD
 
 ShopUi temporarily substitutes the shop price on ItemData, invokes EconomyManager.purchase, restores the original price and consumes stock on success. EconomyManager validates purchase data/price, spends cash, refunds on inventory rejection and emits purchase success/failure. Inventory/cash signals refresh dependent interfaces. Barter state and a barter API remain in EconomyManager, but current named side-quest trades use their own code paths.
 
+The pharmacy `Lottohan` Interactable owns a `ScratchLottoUI` child. Six independently drawn fruit form two rows; each three-fruit row pays once. Scratch All, close, storm interruption and scene exit settle a paid ticket once. The screen keeps the clock running and prevents map, backpack and other interactions while open.
+
 ## Side quests and shop NPCs
 
 `SideQuestLog` stores the Mang Nestor quest as not_started, active, ready_to_turn_in or completed. It is the inventory-change subscriber for quest readiness (Mang Nestor does not duplicate that subscription) and updates readiness when half_chicken appears/disappears, emitting objective signals consumed by checklist UI.
@@ -157,11 +161,13 @@ Nanay1 later selects dialogue at four/eight elapsed hours. Its exported `cash_to
 
 PlayerV2's scene instantiates BackpackUI, HotbarUI, HUDOverlay, PreparationChecklistHUD, MapScreen and PauseMenu. Replacing a location scene recreates these interfaces; their content is rebuilt from singleton state. Groups including `player`, `hotbar_ui`, `backpack_ui`, `map_screen` and `preparation_checklist_hud` provide cross-scene discovery and broadcast calls. UI ownership is distributed across player children, interactable children and global overlays.
 
-HUDOverlay reads clock/ETA; preparation/checklist interfaces combine need state, guide flags and side objectives. Map node/road/storm drawing scripts present location states and confirmations. Backpack uses drag/drop slots for inventory and combination/discard operations. PauseMenu closes map/backpack and pauses the SceneTree. TutorialModal has a session-only static hide preference. `GameUIStyle.gd` and `game/ui/GameTheme.tres` centralize much of the visual styling, while several modals are built programmatically.
+HUDOverlay reads clock/ETA; preparation/checklist interfaces combine need state, guide flags and side objectives. Map node/road/storm drawing scripts present location states and confirmations. Backpack uses drag/drop slots for inventory and combination/discard operations. PauseMenu closes map/backpack and pauses the SceneTree. Its idle navigation is centered; opening Settings or Dev Mode places the tabs 12 logical pixels across the centered card's left border. `CursorState` coordinates mouse visibility across gameplay and UI owners. TutorialModal has a session-only static hide preference. `GameUIStyle.gd` and `game/ui/GameTheme.tres` centralize much of the visual styling, while several modals are built programmatically.
 
 TransitionOverlay is layer 10; ShopUi is layer 8; VhsCrtOverlay is layer 90. The VHS shader effect is separate from menu/HUD vignette overlays. Thus toggling VHS is not equivalent to disabling every screen-darkening effect.
 
 LocalizationManager loads `game/localization/game_text.csv` and supports exact-source and key-based lookup, formatted translations and automatic tree localization on node addition/language changes. It tracks its last rendered value so a later dynamic assignment is not overwritten by an old source string. Quest choices retain source/format values and refresh on language changes. Five choice prompts have English/Tagalog rows; action-button translations remain as authored. Backpack/hotbar names wrap inside slots. Intro narrative coverage remains incomplete; this is not a full translation rewrite.
+
+Dev Mode is unlocked by typing `HELLOWORLD` at the idle main menu in editor runs or tagged internal debug exports. It is never persisted, and each command checks build and session authorization. Enabling it makes the current run unranked, even after disabling it; the ending skips name entry and `LeaderboardManager.record_run()` rejects the score. The next run resets ranking state.
 
 ## Audio and weather
 

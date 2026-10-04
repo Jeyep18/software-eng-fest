@@ -98,6 +98,7 @@ var _leaderboard_score_saved: bool = false
 var _lightning_active: bool = true
 var _next_wind_gust_time: float = 0.0
 var _credit_label: Label = null
+var _ending_remaining_minutes: int = -1
 
 func _ready() -> void:
 	AudioManager.play_ambience(ENDING_STORM)
@@ -317,6 +318,7 @@ func _fade_out_label() -> void:
 
 # ── Result Panel ───────────────────────────────────────────────────────────────
 func _show_result_panel() -> void:
+	_ending_remaining_minutes = LeaderboardManager.consume_remaining_time_snapshot()
 	_populate_result_panel()
 	fade_overlay.color.a = 1.0
 	result_panel.show()
@@ -328,6 +330,7 @@ func _show_result_panel() -> void:
 	await _fade(1.0)
 	result_panel.hide()
 	await _submit_leaderboard_score()
+	DevMode.end_run()
 	SceneManager.reset()
 	StormEnroachment.reset()
 	GameState.reset()
@@ -343,14 +346,18 @@ func _show_result_panel() -> void:
 func _submit_leaderboard_score() -> void:
 	if _leaderboard_score_saved:
 		return
+	if _ending_remaining_minutes < 0:
+		_ending_remaining_minutes = LeaderboardManager.consume_remaining_time_snapshot()
+	if DevMode.run_unranked:
+		_leaderboard_score_saved = true
+		return
 
 	var tasks_completed: int = NeedsLog.get_all_resolved().size()
-	var remaining_minutes: int = LeaderboardManager.consume_remaining_time_snapshot()
+	var remaining_minutes: int = _ending_remaining_minutes
 	var prompt_layer := _create_leaderboard_prompt(tasks_completed, remaining_minutes)
 	var name_input: LineEdit = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/NameInput")
 	var submit_button: Button = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/ButtonRow/SubmitButton")
 
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	name_input.text_changed.connect(func(new_text: String) -> void:
 		submit_button.disabled = new_text.strip_edges().is_empty()
 	)
@@ -360,6 +367,7 @@ func _submit_leaderboard_score() -> void:
 	)
 
 	add_child(prompt_layer)
+	CursorState.request_visible(prompt_layer)
 	name_input.call_deferred("grab_focus")
 	await submit_button.pressed
 
@@ -485,7 +493,46 @@ func _populate_result_panel() -> void:
 
 	for child in item_list.get_children():
 		child.queue_free()
-	item_list.hide()
+	item_list.show()
+	item_list.modulate.a = 0.0
+	var summary_panel := PanelContainer.new()
+	summary_panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.04, 0.085, 0.075, 0.92), UI_STYLE.BORDER, 6))
+	item_list.add_child(summary_panel)
+	var summary_margin := MarginContainer.new()
+	for side in ["left", "right"]:
+		summary_margin.add_theme_constant_override("margin_" + side, 18)
+	for side in ["top", "bottom"]:
+		summary_margin.add_theme_constant_override("margin_" + side, 12)
+	summary_panel.add_child(summary_margin)
+	var summary_box := VBoxContainer.new()
+	summary_box.add_theme_constant_override("separation", 8)
+	summary_margin.add_child(summary_box)
+	var summary_title := Label.new()
+	summary_title.text = LocalizationManager.translate("RUN SUMMARY")
+	summary_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	summary_title.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	summary_title.add_theme_font_size_override("font_size", 23)
+	summary_title.add_theme_color_override("font_color", UI_STYLE.ACCENT)
+	summary_box.add_child(summary_title)
+	var metrics := GridContainer.new()
+	metrics.columns = 2
+	metrics.add_theme_constant_override("h_separation", 20)
+	metrics.add_theme_constant_override("v_separation", 5)
+	summary_box.add_child(metrics)
+	var metric_lines := [
+		LocalizationManager.trf("Prepared: %d / %d", [final_completed_count, NeedsLog.Need.size()]),
+		LocalizationManager.trf("Mode: %s", [GameState.get_difficulty_label()]),
+		LocalizationManager.trf("Time left: %s", [_format_minutes(_ending_remaining_minutes)]),
+		LocalizationManager.translate("Dev Mode run - unranked") if DevMode.run_unranked else LocalizationManager.trf("Score: %d", [roundi(LeaderboardManager.calculate_score(NeedsLog.get_all_resolved().size(), _ending_remaining_minutes, GameState.get_difficulty_id()))]),
+	]
+	for metric_text in metric_lines:
+		var metric := Label.new()
+		metric.text = metric_text
+		metric.custom_minimum_size = Vector2(390, 0)
+		metric.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+		metric.add_theme_font_size_override("font_size", 19)
+		metric.add_theme_color_override("font_color", UI_STYLE.TEXT)
+		metrics.add_child(metric)
 
 	footer_lbl.text = (
 		LocalizationManager.translate("Every year, an average of 20 typhoons test our resilience. But while \"flood control projects\" remain sturdy only on paper and political tarpaulins, ordinary citizens are left to swim for their lives.")
@@ -495,10 +542,10 @@ func _populate_result_panel() -> void:
 	footer_lbl.modulate.a = 0
 	footer_lbl.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
 	footer_lbl.add_theme_color_override("font_color", Color(0.82, 0.80, 0.72))
-	footer_lbl.add_theme_font_size_override("font_size", 28)
+	footer_lbl.add_theme_font_size_override("font_size", 23)
 	footer_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	footer_lbl.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	footer_lbl.custom_minimum_size = Vector2(720, 0)
+	footer_lbl.custom_minimum_size = Vector2(840, 0)
 	footer_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	footer_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
@@ -517,17 +564,17 @@ func _populate_result_panel() -> void:
 
 func _apply_result_ui_style() -> void:
 	UI_STYLE.apply_tree(result_panel)
-	result_panel.custom_minimum_size = Vector2(760, 470)
+	result_panel.custom_minimum_size = Vector2(900, 600)
 	result_panel.set_anchors_preset(Control.PRESET_CENTER)
-	result_panel.offset_left = -380.0
-	result_panel.offset_top = -235.0
-	result_panel.offset_right = 380.0
-	result_panel.offset_bottom = 235.0
+	result_panel.offset_left = -450.0
+	result_panel.offset_top = -300.0
+	result_panel.offset_right = 450.0
+	result_panel.offset_bottom = 300.0
 	result_panel.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 
 	var box := result_panel.get_node("VBoxContainer") as VBoxContainer
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	box.add_theme_constant_override("separation", 16)
+	box.add_theme_constant_override("separation", 12)
 
 	var title_lbl := result_panel.get_node("VBoxContainer/TitleLabel") as Label
 	title_lbl.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
@@ -551,7 +598,7 @@ func _apply_result_ui_style() -> void:
 		separator_2.hide()
 
 	var footer_lbl := result_panel.get_node("VBoxContainer/FooterLabel") as Label
-	footer_lbl.custom_minimum_size = Vector2(720, 250)
+	footer_lbl.custom_minimum_size = Vector2(840, 185)
 	footer_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	footer_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	slide_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
@@ -567,6 +614,7 @@ func _reveal_result_message() -> void:
 	tween.set_parallel(true)
 	tween.tween_property(title_lbl, "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_TITLE_DELAY)
 	tween.tween_property(sub_lbl, "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_SUBTITLE_DELAY)
+	tween.tween_property(result_panel.get_node("VBoxContainer/ItemList"), "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_BODY_DELAY)
 	tween.tween_property(footer_lbl, "modulate:a", 1.0, RESULT_TEXT_FADE_IN).set_delay(RESULT_BODY_DELAY)
 	if _credit_label != null:
 		tween.tween_property(_credit_label, "modulate:a", 0.58, RESULT_TEXT_FADE_IN).set_delay(RESULT_CREDIT_DELAY)

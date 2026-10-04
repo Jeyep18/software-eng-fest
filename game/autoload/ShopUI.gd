@@ -146,7 +146,7 @@ func open_shop(shop_data: ShopData) -> void:
 	shop_panel.show()
 	GlobalTimer.pause_timer(self)
 	get_tree().call_group("player", "set_movement_locked", true)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(self)
 
 func close_shop() -> void:
 	var was_open := is_open()
@@ -157,7 +157,7 @@ func close_shop() -> void:
 	if was_open:
 		GlobalTimer.resume_timer(self)
 		get_tree().call_group("player", "set_movement_locked", false)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		CursorState.release_visible(self)
 
 func is_open() -> bool:
 	return shop_panel.visible
@@ -228,7 +228,7 @@ func _build_item_row(shop_item: ShopItem) -> Control:
 		buy_btn.modulate = Color(1, 1, 1, 0.45)
 	else:
 		buy_btn.text = "₱%d" % shop_item.price
-		var can_afford := GameState.get_cash() >= shop_item.price
+		var can_afford: bool = GameState.get_cash() >= shop_item.price
 		buy_btn.disabled = not can_afford
 		if not can_afford:
 			buy_btn.modulate = Color(0.9, 0.4, 0.4)
@@ -259,7 +259,7 @@ func _on_buy_pressed(shop_item: ShopItem) -> void:
 	SFX.shop_beep()
 	var original_price := shop_item.item_data.item_price
 	shop_item.item_data.item_price = shop_item.price
-	var success := EconomyManager.purchase(shop_item.item_data)
+	var success: bool = EconomyManager.purchase(shop_item.item_data)
 	shop_item.item_data.item_price = original_price
 
 	if success:

@@ -429,3 +429,48 @@ ui,ui.nestor_turn_in_prompt,Give the Half Chicken to Mang Nestor?,Give the Half 
 ui,ui.linda_trade_prompt,Give Ate Linda your hammer so she lowers her prices?,Give Ate Linda your hammer so she lowers her prices?,Ibigay kay Ate Linda ang iyong martilyo para babaan niya ang mga presyo?,
 ui,ui.smoke_choice_prompt,Smoke with him and lose %d minutes?,Smoke with him and lose %d minutes?,Manigarilyo kasama niya at gumugol ng %d minuto?,Keep %d placeholder
 ui,ui.donation_choice_prompt,Give PHP %d?,Give PHP %d?,Magbigay ng PHP %d?,Keep %d placeholder
+ending,ending.run_summary,RUN SUMMARY,RUN SUMMARY,BUOD NG PAGHAHANDA,
+ending,ending.prepared_count,Prepared: %d / %d,Prepared: %d / %d,Naihanda: %d / %d,Preserve format placeholders.
+ending,ending.mode_label,Mode: %s,Mode: %s,Antas: %s,Preserve format placeholder.
+ending,ending.time_left_label,Time left: %s,Time left: %s,Natitirang oras: %s,Preserve format placeholder.
+ending,ending.score_label,Score: %d,Score: %d,Puntos: %d,Preserve format placeholder.
+prompt,lotto.prompt,Play Suerte Scratch (₱50),Play Suerte Scratch (₱50),Maglaro ng Suerte Scratch (₱50),
+ui,lotto.title,LOTTOHAN,LOTTOHAN,LOTTOHAN,
+ui,lotto.rule,Match three fruit in either row. Each matching row pays.,Match three fruit in either row. Each matching row pays.,Pagtugmain ang tatlong prutas sa alinmang hanay. May premyo ang bawat tugmang hanay.,
+ui,lotto.ticket_title,SUERTE SCRATCH,SUERTE SCRATCH,SUERTE SCRATCH,
+ui,lotto.prizes,PRIZES PER ROW,PRIZES PER ROW,PREMYO BAWAT HANAY,
+ui,lotto.cash,Cash: ₱%d,Cash: ₱%d,Pera: ₱%d,Keep %d placeholder
+ui,lotto.ticket_count,Tickets bought: %d,Tickets bought: %d,Nabiling tiket: %d,Keep %d placeholder
+ui,lotto.ready,Buy a ticket to try your luck.,Buy a ticket to try your luck.,Bumili ng tiket para subukan ang suwerte.,
+ui,lotto.scratch,Scratch all six fruit to reveal your result.,Scratch all six fruit to reveal your result.,Kaskasin ang anim na prutas.,
+ui,lotto.win,You won ₱%d!,You won ₱%d!,Nanalo ka ng ₱%d!,Keep %d placeholder
+ui,lotto.lose,No matching row. Try again?,No matching row. Try again?,Walang tugmang hanay. Subukan ulit?,
+ui,lotto.not_enough_cash,Not enough cash for a ticket.,Not enough cash for a ticket.,Kulang ang pera para sa tiket.,
+ui,lotto.buy,Buy Ticket — ₱50,Buy Ticket — ₱50,Bumili ng Tiket — ₱50,
+ui,lotto.buy_again,Buy Again — ₱50,Buy Again — ₱50,Bumili Ulit — ₱50,
+ui,lotto.scratch_all,Scratch All,Scratch All,Kaskasin Lahat,
+ui,lotto.reveal_result,Reveal Result,Reveal Result,Ipakita ang Resulta,
+ui,lotto.close,Close,Close,Isara,
+ui,lotto.fruit.apple,lotto_fruit_apple,Apple,Mansanas,
+ui,lotto.fruit.banana,lotto_fruit_banana,Banana,Saging,
+ui,lotto.fruit.orange,lotto_fruit_orange,Orange,Kahel,
+ui,lotto.fruit.watermelon,lotto_fruit_watermelon,Watermelon,Pakwan,
+ui,lotto.fruit.grapes,lotto_fruit_grapes,Grapes,Ubas,
+ui,lotto.fruit.cherries,lotto_fruit_cherries,Cherries,Seresa,
+ui,lotto.fruit.peach,lotto_fruit_peach,Peach,Milokoton,
+ui,lotto.fruit.raspberry,lotto_fruit_raspberry,Raspberry,Raspberry,
+ui,dev.mode,Dev Mode,Dev Mode,Dev Mode,
+ui,dev.heading,DEV MODE,DEV MODE,DEV MODE,
+ui,dev.unlocked,Dev Mode unlocked for this session. Enable it in Settings.,Dev Mode unlocked for this session. Enable it in Settings.,Na-unlock ang Dev Mode para sa sesyong ito. I-on ito sa Settings.,
+ui,dev.enabled,Enabled (run will be unranked),Enabled (run will be unranked),Bukas (hindi iraranggo ang laro),
+ui,dev.amount,Amount,Amount,Halaga,
+ui,dev.add_money,Add money,Add money,Dagdagan ang pera,
+ui,dev.remove_money,Remove money,Remove money,Bawasan ang pera,
+ui,dev.pause_clock,Pause clock after resume,Pause clock after resume,Ihinto ang oras pagbalik,
+ui,dev.reset_clock,Reset to 6:00 AM,Reset to 6:00 AM,Ibalik sa 6:00 AM,
+ui,dev.teleport,Teleport,Teleport,Lumipat agad,
+ui,dev.unavailable,Dev action unavailable.,Dev action unavailable.,Hindi magamit ang Dev action.,
+ui,dev.cash_time,Cash: ₱%d   Time: %s,Cash: ₱%d   Time: %s,Pera: ₱%d   Oras: %s,Keep %d and %s placeholders
+ui,dev.unranked,Dev Mode run - unranked,Dev Mode run - unranked,Dev Mode na laro - hindi iraranggo,
+ui,dev.grocery,Grocery / Palengke,Grocery / Palengke,Palengke,
+ui,dev.bodega,Bodega,Bodega,Bodega,

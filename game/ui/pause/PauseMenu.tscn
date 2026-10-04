@@ -27,17 +27,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Panel" unique_id=575723378]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(229, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -110.5
-offset_top = -200.5
-offset_right = 110.5
-offset_bottom = 200.5
+offset_left = -114.5
+offset_top = 0.0
+offset_right = 114.5
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 

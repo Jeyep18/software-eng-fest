@@ -70,7 +70,7 @@ func _show_trade_prompt() -> void:
 		_build_trade_prompt()
 	_refresh_trade_text()
 	_choice_modal.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(_choice_modal)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	if not _choice_paused_timer:
@@ -151,7 +151,7 @@ func _close_trade_prompt() -> void:
 		_choice_paused_timer = false
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	get_tree().call_group("player", "set_movement_locked", false)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	CursorState.release_visible(_choice_modal)
 
 func _accept_trade() -> void:
 	_close_trade_prompt()

@@ -12,6 +12,8 @@ func _ready() -> void:
 	_load_entries()
 
 func record_run(player_name: String, tasks_completed: int, remaining_minutes: int, difficulty_id: String = "") -> void:
+	if DevMode.run_unranked:
+		return
 	var clean_name: String = player_name.strip_edges()
 	if clean_name.is_empty():
 		clean_name = "Player"
@@ -23,7 +25,7 @@ func record_run(player_name: String, tasks_completed: int, remaining_minutes: in
 		"tasks_completed": max(tasks_completed, 0),
 		"remaining_minutes": clampi(remaining_minutes, 0, GlobalTimer.TOTAL_MINUTES),
 		"difficulty": difficulty_id,
-		"score": _calculate_score(max(tasks_completed, 0), clampi(remaining_minutes, 0, GlobalTimer.TOTAL_MINUTES), difficulty_id),
+		"score": calculate_score(tasks_completed, remaining_minutes, difficulty_id),
 		"recorded_at": Time.get_datetime_string_from_system(false, true),
 	})
 	_sort_entries()
@@ -64,6 +66,11 @@ func consume_remaining_time_snapshot() -> int:
 	if remaining_minutes >= 0:
 		return remaining_minutes
 	return max(GlobalTimer.TOTAL_MINUTES - GlobalTimer.current_minutes, 0)
+
+func calculate_score(tasks_completed: int, remaining_minutes: int, difficulty_id: String = "") -> float:
+	if difficulty_id.is_empty():
+		difficulty_id = GameState.get_difficulty_id()
+	return _calculate_score(max(tasks_completed, 0), clampi(remaining_minutes, 0, GlobalTimer.TOTAL_MINUTES), difficulty_id)
 
 func _load_entries() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):

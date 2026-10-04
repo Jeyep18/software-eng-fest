@@ -37,6 +37,8 @@ const BUTTON_WIDTH: float = 244.0
 const BUTTON_HEIGHT: float = 48.0
 const DIFFICULTY_BUTTON_WIDTH: float = 280.0
 const DIFFICULTY_BUTTON_HEIGHT: float = 56.0
+const DEV_SEQUENCE: String = "HELLOWORLD"
+const DEV_SEQUENCE_TIMEOUT_MSEC: int = 5000
 
 var tutorial_button: Button
 var replay_intro_button: Button
@@ -53,10 +55,12 @@ var _parallax_target: Vector2 = Vector2.ZERO
 var _parallax_current: Vector2 = Vector2.ZERO
 var _camera_base_position: Vector3
 var _camera_base_rotation: Vector3
+var _dev_sequence_buffer: String = ""
+var _dev_sequence_last_key_msec: int = 0
 
 # MainMenu.gd
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(self)
 	_setup_left_gradient_overlay()
 	_setup_lightning()
 	_setup_settings_button()
@@ -83,6 +87,65 @@ func _process(delta: float) -> void:
 	_update_parallax_target()
 	_parallax_current = _parallax_current.lerp(_parallax_target, 1.0 - exp(-parallax_smoothing * delta))
 	_apply_parallax()
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not DevMode.is_available() or DevMode.unlocked:
+		return
+	if not _dev_sequence_input_allowed():
+		_clear_dev_sequence()
+		return
+	var key := event as InputEventKey
+	if key == null or not key.pressed or key.echo:
+		return
+	if key.shift_pressed or key.ctrl_pressed or key.alt_pressed or key.meta_pressed or key.keycode < KEY_A or key.keycode > KEY_Z:
+		return
+	var now := Time.get_ticks_msec()
+	if now - _dev_sequence_last_key_msec > DEV_SEQUENCE_TIMEOUT_MSEC:
+		_clear_dev_sequence()
+	_dev_sequence_last_key_msec = now
+	var letter := OS.get_keycode_string(key.keycode).to_upper()
+	_dev_sequence_buffer += letter
+	if not DEV_SEQUENCE.begins_with(_dev_sequence_buffer):
+		_dev_sequence_buffer = letter if DEV_SEQUENCE.begins_with(letter) else ""
+	if _dev_sequence_buffer == DEV_SEQUENCE:
+		_clear_dev_sequence()
+		if DevMode.unlock():
+			_show_dev_unlocked_cue()
+
+func _dev_sequence_input_allowed() -> bool:
+	if _settings_layer == null or _settings_layer.visible or _difficulty_layer.visible or _loading_layer.visible:
+		return false
+	if credits_modal.visible or leaderboards_modal.visible:
+		return false
+	var focus := get_viewport().gui_get_focus_owner()
+	if focus is LineEdit or focus is TextEdit:
+		return false
+	for tutorial in get_tree().get_nodes_in_group("tutorial_modal"):
+		if tutorial is TutorialModal and tutorial.visible:
+			return false
+	return true
+
+func _clear_dev_sequence() -> void:
+	_dev_sequence_buffer = ""
+	_dev_sequence_last_key_msec = 0
+
+func _show_dev_unlocked_cue() -> void:
+	var cue_layer := CanvasLayer.new()
+	cue_layer.layer = 45
+	add_child(cue_layer)
+	var cue := Label.new()
+	cue.text = LocalizationManager.translate("Dev Mode unlocked for this session. Enable it in Settings.")
+	cue.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+	cue.offset_left = 40.0
+	cue.offset_top = -80.0
+	cue.offset_right = 700.0
+	cue.offset_bottom = -30.0
+	UI_STYLE.apply_label(cue)
+	cue_layer.add_child(cue)
+	var tween := create_tween()
+	tween.tween_interval(3.0)
+	tween.tween_property(cue, "modulate:a", 0.0, 0.4)
+	tween.finished.connect(cue_layer.queue_free)
 
 func _setup_tutorial_button() -> void:
 	tutorial_button = Button.new()
@@ -396,6 +459,7 @@ func _apply_parallax() -> void:
 	)
 
 func request_start_game(source_button: Button) -> void:
+	_clear_dev_sequence()
 	_start_source_button = source_button
 	if _start_source_button != null:
 		_start_source_button.disabled = true
@@ -422,21 +486,26 @@ func _on_difficulty_confirmed(difficulty: GameState.Difficulty) -> void:
 	GameState.set_difficulty(difficulty)
 	SceneManager.load_scene("home")
 	GlobalTimer.start_fresh()
+	DevMode.begin_run()
 
 func _on_leaderboards_pressed() -> void:
+	_clear_dev_sequence()
 	if leaderboards_modal.has_method("open"):
 		leaderboards_modal.open()
 
 func _on_credits_pressed() -> void:
+	_clear_dev_sequence()
 	credits_modal.visible = true
 
 func _on_settings_pressed() -> void:
+	_clear_dev_sequence()
 	_settings_layer.visible = true
 
 func _on_settings_close_requested() -> void:
 	_settings_layer.visible = false
 
 func _on_tutorial_pressed() -> void:
+	_clear_dev_sequence()
 	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()
 	add_child(tutorial)
 	tutorial.open(false, false, func() -> void:
@@ -444,6 +513,7 @@ func _on_tutorial_pressed() -> void:
 	)
 
 func _on_replay_intro_pressed() -> void:
+	_clear_dev_sequence()
 	replay_intro_button.disabled = true
 	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("intro")

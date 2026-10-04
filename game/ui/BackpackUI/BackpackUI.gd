@@ -162,10 +162,12 @@ func _toggle() -> void:
 		close_backpack()
 		return
 
+	if get_tree().get_first_node_in_group("lotto_ui") != null:
+		return
 	_close_map_if_open()
 	SFX.inventory_open()
 	visible = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(self)
 	_reset_selection()
 	_redraw_backpack()
 
@@ -174,7 +176,7 @@ func close_backpack() -> void:
 		return
 	SFX.inventory_close()
 	visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	CursorState.release_visible(self)
 	_reset_selection()
 
 func _close_map_if_open() -> void:

@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://bvw7wy45wf2m4"
 
 [autoload]
 
+CursorState="*res://game/autoload/CursorState.gd"
 VisualSettings="*res://game/autoload/VisualSettings.gd"
 LocalizationManager="*res://game/autoload/LocalizationManager.gd"
 TransitionOverlay="*uid://bx637gkf0lc65"
@@ -28,6 +29,7 @@ GlobalTimer="*uid://evkdxftbiln"
 SceneManager="*uid://byw1611rs1g8q"
 NeedsLog="*uid://chb7qf2rtv351"
 GameState="*uid://b3n2wbiimdixf"
+DevMode="*res://game/autoload/DevMode.gd"
 TravelCalculator="*uid://bkjg6rep2nwea"
 InventoryManager="*uid://b8lxp84j6d6lx"
 SideQuestLog="*res://game/autoload/SideQuestLog.gd"

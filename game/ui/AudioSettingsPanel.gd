@@ -20,6 +20,8 @@ var _language_selector: OptionButton
 var _quality_selector: OptionButton
 var _vhs_crt_toggle: CheckBox
 var _ui_scale_selector: OptionButton
+var _dev_mode_row: Control
+var _dev_mode_toggle: CheckBox
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -29,6 +31,9 @@ func _ready() -> void:
 	_sync_from_audio_manager()
 	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 	VisualSettings.quality_preset_changed.connect(_on_quality_preset_changed)
+	if DevMode.is_available():
+		DevMode.unlocked_changed.connect(_on_dev_mode_changed)
+		DevMode.enabled_changed.connect(_on_dev_mode_changed.unbind(1))
 	_apply_ui_scale()
 
 func _build() -> void:
@@ -53,6 +58,10 @@ func _build() -> void:
 	box.add_child(_make_quality_row())
 	box.add_child(_make_vhs_crt_row())
 	box.add_child(_make_ui_scale_row())
+	if DevMode.is_available():
+		_dev_mode_row = _make_dev_mode_row()
+		box.add_child(_dev_mode_row)
+		_on_dev_mode_changed()
 
 	for bus_data in BUSES:
 		box.add_child(_make_volume_row(bus_data["name"], bus_data["label"]))
@@ -206,6 +215,23 @@ func _make_ui_scale_row() -> Control:
 
 	return row
 
+func _make_dev_mode_row() -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	var label := Label.new()
+	label.text = "Dev Mode"
+	label.custom_minimum_size = Vector2(100, 0)
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	UI_STYLE.apply_label(label)
+	row.add_child(label)
+	_dev_mode_toggle = CheckBox.new()
+	_dev_mode_toggle.text = "Enabled (run will be unranked)"
+	_dev_mode_toggle.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_dev_mode_toggle.toggled.connect(_on_dev_mode_toggled)
+	UI_STYLE.apply_button(_dev_mode_toggle)
+	row.add_child(_dev_mode_toggle)
+	return row
+
 func _sync_from_audio_manager() -> void:
 	for bus_name in _sliders.keys():
 		var slider := _sliders[bus_name] as HSlider
@@ -252,6 +278,16 @@ func _on_vhs_crt_toggled(enabled: bool) -> void:
 
 func _on_ui_scale_selected(index: int) -> void:
 	VisualSettings.set_ui_scale_percent(_ui_scale_selector.get_item_id(index))
+
+func _on_dev_mode_toggled(value: bool) -> void:
+	DevMode.set_enabled(value)
+	_on_dev_mode_changed()
+
+func _on_dev_mode_changed() -> void:
+	if _dev_mode_row == null:
+		return
+	_dev_mode_row.visible = DevMode.is_available() and DevMode.unlocked
+	_dev_mode_toggle.set_pressed_no_signal(DevMode.enabled)
 
 func _update_percent_label(slider: HSlider) -> void:
 	var percent := slider.get_parent().get_node_or_null("Percent") as Label

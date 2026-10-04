@@ -25,7 +25,6 @@ const HEAD_BOB_AMPLITUDE : float = 0.08
 # private var
 var _current_speed : float = WALK_SPEED
 var _head_bob_time : float = 0.0
-var _is_mouse_captured : bool = true
 var _is_movement_locked: bool = false
 
 # flashlight variables
@@ -57,14 +56,14 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("escape"):
+	if event.is_action_pressed("escape"):
 		_toggle_mouse_capture()
 	
 	# Toggle flashlight with input
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		_toggle_flashlight()
 	
-	if event is InputEventMouseMotion and _is_mouse_captured:
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_handle_mouse_look(event.relative)
 
 
@@ -179,15 +178,13 @@ func _update_flashlight(delta: float) -> void:
 
 # Input util methods
 func _capture_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	_is_mouse_captured = true
+	CursorState.register_gameplay(self)
 
 func _toggle_mouse_capture() -> void:
-	if _is_mouse_captured:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		_is_mouse_captured = false
-	else:
-		_capture_mouse()
+	if CursorState.is_requesting_visible(self):
+		CursorState.release_visible(self)
+	elif Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		CursorState.request_visible(self)
 
 func set_movement_locked(is_locked: bool) -> void:
 	_is_movement_locked = is_locked

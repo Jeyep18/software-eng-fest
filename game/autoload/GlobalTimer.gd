@@ -95,6 +95,17 @@ func add_time(minutes: int) -> void:
 		emit_signal("time_updated", m)
 		_check_thresholds(m)
 
+## Rewind only for an authorized Dev Mode run. Keep existing pause owners intact.
+func reset_elapsed_for_dev() -> bool:
+	if not DevMode.can_use():
+		return false
+	current_minutes = 0
+	_tick_accumulator = 0.0
+	for threshold in THRESHOLDS:
+		threshold["fired"] = false
+	time_updated.emit(0)
+	return true
+
 # ── HUD Helpers ───────────────────────────────────────────────────────────────
 
 ## Returns current in-game time as a 12-hour string, e.g. "10:42 AM".

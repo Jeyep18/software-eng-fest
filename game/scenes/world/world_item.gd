@@ -210,7 +210,7 @@ func _hide_monologue() -> void:
 		_paused_timer = false
 	get_tree().call_group("player", "set_movement_locked", false)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	CursorState.release_visible(_confirm_modal)
 	prompt_visibility_changed.emit(true)
 
 func _show_pickup_confirmation() -> void:
@@ -248,7 +248,7 @@ func _show_confirm_dialog() -> void:
 	if _confirm_modal == null:
 		_build_confirm_modal()
 	_confirm_message.text = item_data.get_item_description() if item_data.item_description.strip_edges() != "" else LocalizationManager.translate("Add this item to your backpack?")
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(_confirm_modal)
 	_confirm_modal.show()
 	_confirm_modal.grab_focus()
 

@@ -15,7 +15,6 @@ const SFX = preload("res://game/audio/Sfx.gd")
 @export_range(0.0, 0.8, 0.01) var max_step_height: float = DEFAULT_STEP_HEIGHT
 
 var _current_speed: float = WALK_SPEED
-var _is_mouse_captured: bool = true
 var _facing_direction: float = 1.0
 var _is_input_locked: bool = false
 var _is_movement_locked: bool = false
@@ -129,8 +128,8 @@ func _show_start_tutorial_if_needed() -> void:
 	tutorial.open(true, true, unlock_input, true)
 
 
-func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("escape"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("escape"):
 		_toggle_mouse_capture()
 
 
@@ -269,16 +268,14 @@ func _update_facing_direction() -> void:
 
 #region Mouse Capture
 func _capture_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	_is_mouse_captured = true
+	CursorState.register_gameplay(self)
 
 
 func _toggle_mouse_capture() -> void:
-	if _is_mouse_captured:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		_is_mouse_captured = false
-	else:
-		_capture_mouse()
+	if CursorState.is_requesting_visible(self):
+		CursorState.release_visible(self)
+	elif Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		CursorState.request_visible(self)
 #endregion
 
 
@@ -397,4 +394,5 @@ func _on_interactable_exited(interactable: Interactable) -> void:
 #endregion
 
 func _is_interaction_blocked_by_ui() -> bool:
-	return get_node_or_null("/root/ShopUi") != null and ShopUi.is_open()
+	return (get_node_or_null("/root/ShopUi") != null and ShopUi.is_open()
+		or get_tree().get_first_node_in_group("lotto_ui") != null)

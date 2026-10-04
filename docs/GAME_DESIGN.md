@@ -40,11 +40,32 @@ This is a description of the intended route through implemented interactions, no
 | Interaction | Nearby Area3D targets, E interaction, Space dialogue advance, typewriter/portrait presentation | No general branching dialogue editor or systemic relationship simulation established. |
 | Preparation | Six needs in `NeedsLog`: roof, medicine, food, windows, water, flashlight | Old rope/first-aid/rescue/corruption fields are not completed mechanics. |
 | Inventory | Seven slots, canned-goods/nails stacking, two battery recipes, one recoverable discard stack | No general crafting tree or equipment system established. |
-| Economy | Cash, catalogue prices/stock and named quest trades | The older generic barter API is not evidence of all proposed NPC trading routes. |
+| Economy | Cash, catalogue prices/stock, named quest trades and optional pharmacy Lottohan | The older generic barter API is not evidence of all proposed NPC trading routes. |
 | Travel | Five map destinations; graph costs plus variation and danger penalty; whole-scene travel | Richer route-risk events were proposed, not implemented. |
 | Time pressure | 720 in-game minutes; passive time plus action/travel costs; map/backpack keep time running | A generalized storm-event system remains a proposal. |
 
 Preparation details are defined by task scripts, resource types and scene overrides. The roof uses tarp/nails/hammer; food requires four canned goods; two individually tracked windows require plywood/nails/hammer; medicine, water and combined radio/flashlight complete the remaining needs. Hammer is retained as a tool; the current wrench is consumed because its resource retains the default item type. See the architecture task table for costs and source owners.
+
+### Pharmacy Lottohan
+
+The lotto counter offers Suerte Scratch as an optional cash risk during the preparation clock. Each ticket costs ₱50 and has six independently drawn fruit, arranged in two horizontal rows. Three identical fruit in one row wins that fruit's prize; both rows can pay. Players may scratch each foil well or use Scratch All. A paid ticket resolves before the player leaves or the storm ends the visit. The clock continues while the screen is open, and buying adds no separate time cost. Rewards change cash only; the leaderboard formula is unchanged.
+
+| Fruit | Draw weight per well | Prize per matching row |
+| --- | ---: | ---: |
+| Apple | 28% | ₱180 |
+| Banana | 24% | ₱240 |
+| Orange | 18% | ₱350 |
+| Watermelon | 12% | ₱600 |
+| Grapes | 8% | ₱900 |
+| Cherries | 5% | ₱1,200 |
+| Peach | 3% | ₱2,500 |
+| Raspberry | 2% | ₱5,000 |
+
+Draws are independent and do not change with difficulty, current cash or previous tickets. The chance of at least one winning row is about 8.61%; average payout is ₱22.13 per ₱50 ticket. Repeated play usually consumes money needed for house preparation, while a rare win can fund several supplies.
+
+### Internal Dev Mode
+
+Dev Mode is a testing overlay on the existing Story, Standard and Challenge difficulties. An idle main-menu `HELLOWORLD` sequence unlocks a session-only Settings toggle in editor runs and tagged internal debug exports. When enabled, the pause menu can add/remove cash, hold or reset the preparation clock, and teleport among the five map destinations and bodega without travel cost or storm closure checks. Clock reset preserves current run progress and reopens storm-closed locations; it cannot reverse storm arrival. Any run enabled with Dev Mode is unranked, including after the toggle is turned off. The public release build has no usable Dev Mode controls.
 
 ## Progression and outcomes
 

@@ -82,9 +82,11 @@ func _input(event: InputEvent) -> void:
 
 # ── Open / Close ──────────────────────────────────────────────────────────────
 func open_map() -> void:
+	if get_tree().get_first_node_in_group("lotto_ui") != null:
+		return
 	_close_backpack_if_open()
 	SFX.map_open()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	CursorState.request_visible(self)
 	_refresh_all_nodes()
 	# Trigger redraws on both drawing nodes
 	road_layer.queue_redraw()
@@ -97,7 +99,7 @@ func open_map() -> void:
 func close_map() -> void:
 	if visible:
 		SFX.map_open()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	CursorState.release_visible(self)
 	hide()
 	confirm_panel.hide()
 	_selected_location = ""

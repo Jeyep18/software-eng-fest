@@ -35,7 +35,7 @@ Inspect the relevant implementation, scenes/resources, callers and dependencies.
 
 ## Globals and communication
 
-The **17 configured autoloads**, in order, are `VisualSettings`, `LocalizationManager`, `TransitionOverlay`, `GlobalTimer`, `SceneManager`, `NeedsLog`, `GameState`, `TravelCalculator`, `InventoryManager`, `SideQuestLog`, `EconomyManager`, `ShopUi`, `StormEnroachment`, `AudioManager`, `StormAudioController`, `LeaderboardManager`, `VhsCrtOverlay`. Preserve spelling/case, including `ShopUi` and `StormEnroachment`. `AudioManager` is the scene `game/utils/AudioManager.tscn`.
+The **19 configured autoloads**, in order, are `CursorState`, `VisualSettings`, `LocalizationManager`, `TransitionOverlay`, `GlobalTimer`, `SceneManager`, `NeedsLog`, `GameState`, `DevMode`, `TravelCalculator`, `InventoryManager`, `SideQuestLog`, `EconomyManager`, `ShopUi`, `StormEnroachment`, `AudioManager`, `StormAudioController`, `LeaderboardManager`, `VhsCrtOverlay`. Preserve spelling/case, including `ShopUi` and `StormEnroachment`. `AudioManager` is the scene `game/utils/AudioManager.tscn`.
 
 `TaskObject.gd` is a base class; `HUDOverlay.gd` is attached to a player-owned scene. Neither is an autoload. Search for equivalents before adding managers, services or global state.
 
@@ -47,7 +47,9 @@ Use existing direct manager APIs for actions and signals for notifications: `inv
 - **Partial/legacy:** old first-person controller, act enums/outcome flags and unused barter API. They do not establish active combat, four playable acts, or a complete branching rescue story.
 - **Not present:** full gameplay save/load, combat/enemy navigation, multiplayer, third-party automated test framework. Focused built-in regression checks now live in `game/tests/cleanup_regression.tscn`.
 - `GameState`, `NeedsLog`, `InventoryManager` and `SideQuestLog` hold session truth. UI must not create competing inventory or objective state. Inventory has **seven slots**; only canned goods and nails stack.
+- `CursorState` alone sets mouse mode. Gameplay players register themselves; a UI calls `request_visible(self)` when opened and `release_visible(self)` when fully closed. Node exit also releases ownership. Closing one UI must not capture the cursor while another UI still needs it.
 - `GlobalTimer` has a 720-minute limit. Use `pause_timer(self)` / `resume_timer(self)` for one pause per Node; scene exit releases it and reset disconnects old owners. Anonymous calls retain the legacy counter API. Scene-tree pause is separate. Map, backpack and fades do **not** pause the clock. New runs start the clock immediately in the house.
+- `DevMode` is session-only and available in editor runs or tagged internal debug exports. A release export must deny its commands. Enabling it makes that run unranked; turning it off does not restore ranking.
 - Preserve stable item IDs, world-item IDs, window IDs and location IDs across resources/callers. `water_jugs.tres` uses item ID `water_jug`.
 
 ## Scenes, resources, input and physics
