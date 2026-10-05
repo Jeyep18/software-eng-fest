@@ -1,150 +1,137 @@
 [gd_scene format=3 uid="uid://dwwxolqa0jpjs"]
 
-[ext_resource type="Script" uid="uid://d4m8vjfifxaqi" path="res://game/ui/map/MapScreen.gd" id="1_wkx60"]
-[ext_resource type="Script" uid="uid://1ytg0smdfvjy" path="res://game/ui/map/MapRoadLayer.gd" id="2_22ccy"]
-[ext_resource type="Texture2D" uid="uid://ykqyrns056n2" path="res://game/assets/map.png" id="3_hc5gi"]
-[ext_resource type="Script" uid="uid://dljchs54k1dc6" path="res://game/ui/map/MapStormOverlay.gd" id="3_ul25n"]
-[ext_resource type="Script" uid="uid://3pf8boewskp4" path="res://game/ui/map/end_day.gd" id="5_ul25n"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_22ccy"]
-font_size = 25
-font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+[ext_resource type="Script" uid="uid://d4m8vjfifxaqi" path="res://game/ui/map/MapScreen.gd" id="1_map"]
+[ext_resource type="Texture2D" path="res://game/assets/map_ui/map_base.png" id="2_paper"]
+[ext_resource type="Texture2D" path="res://game/assets/map_ui/storm_front_clouds.png" id="2_front"]
+[ext_resource type="Script" uid="uid://dljchs54k1dc6" path="res://game/ui/map/MapStormOverlay.gd" id="3_storm"]
+[ext_resource type="Script" uid="uid://3pf8boewskp4" path="res://game/ui/map/end_day.gd" id="4_end"]
 
 [node name="MapScreen" type="CanvasLayer" unique_id=1053564521]
-script = ExtResource("1_wkx60")
+script = ExtResource("1_map")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1990618185]
+[node name="Backdrop" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_hc5gi")
+color = Color(0.075, 0.11, 0.115, 0.96)
 
-[node name="Panel" type="Control" parent="." unique_id=1467488610]
-layout_mode = 3
+[node name="MapPage" type="Control" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Paper" type="TextureRect" parent="MapPage"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_paper")
+expand_mode = 1
+
+[node name="StormFront" type="TextureRect" parent="MapPage"]
+offset_left = 1320.0
+offset_top = 150.0
+offset_right = 1920.0
+offset_bottom = 550.0
+mouse_filter = 2
+texture = ExtResource("2_front")
+expand_mode = 1
+
+[node name="Panel" type="Control" parent="MapPage"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
-[node name="MapNodes" type="Control" parent="Panel" unique_id=941862579]
-custom_minimum_size = Vector2(1152, 600)
-layout_mode = 1
-anchor_left = 0.2
-anchor_top = 0.22200002
-anchor_right = 0.8
-anchor_bottom = 0.77800006
-offset_left = 576.0
-offset_top = 300.24
-offset_right = -576.0
-offset_bottom = -300.24005
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MapNodes" type="Control" parent="MapPage/Panel"]
+offset_left = 384.0
+offset_top = 250.0
+offset_right = 1536.0
+offset_bottom = 850.0
 mouse_filter = 1
 
-[node name="RoadLayer" type="Control" parent="Panel/MapNodes" unique_id=2061388295]
-custom_minimum_size = Vector2(1152, 600)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_22ccy")
+[node name="StormOverlay" type="Control" parent="MapPage/Panel/MapNodes"]
+offset_right = 1152.0
+offset_bottom = 600.0
+mouse_filter = 2
+script = ExtResource("3_storm")
 
-[node name="StormOverlay" type="Control" parent="Panel/MapNodes" unique_id=77879216]
-custom_minimum_size = Vector2(1152, 600)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_ul25n")
+[node name="ConfirmPanel" type="PanelContainer" parent="MapPage/Panel"]
+offset_left = 1490.0
+offset_top = 410.0
+offset_right = 1880.0
+offset_bottom = 550.0
 
-[node name="MapNodeButton" type="Control" parent="Panel/MapNodes" unique_id=1547864800]
-custom_minimum_size = Vector2(1152, 600)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ConfirmPanel" type="PanelContainer" parent="Panel" unique_id=1649256256]
-custom_minimum_size = Vector2(340, 160)
-layout_mode = 1
-anchors_preset = 0
-offset_right = 340.0
-offset_bottom = 160.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Panel/ConfirmPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="MapPage/Panel/ConfirmPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ConfirmPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MapPage/Panel/ConfirmPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="DestinationLabel" type="Label" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer" unique_id=1698369465]
+[node name="DestinationLabel" type="Label" parent="MapPage/Panel/ConfirmPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Destination: "
 
-[node name="TravelTimeLabel" type="Label" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer" unique_id=120153686]
-custom_minimum_size = Vector2(300, 0)
+[node name="TravelTimeLabel" type="Label" parent="MapPage/Panel/ConfirmPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Travel Time:"
 autowrap_mode = 3
 
-[node name="ButtonRow" type="HBoxContainer" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer"]
+[node name="ButtonRow" type="HBoxContainer" parent="MapPage/Panel/ConfirmPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="ConfirmButton" type="Button" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=2013624972]
+[node name="ConfirmButton" type="Button" parent="MapPage/Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Confirm"
 
-[node name="CancelButton" type="Button" parent="Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=476906034]
+[node name="CancelButton" type="Button" parent="MapPage/Panel/ConfirmPanel/MarginContainer/VBoxContainer/ButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=210543276]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 266.0
-offset_bottom = 22.0
-grow_vertical = 0
-alignment = 1
+[node name="EndDayPanel" type="PanelContainer" parent="MapPage/Panel"]
+offset_left = 150.0
+offset_top = 885.0
+offset_right = 495.0
+offset_bottom = 995.0
 
-[node name="Control" type="Control" parent="VBoxContainer" unique_id=1868126704]
-custom_minimum_size = Vector2(250, 0)
+[node name="EndDayMargin" type="MarginContainer" parent="MapPage/Panel/EndDayPanel"]
 layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
-[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1343594373]
+[node name="EndDayColumn" type="VBoxContainer" parent="MapPage/Panel/EndDayPanel/EndDayMargin"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2078263865]
+[node name="EndDayTitle" type="Label" parent="MapPage/Panel/EndDayPanel/EndDayMargin/EndDayColumn"]
 layout_mode = 2
 text = "Confident enough?"
-label_settings = SubResource("LabelSettings_22ccy")
 
-[node name="EndDay" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=355423833]
+[node name="EndDay" type="Button" parent="MapPage/Panel/EndDayPanel/EndDayMargin/EndDayColumn"]
 layout_mode = 2
 text = "END THE DAY"
-script = ExtResource("5_ul25n")
+script = ExtResource("4_end")
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1578434258]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
+[node name="MapHint" type="Label" parent="MapPage/Panel"]
+offset_left = 1350.0
+offset_top = 965.0
+offset_right = 1770.0
+offset_bottom = 1005.0
+mouse_filter = 2
+text = "Press M to open or close map"
+horizontal_alignment = 2

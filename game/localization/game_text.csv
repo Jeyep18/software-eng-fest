@@ -157,6 +157,7 @@ map,map.danger_zone.0a687325,  ⚠ Danger Zone,  ⚠ Danger Zone,  ⚠ Delikadon
 ui,ui.closes_early.ee7bc609,  Closes early,  Closes early,  Maagang nagsasara,
 map,map.storm.a49fe775,STORM,STORM,BAGYO,
 map,map.storm_has_arrived.c698595f,STORM HAS ARRIVED,STORM HAS ARRIVED,DUMATING NA ANG BAGYO,
+map,map.press_m_to_open_or_close_map.95c511e3,Press M to open or close map,Press M to open or close map,Pindutin ang M para buksan o isara ang mapa,
 map,map.closed.88d86b77,Closed,Closed,Sarado,
 map,map.danger.58d17582,Danger,Danger,Delikado,
 ui,ui.no_description.6934ceeb,No description.,No description.,Walang description.,

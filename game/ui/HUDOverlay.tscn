@@ -64,7 +64,8 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(44.125, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=793912895]
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=940944726]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -72,11 +73,11 @@ offset_top = -178.0
 offset_right = 216.0
 grow_vertical = 0
 
-[node name="Control" type="Control" parent="VBoxContainer" unique_id=480151986]
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1188172320]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=829801906]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2045940499]
 layout_mode = 2
 text = "Esc - Pause
 E - Interact

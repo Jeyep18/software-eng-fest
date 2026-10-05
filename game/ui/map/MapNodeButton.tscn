@@ -3,12 +3,10 @@
 [ext_resource type="Script" uid="uid://dkgy8n48lhw1g" path="res://game/ui/map/MapNodeButton.gd" id="1_6slp4"]
 
 [node name="MapNodeButton" type="Control" unique_id=372931088]
-custom_minimum_size = Vector2(110, 52)
+custom_minimum_size = Vector2(240, 245)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 501.0
-offset_top = 289.0
-offset_right = 611.0
-offset_bottom = 341.0
+offset_right = 240.0
+offset_bottom = 245.0
 mouse_filter = 2
 script = ExtResource("1_6slp4")
