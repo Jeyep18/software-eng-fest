@@ -24,8 +24,54 @@ const NEED_LABELS: Dictionary = {
 	Need.FLASHLIGHT: "Flashlight — dead batteries",
 }
 
+# Stable IDs are saved with leaderboard entries; enum order is not a save format.
+const NEED_IDS: Dictionary = {
+	Need.ROOF: "roof",
+	Need.MEDICINE: "medicine",
+	Need.FOOD: "food",
+	Need.WINDOWS: "windows",
+	Need.WATER: "water",
+	Need.FLASHLIGHT: "flashlight",
+}
+
+const NEED_WEIGHTS: Dictionary = {
+	Need.ROOF: 1,
+	Need.MEDICINE: 2,
+	Need.FOOD: 3,
+	Need.WINDOWS: 1,
+	Need.WATER: 2,
+	Need.FLASHLIGHT: 1,
+}
+const TOTAL_WEIGHT: int = 10
+
 func get_need_label(need: Need) -> String:
 	return LocalizationManager.translate(NEED_LABELS.get(need, str(need)))
+
+func get_need_weight(need: Need) -> int:
+	return int(NEED_WEIGHTS.get(need, 0))
+
+func get_resolved_need_ids() -> Array[String]:
+	var ids: Array[String] = []
+	for need in range(Need.size()):
+		if _resolved.has(need):
+			ids.append(str(NEED_IDS[need]))
+	return ids
+
+func weight_for_ids(need_ids: Array) -> int:
+	var total := 0
+	var seen: Dictionary = {}
+	for need_id in need_ids:
+		if not need_id is String or seen.has(need_id):
+			continue
+		var need: Variant = NEED_IDS.find_key(need_id)
+		if need == null:
+			continue
+		seen[need_id] = true
+		total += get_need_weight(need as Need)
+	return total
+
+func get_weighted_progress() -> int:
+	return weight_for_ids(get_resolved_need_ids())
 #endregion
 
 #region Internal State

@@ -5,7 +5,7 @@ signal language_changed(language_id: String)
 const LANGUAGE_ENGLISH: String = "english"
 const LANGUAGE_TAGALOG: String = "tagalog"
 const SETTINGS_PATH: String = "user://language_settings.cfg"
-const TEXT_CSV_PATH: String = "res://game/localization/game_text.csv"
+const TEXT_CSV_PATH: String = "res://game/localization/game_text_merged.csv"
 
 const LANGUAGE_LABELS: Dictionary = {
 	LANGUAGE_ENGLISH: "English",
@@ -124,8 +124,10 @@ func _load_text_table() -> void:
 		if tagalog_text.is_empty():
 			tagalog_text = source_text
 
-		_english_by_source[source_text] = english_text
-		_tagalog_by_source[source_text] = tagalog_text
+		# Keep source defaults; context-specific aliases use translate_key().
+		if not _english_by_source.has(source_text):
+			_english_by_source[source_text] = english_text
+			_tagalog_by_source[source_text] = tagalog_text
 		if not key.is_empty():
 			_english_by_key[key] = english_text
 			_tagalog_by_key[key] = tagalog_text

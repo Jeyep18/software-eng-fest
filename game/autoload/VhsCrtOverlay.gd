@@ -4,6 +4,8 @@ const VHS_CRT_SHADER: Shader = preload("res://game/shaders/vhs_crt_overlay.gdsha
 
 var _overlay: ColorRect
 var _material: ShaderMaterial
+var _recording_override: bool = false
+var _recording_show_effect: bool = true
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -28,7 +30,18 @@ func _build_overlay() -> void:
 	add_child(_overlay)
 
 func _apply_visibility() -> void:
-	_overlay.visible = VisualSettings.is_vhs_crt_enabled()
+	_overlay.visible = _recording_show_effect if _recording_override else VisualSettings.is_vhs_crt_enabled()
+
+func set_recording_override(enabled: bool, show_effect: bool, capture_time: float) -> void:
+	if enabled and (not DevMode.can_use() or not DevMode.camera_active or not is_finite(capture_time)):
+		return
+	_recording_override = enabled
+	_recording_show_effect = show_effect
+	if _material != null:
+		_material.set_shader_parameter("use_capture_time", enabled)
+		if enabled:
+			_material.set_shader_parameter("capture_time", maxf(capture_time, 0.0))
+	_apply_visibility()
 
 func _apply_quality_profile() -> void:
 	if _material == null:

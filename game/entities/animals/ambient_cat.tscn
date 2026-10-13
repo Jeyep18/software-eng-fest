@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/entities/animals/AmbientAnimal.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://game/assets/animals/cat.glb" id="2_model"]
+[ext_resource type="Texture2D" path="res://game/assets/animals/cat_ginger.png" id="3_ginger"]
+[ext_resource type="Texture2D" path="res://game/assets/animals/cat_gray.png" id="4_gray"]
+[ext_resource type="Texture2D" path="res://game/assets/animals/cat_cream.png" id="5_cream"]
+
+[sub_resource type="StandardMaterial3D" id="Material_ginger"]
+resource_name = "Cat Ginger"
+texture_filter = 0
+albedo_texture = ExtResource("3_ginger")
+metallic_specular = 0.15
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Material_gray"]
+resource_name = "Cat Gray"
+texture_filter = 0
+albedo_texture = ExtResource("4_gray")
+metallic_specular = 0.15
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Material_cream"]
+resource_name = "Cat Cream"
+texture_filter = 0
+albedo_texture = ExtResource("5_cream")
+metallic_specular = 0.15
+roughness = 1.0
+
+[node name="AmbientCat" type="Node3D"]
+script = ExtResource("1_controller")
+material_variants = Array[Material]([SubResource("Material_ginger"), SubResource("Material_gray"), SubResource("Material_cream")])
+
+[node name="Model" parent="." instance=ExtResource("2_model")]
+position = Vector3(0, 0.001, 0)

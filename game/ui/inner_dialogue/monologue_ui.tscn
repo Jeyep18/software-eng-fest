@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgyxg4b0v8p4u"]
 
 [ext_resource type="Script" uid="uid://dstiflxhd0vlr" path="res://game/ui/inner_dialogue/monologue_ui.gd" id="1_3haje"]
-[ext_resource type="Texture2D" uid="uid://6duadbx7anff" path="res://game/assets/npc_portraits/playerInnerThoughts.png" id="2_3haje"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/player/thinking.png" id="2_3haje"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3haje"]
 font_size = 22

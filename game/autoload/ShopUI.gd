@@ -205,6 +205,21 @@ func _finish_close(was_open: bool) -> void:
 func is_open() -> bool:
 	return shop_panel.visible and not _closing
 
+func carry_stock_to_shop(source_path: String, destination_path: String) -> void:
+	var source := _shop_cache.get(source_path) as ShopData
+	if source == null or destination_path.is_empty():
+		return
+	var destination := load(destination_path) as ShopData
+	if destination == null:
+		return
+	var stocked_copy := destination.duplicate(true) as ShopData
+	for item: ShopItem in stocked_copy.items:
+		for source_item: ShopItem in source.items:
+			if item.item_data != null and source_item.item_data != null and item.item_data.item_id == source_item.item_data.item_id:
+				item.stock = source_item.stock
+				break
+	_shop_cache[destination_path] = stocked_copy
+
 # ── Input ──────────────────────────────────────────────────────────────────────
 # ── UI Build ───────────────────────────────────────────────────────────────────
 func _rebuild_item_list() -> void:

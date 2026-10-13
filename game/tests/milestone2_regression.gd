@@ -48,6 +48,9 @@ func _test_localization() -> void:
 	add_child(label)
 	await get_tree().process_frame
 	LocalizationManager.set_language("tagalog")
+	_check(LocalizationManager.translate("Close") == "Close", "general Close translation is not overwritten by Lotto")
+	_check(LocalizationManager.translate_key("lotto.close") == "Isara", "Lotto retains its scoped Close translation")
+	_check(LocalizationManager.translate_key("ui.linda_trade_prompt") == "Ibigay kay Ate Linda ang iyong martilyo para babaan niya ang mga presyo?", "Linda retains her scoped trade prompt translation")
 	_check(label.text == LocalizationManager.translate("Talk to Nanay") and label.text != "Talk to Nanay", "existing label switches to Tagalog")
 	LocalizationManager.set_language("english")
 	_check(label.text == "Talk to Nanay", "label switches back to English")

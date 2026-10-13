@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://e16k2c7scyao" path="res://game/resources/items/broken_radio.tres" id="12_gjccj"]
 [ext_resource type="Resource" uid="uid://bww8ee7xpnnwx" path="res://game/resources/items/dead_flashlight.tres" id="12_tqvld"]
 [ext_resource type="PackedScene" uid="uid://b6qmqp5op0y5c" path="res://game/objects/interactables/TaskCue3D.tscn" id="13_pickup_cue"]
+[ext_resource type="Script" path="res://game/scenes/world/PickupGuidance3D.gd" id="14_guidance"]
+[ext_resource type="NavigationMesh" path="res://game/resources/navigation/pickup_guidance_bodega.tres" id="15_guidance_nav"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjlpf"]
 albedo_color = Color(0, 0, 0, 1)
@@ -141,3 +143,8 @@ prompt_label = "Pickup radio"
 
 [node name="PickupCue" parent="Radio" instance=ExtResource("13_pickup_cue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
+[node name="PickupGuidance" type="Node3D" parent="."]
+script = ExtResource("14_guidance")
+navigation_mesh = ExtResource("15_guidance_nav")
+item_paths = Array[NodePath]([NodePath("../Hammer"), NodePath("../WorldItem"), NodePath("../Radio")])

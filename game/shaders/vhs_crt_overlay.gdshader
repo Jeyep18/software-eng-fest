@@ -3,6 +3,8 @@ shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
 uniform bool overlay = true;
+uniform bool use_capture_time = false;
+uniform float capture_time = 0.0;
 
 uniform float scanlines_opacity : hint_range(0.0, 1.0) = 0.06;
 uniform float scanlines_width : hint_range(0.0, 0.5) = 0.12;
@@ -85,7 +87,8 @@ void fragment() {
 	vec2 uv = warp(SCREEN_UV);
 	vec2 text_uv = uv;
 	vec2 roll_uv = vec2(0.0);
-	float time = roll ? TIME : 0.0;
+	float effect_time = use_capture_time ? capture_time : TIME;
+	float time = roll ? effect_time : 0.0;
 
 	if (pixelate) {
 		text_uv = ceil(uv * resolution) / resolution;
@@ -139,13 +142,13 @@ void fragment() {
 	}
 
 	if (noise_opacity > 0.0) {
-		float band_noise = smoothstep(0.4, 0.5, noise(uv * vec2(2.0, 200.0) + vec2(10.0, TIME * noise_speed)));
-		roll_line *= band_noise * scanlines * clamp(random((ceil(uv * resolution) / resolution) + vec2(TIME * 0.8, 0.0)).x + 0.8, 0.0, 1.0);
+		float band_noise = smoothstep(0.4, 0.5, noise(uv * vec2(2.0, 200.0) + vec2(10.0, effect_time * noise_speed)));
+		roll_line *= band_noise * scanlines * clamp(random((ceil(uv * resolution) / resolution) + vec2(effect_time * 0.8, 0.0)).x + 0.8, 0.0, 1.0);
 		text.rgb = clamp(mix(text.rgb, text.rgb + roll_line, noise_opacity), vec3(0.0), vec3(1.0));
 	}
 
 	if (static_noise_intensity > 0.0) {
-		text.rgb += clamp(random((ceil(uv * resolution) / resolution) + fract(TIME)).x, 0.0, 1.0) * static_noise_intensity;
+		text.rgb += clamp(random((ceil(uv * resolution) / resolution) + fract(effect_time)).x, 0.0, 1.0) * static_noise_intensity;
 	}
 
 	text.rgb *= border(uv);

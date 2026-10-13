@@ -15,6 +15,8 @@ var _rumble_player: AudioStreamPlayer
 var _train_player: AudioStreamPlayer
 var _one_shot_timer: float = 0.0
 var _fade_tweens: Dictionary = {}
+var _recording_dry: bool = false
+var _muted_weather_players: Dictionary = {}
 
 func _ready() -> void:
 	_rain_player = _make_loop_player(LIGHT_RAIN, "StormLightRain")
@@ -40,7 +42,7 @@ func _process(delta: float) -> void:
 		_one_shot_timer = 6.0
 		return
 	var is_ending_scene := _is_ending_scene()
-	if randf() < clamp(progress, 0.25, 0.85):
+	if not _recording_dry and randf() < clamp(progress, 0.25, 0.85):
 		if progress > 0.72 and randf() < 0.35:
 			SFX.thunder_close(-13.0)
 		elif randf() < 0.55:
@@ -50,6 +52,30 @@ func _process(delta: float) -> void:
 	if SceneManager.current_location == "grocery" and randf() < 0.35:
 		SFX.shop_beep()
 	_one_shot_timer = randf_range(10.0, 22.0) * lerpf(1.0, 0.55, progress)
+
+func set_recording_dry(enabled: bool) -> void:
+	if enabled and (not DevMode.can_use() or not DevMode.camera_active):
+		return
+	if _recording_dry == enabled:
+		return
+	_recording_dry = enabled
+	if enabled:
+		var scene := get_tree().current_scene
+		if scene != null:
+			for player in scene.find_children("*", "AudioStreamPlayer3D", true, false):
+				if player.stream == LIGHT_RAIN:
+					_muted_weather_players[player] = player.volume_db
+					player.volume_db = -80.0
+		for player in AudioManager.get_children():
+			if player is AudioStreamPlayer and player.stream in [SFX.THUNDER_CLOSE, SFX.THUNDER_DISTANT, SFX.WIND_GUST]:
+				_muted_weather_players[player] = player.volume_db
+				player.volume_db = -80.0
+	else:
+		for player in _muted_weather_players:
+			if is_instance_valid(player):
+				player.volume_db = _muted_weather_players[player]
+		_muted_weather_players.clear()
+	_update_layers(true)
 
 func _make_loop_player(stream: AudioStream, player_name: String) -> AudioStreamPlayer:
 	var player := AudioStreamPlayer.new()
@@ -81,7 +107,7 @@ func _update_layers(force: bool = false) -> void:
 	var state: String = StormEnroachment.get_state(location)
 	var danger_boost: float = 0.18 if state == "danger" else (0.30 if state == "inaccessible" else 0.0)
 	var intensity: float = clampf(progress + danger_boost + _location_bias(location), 0.0, 1.0)
-	if not active:
+	if not active or _recording_dry:
 		intensity = 0.0
 
 	_fade_to(_rain_player, linear_to_db(lerpf(0.001, 0.28, smoothstep(0.18, 0.72, intensity))) if intensity > 0.18 else -80.0, force)
@@ -104,7 +130,7 @@ func _location_bias(location: String) -> float:
 func _fade_to(player: AudioStreamPlayer, volume_db: float, immediate: bool = false) -> void:
 	if player == null:
 		return
-	if is_equal_approx(player.volume_db, volume_db):
+	if is_equal_approx(player.volume_db, volume_db) and not immediate:
 		return
 	var previous_tween := _fade_tweens.get(player) as Tween
 	if previous_tween != null and previous_tween.is_valid():

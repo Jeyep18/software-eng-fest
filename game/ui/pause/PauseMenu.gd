@@ -41,6 +41,10 @@ func _ready() -> void:
 	hide()
 
 func _input(event: InputEvent) -> void:
+	if DevMode.camera_active and event.is_action_pressed("ui_cancel"):
+		DevMode.stop_camera_mode(true)
+		get_viewport().set_input_as_handled()
+		return
 	if _transitioning or not event.is_action_pressed("ui_cancel"):
 		return
 	for tutorial in get_tree().get_nodes_in_group("tutorial_modal"):
@@ -163,6 +167,7 @@ func _setup_dev_panel() -> void:
 	_dev_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	_dev_panel.hide()
 	_dev_panel.teleport_requested.connect(_on_dev_teleport_requested)
+	_dev_panel.camera_requested.connect(_on_dev_camera_requested)
 	_all_panels.append(_dev_panel)
 	DevMode.enabled_changed.connect(_sync_dev_tab.unbind(1))
 	_sync_dev_tab()
@@ -219,6 +224,7 @@ func _resume_gameplay_input() -> void:
 	get_tree().paused = false
 
 func _prepare_scene_exit() -> void:
+	DevMode.stop_camera_mode(false)
 	if _panel_tween != null and _panel_tween.is_valid():
 		_panel_tween.kill()
 	_transitioning = false
@@ -255,6 +261,31 @@ func _on_dev_teleport_requested(location_id: String) -> void:
 		return
 	_prepare_scene_exit()
 	DevMode.teleport_to(location_id)
+
+func _on_dev_camera_requested() -> void:
+	var player := get_tree().get_first_node_in_group("player") as PlayerV2
+	if not DevMode.start_camera_mode(player, self):
+		_dev_panel.show_camera_unavailable()
+
+func begin_camera_capture() -> void:
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
+	_transitioning = false
+	_input_blocker.hide()
+	_release_focus()
+	hide()
+	CursorState.release_visible(self)
+
+func return_from_camera_capture() -> void:
+	get_tree().paused = true
+	CursorState.request_visible(self)
+	show()
+	$Panel.modulate.a = 1.0
+	$ContentArea.modulate.a = 1.0
+	_transitioning = false
+	_input_blocker.hide()
+	_show_panel(_dev_panel if DevMode.can_use() else settings_panel)
+	_release_focus()
 
 func _on_nav_tutorial() -> void:
 	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()

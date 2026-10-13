@@ -1,20 +1,21 @@
 [gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://cn5y502leh88q"]
 
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="1_vtofp"]
-[ext_resource type="Texture2D" uid="uid://dyhmho3a0tr65" path="res://game/assets/ate_linda_placeholder.jpg" id="2_ylcxj"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_37ufo"]
+[ext_resource type="Texture2D" uid="uid://bp4t8tsank7qd" path="res://game/assets/npc_portraits/stylized/ate_linda/apologetic.png" id="portrait_ate_linda_apologetic"]
+[ext_resource type="Texture2D" uid="uid://da4m54vryuqld" path="res://game/assets/npc_portraits/stylized/ate_linda/speaking.png" id="portrait_ate_linda_speaking"]
 
 [sub_resource type="Resource" id="Resource_xc5m4"]
 script = ExtResource("1_vtofp")
 speaker_name = "Ate Linda"
-expression = ExtResource("2_ylcxj")
+expression = ExtResource("portrait_ate_linda_speaking")
 text = "Oh, iho, ano ang iyong mga kailangan?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ylcxj"]
 script = ExtResource("1_vtofp")
 speaker_name = "Ate Linda"
-expression = ExtResource("2_ylcxj")
+expression = ExtResource("portrait_ate_linda_apologetic")
 text = "Pasensya na at nagtataas ako ng presyo, nagkakaubusan na kasi ngayon ng [b]supplies[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 

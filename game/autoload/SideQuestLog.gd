@@ -25,7 +25,7 @@ func start_mang_nestor_chicken() -> void:
 	if get_quest_state(QUEST_MANG_NESTOR_CHICKEN) != STATE_NOT_STARTED:
 		return
 	_quest_states[QUEST_MANG_NESTOR_CHICKEN] = STATE_ACTIVE
-	side_objective_started.emit("Buy Half Chicken for Mang Nestor")
+	side_objective_started.emit("Buy Half Chicken for Mang Nestor (+1,000 points on delivery)")
 	side_objectives_changed.emit()
 
 func refresh_mang_nestor_chicken() -> void:
@@ -56,12 +56,12 @@ func get_active_objectives() -> Array[Dictionary]:
 		STATE_ACTIVE:
 			result.append({
 				"key": "side_mang_nestor_buy",
-				"label": "Buy Half Chicken for Mang Nestor",
+				"label": "Buy Half Chicken for Mang Nestor (+1,000 points on delivery)",
 			})
 		STATE_READY_TO_TURN_IN:
 			result.append({
 				"key": "side_mang_nestor_return",
-				"label": "Return to Mang Nestor",
+				"label": "Deliver Half Chicken to Mang Nestor (+1,000 points)",
 			})
 	return result
 

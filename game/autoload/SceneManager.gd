@@ -8,13 +8,21 @@ var storm_transition_pending: bool = false
 var transition_generation: int = 0
 
 var _pending_spawn_id: String = ""
+var _visited_locations: Array[String] = []
 
 const LOCATION_ALIASES: Dictionary = {
 	"bodega": "home",
 	"act1":   "home",
 }
 
+const VISIT_ALIASES: Dictionary = {
+	"bodega": "home",
+	"act1": "home",
+	"ate_linda": "tindahan",
+}
+
 const HOME_ROOMS: Array[String] = ["bodega", "home", "act1"]
+const VISITABLE_LOCATIONS: Array[String] = ["home", "act1", "bodega", "tindahan", "ate_linda", "pharmacy", "barangay_hall", "grocery", "mang_romy", "hardware"]
 
 const SCENE_PATHS: Dictionary = {
 	"intro":         "res://game/scenes/intro/IntroSequence.tscn",
@@ -60,6 +68,7 @@ func load_scene(scene_id: String) -> void:
 	if not SCENE_PATHS.has(scene_id):
 		push_error("SceneManager: Unknown scene ID: " + scene_id)
 		return
+	DevMode.stop_camera_mode(false)
 	transition_generation += 1
 	var generation := transition_generation
 	is_travelling = false
@@ -70,6 +79,9 @@ func load_scene(scene_id: String) -> void:
 	if generation != transition_generation:
 		return
 	await TransitionOverlay.fade_from_black()
+	if generation != transition_generation:
+		return
+	_record_visit(scene_id)
 	
 # ── Location Travel (Act 2 preparation loop) ─────────────────────────────────
 
@@ -99,6 +111,7 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 	var origin_for_travel: String = LOCATION_ALIASES.get(current_location, current_location)
 	var target_for_travel: String = LOCATION_ALIASES.get(target_location, target_location)
 	var travel_cost: int = fixed_travel_cost if fixed_travel_cost >= 0 else TravelCalculator.get_travel_time(origin_for_travel, target_for_travel)
+	DevMode.stop_camera_mode(false)
 	is_travelling = true
 	transition_generation += 1
 	var generation := transition_generation
@@ -129,7 +142,20 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 
 	current_location = LOCATION_ALIASES.get(target_location, target_location)
 	is_travelling = false
+	_record_visit(target_location)
 	emit_signal("travel_completed", target_location)
+
+func get_visited_locations() -> Array[String]:
+	var result: Array[String] = []
+	result.assign(_visited_locations)
+	return result
+
+func _record_visit(location_id: String) -> void:
+	if not VISITABLE_LOCATIONS.has(location_id):
+		return
+	var canonical_id: String = VISIT_ALIASES.get(location_id, location_id)
+	if not _visited_locations.has(canonical_id):
+		_visited_locations.append(canonical_id)
 
 func clear_pending_spawn() -> void:
 	_pending_spawn_id = ""
@@ -200,12 +226,14 @@ func _mark_closed(location_id: String) -> void:
 
 # Add to SceneManager.gd
 func reset() -> void:
+	DevMode.stop_camera_mode(false)
 	transition_generation += 1
 	storm_transition_pending = false
 	current_location  = "home"
 	is_travelling     = false
 	has_played_opening = false
 	_pending_spawn_id = ""
+	_visited_locations.clear()
 	danger_zones.clear()
 	closed_zones.clear()
 

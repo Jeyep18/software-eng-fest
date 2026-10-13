@@ -67,6 +67,8 @@ func _populate() -> void:
 		child.queue_free()
 
 	_add_guide_tasks()
+	if NeedsLog.discovery_count() > 0:
+		_add_progress_row()
 
 	for item: Array in _ITEMS:
 		var need:     NeedsLog.Need = item[3]
@@ -97,7 +99,11 @@ func _populate() -> void:
 		# Task label
 		var lbl := Label.new()
 		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		lbl.text = "%s (%s)" % [LocalizationManager.translate(item[0]), LocalizationManager.translate(item[1])]
+		lbl.text = "%s (%s)  ·  %s" % [
+			LocalizationManager.translate(item[0]),
+			LocalizationManager.translate(item[1]),
+			LocalizationManager.trf("Weight: %d", [NeedsLog.get_need_weight(need)]),
+		]
 		lbl.add_theme_color_override("font_color",
 			_COL_RESOLVED if resolved else Color.WHITE)
 		lbl.add_theme_font_size_override("font_size", int(roundi(17.0 * VisualSettings.get_ui_scale())))
@@ -109,6 +115,18 @@ func _populate() -> void:
 		_list.add_child(row)
 
 	call_deferred("_emit_checklist_content_changed")
+
+func _add_progress_row() -> void:
+	var label := Label.new()
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.text = "%s  ·  %s" % [
+		LocalizationManager.trf("Completed: %d / %d needs", [NeedsLog.get_all_resolved().size(), NeedsLog.Need.size()]),
+		LocalizationManager.trf("Preparation: %d / %d points", [NeedsLog.get_weighted_progress(), NeedsLog.TOTAL_WEIGHT]),
+	]
+	label.add_theme_font_size_override("font_size", int(roundi(16.0 * VisualSettings.get_ui_scale())))
+	label.add_theme_color_override("font_color", _COL_RESOLVED)
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_list.add_child(label)
 
 func _emit_checklist_content_changed() -> void:
 	checklist_content_changed.emit()

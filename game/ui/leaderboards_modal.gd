@@ -83,7 +83,7 @@ func _add_header_row() -> void:
 	_add_cell(row, "Player", 0, true)
 	_add_cell(row, "Difficulty", 160 * _table_scale(), true)
 	_add_cell(row, "Score", 100 * _table_scale(), true)
-	_add_cell(row, "Tasks", 90 * _table_scale(), true)
+	_add_cell(row, "Prep", 90 * _table_scale(), true)
 	_add_cell(row, "Time Left", 130 * _table_scale(), true)
 
 func _add_entry_row(rank: int, entry: Dictionary) -> void:
@@ -92,7 +92,7 @@ func _add_entry_row(rank: int, entry: Dictionary) -> void:
 	_add_cell(row, str(entry.get("player_name", "Player")), 0, false)
 	_add_cell(row, _difficulty_label_with_multiplier(str(entry.get("difficulty", "standard"))), 160 * _table_scale(), false)
 	_add_cell(row, "%d" % roundi(float(entry.get("score", 0.0))), 100 * _table_scale(), false)
-	_add_cell(row, "%d / %d" % [int(entry.get("tasks_completed", 0)), NeedsLog.Need.size()], 90 * _table_scale(), false)
+	_add_cell(row, "%d / %d" % [int(entry.get("weighted_preparation", 0)), NeedsLog.TOTAL_WEIGHT], 90 * _table_scale(), false)
 	_add_cell(row, _format_minutes(int(entry.get("remaining_minutes", 0))), 130 * _table_scale(), false)
 
 func _make_row(is_header: bool = false, alternate: bool = false) -> HBoxContainer:

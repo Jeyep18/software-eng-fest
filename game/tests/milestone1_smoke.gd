@@ -187,8 +187,17 @@ func _run() -> void:
 	if not await _wait_until(func(): return _scene_is("ending"), "storm reaches ending"):
 		_finish()
 		return
+	if not await _wait_until(func(): return get_tree().current_scene.get("_awaiting_result_continue"),
+			"ending waits on visible score before name prompt", 300.0):
+		_finish()
+		return
+	_check(get_tree().current_scene.get_node("CanvasLayer/ResultPanel").visible
+		and not get_tree().current_scene.has_node("LeaderboardNamePrompt"), "score remains readable until player continues")
+	var continue_key := InputEventKey.new()
+	continue_key.pressed = true
+	get_tree().current_scene.call("_input", continue_key)
 	if not await _wait_until(func(): return get_tree().current_scene.has_node("LeaderboardNamePrompt"),
-			"ending completes and requests score name", 300.0):
+			"continue opens score name prompt"):
 		_finish()
 		return
 	var prompt := get_tree().current_scene.get_node("LeaderboardNamePrompt")

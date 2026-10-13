@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/entities/animals/AmbientAnimal.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://game/assets/animals/dog.glb" id="2_model"]
+[ext_resource type="Texture2D" path="res://game/assets/animals/dog_charcoal.png" id="3_charcoal"]
+[ext_resource type="Texture2D" path="res://game/assets/animals/dog_brown.png" id="4_brown"]
+[ext_resource type="Texture2D" path="res://game/assets/animals/dog_tan.png" id="5_tan"]
+
+[sub_resource type="StandardMaterial3D" id="Material_charcoal"]
+resource_name = "Dog Charcoal"
+texture_filter = 0
+albedo_texture = ExtResource("3_charcoal")
+metallic_specular = 0.15
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Material_brown"]
+resource_name = "Dog Brown"
+texture_filter = 0
+albedo_texture = ExtResource("4_brown")
+metallic_specular = 0.15
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Material_tan"]
+resource_name = "Dog Tan"
+texture_filter = 0
+albedo_texture = ExtResource("5_tan")
+metallic_specular = 0.15
+roughness = 1.0
+
+[node name="AmbientDog" type="Node3D"]
+script = ExtResource("1_controller")
+species = 1
+walk_speed = 0.59
+material_variants = Array[Material]([SubResource("Material_charcoal"), SubResource("Material_brown"), SubResource("Material_tan")])
+
+[node name="Model" parent="." instance=ExtResource("2_model")]
+position = Vector3(0, 0.001, 0)

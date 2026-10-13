@@ -108,7 +108,7 @@ func _run() -> void:
 	_check(DevMode.add_money(100) and GameState.get_cash() == 100, "money addition uses GameState")
 	_check(DevMode.remove_money(150) and GameState.get_cash() == 0, "money removal stops at zero")
 	var score_count := LeaderboardManager.get_entries().size()
-	LeaderboardManager.record_run("Dev test", 6, 720, "standard")
+	LeaderboardManager.record_run("Dev test", NeedsLog.get_resolved_need_ids(), SideQuestLog.STATE_NOT_STARTED, 720, "standard")
 	_check(LeaderboardManager.get_entries().size() == score_count, "unranked run cannot save score")
 
 	var other_owner := Node.new()
@@ -149,7 +149,7 @@ func _run() -> void:
 	_check(not DevMode.clock_paused and GlobalTimer.is_paused, "disabling releases only developer pause")
 	_check(DevMode.run_unranked, "disabling does not restore score eligibility")
 	_check(not DevMode.add_money(1), "disabled mode refuses commands")
-	LeaderboardManager.record_run("Dev test after disable", 6, 720, "standard")
+	LeaderboardManager.record_run("Dev test after disable", NeedsLog.get_resolved_need_ids(), SideQuestLog.STATE_NOT_STARTED, 720, "standard")
 	_check(LeaderboardManager.get_entries().size() == score_count, "unranked guard persists after disable")
 	DevMode.end_run()
 	_check(DevMode.unlocked and not DevMode.run_unranked, "end run keeps unlock but clears ranking state")

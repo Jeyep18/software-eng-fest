@@ -1,11 +1,18 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://_raw_assets/player_assets/mixamo_base.glb" id="1_model"]
+[ext_resource type="PackedScene" path="res://_raw_assets/npc_assets/psx_animated/MangNestor.glb" id="1_model"]
 [ext_resource type="Script" path="res://game/entities/quest_npcs/MangNestor.gd" id="2_script"]
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_line"]
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="4_ui"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_seq"]
 [ext_resource type="Resource" uid="uid://txgoi7uiy07h" path="res://game/resources/items/tarp.tres" id="6_tarp"]
+
+[ext_resource type="Script" path="res://game/entities/npc/PSXNPCAnimation.gd" id="npc_animation"]
+
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/mang_nestor/concerned.png" id="portrait_mang_nestor_concerned"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/mang_nestor/grateful.png" id="portrait_mang_nestor_grateful"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/mang_nestor/hopeful.png" id="portrait_mang_nestor_hopeful"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/mang_nestor/speaking.png" id="portrait_mang_nestor_speaking"]
 
 [sub_resource type="CylinderShape3D" id="BodyShape"]
 height = 1.7739258
@@ -17,19 +24,22 @@ size = Vector3(1.6, 2.0, 2.2)
 [sub_resource type="Resource" id="OfferLine1"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
+expression = ExtResource("portrait_mang_nestor_hopeful")
 text = "Anak, pwede bang makisuyo? Hindi ako makaalis, hinihintay ko pa asawa ko."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="OfferLine2"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
-text = "Bilhan mo sana ako ng Half Chicken sa Go To Chooks. Nasa tabi lang iyon ng Botika, doon sa may Pharmacy."
+expression = ExtResource("portrait_mang_nestor_speaking")
+text = "Bilhan mo sana ako ng [b]Half Chicken[/b] sa [b]Go To Chooks[/b], katabi lang ng [b]Botika[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="OfferLine3"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
-text = "Eto, PHP 150. Ikaw na bahala sa sukli. Basta sana makauwi kami na may hapunan."
+expression = ExtResource("portrait_mang_nestor_hopeful")
+text = "Eto ang [b]PHP 150[/b] para sa manok. Ikaw na bahala sa sukli. Nagtitiwala akong makakauwi kami na may [b]hapunan[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="OfferSequence"]
@@ -40,7 +50,8 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="WaitingLine"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
-text = "Wala pa? Sige, anak. Nagtitiwala pa rin ako sa'yo. Go To Chooks iyon, katabi lang ng Pharmacy."
+expression = ExtResource("portrait_mang_nestor_hopeful")
+text = "Wala pa? Nagtitiwala pa rin ako sa'yo. Ang [b]Half Chicken[/b] ay sa [b]Go To Chooks[/b], katabi ng [b]Botika[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="WaitingSequence"]
@@ -51,7 +62,8 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="CompleteLine"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
-text = "Ay, salamat. Hindi ko sinabi kanina, pero may extra tarp ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay."
+expression = ExtResource("portrait_mang_nestor_grateful")
+text = "Ay, salamat. May extra [b]tarp[/b] ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="CompleteSequence"]
@@ -62,6 +74,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="FullInventoryLine"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
+expression = ExtResource("portrait_mang_nestor_concerned")
 text = "Naku, puno ang dala mo. Magbawas ka muna para maabot ko sa'yo itong tarp."
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -73,6 +86,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="DoneLine"]
 script = ExtResource("3_line")
 speaker_name = "Mang Nestor"
+expression = ExtResource("portrait_mang_nestor_grateful")
 text = "Salamat ulit, anak. Umuwi ka na rin bago tuluyang lumakas ang hangin."
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -86,7 +100,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [node name="visuals" type="Node3D" parent="."]
 
 [node name="mixamo_base" parent="visuals" instance=ExtResource("1_model")]
-transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+transform = Transform3D(1.16207187, 0, 0, 0, 1.16207187, 0, 0, 0, 1.16207187, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8869629, 0)
@@ -108,3 +122,8 @@ shape = SubResource("InteractShape")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+
+[node name="NPCAnimation" type="Node" parent="."]
+script = ExtResource("npc_animation")
+npc_path = NodePath("../Area3D")
+model_path = NodePath("../visuals/mixamo_base")

@@ -1,61 +1,21 @@
-# EndingSequence.gd
-# Attach to the root node of res://game/scenes/ending/EndingSequence.tscn
-#
-# ── HOW VISUAL CUES WORK ──────────────────────────────────────────────────────
-# Each beat has a "visual_cue_path" — the NodePath to a Node3D that holds the
-# "task completed" version of the prop (planks on window, tarp on roof, etc.).
-#
-# Before each beat fades in, the script does:
-#   visual_cue_node.visible = is_done
-#
-# So if the player DID the task → the cue is shown (planks visible).
-# If the player SKIPPED it     → the cue is hidden (bare window, no tarp, etc.).
-# All cue nodes start hidden by default — the script controls them entirely.
-#
-# ── HOW TO SET CAMERA ANGLES ─────────────────────────────────────────────────
-# Each beat uses an anchor Node3D (e.g. $World3D/WindowArea).
-# In the Godot editor:
-#   1. Position your editor viewport camera exactly how you want the shot.
-#   2. Select the anchor Node3D in the scene tree.
-#   3. In the 3D viewport menu: Perspective → Align Transform with View.
-#   4. The anchor now matches your editor camera — the script tweens to it.
-# Repeat for each of the 6 anchors.
-#
-# ── SCENE TREE ────────────────────────────────────────────────────────────────
-#   EndingSequence (Node)
-#     ├── World3D  (Node3D)
-#     │     ├── WindowArea      (Node3D) ← camera anchor
-#     │     │     └── WindowTaskVisualCue   (Node3D) ← planks model
-#     │     ├── RoofArea        (Node3D) ← camera anchor
-#     │     │     └── RoofTaskVisualCue     (Node3D) ← tarp model
-#     │     ├── BedroomArea     (Node3D) ← camera anchor
-#     │     │     └── MedicineTaskVisualCue (Node3D) ← medicine model
-#     │     ├── KitchenArea     (Node3D) ← camera anchor
-#     │     │     └── FoodTaskVisualCue     (Node3D) ← canned goods model
-#     │     ├── WaterArea       (Node3D) ← camera anchor
-#     │     │     └── WaterTaskVisualCue    (Node3D) ← filled jugs model
-#     │     └── RadioArea       (Node3D) ← camera anchor
-#     │           └── RadioTaskVisualCue    (Node3D) ← radio/flashlight model
-#     ├── EndingCamera (Camera3D)
-#     ├── StormLight   (DirectionalLight3D)
-#     ├── CanvasLayer  (layer = 10)
-#     │     ├── FadeOverlay  (ColorRect — full rect, black)
-#     │     ├── SlideLabel   (Label — centered)
-#     │     └── ResultPanel  (PanelContainer — hidden at start)
-#     │           └── VBoxContainer
-#     │                 ├── TitleLabel  (Label)
-#     │                 ├── SubLabel    (Label)
-#     │                 ├── HSeparator
-#     │                 ├── ItemList    (VBoxContainer)
-#     │                 ├── HSeparator
-#     │                 └── FooterLabel (Label)
-#     └── AudioStreamPlayer
+# The scene keeps visual-only sets. Capture gameplay state before any awaits;
+# presentation beats and leaderboard submission must describe the same run.
 
 extends Node
+
+signal result_continue_requested
 
 const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 const ENDING_STORM: AudioStream = preload("res://game/assets/sfx/soundreality-rain-thunder-sfx-525011.mp3")
+const HOUSE_ENV: Environment = preload("res://game/resources/environments/house1_environment.tres")
+const SHOP_ENV: Environment = preload("res://game/resources/environments/storm_shop_environment.tres")
+const PUBLIC_SHOTS: Dictionary = {
+	"hardware": ["LocationSets/Hardware/Start", "LocationSets/Hardware/Focus", "After the storm, repairing a home still depended on materials a family could reach and afford."],
+	"grocery": ["LocationSets/Grocery/Start", "LocationSets/Grocery/Focus", "The market held supplies, but families needed a way to reach and afford them before the roads closed."],
+	"pharmacy": ["LocationSets/Pharmacy/Start", "LocationSets/Pharmacy/Focus", "Medicine and a meal could be found here, if families could reach the shops in time."],
+	"tindahan": ["LocationSets/Tindahan/Start", "LocationSets/Tindahan/Focus", "At the tindahan, neighbors shared warnings and helped one another prepare."],
+}
 
 # ── Node References ────────────────────────────────────────────────────────────
 @onready var ending_camera: Camera3D          = $EndingCamera
@@ -63,6 +23,8 @@ const ENDING_STORM: AudioStream = preload("res://game/assets/sfx/soundreality-ra
 @onready var slide_label:   Label             = $CanvasLayer/VBoxContainer/SlideLabel
 @onready var result_panel:  Control           = $CanvasLayer/ResultPanel
 @onready var lightning:     SpotLight3D       = $Lights/Lightning
+@onready var world_environment: WorldEnvironment = $Environment/WorldEnvironment
+@onready var house_sun: DirectionalLight3D = $Environment/DirectionalLight3D
 
 @onready var anchor_windows:  Node3D = $World3D/WindowArea
 @onready var anchor_roof:     Node3D = $World3D/RoofArea
@@ -73,11 +35,11 @@ const ENDING_STORM: AudioStream = preload("res://game/assets/sfx/soundreality-ra
 
 # ── Timing ─────────────────────────────────────────────────────────────────────
 const FADE_DURATION:        float = 0.65
-const CAMERA_MOVE_DURATION: float = 1.4
-const SLIDE_HOLD_DURATION:  float = 2.6
+const CAMERA_MOVE_DURATION: float = 7.0
+const CAMERA_ORBIT_ANGLE: float = 1.5
+const SLIDE_HOLD_DURATION:  float = 4.0
 const LABEL_FADE_IN:        float = 0.35
 const LABEL_FADE_OUT:       float = 0.35
-const RESULT_HOLD_DURATION: float = 12.0
 const RESULT_TITLE_DELAY: float = 0.6
 const RESULT_SUBTITLE_DELAY: float = 2.0
 const RESULT_BODY_DELAY: float = 3.6
@@ -98,61 +60,73 @@ var _leaderboard_score_saved: bool = false
 var _lightning_active: bool = true
 var _next_wind_gust_time: float = 0.0
 var _credit_label: Label = null
-var _ending_remaining_minutes: int = -1
+var _continue_label: Label = null
+var _awaiting_result_continue: bool = false
+var _snapshot: Dictionary = {}
+var _camera_tween: Tween
 
 func _ready() -> void:
+	_snapshot = {
+		"resolved_needs": NeedsLog.get_all_resolved().duplicate(),
+		"resolved_ids": NeedsLog.get_resolved_need_ids(),
+		"weighted_progress": NeedsLog.get_weighted_progress(),
+		"boarded_windows": NeedsLog.boarded_window_count(),
+		"nestor_status": SideQuestLog.get_quest_state(SideQuestLog.QUEST_MANG_NESTOR_CHICKEN),
+		"visited": SceneManager.get_visited_locations(),
+		"difficulty_id": GameState.get_difficulty_id(),
+		"difficulty_label": GameState.get_difficulty_label(),
+		"remaining_minutes": LeaderboardManager.consume_remaining_time_snapshot(),
+		"unranked": DevMode.run_unranked,
+	}
 	AudioManager.play_ambience(ENDING_STORM)
 	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 	SLIDES = [
 		{
 			"need":            NeedsLog.Need.WINDOWS,
-			"gamestate_flag":  "",
 			"anchor":          anchor_windows,
 			"visual_cue_path": "World3D/WindowArea/WindowTaskVisualCue",
-			"label_done":      "Matatag ang harang sa bintana, naligtas kami sa malalakas na hangin.",
-			"label_skip":      "Hindi natakpan ang dalawang bintana, kaya pinasok ng hangin at ulan ang bahay.",
+			"label_done":      "Both windows held against the wind.",
+			"label_partial":   "One window had boards; the other still let wind and rain in.",
+			"label_skip":      "Unboarded windows let wind and rain into the house.",
 		},
 		{
 			"need":            NeedsLog.Need.ROOF,
-			"gamestate_flag":  "",
 			"anchor":          anchor_roof,
 			"visual_cue_path": "World3D/RoofArea/RoofTaskVisualCue",
-			"label_done":      "Natakpan ang bubong sa oras, tuyo ang sahig at sala.",
-			"label_skip":      "Hindi natakpan ang bubong, nabasa ang loob ng bahay.",
+			"label_done":      "The patched roof kept rain out of the living room.",
+			"label_skip":      "Rain entered through the unrepaired roof.",
 		},
 		{
 			"need":            NeedsLog.Need.MEDICINE,
-			"gamestate_flag":  "",
 			"anchor":          anchor_medicine,
-			"visual_cue_path": "World3D/BedroomArea/MedicineTaskVisualCue",
-			"label_done":      "Mahimbing ang tulog ni Lola, sapat ang kanyang gamot.",
-			"label_skip":      "Hirap huminga si Lola, wala kaming naibigay na lunas.",
+			"visual_cue_path": "World3D/MedicineTaskVisualCue",
+			"label_done":      "Lola had the medicine she needed through the storm.",
+			"label_skip":      "Lola faced the storm without her needed medicine.",
 		},
 		{
 			"need":            NeedsLog.Need.FOOD,
-			"gamestate_flag":  "",
 			"anchor":          anchor_food,
-			"visual_cue_path": "World3D/KitchenArea/FoodTaskVisualCue",
-			"label_done":      "May laman ang aming sikmura, may lakas kaming lumaban.",
-			"label_skip":      "Wala kaming nakain sa dumating na bagyo.",
+			"visual_cue_path": "World3D/FoodTaskVisualCue",
+			"label_done":      "The family had food ready for the storm.",
+			"label_skip":      "The family had no food set aside when the storm came.",
 		},
 		{
 			"need":            NeedsLog.Need.WATER,
-			"gamestate_flag":  "",
 			"anchor":          anchor_water,
 			"visual_cue_path": "World3D/WaterArea/WaterTaskVisualCue",
-			"label_done":      "May malinis kaming maiinom, ligtas kami sa uhaw.",
-			"label_skip":      "Tuyo ang lalamunan, madumi ang tubig sa paligid.",
+			"label_done":      "Clean water was ready at home.",
+			"label_skip":      "The family had no clean water stored at home.",
 		},
 		{
 			"need":            NeedsLog.Need.FLASHLIGHT,
-			"gamestate_flag":  "",
 			"anchor":          anchor_radio,
 			"visual_cue_path": "World3D/RadioArea/RadioTaskVisualCue",
-			"label_done":      "May liwanag at balita, alam namin ang nangyayari.",
-			"label_skip":      "Nabalot kami ng dilim, bingi kami sa labas ng mundo.",
+			"label_done":      "The radio and flashlight helped the family follow warnings through the dark.",
+			"label_skip":      "With no working radio or flashlight, the family had less light and fewer updates.",
 		},
 	]
+	_append_visited_shots()
+	$LocationSets/Tindahan/NestorVisual.visible = _snapshot["nestor_status"] != SideQuestLog.STATE_NOT_STARTED and _snapshot["nestor_status"] != SideQuestLog.STATE_COMPLETED
 
 	get_tree().paused = false
 	GlobalTimer.pause_timer(self)
@@ -172,6 +146,16 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	_lightning_active = false
+
+func _input(event: InputEvent) -> void:
+	if not _awaiting_result_continue or not _is_continue_input(event):
+		return
+	_awaiting_result_continue = false
+	get_viewport().set_input_as_handled()
+	result_continue_requested.emit()
+
+func _is_continue_input(event: InputEvent) -> bool:
+	return (event is InputEventKey and event.pressed and not event.echo) or (event is InputEventMouseButton and event.pressed) or (event is InputEventJoypadButton and event.pressed) or (event is InputEventScreenTouch and event.pressed)
 
 
 # ── Deferred Start ────────────────────────────────────────────────────────────
@@ -196,50 +180,61 @@ func _start() -> void:
 	_snap_camera_to(SLIDES[0]["anchor"])
 	_run_sequence()
 
+func _append_visited_shots() -> void:
+	var visited: Array = _snapshot["visited"]
+	var quest_status: String = _snapshot["nestor_status"]
+	for location_id in ["hardware", "grocery", "pharmacy", "tindahan"]:
+		if not visited.has(location_id) and not (location_id == "tindahan" and quest_status != SideQuestLog.STATE_NOT_STARTED):
+			continue
+		var shot: Array = PUBLIC_SHOTS[location_id]
+		var text: String = shot[2]
+		if location_id == "tindahan" and quest_status == SideQuestLog.STATE_COMPLETED:
+			text = "Mang Nestor's place outside the tindahan stood empty. He returned home with the chicken, and his family weathered the storm with food on the table."
+		elif location_id == "tindahan" and quest_status != SideQuestLog.STATE_NOT_STARTED:
+			text = "Mang Nestor was still waiting outside the tindahan when the storm came. The promised meal never reached his family; they had no food on the table."
+		SLIDES.append({
+			"anchor": get_node(shot[0]),
+			"focus": get_node(shot[1]),
+			"location_id": location_id,
+			"text": text,
+		})
+
 
 # ── Main Sequence ──────────────────────────────────────────────────────────────
 func _run_sequence() -> void:
 	await get_tree().create_timer(0.3).timeout
 
-	for i in range(SLIDES.size()):
-		var slide:   Dictionary = SLIDES[i]
-		var is_done: bool       = _check_slide_done(slide)
-
-		# Toggle the visual cue WHILE the screen is still black.
-		# The player never sees a pop — the prop is just there when revealed.
-		_apply_visual_cue(slide, is_done)
-
-		# Reveal the room.
-		_play_slide_sfx(slide, is_done)
+	for slide in SLIDES:
+		var is_house: bool = slide.has("need")
+		var is_done: bool = is_house and _check_slide_done(slide)
+		var is_partial: bool = is_house and slide["need"] == NeedsLog.Need.WINDOWS and not is_done and _snapshot["boarded_windows"] == 1
+		_apply_visual_cue(slide, is_done, is_partial)
+		_set_shot_environment(slide.get("location_id", ""))
+		_snap_camera_to(slide["anchor"])
+		if not is_house:
+			ending_camera.look_at(slide["focus"].global_position)
 		await _fade(0.0)
-
-		# Cinematic camera move (skip on first beat — already snapped).
-		if i > 0:
-			await _move_camera_to(slide["anchor"])
-		else:
-			await get_tree().create_timer(0.15).timeout
-
-		# Show the status label (non-blocking fade-in).
-		_start_label(LocalizationManager.translate(slide["label_done"] if is_done else slide["label_skip"]), is_done)
-		if not is_done:
-			_flash_lightning(14.0, 0.12)
-		elif randf() < 0.35:
-			_flash_lightning(8.0, 0.09)
-
-		# Hold on the room.
-		await get_tree().create_timer(SLIDE_HOLD_DURATION).timeout
-
-		# Fade label out, then fade room to black.
+		if is_house:
+			_play_slide_sfx(slide, is_done)
+		var source_text: String = slide.get("text", "")
+		if is_house:
+			source_text = slide["label_partial"] if is_partial else (slide["label_done"] if is_done else slide["label_skip"])
+		var localized_text := LocalizationManager.translate(source_text)
+		_start_label(localized_text)
+		_move_camera_around(slide)
+		await get_tree().create_timer(maxf(SLIDE_HOLD_DURATION, float(localized_text.length()) / 17.0)).timeout
 		await _fade_out_label()
 		await _fade(1.0)
-
-		# Snap to next anchor while black.
-		if i + 1 < SLIDES.size():
-			_snap_camera_to(SLIDES[i + 1]["anchor"])
-
-		await get_tree().create_timer(0.15).timeout
-
+	await _show_closing_line()
 	await _show_result_panel()
+
+func _show_closing_line() -> void:
+	var closing := LocalizationManager.translate("What you prepared mattered. So did the people you remembered. But being strong isn't just enough. Families also deserve protection they can depend on.")
+	_start_label(closing)
+	await _fade(0.0)
+	await get_tree().create_timer(maxf(8.0, float(closing.length()) / 17.0)).timeout
+	await _fade_out_label()
+	await _fade(1.0)
 
 
 # ── Visual Cue System ──────────────────────────────────────────────────────────
@@ -254,7 +249,7 @@ func _hide_all_visual_cues() -> void:
 		else:
 			push_warning("EndingSequence: visual_cue_path not found: " + path)
 
-func _apply_visual_cue(slide: Dictionary, is_done: bool) -> void:
+func _apply_visual_cue(slide: Dictionary, is_done: bool, is_partial: bool = false) -> void:
 	var path: String = slide.get("visual_cue_path", "")
 	if path == "":
 		return
@@ -262,33 +257,45 @@ func _apply_visual_cue(slide: Dictionary, is_done: bool) -> void:
 	if node == null:
 		push_warning("EndingSequence: visual_cue_path not found: " + path)
 		return
-	# Done   → show the completed prop (planks, tarp, medicine, etc.)
-	# Skipped → hide it (bare window, hole in ceiling, empty shelf, etc.)
-	node.visible = is_done
+	node.visible = is_done or is_partial
 
 
 # ── Slide State Check ──────────────────────────────────────────────────────────
 func _check_slide_done(slide: Dictionary) -> bool:
-	var flag: String = slide.get("gamestate_flag", "")
-	if flag != "":
-		return GameState.get(flag) == true
-	var need = slide.get("need")
-	if need != null:
-		return NeedsLog.is_resolved(need)
-	return false
+	return _snapshot["resolved_needs"].has(slide["need"])
 
 
 # ── Camera ─────────────────────────────────────────────────────────────────────
 func _snap_camera_to(anchor: Node3D) -> void:
+	if _camera_tween and _camera_tween.is_running():
+		_camera_tween.kill()
 	ending_camera.global_transform = anchor.global_transform
 
-func _move_camera_to(anchor: Node3D) -> void:
-	var tween: Tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(ending_camera, "global_transform",
-			anchor.global_transform, CAMERA_MOVE_DURATION)
-	await tween.finished
+func _move_camera_around(slide: Dictionary) -> void:
+	# House anchors retain their authored view; town Focus nodes are editable in the scene.
+	var focus: Vector3 = slide["focus"].global_position if slide.has("focus") else ending_camera.global_position - ending_camera.global_basis.z * 3.0
+	var start_offset: Vector3 = ending_camera.global_position - focus
+	_camera_tween = create_tween()
+	_camera_tween.set_trans(Tween.TRANS_SINE)
+	_camera_tween.tween_method(_orbit_camera.bind(focus, start_offset), 0.0, 1.0, CAMERA_MOVE_DURATION)
+
+func _orbit_camera(progress: float, focus: Vector3, start_offset: Vector3) -> void:
+	ending_camera.global_position = focus + Basis(Vector3.UP, deg_to_rad(CAMERA_ORBIT_ANGLE * progress)) * start_offset
+	ending_camera.look_at(focus)
+
+func _set_shot_environment(location_id: String) -> void:
+	var is_house := location_id.is_empty()
+	world_environment.environment = HOUSE_ENV if is_house else SHOP_ENV
+	house_sun.visible = is_house
+	$Environment/VoxelGI.visible = is_house
+	for location_set in $LocationSets.get_children():
+		var active: bool = location_set.name.to_lower() == location_id
+		var sun := location_set.get_node_or_null("Sun") as DirectionalLight3D
+		if sun:
+			sun.visible = active
+		var gi := location_set.get_node_or_null("VoxelGI") as VoxelGI
+		if gi:
+			gi.visible = active
 
 
 # ── Fade ───────────────────────────────────────────────────────────────────────
@@ -300,10 +307,9 @@ func _fade(target_alpha: float) -> void:
 
 
 # ── Label ──────────────────────────────────────────────────────────────────────
-func _start_label(text: String, is_done: bool) -> void:
+func _start_label(text: String) -> void:
 	slide_label.text = text
-	slide_label.add_theme_color_override("font_color",
-			Color(0.55, 0.92, 0.60) if is_done else Color(0.92, 0.38, 0.38))
+	slide_label.add_theme_color_override("font_color", UI_STYLE.TEXT)
 	slide_label.modulate.a = 0.0
 	var t: Tween = create_tween()
 	t.tween_property(slide_label, "modulate:a", 1.0, LABEL_FADE_IN)
@@ -318,15 +324,14 @@ func _fade_out_label() -> void:
 
 # ── Result Panel ───────────────────────────────────────────────────────────────
 func _show_result_panel() -> void:
-	_ending_remaining_minutes = LeaderboardManager.consume_remaining_time_snapshot()
 	_populate_result_panel()
 	fade_overlay.color.a = 1.0
 	result_panel.show()
 	result_panel.modulate.a = 1.0
 	await _reveal_result_message()
-	var music_remaining := AudioManager.get_music_time_remaining()
-	var final_hold := RESULT_HOLD_DURATION if music_remaining < 0.0 else maxf(music_remaining - FADE_DURATION, 0.0)
-	await get_tree().create_timer(final_hold).timeout
+	_continue_label.modulate.a = 1.0
+	_awaiting_result_continue = true
+	await result_continue_requested
 	await _fade(1.0)
 	result_panel.hide()
 	await _submit_leaderboard_score()
@@ -346,15 +351,11 @@ func _show_result_panel() -> void:
 func _submit_leaderboard_score() -> void:
 	if _leaderboard_score_saved:
 		return
-	if _ending_remaining_minutes < 0:
-		_ending_remaining_minutes = LeaderboardManager.consume_remaining_time_snapshot()
-	if DevMode.run_unranked:
+	if _snapshot["unranked"]:
 		_leaderboard_score_saved = true
 		return
 
-	var tasks_completed: int = NeedsLog.get_all_resolved().size()
-	var remaining_minutes: int = _ending_remaining_minutes
-	var prompt_layer := _create_leaderboard_prompt(tasks_completed, remaining_minutes)
+	var prompt_layer := _create_leaderboard_prompt()
 	var name_input: LineEdit = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/NameInput")
 	var submit_button: Button = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/ButtonRow/SubmitButton")
 
@@ -375,24 +376,24 @@ func _submit_leaderboard_score() -> void:
 	if player_name.is_empty():
 		player_name = "Player"
 
-	LeaderboardManager.record_run(player_name, tasks_completed, remaining_minutes, GameState.get_difficulty_id())
+	LeaderboardManager.record_run(player_name, _snapshot["resolved_ids"], _snapshot["nestor_status"], _snapshot["remaining_minutes"], _snapshot["difficulty_id"])
 	SFX.ui_click()
 	_leaderboard_score_saved = true
 	prompt_layer.queue_free()
 
-func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) -> CanvasLayer:
+func _create_leaderboard_prompt() -> CanvasLayer:
 	var layer := CanvasLayer.new()
 	layer.name = "LeaderboardNamePrompt"
 	layer.layer = 50
 
 	var panel := PanelContainer.new()
 	panel.name = "Panel"
-	panel.custom_minimum_size = Vector2(520, 260)
+	panel.custom_minimum_size = Vector2(580, 280)
 	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.offset_left = -260
-	panel.offset_top = -130
-	panel.offset_right = 260
-	panel.offset_bottom = 130
+	panel.offset_left = -290
+	panel.offset_top = -140
+	panel.offset_right = 290
+	panel.offset_bottom = 140
 	layer.add_child(panel)
 	UI_STYLE.apply_panel(panel)
 
@@ -417,11 +418,13 @@ func _create_leaderboard_prompt(tasks_completed: int, remaining_minutes: int) ->
 	UI_STYLE.apply_label(title, false, true)
 
 	var summary := Label.new()
-	summary.text = LocalizationManager.trf("Mode: %s    Tasks: %d / %d    Time left: %s", [
-		GameState.get_difficulty_label(),
-		tasks_completed,
+	summary.text = LocalizationManager.trf("Mode: %s\nNeeds: %d / %d  |  Priority: %d / %d  |  Time left: %s", [
+		_snapshot["difficulty_label"],
+		_snapshot["resolved_ids"].size(),
 		NeedsLog.Need.size(),
-		_format_minutes(remaining_minutes),
+		_snapshot["weighted_progress"],
+		NeedsLog.TOTAL_WEIGHT,
+		_format_minutes(_snapshot["remaining_minutes"]),
 	])
 	summary.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	summary.add_theme_font_size_override("font_size", 18)
@@ -469,26 +472,18 @@ func _populate_result_panel() -> void:
 	var footer_lbl: Label         = result_panel.get_node("VBoxContainer/FooterLabel")
 	var box := result_panel.get_node("VBoxContainer") as VBoxContainer
 
-	var final_completed_count: int = 0
-	for slide in SLIDES:
-		if _check_slide_done(slide):
-			final_completed_count += 1
-
-	title_lbl.text = LocalizationManager.translate("Dumating ang Bagyo.")
+	var resolved_ids: Array = _snapshot["resolved_ids"]
+	var weight: int = _snapshot["weighted_progress"]
+	var nestor_completed: bool = _snapshot["nestor_status"] == SideQuestLog.STATE_COMPLETED
+	var household_title := LocalizationManager.translate(_get_household_title())
+	var promise_title := ""
+	if _snapshot["nestor_status"] != SideQuestLog.STATE_NOT_STARTED:
+		promise_title = LocalizationManager.translate("A Promise Kept" if nestor_completed else "A Promise Unfulfilled")
+	title_lbl.text = household_title if promise_title.is_empty() else household_title + "\n" + promise_title
 	title_lbl.modulate.a = 0.0
 
-	if final_completed_count == SLIDES.size():
-		sub_lbl.text = LocalizationManager.translate("Nakaligtas kami lahat.")
-		sub_lbl.add_theme_color_override("font_color", Color(0.70, 0.86, 0.68))
-	elif final_completed_count >= 4:
-		sub_lbl.text = LocalizationManager.translate("Nandito pa rin kami. Sugatan, pero buhay.")
-		sub_lbl.add_theme_color_override("font_color", Color(0.86, 0.74, 0.52))
-	elif final_completed_count >= 2:
-		sub_lbl.text = LocalizationManager.translate("Mahirap ang gabi. Pero hindi kami sumuko.")
-		sub_lbl.add_theme_color_override("font_color", Color(0.82, 0.66, 0.48))
-	else:
-		sub_lbl.text = LocalizationManager.translate("Hindi lahat ay naihanda. Hindi lahat ay napigilan.")
-		sub_lbl.add_theme_color_override("font_color", Color(0.82, 0.44, 0.42))
+	sub_lbl.text = _get_missing_needs_line(resolved_ids)
+	sub_lbl.add_theme_color_override("font_color", UI_STYLE.TEXT_MUTED)
 	sub_lbl.modulate.a = 0.0
 
 	for child in item_list.get_children():
@@ -520,11 +515,17 @@ func _populate_result_panel() -> void:
 	metrics.add_theme_constant_override("v_separation", 5)
 	summary_box.add_child(metrics)
 	var metric_lines := [
-		LocalizationManager.trf("Prepared: %d / %d", [final_completed_count, NeedsLog.Need.size()]),
-		LocalizationManager.trf("Mode: %s", [GameState.get_difficulty_label()]),
-		LocalizationManager.trf("Time left: %s", [_format_minutes(_ending_remaining_minutes)]),
-		LocalizationManager.translate("Dev Mode run - unranked") if DevMode.run_unranked else LocalizationManager.trf("Score: %d", [roundi(LeaderboardManager.calculate_score(NeedsLog.get_all_resolved().size(), _ending_remaining_minutes, GameState.get_difficulty_id()))]),
+		LocalizationManager.trf("Needs met: %d / %d", [resolved_ids.size(), NeedsLog.Need.size()]),
+		LocalizationManager.trf("Priority weight: %d / %d", [weight, NeedsLog.TOTAL_WEIGHT]),
+		LocalizationManager.trf("Preparation: %d points", [weight * 2000]),
 	]
+	if _snapshot["nestor_status"] != SideQuestLog.STATE_NOT_STARTED:
+		metric_lines.append(LocalizationManager.trf("Mang Nestor: +%d points", [1000 if nestor_completed else 0]))
+	metric_lines.append_array([
+		LocalizationManager.trf("Time: +%d points", [_snapshot["remaining_minutes"]]),
+		LocalizationManager.trf("Mode: %s (x%.1f)", [_snapshot["difficulty_label"], GameState.get_difficulty_score_multiplier(_snapshot["difficulty_id"])]),
+		LocalizationManager.translate("Dev Mode run - unranked") if _snapshot["unranked"] else LocalizationManager.trf("Score: %d", [roundi(LeaderboardManager.calculate_score(resolved_ids, nestor_completed, _snapshot["remaining_minutes"], _snapshot["difficulty_id"]))]),
+	])
 	for metric_text in metric_lines:
 		var metric := Label.new()
 		metric.text = metric_text
@@ -562,6 +563,37 @@ func _populate_result_panel() -> void:
 	_credit_label.add_theme_font_size_override("font_size", 20)
 	_credit_label.add_theme_color_override("font_color", Color(0.58, 0.58, 0.53))
 
+	if _continue_label == null:
+		_continue_label = Label.new()
+		_continue_label.name = "ContinueLabel"
+		_continue_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		box.add_child(_continue_label)
+	_continue_label.text = LocalizationManager.translate("Press any key or button to continue")
+	_continue_label.modulate.a = 0.0
+	_continue_label.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+	_continue_label.add_theme_font_size_override("font_size", 19)
+	_continue_label.add_theme_color_override("font_color", UI_STYLE.TEXT_MUTED)
+
+func _get_household_title() -> String:
+	var weight: int = _snapshot["weighted_progress"]
+	var ids: Array = _snapshot["resolved_ids"]
+	if weight == NeedsLog.TOTAL_WEIGHT:
+		return "A Prepared Home"
+	if weight >= 8 and ids.has("food") and ids.has("water") and ids.has("medicine"):
+		return "Essentials Secured, Gaps Remain"
+	if weight >= 4:
+		return "A Night of Shortages"
+	return "Too Little Prepared"
+
+func _get_missing_needs_line(resolved_ids: Array) -> String:
+	var missing: Array[String] = []
+	for entry in [["food", "food"], ["water", "water"], ["medicine", "Lola's medicine"], ["roof", "roof"], ["windows", "windows"], ["flashlight", "radio and flashlight"]]:
+		if not resolved_ids.has(entry[0]):
+			missing.append(LocalizationManager.translate(entry[1]))
+	if missing.is_empty():
+		return LocalizationManager.translate("All household needs were met.")
+	return LocalizationManager.trf("Still missing at home: %s", [", ".join(missing)])
+
 func _apply_result_ui_style() -> void:
 	UI_STYLE.apply_tree(result_panel)
 	result_panel.custom_minimum_size = Vector2(900, 600)
@@ -578,12 +610,14 @@ func _apply_result_ui_style() -> void:
 
 	var title_lbl := result_panel.get_node("VBoxContainer/TitleLabel") as Label
 	title_lbl.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
-	title_lbl.add_theme_font_size_override("font_size", 34)
+	title_lbl.add_theme_font_size_override("font_size", 30)
 	title_lbl.add_theme_color_override("font_color", Color(0.94, 0.94, 0.90))
+	title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 	var sub_lbl := result_panel.get_node("VBoxContainer/SubLabel") as Label
 	sub_lbl.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
 	sub_lbl.add_theme_font_size_override("font_size", 20)
+	sub_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 	var item_list := result_panel.get_node("VBoxContainer/ItemList") as VBoxContainer
 	item_list.add_theme_constant_override("separation", 8)

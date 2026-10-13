@@ -3,86 +3,89 @@
 [ext_resource type="PackedScene" uid="uid://bvbrqt60x5urm" path="res://_raw_assets/npc_assets/nanay.glb" id="1_xoewr"]
 [ext_resource type="Script" uid="uid://7mcn2aqtqemq" path="res://game/entities/nanay/nanay1.gd" id="2_huqek"]
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_dclit"]
-[ext_resource type="Texture2D" uid="uid://dsdq3wrxsk5jc" path="res://game/assets/npc_portraits/mamawoo.png" id="4_x1yr6"]
-[ext_resource type="Texture2D" uid="uid://kil18kaqrmls" path="res://game/assets/npc_portraits/playerTalking2.png" id="5_x1yr6"]
-[ext_resource type="Texture2D" uid="uid://6duadbx7anff" path="res://game/assets/npc_portraits/playerInnerThoughts.png" id="6_jfkbs"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="6_tmuxm"]
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="7_x1yr6"]
+
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/nanay/concerned.png" id="portrait_nanay_concerned"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/nanay/speaking.png" id="portrait_nanay_speaking"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/nanay/urgent.png" id="portrait_nanay_urgent"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/player/determined.png" id="portrait_player_determined"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/player/speaking.png" id="portrait_player_speaking"]
 
 [sub_resource type="Resource" id="Resource_dclit"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_speaking")
 text = "Anak kamusta, Narinig mo na ba yung balita?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_x1yr6"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "May paparating na bagyo ulit... kailangan nating maghanda."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_tmuxm"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "Mas malakas daw ito kaysa dati, kaya kailangan nating maging maingat."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_8t3t3"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_speaking")
 text = "May kailangan tayong bilhin bago lumakas ang bagyo. Ito ang pera, anak."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_gkn0j"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
-text = "Pag may nakita kang kailangang ayusin sa bahay, bilhin mo agad ang kailangan."
+expression = ExtResource("portrait_nanay_speaking")
+text = "Nasa [b]bodega[/b] ang [b]martilyo[/b], [b]radyo[/b], at [b]flashlight[/b]. Kailangan ng [b]isang baterya bawat isa[/b] ng radyo at flashlight bago ilagay sa [b]istante katabi ni Lola[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_2bejg"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "[i]Inabot ni Nanay ang pera para sa mga kailangang bilhin.[/i] Hindi natin maililigtas lahat, anak. Unahin mo ang pinaka-kailangan."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_6khh6"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "Kasya dapat yan kung maingat ka sa pagbili. Mag-ingat ka ha."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ucdwx"]
 script = ExtResource("3_dclit")
 speaker_name = "Player"
-expression = ExtResource("6_jfkbs")
+expression = ExtResource("portrait_player_speaking")
 text = "Opo Nay. Hahanapin ko kung ano ang kailangan ihanda."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_d6eln"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "Pasensya na anak, hindi ko kayang umalis ng bahay dahil wala mag aalaga sa bunso."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_dt7x6"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "Ikaw lang maaasahan ko anak. Mag-ingat ka ha, bumalik ka agad."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_67bnw"]
 script = ExtResource("3_dclit")
 speaker_name = "Player"
-expression = ExtResource("5_x1yr6")
+expression = ExtResource("portrait_player_determined")
 text = "Ako na po bahala nay."
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -94,7 +97,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="Resource_wdexl"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_speaking")
 text = "Kamusta anak, nabili mo na ba ang mga kailangan?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -106,7 +109,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="Resource_wklle"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_concerned")
 text = "Lumalakas na ang hangin anak, mag-ingat ka."
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -118,7 +121,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="Resource_ysi4t"]
 script = ExtResource("3_dclit")
 speaker_name = "Nanay"
-expression = ExtResource("4_x1yr6")
+expression = ExtResource("portrait_nanay_urgent")
 text = "Huwag ka nang lumabas ulit anak. Malapit na ang bagyo, dito ka nalang at para ligtas."
 metadata/_custom_type_script = "uid://po32410sv037"
 

@@ -64,6 +64,7 @@ func _complete_hammer_trade() -> void:
 	if not InventoryManager.remove_item_by_id("hammer"):
 		return
 	GameState.ate_linda_discount_unlocked = true
+	ShopUi.carry_stock_to_shop(shop_path, discounted_shop_path)
 
 func _show_trade_prompt() -> void:
 	if _choice_modal == null:
@@ -80,7 +81,7 @@ func _show_trade_prompt() -> void:
 func _refresh_trade_text(_language_id: String = "") -> void:
 	if _choice_body == null:
 		return
-	_choice_body.text = LocalizationManager.translate("Give Ate Linda your hammer so she lowers her prices?")
+	_choice_body.text = LocalizationManager.translate_key("ui.linda_trade_prompt", "Give Ate Linda your hammer so she lowers her prices?")
 	_choice_accept_button.text = LocalizationManager.translate("Trade")
 	_choice_decline_button.text = LocalizationManager.translate("Not now")
 
@@ -160,3 +161,4 @@ func _accept_trade() -> void:
 
 func _decline_trade() -> void:
 	_close_trade_prompt()
+	open_active_shop()

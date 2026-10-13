@@ -1,0 +1,577 @@
+category,key,source_text,english,tagalog,notes
+dialogue,dialogue.anak_yung_b_bubong_sa_sala_b_i_nag_aalala_na_ko_.f2c47edf,"Anak, yung [b]bubong sa sala[/b]... [i]nag-aalala na ko dun.[/i]","Nak, the [b]roof in the living room[/b]... I keep telling you, [i]I can't stop worrying about it.[/i]","Nak, yung [b]bubong sa sala[/b]... ilang beses ko nang sinabi, [i]di ako mapakali dun.[/i]",Preserve BBCode tags.
+ui,ui.ano_ba_yan_nak_naku.bffea0e8,Ano ba yan nak. naku,"Aw, nak... oh no.","Ay, nak naman... naku.",
+dialogue,dialogue.nak_ikaw_na_mag_ayos_ng_b_bubong_b_salamat_nak.6dd08b8d,"Nak, ikaw na mag-ayos ng [b]bubong[/b]. Salamat, nak.","Nak, you take care of the [b]roof[/b], okay? Don't put it off again. Thanks, nak.","Nak, ikaw na bahala sa [b]bubong[/b], ha? Wag mo nang ipagpabukas. Salamat, nak.",Preserve BBCode tags.
+ui,ui.bakit_po_inay.80f9dbd8,bakit po inay,"Why, Nay?","Bakit po, 'Nay?",
+ui,ui.ano_ba_naman_yan_ma_jusq.d79f5672,ano ba naman yan ma jusq,"Ugh, Ma. Jusko naman.","Ay, ano ba yan, 'Ma. Jusko naman.",
+dialogue,dialogue.anak_kamusta_narinig_mo_na_ba_yung_balita.0efd3b07,"Anak kamusta, Narinig mo na ba yung balita?","Nak, how are you? Did you hear the news? Knowing you, you probably haven't.","Nak, kamusta? Narinig mo na ba yung balita? Naku, baka di mo pa alam.",
+dialogue,dialogue.may_paparating_na_bagyo_ulit_kailangan_nating_ma.01de2093,May paparating na bagyo ulit... kailangan nating maghanda.,"Another storm's coming, nak. We need to get ready now, no dawdling.","May paparating na namang bagyo, nak. Maghanda na tayo, wag nang magpatumpik-tumpik.",
+ui,ui.mas_malakas_daw_ito_kaysa_dati_kaya_kailangan_na.98f03552,"Mas malakas daw ito kaysa dati, kaya kailangan nating maging maingat.","They say this one's stronger than the last, so we really have to be careful, okay? Okay, nak?","Mas malakas daw 'to kesa dati, kaya mag-ingat tayo, ha? Ha, nak?",
+dialogue,dialogue.may_kailangan_tayong_bilhin_bago_lumakas_ang_bag.866bab7f,"May kailangan tayong bilhin bago lumakas ang bagyo. Ito ang pera, anak.","We need to get a few things before the storm gets worse. Here's the money, nak. Don't lose it.","May bibilhin tayo bago lumakas ang bagyo. Eto yung pera, nak. Wag mong iwawala 'yan.",
+ui,ui.pag_may_nakita_kang_kailangang_ayusin_sa_bahay_b.dbaa05c2,"Pag may nakita kang kailangang ayusin sa bahay, bilhin mo agad ang kailangan.","If you see anything broken in the house, just buy what you need. Don't wait, okay?","Pag may nakita kang sira sa bahay, bilhin mo na agad ang kailangan. Wag nang patagalin, ha?",
+dialogue,dialogue.i_inabot_ni_nanay_ang_pera_para_sa_mga_kailangan.3f35f1e4,"[i]Inabot ni Nanay ang pera para sa mga kailangang bilhin.[/i] Hindi natin maililigtas lahat, anak. Unahin mo ang pinaka-kailangan.","[i]Nanay hands over the money.[/i] We can't save everything, nak. Start with what matters most.","[i]Inabot ni Nanay ang pera.[/i] Hindi natin maaayos lahat, nak. Unahin mo yung pinaka-importante.",
+ui,ui.kasya_dapat_yan_kung_maingat_ka_sa_pagbili_mag_i.ba7500fa,Kasya dapat yan kung maingat ka sa pagbili. Mag-ingat ka ha.,"That should be enough if you don't waste it. Don't go buying random stuff, okay?","Dapat kasya na yan kung hindi ka magwawaldas. Wag kang bibili ng kung ano-ano, ha.",
+ui,ui.opo_nay_hahanapin_ko_kung_ano_ang_kailangan_ihan.60054b23,Opo Nay. Hahanapin ko kung ano ang kailangan ihanda.,"Yes, Nay. I'll look around for what we still need.","Opo, 'Nay. Ako nang bahala maghanap ng mga kailangan.",
+dialogue,dialogue.pasensya_na_anak_hindi_ko_kayang_umalis_ng_bahay.51c90daa,"Pasensya na anak, hindi ko kayang umalis ng bahay dahil wala mag aalaga sa bunso.","Sorry, nak. I can't leave, there's no one to watch Bunso.","Pasensya na, nak. Di ako makaalis, walang magbabantay kay bunso.",
+dialogue,dialogue.ikaw_lang_maaasahan_ko_anak_mag_ingat_ka_ha_buma.5bde0747,"Ikaw lang maaasahan ko anak. Mag-ingat ka ha, bumalik ka agad.","You're the only one I can count on, nak. Be careful, and come straight back. Don't go hanging around anywhere.","Ikaw lang maaasahan ko, nak. Ingat ka, ha, tapos bumalik ka agad. Wag kang tatambay kung saan-saan.",
+ui,ui.ako_na_po_bahala_nay.50da901c,Ako na po bahala nay.,"I'll handle it, Nay.","Ako na po bahala, 'Nay.",
+dialogue,dialogue.kamusta_anak_nabili_mo_na_ba_ang_mga_kailangan.14c1ec3c,"Kamusta anak, nabili mo na ba ang mga kailangan?","How are you, nak? Did you get everything? Nothing forgotten?","Kamusta, nak, nabili mo na ba lahat? Wala kang nakalimutan?",
+dialogue,dialogue.lumalakas_na_ang_hangin_anak_mag_ingat_ka.e63b331c,"Lumalakas na ang hangin anak, mag-ingat ka.","The wind's picking up, nak. Oh, be careful out there, okay!","Lumalakas na yung hangin, nak. Naku, mag-ingat ka, ha!",
+dialogue,dialogue.huwag_ka_nang_lumabas_ulit_anak_malapit_na_ang_b.6776058f,"Huwag ka nang lumabas ulit anak. Malapit na ang bagyo, dito ka nalang at para ligtas.","Don't go out again, nak! The storm's almost here. Stay in where it's safe. How many times do I have to say it?","Wag ka nang lumabas ulit, nak! Malapit na ang bagyo, dito ka na lang para ligtas. Ilang beses ko bang sasabihin?",
+dialogue,dialogue.oy_apo_halika_umupo_ka_muna_sandali.df20a691,"Oy apo, halika. Umupo ka muna sandali. ","Oy, apo, come here. Sit with me for a bit.","Oy, apo, halika. Upo ka muna sandali.",
+dialogue,dialogue.apo_yung_bagyong_paparating_mag_ingat_ka_ha.b631e0dd,Apo yung bagyong paparating mag-ingat ka ha.,"Apo, there's a storm coming, ha. Take care.","Apo, may bagyong paparating, ha. Mag-ingat ka.",
+dialogue,dialogue.opo_lola.7b4fafe8,Opo Lola.,"Yes, Lola.","Opo, Lola.",
+dialogue,dialogue.mabuti_naman_pero_yung_b_gamot_b_ko_huwag_mo_kal.c48ad0a3,Mabuti naman. Pero yung [b]gamot[/b] ko huwag mo kalimutan yung sa [b]botika[/b] ha. ,"That's good. But don't forget my [b]medicine[/b] from the [b]pharmacy[/b], ha.","Mabuti naman. Pero yung [b]gamot[/b] ko, wag mong kalimutan yung sa [b]botika[/b], ha.",Preserve BBCode tags.
+dialogue,dialogue.pag_walang_gamot_mahihirapan_ako_pasensya_na_apo.beef32b6,"Pag walang gamot, mahihirapan ako. Pasensya na apo. ","Without my medicine, it gets really hard for me, apo. Sorry to be a bother.","Naku, apo, pag wala yung gamot ko, hirap talaga ako. Pasensya ka na ha, nakakaabala pa ko sa'yo.",
+dialogue,dialogue.kailangan_ni_lola_ang_b_gamot_b_kailangan_ko_pum.09f4c2a6,Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b].,Lola needs her [b]medicine[/b]. Gotta swing by the [b]pharmacy[/b].,Kailangan ni Lola yung [b]gamot[/b] niya. Dadaan muna ko sa [b]botika[/b].,Preserve BBCode tags.
+dialogue,dialogue.sige_na_apo_pakilagay_na_lang_sa_b_drawer_sa_hig.7aed8a24,"Sige na apo, pakilagay na lang sa [b]drawer sa higaan[/b] yung aking [b]gamot[/b]. ","Okay, apo, just put my [b]medicine[/b] in the [b]drawer by the bed[/b].","Sige na, apo, pakilagay na lang sa [b]drawer sa higaan[/b] yung [b]gamot[/b] ko.",Preserve BBCode tags.
+dialogue,dialogue.yung_b_gamot_b_huwag_mong_kalimutan_apo_i_mahala.ac35a934,"Yung [b]gamot[/b], huwag mong kalimutan apo. [i]Mahalaga yun sa akin.[/i]","My [b]medicine[/b], apo, don't forget it. [i]That one's important to me.[/i]","Yung [b]gamot[/b], ha, apo, wag mong kalimutan. [i]Mahalaga yun sa'kin.[/i]",Preserve BBCode tags.
+dialogue,dialogue.pag_umulan_nang_malakas_at_walang_b_panakip_sa_k.125e97f6,Pag umulan nang malakas at walang [b]panakip sa kisame[/b]... [i]basa lahat tayo dito.[/i] ,If it pours and there's still no [b]cover for the ceiling[/b]... [i]we'll all be soaked in here.[/i],Pag lumakas ang ulan at wala pang [b]panakip sa kisame[/b]... [i]basa tayong lahat dito.[/i],Preserve BBCode tags.
+dialogue,dialogue.sabi_ni_nanay_wala_tayong_b_pagkain_b_para_bukas.c4e1e132,"Sabi ni Nanay, wala tayong [b]pagkain[/b] para bukas. Kailangan kahit [b]de lata[/b].",Nanay said we've got no [b]food[/b] left for tomorrow. Even just [b]canned goods[/b] would do.,"Sabi ni Nanay, wala na tayong [b]pagkain[/b] para bukas. Kahit [b]de lata[/b] lang daw.",Preserve BBCode tags.
+ui,ui.mabuti_na_nandito_na_tayo_dasal_lang_tayo_ngayon.2e7307ec,Mabuti na. Nandito na tayo. Dasal lang tayo ngayon.,Thank goodness. We're all here now. All we can do is pray.,Buti na lang. Nandito na tayo. Dasal na lang ngayon.,
+dialogue,dialogue.oh_iho_ano_ang_iyong_mga_kailangan.03294a2c,"Oh, iho, ano ang iyong mga kailangan?","Oh, iho, what do you need?","Oh, iho, ano'ng kailangan mo?",
+dialogue,dialogue.pasensya_na_at_nagtataas_ako_ng_presyo_nagkakaub.281dbec0,"Pasensya na at nagtataas ako ng presyo, nagkakaubusan na kasi ngayon ng [b]supplies[/b].","Sorry, iho, prices went up. [b]Supplies[/b] are almost gone.","Pasensya na, iho, tumaas na presyo. Paubos na kasi ang [b]supplies[/b].",Preserve BBCode tags.
+ui,ui.ano_ho_yun.977cc03c,Ano ho yun?,"Yes, what is it?",Ano po 'yon?,
+ui,ui.bibili_po_sana_ako_hehe_bukas_po_ba_kayo.79b63965,bibili po sana ako hehe... bukas po ba kayo?,"Um, I wanted to buy something... are you still open?","Bibili po sana ako, hehe... bukas pa po ba kayo?",
+dialogue,dialogue.oo_iho_pili_ka_lang.3a594935,Oo iho pili ka lang,"Sure, iho, go ahead and pick.","Oo, iho, pili ka lang.",
+dialogue,dialogue.bili_na_kayo_at_magsasara_na_ako_halos_naubos_na.a3a8ed3a,"Bili na kayo, at magsasara na ako. Halos naubos na lahat ni Kapitan ang mga [b]supplies[/b].","Buy now, I'm closing soon. The Captain just about cleaned out all the [b]supplies[/b].","Bili na kayo, magsasara na ko. Halos naubos na ni Kapitan lahat ng [b]supplies[/b].",Preserve BBCode tags.
+ui,ui.ikaw_ulit.0f593589,Ikaw ulit?!!,You again?!,Ikaw na naman?!,
+dialogue,dialogue.pero_i_check_mo_sa_una_unahan_baka_ay_mayroon_pa.d2306c16,Pero i-check mo sa una unahan baka ay mayroon pa tira-tirang [b]plywood[/b] doon.,"But check up front, there might still be some [b]plywood[/b] left over.","Pero i-check mo sa unahan, baka may tira pang [b]plywood[/b] dun.",Preserve BBCode tags.
+dialogue,dialogue.oh_ano_mga_kailangan_mo_bilis_may_bagyo_na_papar.d9cc524e,"Oh, ano mga kailangan mo? Bilis, may bagyo na paparating at magsasara na ang [b]grocery[/b].","So, what do you need? Hurry up, the storm's coming and the [b]grocery[/b]'s closing.","Oh, ano'ng kailangan mo? Dalian mo, may bagyo na at magsasara na ang [b]grocery[/b].",Preserve BBCode tags.
+ui,ui.ate_linda_nagtatrabaho_karin_pala_sa_hardware_pa.bcb0e7c7,Ate Linda?? Nagtatrabaho karin pala sa hardware? Paano ka po nakarating dito?!,Ate Linda?? You work at the hardware store too? How'd you even get here?!,Ate Linda?? Dito ka rin pala nagtatrabaho sa hardware? Pa'no ka po napunta dito?!,
+ui,ui.sinong_ate_linda_kita_mo_nag_tatrabaho_ako_dito.3ddd7805,Sinong Ate Linda?! kita mo nag tatrabaho ako dito!,Who's Ate Linda?! Can't you see I work here?!,Sinong Ate Linda?! Hindi ba obvious? Dito ako nagtatrabaho!,
+dialogue,dialogue.ano_po_ang_inyong_kailangan_mabuti_at_naabutan_n.b68fa919,Ano po ang inyong kailangan? Mabuti at naabutan niyo pa ang [b]botika[/b] na bukas.,What can I get you? You're lucky you caught the [b]pharmacy[/b] still open.,Ano po'ng kailangan nila? Buti naabutan nyo pa ang [b]botika[/b] na bukas.,Preserve BBCode tags.
+dialogue,dialogue.ano_pa_hinihintay_mo_iho_bili_na_ng_aming_malina.7f19f19f,"Ano pa hinihintay mo iho, bili na ng aming malinamnam na manok!","What are you waiting for, iho? Come get our juicy chicken!","Ano pang hinihintay mo, iho? Bili na ng masarap naming manok!",
+ui,ui.siguradong_mabubusog_ka_dito_promise.d4da11d8,"Siguradong mabubusog ka dito, promise!","You'll definitely leave full, promise!","Sigurado, mabubusog ka dito, promise!",
+ui,ui.vic_sotto.103e430c,VIC SOTTO?!?!,VIC SOTTO?!?!,VIC SOTTO?!?!,
+ui,ui.hi_hello_heeello.16d29364,hi hello heeello,"Hi, hello, hellooo.","Hi, hello, hellooo.",
+ui,ui.yes_hola.bc756ba9,yes hola?,"Yes, hello?","Yes, hello?",
+ui,ui.wala_man_hehe.c4abb494,wala man hehe,"Nothing, hehe.","Wala naman, hehe.",
+ui,ui.miss_ko_na_kasi_siya.a5c46410,Miss ko na kasi siya...,I just miss them...,Miss ko na kasi siya...,
+ui,ui.signal_3_na_magiging_signal_4_sa_loob_ng_sampung.c64aa9b9,Signal 3 na. Magiging Signal 4 sa loob ng sampung oras. Wala tayong panahon.,It's Signal 3 already. It'll be Signal 4 in ten hours. We're running out of time.,Signal 3 na. Magiging Signal 4 sa loob ng sampung oras. Wala na tayong oras.,
+ui,ui.kailangan_ko_muna_ng_supplies.f5594945,Kailangan ko muna ng supplies.,Gotta stock up on supplies first.,Bili muna ko ng supplies.,
+ui,ui.pwede_ko_na_to_ayusin.51214723,Pwede ko na to ayusin.,I can fix this now.,Pwede ko na to ayusin.,
+ui,ui.naayos_ko_na_ito.aa3767f2,Naayos ko na ito.,I fixed this.,Naayos ko na ito.,
+dialogue,dialogue.hindi_pa_namin_naayos_yung_nasirang_b_bubong_b_n.dcd64c9b,Hindi pa namin naayos yung nasirang [b]bubong[/b] noong nakaraang bagyo.,We still haven't fixed the [b]roof[/b] from the last storm.,Di pa namin naaayos yung [b]bubong[/b] na nasira nung nakaraang bagyo.,Preserve BBCode tags.
+dialogue,dialogue.i_mahirap_ito_kung_hindi_takpan_i.c7ab42b3,[i]Mahirap ito kung hindi takpan.[/i],[i]This is bad if I don't cover it.[/i],[i]Delikado 'to pag di natakpan.[/i],Preserve BBCode tags.
+dialogue,dialogue.kailangan_ko_ng_b_tarp_b_b_pako_b_at_b_martilyo_.40bd46c4,"Kailangan ko ng [b]tarp[/b], [b]pako[/b], at [b]martilyo[/b] para maayos ito.","[b]Tarp[/b], [b]nails[/b], [b]hammer[/b]. That's all I need to patch this up.","[b]Tarp[/b], [b]pako[/b], [b]martilyo[/b]. Yun lang kailangan ko dito.",Preserve BBCode tags.
+dialogue,dialogue.naayos_ko_na_ang_bubong_mabuti_naman_at_hindi_na.a8032f44,"Naayos ko na ang bubong, mabuti naman at hindi na kami mababasa, sana kumapit ito.",Roof's fixed. At least we won't get wet now. I hope it holds.,"Naayos ko na ang bubong. Buti na lang, di na kami mababasa. Sana kumapit 'to.",
+dialogue,dialogue.lalakas_ang_hangin_mamaya_kailangan_ko_b_takpan_.417d14b2,"Lalakas ang hangin mamaya, kailangan ko [b]takpan ang bintana[/b].",The wind's going to get stronger later. I should [b]board up the window[/b].,Lalakas pa ang hangin mamaya. Dapat [b]takpan ang bintana[/b].,Preserve BBCode tags.
+dialogue,dialogue.lalakas_ang_hangin_mamaya_kailangan_ko_b_takpan_.608ce836,"Lalakas ang hangin mamaya, kailangan ko [b]takpan itong bintana[/b].",The wind's going to get stronger later. I should [b]board up this window[/b].,Lalakas pa ang hangin mamaya. Dapat [b]takpan itong bintana[/b].,Preserve BBCode tags.
+dialogue,dialogue.kailangan_ko_ng_b_plywood_b_b_pako_b_at_b_martil.8e0525a5,"Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?","[b]Plywood[/b], [b]nails[/b], [b]hammer[/b]... Where did Papa's hammer go?","[b]Plywood[/b], [b]pako[/b], [b]martilyo[/b]... Asan na kaya yung martilyo ni Papa?",Preserve BBCode tags.
+dialogue,dialogue.kumpleto_na_mga_kailangan_ko_matatakpan_ko_na_it.ffbeae3b,"Kumpleto na mga kailangan ko, matatakpan ko na itong [b]bintana[/b].",That's everything. Now I can board up this [b]window[/b].,Kumpleto na lahat. Matatakpan ko na 'tong [b]bintana[/b].,Preserve BBCode tags.
+dialogue,dialogue.natakpan_ko_na_bintana_sana_kumapit_ito_hanggang.10c52aaa,"Natakpan ko na bintana, sana kumapit ito hanggang sa matapos ang bagyo.",Window's covered. I hope it holds until the storm's over.,Natakpan ko na yung bintana. Sana kumapit 'to hanggang matapos ang bagyo.,
+dialogue,dialogue.wala_pa_ring_pagkain_kailangan_ng_kahit_b_apat_n.26de96bd,"Wala pa ring pagkain. Kailangan ng kahit [b]apat na de lata[/b] — para kay Nanay, Lola, Bunso, at ako.","Still no food. Even just [b]four cans[/b] would do, for Nanay, Lola, Bunso, and me.","Wala pa ring pagkain. Kahit [b]apat na de lata[/b] lang — kay Nanay, Lola, Bunso, tsaka sa'kin.",Preserve BBCode tags.
+dialogue,dialogue.unahin_ko_dapat_ang_b_palengke_b_kung_kaya_pa_ma.c44f7fc3,"Unahin ko dapat ang [b]palengke[/b] kung kaya pa. Mas mura doon, pero mabilis magsara kapag tumaas ang baha.","I should hit the [b]market[/b] first if I still can. It's cheaper there, but it closes fast once the flood rises.","Dapat [b]palengke[/b] muna kung kaya pa. Mas mura dun, pero mabilis magsara pag tumaas ang baha.",Preserve BBCode tags.
+dialogue,dialogue.kung_huli_na_ako_pwede_pa_kay_b_ate_linda_b_mas_.548cc61d,"Kung huli na ako, pwede pa kay [b]Ate Linda[/b] — mas mahal, pero mas malapit.","If I'm too late, there's still [b]Ate Linda[/b]. It's pricier, but closer.","Pag huli na ko, pwede pa kay [b]Ate Linda[/b] — mas mahal nga lang, pero mas malapit.",Preserve BBCode tags.
+dialogue,dialogue.sapat_na_ito_ilalagay_ko_na_sa_b_ref_b_para_mada.057d893f,Sapat na ito. Ilalagay ko na sa [b]ref[/b] para madali makuha kapag kailangan.,That should be enough. I'll put it in the [b]fridge[/b] so it's easy to grab when we need it.,Sapat na 'to. Ilalagay ko na sa [b]ref[/b] para madaling kunin pag kailangan.,Preserve BBCode tags.
+dialogue,dialogue.okay_na_ang_pagkain_hindi_kami_magugutom_sa_loob.458af0c7,Okay na ang pagkain. Hindi kami magugutom sa loob ng bagyo.,Food's all set. We won't go hungry through the storm.,Okay na ang pagkain. Di kami magugutom sa bagyo.,
+dialogue,dialogue.nako_nasira_itong_b_lababo_b_namin_kailangan_ko_.80a52a44,"Nako, nasira itong [b]lababo[/b] namin, kailangan ko ng [b]wrench[/b] para maayos ito.","Oh no, our [b]sink[/b]'s busted. I need a [b]wrench[/b] to fix it.","Naku, sira na yung [b]lababo[/b] namin. Kailangan ko ng [b]wrench[/b] pang-ayos.",Preserve BBCode tags.
+dialogue,dialogue.kailangan_ko_din_ng_b_water_jug_b_para_may_tubig.38fb543e,Kailangan ko din ng [b]water jug[/b] para may tubig kami sa bagyo.,"I'll need a [b]water jug[/b] too, so we've got water during the storm.",Kailangan ko rin ng [b]water jug[/b] para may tubig kami sa bagyo.,Preserve BBCode tags.
+dialogue,dialogue.maayos_ko_na_ang_b_lababo_b_pupunuin_ko_na_rin_a.fb20d583,"Maayos ko na ang [b]lababo[/b], pupunuin ko na rin ang [b]water jug[/b].",I can fix the [b]sink[/b] now. I'll fill the [b]water jug[/b] too.,Maaayos ko na ang [b]lababo[/b]. Pupunuin ko na rin ang [b]water jug[/b].,Preserve BBCode tags.
+task,task.maayos_na_lababo_nalagyan_ko_narin_ang_water_jug.7006d54d,"Maayos na lababo, nalagyan ko narin ang water jug ng tubig.","Sink's fixed, and the water jug's filled.","Okay na ang lababo, napuno ko na rin ang water jug.",
+dialogue,dialogue.yung_b_radyo_b_nasaan_na_kaya.dcc52177,"Yung [b]radyo[/b], nasaan na kaya...","Where's the [b]radio[/b], I wonder...","Yung [b]radyo[/b], asan na kaya...",Preserve BBCode tags.
+dialogue,dialogue.kailangan_ko_muna_b_ayusin_ang_radyo_b_bago_ko_i.2dd3fecc,Kailangan ko muna [b]ayusin ang radyo[/b] bago ko ito ilagay dito.,I have to [b]fix the radio[/b] before I can put it here.,Kailangan ko munang [b]ayusin ang radyo[/b] bago ko 'to mailagay dito.,Preserve BBCode tags.
+dialogue,dialogue.maayos_na_itong_b_radyo_b_ilalagay_ko_muna_ito_d.a8a85779,"Maayos na itong [b]radyo[/b], ilalagay ko muna ito dito.",The [b]radio[/b]'s working. I'll set it here for now.,Gumagana na 'tong [b]radyo[/b]. Dito ko muna ilalagay.,Preserve BBCode tags.
+dialogue,dialogue.may_radyo_na_kami_makakakuha_na_kami_ng_balita_k.1ebaad6c,"May radyo na kami, makakakuha na kami ng balita kahit may bagyo.",We've got a radio now. We'll still get news even in the storm.,"May radyo na kami, may balita na kahit may bagyo.",
+dialogue,dialogue.yung_b_radyo_b_at_b_flashlight_b_nasaan_na_kaya.60d16e6e,"Yung [b]radyo[/b] at [b]flashlight[/b], nasaan na kaya...",Where did the [b]radio[/b] and [b]flashlight[/b] go...,"Yung [b]radyo[/b] tsaka [b]flashlight[/b], asan na kaya...",Preserve BBCode tags.
+dialogue,dialogue.kailangan_ko_muna_b_ayusin_ang_radyo_at_flashlig.a929dda3,Kailangan ko muna [b]ayusin ang radyo at flashlight[/b] para malagay ko dito.,I need to [b]fix the radio and flashlight[/b] before I can put them here.,Kailangan ko munang [b]ayusin ang radyo at flashlight[/b] bago ko mailagay dito.,Preserve BBCode tags.
+dialogue,dialogue.maayos_na_itong_b_radyo_b_at_b_flashlight_b_ilal.d2bf1553,"Maayos na itong [b]radyo[/b] at [b]flashlight[/b], ilalagay ko muna ito dito.",The [b]radio[/b] and [b]flashlight[/b] work now. I'll put them here for now.,Gumagana na 'tong [b]radyo[/b] at [b]flashlight[/b]. Dito ko muna ilalagay.,Preserve BBCode tags.
+item,item.mabuti_din_na_may_flashlight_baka_biglang_mawala.c1ba0634,"Mabuti din na may flashlight, baka biglang mawalan ng kuryente.","Good thing we've got a flashlight, in case the power suddenly goes out.","Buti may flashlight, baka biglang mawalan ng kuryente.",
+dialogue,dialogue.kailangan_ko_muna_bumili_sa_b_botika_b_ng_b_gamo.6a6ebd22,Kailangan ko muna bumili sa [b]botika[/b] ng [b]gamot ni Lola[/b].,Gotta stop by the [b]pharmacy[/b] for [b]Lola's medicine[/b] first.,Dadaan muna ko sa [b]botika[/b] para sa [b]gamot ni Lola[/b].,Preserve BBCode tags.
+dialogue,dialogue.nabili_ko_na_yung_b_gamot_b_mabuti_naman.15dc11dc,"Nabili ko na yung [b]gamot[/b], mabuti naman.",Got the [b]medicine[/b]. Good.,Nabili ko na yung [b]gamot[/b]. Buti naman.,Preserve BBCode tags.
+dialogue,dialogue.meron_na_gamot_si_lola.4dedf8c4,Meron na gamot si lola.,Lola has her medicine now.,Meron nang gamot si Lola.,
+ui,ui.mga_lumang_larawan_namin.ff96c88a,Mga lumang larawan namin...,Our old photos...,Mga lumang larawan namin...,
+ui,ui.kamusta_na_kaya_si_papa_sa_trabaho_niya.37ead094,Kamusta na kaya si papa sa trabaho niya...,I wonder how Papa is doing at work...,Kamusta na kaya si papa sa trabaho niya...,
+item,item.gas_pa_naman_pero_pag_nawalan_ng_kandila_o_flash.5b0df170,"Gas pa naman — pero pag nawalan ng kandila o flashlight, wag nating gamitin 'to sa dilim. Delikado.","There's still gas, but if we run out of candles or the flashlight, let's not use this in the dark. It's dangerous.","May gas pa naman — pero pag naubusan tayo ng kandila o flashlight, wag natin 'tong gamitin sa dilim. Delikado.",
+ui,ui.mahal_na_ang_mga_bilihin.a3338d32,Mahal na ang mga bilihin,Everything's so expensive now.,Grabe na ang mahal ng bilihin ngayon.,
+ui,ui.lahat_ng_ito_order_ni_kap.1ea9ad6d,Lahat ng ito order ni kap?,The Captain ordered all of this?,"Lahat ng 'to, order ni Kap?",
+ui,ui.hindi_man_lang_siya_nag_tira_para_saaming_taumba.f46b6d01,Hindi man lang siya nag tira para saaming taumbayan?,He didn't even leave any for us townspeople?,Wala man lang siyang tinira para sa'ming mga taumbayan?,
+ui,ui.paubos_na_nga_ang_mga_bilihin.f1f38112,Paubos na nga ang mga bilihin...,Everything's almost gone already...,Paubos na nga ang mga paninda...,
+shop,shop.buti_naabutan_ko_pa_na_bukas_itong_hardware_stor.2d85b988,Buti naabutan ko pa na bukas itong hardware store.,Good thing the hardware store's still open.,Buti naabutan ko pa 'tong hardware store na bukas.,
+dialogue,dialogue.pwede_ko_itong_magamit_sa_b_flashlight_b_o_b_rad.2caa5585,Pwede ko itong magamit sa [b]flashlight[/b] o [b]radyo[/b].,I can use this in the [b]flashlight[/b] or [b]radio[/b].,Magagamit ko 'to sa [b]flashlight[/b] o [b]radyo[/b].,Preserve BBCode tags.
+dialogue,dialogue.kulang_ito_ng_b_baterya_b_i_sayang_makikinig_pa_.7e29fd15,"Kulang ito ng [b]baterya[/b]... [i]Sayang, makikinig pa naman sana ako.[/i]","No [b]batteries[/b]... [i]Aw, I was going to listen to it too.[/i]","Walang [b]baterya[/b] 'to... [i]Sayang, makikinig pa naman sana ako.[/i]",Preserve BBCode tags.
+dialogue,dialogue.ayaw_bumukas_ng_b_flashlight_b.771574fe,Ayaw bumukas ng [b]flashlight[/b]...,The [b]flashlight[/b] will not turn on...,Ayaw bumukas ng [b]flashlight[/b]...,Preserve BBCode tags.
+dialogue,dialogue.siguro_kailangan_nito_ng_b_baterya_b.8194ff6a,Siguro kailangan nito ng [b]baterya[/b].,Maybe it's out of [b]batteries[/b].,Baka walang [b]baterya[/b] 'to.,Preserve BBCode tags.
+dialogue,dialogue.bagong_b_baterya_b_pwede_ito_sa_b_flashlight_b_o.b8ca667a,Bagong [b]baterya[/b]. Pwede ito sa [b]flashlight[/b] o [b]radyo[/b].,New [b]batteries[/b]. These work for the [b]flashlight[/b] or the [b]radio[/b].,Bagong [b]baterya[/b]. Pwede 'to sa [b]flashlight[/b] o [b]radyo[/b].,Preserve BBCode tags.
+dialogue,dialogue.yung_b_martilyo_b_ni_tatay.02f6f668,Yung [b]martilyo[/b] ni Tatay.,Tatay's [b]hammer[/b].,Yung [b]martilyo[/b] ni Tatay.,Preserve BBCode tags.
+dialogue,dialogue.i_mabuti_nandito_pa_i.8468a354,[i]Mabuti nandito pa.[/i],"[i]Good, it is still here.[/i]",[i]Mabuti nandito pa.[/i],Preserve BBCode tags.
+dialogue,dialogue.magagamit_ko_ito_sa_b_bubong_b_at_b_bintana_b.64416fe3,Magagamit ko ito sa [b]bubong[/b] at [b]bintana[/b].,I can use this on the [b]roof[/b] and [b]window[/b].,Magagamit ko ito sa [b]bubong[/b] at [b]bintana[/b].,Preserve BBCode tags.
+dialogue,dialogue.mga_b_pako_b.81816768,Mga [b]pako[/b]...,Some [b]nails[/b]...,Mga [b]pako[/b]...,Preserve BBCode tags.
+dialogue,dialogue.kailangan_ito_sa_b_bubong_b_at_b_bintana_b.657cf8dd,Kailangan ito sa [b]bubong[/b] at [b]bintana[/b].,I'll need these for the [b]roof[/b] and [b]window[/b].,Kailangan 'to sa [b]bubong[/b] at [b]bintana[/b].,Preserve BBCode tags.
+dialogue,dialogue.tira_tirang_b_plywood_b_magagamit_ko_ito_sa_b_bi.b05302f8,Tira-tirang [b]plywood[/b]. Magagamit ko ito sa [b]bintana[/b].,Some leftover [b]plywood[/b]. I can use this on the [b]window[/b].,Tira-tirang [b]plywood[/b]. Magagamit ko 'to sa [b]bintana[/b].,Preserve BBCode tags.
+dialogue,dialogue.mga_b_water_jug_b_walang_laman.2aeabb56,Mga [b]water jug[/b] — walang laman.,"Some [b]water jugs[/b], empty.",Mga [b]water jug[/b] — walang laman.,Preserve BBCode tags.
+dialogue,dialogue.puwede_ko_itong_punuin_sa_b_gripo_b.e2a24339,Puwede ko itong punuin sa [b]gripo[/b].,I can fill these up at the [b]faucet[/b].,Mapupuno ko 'to sa [b]gripo[/b].,Preserve BBCode tags.
+dialogue,dialogue.i_libre_pa_i.5e3b1add,[i]Libre pa.[/i],[i]And it is free.[/i],[i]Libre pa.[/i],Preserve BBCode tags.
+dialogue,dialogue.gumagana_na_ang_b_radyo_b_kailangan_ko_itong_ila.079f2359,Gumagana na ang [b]radyo[/b]! Kailangan ko itong ilagay sa [b]shelf na katabi ni Lola[/b].,The [b]radio[/b]'s working! I should put it on the [b]shelf next to Lola[/b].,Gumagana na ang [b]radyo[/b]! Ilalagay ko sa [b]shelf na katabi ni Lola[/b].,Preserve BBCode tags.
+item,item.banana.fc6fae10,Banana,Banana,Saging,
+ui,ui.pagkain_para_kay_chris.6a93a1fe,pagkain para kay Chris.,Food for Chris.,Pagkain para kay Chris.,
+item,item.batteries.0970f9df,Batteries,Batteries,Baterya,
+item,item.batteries.e2f386ed,batteries..,Batteries.,Baterya.,
+item,item.broken_radio.70bf1a7e,Broken Radio,Broken Radio,Sirang Radyo,
+ui,ui.di_nagana_na_radyo.8c4424e0,Di nagana na radyo..,A radio that no longer works.,Di na gumagana ang radyo.,
+item,item.canned_goods.5b38aaad,Canned Goods,Canned Goods,De Lata,
+ui,ui.pagkain_para_sa_pamilya_4_cans_fit_in_one_slot.8605c418,Pagkain para sa pamilya. 4 cans fit in one slot.,Food for the family. 4 cans fit in one slot.,Pagkain para sa pamilya. 4 na lata ang kasya sa isang slot.,
+item,item.dead_flashlight.0bf1c281,Dead Flashlight,Dead Flashlight,Sirang Flashlight,
+item,item.flashlight_na_walang_baterya_lang_kwenta_pa.83d3bf58,Flashlight na walang baterya... lang kwenta pa,A flashlight with no battery... it is useless for now.,Flashlight na walang baterya... wala pang kwenta.,
+item,item.fresh_batteries.da5ff0fe,Fresh Batteries,Fresh Batteries,Bagong Baterya,
+item,item.fresh_batteries.a31c1111,Fresh batteries,Fresh batteries.,Bagong baterya.,
+ui,ui.hammer.7cc918f9,hammer,Hammer,Martilyo,
+ui,ui.yung_martilyo_ni_tatay_mabuti_nandito_pa.2371fb33,Yung martilyo ni Tatay. Mabuti nandito pa.,"Tatay's hammer. Good, it is still here.",Yung martilyo ni Tatay. Mabuti nandito pa.,
+item,item.medicine.cd8c2df2,Medicine,Medicine,Gamot,
+dialogue,dialogue.medicine_for_lola.6c679948,Medicine for lola,Medicine for Lola.,Gamot ni Lola.,
+item,item.nails.e6b6a071,nails,Nails,Pako,
+ui,ui.pako.95fc1bef,pako,Nails.,Pako.,
+item,item.plywood.6e05e2c8,plywood,Plywood,Plywood,
+ui,ui.a_piece_of_wood.1825112c,a piece of wood,A piece of wood.,Isang pirasong kahoy.,
+item,item.tarp.78a365e0,Tarp,Tarp,Tarp,
+item,item.tarpulin.e3d6911e,Tarpulin,Tarpaulin.,Tarpulin.,
+item,item.water_jugs.80fae842,Water Jugs,Water Jugs,Water Jugs,
+task,task.water_containers.ca55a8b9,water containers ,Water containers.,Lalagyan ng tubig.,
+item,item.working_flashlight.ef0b0f8d,working_flashlight,Working Flashlight,Gumaganang Flashlight,
+ui,ui.may_ilaw_na_woohoo.70a6edb7,May ilaw na woohoo,It has light now.,May ilaw na.,
+item,item.working_radio.bd5f8577,Working Radio,Working Radio,Gumaganang Radyo,
+ui,ui.tugtugan_na.1310e048,tugtugan na!,It can play now!,Tugtugan na!,
+item,item.wrench.60a77f2d,Wrench,Wrench,Wrench,
+item,item.whole_chicken.560356fb,Whole Chicken,Whole Chicken,Buong Manok,
+shop,shop.malinamnam_na_manok_ng_go_to_chooks.c5b7adaa,Malinamnam na manok ng Go To Chooks!,Delicious chicken from Go To Chooks!,Malinamnam na manok ng Go To Chooks!,
+item,item.half_chicken.52865b45,Half Chicken,Half Chicken,Kalahating Manok,
+ui,ui.kalahati_lang_pero_masarap_parin_pramis.74c73567,"Kalahati lang pero masarap parin, pramis","Only half, but still tasty, promise.","Kalahati lang pero masarap pa rin, pramis.",
+ui,ui.ate_linda_s_sari_sari.ad4f7158,Ate Linda's Sari-sari,Ate Linda's Sari-sari Store,Sari-sari Store ni Ate Linda,
+ui,ui.medyo_mahal_ang_presyo_ng_bilihin_ngayon.43a7671c,Medyo mahal ang presyo ng bilihin ngayon.,Prices are a bit high right now.,Medyo mahal ang presyo ng bilihin ngayon.,
+shop,shop.groceryshop.8f18bdc8,GroceryShop,Market,Palengke,
+ui,ui.mas_mura_ang_bilihin_dito_medyo_malayo_nga_lang.61dc3d66,"Mas mura ang bilihin dito, medyo malayo nga lang.","Goods are cheaper here, but it is farther away.","Mas mura ang bilihin dito, medyo malayo nga lang.",
+shop,shop.hardware_store.bd4e37b9,Hardware Store,Hardware Store,Hardware Store,
+ui,ui.ano_kaya_pwede_ko_bilihin_para_sa_pagayos_ng_bah.3802d205,Ano kaya pwede ko bilihin para sa pagayos ng bahay.,What can I buy to repair the house?,Ano kaya ang pwede kong bilhin para sa pag-aayos ng bahay?,
+shop,shop.pharmacyshop.655e4b83,PharmacyShop,Pharmacy,Botika,
+dialogue,dialogue.dito_ko_lang_makukuha_yung_gamot_ni_lola.ef22d686,Dito ko lang makukuha yung gamot ni lola..,This is the only place where I can get Lola's medicine.,Dito ko lang makukuha yung gamot ni Lola.,
+shop,shop.go_to_chooks.7036790f,Go To Chooks,Go To Chooks,Go To Chooks,
+item,item.masarap_kahit_walang_chicken.2ebb2d9c,Masarap kahit walang chicken,"Still delicious, even without chicken.",Masarap kahit walang chicken.,
+map,map.home.70f8bb9a,Home,Home,Bahay,
+ui,ui.ate_linda_s.fb7ef833,Ate Linda's,Ate Linda's,Ate Linda's,
+map,map.botika.34f457ad,Botika,Pharmacy,Botika,
+map,map.palengke.bc3c2396,Palengke,Market,Palengke,
+ui,ui.nandito_ka.146afddf,Nandito ka,You are here,Nandito ka,
+map,map.travel_cost_d_min.0d0a8cac,Travel cost: ~%d min,Travel cost: ~%d min,Tagal ng byahe: ~%d min,Preserve format placeholders.
+map,map.danger_zone.0a687325,  ⚠ Danger Zone,  ⚠ Danger Zone,  ⚠ Delikadong lugar,
+ui,ui.closes_early.ee7bc609,  Closes early,  Closes early,  Maagang nagsasara,
+map,map.storm.a49fe775,STORM,STORM,BAGYO,
+map,map.storm_has_arrived.c698595f,STORM HAS ARRIVED,STORM HAS ARRIVED,DUMATING NA ANG BAGYO,
+map,map.press_m_to_open_or_close_map.95c511e3,Press M to open or close map,Press M to open or close map,Pindutin ang M para buksan o isara ang mapa,
+map,map.closed.88d86b77,Closed,Closed,Sarado,
+map,map.danger.58d17582,Danger,Danger,Delikado,
+ui,ui.no_description.6934ceeb,No description.,No description.,Walang description.,
+ui,ui.click_an_item_to_inspect_click_a_second_item_to_.fa4fbd26,"Click an item to inspect.
+Click a second item to combine.","Click an item to inspect.
+Click a second item to combine.","Pumili ng item para tingnan.
+Pumili ng pangalawang item para pagsamahin.",
+ui,ui.these_items_can_t_be_combined.abb0fa94,These items can't be combined.,These items can't be combined.,Hindi pwedeng pagsamahin ang mga item na ito.,
+ui,ui.combine_s.5f66ee41,Combine -> %s,Combine -> %s,Combine -> %s,Preserve format placeholders.
+ui,ui.drag_item_to_discard_slot_if_you_want_to_discard.50c45aa5,Drag item to discard slot if you want to discard it.,Drag item to discard slot if you want to discard it.,I-drag ang item sa discard slot kung gusto mo itong itapon.,
+ui,ui.inventory.300d29fd,Inventory,Inventory,Imbentaryo,
+ui,ui.add_this_item_to_your_backpack.f7c15bb8,Add this item to your backpack?,Add this item to your backpack?,Idagdag ang item na ito sa bag mo?,
+ui,ui.confident_enough.22a04b22,Confident enough?,Confident enough?,Handa ka na?,
+shop,shop.cash.b172adce,Cash:  ₱,Cash:  ₱,Pera:  ₱,
+ui,ui.nabili_s_nasa_bag_mo_na.7dde9f92,Nabili! %s — nasa bag mo na.,Bought! %s is now in your bag.,Nabili! %s — nasa bag mo na.,Preserve format placeholders.
+ui,ui.puno_na_ang_bag_mo_mag_iwan_muna_ng_item.51c092e0,Puno na ang bag mo. Mag-iwan muna ng item.,Your bag is full. Leave an item first.,Puno na ang bag mo. Mag-iwan muna ng item.,
+shop,shop.hindi_sapat_ang_pera_kulang_ng_d.20ac5158,Hindi sapat ang pera. Kulang ng ₱%d.,Not enough money. You are short by ₱%d.,Hindi sapat ang pera. Kulang ng ₱%d.,Preserve format placeholders.
+ui,ui.hindi_nabili.1f7791fe,Hindi nabili.,Could not buy it.,Hindi nabili.,
+shop,shop.pera_php_d.9aae0899,Pera: PHP %d,Cash: PHP %d,Pera: PHP %d,Preserve format placeholders.
+task,task.preparation_checklist.56a7701f,Preparation Checklist,Preparation Checklist,Listahan ng Paghahanda,
+task,task.patch_the_roof.c42fdc0d,Patch the roof,Patch the roof,Takpan ang bubong,
+item,item.tarp_nails_hammer.c22fcfe3,Tarp + nails + hammer,Tarp + nails + hammer,Tarp + pako + martilyo,
+dialogue,dialogue.get_lola_s_medicine.ba850fe7,Get Lola's medicine,Get Lola's medicine,Kunin ang gamot ni Lola,
+ui,ui.pharmacy.2f6c536b,Pharmacy,Pharmacy,Botika,
+shop,shop.store_food.62654ac7,Store food,Store food,Mag-imbak ng pagkain,
+item,item.4x_canned_goods.71880f4b,4x canned goods,4x canned goods,4x de lata,
+item,item.fill_water_jugs.88c4f27f,Fill water jugs,Fill water jugs,Punuin ang water jugs,
+map,map.home_faucet.ec8dc2f6,Home faucet,Home faucet,Gripo sa bahay,
+task,task.board_both_windows.6c437f4c,Board both windows,Board both windows,Takpan ang dalawang bintana,
+item,item.plywood_nails_hammer.7197657f,Plywood + nails + hammer,Plywood + nails + hammer,Plywood + pako + martilyo,
+item,item.assemble_flashlight_radio.2e5e9eca,Assemble flashlight & radio,Assemble flashlight & radio,Ayusin ang flashlight at radyo,
+item,item.flashlight_batteries_radio_batteries.6e34282d,Flashlight + batteries; radio + batteries,Flashlight + batteries; radio + batteries,Flashlight + baterya; radyo + baterya,
+dialogue,dialogue.talk_to_nanay.b204df2b,Talk to Nanay,Talk to Nanay,Kausapin si Nanay,
+dialogue,dialogue.talk_to_lola.d0ec73cd,Talk to Lola,Talk to Lola,Kausapin si Lola,
+ui,ui.explore_around_the_house.9f5abe30,Explore around the house,Explore around the house,Maglibot sa bahay,
+dialogue,dialogue.bubong_leaking_roof.9fb34cf1,Bubong — leaking roof,Roof — leaking,Bubong — tumutulo,
+dialogue,dialogue.gamot_ni_lola_medicine_needed.0d5d3190,Gamot ni Lola — medicine needed,Lola's medicine — needed,Gamot ni Lola — kailangan,
+ui,ui.pagkain_fridge_is_empty.b97b31ed,Pagkain — fridge is empty,Food — fridge is empty,Pagkain — walang laman ang ref,
+task,task.bintana_weak_second_floor_windows.f45ad8f8,Bintana — weak windows,Windows — weak,Bintana — mahina,
+task,task.tubig_no_filled_water_containers.897b237e,Tubig — no filled water containers,Water — containers are empty,Tubig — walang laman ang mga lalagyan,
+item,item.flashlight_dead_batteries.0adeb18b,Flashlight — dead batteries,Flashlight — dead batteries,Flashlight — walang baterya,
+ui,ui.s_remaining.5e2da38b,%s remaining,%s remaining,%s ang natitira,Preserve format placeholders.
+dialogue,dialogue.dumating_ang_bagyo.0e9780db,Dumating ang Bagyo.,The storm arrived.,Dumating ang Bagyo.,
+ui,ui.nakaligtas_kami_lahat.2b32713f,Nakaligtas kami lahat.,We all survived.,Nakaligtas kami lahat.,
+ui,ui.nandito_pa_rin_kami_sugatan_pero_buhay.d79fd01f,"Nandito pa rin kami. Sugatan, pero buhay.","We are still here. Wounded, but alive.","Nandito pa rin kami. Sugatan, pero buhay.",
+ui,ui.mahirap_ang_gabi_pero_hindi_kami_sumuko.7d3b52c7,Mahirap ang gabi. Pero hindi kami sumuko.,The night was hard. But we did not give up.,Mahirap ang gabi. Pero hindi kami sumuko.,
+ui,ui.hindi_lahat_ay_naihanda_hindi_lahat_ay_napigilan.abd89513,Hindi lahat ay naihanda. Hindi lahat ay napigilan.,Not everything was prepared. Not everything was prevented.,Hindi lahat ay naihanda. Hindi lahat ay napigilan.,
+ui,ui.matatag_ang_harang_sa_bintana_naligtas_kami_sa_m.f3ac706e,"Matatag ang harang sa bintana, naligtas kami sa malalakas na hangin.","The window barricade held strong, and we survived the heavy winds.","Matatag ang harang sa bintana, naligtas kami sa malalakas na hangin.",
+ui,ui.hindi_natakpan_ang_dalawang_bintana_kaya_pinasok.1c386783,"Hindi natakpan ang dalawang bintana, kaya pinasok ng hangin at ulan ang bahay.","The two windows were left uncovered, so wind and rain entered the house.","Hindi natakpan ang dalawang bintana, kaya pinasok ng hangin at ulan ang bahay.",
+dialogue,dialogue.natakpan_ang_bubong_sa_oras_tuyo_ang_sahig_at_sa.cc25e175,"Natakpan ang bubong sa oras, tuyo ang sahig at sala.","The roof was covered in time, keeping the floor and living room dry.","Natakpan ang bubong sa oras, tuyo ang sahig at sala.",
+dialogue,dialogue.hindi_natakpan_ang_bubong_nabasa_ang_loob_ng_bah.492e4a69,"Hindi natakpan ang bubong, nabasa ang loob ng bahay.","The roof was left uncovered, and the inside of the house got soaked.","Hindi natakpan ang bubong, nabasa ang loob ng bahay.",
+dialogue,dialogue.mahimbing_ang_tulog_ni_lola_sapat_ang_kanyang_ga.0b48f70b,"Mahimbing ang tulog ni Lola, sapat ang kanyang gamot.",Lola slept peacefully. She had enough medicine.,"Mahimbing ang tulog ni Lola, sapat ang kanyang gamot.",
+dialogue,dialogue.hirap_huminga_si_lola_wala_kaming_naibigay_na_lu.b4cfb76c,"Hirap huminga si Lola, wala kaming naibigay na lunas.",Lola struggled to breathe. We had no medicine to give her.,"Hirap huminga si Lola, wala kaming naibigay na lunas.",
+ui,ui.may_laman_ang_aming_sikmura_may_lakas_kaming_lum.12c02ada,"May laman ang aming sikmura, may lakas kaming lumaban.","We had food in our stomachs, and strength to keep going.","May laman ang aming sikmura, may lakas kaming lumaban.",
+dialogue,dialogue.wala_kaming_nakain_sa_dumating_na_bagyo.bfc70d79,Wala kaming nakain sa dumating na bagyo.,We had nothing to eat when the storm came.,Wala kaming nakain sa dumating na bagyo.,
+ui,ui.may_malinis_kaming_maiinom_ligtas_kami_sa_uhaw.e32b5c80,"May malinis kaming maiinom, ligtas kami sa uhaw.","We had clean water to drink, safe from thirst.","May malinis kaming maiinom, ligtas kami sa uhaw.",
+ui,ui.tuyo_ang_lalamunan_madumi_ang_tubig_sa_paligid.e638aa3e,"Tuyo ang lalamunan, madumi ang tubig sa paligid.","Our throats were dry, surrounded by dirty floodwater.","Tuyo ang lalamunan, madumi ang tubig sa paligid.",
+ui,ui.may_liwanag_at_balita_alam_namin_ang_nangyayari.fce92367,"May liwanag at balita, alam namin ang nangyayari.",We had light and news. We knew what was happening.,"May liwanag at balita, alam namin ang nangyayari.",
+ui,ui.nabalot_kami_ng_dilim_bingi_kami_sa_labas_ng_mun.74c56ad1,"Nabalot kami ng dilim, bingi kami sa labas ng mundo.","Darkness surrounded us, cut off from the outside world.","Nabalot kami ng dilim, bingi kami sa labas ng mundo.",
+ending,ending.save_your_run.ba0356c2,SAVE YOUR RUN,SAVE YOUR RUN,I-SAVE ANG RUN,
+task,task.mode_s_tasks_d_d_time_left_s.702430cd,Mode: %s    Tasks: %d / %d    Time left: %s,Mode: %s    Tasks: %d / %d    Time left: %s,Mode: %s    Gawain: %d / %d    Natitirang oras: %s,Preserve format placeholders.
+ui,ui.enter_player_name.f6f64a38,Enter player name,Enter player name,Ilagay ang pangalan ng player,
+item,item.every_year_an_average_of_20_typhoons_test_our_re.79360862,"Every year, an average of 20 typhoons test our resilience. But while ""flood control projects"" remain sturdy only on paper and political tarpaulins, ordinary citizens are left to swim for their lives.","Every year, an average of 20 typhoons test our resilience. But while ""flood control projects"" remain sturdy only on paper and political tarpaulins, ordinary citizens are left to swim for their lives.","Taon-taon, humigit-kumulang 20 bagyo ang sumusubok sa ating tatag. Pero habang ang mga ""flood control project"" ay matibay lang sa papel at political tarpaulin, ordinaryong mamamayan ang naiiwang lumangoy para mabuhay.",
+ending,ending.safety_is_not_a_privilege_to_be_earned_it_is_a_b.8d3f6038,Safety is not a privilege to be earned. It is a basic accountability of those in power.,Safety is not a privilege to be earned. It is a basic accountability of those in power.,Ang kaligtasan ay hindi pribilehiyong kailangang paghirapan. Ito ay pangunahing pananagutan ng mga nasa kapangyarihan.,
+ui,ui.grocery_market.28bf1b79,Grocery / Market,Market,Palengke,
+ui,ui.grocery.37162abe,Grocery,Grocery,Palengke,
+ui,ui.you_are_here.b900c1e3,You are here,You are here,Nandito ka,
+shop,shop.bought_s_is_now_in_your_bag.7af93b10,Bought! %s is now in your bag.,Bought! %s is now in your bag.,Nabili! %s — nasa bag mo na.,Preserve format placeholders.
+ui,ui.your_bag_is_full_leave_an_item_first.5773e04d,Your bag is full. Leave an item first.,Your bag is full. Leave an item first.,Puno na ang bag mo. Mag-iwan muna ng item.,
+ui,ui.not_enough_money_you_are_short_by_d.0fe33bd0,Not enough money. You are short by ₱%d.,Not enough money. You are short by ₱%d.,Hindi sapat ang pera. Kulang ng ₱%d.,Preserve format placeholders.
+ui,ui.could_not_buy_it.a998592e,Could not buy it.,Could not buy it.,Hindi nabili.,
+shop,shop.cash_php_d.fb090b01,Cash: PHP %d,Cash: PHP %d,Pera: PHP %d,Preserve format placeholders.
+task,task.roof_leaking_roof.59607c33,Roof — leaking roof,Roof — leaking,Bubong — tumutulo,
+dialogue,dialogue.lola_s_medicine_medicine_needed.de948e8a,Lola's medicine — medicine needed,Lola's medicine — needed,Gamot ni Lola — kailangan,
+task,task.food_fridge_is_empty.c220b48e,Food — fridge is empty,Food — fridge is empty,Pagkain — walang laman ang ref,
+task,task.windows_weak_second_floor_windows.ca8e6b80,Windows — weak windows,Windows — weak,Bintana — mahina,
+task,task.bintana_weak_second_floor_windows.7f2b5c91,Bintana — weak second-floor windows,Windows — weak upstairs ones,Bintana — mahina ang mga nasa taas,
+task,task.water_no_filled_water_containers.27bee1f1,Water — no filled water containers,Water — containers are empty,Tubig — walang laman ang mga lalagyan,
+map,map.the_storm_arrived.1c3ec103,The storm arrived.,The storm arrived.,Dumating ang Bagyo.,
+ending,ending.we_all_survived.5c9f2767,We all survived.,We all survived.,Nakaligtas kami lahat.,
+ui,ui.we_are_still_here_wounded_but_alive.8f148da2,"We are still here. Wounded, but alive.","We are still here. Wounded, but alive.","Nandito pa rin kami. Sugatan, pero buhay.",
+ending,ending.the_night_was_hard_but_we_did_not_give_up.0229af2b,The night was hard. But we did not give up.,The night was hard. But we did not give up.,Mahirap ang gabi. Pero hindi kami sumuko.,
+ui,ui.not_everything_was_prepared_not_everything_was_p.4148af6b,Not everything was prepared. Not everything was prevented.,Not everything was prepared. Not everything was prevented.,Hindi lahat ay naihanda. Hindi lahat ay napigilan.,
+task,task.the_window_barricade_held_strong_and_we_survived.11bc4411,"The window barricade held strong, and we survived the heavy winds.","The window barricade held strong, and we survived the heavy winds.","Matatag ang harang sa bintana, naligtas kami sa malalakas na hangin.",
+task,task.the_two_windows_were_left_uncovered_so_wind_and_.5ef25040,"The two windows were left uncovered, so wind and rain entered the house.","The two windows were left uncovered, so wind and rain entered the house.","Hindi natakpan ang dalawang bintana, kaya pinasok ng hangin at ulan ang bahay.",
+task,task.the_roof_was_covered_in_time_keeping_the_floor_a.5dfbcc0a,"The roof was covered in time, keeping the floor and living room dry.","The roof was covered in time, keeping the floor and living room dry.","Natakpan ang bubong sa oras, tuyo ang sahig at sala.",
+task,task.the_roof_was_left_uncovered_and_the_inside_of_th.037797ce,"The roof was left uncovered, and the inside of the house got soaked.","The roof was left uncovered, and the inside of the house got soaked.","Hindi natakpan ang bubong, nabasa ang loob ng bahay.",
+dialogue,dialogue.lola_slept_peacefully_she_had_enough_medicine.6c2a3209,Lola slept peacefully. She had enough medicine.,Lola slept peacefully. She had enough medicine.,"Mahimbing ang tulog ni Lola, sapat ang kanyang gamot.",
+dialogue,dialogue.lola_struggled_to_breathe_we_had_no_medicine_to_.ec897c2d,Lola struggled to breathe. We had no medicine to give her.,Lola struggled to breathe. We had no medicine to give her.,"Hirap huminga si Lola, wala kaming naibigay na lunas.",
+task,task.we_had_food_in_our_stomachs_and_strength_to_keep.502c6d1e,"We had food in our stomachs, and strength to keep going.","We had food in our stomachs, and strength to keep going.","May laman ang aming sikmura, may lakas kaming lumaban.",
+map,map.we_had_nothing_to_eat_when_the_storm_came.0ef21cc2,We had nothing to eat when the storm came.,We had nothing to eat when the storm came.,Wala kaming nakain sa dumating na bagyo.,
+task,task.we_had_clean_water_to_drink_safe_from_thirst.11651b12,"We had clean water to drink, safe from thirst.","We had clean water to drink, safe from thirst.","May malinis kaming maiinom, ligtas kami sa uhaw.",
+task,task.our_throats_were_dry_surrounded_by_dirty_floodwa.cc52fcc6,"Our throats were dry, surrounded by dirty floodwater.","Our throats were dry, surrounded by dirty floodwater.","Tuyo ang lalamunan, madumi ang tubig sa paligid.",
+ui,ui.we_had_light_and_news_we_knew_what_was_happening.060aee0a,We had light and news. We knew what was happening.,We had light and news. We knew what was happening.,"May liwanag at balita, alam namin ang nangyayari.",
+ui,ui.darkness_surrounded_us_cut_off_from_the_outside_.ee59fe44,"Darkness surrounded us, cut off from the outside world.","Darkness surrounded us, cut off from the outside world.","Nabalot kami ng dilim, bingi kami sa labas ng mundo.",
+ui,ui.exit.f83b6fe3,Exit,Exit,Exit,
+ui,ui.x_d.70702b23,x%d,x%d,x%d,Preserve format placeholders.
+ui,ui.barter_only.48d54320,Barter only,Barter only,Barter only,
+ui,ui.out_of_stock.8b78c7ae,Out of stock,Out of stock,Out of stock,
+ui,ui.d.7564f2b3,₱%d,₱%d,₱%d,Preserve format placeholders.
+ui,ui.d.5df29b80,%d,%d,%d,Preserve format placeholders.
+ui,ui.buy.7ceca51f,Buy,Buy,Buy,
+ui,ui.tindero.93ff108b,Tindero,Tindero,Tindero,
+ui,ui.player.e53407cf,Player,Player,Player,
+ui,ui.settings.c7f73bb5,Settings,Settings,Settings,
+ui,ui.reset.44c57abd,Reset,Reset,Reset,
+ui,ui.close.bbfa773e,Close,Close,Close,
+ui,ui.language.89b86ab0,Language,Language,Language,
+ui,ui.vhs_crt.0d25c234,VHS / CRT,VHS / CRT,VHS / CRT,
+ui,ui.enabled.df174a3f,Enabled,Enabled,Enabled,
+ui,ui.ui_scale.3ccf015e,UI Scale,UI Scale,UI Scale,
+ui,ui.d.3701471b,%d%%,%d%%,%d%%,Preserve format placeholders.
+ui,ui.game_credits.9998a382,GAME   CREDITS,GAME   CREDITS,GAME   CREDITS,
+ui,ui.close.dbc87420,CLOSE,CLOSE,CLOSE,
+ui,ui.6_00_am.832a892a,6:00 AM,6:00 AM,6:00 AM,
+ui,ui.12_hours_remaining.993a8dfd,12 hours remaining,12 hours remaining,12 hours remaining,
+ui,ui.esc_pause_e_interact_shift_sprint_tab_open_inven.edac7677,"Esc - Pause
+E - Interact
+Shift - Sprint
+Tab - Open Inventory
+M - Open/Close Map","Esc - Pause
+E - Interact
+Shift - Sprint
+Tab - Open Inventory
+M - Open/Close Map","Esc - Pause
+E - Interact
+Shift - Sprint
+Tab - Open Inventory
+M - Open/Close Map",
+ui,ui.leaderboards.cd53c4fe,LEADERBOARDS,LEADERBOARDS,LEADERBOARDS,
+ui,ui.confirm_clear.495e6da3,CONFIRM CLEAR,CONFIRM CLEAR,CONFIRM CLEAR,
+ui,ui.clear.16ec74fc,CLEAR,CLEAR,CLEAR,
+ui,ui.no_completed_runs_yet.9de0588b,No completed runs yet.,No completed runs yet.,No completed runs yet.,
+ui,ui.combine.30d04e0f,Combine,Combine,Combine,
+ui,ui.discard.36fff63c,Discard,Discard,Discard,
+ui,ui.ahhhhhhhhhhhhhhhhhhhhhhh.d66520c5,AHHHHHHHHHHHHHHHHHHHHHHH ,AHHHHHHHHHHHHHHHHHHHHHHH ,AHHHHHHHHHHHHHHHHHHHHHHH ,
+ui,ui.dialoguedialoguedialoguedialoguedialoguedialogue.71060431,DialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogue,DialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogue,DialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogueDialogue,
+ui,ui.press_e_to_continue.ff638a57,Press E to continue...,Press E to continue...,Press E to continue...,
+ui,ui.destination.1d90c070,Destination: ,Destination: ,Destination: ,
+map,map.travel_time.1f903d23,Travel Time:,Travel Time:,Travel Time:,
+ui,ui.confirm.04a21221,Confirm,Confirm,Confirm,
+ui,ui.cancel.77dfd213,Cancel,Cancel,Cancel,
+ui,ui.end_the_day.82594dad,END THE DAY,END THE DAY,END THE DAY,
+ui,ui.mabataksnmgnbajkgnbaksnakfnkafn.ef31ffef,MABATAKSNMGNBAJKGNBAKSNAKFNKAFN,MABATAKSNMGNBAJKGNBAKSNAKFNKAFN,MABATAKSNMGNBAJKGNBAKSNAKFNKAFN,
+ui,ui.hello_my_ni.8d7f26d8,Hello my ni-,Hello my ni-,Hello my ni-,
+ui,ui.s_s.d5e99a8a,%s (%s),%s (%s),%s (%s),Preserve format placeholders.
+ui,ui.ok.9ce3bd42,OK,OK,OK,
+ui,ui.paused.cd5d07c9,PAUSED,PAUSED,PAUSED,
+ui,ui.resume.b54746f4,▶ Resume,▶ Resume,▶ Resume,
+ui,ui.settings.9249b284,⚙ Settings,⚙ Settings,⚙ Settings,
+ui,ui.tutorial.2701a94c,Tutorial,Tutorial,Tutorial,
+ui,ui.restart.e70027b3,↺ Restart,↺ Restart,↺ Restart,
+ui,ui.quit_to_title.c0985200,QUIT TO TITLE,QUIT TO TITLE,QUIT TO TITLE,
+task,task.objectives.e64e22b1,OBJECTIVES,OBJECTIVES,OBJECTIVES,
+task,task.new_objective.0ae9b5a8,NEW OBJECTIVE,NEW OBJECTIVE,NEW OBJECTIVE,
+task,task.task_complete,TASK COMPLETE,TASK COMPLETE,NATAPOS NA GAWAIN,
+ending,ending.run_summary,RUN SUMMARY,RUN SUMMARY,BUOD NG PAGHAHANDA,
+ending,ending.prepared_count,Prepared: %d / %d,Prepared: %d / %d,Naihanda: %d / %d,Preserve format placeholders.
+ending,ending.mode_label,Mode: %s,Mode: %s,Antas: %s,Preserve format placeholder.
+ending,ending.time_left_label,Time left: %s,Time left: %s,Natitirang oras: %s,Preserve format placeholder.
+ending,ending.score_label,Score: %d,Score: %d,Puntos: %d,Preserve format placeholder.
+ui,ui.d_php.656ddf63,+%d PHP,+%d PHP,+%d PHP,Preserve format placeholders.
+shop,shop.pera_php_0.487d352f,Pera: PHP 0,Pera: PHP 0,Pera: PHP 0,
+ui,ui.700_php.edbc2030,+700 PHP,+700 PHP,+700 PHP,
+ui,ui.tutorial_and_controls.1a2e546b,Tutorial and Controls,Tutorial and Controls,Tutorial and Controls,
+task,task.prepare_your_home_before_the_storm_arrives_watch.28ed1532,"Prepare your home before the storm arrives. Watch your time, money, and checklist.","Prepare your home before the storm arrives. Watch your time, money, and checklist.","Prepare your home before the storm arrives. Watch your time, money, and checklist.",
+ui,ui.do_not_show_again.5e7ddeb3,Do not show again,Do not show again,Do not show again,
+ui,ui.continue.2e026239,Continue,Continue,Continue,
+ui,ui.press_e_to_interact.af75cd21,[Press E to Interact],[Press E to Interact],[Press E to Interact],
+ui,ui.interact_e.5f7a91c2,Interact [E],Interact [E],Interact [E],
+ui,ui.go_outside.6d62b968,go outside,go outside,go outside,
+ui,ui.go_out.52f7f7cc,go out,go out,go out,
+ui,ui.save.508156a3,SAVE,SAVE,SAVE,
+ui,ui.3_netherite_ingots_ateneo_de_naga_university_sof.8d920a23,3 Netherite Ingots - Ateneo de Naga University Software Festival 2026,3 Netherite Ingots - Ateneo de Naga University Software Festival 2026,3 Netherite Ingots - Ateneo de Naga University Software Festival 2026,
+ui,ui.developed_by.afb6389e,developed by,developed by,developed by,
+ui,ui.3_netherite_ingots.af182a12,3 Netherite Ingots,3 Netherite Ingots,3 Netherite Ingots,
+ui,ui.click_anywhere_to_skip.895ab0d0,click anywhere to skip,click anywhere to skip,click anywhere to skip,
+ui,ui.go_back.fa4bd0e8,Go back ,Go back ,Go back ,
+item,item.pickup_radio.3c53d65e,Pickup radio,Pickup radio,Pickup radio,
+ui,ui.go_inside.f2c5c197,Go Inside,Go Inside,Go Inside,
+dialogue,dialogue.place_lola_s_medicine.68e1d862,Place Lola's Medicine,Place Lola's Medicine,Place Lola's Medicine,
+task,task.fill_water_jug.6f7bd521,Fill Water Jug,Fill Water Jug,Fill Water Jug,
+item,item.place_working_radio.4a14b7b8,Place Working Radio,Place Working Radio,Place Working Radio,
+item,item.place_radio_flashlight.251bb13e,Place Radio & Flashlight,Place Radio & Flashlight,Place Radio & Flashlight,
+dialogue,dialogue.bagyong_bahay.8129bfd4,"Bagyong 
+Bahay","Bagyong 
+Bahay","Bagyong 
+Bahay",
+ui,ui.handa_ka_na_ba.3d1d1a77,Handa ka na ba?,Handa ka na ba?,Handa ka na ba?,
+ui,ui.start.7196e7c2,START,START,START,
+ui,ui.credits.338f52ba,CREDITS,CREDITS,CREDITS,
+ui,ui.quit.5860c845,QUIT,QUIT,QUIT,
+ui,ui.tutorial.d814d3e7,TUTORIAL,TUTORIAL,TUTORIAL,
+ui,ui.settings.c4b92432,SETTINGS,SETTINGS,SETTINGS,
+ui,ui.replay_intro.97d655de,REPLAY INTRO,REPLAY INTRO,REPLAY INTRO,
+ui,ui.choose_difficulty.ba41810d,CHOOSE DIFFICULTY,CHOOSE DIFFICULTY,CHOOSE DIFFICULTY,
+map,map.the_storm_will_not_wait.a4a7fdae,The storm will not wait.,The storm will not wait.,The storm will not wait.,
+ui,ui.cancel.1507c40f,CANCEL,CANCEL,CANCEL,
+ui,ui.loading.bb8af242,LOADING,LOADING,LOADING,
+ui,ui.are_you_sure_you_want_to_quit.ac99b4cb,Are you sure you want to quit?,Are you sure you want to quit?,Are you sure you want to quit?,
+ui,ui.quit.1a2285d8,Quit,Quit,Quit,
+ui,ui.pick_up_item.c64fcaec,Pick Up Item,Pick Up Item,Pick Up Item,
+ui,ui.leave.7e3520a9,Leave,Leave,Leave,
+ui,ui.pick_up.4ebd928b,Pick Up,Pick Up,Pick Up,
+ui,ui.press_e_to_pick_up.cd8bbe9e,Press E to pick up ,Press E to pick up ,Press E to pick up ,
+ui,ui.tinulungan_mo_si_ate_linda_kaya_binabaan_niya_pr.3a7224d4,"Tinulungan mo si Ate Linda, kaya binabaan niya presyo para sa'yo.","You helped Ate Linda, so she lowered her prices for you.","Tinulungan mo si Ate Linda, kaya binabaan niya ang presyo para sa'yo.",
+task,task.place_food.cb0aefb8,Place Food,Place Food,Place Food,
+task,task.fix_broken_roof.a1c05f56,Fix Broken Roof,Fix Broken Roof,Fix Broken Roof,
+task,task.do_task.60020326,Do Task,Do Task,Do Task,
+task,task.board_window.f350f5b5,Board Window,Board Window,Board Window,
+ui,ui.go_outside.a9441b53,Go Outside,Go Outside,Go Outside,
+ui,ui.go_to_act1.2d56558e,go to act1,go to act1,go to act1,
+shop,shop.give_ate_linda_your_hammer_so_she_lowers_her_pri.1cd96724,Give Ate Linda your hammer so she lowers her prices?,Give Ate Linda your hammer so she lowers her prices?,Give Ate Linda your hammer so she lowers her prices?,
+ui,ui.trade.b0811e47,Trade,Trade,Trade,
+ui,ui.not_now.e4571490,Not now,Not now,Not now,
+ui,ui.talk_to_ate_linda.0f7b3983,Talk to Ate Linda,Talk to Ate Linda,Talk to Ate Linda,
+ui,ui.buy_from_ate_linda.15cbc63b,Buy from Ate Linda,Buy from Ate Linda,Buy from Ate Linda,
+ui,ui.ate_linda.01af15db,Ate Linda,Ate Linda,Ate Linda,
+dialogue,dialogue.iho_kung_may_martilyo_ka_sana_maayos_ko_itong_is.e2250939,"Iho, kung may [b]martilyo[/b] ka sana, maayos ko itong istante. Kapag natulungan mo ako, [b]bababaan ko presyo[/b] ko sa'yo.","Iho, if you had a [b]hammer[/b], I could fix this shelf. Help me out and I'll [b]lower my prices[/b] for you.","Iho, kung may [b]martilyo[/b] ka lang sana, maaayos ko 'tong istante. Pag natulungan mo ko, [b]babawasan ko presyo[/b] ko para sa'yo.",Preserve BBCode tags.
+ui,ui.ipapahiram_mo_sige_utang_na_loob_ko_to_ibababa_k.cbd68ffa,"Ipapahiram mo? Sige, utang na loob ko 'to. Ibababa ko presyo, pero kailangan mo ng [b]pamalit[/b] kung aayusin mo pa bahay n'yo.","You'll give it to me? Sure, I owe you one. I'll lower my prices, but you'll need a [b]replacement[/b] if you've still got repairs at home.","Ibibigay mo? Sige, utang na loob ko 'to. Babawasan ko presyo, pero maghanap ka muna ng [b]pamalit[/b] kung may aayusin ka pa sa bahay n'yo.",Preserve BBCode tags.
+dialogue,dialogue.salamat_iho_para_sa_yo_mas_mababa_na_presyo.a1f8a875,"Salamat, iho. Para sa'yo, mas mababa na presyo.","Thanks, iho. For you, it's cheaper now.","Salamat, iho. Para sa'yo, mas mababa na presyo.",
+ui,ui.pasensya_na_at_mataas_presyo_kung_may_martilyo_k.9c839390,"Pasensya na at mataas presyo. Kung may [b]martilyo[/b] ka sana para dito sa istante, [b]bababaan ko presyo[/b] ko sa'yo.","Sorry, my prices are high. If you had a [b]hammer[/b] for this shelf, I'd [b]lower them[/b] for you.","Pasensya na, mataas presyo ko. Kung may [b]martilyo[/b] ka lang sana para sa istante na 'to, [b]babawasan ko para sa'yo[/b].",Preserve BBCode tags.
+ui,ui.buy_from_grocery.ebcaff30,Buy from Grocery,Buy from Grocery,Buy from Grocery,
+ui,ui.grocery_girl.f72ddfba,Grocery Girl,Grocery Girl,Grocery Girl,
+ui,ui.buy_from_hardware.00de97ec,Buy from Hardware,Buy from Hardware,Buy from Hardware,
+ui,ui.hardware_girl.f627f3c4,Hardware Girl,Hardware Girl,Hardware Girl,
+dialogue,dialogue.lola.bf580931,Lola,Lola,Lola,
+dialogue,dialogue.nanay.ebe83cb5,Nanay,Nanay,Nanay,
+ui,ui.talk.4e6a710d,Talk,Talk,Talk,
+ui,ui.chris.1001b22c,Chris,Chris,Chris,
+ui,ui.wews.8c714887,Wews,Wews,Wews,
+ui,ui.chris_na_malungkot.3955be38,Chris na malungkot,Chris na malungkot,Chris na malungkot,
+item,item.buy_medicine.c138d836,Buy Medicine,Buy Medicine,Buy Medicine,
+ui,ui.pharmacy_boy.16513445,Pharmacy Boy,Pharmacy Boy,Pharmacy Boy,
+ui,ui.press_e_to_interact.200ee3e8,press E to interact,press E to interact,press E to interact,
+ui,ui.talk_to_mang_nestor.5e0ae7f8,Talk to Mang Nestor,Talk to Mang Nestor,Talk to Mang Nestor,
+ui,ui.mang_nestor.ef33268f,Mang Nestor,Mang Nestor,Mang Nestor,
+dialogue,dialogue.anak_pwede_bang_makisuyo_hindi_ako_makaalis_hini.bf312dc4,"Anak, pwede bang makisuyo? Hindi ako makaalis, hinihintay ko pa asawa ko.","Nak, can I ask a favor? I can't leave yet, I'm still waiting on my asawa.","Nak, pwede bang makisuyo? Di ako makaalis, hinihintay ko pa asawa ko.",
+shop,shop.bilhan_mo_sana_ako_ng_half_chicken_sa_go_to_choo.90dd4c9d,"Bilhan mo sana ako ng Half Chicken sa Go To Chooks. Nasa tabi lang iyon ng Botika, doon sa may Pharmacy.","Could you buy me a Half Chicken from Go To Chooks? It's right next to the Botika, by the Pharmacy.","Bilhan mo naman ako ng Half Chicken sa Go To Chooks. Katabi lang yun ng Botika, dun sa may Pharmacy.",
+ui,ui.eto_php_150_ikaw_na_bahala_sa_sukli_basta_sana_m.3c534d07,"Eto, PHP 150. Ikaw na bahala sa sukli. Basta sana makauwi kami na may hapunan.","Here, PHP 150. Keep the change. I just hope we get to go home with dinner.","Eto, PHP 150. Sa'yo na yung sukli. Basta sana makauwi kami na may hapunan.",
+dialogue,dialogue.wala_pa_sige_anak_nagtitiwala_pa_rin_ako_sa_yo_g.88724c69,"Wala pa? Sige, anak. Nagtitiwala pa rin ako sa'yo. Go To Chooks iyon, katabi lang ng Pharmacy.","Not yet? Okay, nak, I still trust you. It's Go To Chooks, right next to the Pharmacy.","Wala pa? Sige, nak, nagtitiwala pa rin ako sa'yo. Go To Chooks yun, katabi lang ng Pharmacy.",
+item,item.ay_salamat_hindi_ko_sinabi_kanina_pero_may_extra.f2d27b78,"Ay, salamat. Hindi ko sinabi kanina, pero may extra tarp ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay.","Ay, thanks. I didn't say earlier, but I've got an extra tarp in the tricycle. Take it, you folks need it more at home.","Ay, salamat. Di ko nasabi kanina, pero may extra akong tarp sa tricycle. Kunin mo na. Mas kailangan nyo 'to sa bahay.",
+item,item.naku_puno_ang_dala_mo_magbawas_ka_muna_para_maab.150ff5af,"Naku, puno ang dala mo. Magbawas ka muna para maabot ko sa'yo itong tarp.","Oh no, you're carrying too much. Drop something first so I can hand you this tarp.","Naku, puno na dala mo. Magbawas ka muna para maabot ko sa'yo 'tong tarp.",
+dialogue,dialogue.salamat_ulit_anak_umuwi_ka_na_rin_bago_tuluyang_.eb11868a,"Salamat ulit, anak. Umuwi ka na rin bago tuluyang lumakas ang hangin.","Thanks again, nak. Head home too before the wind picks up.","Salamat ulit, nak. Umuwi ka na rin bago pa lumakas ang hangin.",
+ui,ui.stranger.5d603318,Stranger,Stranger,Stranger,
+ui,ui.pasensya_na_kulang_pamasahe_ko_pauwi_may_maiaabo.c9424559,Pasensya na. Kulang pamasahe ko pauwi. May maiaabot ka bang konti?,Sorry. I'm short on fare to get home. Could you spare a little?,Pasensya na po. Kulang pamasahe ko pauwi. Pwede bang makahingi ng konti?,
+ui,ui.salamat_hindi_ko_makakalimutan_to.4940ab4a,Salamat. Hindi ko makakalimutan 'to.,Thank you. I won't forget this.,Salamat. Hindi ko makakalimutan 'to.,
+ui,ui.tambay.fbddbf8c,Tambay,Tambay,Tambay,
+dialogue,dialogue.stress_ka_na_rin_ba_sa_bagyo_yosi_muna_tayo_sa_g.30149cbc,Stress ka na rin ba sa bagyo? Yosi muna tayo sa gilid. Sandali lang.,"Stressed about the storm too, bro? Let's have a smoke on the side. Just a sec.","Stress ka na rin ba sa bagyo, pre? Yosi muna tayo sa gilid. Saglit lang.",
+ui,ui.ayos_na_pero_lumakas_na_ulan_ah_sana_sulit_yung_.92d06b17,"Ayos na. Pero lumakas na ulan, ah. Sana sulit yung pahinga.",All good. The rain's gotten heavier though. Hope the break was worth it.,"Ayos na. Pero lumakas na ang ulan, ah. Sana sulit yung pahinga.",
+ui,ui.ate_maribel.d67803a3,Ate Maribel,Ate Maribel,Ate Maribel,
+shop,shop.kung_manok_hanap_mo_nasa_tabi_lang_ng_botika_yun.e582108b,"Kung manok hanap mo, nasa tabi lang ng Botika yung Go To Chooks.","If you're looking for chicken, Go To Chooks is right next to the Botika.","Kung manok hanap mo, katabi lang ng Botika yung Go To Chooks.",
+ui,ui.naamoy_mo_na_bago_mo_makita_effective_signage_di.f2fe28fb,Naamoy mo na bago mo makita. Effective signage din pala ang gutom.,You smell it before you see it. Hunger really does make effective signage.,Naamoy mo na bago mo makita. Effective signage din pala ang gutom.,
+ui,ui.tauhan_ni_kap.297fed52,Tauhan ni Kap,Tauhan ni Kap,Tauhan ni Kap,
+item,item.utos_lang_ni_kapitan_sabi_niya_bilhin_ko_lahat_n.796ce2d7,"Utos lang ni Kapitan. Sabi niya bilhin ko lahat ng [b]pako[/b], [b]tarp[/b], [b]plywood[/b]... lahat daw kailangan sa barangay.","Captain's orders. He told me to buy all the [b]nails[/b], [b]tarps[/b], [b]plywood[/b]... everything the barangay needs.","Utos lang ni Kapitan. Bilhin ko daw lahat ng [b]pako[/b], [b]tarp[/b], [b]plywood[/b]... lahat ng kailangan sa barangay.",Preserve BBCode tags.
+dialogue,dialogue.hindi_ko_na_tinanong_kung_bakit_sa_bodega_niya_m.8469afec,"Hindi ko na tinanong kung bakit sa bodega niya muna dadalhin. Trabaho lang, iho.","I didn't ask why he's taking it to his storage room first. Just doing my job, iho.","Di ko na tinanong kung bakit sa bodega niya muna dadalhin. Trabaho lang, iho.",
+map,map.palengke_queue_man.9dd3d96d,Palengke Queue Man,Palengke Queue Man,Palengke Queue Man,
+ui,ui.kanina_pa_ako_nakapila_yung_iba_doble_doble_ang_.266a3c96,"Kanina pa ako nakapila. Yung iba, doble-doble ang binibili.",I've been standing in line forever. Some people are buying double.,"Kanina pa ko nakapila. Yung iba, doble-doble ang binibili.",
+ui,ui.kung_kukuha_ka_ng_de_lata_kumuha_ka_lang_ng_kaya.edc3e206,"Kung kukuha ka ng [b]de lata[/b], kumuha ka lang ng [b]kaya mong dalhin[/b]. May kasunod ka pa.","If you're getting [b]canned goods[/b], only take [b]what you can carry[/b]. There's people behind you.","Pag kukuha ka ng [b]de lata[/b], yung [b]kaya mo lang dalhin[/b]. May kasunod ka pa.",Preserve BBCode tags.
+ui,ui.panic_buyer.fbee58d9,Panic Buyer,Panic Buyer,Panic Buyer,
+ui,ui.kailangan_ko_pa_ng_lima_hindi_sampu_paano_kung_i.22a0be66,"Kailangan ko pa ng lima... hindi, sampu! Paano kung isang linggo walang kuryente?","I need five more... no, ten! What if the power's out for a week?","Kailangan ko pa ng lima... hindi, sampu! Paano kung isang linggong walang kuryente?",
+ui,ui.wait_may_budget_pa_ba_ako_ayoko_tingnan.53bac4f2,"Wait, may budget pa ba ako? Ayoko tingnan.","Wait, do I still have enough budget? I don't want to check.","Wait, may budget pa ba ako? Ayoko tingnan.",
+ui,ui.kapitbahay.3a3f0fe3,Kapitbahay,Kapitbahay,Kapitbahay,
+ui,ui.nag_tape_na_ako_ng_bintana_hindi_ko_alam_kung_sc.bd220917,Nag-tape na ako ng bintana. Hindi ko alam kung science o dasal ang gumagana.,I taped up my windows. Not sure if it's science or prayer that's working.,Nag-tape na ko ng bintana. Di ko alam kung science o dasal ang gumagana.,
+ui,ui.tatay_jun.92aee1b3,Tatay Jun,Tatay Jun,Tatay Jun,
+dialogue,dialogue.lahat_naghahanap_ng_pako_ngayon_parang_exam_pero.072bae89,"Lahat naghahanap ng pako ngayon. Parang exam, pero bubong ang reviewer.","Everyone's looking for nails right now. It's like an exam, except the roof is the reviewer.","Lahat naghahanap ng pako ngayon. Parang exam, tapos bubong ang reviewer.",
+ui,ui.kung_may_martilyo_ka_ingatan_mo_kapag_nawala_yan.830210ae,"Kung may martilyo ka, ingatan mo. Kapag nawala 'yan, gastos na naman.","If you've got a hammer, take care of it. If you lose it, that's another expense.","Kung may martilyo ka, ingatan mo. Pag nawala 'yan, gastos na naman.",
+dialogue,dialogue.nanay_sa_palengke.0ce92acd,Nanay sa Palengke,Nanay sa Palengke,Nanay sa Palengke,
+ui,ui.basa_na_sapatos_ko_pero_kailangan_pa_rin_pumila_.16919b81,"Basa na sapatos ko, pero kailangan pa rin pumila. May bata akong naghihintay sa bahay.","My shoes are soaked, but I still have to stay in line. I've got a kid waiting at home.","Basa na sapatos ko, pero kailangan ko pa ring pumila. May batang naghihintay sa bahay.",
+ui,ui.kapag_may_nakuha_kang_extra_isipin_mo_rin_kung_s.54d58d95,"Kapag may nakuha kang extra, isipin mo rin kung sino pa ang wala.","If you get anything extra, think about who still has none.","Pag may nakuha kang extra, isipin mo rin kung sino pa ang wala.",
+dialogue,dialogue.ohnanay.5ac2abe4,OHNanay,OHNanay,OHNanay,
+dialogue,dialogue.ohnanay.3c2c2d4d,OHNANAY,OHNANAY,OHNANAY,
+ui,ui.ate_linda.4c43a37c,Ate linda,Ate linda,Ate linda,
+ui,ui.nestor_accept_prompt,Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?,Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?,Tanggapin ang PHP 150 ni Mang Nestor at bumili ng Half Chicken sa Go To Chooks sa tabi ng botika?,
+ui,ui.nestor_turn_in_prompt,Give the Half Chicken to Mang Nestor?,Give the Half Chicken to Mang Nestor?,Ibigay ang Half Chicken kay Mang Nestor?,
+ui,ui.linda_trade_prompt,Give Ate Linda your hammer so she lowers her prices?,Give Ate Linda your hammer so she lowers her prices?,Ibigay kay Ate Linda ang iyong martilyo para babaan niya ang mga presyo?,
+ui,ui.smoke_choice_prompt,Smoke with him and lose %d minutes?,Smoke with him and lose %d minutes?,Manigarilyo kasama niya at gumugol ng %d minuto?,Keep %d placeholder
+ui,ui.donation_choice_prompt,Give PHP %d?,Give PHP %d?,Magbigay ng PHP %d?,Keep %d placeholder
+prompt,lotto.prompt,Play Suerte Scratch (₱50),Play Suerte Scratch (₱50),Maglaro ng Suerte Scratch (₱50),
+ui,lotto.title,LOTTOHAN,LOTTOHAN,LOTTOHAN,
+ui,lotto.rule,Match three fruit in either row. Each matching row pays.,Match three fruit in either row. Each matching row pays.,Pagtugmain ang tatlong prutas sa alinmang hanay. May premyo ang bawat tugmang hanay.,
+ui,lotto.ticket_title,SUERTE SCRATCH,SUERTE SCRATCH,SUERTE SCRATCH,
+ui,lotto.prizes,PRIZES PER ROW,PRIZES PER ROW,PREMYO BAWAT HANAY,
+ui,lotto.cash,Cash: ₱%d,Cash: ₱%d,Pera: ₱%d,Keep %d placeholder
+ui,lotto.ticket_count,Tickets bought: %d,Tickets bought: %d,Nabiling tiket: %d,Keep %d placeholder
+ui,lotto.ready,Buy a ticket to try your luck.,Buy a ticket to try your luck.,Bumili ng tiket para subukan ang suwerte.,
+ui,lotto.scratch,Scratch all six fruit to reveal your result.,Scratch all six fruit to reveal your result.,Kaskasin ang anim na prutas.,
+ui,lotto.win,You won ₱%d!,You won ₱%d!,Nanalo ka ng ₱%d!,Keep %d placeholder
+ui,lotto.lose,No matching row. Try again?,No matching row. Try again?,Walang tugmang hanay. Subukan ulit?,
+ui,lotto.not_enough_cash,Not enough cash for a ticket.,Not enough cash for a ticket.,Kulang ang pera para sa tiket.,
+ui,lotto.buy,Buy Ticket — ₱50,Buy Ticket — ₱50,Bumili ng Tiket — ₱50,
+ui,lotto.buy_again,Buy Again — ₱50,Buy Again — ₱50,Bumili Ulit — ₱50,
+ui,lotto.scratch_all,Scratch All,Scratch All,Kaskasin Lahat,
+ui,lotto.reveal_result,Reveal Result,Reveal Result,Ipakita ang Resulta,
+ui,lotto.close,Close,Close,Isara,
+ui,lotto.fruit.apple,lotto_fruit_apple,Apple,Mansanas,
+ui,lotto.fruit.banana,lotto_fruit_banana,Banana,Saging,
+ui,lotto.fruit.orange,lotto_fruit_orange,Orange,Kahel,
+ui,lotto.fruit.watermelon,lotto_fruit_watermelon,Watermelon,Pakwan,
+ui,lotto.fruit.grapes,lotto_fruit_grapes,Grapes,Ubas,
+ui,lotto.fruit.cherries,lotto_fruit_cherries,Cherries,Seresa,
+ui,lotto.fruit.peach,lotto_fruit_peach,Peach,Milokoton,
+ui,lotto.fruit.raspberry,lotto_fruit_raspberry,Raspberry,Raspberry,
+ui,dev.mode,Dev Mode,Dev Mode,Dev Mode,
+ui,dev.heading,DEV MODE,DEV MODE,DEV MODE,
+ui,dev.unlocked,Dev Mode unlocked for this session. Enable it in Settings.,Dev Mode unlocked for this session. Enable it in Settings.,Na-unlock ang Dev Mode para sa sesyong ito. I-on ito sa Settings.,
+ui,dev.enabled,Enabled (run will be unranked),Enabled (run will be unranked),Bukas (hindi iraranggo ang laro),
+ui,dev.amount,Amount,Amount,Halaga,
+ui,dev.add_money,Add money,Add money,Dagdagan ang pera,
+ui,dev.remove_money,Remove money,Remove money,Bawasan ang pera,
+ui,dev.pause_clock,Pause clock after resume,Pause clock after resume,Ihinto ang oras pagbalik,
+ui,dev.reset_clock,Reset to 6:00 AM,Reset to 6:00 AM,Ibalik sa 6:00 AM,
+ui,dev.teleport,Teleport,Teleport,Lumipat agad,
+ui,dev.unavailable,Dev action unavailable.,Dev action unavailable.,Hindi magamit ang Dev action.,
+ui,dev.cash_time,Cash: ₱%d   Time: %s,Cash: ₱%d   Time: %s,Pera: ₱%d   Oras: %s,Keep %d and %s placeholders
+ui,dev.unranked,Dev Mode run - unranked,Dev Mode run - unranked,Dev Mode na laro - hindi iraranggo,
+ui,dev.grocery,Grocery / Palengke,Grocery / Palengke,Palengke,
+ui,dev.bodega,Bodega,Bodega,Bodega,
+ending,ending.visit.hardware,"After the storm, repairing a home still depended on materials a family could reach and afford.","After the storm, repairing a home still depended on materials a family could reach and afford.","Pagkatapos ng bagyo, nakasalalay pa rin sa mga materyales na kayang makuha at bilhin ng pamilya ang pag-aayos ng bahay.",
+ending,ending.visit.grocery,"The market held supplies, but families needed a way to reach and afford them before the roads closed.","The market held supplies, but families needed a way to reach and afford them before the roads closed.","May mga suplay sa palengke, pero kailangan ng mga pamilya ng paraan para makarating doon at makabili bago magsara ang mga daan.",
+ending,ending.visit.pharmacy,"Medicine and a meal could be found here, if families could reach the shops in time.","Medicine and a meal could be found here, if families could reach the shops in time.","May gamot at pagkain dito, kung makararating ang mga pamilya sa mga tindahan sa oras.",
+ending,ending.visit.tindahan,"At the tindahan, neighbors shared warnings and helped one another prepare.","At the tindahan, neighbors shared warnings and helped one another prepare.","Sa tindahan, nagbahagi ng babala ang magkakapitbahay at nagtulungan silang maghanda.",
+ending,ending.windows.done,Both windows held against the wind.,Both windows held against the wind.,Nakatagal ang dalawang bintana sa lakas ng hangin.,
+ending,ending.windows.partial,One window had boards; the other still let wind and rain in.,One window had boards; the other still let wind and rain in.,May tabla ang isang bintana; ang isa ay pinasok pa rin ng hangin at ulan.,
+ending,ending.windows.missed,Unboarded windows let wind and rain into the house.,Unboarded windows let wind and rain into the house.,"Dahil walang tabla ang mga bintana, pinasok ng hangin at ulan ang bahay.",
+ending,ending.roof.done,The patched roof kept rain out of the living room.,The patched roof kept rain out of the living room.,Hindi nakapasok ang ulan sa sala dahil natapalan ang bubong.,
+ending,ending.roof.missed,Rain entered through the unrepaired roof.,Rain entered through the unrepaired roof.,Pumasok ang ulan sa bubong na hindi naayos.,
+ending,ending.medicine.done,Lola had the medicine she needed through the storm.,Lola had the medicine she needed through the storm.,May gamot si Lola na kailangan niya habang nananalasa ang bagyo.,
+ending,ending.medicine.missed,Lola faced the storm without her needed medicine.,Lola faced the storm without her needed medicine.,Hinarap ni Lola ang bagyo nang wala ang gamot na kailangan niya.,
+ending,ending.food.done,The family had food ready for the storm.,The family had food ready for the storm.,May nakahandang pagkain ang pamilya bago dumating ang bagyo.,
+ending,ending.food.missed,The family had no food set aside when the storm came.,The family had no food set aside when the storm came.,Walang naitabing pagkain ang pamilya nang dumating ang bagyo.,
+ending,ending.water.done,Clean water was ready at home.,Clean water was ready at home.,May nakahandang malinis na tubig sa bahay.,
+ending,ending.water.missed,The family had no clean water stored at home.,The family had no clean water stored at home.,Walang naipong malinis na tubig ang pamilya sa bahay.,
+ending,ending.radio.done,The radio and flashlight helped the family follow warnings through the dark.,The radio and flashlight helped the family follow warnings through the dark.,Nakatulong ang radyo at flashlight para masubaybayan ng pamilya ang mga babala sa dilim.,
+ending,ending.radio.missed,"With no working radio or flashlight, the family had less light and fewer updates.","With no working radio or flashlight, the family had less light and fewer updates.","Dahil walang gumaganang radyo o flashlight, kaunti ang ilaw at balitang natanggap ng pamilya.",
+ending,ending.nestor.delivered,"Mang Nestor's place outside the tindahan stood empty. He returned home with the chicken, and his family weathered the storm with food on the table.","Mang Nestor's place outside the tindahan stood empty. He returned home with the chicken, and his family weathered the storm with food on the table.","Wala na si Mang Nestor sa puwesto niya sa labas ng tindahan. Nakauwi siya dala ang manok, at nalampasan ng pamilya niya ang bagyo na may pagkain sa hapag.",
+ending,ending.nestor.unfulfilled,Mang Nestor was still waiting outside the tindahan when the storm came. The promised meal never reached his family; they had no food on the table.,Mang Nestor was still waiting outside the tindahan when the storm came. The promised meal never reached his family; they had no food on the table.,Naghihintay pa rin si Mang Nestor sa labas ng tindahan nang dumating ang bagyo. Hindi nakarating sa pamilya niya ang ipinangakong pagkain; walang pagkain sa kanilang hapag.,
+ending,ending.closing,What you prepared mattered. So did the people you remembered. But being strong isn't just enough. Families also deserve protection they can depend on.,What you prepared mattered. So did the people you remembered. But being strong isn't just enough. Families also deserve protection they can depend on.,Mahalaga ang inihanda mo at ang mga taong inalala mo. Pero hindi sapat ang tibay ng loob lamang. Karapat-dapat din ang mga pamilya sa maaasahang proteksiyon.,
+ending,ending.save_prompt_summary,"Mode: %s
+Needs: %d / %d  |  Priority: %d / %d  |  Time left: %s","Mode: %s
+Needs: %d / %d  |  Priority: %d / %d  |  Time left: %s","Antas: %s
+Pangangailangan: %d / %d  |  Prayoridad: %d / %d  |  Natitirang oras: %s",Preserve placeholders and line break.
+ending,ending.promise.kept,A Promise Kept,A Promise Kept,Tinupad ang Pangako,
+ending,ending.promise.unfulfilled,A Promise Unfulfilled,A Promise Unfulfilled,Hindi Natupad ang Pangako,
+ending,ending.needs_met,Needs met: %d / %d,Needs met: %d / %d,Natugunang pangangailangan: %d / %d,Preserve format placeholders.
+ending,ending.priority_weight,Priority weight: %d / %d,Priority weight: %d / %d,Bigat ng prayoridad: %d / %d,Preserve format placeholders.
+ending,ending.preparation_points,Preparation: %d points,Preparation: %d points,Paghahanda: %d puntos,Preserve format placeholder.
+ending,ending.nestor_points,Mang Nestor: +%d points,Mang Nestor: +%d points,Mang Nestor: +%d puntos,Preserve format placeholder.
+ending,ending.time_points,Time: +%d points,Time: +%d points,Oras: +%d puntos,Preserve format placeholder.
+ending,ending.mode_multiplier,Mode: %s (x%.1f),Mode: %s (x%.1f),Antas: %s (x%.1f),Preserve format placeholders.
+ending,ending.tier.prepared,A Prepared Home,A Prepared Home,Isang Handang Tahanan,
+ending,ending.tier.essentials,"Essentials Secured, Gaps Remain","Essentials Secured, Gaps Remain","Naihanda ang Mahahalaga, May Kulang Pa Rin",
+ending,ending.tier.shortages,A Night of Shortages,A Night of Shortages,Gabi ng mga Kakulangan,
+ending,ending.tier.unprepared,Too Little Prepared,Too Little Prepared,Kulang na Kulang ang Paghahanda,
+ending,ending.missing.food,food,food,pagkain,
+ending,ending.missing.water,water,water,tubig,
+ending,ending.missing.medicine,Lola's medicine,Lola's medicine,gamot ni Lola,
+ending,ending.missing.roof,roof,roof,bubong,
+ending,ending.missing.windows,windows,windows,mga bintana,
+ending,ending.missing.radio,radio and flashlight,radio and flashlight,radyo at flashlight,
+ending,ending.all_needs_met,All household needs were met.,All household needs were met.,Natugunan ang lahat ng pangangailangan sa bahay.,
+ending,ending.still_missing,Still missing at home: %s,Still missing at home: %s,Kulang pa sa bahay: %s,Preserve format placeholder.
+task,task.need_weight,Weight: %d,Weight: %d,Bigat: %d,Preserve format placeholder.
+task,task.needs_completed,Completed: %d / %d needs,Completed: %d / %d needs,Natapos: %d / %d pangangailangan,Preserve format placeholders.
+task,task.preparation_weight,Preparation: %d / %d points,Preparation: %d / %d points,Paghahanda: %d / %d puntos,Preserve format placeholders.
+task,task.nestor.buy_points,"Buy Half Chicken for Mang Nestor (+1,000 points on delivery)","Buy Half Chicken for Mang Nestor (+1,000 points on delivery)","Bumili ng Half Chicken para kay Mang Nestor (+1,000 puntos kapag naihatid)",
+task,task.nestor.deliver_points,"Deliver Half Chicken to Mang Nestor (+1,000 points)","Deliver Half Chicken to Mang Nestor (+1,000 points)","Ihatid ang Half Chicken kay Mang Nestor (+1,000 puntos)",
+ui,ui.leaderboard.prep,Prep,Prep,Paghahanda,
+ending,ending.press_any_key_or_button_to_continue,Press any key or button to continue,Press any key or button to continue,Pindutin ang anumang key o button para magpatuloy,
+dialogue,dialogue.nanay.bodega_supplies,"Nasa [b]bodega[/b] ang [b]martilyo[/b], [b]radyo[/b], at [b]flashlight[/b]. Kailangan ng [b]isang baterya bawat isa[/b] ng radyo at flashlight bago ilagay sa [b]istante katabi ni Lola[/b].","The [b]hammer[/b], [b]radio[/b], and [b]flashlight[/b] are in the [b]storage room[/b]. The radio and flashlight each need [b]one battery[/b] before you put them on the [b]shelf beside Lola[/b].","Nasa [b]bodega[/b] ang [b]martilyo[/b], [b]radyo[/b], at [b]flashlight[/b]. Kailangan ng [b]isang baterya bawat isa[/b] ng radyo at flashlight bago ilagay sa [b]istante katabi ni Lola[/b].",Preserve BBCode tags.
+dialogue,dialogue.nestor.chicken_shop,"Bilhan mo sana ako ng [b]Half Chicken[/b] sa [b]Go To Chooks[/b], katabi lang ng [b]Botika[/b].","Please buy me [b]Half Chicken[/b] from [b]Go To Chooks[/b], right next to the [b]pharmacy[/b].","Bilhan mo sana ako ng [b]Half Chicken[/b] sa [b]Go To Chooks[/b], katabi lang ng [b]Botika[/b].",Preserve BBCode tags.
+dialogue,dialogue.nestor.advance,Eto ang [b]PHP 150[/b] para sa manok. Ikaw na bahala sa sukli. Nagtitiwala akong makakauwi kami na may [b]hapunan[/b].,Here is [b]PHP 150[/b] for the chicken. You can keep the change. I trust that my family will have [b]dinner[/b] at home.,Eto ang [b]PHP 150[/b] para sa manok. Ikaw na bahala sa sukli. Nagtitiwala akong makakauwi kami na may [b]hapunan[/b].,Preserve BBCode tags.
+dialogue,dialogue.nestor.waiting,"Wala pa? Nagtitiwala pa rin ako sa'yo. Ang [b]Half Chicken[/b] ay sa [b]Go To Chooks[/b], katabi ng [b]Botika[/b].","Not yet? I still trust you. [b]Half Chicken[/b] is at [b]Go To Chooks[/b], next to the [b]pharmacy[/b].","Wala pa? Nagtitiwala pa rin ako sa'yo. Ang [b]Half Chicken[/b] ay sa [b]Go To Chooks[/b], katabi ng [b]Botika[/b].",Preserve BBCode tags.
+dialogue,dialogue.nestor.tarp,"Ay, salamat. May extra [b]tarp[/b] ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay.",Thank you. I have an extra [b]tarp[/b] in my tricycle. Take it. Your family needs it more.,"Ay, salamat. May extra [b]tarp[/b] ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay.",Preserve BBCode tags.
+dialogue,dialogue.maribel.chicken_shop,"Kung [b]manok[/b] hanap mo, nasa tabi lang ng [b]Botika[/b] ang [b]Go To Chooks[/b].","If you are looking for [b]chicken[/b], [b]Go To Chooks[/b] is right next to the [b]pharmacy[/b].","Kung [b]manok[/b] hanap mo, nasa tabi lang ng [b]Botika[/b] ang [b]Go To Chooks[/b].",Preserve BBCode tags.
+dialogue,dialogue.tatay_jun.nails,"Lahat naghahanap ng [b]pako[/b] ngayon. Parang exam, pero [b]bubong[/b] ang reviewer.","Everyone is looking for [b]nails[/b] now. It is like an exam, but the [b]roof[/b] is the reviewer.","Lahat naghahanap ng [b]pako[/b] ngayon. Parang exam, pero [b]bubong[/b] ang reviewer.",Preserve BBCode tags.
+dialogue,dialogue.tatay_jun.hammer,"Kung may [b]martilyo[/b] ka, ingatan mo. Kapag nawala 'yan, gastos na naman.","If you have a [b]hammer[/b], take care of it. Losing it would mean another expense.","Kung may [b]martilyo[/b] ka, ingatan mo. Kapag nawala 'yan, gastos na naman.",Preserve BBCode tags.
+ui,dev.camera.heading,RECORDING CAMERA,RECORDING CAMERA,CAMERA PARA SA RECORDING,Recording-only developer tool.
+ui,dev.camera.enter,Enter camera mode,Enter camera mode,Pumasok sa camera mode,Recording-only developer tool.
+ui,dev.camera.controls,"WASD: fly · Mouse: look · E/Q: up/down · Shift: faster
+Wheel: zoom · Alt+C: cinematic · P: play/pause time
+G: normal/wrecked house · Esc: return here. The preparation clock stays held.","WASD: fly · Mouse: look · E/Q: up/down · Shift: faster
+Wheel: zoom · Alt+C: cinematic · P: play/pause time
+G: normal/wrecked house · Esc: return here. The preparation clock stays held.","WASD: lumipad · Mouse: tumingin · E/Q: taas/baba · Shift: mas mabilis
+Wheel: zoom · Alt+C: cinematic · P: tuloy/hinto ang oras
+G: normal/wasak na bahay · Esc: bumalik dito. Naka-hold ang oras ng paghahanda.",Recording-only developer tool.
+ui,dev.camera.speed,Movement speed,Movement speed,Bilis ng paggalaw,Recording-only developer tool.
+ui,dev.camera.sensitivity,Mouse sensitivity,Mouse sensitivity,Sensitivity ng mouse,Recording-only developer tool.
+ui,dev.camera.cinematic,Cinematic movement,Cinematic movement,Cinematic na paggalaw,Recording-only developer tool.
+ui,dev.camera.freeze,Pause time (freeze the world),Pause time (freeze the world),Ihinto ang oras (lahat ng galaw),Recording-only developer tool.
+ui,dev.camera.reset,Reset Camera,Reset Camera,I-reset ang Camera,Recording-only developer tool.
+ui,dev.camera.hide_player,Hide player,Hide player,Itago ang player,Recording-only developer tool.
+ui,dev.camera.hide_npcs,Hide NPCs,Hide NPCs,Itago ang mga NPC,Recording-only developer tool.
+ui,dev.camera.hide_animals,Hide animals,Hide animals,Itago ang mga hayop,Recording-only developer tool.
+ui,dev.camera.hide_items,Hide pickable items,Hide pickable items,Itago ang mga napupulot na item,Recording-only developer tool.
+ui,dev.camera.hide_indicators,Hide world indicators,Hide world indicators,Itago ang mga marker at highlight,Recording-only developer tool.
+ui,dev.camera.environment,Recording environment,Recording environment,Kapaligiran sa recording,Recording-only developer tool.
+ui,dev.camera.storm,Default Stormy,Default Stormy,Orihinal na Bagyo,Recording-only developer tool.
+ui,dev.camera.sunrise,Sunrise Morning,Sunrise Morning,Umagang May Sikat ng Araw,Recording-only developer tool.
+ui,dev.camera.sunny,Clear Sunny,Clear Sunny,Maaliwalas at Maaraw,Recording-only developer tool.
+ui,dev.camera.sunset,Sunset,Sunset,Takipsilim,Recording-only developer tool.
+ui,dev.camera.brightness,Brightness,Brightness,Liwanag,Recording-only developer tool.
+ui,dev.camera.sun_strength,Sun strength,Sun strength,Lakas ng sikat ng araw,Recording-only developer tool.
+ui,dev.camera.fog_amount,Fog amount,Fog amount,Dami ng hamog,Recording-only developer tool.
+ui,dev.camera.sky_rotation,Sky rotation (degrees),Sky rotation (degrees),Pag-ikot ng langit (degrees),Recording-only developer tool.
+ui,dev.camera.reset_preset,Reset Preset,Reset Preset,I-reset ang Preset,Recording-only developer tool.
+ui,dev.camera.vhs,VHS / CRT during recording,VHS / CRT during recording,VHS / CRT habang nagre-record,Recording-only developer tool.
+ui,dev.camera.dof,Depth of field during recording,Depth of field during recording,Depth of field habang nagre-record,Recording-only developer tool.
+ui,dev.camera.note,Environment and visibility apply only in camera mode. Dry presets mute weather; street and shop ambience remain.,Environment and visibility apply only in camera mode. Dry presets mute weather; street and shop ambience remain.,Sa camera mode lang nagbabago ang kapaligiran at mga nakikita. Walang tunog ng bagyo sa dry presets; tuloy ang tunog ng kalsada at tindahan.,Recording-only developer tool.
+ui,dev.camera.indoor_sun,Sunlight is inactive in this interior.,Sunlight is inactive in this interior.,Hindi aktibo ang sikat ng araw sa loob na ito.,Recording-only developer tool.
+ui,dev.camera.unavailable,"Camera unavailable. Finish the current action or wait for the transition, then try again.","Camera unavailable. Finish the current action or wait for the transition, then try again.","Hindi pa puwede ang camera. Tapusin muna ang kasalukuyang gawain o hintaying matapos ang transition, saka subukan muli.",Recording-only developer tool.
+ui,dev.camera.location,Recording location,Recording location,Lugar para sa recording,Recording-only developer tool.
+ui,dev.camera.current_location,Current location,Current location,Kasalukuyang lugar,Recording-only developer tool.
+ui,dev.camera.house_teaser,House teaser,House teaser,Bahay para sa teaser,Recording-only developer tool.
+ui,dev.camera.house_state,House state,House state,Kalagayan ng bahay,Recording-only developer tool.
+ui,dev.camera.normal,Normal,Normal,Normal,Recording-only developer tool.
+ui,dev.camera.wrecked,Wrecked,Wrecked,Wasak,Recording-only developer tool.

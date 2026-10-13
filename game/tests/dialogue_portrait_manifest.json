@@ -1,0 +1,127 @@
+{
+  "characters": {
+    "nanay": [
+      "neutral",
+      "speaking",
+      "concerned",
+      "urgent"
+    ],
+    "lola": [
+      "neutral",
+      "speaking",
+      "concerned",
+      "relieved"
+    ],
+    "ate_linda": [
+      "neutral",
+      "speaking",
+      "apologetic",
+      "grateful"
+    ],
+    "mang_nestor": [
+      "neutral",
+      "speaking",
+      "hopeful",
+      "grateful",
+      "concerned"
+    ],
+    "tape_neighbor": [
+      "neutral",
+      "speaking",
+      "uncertain"
+    ],
+    "smoke_break": [
+      "neutral",
+      "speaking",
+      "coaxing",
+      "concerned"
+    ],
+    "pharmacist": [
+      "neutral",
+      "speaking"
+    ],
+    "chooks_seller": [
+      "neutral",
+      "speaking",
+      "cheerful"
+    ],
+    "ate_maribel": [
+      "neutral",
+      "speaking",
+      "amused"
+    ],
+    "hardware_girl": [
+      "neutral",
+      "speaking",
+      "weary",
+      "helpful"
+    ],
+    "tatay_jun": [
+      "neutral",
+      "speaking",
+      "amused",
+      "concerned"
+    ],
+    "kaps_worker": [
+      "neutral",
+      "speaking",
+      "defensive"
+    ],
+    "grocery_girl": [
+      "neutral",
+      "speaking",
+      "urgent",
+      "annoyed"
+    ],
+    "queue_man": [
+      "neutral",
+      "speaking",
+      "frustrated",
+      "stern"
+    ],
+    "panic_buyer": [
+      "neutral",
+      "speaking",
+      "anxious",
+      "overwhelmed"
+    ],
+    "wet_parent": [
+      "neutral",
+      "speaking",
+      "exhausted",
+      "compassionate"
+    ],
+    "stranger": [
+      "neutral",
+      "speaking",
+      "pleading",
+      "grateful"
+    ],
+    "player": [
+      "neutral",
+      "speaking",
+      "thinking",
+      "surprised",
+      "determined"
+    ]
+  },
+  "npc_scenes": [
+    "game/entities/nanay/nanay.tscn",
+    "game/entities/lola/lola.tscn",
+    "game/entities/ate_linda_npc/ate_linda.tscn",
+    "game/entities/quest_npcs/mang_nestor.tscn",
+    "game/entities/story_npcs/tape_neighbor.tscn",
+    "game/entities/quest_npcs/smoke_break_npc.tscn",
+    "game/entities/pharmacist/pharma_dude.tscn",
+    "game/entities/chooks_to_go_seller.tscn",
+    "game/entities/story_npcs/ate_maribel.tscn",
+    "game/entities/hardware_girl/hardware_girl.tscn",
+    "game/entities/story_npcs/tatay_jun.tscn",
+    "game/entities/story_npcs/kaps_worker.tscn",
+    "game/entities/grocery_girl/grocery_girl.tscn",
+    "game/entities/story_npcs/palengke_queue_man.tscn",
+    "game/entities/story_npcs/panic_buyer.tscn",
+    "game/entities/story_npcs/wet_parent.tscn",
+    "game/entities/quest_npcs/money_beggar.tscn"
+  ]
+}

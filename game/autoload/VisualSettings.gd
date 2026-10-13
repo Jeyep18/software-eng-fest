@@ -82,6 +82,9 @@ func set_quality_preset(preset: StringName) -> void:
 func get_quality_preset() -> StringName:
 	return quality_preset
 
+func refresh_scene_quality() -> void:
+	_apply_quality_to_current_scene()
+
 func get_quality_label(preset: StringName = DEFAULT_QUALITY_PRESET) -> String:
 	return str(QUALITY_LABELS.get(_normalize_quality_preset(preset), "High"))
 
@@ -182,7 +185,7 @@ func _apply_quality_to_node(node: Node) -> void:
 	if node is Light3D:
 		_apply_light_quality(node as Light3D)
 	elif node is WorldEnvironment:
-		_apply_environment_quality(node as WorldEnvironment)
+		apply_environment_quality((node as WorldEnvironment).environment)
 	for child in node.get_children():
 		_apply_quality_to_node(child)
 
@@ -204,8 +207,7 @@ func _apply_light_quality(light: Light3D) -> void:
 	else:
 		light.shadow_enabled = bool(light.get_meta("visual_quality_base_shadow"))
 
-func _apply_environment_quality(world_environment: WorldEnvironment) -> void:
-	var environment := world_environment.environment
+func apply_environment_quality(environment: Environment) -> void:
 	if environment == null:
 		return
 	if not environment.has_meta("visual_quality_base_ssil"):

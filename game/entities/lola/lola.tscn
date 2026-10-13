@@ -4,57 +4,60 @@
 [ext_resource type="Script" uid="uid://c4qspp51ffv2s" path="res://game/entities/lola/lola.gd" id="2_qlsdk"]
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/entities/npc/dialogueLine.gd" id="3_dw7mn"]
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/npc_dialogue/dialogue_ui.tscn" id="3_lb6m2"]
-[ext_resource type="Texture2D" uid="uid://grshlthqspq2" path="res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png" id="4_pgefp"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/entities/npc/dialogueSequence.gd" id="5_dyppw"]
-[ext_resource type="Texture2D" uid="uid://b76np705x20ow" path="res://game/assets/npc_portraits/playerTalking.png" id="5_t0cy6"]
-[ext_resource type="Texture2D" uid="uid://6duadbx7anff" path="res://game/assets/npc_portraits/playerInnerThoughts.png" id="6_tkmwj"]
+
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/lola/concerned.png" id="portrait_lola_concerned"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/lola/relieved.png" id="portrait_lola_relieved"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/lola/speaking.png" id="portrait_lola_speaking"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/player/speaking.png" id="portrait_player_speaking"]
+[ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/player/thinking.png" id="portrait_player_thinking"]
 
 [sub_resource type="Resource" id="Resource_adolq"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_speaking")
 text = "Oy apo, halika. Umupo ka muna sandali. "
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_f6xjy"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_concerned")
 text = "Apo yung bagyong paparating mag-ingat ka ha."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_q26se"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Player"
-expression = ExtResource("5_t0cy6")
+expression = ExtResource("portrait_player_speaking")
 text = "Opo Lola."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_8ka6y"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_speaking")
 text = "Mabuti naman. Pero yung [b]gamot[/b] ko huwag mo kalimutan yung sa [b]botika[/b] ha. "
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ak15h"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_concerned")
 text = "Pag walang gamot, mahihirapan ako. Pasensya na apo. "
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_5d8dr"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Player"
-expression = ExtResource("6_tkmwj")
+expression = ExtResource("portrait_player_thinking")
 text = "Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ebi62"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_speaking")
 text = "Sige na apo, pakilagay na lang sa [b]drawer sa higaan[/b] yung aking [b]gamot[/b]. "
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -66,7 +69,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="Resource_dyppw"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_concerned")
 text = "Yung [b]gamot[/b], huwag mong kalimutan apo. [i]Mahalaga yun sa akin.[/i]"
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -78,7 +81,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="Resource_tkmwj"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_concerned")
 text = "Pag umulan nang malakas at walang [b]panakip sa kisame[/b]... [i]basa lahat tayo dito.[/i] "
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -89,8 +92,8 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="Resource" id="Resource_clmbx"]
 script = ExtResource("3_dw7mn")
-speaker_name = "Nanay"
-expression = ExtResource("4_pgefp")
+speaker_name = "Lola"
+expression = ExtResource("portrait_lola_concerned")
 text = "Sabi ni Nanay, wala tayong [b]pagkain[/b] para bukas. Kailangan kahit [b]de lata[/b]."
 metadata/_custom_type_script = "uid://po32410sv037"
 
@@ -102,7 +105,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 [sub_resource type="Resource" id="Resource_uqh7n"]
 script = ExtResource("3_dw7mn")
 speaker_name = "Lola"
-expression = ExtResource("4_pgefp")
+expression = ExtResource("portrait_lola_relieved")
 text = "Mabuti na. Nandito na tayo. Dasal lang tayo ngayon."
 metadata/_custom_type_script = "uid://po32410sv037"
 

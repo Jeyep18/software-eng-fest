@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://game/tests/score_calculation_regression.gd" id="1_score"]
 
 [node name="ScoreCalculationRegression" type="Node"]
+
+[node name="Runner" type="Node" parent="."]
 script = ExtResource("1_score")

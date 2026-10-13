@@ -57,7 +57,7 @@ func _run() -> void:
 	_finish()
 
 func _test_packaged_resources() -> void:
-	_check(FileAccess.file_exists("res://game/localization/game_text.csv"), "localization CSV exists in runtime resources")
+	_check(FileAccess.file_exists(LocalizationManager.TEXT_CSV_PATH), "active localization CSV exists in runtime resources")
 	LocalizationManager.set_language("tagalog")
 	_check(LocalizationManager.translate("Talk to Nanay") == "Kausapin si Nanay", "known Tagalog translation loads")
 	LocalizationManager.set_language("english")

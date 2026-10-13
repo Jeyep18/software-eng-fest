@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" path="res://game/entities/story_npcs/tatay_jun.tscn" id="13_tatay"]
 [ext_resource type="PackedScene" path="res://game/entities/story_npcs/kaps_worker.tscn" id="14_worker"]
 [ext_resource type="Environment" uid="uid://da3ce0283oavb" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
+[ext_resource type="Script" path="res://game/scenes/world/PickupGuidance3D.gd" id="15_guidance"]
+[ext_resource type="NavigationMesh" path="res://game/resources/navigation/pickup_guidance_hardware.tres" id="16_guidance_nav"]
 
 [sub_resource type="VoxelGIData" id="VoxelGIData_crmys"]
 _data = {
@@ -334,3 +336,8 @@ chars_per_second = 40.0
 transform = Transform3D(-0.9991089, 0, -0.04220689, 0, 1, 0, 0.04220689, 0, -0.9991089, 2.896019, 1.0770836, -14.378158)
 monologue_lines = Array[String](["Paubos na nga ang mga bilihin...", "Buti naabutan ko pa na bukas itong hardware store."])
 chars_per_second = 40.0
+
+[node name="PickupGuidance" type="Node3D" parent="."]
+script = ExtResource("15_guidance")
+navigation_mesh = ExtResource("16_guidance_nav")
+item_paths = Array[NodePath]([NodePath("../plywood"), NodePath("../plywood2"), NodePath("../plywood3")])

@@ -16,6 +16,26 @@
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="9_mhti3"]
 [ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="15_38p1u"]
 [ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="16_q3j7e"]
+[ext_resource type="PackedScene" path="res://_raw_assets/interactable_models/treska.glb" id="17_cans"]
+[ext_resource type="PackedScene" path="res://_raw_assets/Locations/HardwareStore.glb" id="18_hardware"]
+[ext_resource type="PackedScene" path="res://_raw_assets/Locations/Market.glb" id="19_grocery"]
+[ext_resource type="PackedScene" path="res://_raw_assets/Locations/Pharmacy.glb" id="20_pharmacy"]
+[ext_resource type="PackedScene" path="res://_raw_assets/Locations/tindahan.glb" id="21_tindahan"]
+[ext_resource type="PackedScene" path="res://_raw_assets/player_assets/mixamo_base.glb" id="22_nestor_visual"]
+[ext_resource type="VoxelGIData" uid="uid://daf080x3na5qv" path="res://game/resources/voxels/grocery.VoxelGI_data.res" id="23_grocery_gi"]
+[ext_resource type="VoxelGIData" uid="uid://6bsi8yxlare1" path="res://game/resources/voxels/pharmacy.VoxelGI_data.res" id="24_pharmacy_gi"]
+
+[sub_resource type="VoxelGIData" id="HardwareVoxelGIData"]
+_data = {
+"bounds": AABB(-20.115105, -6.3796387, -13.544769, 40.23021, 12.759277, 27.089539),
+"level_counts": PackedInt32Array(1, 0, 0, 0, 0, 0, 0, 0),
+"octree_cells": PackedByteArray("//////////////////////////////////////////8="),
+"octree_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAA=="),
+"octree_df_png": PackedByteArray("iVBORw0KGgoAAAANSUhEUgAAIAAAAACACAAAAACGzLjBAAAAAXNSR0IArs4c6QAABU1JREFUeJzt2jENACAAwDDAv2cQwUFYWgUTsLkHAAAAAAAAAPC79ToAAAAAAAAAALhnAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQMABJx8B//w5aDkAAAAASUVORK5CYII="),
+"octree_size": Vector3(128, 64, 128),
+"to_cell_xform": Transform3D(3.1816885, 0, 0, 0, 3.1816885, 0, 0, 0, 3.1816885, 64, 20.298023, 43.095238)
+}
+interior = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_38p1u"]
 font_size = 25
@@ -77,6 +97,18 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38p1u"]
 albedo_color = Color(0.49208862, 0.4189518, 0.25232288, 1)
 
+[sub_resource type="BoxMesh" id="MedicinePackMesh"]
+size = Vector3(0.32, 0.09, 0.18)
+
+[sub_resource type="StandardMaterial3D" id="MedicinePackMaterial"]
+albedo_color = Color(0.91, 0.9, 0.84, 1)
+
+[sub_resource type="BoxMesh" id="MedicineBandMesh"]
+size = Vector3(0.07, 0.095, 0.182)
+
+[sub_resource type="StandardMaterial3D" id="MedicineBandMaterial"]
+albedo_color = Color(0.22, 0.47, 0.39, 1)
+
 [node name="EndingSequence" type="Node" unique_id=2125907861]
 script = ExtResource("1_6ukco")
 
@@ -113,12 +145,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06754875, -0.5019884)
 [node name="BedroomArea" type="Node3D" parent="World3D" unique_id=119811650]
 transform = Transform3D(0.0038889905, -0.37386787, 0.92747384, 0, 0.9274809, 0.3738707, -0.99999243, -0.0014539796, 0.0036069641, -6.5330877, 2.1536064, 1.3531399)
 
-[node name="MedicineTaskVisualCue" type="Node3D" parent="World3D/BedroomArea" unique_id=2076221844]
+[node name="MedicineTaskVisualCue" type="Node3D" parent="World3D" unique_id=2076221844]
+position = Vector3(-6.9, 2.08, 1.11)
+
+[node name="MedicinePack" type="MeshInstance3D" parent="World3D/MedicineTaskVisualCue"]
+mesh = SubResource("MedicinePackMesh")
+surface_material_override/0 = SubResource("MedicinePackMaterial")
+
+[node name="MedicineBand" type="MeshInstance3D" parent="World3D/MedicineTaskVisualCue"]
+position = Vector3(0.08, 0, 0)
+mesh = SubResource("MedicineBandMesh")
+surface_material_override/0 = SubResource("MedicineBandMaterial")
 
 [node name="KitchenArea" type="Node3D" parent="World3D" unique_id=1462759936]
 transform = Transform3D(0.8212383, -0.38330632, 0.4226629, 0, 0.7407532, 0.6717773, -0.57058537, -0.55168927, 0.60833484, 4.448159, 1.5744739, -2.9127576)
 
-[node name="FoodTaskVisualCue" type="Node3D" parent="World3D/KitchenArea" unique_id=439614265]
+[node name="FoodTaskVisualCue" type="Node3D" parent="World3D" unique_id=439614265]
+position = Vector3(1.83, 1.35, -6.9)
+
+[node name="CannedGoods" parent="World3D/FoodTaskVisualCue" instance=ExtResource("17_cans")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, -0.15, 0, 0)
+
+[node name="CannedGoods2" parent="World3D/FoodTaskVisualCue" instance=ExtResource("17_cans")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.23, 0, 0)
 
 [node name="WaterArea" type="Node3D" parent="World3D" unique_id=78236688]
 transform = Transform3D(0.6950481, -0.06323084, -0.7161774, 0, 0.99612516, -0.08794725, 0.7189633, 0.061127562, 0.69235486, 2.2195225, 1.4930148, -6.0274343)
@@ -140,6 +189,176 @@ transform = Transform3D(-0.9993163, -0.003947636, 0.036756903, -0.0038177064, 0.
 
 [node name="Flashlight" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1715193510 instance=ExtResource("6_xn1oe")]
 transform = Transform3D(-0.5016014, -0.056919497, 0.8632245, -0.03341392, 0.99836415, 0.046414144, -0.8644531, -0.005562376, -0.5026822, -0.5990638, 1.0932446, 1.6630607)
+
+[node name="LocationSets" type="Node3D" parent="."]
+
+[node name="Hardware" type="Node3D" parent="LocationSets"]
+position = Vector3(200, 0, 0)
+
+[node name="Visual" parent="LocationSets/Hardware" instance=ExtResource("18_hardware")]
+
+[node name="Start" type="Node3D" parent="LocationSets/Hardware"]
+position = Vector3(-4.5, 2.5, -3.2)
+editor_description = "Move this camera position; Focus sets where it looks."
+
+[node name="Focus" type="Node3D" parent="LocationSets/Hardware"]
+position = Vector3(-4.5, 1.65, -7.0)
+editor_description = "Move this point to frame the object you want in the ending shot."
+
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Hardware"]
+position = Vector3(-4.5, 2.8, -5.5)
+light_color = Color(0.71, 0.83, 0.82, 1)
+light_energy = 1.5
+omni_range = 8.0
+
+[node name="ShopLight" type="SpotLight3D" parent="LocationSets/Hardware"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.9212047, 4.458832, -12.196724)
+light_color = Color(0.7149116, 0.8551672, 0.8798625, 1)
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 8.818372
+spot_angle = 77.12604
+
+[node name="FrontLight" type="SpotLight3D" parent="LocationSets/Hardware"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.5087192, -4.925426)
+light_color = Color(0.8415731, 0.8367813, 0.69427425, 1)
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 8.818372
+spot_angle = 86.03076
+
+[node name="RearSpotLight" type="SpotLight3D" parent="LocationSets/Hardware"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.9931026, 3.4562097, -17.20773)
+light_color = Color(0.8156054, 0.86813295, 0.3882016, 1)
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 8.818372
+spot_angle = 78.42372
+
+[node name="RearOmniLight" type="OmniLight3D" parent="LocationSets/Hardware"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5223448, 4.0110874, -18.612194)
+light_color = Color(0.7149116, 0.8551672, 0.8798625, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 6.5609684
+
+[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Hardware"]
+position = Vector3(-0.44036102, 3.6203613, -14.981354)
+size = Vector3(40.23021, 12.759277, 27.089539)
+data = SubResource("HardwareVoxelGIData")
+
+[node name="Grocery" type="Node3D" parent="LocationSets"]
+position = Vector3(400, 0, 0)
+
+[node name="Visual" parent="LocationSets/Grocery" instance=ExtResource("19_grocery")]
+
+[node name="Start" type="Node3D" parent="LocationSets/Grocery"]
+position = Vector3(5, 2.7, -10)
+editor_description = "Move this camera position; Focus sets where it looks."
+
+[node name="Focus" type="Node3D" parent="LocationSets/Grocery"]
+position = Vector3(5, 1.75, -14.5)
+editor_description = "Move this point to frame the object you want in the ending shot."
+
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Grocery"]
+position = Vector3(3.5760818, 4.1030445, -14.8461485)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+light_energy = 3.0
+omni_range = 9.038949
+
+[node name="EntranceLight" type="OmniLight3D" parent="LocationSets/Grocery"]
+position = Vector3(0.016717196, 3.279735, -9.504298)
+light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
+omni_range = 9.038949
+
+[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Grocery"]
+transform = Transform3D(-0.54827666, 0.69679934, -0.46245354, -0.79260045, -0.2565451, 0.5531451, 0.26679093, 0.66981757, 0.6929412, 0, 0, 0)
+visible = false
+light_color = Color(0.79409355, 0.91914696, 0.88604504, 1)
+shadow_enabled = true
+
+[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Grocery"]
+position = Vector3(0.5275421, 6.2610245, -18.955826)
+size = Vector3(41.851044, 16.070023, 29.232391)
+data = ExtResource("23_grocery_gi")
+
+[node name="Pharmacy" type="Node3D" parent="LocationSets"]
+position = Vector3(600, 0, 0)
+
+[node name="Visual" parent="LocationSets/Pharmacy" instance=ExtResource("20_pharmacy")]
+
+[node name="Start" type="Node3D" parent="LocationSets/Pharmacy"]
+position = Vector3(11, 2.7, -3.8)
+editor_description = "Move this camera position; Focus sets where it looks."
+
+[node name="Focus" type="Node3D" parent="LocationSets/Pharmacy"]
+position = Vector3(11.5, 2.0, -8.2)
+editor_description = "Move this point to frame the object you want in the ending shot."
+
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Pharmacy"]
+position = Vector3(9.949357, 5.9343977, -6.332438)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+
+[node name="ShopLight" type="OmniLight3D" parent="LocationSets/Pharmacy"]
+position = Vector3(10.118393, 4.020945, -10.00791)
+light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
+light_energy = 1.475
+
+[node name="CameraFill" type="OmniLight3D" parent="LocationSets/Pharmacy"]
+position = Vector3(11, 3, -6.5)
+light_color = Color(0.79, 0.86, 0.8, 1)
+light_energy = 1.5
+omni_range = 8.0
+
+[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Pharmacy"]
+transform = Transform3D(-0.37305862, 0.88816875, -0.26829684, -0.63038397, -0.030463114, 0.7756853, 0.68076646, 0.45850614, 0.5712521, 0, 0, 0)
+visible = false
+light_color = Color(0.4306579, 0.49029338, 0.50966644, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 0.5
+light_specular = 5.0
+shadow_enabled = true
+
+[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Pharmacy"]
+position = Vector3(6.314453, 6.0292053, -14.321473)
+size = Vector3(32.628906, 12.50592, 21.352661)
+data = ExtResource("24_pharmacy_gi")
+
+[node name="Tindahan" type="Node3D" parent="LocationSets"]
+position = Vector3(800, 0, 0)
+
+[node name="Visual" parent="LocationSets/Tindahan" instance=ExtResource("21_tindahan")]
+
+[node name="NestorVisual" parent="LocationSets/Tindahan" instance=ExtResource("22_nestor_visual")]
+transform = Transform3D(1.0338629, 0, -0.18337724, 0, 1.05, 0, 0.18337724, 0, 1.0338629, 10.307398, 0.51232105, -7.942025)
+visible = false
+
+[node name="Start" type="Node3D" parent="LocationSets/Tindahan"]
+position = Vector3(10.3, 2.5, -2.0)
+editor_description = "Move this camera position; Focus sets where it looks."
+
+[node name="Focus" type="Node3D" parent="LocationSets/Tindahan"]
+position = Vector3(10.3, 1.85, -7.94)
+editor_description = "Move this point to frame the object you want in the ending shot."
+
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Tindahan"]
+position = Vector3(10.3, 2.7, -6.0)
+light_color = Color(0.75, 0.84, 0.85, 1)
+light_energy = 2.5
+omni_range = 8.0
+
+[node name="ShopLight" type="OmniLight3D" parent="LocationSets/Tindahan"]
+position = Vector3(15.1187935, 2.8572388, -8.715235)
+light_color = Color(0.7707947, 0.73799646, 0.626923, 1)
+
+[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Tindahan"]
+transform = Transform3D(0.44671407, 0.700256, -0.55685574, -0.29760435, 0.70326996, 0.6456338, 0.84372884, -0.12269098, 0.5225598, 0, 0, 0)
+visible = false
+light_color = Color(0.55189186, 0.5332212, 0.47011477, 1)
+light_energy = 1.5
+light_specular = 5.0
+shadow_enabled = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1545298350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6860857, 3.7336617, -1.0246289)

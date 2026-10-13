@@ -1,3 +1,4 @@
+class_name StormRainController
 extends GPUParticles3D
 
 @export var visibility_threshold: float = 0.12
@@ -8,6 +9,7 @@ extends GPUParticles3D
 @export var max_lifetime: float = 0.95
 @export var min_speed_scale: float = 0.8
 @export var max_speed_scale: float = 1.7
+var _recording_dry: bool = false
 
 func _ready() -> void:
 	if GlobalTimer != null:
@@ -16,6 +18,12 @@ func _ready() -> void:
 		GlobalTimer.storm_arrived.connect(_apply_intensity)
 	if StormEnroachment != null:
 		StormEnroachment.location_state_changed.connect(func(_loc: String, _state: String) -> void: _apply_intensity())
+	_apply_intensity()
+
+func set_recording_dry(enabled: bool) -> void:
+	if enabled and (not DevMode.can_use() or not DevMode.camera_active):
+		return
+	_recording_dry = enabled
 	_apply_intensity()
 
 func _apply_intensity() -> void:
@@ -27,7 +35,7 @@ func _apply_intensity() -> void:
 		state_boost = 0.20 if state == "danger" else (0.35 if state == "inaccessible" else 0.0)
 	var intensity: float = clampf(progress + intensity_bias + state_boost, 0.0, 1.0)
 	var shaped: float = smoothstep(visibility_threshold, 1.0, intensity)
-	visible = intensity >= visibility_threshold
+	visible = not _recording_dry and intensity >= visibility_threshold
 	emitting = visible
 	amount = int(lerpf(float(min_amount), float(max_amount), shaped))
 	lifetime = lerpf(min_lifetime, max_lifetime, shaped)
