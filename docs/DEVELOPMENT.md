@@ -17,21 +17,27 @@ Run the project with **F6 only for an intentionally isolated scene**, or **F5 fo
 
 | Area | Current use |
 | --- | --- |
-| `game/autoload/` | Global managers plus some scripts that are **not** configured autoloads; check `project.godot` |
-| `game/entities/` | Player and NPC scenes/scripts, reusable NPC classes and dialogue Resource types |
+| `game/autoload/` | Registered global manager scripts; preserve `project.godot` registration order |
+| `game/entities/` | Animals, grouped NPC roles/models and existing player implementations |
 | `game/objects/` | Props, interactable implementations, task sites and visual cues |
 | `game/scenes/` | Intro/menu/ending, active locations, and older act scenes |
 | `game/ui/` | Player HUD, map, inventory, dialogue, pause, tutorial and settings |
 | `game/resources/` | Item/catalogue and other Resource data; inspect existing subfolders before adding data |
-| `game/scripts/` | Shared Resource/behavior scripts such as `ShopData`, `ShopItem`, `NarrativeObject` |
+| `game/resources/dialogue/`, `game/resources/shops/` | Resource classes beside their authored data; narrative behavior is in `objects/interactables/` |
 | `game/assets/` | Runtime models, textures, fonts and sound |
 | `game/weather/`, `game/shaders/`, `game/audio/` | Rain particles, VHS shader and shared SFX helpers |
-| `game/maps/`, `game/tests/` | Camera volumes, older map content and exploratory test worlds |
-| `_raw_assets/` | Source asset collections; not a second gameplay implementation |
+| `game/camera/`, `game/scenes/components/`, `game/tests/` | Camera volumes, spawnpoint component, regression scenes and sandbox worlds |
+| `_raw_assets/` | Retained model/texture bundles, including assets loaded by runtime scenes |
 
 Names are mixed: managers/classes commonly use PascalCase (`InventoryManager.gd`, `ItemData.gd`); locations/controllers also use snake_case (`house_inside.tscn`, `playerv_2.gd`), and existing names include `Main_Menu1.tscn` and `dialogueLine.gd`. Follow the neighboring implementation, rather than renaming files to impose consistency. Class names are generally PascalCase; functions, variables and signals use snake_case; constants use UPPER_SNAKE_CASE. Underscore prefixes often indicate internal state/helpers.
 
 Scene node names and `%UniqueName` references are contracts: `$World3D/WindowArea`, `%InteractText` and `%SpeakerDialogue` are examples. Moving or renaming a node requires checking scripts, exported NodePaths, inherited scene overrides and signal connections. Preserve `.uid` sidecars and asset import settings; do not manually edit generated `.godot/` content.
+
+## Folder organization and relocation
+
+Folder names describe ownership or purpose. NPCs are grouped by family/shop/quest/story roles; UI by feature; audio assets by category. Keep filenames, scene nodes, stable IDs and resource UIDs unchanged when moving files.
+
+Move script `.uid` and asset `.import` companions with their owners. Preserve import settings and let Godot regenerate derived import paths in a disposable copy. Update full `res://` paths, partial test paths, manifests and documentation together. `_raw_assets/` bundles retain their original paths and relative model dependencies. Do not move item definitions out of `resources/items/`: inventory combinations load them by item ID.
 
 ## Code and communication patterns
 
@@ -52,7 +58,7 @@ Before adding gameplay behavior, locate its existing owner and inspect its calle
 For a new scene:
 
 1. Start from the nearest relevant scene and identify which nodes/resources are shared versus scene-local. Do not assume similarly named older scenes are the active implementation.
-2. Preserve required player/UI ownership, interaction groups, Area3D collision masks and camera-volume wiring. Use the active `game/entities/playerv2/playerv_2.tscn` as the gameplay reference, not the older `player/` scene.
+2. Preserve required player/UI ownership, interaction groups, Area3D collision masks and camera-volume wiring. Use the active `game/entities/players/playerv2/playerv_2.tscn` as the gameplay reference, not the older `player/` scene.
 3. If it is a travel destination, update the relevant `SceneManager` route/alias, `TravelCalculator`, storm restrictions and `MapScreen` data together as required by scope. A file existing on disk does not make it reachable from the five-node map.
 4. Wire spawn IDs/door destinations and verify travel away/back. Check that reconstructed scenes read retained state instead of restoring collected props or completed tasks.
 5. Validate both the isolated scene and its normal entry/exit path; see [TESTING.md](TESTING.md).
@@ -65,13 +71,13 @@ A new Resource type should follow the existing `class_name ... extends Resource`
 
 Follow the existing [game text editing guide](../game/localization/README.md) and `game/localization/game_text.csv`. Keep formatting placeholders and BBCode intact. Source-string lookup is exact; if a source changes, update its row. New dynamic text should call `LocalizationManager.translate`, `translate_key`, `trf` or `trfk` as appropriate. Automatic localization runs on node addition and language change; it does not continuously translate arbitrary later assignments.
 
-Reuse `game/ui/GameUIStyle.gd`, `GameTheme.tres` and `VisualSettings` sizing where the existing component supports it. Font/style names are historical: regular and semibold helpers currently load the same EAS VHS font. Check English and Tagalog at different UI scales rather than assuming every panel scales uniformly.
+Reuse `game/ui/theme/GameUIStyle.gd`, `GameTheme.tres` and `VisualSettings` sizing where the existing component supports it. Font/style names are historical: regular and semibold helpers currently load the same EAS VHS font. Check English and Tagalog at different UI scales rather than assuming every panel scales uniformly.
 
 Use `game/audio/Sfx.gd` for existing semantic sounds and button wiring. `AudioManager` manages music/ambience/voice and transient SFX; `StormAudioController` separately owns evolving storm layers. Settings and leaderboard are local files, not a complete save-game system. Changing their format requires checking old data and load failure behavior. Persistent files and their scope are documented in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Debugging and export
 
-Use Godot's Output/Debugger and Remote scene tree during ordinary development to inspect node ownership, signals, input locks and paused state. Existing `game/tests/test_world/test_world.tscn` and `test_world_2.tscn` are exploratory scenes, not assertions or a test runner. Directly loading ending/location scenes is a useful narrow inspection but cannot prove the normal run flow works. Read current resource paths before using older debug entries.
+Use Godot's Output/Debugger and Remote scene tree during ordinary development to inspect node ownership, signals, input locks and paused state. Existing `game/tests/sandbox/test_world/test_world.tscn` and `test_world_2.tscn` are exploratory scenes, not assertions or a test runner. Directly loading ending/location scenes is a useful narrow inspection but cannot prove the normal run flow works. Read current resource paths before using older debug entries.
 
 The Windows Desktop preset in `export_presets.cfg` targets x86_64 with embedded PCK. Its output path is machine-relative (`../../../../Desktop/builds/windows/BagyongBahay.exe`); always supply an intentional absolute output destination when building. Use matching Godot 4.6.1 templates. The preset explicitly includes `game/localization/game_text.csv`, whose import mode is **Keep File (exported as is)**: the runtime reads the raw CSV with `FileAccess`, so imported translation resources alone are insufficient. An include filter alone does not override the CSV translation importer. Preserve the Keep File setting when reimporting this custom table.
 

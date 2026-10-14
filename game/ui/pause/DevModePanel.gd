@@ -4,7 +4,7 @@ extends Control
 signal teleport_requested(location_id: String)
 signal camera_requested
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 
 var _status: Label
 var _feedback: Label

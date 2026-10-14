@@ -13,7 +13,7 @@ const SIDEBAR_WIDTH: float = 229.0
 const TAB_OVERLAP: float = 12.0
 const PANEL_FADE_DURATION: float = 0.15
 const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 
 var _all_panels: Array[Control] = []
 var _audio_settings_panel: AudioSettingsPanel

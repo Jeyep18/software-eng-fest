@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://5st8s2a2t2vs"]
 
-[ext_resource type="Texture2D" uid="uid://btclaixciiifb" path="res://game/assets/images/batteries.png" id="1_5872u"]
+[ext_resource type="Texture2D" uid="uid://btclaixciiifb" path="res://game/assets/item_icons/batteries.png" id="1_5872u"]
 [ext_resource type="PackedScene" uid="uid://cg2xxkgacyhae" path="res://_raw_assets/interactable_models/Batteries.glb" id="2_n4ryt"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_1q654"]
 

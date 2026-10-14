@@ -9,7 +9,7 @@ extends CanvasLayer
 @onready var line_label: Label     = $Background/LineLabel
 @onready var skip_hint:  Label     = $Background/SkipHint
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const STUDIO_TITLE = preload("res://game/assets/branding/studio_title.png")
 
 # ── State ──────────────────────────────────────────────────────────────────────
@@ -103,8 +103,8 @@ func _run_sequence() -> void:
 		return
 
 	_skip_enabled = true
-	AudioManager.play_ambience(preload("res://game/assets/sfx/freesound_community-morning-birds-30911-FreeSoundCommunityPixabay.mp3"))
-	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
+	AudioManager.play_ambience(preload("res://game/assets/audio/ambience/freesound_community-morning-birds-30911-FreeSoundCommunityPixabay.mp3"))
+	AudioManager.play_music(preload("res://game/assets/audio/music/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 	await _wait_or_skip(0.8)
 	_fade_node(skip_hint, 1.0, 1.2)
 

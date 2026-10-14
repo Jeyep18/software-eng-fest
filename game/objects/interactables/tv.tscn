@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d00irroaal1pk"]
 
 [ext_resource type="PackedScene" uid="uid://cfqx4x7dxm8er" path="res://_raw_assets/interactable_models/tv.glb" id="1_xa42e"]
-[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="2_xa42e"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_jq686"]
+[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/objects/interactables/NarrativeObject.gd" id="2_xa42e"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="3_jq686"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tygdx"]
 size = Vector3(0.43408203, 0.6173096, 0.9440861)

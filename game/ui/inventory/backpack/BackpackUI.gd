@@ -1,0 +1,495 @@
+# FILE: res://scripts/BackpackUI.gd
+extends CanvasLayer
+
+@onready var grid_container: GridContainer = $BackpackPanel/GridContainer
+@onready var count_label: Label            = $BackpackPanel/TitleBar/CountLabel
+@onready var info_icon: TextureRect        = $BackpackPanel/InfoBar/InfoIcon
+@onready var info_name: Label              = $BackpackPanel/InfoBar/InfoName
+@onready var info_desc: Label              = $BackpackPanel/InfoBar/InfoDesc
+@onready var combine_bar: HBoxContainer    = $BackpackPanel/CombineBar
+@onready var combine_label: Label          = $BackpackPanel/CombineBar/CombineLabel
+@onready var combine_button: Button        = $BackpackPanel/CombineBar/CombineButton
+@onready var backpack_panel: Panel         = $BackpackPanel
+@onready var discard_slot: Panel           = $BackpackPanel/DiscardSlot
+@onready var discard_prompt: Label         = $BackpackPanel/DiscardPrompt
+@onready var title_label: Label            = $BackpackPanel/TitleBar/TitleLabel
+
+const ITEMS_PATH: String = "res://game/resources/items/"
+const INVENTORY_DRAG_SLOT_SCRIPT = preload("res://game/ui/inventory/backpack/InventoryDragSlot.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
+const PANEL_FADE_DURATION: float = 0.15
+
+var _selected_index: int = -1
+var _combine_target_index: int = -1
+var _slot_panels: Array[Panel] = []
+var _slot_items: Array[ItemData] = []
+var _slot_quantities: Array[int] = []
+var _item_cache: Dictionary = {}
+var _panel_tween: Tween = null
+var _input_blocker: Control = null
+var _closing: bool = false
+var _transitioning: bool = false
+
+func _ready() -> void:
+	add_to_group("backpack_ui")
+	layer = 10
+	visible = false
+	grid_container.columns = 4
+
+	# --- FIX THE PANEL SIZE AND LAYOUT HERE IN CODE ---
+	# WHY: Doing it in code means it always applies correctly regardless
+	# of what the scene editor shows. No manual tweaking needed.
+	_setup_panel_layout()
+
+	InventoryManager.inventory_changed.connect(_on_inventory_changed)
+	InventoryManager.discard_changed.connect(_on_discard_changed)
+	if is_instance_valid(combine_button):
+		combine_button.pressed.connect(_on_combine_pressed)
+	LocalizationManager.language_changed.connect(_on_language_changed)
+	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
+	_apply_backpack_style()
+	_hide_combine_bar()
+	_input_blocker = Control.new()
+	_input_blocker.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_input_blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_input_blocker)
+	_input_blocker.hide()
+
+func _layout_scale() -> float:
+	var viewport_size := get_viewport().get_visible_rect().size
+	return minf(VisualSettings.get_ui_scale(), minf((viewport_size.x - 32.0) / 560.0, (viewport_size.y - 32.0) / 560.0))
+
+func _setup_panel_layout() -> void:
+	var ui_scale := _layout_scale()
+	# Size the main panel
+	backpack_panel.custom_minimum_size = Vector2(560, 560) * ui_scale
+
+	# Anchor the panel to the CENTER of the screen
+	backpack_panel.set_anchor_and_offset(SIDE_LEFT,   0.5, -280 * ui_scale)
+	backpack_panel.set_anchor_and_offset(SIDE_TOP,    0.5, -280 * ui_scale)
+	backpack_panel.set_anchor_and_offset(SIDE_RIGHT,  0.5,  280 * ui_scale)
+	backpack_panel.set_anchor_and_offset(SIDE_BOTTOM, 0.5,  280 * ui_scale)
+
+	# Give the panel a dark background style
+	var panel_style := UI_STYLE.panel_style()
+	backpack_panel.add_theme_stylebox_override("panel", panel_style)
+
+	# TitleBar — sits at the top
+	var title_bar = $BackpackPanel/TitleBar
+	title_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	title_bar.set_anchor_and_offset(SIDE_TOP,    0, 12 * ui_scale)
+	title_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * ui_scale)
+	title_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 44 * ui_scale)
+	title_label.add_theme_font_size_override("font_size", roundi(25.0 * ui_scale))
+	count_label.add_theme_font_size_override("font_size", roundi(20.0 * ui_scale))
+
+	# GridContainer — sits below title bar
+	grid_container.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	grid_container.set_anchor_and_offset(SIDE_TOP,    0, 54 * ui_scale)
+	grid_container.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * ui_scale)
+	grid_container.set_anchor_and_offset(SIDE_BOTTOM, 0, 298 * ui_scale)
+	grid_container.add_theme_constant_override("h_separation", int(roundi(8.0 * ui_scale)))
+	grid_container.add_theme_constant_override("v_separation", int(roundi(8.0 * ui_scale)))
+
+	# InfoBar — sits below the grid
+	var info_bar = $BackpackPanel/InfoBar
+	info_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	info_bar.set_anchor_and_offset(SIDE_TOP,    0, 312 * ui_scale)
+	info_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -130 * ui_scale)
+	info_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 420 * ui_scale)
+	info_bar.add_theme_constant_override("separation", int(roundi(8.0 * ui_scale)))
+	info_bar.alignment = BoxContainer.ALIGNMENT_BEGIN
+
+	# InfoIcon — fixed size inside InfoBar
+	info_icon.custom_minimum_size = Vector2(52, 52) * ui_scale
+	info_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	info_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+
+	# Text container — needs a VBoxContainer to stack name above desc
+	# WHY: HBoxContainer puts icon and text side by side, but the text
+	# needs its OWN vertical stack. We build it in code here.
+	var text_box = info_bar.get_node_or_null("TextBox")
+	if text_box == null:
+		text_box = VBoxContainer.new()
+		text_box.name = "TextBox"
+		text_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		text_box.size_flags_vertical   = Control.SIZE_SHRINK_CENTER
+		info_bar.add_child(text_box)
+		# Move info_name and info_desc into this VBox
+		info_name.reparent(text_box)
+		info_desc.reparent(text_box)
+
+	info_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info_name.clip_text = false
+	info_name.add_theme_font_size_override("font_size", int(roundi(20.0 * ui_scale)))
+
+	info_desc.autowrap_mode = TextServer.AUTOWRAP_WORD
+	info_desc.add_theme_font_size_override("font_size", int(roundi(18.0 * ui_scale)))
+	info_desc.modulate = Color(1, 1, 1, 0.84)
+	info_desc.custom_minimum_size = Vector2(0, 0)
+
+	# CombineBar — sits at the very bottom
+	combine_bar.set_anchor_and_offset(SIDE_LEFT,   0, 12 * ui_scale)
+	combine_bar.set_anchor_and_offset(SIDE_TOP,    0, 480 * ui_scale)
+	combine_bar.set_anchor_and_offset(SIDE_RIGHT,  1, -12 * ui_scale)
+	combine_bar.set_anchor_and_offset(SIDE_BOTTOM, 0, 536 * ui_scale)
+	combine_bar.add_theme_constant_override("separation", int(roundi(10.0 * ui_scale)))
+	combine_label.add_theme_font_size_override("font_size", int(roundi(18.0 * ui_scale)))
+	combine_label.add_theme_color_override("font_color", Color(1, 1, 1, 0.9))
+	combine_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	combine_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+
+	if is_instance_valid(discard_slot):
+		discard_slot.mouse_filter = Control.MOUSE_FILTER_STOP
+		discard_slot.z_index = 10
+		discard_slot.set_anchor_and_offset(SIDE_LEFT, 1, -114 * ui_scale)
+		discard_slot.set_anchor_and_offset(SIDE_TOP, 0, 312 * ui_scale)
+		discard_slot.set_anchor_and_offset(SIDE_RIGHT, 1, -12 * ui_scale)
+		discard_slot.set_anchor_and_offset(SIDE_BOTTOM, 0, 420 * ui_scale)
+
+	if is_instance_valid(discard_prompt):
+		discard_prompt.set_anchor_and_offset(SIDE_LEFT, 0, 12 * ui_scale)
+		discard_prompt.set_anchor_and_offset(SIDE_TOP, 0, 440 * ui_scale)
+		discard_prompt.set_anchor_and_offset(SIDE_RIGHT, 1, -12 * ui_scale)
+		discard_prompt.set_anchor_and_offset(SIDE_BOTTOM, 0, 470 * ui_scale)
+		discard_prompt.add_theme_font_size_override("font_size", int(roundi(16.0 * ui_scale)))
+		discard_prompt.add_theme_color_override("font_color", Color(1, 1, 1, 0.68))
+
+func _apply_backpack_style() -> void:
+	UI_STYLE.apply_tree(backpack_panel)
+	UI_STYLE.apply_button(combine_button)
+	_refresh_static_text()
+	UI_STYLE.apply_label(count_label, true)
+
+func _refresh_static_text() -> void:
+	if is_instance_valid(title_label):
+		title_label.text = LocalizationManager.translate("Inventory")
+		UI_STYLE.apply_label(title_label, false, true)
+	if is_instance_valid(discard_prompt):
+		discard_prompt.text = LocalizationManager.translate("Drag item to discard slot if you want to discard it.")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if _transitioning:
+		return
+	if event.is_action_pressed("toggle_backpack"):
+		_toggle()
+
+func _toggle() -> void:
+	if _transitioning:
+		return
+	if visible:
+		close_backpack()
+		return
+	if get_tree().get_first_node_in_group("lotto_ui") != null:
+		return
+
+	_close_map_if_open()
+	SFX.inventory_open()
+	CursorState.request_visible(self)
+	_closing = false
+	visible = true
+	backpack_panel.modulate.a = 0.0
+	_input_blocker.show()
+	_transitioning = true
+	_reset_selection()
+	_redraw_backpack()
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
+	_panel_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_panel_tween.tween_property(backpack_panel, "modulate:a", 1.0, PANEL_FADE_DURATION)
+	_panel_tween.finished.connect(func() -> void:
+		_transitioning = false
+		_input_blocker.hide()
+	)
+
+func close_backpack() -> void:
+	if not visible or _closing:
+		return
+	SFX.inventory_close()
+	_closing = true
+	_transitioning = true
+	_input_blocker.show()
+	if _panel_tween != null and _panel_tween.is_valid():
+		_panel_tween.kill()
+	_panel_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_panel_tween.tween_property(backpack_panel, "modulate:a", 0.0, PANEL_FADE_DURATION)
+	_panel_tween.finished.connect(func() -> void:
+		visible = false
+		_closing = false
+		_transitioning = false
+		_input_blocker.hide()
+		CursorState.release_visible(self)
+		_reset_selection()
+	)
+
+func _close_map_if_open() -> void:
+	var map_screen = get_tree().get_first_node_in_group("map_screen")
+	if map_screen and map_screen.has_method("close_map"):
+		map_screen.close_map()
+
+func _on_inventory_changed() -> void:
+	if not visible:
+		return
+	var item_count = InventoryManager.get_item_count()
+	if _selected_index >= item_count:
+		_selected_index = -1
+	if _combine_target_index >= item_count:
+		_combine_target_index = -1
+	_redraw_backpack()
+
+func _on_discard_changed() -> void:
+	if not visible:
+		return
+	_refresh_info_bar()
+
+func _redraw_backpack() -> void:
+	var items = InventoryManager.get_all_items()
+	count_label.text = str(items.size()) + " / " + str(InventoryManager.MAX_INVENTORY_SIZE)
+	_ensure_slot_nodes()
+
+	for i in range(InventoryManager.MAX_INVENTORY_SIZE):
+		var item: ItemData = items[i] if i < items.size() else null
+		var quantity := InventoryManager.get_item_quantity(i)
+		if _slot_items[i] != item or _slot_quantities[i] != quantity:
+			_refresh_slot(_slot_panels[i], item, quantity, i)
+			_slot_items[i] = item
+			_slot_quantities[i] = quantity
+
+	_update_slot_highlights()
+	_refresh_info_bar()
+	_refresh_combine_bar()
+
+func _ensure_slot_nodes() -> void:
+	while _slot_panels.size() < InventoryManager.MAX_INVENTORY_SIZE:
+		var index := _slot_panels.size()
+		var slot := _create_slot(index)
+		grid_container.add_child(slot)
+		_slot_panels.append(slot)
+		_slot_items.append(null)
+		_slot_quantities.append(-1)
+
+func _create_slot(index: int) -> Panel:
+	var ui_scale := _layout_scale()
+	var panel = Panel.new()
+	panel.set_script(INVENTORY_DRAG_SLOT_SCRIPT)
+	panel.call("setup", self, index, null)
+	panel.custom_minimum_size = Vector2(128, 118) * ui_scale
+	panel.gui_input.connect(_on_slot_gui_input.bind(index))
+	return panel
+
+func _refresh_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> void:
+	var ui_scale := _layout_scale()
+	for child in panel.get_children():
+		child.queue_free()
+
+	panel.call("setup", self, index, item)
+	panel.custom_minimum_size = Vector2(128, 118) * ui_scale
+
+	var slot_bg: Color = Color(0.14, 0.14, 0.14, 0.92) if item != null else Color(0.08, 0.08, 0.08, 0.6)
+	var style := _make_panel_style(slot_bg, Color(1, 1, 1, 0.12), 1, 8)
+	panel.add_theme_stylebox_override("panel", style)
+
+	if item != null:
+		var icon = TextureRect.new()
+		icon.texture = item.item_icon
+		icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		icon.offset_left   = 8 * ui_scale
+		icon.offset_top    = 8 * ui_scale
+		icon.offset_right  = -8 * ui_scale
+		icon.offset_bottom = -46 * ui_scale
+		icon.mouse_filter  = Control.MOUSE_FILTER_PASS
+		panel.add_child(icon)
+
+		var name_label = Label.new()
+		name_label.text = item.get_item_name()
+		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		name_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
+		name_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		name_label.offset_top = 74 * ui_scale
+		name_label.offset_bottom = -4 * ui_scale
+		name_label.add_theme_font_size_override("font_size", int(roundi(16.0 * ui_scale)))
+		name_label.modulate = Color(1, 1, 1, 0.85)
+		name_label.mouse_filter = Control.MOUSE_FILTER_PASS
+		panel.add_child(name_label)
+
+		if quantity > 1:
+			var quantity_label = Label.new()
+			quantity_label.text = "x%d" % quantity
+			quantity_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			quantity_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+			quantity_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			quantity_label.offset_top = 4 * ui_scale
+			quantity_label.offset_right = -6 * ui_scale
+			quantity_label.add_theme_font_size_override("font_size", int(roundi(16.0 * ui_scale)))
+			quantity_label.add_theme_color_override("font_color", Color(1.0, 0.92, 0.62))
+			quantity_label.mouse_filter = Control.MOUSE_FILTER_PASS
+			panel.add_child(quantity_label)
+
+		panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	else:
+		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func _make_panel_style(bg_color: Color, border_color: Color, border_width: int, radius: int) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = bg_color
+	style.border_color = border_color
+	_set_uniform_border_width(style, border_width)
+	_set_uniform_corner_radius(style, radius)
+	return style
+
+func _set_uniform_border_width(style: StyleBoxFlat, width: int) -> void:
+	style.border_width_left = width
+	style.border_width_right = width
+	style.border_width_top = width
+	style.border_width_bottom = width
+
+func _set_uniform_corner_radius(style: StyleBoxFlat, radius: int) -> void:
+	style.corner_radius_top_left = radius
+	style.corner_radius_top_right = radius
+	style.corner_radius_bottom_left = radius
+	style.corner_radius_bottom_right = radius
+
+func _on_slot_gui_input(event: InputEvent, index: int) -> void:
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed:
+		_on_slot_clicked(index)
+
+func _on_slot_clicked(index: int) -> void:
+	if _selected_index == -1:
+		_selected_index = index
+		_combine_target_index = -1
+	elif index == _selected_index:
+		_reset_selection()
+		return
+	else:
+		_combine_target_index = index
+
+	_update_slot_highlights()
+	_refresh_info_bar()
+	_refresh_combine_bar()
+
+func _reset_selection() -> void:
+	_selected_index = -1
+	_combine_target_index = -1
+	_update_slot_highlights()
+	_refresh_info_bar()
+	_hide_combine_bar()
+
+func _update_slot_highlights() -> void:
+	var items = InventoryManager.get_all_items()
+	for i in range(_slot_panels.size()):
+		var panel = _slot_panels[i]
+		if not is_instance_valid(panel):
+			continue
+		var style = panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+		if i == _selected_index:
+			style.border_color = Color(1.0, 1.0, 1.0, 0.9)
+			_set_uniform_border_width(style, 2)
+			style.bg_color = Color(0.22, 0.22, 0.22, 0.95)
+		elif i == _combine_target_index:
+			style.border_color = Color(0.3, 0.9, 0.6, 0.95)
+			_set_uniform_border_width(style, 2)
+			style.bg_color = Color(0.1, 0.22, 0.16, 0.95)
+		else:
+			style.border_color = Color(1, 1, 1, 0.1)
+			_set_uniform_border_width(style, 1)
+			style.bg_color = Color(0.14, 0.14, 0.14, 0.92) if i < items.size() else Color(0.08, 0.08, 0.08, 0.6)
+		panel.add_theme_stylebox_override("panel", style)
+
+func _refresh_info_bar() -> void:
+	var items = InventoryManager.get_all_items()
+	var display_index = _combine_target_index if _combine_target_index != -1 else _selected_index
+
+	if display_index >= 0 and display_index < items.size():
+		var item = items[display_index]
+		if is_instance_valid(info_icon): info_icon.texture = item.item_icon
+		if is_instance_valid(info_name): info_name.text = item.get_item_name()
+		if is_instance_valid(info_desc): info_desc.text = item.get_item_description() if item.item_description != "" else LocalizationManager.translate("No description.")
+	else:
+		if is_instance_valid(info_icon): info_icon.texture = null
+		if is_instance_valid(info_name): info_name.text = ""
+		if is_instance_valid(info_desc): info_desc.text = LocalizationManager.translate("Click an item to inspect.\nClick a second item to combine.")
+
+func _refresh_combine_bar() -> void:
+	if _selected_index == -1 or _combine_target_index == -1:
+		_hide_combine_bar()
+		return
+
+	var result_id = InventoryManager.get_combine_result(_selected_index, _combine_target_index)
+
+	if result_id == "":
+		combine_bar.visible = true
+		combine_label.text = LocalizationManager.translate("These items can't be combined.")
+		if is_instance_valid(combine_button):
+			combine_button.visible = false
+	else:
+		combine_bar.visible = true
+		var result_item = _load_item_by_id(result_id)
+		var result_name = result_item.get_item_name() if result_item else result_id
+		combine_label.text = LocalizationManager.trf("Combine -> %s", [result_name])
+		if is_instance_valid(combine_button):
+			combine_button.text = "Combine"
+			combine_button.visible = true
+
+func _hide_combine_bar() -> void:
+	if is_instance_valid(combine_bar):
+		combine_bar.visible = false
+
+func _on_combine_pressed() -> void:
+	if _selected_index == -1 or _combine_target_index == -1:
+		return
+
+	var result_id = InventoryManager.get_combine_result(_selected_index, _combine_target_index)
+	if result_id == "":
+		return
+
+	var result_item = _load_item_by_id(result_id)
+	if result_item == null:
+		push_error("BackpackUI: Could not load result item: " + result_id)
+		return
+
+	# Store indices before reset, then reset before combine
+	# WHY: inventory_changed fires during combine, which triggers _on_inventory_changed,
+	# which calls _redraw_backpack. If selection isn't cleared first, it tries to
+	# highlight slots that no longer exist and crashes.
+	var a = _selected_index
+	var b = _combine_target_index
+	_reset_selection()
+	InventoryManager.combine_items(a, b, result_item)
+
+func _load_item_by_id(item_id: String) -> ItemData:
+	if _item_cache.has(item_id):
+		return _item_cache[item_id] as ItemData
+	# Try the primary path first
+	var path = ITEMS_PATH + item_id + ".tres"
+	if ResourceLoader.exists(path):
+		var item := ResourceLoader.load(path) as ItemData
+		_item_cache[item_id] = item
+		return item
+
+	# WHY this fallback: if your .tres files are in a subfolder or have
+	# a different structure, this will print the attempted path so you
+	# can see exactly what path the code is looking for.
+	push_error("BackpackUI: .tres not found at: " + path + 
+			   "\nMake sure your file is named exactly '" + item_id + ".tres'" +
+			   "\nand lives in " + ITEMS_PATH)
+	return null
+
+func _on_language_changed(_language_id: String) -> void:
+	_refresh_static_text()
+	if visible:
+		_redraw_backpack()
+
+func _on_ui_scale_changed(_scale: float) -> void:
+	_setup_panel_layout()
+	for i in range(_slot_panels.size()):
+		_slot_items[i] = null
+		_slot_quantities[i] = -1
+	if visible:
+		_redraw_backpack()

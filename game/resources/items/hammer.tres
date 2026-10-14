@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ccxca20gf16af"]
 
-[ext_resource type="Texture2D" uid="uid://dk384ch1hg2yh" path="res://game/assets/images/hammer.png" id="1_sdd5c"]
+[ext_resource type="Texture2D" uid="uid://dk384ch1hg2yh" path="res://game/assets/item_icons/hammer.png" id="1_sdd5c"]
 [ext_resource type="PackedScene" uid="uid://b8xynp8t2mkes" path="res://_raw_assets/interactable_models/Hammer.glb" id="2_mgtx2"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_sdd5c"]
 

@@ -96,7 +96,7 @@ func _test_pause_owners() -> void:
 func _test_shop() -> void:
 	GlobalTimer.start_fresh()
 	ShopUi.reset()
-	var shop: ShopData = load("res://game/resources/items/shops/HardwareShop.tres")
+	var shop: ShopData = load("res://game/resources/shops/HardwareShop.tres")
 	ShopUi.open_shop(shop)
 	ShopUi.open_shop(shop)
 	InventoryManager.reset()
@@ -123,7 +123,7 @@ func _test_shop() -> void:
 func _test_nestor() -> void:
 	InventoryManager.reset()
 	SideQuestLog.reset()
-	var npc_scene: Node = load("res://game/entities/quest_npcs/mang_nestor.tscn").instantiate()
+	var npc_scene: Node = load("res://game/entities/npcs/quests/mang_nestor.tscn").instantiate()
 	add_child(npc_scene)
 	var nestor: Node = npc_scene.get_node("Area3D")
 	nestor._start_quest()
@@ -281,7 +281,7 @@ func _test_lifecycle() -> void:
 	_check(InventoryManager.has_item_with_id("medicine") and not NeedsLog.is_resolved(NeedsLog.Need.MEDICINE), "canceled task keeps supplies and remains unresolved")
 	if not await _fresh_home():
 		return
-	var smoke_scene: Node = load("res://game/entities/quest_npcs/smoke_break_npc.tscn").instantiate()
+	var smoke_scene: Node = load("res://game/entities/npcs/quests/smoke_break_npc.tscn").instantiate()
 	get_tree().current_scene.add_child(smoke_scene)
 	GlobalTimer.current_minutes = 719
 	smoke_scene.get_node("Area3D")._on_choice_accepted()
@@ -295,7 +295,7 @@ func _test_lifecycle() -> void:
 		var player := get_tree().get_first_node_in_group("player")
 		match mode:
 			"dialogue": get_tree().current_scene.get_node("nanay/Area3D").interact()
-			"shop": ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
+			"shop": ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 			"map": get_tree().get_first_node_in_group("map_screen").open_map()
 			"backpack": get_tree().get_first_node_in_group("backpack_ui")._toggle()
 			"pause": player.get_node("PauseMenu")._open()
@@ -317,7 +317,7 @@ func _test_lifecycle() -> void:
 	if not await _wait_until(func(): return _scene_is("hardware") and not SceneManager.is_travelling, "normal travel reaches hardware"):
 		return
 	GameState.add_cash(1000)
-	ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
+	ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 	var offer: ShopItem = ShopUi._current_shop.items[0]
 	var stock: int = offer.stock
 	ShopUi._on_buy_pressed(offer)
@@ -329,7 +329,7 @@ func _test_lifecycle() -> void:
 	SceneManager.travel_to("hardware", "", 1)
 	if not await _wait_until(func(): return _scene_is("hardware") and not SceneManager.is_travelling, "return to hardware completes"):
 		return
-	ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
+	ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 	_check(ShopUi._current_shop.items[0].stock == stock - 1, "stock survives scene return")
 	ShopUi.close_shop()
 
@@ -357,10 +357,10 @@ func _test_visuals() -> void:
 			_check(map.confirm_panel.get_global_rect().encloses(time_label.get_global_rect()), "map travel text stays in confirmation panel " + suffix)
 			_check(map.panel.get_global_rect().encloses(map.confirm_panel.get_global_rect()), "map confirmation stays on screen " + suffix)
 			map.close_map()
-			ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
+			ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 			await _capture("shop_" + suffix)
 			ShopUi.close_shop()
-			var npc_scene: Node = load("res://game/entities/quest_npcs/mang_nestor.tscn").instantiate()
+			var npc_scene: Node = load("res://game/entities/npcs/quests/mang_nestor.tscn").instantiate()
 			get_tree().current_scene.add_child(npc_scene)
 			var nestor: Node = npc_scene.get_node("Area3D")
 			nestor.show_choice_prompt("Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?", "Accept", "Not now")

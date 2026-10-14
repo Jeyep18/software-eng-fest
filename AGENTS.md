@@ -22,22 +22,23 @@ Inspect the relevant implementation, scenes/resources, callers and dependencies.
 | `game/scenes/locations/house_inside.tscn` | Current new-run destination; family and tasks |
 | `game/scenes/locations/` | Travel destinations; `bodega.tscn` is a home room |
 | `game/scenes/ending/EndingSequence.tscn` | Six preparation outcomes and score submission |
-| `game/entities/playerv2/playerv_2.tscn` | Active player, camera, backpack/hotbar/HUD/map/pause |
-| `game/entities/npc/`, `game/entities/quest_npcs/` | Dialogue bases and optional choices |
+| `game/entities/players/playerv2/playerv_2.tscn` | Active player, camera, backpack/hotbar/HUD/map/pause |
+| `game/entities/npcs/base/`, `game/entities/npcs/quests/` | Dialogue bases and optional choices |
 | `game/objects/interactables/` | `Interactable` base, tasks, doors and cues |
-| `game/autoload/` | Managers **and some ordinary scene/class scripts** |
-| `game/resources/`, `game/scripts/` | Item/shop resources, dialogue-related data consumers, environments |
+| `game/autoload/` | Registered singleton scripts; AudioManager scene is in `game/audio/` |
+| `game/resources/` | Item/shop/dialogue types and data, environments, navigation and voxels |
 | `game/ui/`, `game/audio/`, `game/weather/`, `game/shaders/` | Presentation and reusable helpers |
 | `game/localization/` | Custom runtime CSV; see its [editing guide](game/localization/README.md) |
 | `game/assets/`, `_raw_assets/` | Runtime and source assets; scenes use both |
-| `game/maps/`, `game/scenes/act1/`, `game/tests/` | Mixed supporting/older scenes; verify reachability |
+| `game/camera/`, `game/scenes/components/` | Shared camera volumes and spawnpoint component |
+| `game/tests/`, `game/tests/sandbox/`, `game/scenes/act1/` | Regression checks, test environments and retained act scenes; verify reachability |
 | `.agents/skills/` | Agent guidance, not a Godot runtime addon |
 
 ## Globals and communication
 
-The **19 configured autoloads**, in order, are `CursorState`, `VisualSettings`, `LocalizationManager`, `TransitionOverlay`, `GlobalTimer`, `SceneManager`, `NeedsLog`, `GameState`, `DevMode`, `TravelCalculator`, `InventoryManager`, `SideQuestLog`, `EconomyManager`, `ShopUi`, `StormEnroachment`, `AudioManager`, `StormAudioController`, `LeaderboardManager`, `VhsCrtOverlay`. Preserve spelling/case, including `ShopUi` and `StormEnroachment`. `AudioManager` is the scene `game/utils/AudioManager.tscn`.
+The **19 configured autoloads**, in order, are `CursorState`, `VisualSettings`, `LocalizationManager`, `TransitionOverlay`, `GlobalTimer`, `SceneManager`, `NeedsLog`, `GameState`, `DevMode`, `TravelCalculator`, `InventoryManager`, `SideQuestLog`, `EconomyManager`, `ShopUi`, `StormEnroachment`, `AudioManager`, `StormAudioController`, `LeaderboardManager`, `VhsCrtOverlay`. Preserve spelling/case, including `ShopUi` and `StormEnroachment`. `AudioManager` is the scene `game/audio/AudioManager.tscn`.
 
-`TaskObject.gd` is a base class; `HUDOverlay.gd` is attached to a player-owned scene. Neither is an autoload. Search for equivalents before adding managers, services or global state.
+`TaskObject.gd` in `game/objects/interactables/` is a base class; `HUDOverlay.gd` in `game/ui/hud/` is attached to a player-owned scene. Neither is an autoload. Search for equivalents before adding managers, services or global state.
 
 Use existing direct manager APIs for actions and signals for notifications: `inventory_changed`, `need_discovered`, `need_resolved`, `window_boarded`, `guide_tasks_changed`, `time_updated`, `storm_arrived`, `travel_completed`, `language_changed`. Inspect signatures in source. Preserve `player`, `interactables`, `camera volume` and runtime UI groups used for discovery.
 
@@ -54,7 +55,7 @@ Use existing direct manager APIs for actions and signals for notifications: `inv
 
 ## Scenes, resources, input and physics
 
-Locations instantiate their own player and its UI. Whole-scene replacement frees them; autoloads survive. Use `SceneManager.travel_to` for travel, its pending spawn IDs and `spawnpoint.gd` markers. The player must be discoverable in group `player` when a marker places it. Check transient dialog ownership, movement locks, mouse capture and timer pauses on exit.
+Locations instantiate their own player and its UI. Whole-scene replacement frees them; autoloads survive. Use `SceneManager.travel_to` for travel, its pending spawn IDs and `game/scenes/components/spawnpoint/spawnpoint.gd` markers. The player must be discoverable in group `player` when a marker places it. Check transient dialog ownership, movement locks, mouse capture and timer pauses on exit.
 
 Use existing `PackedScene.instantiate()` / `add_child()` / `queue_free()` patterns. Custom Resources include `ItemData`, `ShopItem`, `ShopData`, `DialogueLine`, `DialogueSequence`. `ShopUi` duplicates/caches shop data for per-run stock; do not mutate shared `.tres` data casually. Item type controls task consumption; tools are retained, but the current wrench defaults to a consumable type.
 

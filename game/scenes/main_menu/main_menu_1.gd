@@ -25,7 +25,7 @@ extends Node3D
 @onready var menu_camera: Camera3D = $SubViewportContainer/SubViewport/Camera3D
 
 const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 const STORM_ACCENT: Color = Color(0.122, 0.486, 0.404)
 const BUTTON_TEXT: Color = Color(0.886, 0.91, 0.941)
@@ -76,8 +76,8 @@ func _ready() -> void:
 		credits_close.pressed.connect(func() -> void: credits_modal.visible = false)
 	leaderboards_button.pressed.connect(_on_leaderboards_pressed)
 	await TransitionOverlay.fade_from_black()
-	AudioManager.play_ambience(preload("res://game/assets/sfx/u_7hpxkdroz2-storm-461601.mp3"))
-	AudioManager.play_music(preload("res://game/assets/sfx/PhaseShift(chosic.com)-ScottBuckley.mp3"))
+	AudioManager.play_ambience(preload("res://game/assets/audio/weather/u_7hpxkdroz2-storm-461601.mp3"))
+	AudioManager.play_music(preload("res://game/assets/audio/music/PhaseShift(chosic.com)-ScottBuckley.mp3"))
 	_run_lightning_loop()
 
 func _process(delta: float) -> void:

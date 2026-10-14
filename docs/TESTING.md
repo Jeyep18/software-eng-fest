@@ -2,7 +2,7 @@
 
 ## Current strategy and evidence
 
-The initial documentation audit found no automated tests. Focused no-framework checks now live in `game/tests/cleanup_regression.tscn` and `game/tests/milestone1_smoke.tscn`; no third-party test framework or CI test workflow is configured. `game/tests/test_world/test_world.tscn`, `test_world_2.tscn` and their scene resources are exploratory 3D content, not GUT/GdUnit/custom automated tests. Do not report them as a passing suite.
+The initial documentation audit found no automated tests. Focused no-framework checks now live in `game/tests/cleanup_regression.tscn` and `game/tests/milestone1_smoke.tscn`; no third-party test framework or CI test workflow is configured. `game/tests/sandbox/test_world/test_world.tscn`, `test_world_2.tscn` and their scene resources are exploratory 3D content, not GUT/GdUnit/custom automated tests. Do not report them as a passing suite.
 
 Verification should distinguish five kinds of evidence:
 
@@ -14,7 +14,7 @@ Verification should distinguish five kinds of evidence:
 | Gameplay smoke test | Normal startup, preparation, travel and ending paths work together |
 | Targeted regression | The changed behavior and nearby failure cases remain correct |
 
-The documentation audit on 2026-09-16–17 used static inspection. The installed engine version was verified as `4.6.1.stable.official.14d19694e` and Git LFS as 3.7.1. No editor import, headless project execution, export or gameplay test was run because the task prohibited writes to import/cache/generated files. Runtime quality and successful export remain **Unknown / Needs verification**.
+The documentation audit on 2026-09-16â€“17 used static inspection. The installed engine version was verified as `4.6.1.stable.official.14d19694e` and Git LFS as 3.7.1. No editor import, headless project execution, export or gameplay test was run because the task prohibited writes to import/cache/generated files. Runtime quality and successful export remain **Unknown / Needs verification**.
 
 ## Script and scene validation for future development
 
@@ -89,17 +89,17 @@ Choose checks relevant to the change. These are procedures to execute, not claim
 | Shops/trade/economy | Exact/insufficient cash, finite/unlimited/out-of-stock item, full inventory, repeat purchase, barter requirements, completion/revisit, stock/reset state after restart |
 | Travel/world state | Current/closed/inaccessible destination, danger penalties, quoted cost, repeated travel input, room transitions/spawn IDs, unique pickups and task props after leaving/returning |
 | UI/input ownership | Map/backpack mutual exclusion, pause while each is open, tutorial from menu/pause/gameplay, mouse recapture, focus release, repeated close/open and transitions while a modal is active |
-| Localization | English↔Tagalog changes in menu and gameplay, dynamic dialogue/item/shop/objective text, `%` placeholders and BBCode, long text/clipping; do not assume automatic node traversal catches later text assignments |
+| Localization | Englishâ†”Tagalog changes in menu and gameplay, dynamic dialogue/item/shop/objective text, `%` placeholders and BBCode, long text/clipping; do not assume automatic node traversal catches later text assignments |
 | Visuals | High/Balanced/Performance, VHS on/off, UI scale extremes, different window/aspect sizes, scene change after settings adjustment, camera DOF and light/shadow changes |
 | Audio | Music/ambience transitions, overlapping SFX, dialogue voice ending/skipping, storm progression and grocery layer, pause/resume, volume persistence and Reset |
-| Ending/leaderboard | Six need-dependent shots; result tiers at 0–1, 2–3, 4–5 and 6 needs; empty/whitespace/name-limit input; early-finish time snapshot; difficulty multiplier; score ties; reload and two-step clear |
+| Ending/leaderboard | Six need-dependent shots; result tiers at 0â€“1, 2â€“3, 4â€“5 and 6 needs; empty/whitespace/name-limit input; early-finish time snapshot; difficulty multiplier; score ties; reload and two-step clear |
 | Persistence/export | Quit/relaunch settings and leaderboard; absent/malformed files in isolated test data; exported build includes CSV/assets and can complete the normal application flow |
 
 ### Existing edge cases worth preserving in reports
 
 - `InventoryManager.MAX_INVENTORY_SIZE` is **7**. Slot construction, selection and wheel wrap use this capacity. Key 8 explicitly aliases the last slot. Exercise both wrapping directions and the alias before changing controls.
 - `TutorialModal` suppression is a static session flag; it is not written to settings. Verify it separately from disk persistence.
-- `AudioSettingsPanel` Reset resets audio and visual settings, not language. UI scale is 100–175%, default 140%; quality defaults High and VHS defaults enabled.
+- `AudioSettingsPanel` Reset resets audio and visual settings, not language. UI scale is 100â€“175%, default 140%; quality defaults High and VHS defaults enabled.
 - `AudioManager.play_sfx` creates temporary players, whereas `stop_sfx` and `stop_all` stop the fixed SFX player. Do not assume these helpers silence every active one-shot.
 - Leaderboard recording trims to 25 entries; loading does not enforce that cap. `clear_entries` clears all modes even though its signature accepts an unused difficulty argument. Test local-data changes deliberately.
 - Intro narrative assigns strings dynamically without explicit translation calls. Full localization coverage has not been established.
@@ -125,13 +125,13 @@ Reproduce the defect before editing when feasible, exercise the fixed path and n
 
 Inspect `git diff --check`, the changed-file list and the diff for unintended scene/resource/configuration edits. Report parser/import checks separately from manual tests. For a documentation-only task, validate referenced paths, symbols, configured autoloads and links without launching the project. A clean diff or executable version check is not a passing gameplay test.
 
-### Documentation audit result — 2026-09-17
+### Documentation audit result â€” 2026-09-17
 
 All eight requested guides were reviewed against implementation and each other. An independent review caught and corrected an erroneous PlayerV2 jump test and the AudioManager scene-folder description. Other corrected historical assumptions include Act1 startup/timer behavior, HUD registration, inventory capacity and plans presented as completed systems.
 
 The local-link check examined 46 links with no missing targets; the controls anchors were also checked. A scan of 87 code-formatted repository paths found only the two explicitly documented missing scene paths (each mentioned in architecture and roadmap). `git diff --check` passed. The changed-file inventory contained nine Markdown files only: the eight requested guides plus a historical-status notice added to `PROJECT_HANDOFF.md`. No gameplay, scene, resource, asset, shader, addon or project-setting edits were made. No runtime verification is implied by these checks.
 
-### Conservative cleanup validation — 2026-09-17
+### Conservative cleanup validation â€” 2026-09-17
 
 The documentation was checkpointed locally as `ab25f2a` on `dev` before implementation. No push was performed. Validation used Godot `4.6.1.stable.official.14d19694e` in a disposable copy with isolated runtime user data.
 
@@ -140,14 +140,14 @@ The documentation was checkpointed locally as `ab25f2a` on `dev` before implemen
 - Baseline headless samples loaded intro, menu, home, hardware, pharmacy, grocery and ending. Tindahan emitted missing-greybox and vanished-node recovery errors. Forced exits reported leaked objects/resources before changes.
 - The focused regression scene passed **92 assertions with zero failures**. The deliberate null-result diagnostic and existing shutdown resource warnings are separate from assertion failures.
 - Independent review found no actionable defects in the changed production scripts and focused tests. Existing gameplay scenes, resources, assets, project settings, Input Map and save formats were not edited.
-- A disposable, script-driven integration smoke passed intro skip → menu → home, map/backpack clock continuity, hardware travel and return spawn, pause, restart into a second home instance with a fresh clock, and forced storm → ending. It used accelerated time and suppressed the startup tutorial through its existing session API; it does not verify normal timing or tutorial interaction.
+- A disposable, script-driven integration smoke passed intro skip â†’ menu â†’ home, map/backpack clock continuity, hardware travel and return spawn, pause, restart into a second home instance with a fresh clock, and forced storm â†’ ending. It used accelerated time and suppressed the startup tutorial through its existing session API; it does not verify normal timing or tutorial interaction.
 - The same smoke passed at checkpoint `ab25f2a` and with the cleanup. Both emitted `PreparationChecklistHUD._schedule_checklist_resize` line 249's null `get_tree()` error during restart, plus shutdown resource warnings. These are pre-existing lifecycle findings, deliberately outside this pass.
 
 No manual visual/audio playthrough, complete dialogue/task interaction sequence, Nestor reward turn-in or exported-build test was performed. The focused window and quest tests establish state-helper behavior only. Existing missing-resource and lifecycle issues are not claimed fixed by this cleanup.
 
 Final recheck on 2026-09-23 synchronized all changed scripts and the regression scene into the disposable copy. Godot 4.6.1 editor/import exited 0 with no script/parse errors, but was not clean: editor cache/settings access, certificate-store, empty-mesh and a gravel normal-texture load error were logged. These asset/environment diagnostics were not repaired or conclusively classified by this script cleanup. The regression scene then exited 0 with **92 checks, 0 failures**, with expected invalid-input diagnostics and shutdown resource warnings. `git diff --check` passed. Implementation remains uncommitted; the rollback point is still `ab25f2a`.
 
-### Milestone 1 implementation and verification — 2026-09-24
+### Milestone 1 implementation and verification â€” 2026-09-24
 
 Before edits, the prior cleanup and all pending documentation/tests were committed locally on `dev` as `200990fdffa8075ab7073da37639cb21c960cda0`. Nothing was pushed. This supersedes the preceding paragraph's working-tree status; the new Milestone 1 changes remain uncommitted.
 
@@ -162,7 +162,7 @@ Before edits, the prior cleanup and all pending documentation/tests were committ
 
 Remaining verification: full manual movement and camera/proximity coverage, audio quality, all household tasks/optional quests, natural storm timing during overlapping operations, other ending outcomes, quality/resolution matrix and exported builds. Asset re-authoring, broad lifecycle redesign, reset consolidation and gameplay changes remain outside this pass.
 
-### Milestone 2 implementation and verification — 2026-09-25
+### Milestone 2 implementation and verification â€” 2026-09-25
 
 Approved scope: deadline/transition ownership, pause cleanup, full-inventory quest turn-in, repeated interactions, stock resets/return visits and a bounded dynamic/long-text localization audit. Pending work was copied before editing to `C:\Users\john2\AppData\Local\Temp\bagyong-m2-backup-20260925-001110`, including a binary Git patch. No commit or push was made.
 
@@ -185,7 +185,7 @@ Evidence from Godot `4.6.1.stable.official.14d19694e`:
 - Final cleanup regression: **92 checks, 0 failures**, exit 0; expected invalid-input warnings and intentional null-combination error remain.
 - After the final timer-parameter rename to avoid shadowing `Node.owner`, the focused `--unit-only` recheck passed **26 checks, 0 failures**, exit 0. Its log is `bagyong-m2-unit-final.txt`; existing shutdown resource warnings remain.
 - Final normal-timing Milestone 1 integration: **54 checks, 0 failures**, exit 0, including tutorial, dialogue, purchases, task completion, pause restart, ending, score submission and second run.
-- Final Forward Plus visual run on the RTX 4050: **8 scene/layout checks, 0 failures**, exit 0. Generated 16 map/shop/quest/backpack captures across English/Tagalog and 100%/175% UI scale. Representative captures were inspected: quest prompts translate, action labels remain English as authored, and long backpack/hotbar names wrap. The 1280×720 window renders the configured 1920×1080 canvas; this is not a resolution matrix.
+- Final Forward Plus visual run on the RTX 4050: **8 scene/layout checks, 0 failures**, exit 0. Generated 16 map/shop/quest/backpack captures across English/Tagalog and 100%/175% UI scale. Representative captures were inspected: quest prompts translate, action labels remain English as authored, and long backpack/hotbar names wrap. The 1280Ã—720 window renders the configured 1920Ã—1080 canvas; this is not a resolution matrix.
 - CSV placeholder audit: **412 rows, 0 mismatches** between source, English and Tagalog format placeholders.
 - Editor/import in the existing disposable copy completed without logged errors/warnings. This reused its imported asset cache; no fresh-import claim is made for this milestone.
 - Final M2/M1/visual runtime logs contain no script errors, freed-capture errors or failed assertions. Existing ObjectDB shutdown-leak warnings remain; cleanup also reports retained resources at shutdown. Earlier intermediate runs exposed and corrected a freed objective-row callback and test/type issues; they are not counted as passing verification.
@@ -195,7 +195,7 @@ Logs are retained under `%TEMP%`: `bagyong-m2-before.txt`, `bagyong-m2-final.txt
 
 Limits: tests call production APIs directly and force deadline fixtures; they do not establish manual movement/proximity/audio quality, every optional quest/ending, a full natural-day playthrough or export readiness. The localization audit fixes five choice prompts and dynamic assignment; intro narration remains incompletely translated. Existing authored button translations are preserved without adding a blanket Button exemption. No broad reset consolidation, engine upgrade or asset rewrite was performed.
 
-### Milestone 3 distribution and presentation — 2026-09-26 (partial)
+### Milestone 3 distribution and presentation â€” 2026-09-26 (partial)
 
 The validation pass uses Godot `4.6.1.stable.official.14d19694e` and matching `4.6.1.stable` Windows x86_64 release templates. Existing uncommitted work was retained. A disposable copy and pre-change binary patch are at `C:\Users\john2\AppData\Local\Temp\bagyong-m3-20260926`. Its import cache was copied from the earlier disposable project and refreshed; this is not a fresh-import test. User settings and scores were isolated through `APPDATA`/`LOCALAPPDATA`.
 
@@ -222,12 +222,12 @@ The validation pass uses Godot `4.6.1.stable.official.14d19694e` and matching `4
 
 | Quality | VHS | UI scale | Render size | Frames | Average FPS | p95 frame ms |
 | --- | --- | --- | --- | --- | --- | --- |
-| High | On | 100% | 1280×720 | 333 | 110.93 | 9.94 |
-| High | Off | 175% | 1920×1080 | 231 | 77.00 | 13.65 |
-| Balanced | On | 175% | 1280×800 | 374 | 124.46 | 8.66 |
-| Balanced | Off | 100% | 1920×1080 | 259 | 86.22 | 12.27 |
-| Performance | On | 100% | 1280×800 | 402 | 133.91 | 8.06 |
-| Performance | Off | 175% | 1280×720 | 431 | 143.62 | 7.42 |
+| High | On | 100% | 1280Ã—720 | 333 | 110.93 | 9.94 |
+| High | Off | 175% | 1920Ã—1080 | 231 | 77.00 | 13.65 |
+| Balanced | On | 175% | 1280Ã—800 | 374 | 124.46 | 8.66 |
+| Balanced | Off | 100% | 1920Ã—1080 | 259 | 86.22 | 12.27 |
+| Performance | On | 100% | 1280Ã—800 | 402 | 133.91 | 8.06 |
+| Performance | Off | 175% | 1280Ã—720 | 431 | 143.62 | 7.42 |
 
 This is a short, single-machine source-runtime sample. Different cases vary multiple settings, so they do not isolate the cost of each setting. Power mode, thermals and background desktop load were not controlled. No minimum/recommended hardware claim, outdoor/storm benchmark, sustained-performance claim or release-build performance claim follows from these numbers.
 
@@ -245,7 +245,7 @@ Evidence under the disposable root: `export-final.log`, `import-csv.log`, `m1-so
 
 Remaining Milestone 3 acceptance: run the final standalone candidate on an authorized Windows machine; verify packaged localization/audio/assets and the normal gameplay flow, listen to audio, cover broader UI/resolution combinations, and measure representative travel/storm scenes before publishing hardware requirements. Milestone 3 remains in progress.
 
-### Standalone Windows retry — 2026-09-27 (blocked)
+### Standalone Windows retry â€” 2026-09-27 (blocked)
 
 The final candidate above was retried from outside the source tree with isolated `APPDATA`/`LOCALAPPDATA`. Its SHA-256 still matches `58CA5D918D0AC495DC133AC3D8C89B884F8B33FBBF7EAE32C629008A60D96A1D`. Windows rejected process creation with `An Application Control policy has blocked this file.` No game runtime log was produced.
 
@@ -253,9 +253,9 @@ Windows Code Integrity events 3033 and 3077 identify this exact executable as fa
 
 Packaged gameplay, localization, audible audio, and packaged storm/travel performance remain **unverified**, not failed gameplay tests. Existing source-runtime measurements do not close this gate. Continue on a Windows machine whose security policy permits the candidate, or through an approved signing/distribution process. Reuse the isolated Milestone 1 gameplay smoke and Milestone 2 localization checks; separately inspect/listen to the normal packaged UI/audio and measure real travel transitions plus outdoor heavy-storm frame times. Report transition latency separately from steady-state FPS/p95, and retain the single-machine hardware-claim limit. Milestone 3 remains incomplete.
 
-### Source-runtime storm/travel profiling — 2026-09-27
+### Source-runtime storm/travel profiling â€” 2026-09-27
 
-A profiling runner in the existing disposable project at `C:\Users\john2\AppData\Local\Temp\bagyong-m3-20260926\project\game\tests\storm_travel_performance.gd` measured high quality, VHS on, 1280×720, Forward Plus on the same i7-13620H/RTX 4050 Laptop GPU. It used a two-second warmup and three-second fixed-camera sample per scene, paused the game clock, and used production `SceneManager.travel_to()` for travel. Grocery was sampled at minute 315; storm home at 600; hardware at 615. Two passes exited 0 with seven recorded cases each and no script errors. Logs and JSON reports are under `C:\Users\john2\AppData\Local\Temp\bagyong-performance-20260927`.
+A profiling runner in the existing disposable project at `C:\Users\john2\AppData\Local\Temp\bagyong-m3-20260926\project\game\tests\storm_travel_performance.gd` measured high quality, VHS on, 1280Ã—720, Forward Plus on the same i7-13620H/RTX 4050 Laptop GPU. It used a two-second warmup and three-second fixed-camera sample per scene, paused the game clock, and used production `SceneManager.travel_to()` for travel. Grocery was sampled at minute 315; storm home at 600; hardware at 615. Two passes exited 0 with seven recorded cases each and no script errors. Logs and JSON reports are under `C:\Users\john2\AppData\Local\Temp\bagyong-performance-20260927`.
 
 | Fixed scene | Pass 1 FPS / p95 ms | Pass 2 FPS / p95 ms |
 | --- | ---: | ---: |
@@ -264,11 +264,11 @@ A profiling runner in the existing disposable project at `C:\Users\john2\AppData
 | Home, minute 600 | 127.04 / 8.36 | 126.50 / 8.53 |
 | Hardware, minute 615 | 133.91 / 7.97 | 121.46 / 9.04 |
 
-Travel completed in 1.35–1.79 seconds. Worst frames were 165–665 ms across the two passes. The second pass recorded every frame over 100 ms at overlay alpha 1.0, during the black transition. `SceneManager._change_scene()` calls `change_scene_to_file()` during that fade, consistent with scene loading as the source of the stalls. The fixed views show no measured steady-frame problem on this GPU. Prioritize scene-loading work only if black-screen travel latency is unacceptable in manual testing; do not change lighting, rain, VoxelGI or player loops based on these samples.
+Travel completed in 1.35â€“1.79 seconds. Worst frames were 165â€“665 ms across the two passes. The second pass recorded every frame over 100 ms at overlay alpha 1.0, during the black transition. `SceneManager._change_scene()` calls `change_scene_to_file()` during that fade, consistent with scene loading as the source of the stalls. The fixed views show no measured steady-frame problem on this GPU. Prioritize scene-loading work only if black-screen travel latency is unacceptable in manual testing; do not change lighting, rain, VoxelGI or player loops based on these samples.
 
 This runner reused an imported disposable copy and did not execute the blocked standalone EXE. It did not move the camera/player, control thermals or background load, record GPU execution time, cover every location, or test weaker hardware. These results do not establish minimum requirements or complete Milestone 3.
 
-### Cursor, UI and branding pass — 2026-10-02
+### Cursor, UI and branding pass â€” 2026-10-02
 
 The pre-change checkpoint is local commit `6880587`. The UI implementation was checked while uncommitted with Godot `4.6.1.stable.official.14d19694e` in a disposable project copy (`%LOCALAPPDATA%\Temp\bagyong-ui-check-22a13371c34642c8a4240afa61424ded`). Test scores/settings used isolated `APPDATA` and `LOCALAPPDATA` under `C:\Temp\bbui`. Source files were synced into the copy before the final import and runs; visual probes that are not listed below as repository scenes exist only in that copy. Logs are under `C:\Temp\bbui\final-*.txt`.
 
@@ -281,31 +281,31 @@ The pre-change checkpoint is local commit `6880587`. The UI implementation was c
 | `cleanup_regression.tscn` | 92 checks, 0 failures; its null-combination error is intentional. |
 | `milestone2_regression.tscn` | 97 checks, 0 failures. |
 | `milestone1_smoke.tscn` | 54 checks, 0 failures. |
-| Disposable rendered map/shop/quest/backpack matrix | 24 checks, 0 failures at each of 1280×720, 1920×1080 and 2560×1080, across English/Tagalog and 100%, 140%, 175% UI scale. The 1280 window scales the 1920×1080 logical canvas; the wide window expands the viewport to 2560×1080. |
+| Disposable rendered map/shop/quest/backpack matrix | 24 checks, 0 failures at each of 1280Ã—720, 1920Ã—1080 and 2560Ã—1080, across English/Tagalog and 100%, 140%, 175% UI scale. The 1280 window scales the 1920Ã—1080 logical canvas; the wide window expands the viewport to 2560Ã—1080. |
 | Additional rendered probes | Reopened leaderboard Close button remained enabled; localized task-complete notice passed 12 checks/0 failures; six pickup cue attachments and active/hidden states passed 9 checks/0 failures. Menu, settings, tutorial, dialogue, ending, leaderboard, splash and cue captures were inspected. Splash image alpha reached 1 and returned to 0. |
 | Quality/VHS comparison | Balanced with VHS on and Performance with VHS off each passed 8 rendered map/shop/quest/backpack checks at 140% scale. High with VHS on was included in the main matrix. |
 
 The final runtime logs contained no script/parser errors or failed assertions. Existing shutdown ObjectDB/resource-retention diagnostics remain. These scripted and rendered checks do not establish manual movement/proximity, audible hover/focus quality, every ending, physical-screen readability on other displays, or a packaged build. The earlier standalone Windows acceptance block remains separate.
 
-### Screenshot-driven UI follow-up — 2026-10-02
+### Screenshot-driven UI follow-up â€” 2026-10-02
 
-The supplied studio PNG's final pixel column is white; the splash now excludes that column at render time and has no separate "developed by" label. A rendered fade probe confirmed the artwork reaches full opacity and fades out without the white edge. Menu captures at 1920×1080 show the larger title centered above its buttons with a shorter gap.
+The supplied studio PNG's final pixel column is white; the splash now excludes that column at render time and has no separate "developed by" label. A rendered fade probe confirmed the artwork reaches full opacity and fades out without the white edge. Menu captures at 1920Ã—1080 show the larger title centered above its buttons with a shorter gap.
 
-In the same disposable Godot 4.6.1 copy, a focused rendered probe passed at 1920×1080 and a 1280×720 window (1920×1080 logical canvas). At 100%/140%/175% UI scale, empty inventory help had 22/33/45 logical pixels between its instruction and discard prompt, and the pickup description measured 18/25/32px. Changing scale while the pickup prompt was visible rebuilt it without losing cursor ownership. At 140% global scale, dialogue renders at 125%; dialogue and monologue captures at 140% and 175% stayed clear of the scaled bottom-left controls. The long Tagalog monologue fitted without scrolling after enabling content sizing. The disposable copy's graphical Milestone 2 UI probe passed 24 checks with no failures after these edits. Final editor import exited 0 with no parser/import warnings or errors. Logs are `C:\Temp\bbui\tweak-*.txt`; the focused probe and its screenshots exist only in the disposable project/user-data copy. Existing shutdown resource-retention warnings remain. Manual play and an exported build were not tested in this follow-up.
+In the same disposable Godot 4.6.1 copy, a focused rendered probe passed at 1920Ã—1080 and a 1280Ã—720 window (1920Ã—1080 logical canvas). At 100%/140%/175% UI scale, empty inventory help had 22/33/45 logical pixels between its instruction and discard prompt, and the pickup description measured 18/25/32px. Changing scale while the pickup prompt was visible rebuilt it without losing cursor ownership. At 140% global scale, dialogue renders at 125%; dialogue and monologue captures at 140% and 175% stayed clear of the scaled bottom-left controls. The long Tagalog monologue fitted without scrolling after enabling content sizing. The disposable copy's graphical Milestone 2 UI probe passed 24 checks with no failures after these edits. Final editor import exited 0 with no parser/import warnings or errors. Logs are `C:\Temp\bbui\tweak-*.txt`; the focused probe and its screenshots exist only in the disposable project/user-data copy. Existing shutdown resource-retention warnings remain. Manual play and an exported build were not tested in this follow-up.
 
-### Pharmacy Lottohan — 2026-10-04
+### Pharmacy Lottohan â€” 2026-10-04
 
-Run `game/tests/scratch_lotto_regression.tscn` in an imported disposable copy with isolated `APPDATA`, `LOCALAPPDATA` and `BAGYONG_ISOLATED_SMOKE` pointing to Godot's isolated user-data directory. Use `--headless` for the rules and cash/lifecycle checks. Use `--windowed --resolution 1280x720 -- --visual-only` for the Forward Plus visual probe; it resizes the window to 1280×720 and 1920×1080, captures English and Tagalog at 100% and 175% UI scale with VHS enabled, and checks counter overlap, movement lock, cursor, map/backpack conflicts and Escape behavior. The project uses a 1920×1080 logical canvas at both window sizes; the probe saves copies scaled to the physical window size for review.
+Run `game/tests/scratch_lotto_regression.tscn` in an imported disposable copy with isolated `APPDATA`, `LOCALAPPDATA` and `BAGYONG_ISOLATED_SMOKE` pointing to Godot's isolated user-data directory. Use `--headless` for the rules and cash/lifecycle checks. Use `--windowed --resolution 1280x720 -- --visual-only` for the Forward Plus visual probe; it resizes the window to 1280Ã—720 and 1920Ã—1080, captures English and Tagalog at 100% and 175% UI scale with VHS enabled, and checks counter overlap, movement lock, cursor, map/backpack conflicts and Escape behavior. The project uses a 1920Ã—1080 logical canvas at both window sizes; the probe saves copies scaled to the physical window size for review.
 
 The focused checks cover all eight fruit prizes in both rows, two winning rows, weighted seeded draws and calculated odds, insufficient cash, repeated buys/reveals, Buy Again, clock progression, storm purchase guard, one-time payout on close/storm and scene exit. Rendered captures were also inspected for legibility. These source-runtime checks do not replace a manual walk-up or packaged Windows acceptance.
 
 Godot 4.6.1 imported the three supplied PNGs and loaded the pharmacy scene in the disposable copy. Final focused run: **41 checks, 0 failures**. Final Forward Plus visual run: **23 checks, 0 failures**; eight language/scale/resolution captures plus the revealed result were inspected, including the shortened Tagalog footer. Existing ObjectDB/resource-retention warnings appeared at shutdown. This pass did not run a manual walk-up or an exported executable.
 
-### Dev Mode verification — 2026-10-04
+### Dev Mode verification â€” 2026-10-04
 
 Use isolated `APPDATA` and `LOCALAPPDATA` for any source or packaged test that reaches the leaderboard. Run `game/tests/dev_mode_regression.tscn` in Godot 4.6.1 for authorization, cash, timer ownership/rewind, storm thresholds, teleport, and unranked score guards. Check the log for script errors as well as the test summary.
 
-Manually type `HELLOWORLD` at the idle main menu; partial/wrong sequences, delays over five seconds, active overlays and focused text fields must not unlock. The unlocked Settings toggle should appear in editor or tagged internal debug builds only. Enabling it should reveal the right-side Dev Mode panel in Pause, and toggling it off should release a developer clock pause while leaving the current run unranked. Check Escape/cursor behavior, English and Tagalog, 100% and 175% UI scale, and 1280×720 and 1920×1080 windows. Restart and return to title should keep session access; a new process should start locked.
+Manually type `HELLOWORLD` at the idle main menu; partial/wrong sequences, delays over five seconds, active overlays and focused text fields must not unlock. The unlocked Settings toggle should appear in editor or tagged internal debug builds only. Enabling it should reveal the right-side Dev Mode panel in Pause, and toggling it off should release a developer clock pause while leaving the current run unranked. Check Escape/cursor behavior, English and Tagalog, 100% and 175% UI scale, and 1280Ã—720 and 1920Ã—1080 windows. Restart and return to title should keep session access; a new process should start locked.
 
 Export the tagged `Windows Desktop Internal Dev` preset with `--export-debug`, the ordinary `Windows Desktop` preset with `--export-debug`, and the public preset with `--export-release`. Test outside the source tree with isolated user data. The internal build must allow the sequence and commands; the other two must not. In a disposable release test package, invoke the DevMode command API directly and confirm cash, time and location stay unchanged. Also try forged Dev Mode values in saved settings; they must not grant access. If Windows Application Control blocks the EXE, report packaged-runtime acceptance as unverified and retry only through an authorized machine or approved signing/distribution path.
 
@@ -315,7 +315,7 @@ Implementation check on 2026-10-04 used Godot `4.6.1.stable.official.14d19694e`,
 | --- | --- |
 | `dev_mode_regression.tscn` in the editor runtime | 47 checks, 0 failures, including focused input, overlay clearing, clock rewind and pause ownership, closed-location teleport, and score rejection after disabling Dev Mode. |
 | Existing regressions | Cleanup 92, Milestone 1 54, Milestone 2 97, score calculation 4, and scratch lotto 41 checks, all with 0 failures. The graphical cursor ownership regression exited 0. Cleanup's null-combination error is intentional. |
-| Rendered UI probe in the disposable copy | 15 checks, 0 failures. Menu Settings and pause Dev panel were captured and visually inspected in English and Tagalog at 100%/175% scale and 1280×720/1920×1080. The probe exercised the Settings toggle, pause ownership, and the Escape handler. This was scripted input and screenshot review, not a manual playthrough. |
+| Rendered UI probe in the disposable copy | 15 checks, 0 failures. Menu Settings and pause Dev panel were captured and visually inspected in English and Tagalog at 100%/175% scale and 1280Ã—720/1920Ã—1080. The probe exercised the Settings toggle, pause ownership, and the Escape handler. This was scripted input and screenshot review, not a manual playthrough. |
 | Disposable run-lifecycle probe | 9 checks, 0 failures. Return to title kept unlock/toggle and cleared per-run state; a new run and Restart kept the toggle and started unranked. |
 | Normal packaged builds | Internal debug and ordinary debug started headlessly and exited 0. The public release started outside the source tree with isolated user data; its engine log contained no script/parser errors. |
 | Final ordinary debug verification package | 10 checks, 0 failures: no Dev Mode UI or command access. |
@@ -324,8 +324,23 @@ Implementation check on 2026-10-04 used Godot `4.6.1.stable.official.14d19694e`,
 
 Existing ObjectDB/resource-retention diagnostics still appear at process shutdown. Packaged UI navigation by physical mouse/keyboard, and the final internal debug command flow, still need acceptance on an authorized machine or through an approved signing path. No Windows policy was changed for this check.
 
-### Pause layout and Lottohan balance — 2026-10-04
+### Pause layout and Lottohan balance â€” 2026-10-04
 
-In a disposable Godot 4.6.1 copy with isolated user data, the scratch lotto regression passed **41 checks** and its Forward Plus visual probe passed **23 checks** at 1280×720 and 1920×1080, English/Tagalog and 100%/175% UI scale. The updated weights give an 8.6079296% chance of at least one matching row and ₱22.13084 expected payout per ₱50 ticket. The Dev Mode regression still passed **47 checks**.
+In a disposable Godot 4.6.1 copy with isolated user data, the scratch lotto regression passed **41 checks** and its Forward Plus visual probe passed **23 checks** at 1280Ã—720 and 1920Ã—1080, English/Tagalog and 100%/175% UI scale. The updated weights give an 8.6079296% chance of at least one matching row and â‚±22.13084 expected payout per â‚±50 ticket. The Dev Mode regression still passed **47 checks**.
 
-A disposable pause-layout probe passed at 1280×720 with **0 failures**. It checked that the idle navigation, Settings card and Dev Mode card are centered; tabs overlap each open card by 12 logical pixels; and Resume closes the menu and unpauses. Captures were visually inspected in both languages at 100% and 175% scale. This was scripted scene interaction and image review, not a physical mouse/keyboard playthrough or packaged build.
+A disposable pause-layout probe passed at 1280Ã—720 with **0 failures**. It checked that the idle navigation, Settings card and Dev Mode card are centered; tabs overlap each open card by 12 logical pixels; and Resume closes the menu and unpauses. Captures were visually inspected in both languages at 100% and 175% scale. This was scripted scene interaction and image review, not a physical mouse/keyboard playthrough or packaged build.
+
+## File organization verification - 2026-10-14
+
+The existing runtime work was checkpointed separately as `e04a588` before the structure-only relocation. The organization changes move 315 files, preserve filenames and resource identities, and update references without changing gameplay logic, node names, scene properties or asset payloads. `_raw_assets` model/texture bundles retain their existing paths.
+
+Verification used Godot **4.6.1.stable.official.14d19694e**, separate baseline/reorganized project copies and isolated APPDATA/LOCALAPPDATA with exact BAGYONG_ISOLATED_SMOKE paths:
+
+- Path-normalized comparison: **2,070 files**, zero unexpected content changes, missing files, missing executable resource paths or stale active paths. All 75 relocated asset import files preserve their UIDs/settings and contain the correct source path; Godot regenerated their derived cache paths.
+- **17 matching suites, 15,804 checks per version, zero failures**: ambient animals, Ate Linda, cleanup, cursor, recording camera, Dev Mode, portraits, ending balance, house teaser, map, Milestone 1 smoke, Milestone 2, Milestone 3, pickup guidance, score calculation, lotto and animated NPCs. Cursor and Milestone 3 use Forward Plus because headless mouse capture/presentation cannot satisfy their checks.
+- Both imported projects have a clean subsequent editor/import pass. A fresh cache bootstrap can emit the previously observed UID/font/import diagnostics; those are not presented as a clean first import.
+- A temporary rendered probe captured intro, menu, home, dialogue, inventory, map, shop and ending screens (**13 checks, zero failures**). The existing ending visual regression also passed 58 checks, zero failures, with English/Tagalog result captures. These captures exercise production resources through scripted calls and are not manual gameplay acceptance.
+- A graphical Windows Desktop PCK export completed without logged errors/warnings. Outside the source directory, the diagnostic package loaded **191 relocated resources** and passed **420 checks, zero failures**, including stable UIDs, nonempty audio, the active raw localization CSV and excluded backup CSV.
+- Independent review checked the move map, dynamic NPC path tables, UID companions, content-preservation evidence and navigation documentation. Its pending import-metadata finding was resolved by copying Godot-regenerated sidecars from the tested project.
+
+Evidence is under `C:/Temp/bagyong-structure-20261014`: `regression-comparison.json`, `preservation-report.json`, source/rendered suite logs, `visual-final`, `export-results` and `package-results`. The helper scripts and diagnostic probes remain outside the repository. Existing ObjectDB/resource retention warnings and intentional cleanup invalid-input diagnostics are recorded separately from assertions. Full manual play, audible audio quality and standalone Windows EXE acceptance were not verified by this relocation task.

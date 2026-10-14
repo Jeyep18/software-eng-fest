@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cx4bgum8ioyf"]
 
 [ext_resource type="Script" uid="uid://cqur3kurowxsy" path="res://game/objects/interactables/radio_task.gd" id="1_ok0ae"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_asw55"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="2_asw55"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1tvj"]
 size = Vector3(1.9556274, 1, 1)

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dm0i10xqkx0jb" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_diff_2k.png" id="4_52p12"]
 [ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_o2y6w"]
 [ext_resource type="Texture2D" uid="uid://bp7aqokmqi2ag" path="res://_raw_assets/sky_hdri/citrus_orchard_puresky_4k.exr" id="6_yw3jo"]
-[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="7_2dal1"]
+[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/players/playerv2/playerv_2.tscn" id="7_2dal1"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="8_syrmh"]
 [ext_resource type="Environment" path="res://game/resources/environments/storm_outdoor_environment.tres" id="storm_env"]
 

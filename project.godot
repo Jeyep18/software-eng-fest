@@ -62,7 +62,7 @@ hotbar_ui=""
 
 [gui]
 
-theme/custom="res://game/ui/GameTheme.tres"
+theme/custom="res://game/ui/theme/GameTheme.tres"
 
 [input]
 

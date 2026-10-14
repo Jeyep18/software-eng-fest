@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b06bpfvtsegu3" path="res://_raw_assets/textures/gravel_concrete_03_4k/textures/gravel_concrete_03_diff_4k.jpg" id="3_2qwk6"]
 [ext_resource type="Texture2D" uid="uid://dm0i10xqkx0jb" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_diff_2k.png" id="4_l32ef"]
 [ext_resource type="Texture2D" uid="uid://3d3t6sa2pq66" path="res://_raw_assets/textures/asphalt_02_2k/textures/asphalt_02_rough_2k.png" id="5_xq11p"]
-[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="6_scr53"]
+[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/players/playerv2/playerv_2.tscn" id="6_scr53"]
 [ext_resource type="Environment" uid="uid://da3ce0283oavb" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]

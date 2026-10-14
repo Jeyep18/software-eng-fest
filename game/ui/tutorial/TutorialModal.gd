@@ -3,7 +3,7 @@ extends CanvasLayer
 
 signal closed
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 
 static var _hidden_for_session: bool = false
 

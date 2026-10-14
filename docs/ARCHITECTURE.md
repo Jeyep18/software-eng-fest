@@ -33,7 +33,7 @@ The intro presents studio/Godot/warning/dedication beats, then skippable narrati
 
 ## Autoload ownership
 
-These are the 19 registered autoload names, in `project.godot` order. Their scripts are under `game/autoload/`; AudioManager is registered through `game/utils/AudioManager.tscn`, which owns its dedicated audio players. Early managers guard or defer accesses where later autoloads are not ready; preserve initialization order when changing dependencies.
+These are the 19 registered autoload names, in `project.godot` order. Their scripts are under `game/autoload/`; AudioManager is registered through `game/audio/AudioManager.tscn`, which owns its dedicated audio players. Early managers guard or defer accesses where later autoloads are not ready; preserve initialization order when changing dependencies.
 
 | Autoload | Responsibility and owned state |
 | --- | --- |
@@ -57,7 +57,7 @@ These are the 19 registered autoload names, in `project.godot` order. Their scri
 | `LeaderboardManager` | Local ranked run records and early-ending remaining-time snapshot. |
 | `VhsCrtOverlay` | Global VHS/CRT shader overlay driven by visual settings. |
 
-`TaskObject.gd` and `HUDOverlay.gd` live in the autoload directory but are **not** registered singletons. TaskObject is a reusable `class_name` base. HUDOverlay is instantiated by the player scene. Folder placement and old header comments are not authoritative registration evidence.
+`TaskObject.gd` lives in `game/objects/interactables/` and `HUDOverlay.gd` in `game/ui/hud/`; neither is a registered singleton. TaskObject is a reusable `class_name` base. HUDOverlay is instantiated by the player scene. Folder placement and old header comments are not authoritative registration evidence.
 
 ## Clock, travel and transitions
 
@@ -94,11 +94,11 @@ Storm arrival takes priority immediately: it invalidates previous transitions, c
 
 Playable location scenes under `game/scenes/locations/` combine imported environment models, collisions, PlayerV2, interactables, NPCs, markers, camera volumes and weather/audio nodes. Active map travel routes use `house_inside.tscn`, `tindahan.tscn`, `hardware.tscn`, `pharmacy.tscn` and `grocery.tscn`; bodega is an interior destination. Additional act, test, barangay and Mang Romy scenes remain in the repository or registry without being part of the five-node travel graph.
 
-`game/entities/playerv2/playerv_2.gd` is the current CharacterBody3D controller. It implements WASD motion, Shift sprint, gravity, acceleration, visual facing and idle/walk/run animation. Walk/sprint speeds are 3/5. Step-up collision probes negotiate small obstacles. A once-per-run stand-up animation leads to the optional tutorial. A jump constant remains, but this controller does not implement a jump input handler.
+`game/entities/players/playerv2/playerv_2.gd` is the current CharacterBody3D controller. It implements WASD motion, Shift sprint, gravity, acceleration, visual facing and idle/walk/run animation. Walk/sprint speeds are 3/5. Step-up collision probes negotiate small obstacles. A once-per-run stand-up animation leads to the optional tutorial. A jump constant remains, but this controller does not implement a jump input handler.
 
 `Camera2D5Controller` follows the player with smoothing and look-ahead, optional landing shake, and quality-controlled depth of field. `CameraVolume` Area3D signals change camera height/distance, X bounds, optional Y lock and Z-wall compression through tweens. A single current volume is tracked; overlapping volumes are not managed as a priority stack.
 
-The older `game/entities/player/player.gd` implements first-person mouse look, jump, raycast interaction, head bob, speed-dependent FOV and flashlight. It is a separate controller, not the behavior of PlayerV2. It lacks PlayerV2's Area3D interaction callbacks.
+The older `game/entities/players/player/player.gd` implements first-person mouse look, jump, raycast interaction, head bob, speed-dependent FOV and flashlight. It is a separate controller, not the behavior of PlayerV2. It lacks PlayerV2's Area3D interaction callbacks.
 
 ## Interaction and dialogue contracts
 
@@ -165,7 +165,7 @@ Nanay1 later selects dialogue at four/eight elapsed hours. Its exported `cash_to
 
 PlayerV2's scene instantiates BackpackUI, HotbarUI, HUDOverlay, PreparationChecklistHUD, MapScreen and PauseMenu. Replacing a location scene recreates these interfaces; their content is rebuilt from singleton state. Groups including `player`, `hotbar_ui`, `backpack_ui`, `map_screen` and `preparation_checklist_hud` provide cross-scene discovery and broadcast calls. UI ownership is distributed across player children, interactable children and global overlays.
 
-HUDOverlay reads clock/ETA; preparation/checklist interfaces combine need state, guide flags and side objectives. Map node/road/storm drawing scripts present location states and confirmations. Backpack uses drag/drop slots for inventory and combination/discard operations. PauseMenu closes map/backpack and pauses the SceneTree. TutorialModal has a session-only static hide preference. `CursorState` alone writes global mouse mode: player lifetime establishes gameplay capture, while each visible interactive UI owns a request until its closing fade ends or its Node exits. `GameUIStyle.gd` remains a compatibility helper for programmatically built controls; installed `game/ui/GameTheme.tres` supplies shared states, fonts and focus styling.
+HUDOverlay reads clock/ETA; preparation/checklist interfaces combine need state, guide flags and side objectives. Map node/road/storm drawing scripts present location states and confirmations. Backpack uses drag/drop slots for inventory and combination/discard operations. PauseMenu closes map/backpack and pauses the SceneTree. TutorialModal has a session-only static hide preference. `CursorState` alone writes global mouse mode: player lifetime establishes gameplay capture, while each visible interactive UI owns a request until its closing fade ends or its Node exits. `GameUIStyle.gd` remains a compatibility helper for programmatically built controls; installed `game/ui/theme/GameTheme.tres` supplies shared states, fonts and focus styling.
 
 In editor runs and tagged internal debug exports, typing `HELLOWORLD` at the idle main menu unlocks the Dev Mode toggle in the shared Settings panel. Enabling it exposes the pause menu's developer controls in its right content area. Unlock and toggle last for the process, not a saved setting; disabling releases the developer timer pause. Both the UI and each command check build/session authorization.
 
@@ -218,7 +218,7 @@ Preserve these contracts: exact registered singleton names; stable resource/item
 
 `project.godot` defines movement, sprint, E interaction, Space dialogue advance, M map, Tab backpack and hotbar actions 1–8; [README controls](../README.md#controls) separates mapped legacy actions from PlayerV2 behavior. Pause uses built-in `ui_cancel`; PlayerV2 also checks the custom `escape` action for mouse capture. Inventory capacity remains seven.
 
-CharacterBody3D movement uses `move_and_slide()` followed by step-up collision probes. Interactions/camera volumes use Area3D body detection and groups. No named collision-layer scheme is configured. Most scene nodes omit explicit layer/mask overrides; `game/tests/test_world/test_world.tscn` has layer/mask 3. That test override is not a project-wide category assignment.
+CharacterBody3D movement uses `move_and_slide()` followed by step-up collision probes. Interactions/camera volumes use Area3D body detection and groups. No named collision-layer scheme is configured. Most scene nodes omit explicit layer/mask overrides; `game/tests/sandbox/test_world/test_world.tscn` has layer/mask 3. That test override is not a project-wide category assignment.
 
 No runtime addon directory, enabled editor plugin, C# project or external application backend was found. `.agents/skills/` and `skills-lock.json` configure agent guidance rather than game runtime dependencies. Scenes reference both curated and raw assets; Git LFS and Godot imports are required parts of checkout/asset handling.
 

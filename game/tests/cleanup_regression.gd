@@ -118,7 +118,7 @@ func _test_stacking_and_discard() -> void:
 
 func _test_hotbar() -> void:
 	_reset_inventory()
-	var hotbar = load("res://game/ui/HotbarUI/HotbarUI.tscn").instantiate()
+	var hotbar = load("res://game/ui/inventory/hotbar/HotbarUI.tscn").instantiate()
 	add_child(hotbar)
 	_check(hotbar.slot_container.get_child_count() == 7, "real hotbar builds seven slots")
 	for key in range(1, 9):

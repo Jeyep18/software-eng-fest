@@ -50,7 +50,7 @@ func _run() -> void:
 		# Allow rendering resources from the previous model to retire between scenes.
 		await get_tree().process_frame
 	_check(lines.size() == 66, "64 active lines and two configured Linda fallback lines")
-	var ui := preload("res://game/ui/npc_dialogue/dialogue_ui.tscn").instantiate() as DialogueUI
+	var ui := preload("res://game/ui/dialogue/npc/dialogue_ui.tscn").instantiate() as DialogueUI
 	add_child(ui)
 	var image := ui.get_node("%SpeakerImage") as TextureRect
 	for language in ["english", "tagalog"]:
@@ -68,7 +68,7 @@ func _run() -> void:
 	_check(not image.visible, "missing portrait hides previous speaker")
 	ui.show_line(lines.values()[0])
 	_check(image.visible, "next portrait restores visibility")
-	var monologue := preload("res://game/ui/inner_dialogue/monologue_ui.tscn").instantiate() as MonologueUI
+	var monologue := preload("res://game/ui/dialogue/monologue/monologue_ui.tscn").instantiate() as MonologueUI
 	add_child(monologue)
 	monologue.hide_ui()
 	_check(monologue.get_node("%SpeakerImage").texture.resource_path.ends_with("/stylized/player/thinking.png"), "shared monologue uses player thinking with glasses")

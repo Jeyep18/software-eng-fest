@@ -81,7 +81,7 @@ func _run() -> void:
 	_check(is_equal_approx(Engine.time_scale, 1.0), "engine uses normal timing")
 	# Reproduce callbacks whose UI has already been removed. Also inspect the log
 	# for errors: Godot runtime errors do not automatically fail assertions.
-	var detached_hud = load("res://game/ui/tasksUI/PreparationChecklistHUD.gd").new()
+	var detached_hud = load("res://game/ui/hud/PreparationChecklistHUD.gd").new()
 	detached_hud._schedule_checklist_resize()
 	detached_hud.free()
 	var temporary_label := Label.new()
@@ -147,7 +147,7 @@ func _run() -> void:
 					break
 			_check(InventoryManager.get_total_quantity("medicine") == 1, "medicine purchased from Ate Linda")
 			ShopUi.close_shop()
-	ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
+	ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 	_check(ShopUi.is_open() and GlobalTimer.is_paused, "hardware shop opens and pauses clock")
 	var offer: ShopItem = ShopUi._current_shop.items[0]
 	var cash_before: int = GameState.get_cash()

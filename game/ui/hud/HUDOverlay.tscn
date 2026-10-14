@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dsvh0qopdxfew"]
+
+[ext_resource type="Script" uid="uid://cj6bbauiu4i1p" path="res://game/ui/hud/HUDOverlay.gd" id="1_rpw2s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpw2s"]
+font_size = 70
+font_color = Color(0.74742, 0.680928, 0.35839784, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtj47"]
+font_size = 25
+
+[node name="HUDOverlay" type="CanvasLayer" unique_id=1355526644]
+layer = 3
+script = ExtResource("1_rpw2s")
+
+[node name="TopBar" type="Panel" parent="." unique_id=4940831]
+offset_left = 1652.0
+offset_top = 24.0
+offset_right = 1920.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar" unique_id=1642839089]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_bottom = 150.0
+grow_horizontal = 0
+
+[node name="VBox" type="VBoxContainer" parent="TopBar/HBoxContainer" unique_id=577475591]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+
+[node name="TimeBlock" type="HBoxContainer" parent="TopBar/HBoxContainer/VBox" unique_id=1394574755]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="TopBar/HBoxContainer/VBox/TimeBlock" unique_id=2008104943]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "6:00 AM"
+label_settings = SubResource("LabelSettings_rpw2s")
+horizontal_alignment = 1
+
+[node name="ETABlock" type="HBoxContainer" parent="TopBar/HBoxContainer/VBox" unique_id=1377698393]
+layout_mode = 2
+
+[node name="ETALabel" type="Label" parent="TopBar/HBoxContainer/VBox/ETABlock" unique_id=283288198]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "12 hours remaining"
+label_settings = SubResource("LabelSettings_qtj47")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="TopBar/HBoxContainer" unique_id=309032881]
+custom_minimum_size = Vector2(44.125, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=940944726]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -178.0
+offset_right = 216.0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1188172320]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2045940499]
+layout_mode = 2
+text = "Esc - Pause
+E - Interact
+Shift - Sprint
+Tab - Open Inventory
+M - Open/Close Map"

@@ -5,7 +5,7 @@ signal closed
 
 const RULES = preload("res://game/ui/lotto/ScratchLottoRules.gd")
 const SLOT_SCRIPT = preload("res://game/ui/lotto/ScratchLottoSlot.gd")
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const TICKET_FACE: Texture2D = preload("res://game/assets/scratch_lotto/scratch_ticket_face.png")
 const FRUIT_ATLAS: Texture2D = preload("res://game/assets/scratch_lotto/scratch_fruit_atlas.png")
 const FOIL_COVER: Texture2D = preload("res://game/assets/scratch_lotto/scratch_foil_cover.png")

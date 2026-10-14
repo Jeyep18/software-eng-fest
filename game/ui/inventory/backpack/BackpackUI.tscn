@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://4egt5nehio1w"]
+
+[ext_resource type="Script" uid="uid://c700nd6l2yrfm" path="res://game/ui/inventory/backpack/BackpackUI.gd" id="1_v55kr"]
+[ext_resource type="Script" uid="uid://hmvbdur43lo2" path="res://game/ui/inventory/backpack/DiscardSlot.gd" id="2_6rbx3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v55kr"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqbky"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="BackpackUI" type="CanvasLayer" unique_id=1631499679]
+script = ExtResource("1_v55kr")
+
+[node name="BackpackPanel" type="Panel" parent="." unique_id=1534246965]
+custom_minimum_size = Vector2(420, 380)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -170.0
+offset_right = 200.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v55kr")
+
+[node name="TitleBar" type="HBoxContainer" parent="BackpackPanel" unique_id=126599084]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="BackpackPanel/TitleBar" unique_id=433466624]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="BackpackPanel/TitleBar" unique_id=1521297608]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="BackpackPanel" unique_id=1024555406]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="DiscardSlot" type="Panel" parent="BackpackPanel" unique_id=1463171846]
+modulate = Color(0.9952763, 0.54196227, 0.6172864, 1)
+self_modulate = Color(1, 0.24931252, 0.4870606, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqbky")
+script = ExtResource("2_6rbx3")
+
+[node name="TextureRect" type="TextureRect" parent="BackpackPanel/DiscardSlot" unique_id=889562179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BackpackPanel/DiscardSlot" unique_id=2132646493]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -11.5
+offset_right = 29.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Discard"
+
+[node name="DiscardPrompt" type="Label" parent="BackpackPanel" unique_id=1804431921]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Drag item to discard slot if you want to discard it."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="InfoBar" type="HBoxContainer" parent="BackpackPanel" unique_id=1240186118]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InfoIcon" type="TextureRect" parent="BackpackPanel/InfoBar" unique_id=101099929]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="InfoName" type="Label" parent="BackpackPanel/InfoBar" unique_id=1613304213]
+layout_mode = 2
+
+[node name="InfoDesc" type="Label" parent="BackpackPanel/InfoBar" unique_id=30953757]
+layout_mode = 2
+
+[node name="CombineBar" type="HBoxContainer" parent="BackpackPanel" unique_id=103119158]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CombineLabel" type="Label" parent="BackpackPanel/CombineBar" unique_id=756288979]
+layout_mode = 2
+
+[node name="CombineButton" type="Button" parent="BackpackPanel/CombineBar" unique_id=1246431055]
+layout_mode = 2
+text = "Combine"

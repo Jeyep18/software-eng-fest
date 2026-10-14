@@ -5,9 +5,9 @@ extends Node
 
 signal result_continue_requested
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
-const ENDING_STORM: AudioStream = preload("res://game/assets/sfx/soundreality-rain-thunder-sfx-525011.mp3")
+const ENDING_STORM: AudioStream = preload("res://game/assets/audio/weather/soundreality-rain-thunder-sfx-525011.mp3")
 const HOUSE_ENV: Environment = preload("res://game/resources/environments/house1_environment.tres")
 const SHOP_ENV: Environment = preload("res://game/resources/environments/storm_shop_environment.tres")
 const PUBLIC_SHOTS: Dictionary = {
@@ -79,7 +79,7 @@ func _ready() -> void:
 		"unranked": DevMode.run_unranked,
 	}
 	AudioManager.play_ambience(ENDING_STORM)
-	AudioManager.play_music(preload("res://game/assets/sfx/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
+	AudioManager.play_music(preload("res://game/assets/audio/music/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
 	SLIDES = [
 		{
 			"need":            NeedsLog.Need.WINDOWS,

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bg8q6xb6fx710"]
 
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="1_s3i4m"]
-[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="2_v1au1"]
+[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/players/playerv2/playerv_2.tscn" id="2_v1au1"]
 [ext_resource type="Environment" uid="uid://cl5jberr11oyd" path="res://game/resources/environments/house1_environment.tres" id="3_ldm8c"]
 [ext_resource type="VoxelGIData" uid="uid://dysq2urnbldae" path="res://game/resources/voxels/house_inside.VoxelGI_data.res" id="4_evfm3"]
-[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_mxgl7"]
+[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/camera/camera_volume.gd" id="5_mxgl7"]
 [ext_resource type="PackedScene" uid="uid://dwwxolqa0jpjs" path="res://game/ui/map/MapScreen.tscn" id="6_lj5nw"]
 [ext_resource type="PackedScene" path="res://game/objects/interactables/door.tscn" id="7_skuup"]
-[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="8_8l0qx"]
+[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/scenes/components/spawnpoint/spawnpoint.tscn" id="8_8l0qx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sg0l"]
 albedo_color = Color(0, 0, 0, 1)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://du3ghcn42crwi"]
 
-[ext_resource type="Script" uid="uid://cryroy6ynw3dm" path="res://game/objects/models/main_door.gd" id="1_bxhws"]
+[ext_resource type="Script" uid="uid://cryroy6ynw3dm" path="res://game/objects/interactables/main_door.gd" id="1_bxhws"]
 [ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="1_wj3qb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxhws"]

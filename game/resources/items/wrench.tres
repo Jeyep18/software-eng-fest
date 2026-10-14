@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dwlf2grpplygs"]
 
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_h58he"]
-[ext_resource type="Texture2D" uid="uid://d0ltk1w6oshgb" path="res://game/assets/images/wrench.png" id="1_q5c4n"]
+[ext_resource type="Texture2D" uid="uid://d0ltk1w6oshgb" path="res://game/assets/item_icons/wrench.png" id="1_q5c4n"]
 [ext_resource type="PackedScene" uid="uid://di3j6j64f7smb" path="res://_raw_assets/interactable_models/Wrench.glb" id="2_nwlb5"]
 
 [resource]

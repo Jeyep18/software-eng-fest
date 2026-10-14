@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://uggr7amw8oe6"]
 
 [ext_resource type="PackedScene" uid="uid://nqipqtwj2nlw" path="res://_raw_assets/interactable_models/GasTank.glb" id="1_khpck"]
-[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="1_segoh"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_segoh"]
+[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/objects/interactables/NarrativeObject.gd" id="1_segoh"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="3_segoh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khpck"]
 size = Vector3(0.46972656, 0.9033203, 0.4336548)

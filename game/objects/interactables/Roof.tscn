@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://boa547w07bf30"]
 
 [ext_resource type="Script" uid="uid://2q6lodcq8s8" path="res://game/objects/interactables/RoofTask.gd" id="1_4q084"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_0ypb0"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="2_0ypb0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ypb0"]
 size = Vector3(1.0504913, 0.71325684, 0.63311005)

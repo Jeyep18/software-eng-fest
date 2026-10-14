@@ -9,5 +9,5 @@ func interact() -> void:
 		push_error("Door: door_destination not set on " + name)
 		return
 	
-	AudioManager.play_sfx(preload("res://game/assets/sfx/15419__pagancow__dorm-door-opening.wav"))
+	AudioManager.play_sfx(preload("res://game/assets/audio/gameplay/15419__pagancow__dorm-door-opening.wav"))
 	SceneManager.travel_to(door_destination, spawn_point_id)

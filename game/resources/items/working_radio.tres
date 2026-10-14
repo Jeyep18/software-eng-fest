@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dhm6icg28b0ij"]
 
-[ext_resource type="Texture2D" uid="uid://c7kltcji1ismm" path="res://game/assets/images/radio.png" id="1_qo2g0"]
+[ext_resource type="Texture2D" uid="uid://c7kltcji1ismm" path="res://game/assets/item_icons/radio.png" id="1_qo2g0"]
 [ext_resource type="PackedScene" uid="uid://bhr21qsqju2ht" path="res://_raw_assets/interactable_models/Radio.glb" id="2_wb3to"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_7hduk"]
 

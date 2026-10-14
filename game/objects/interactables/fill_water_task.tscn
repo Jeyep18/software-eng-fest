@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1ffma416b8rg"]
 
 [ext_resource type="Script" uid="uid://dqjrmw4p6ujy" path="res://game/objects/interactables/fill_water_task.gd" id="1_ms6ut"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_lnfpl"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="2_lnfpl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt076"]
 size = Vector3(1.9556274, 1, 1)

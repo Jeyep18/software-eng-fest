@@ -44,15 +44,34 @@ The Input Map also defines jump, crouch, flashlight, and hotbar key 8. The activ
 
 ## Project structure
 
-- `game/autoload/`: global services and state, plus ordinary `TaskObject` and HUD scripts.
-- `game/scenes/`: intro/menu/ending, location and older act scenes.
-- `game/entities/`: current/legacy players, family, shop and quest NPCs, dialogue resources.
-- `game/objects/interactables/`: doors, household tasks and interaction base.
-- `game/resources/`: items, shops, environments, baked voxel data.
-- `game/ui/`, `game/audio/`, `game/weather/`, `game/shaders/`: presentation.
-- `game/localization/`: English/Tagalog CSV and [text editing guide](game/localization/README.md).
-- `game/assets/`, `_raw_assets/`: assets; both are referenced by runtime scenes.
-- `game/maps/`, `game/tests/`: supporting/exploratory scenes and a focused cleanup regression scene.
+```text
+game/
+  autoload/                  # Registered global managers and session state
+  assets/                    # Audio, item icons, portraits, fonts and visual assets
+    audio/                   # Music, weather, broadcasts, dialogue, UI, gameplay, ambience
+    item_icons/
+    npc_portraits/           # Stylized, original and placeholder images
+    reference_images/        # Retained reference screenshots
+  audio/                     # AudioManager scene, bus layout and SFX helper
+  camera/                    # Shared camera volumes
+  entities/
+    animals/
+    npcs/                    # Base, models, family, shops, quests and story
+    players/                 # Existing player and playerv2 implementations
+  localization/              # English/Tagalog CSV and editing guide
+  objects/                   # Interactables, props, models and world items
+  resources/                 # Dialogue, items, shops, environments, navigation and voxels
+  scenes/                    # Intro, menu, ending, locations, act1, recording and components
+  shaders/
+  tests/                     # Regression entry points and sandbox environments
+  ui/                        # HUD, inventory, dialogue, theme, settings and feature panels
+  weather/
+```
+
+Related scripts and scenes stay together; registered managers stay in `autoload/`.
+`_raw_assets/` retains its existing model/texture bundles and remains a runtime dependency.
+Older scenes and alternate characters are retained; folder grouping does not retire gameplay routes.
+See the [development guide](docs/DEVELOPMENT.md) for reference and import preservation rules.
 
 ## Major systems
 

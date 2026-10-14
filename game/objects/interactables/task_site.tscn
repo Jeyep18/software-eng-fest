@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtury4luw5qqd"]
 
 [ext_resource type="Script" uid="uid://d3prswwc5srbu" path="res://game/objects/interactables/MedicineTask.gd" id="1_6ydwe"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_6ydwe"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="2_6ydwe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3sjvq"]
 size = Vector3(1.8921967, 1.1941853, 1.2081909)

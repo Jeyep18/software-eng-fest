@@ -397,7 +397,7 @@ func _test_entry_guards() -> void:
 		_check(not DevMode.start_camera_mode(_player, _pause), "entry denies a running NPC dialogue")
 		npc._is_showing = false
 		npc.is_showing = false
-	ShopUi.open_shop(load("res://game/resources/items/shops/HardwareShop.tres"))
+	ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 	_check(not DevMode.start_camera_mode(_player, _pause), "entry denies a running shop")
 	ShopUi.close_shop(true)
 	var tutorial := load("res://game/ui/tutorial/TutorialModal.tscn").instantiate() as TutorialModal

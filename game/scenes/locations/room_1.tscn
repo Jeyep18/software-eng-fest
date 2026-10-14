@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://qmgjyw005mro"]
 
-[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/playerv2/playerv_2.tscn" id="1_87u6w"]
+[ext_resource type="PackedScene" uid="uid://b1n0kuu6vlicu" path="res://game/entities/players/playerv2/playerv_2.tscn" id="1_87u6w"]
 [ext_resource type="VoxelGIData" uid="uid://cqj5cl3lk1ixu" path="res://game/resources/voxels/room_1.VoxelGI_data.res" id="2_6imlw"]
 [ext_resource type="PackedScene" uid="uid://cbkutxg4j4wxj" path="res://game/objects/interactables/door_2.tscn" id="3_vw5ga"]
-[ext_resource type="PackedScene" uid="uid://lapvjimh6af4" path="res://game/objects/innerdialogue.tscn" id="4_6aia2"]
-[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/maps/camera volumes/camera_volume.gd" id="5_g2wbx"]
+[ext_resource type="PackedScene" uid="uid://lapvjimh6af4" path="res://game/objects/interactables/innerdialogue.tscn" id="4_6aia2"]
+[ext_resource type="Script" uid="uid://bugyf4ovk8o8h" path="res://game/camera/camera_volume.gd" id="5_g2wbx"]
 [ext_resource type="PackedScene" uid="uid://q1mqm53bb7nh" path="res://game/objects/interactables/fridge.tscn" id="6_if2q1"]
-[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/utils/spawnpoint/spawnpoint.tscn" id="7_ai6cq"]
+[ext_resource type="PackedScene" uid="uid://7an6p7fapspp" path="res://game/scenes/components/spawnpoint/spawnpoint.tscn" id="7_ai6cq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrr0m"]
 albedo_color = Color(0.8919668, 0.6861965, 1, 1)

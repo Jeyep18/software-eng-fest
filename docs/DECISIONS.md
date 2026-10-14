@@ -33,7 +33,7 @@ Positive: documentation and future tests can preserve intentional behavior. Trad
 ### Relevant files
 
 - `game/ui/map/MapScreen.gd`
-- `game/ui/BackpackUI/BackpackUI.gd`
+- `game/ui/inventory/backpack/BackpackUI.gd`
 - `game/autoload/GlobalTimer.gd`
 
 ### Supersedes
@@ -70,11 +70,11 @@ Positive: optional neighborhood interactions connect money, supplies and priorit
 
 ### Relevant files
 
-- `game/entities/ate_linda_npc/AteLindaQuestShop.gd`
-- `game/entities/quest_npcs/MangNestor.gd`
-- `game/entities/npc/QuestNPC.gd`
+- `game/entities/npcs/shops/ate_linda_npc/AteLindaQuestShop.gd`
+- `game/entities/npcs/quests/MangNestor.gd`
+- `game/entities/npcs/base/QuestNPC.gd`
 - `game/autoload/SideQuestLog.gd`
-- `game/resources/items/shops/ate_linda_shop_discounted.tres`
+- `game/resources/shops/ate_linda_shop_discounted.tres`
 
 ### Supersedes
 
@@ -140,3 +140,7 @@ The mode shares existing cash, timer, travel and pause owners. Its session unloc
 The repository demonstrates autoload-based session state, duplicated shop resources, a directed travel graph, seven inventory slots, and local JSON scores. It does not establish all original alternatives or reasons behind those choices. Do not fabricate Accepted ADRs for them. A 4.7 engine upgrade was mentioned in the old handoff, but acceptance/completion remains **Unknown / Needs verification**.
 
 For a future significant decision, record its real date/status, problem, actual alternatives with pros/cons, selected approach and reasoning, consequences, relevant files and superseded ADR. Update [ARCHITECTURE.md](ARCHITECTURE.md) and [GAME_DESIGN.md](GAME_DESIGN.md) as applicable.
+
+## 2026-10-14: Organize files by purpose without changing gameplay
+
+Keep registered managers in `autoload`, resource classes beside their data, and NPC/UI/audio files in purpose-specific folders. Preserve filenames, UIDs, node names, gameplay IDs, import settings and existing routes. Runtime-loaded `_raw_assets` bundles remain in place. Existing runtime work is checkpointed separately from relocation; unrelated documentation and previews remain local. Verify relocation by comparing checkpoint content after exact path substitution, then run matching regressions in isolated project copies.

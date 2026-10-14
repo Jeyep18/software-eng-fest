@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://txgoi7uiy07h"]
 
-[ext_resource type="Texture2D" uid="uid://dkusm24xy1tqj" path="res://game/assets/images/tarp.jpg" id="1_eaun8"]
+[ext_resource type="Texture2D" uid="uid://dkusm24xy1tqj" path="res://game/assets/item_icons/tarp.jpg" id="1_eaun8"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_fl78y"]
 
 [resource]

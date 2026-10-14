@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcngs6ycp85up"]
 
-[ext_resource type="Texture2D" uid="uid://d1r0psjj8o1jo" path="res://game/assets/images/flashlight.png" id="1_t78al"]
+[ext_resource type="Texture2D" uid="uid://d1r0psjj8o1jo" path="res://game/assets/item_icons/flashlight.png" id="1_t78al"]
 [ext_resource type="PackedScene" uid="uid://dth2tafulr3mo" path="res://_raw_assets/interactable_models/Flashlight.glb" id="2_fcv52"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="3_acfdx"]
 

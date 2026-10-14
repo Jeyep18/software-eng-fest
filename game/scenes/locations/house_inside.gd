@@ -2,6 +2,6 @@ extends Node3D
 
 func _ready() -> void:
 	TransitionOverlay.fade_from_black()
-	AudioManager.play_ambience(preload("res://game/assets/sfx/594553__marlene_coetzer__quiet-house-ambience.wav"))
-	AudioManager.play_music(preload("res://game/assets/sfx/freesound_community-scary-ambience-59002.mp3"))
+	AudioManager.play_ambience(preload("res://game/assets/audio/ambience/594553__marlene_coetzer__quiet-house-ambience.wav"))
+	AudioManager.play_music(preload("res://game/assets/audio/music/freesound_community-scary-ambience-59002.mp3"))
 	

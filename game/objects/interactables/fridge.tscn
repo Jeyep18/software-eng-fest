@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="1_riw02"]
 [ext_resource type="Script" uid="uid://bvygk7q3cd3en" path="res://game/objects/interactables/FridgeTask.gd" id="2_uwq7c"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="3_7mq1j"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="3_7mq1j"]
 [ext_resource type="PackedScene" uid="uid://b6qmqp5op0y5c" path="res://game/objects/interactables/TaskCue3D.tscn" id="4_taskcue"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cldu5"]

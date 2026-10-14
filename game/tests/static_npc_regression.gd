@@ -2,17 +2,17 @@ extends Node
 ## Run only in a disposable imported project with isolated userdata.
 
 const TARGETS := {
-	"MangNestor": "quest_npcs/mang_nestor",
-	"MoneyBeggar": "quest_npcs/money_beggar",
-	"SmokeBreakNPC": "quest_npcs/smoke_break_npc",
-	"TapeNeighbor": "story_npcs/tape_neighbor",
-	"TatayJun": "story_npcs/tatay_jun",
-	"KapsWorker": "story_npcs/kaps_worker",
-	"AteMaribel": "story_npcs/ate_maribel",
-	"PalengkeQueueMan": "story_npcs/palengke_queue_man",
-	"PanicBuyer": "story_npcs/panic_buyer",
-	"WetParent": "story_npcs/wet_parent",
-	"PharmaDude": "pharmacist/pharma_dude",
+	"MangNestor": "npcs/quests/mang_nestor",
+	"MoneyBeggar": "npcs/quests/money_beggar",
+	"SmokeBreakNPC": "npcs/quests/smoke_break_npc",
+	"TapeNeighbor": "npcs/story/tape_neighbor",
+	"TatayJun": "npcs/story/tatay_jun",
+	"KapsWorker": "npcs/story/kaps_worker",
+	"AteMaribel": "npcs/story/ate_maribel",
+	"PalengkeQueueMan": "npcs/story/palengke_queue_man",
+	"PanicBuyer": "npcs/story/panic_buyer",
+	"WetParent": "npcs/story/wet_parent",
+	"PharmaDude": "npcs/shops/pharmacist/pharma_dude",
 }
 const LOCATIONS := {
 	"tindahan": ["MangNestor", "TapeNeighbor", "SmokeBreakNPC"],
@@ -559,7 +559,7 @@ func _test_npc(target: String) -> void:
 		_check(GameState.tindahan_smoke_break_taken and GlobalTimer.current_minutes == minutes + npc.time_cost_minutes, "Smoke costs 20 minutes once")
 	elif target == "PharmaDude":
 		await _finish_dialogue(npc)
-		_check(ShopUi._current_shop != null and npc.shop_path == "res://game/resources/items/shops/PharmacyShop.tres", "Pharma dialogue opens pharmacy shop")
+		_check(ShopUi._current_shop != null and npc.shop_path == "res://game/resources/shops/PharmacyShop.tres", "Pharma dialogue opens pharmacy shop")
 		ShopUi.close_shop(true)
 		_check(not ShopUi.shop_panel.visible, "Pharmacy shop closes")
 	else:

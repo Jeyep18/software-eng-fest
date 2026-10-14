@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjle5kmwsfk27"]
 
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="1_4tuxr"]
-[ext_resource type="Texture2D" uid="uid://cox3lsudbo863" path="res://game/assets/images/canned_goods.png" id="1_gdpx4"]
+[ext_resource type="Texture2D" uid="uid://cox3lsudbo863" path="res://game/assets/item_icons/canned_goods.png" id="1_gdpx4"]
 [ext_resource type="PackedScene" uid="uid://b17fnmp7jshgp" path="res://_raw_assets/interactable_models/treska.glb" id="2_4iv1y"]
 
 [resource]

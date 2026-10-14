@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 const PAGE_SIZE := Vector2(1920.0, 1080.0)
 const PANEL_FADE_DURATION := 0.15

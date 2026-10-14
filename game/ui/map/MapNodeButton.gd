@@ -3,7 +3,7 @@ extends Control
 
 signal node_selected(loc_id: String)
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const BUTTON_SIZE := Vector2(240, 245)
 const ICON_SIZE := Vector2(216, 216)
 const ICON_Y := 0.0

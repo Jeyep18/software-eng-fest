@@ -2,11 +2,11 @@ extends Node
 
 const SFX = preload("res://game/audio/Sfx.gd")
 
-const LIGHT_RAIN: AudioStream = preload("res://game/assets/sfx/523722__klankbeeld__room-tone-wind-rain-long-200216_0114.ogg")
-const WIND: AudioStream = preload("res://game/assets/sfx/jci-21-wind-blowing-sfx-12809.mp3")
-const HEAVY_STORM: AudioStream = preload("res://game/assets/sfx/soundreality-rain-thunder-sfx-525011.mp3")
-const LOW_RUMBLE: AudioStream = preload("res://game/assets/sfx/u_7hpxkdroz2-storm-461601.mp3")
-const TRAIN_ANNOUNCEMENT: AudioStream = preload("res://game/assets/sfx/freesound_community-057519_train-announcement-44505.mp3")
+const LIGHT_RAIN: AudioStream = preload("res://game/assets/audio/weather/523722__klankbeeld__room-tone-wind-rain-long-200216_0114.ogg")
+const WIND: AudioStream = preload("res://game/assets/audio/weather/jci-21-wind-blowing-sfx-12809.mp3")
+const HEAVY_STORM: AudioStream = preload("res://game/assets/audio/weather/soundreality-rain-thunder-sfx-525011.mp3")
+const LOW_RUMBLE: AudioStream = preload("res://game/assets/audio/weather/u_7hpxkdroz2-storm-461601.mp3")
+const TRAIN_ANNOUNCEMENT: AudioStream = preload("res://game/assets/audio/broadcasts/freesound_community-057519_train-announcement-44505.mp3")
 
 var _rain_player: AudioStreamPlayer
 var _wind_player: AudioStreamPlayer

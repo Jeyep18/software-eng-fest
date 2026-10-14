@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dn6352fvr03p2"]
 
-[ext_resource type="Texture2D" uid="uid://dx5nf2m3iwea1" path="res://game/assets/images/nails.jpg" id="1_50ku1"]
+[ext_resource type="Texture2D" uid="uid://dx5nf2m3iwea1" path="res://game/assets/item_icons/nails.jpg" id="1_50ku1"]
 [ext_resource type="Script" uid="uid://b51r7pisrdybh" path="res://game/resources/items/ItemData.gd" id="2_cvy6i"]
 [ext_resource type="PackedScene" uid="uid://dqfrx2fiml1cl" path="res://_raw_assets/interactable_models/nail.glb" id="2_m7ngd"]
 

@@ -61,7 +61,7 @@ func _test_packaged_resources() -> void:
 	LocalizationManager.set_language("tagalog")
 	_check(LocalizationManager.translate("Talk to Nanay") == "Kausapin si Nanay", "known Tagalog translation loads")
 	LocalizationManager.set_language("english")
-	var stream := load("res://game/assets/sfx/musicholder-hover-button-287656.mp3") as AudioStream
+	var stream := load("res://game/assets/audio/ui/musicholder-hover-button-287656.mp3") as AudioStream
 	_check(stream != null and stream.get_length() > 0.0, "representative packaged audio loads with nonzero length")
 	if stream != null:
 		var previous_players: Array[int] = []

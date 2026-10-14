@@ -2,7 +2,7 @@
 # Builds its own UI in code. No .tscn needed.
 extends CanvasLayer
 
-const UI_STYLE = preload("res://game/ui/GameUIStyle.gd")
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 const PANEL_FADE_DURATION: float = 0.15
 

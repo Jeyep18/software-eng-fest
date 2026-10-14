@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blir7k61n7thg"]
 
-[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/scripts/NarrativeObject.gd" id="1_d7phm"]
-[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/inner_dialogue/monologue_ui.tscn" id="2_odkp5"]
+[ext_resource type="Script" uid="uid://clq42d36h783h" path="res://game/objects/interactables/NarrativeObject.gd" id="1_d7phm"]
+[ext_resource type="PackedScene" uid="uid://cgyxg4b0v8p4u" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="2_odkp5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3iq6l"]
 size = Vector3(1.314331, 0.93011475, 1)
