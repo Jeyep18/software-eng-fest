@@ -1,0 +1,1645 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+
+STATIC_NPC PASS MangNestor gameplay and unique UI remain
+STATIC_NPC PASS MangNestor visual wrapper exists
+STATIC_NPC PASS MangNestor direct animation playback visuals
+STATIC_NPC PASS MangNestor direct animation playback mixamo_base
+STATIC_NPC PASS MangNestor direct animation playback MangNestor
+STATIC_NPC PASS MangNestor direct animation playback Skeleton3D
+STATIC_NPC PASS MangNestor direct animation playback MangNestor_Body
+STATIC_NPC PASS MangNestor mesh MangNestor_Body
+STATIC_NPC PASS MangNestor exportable finite skin binds MangNestor_Body
+STATIC_NPC PASS MangNestor normalized skin weights MangNestor_Body
+STATIC_NPC PASS MangNestor nearest texture sampling
+STATIC_NPC PASS MangNestor direct animation playback MangNestor_SandalStrap_L
+STATIC_NPC PASS MangNestor mesh MangNestor_SandalStrap_L
+STATIC_NPC PASS MangNestor exportable finite skin binds MangNestor_SandalStrap_L
+STATIC_NPC PASS MangNestor normalized skin weights MangNestor_SandalStrap_L
+STATIC_NPC PASS MangNestor direct animation playback MangNestor_SandalStrap_L_001
+STATIC_NPC PASS MangNestor mesh MangNestor_SandalStrap_L_001
+STATIC_NPC PASS MangNestor exportable finite skin binds MangNestor_SandalStrap_L_001
+STATIC_NPC PASS MangNestor normalized skin weights MangNestor_SandalStrap_L_001
+STATIC_NPC PASS MangNestor direct animation playback MangNestor_SandalStrap_R
+STATIC_NPC PASS MangNestor mesh MangNestor_SandalStrap_R
+STATIC_NPC PASS MangNestor exportable finite skin binds MangNestor_SandalStrap_R
+STATIC_NPC PASS MangNestor normalized skin weights MangNestor_SandalStrap_R
+STATIC_NPC PASS MangNestor direct animation playback MangNestor_SandalStrap_R_001
+STATIC_NPC PASS MangNestor mesh MangNestor_SandalStrap_R_001
+STATIC_NPC PASS MangNestor exportable finite skin binds MangNestor_SandalStrap_R_001
+STATIC_NPC PASS MangNestor normalized skin weights MangNestor_SandalStrap_R_001
+STATIC_NPC PASS MangNestor direct animation playback DialogueHeadLook
+STATIC_NPC PASS MangNestor direct animation playback AnimationPlayer
+STATIC_NPC PASS MangNestor visible geometry present
+STATIC_NPC PASS MangNestor skinned body present
+STATIC_NPC PASS MangNestor animation player and scene-owned controller present
+STATIC_NPC PASS MangNestor authored clip idle_loop
+STATIC_NPC PASS MangNestor authored clip talk_enter
+STATIC_NPC PASS MangNestor authored clip talk_loop
+STATIC_NPC PASS MangNestor authored clip talk_exit
+STATIC_NPC PASS MangNestor authored clip fidget_search_street
+STATIC_NPC PASS MangNestor authored clip fidget_rub_neck
+STATIC_NPC PASS MangNestor idle initialized before first rendered frame
+STATIC_NPC PASS MangNestor idle playback advances
+STATIC_NPC PASS MangNestor skeleton imported
+STATIC_NPC PASS MangNestor root and two feet found
+STATIC_NPC PASS MangNestor loop mode fidget_rub_neck
+STATIC_NPC PASS MangNestor authored stepped interpolation fidget_rub_neck
+STATIC_NPC PASS MangNestor fixed root feet and ground props throughout fidget_rub_neck
+STATIC_NPC PASS MangNestor valid moving bone poses throughout fidget_rub_neck
+STATIC_NPC PASS MangNestor loop mode fidget_search_street
+STATIC_NPC PASS MangNestor authored stepped interpolation fidget_search_street
+STATIC_NPC PASS MangNestor fixed root feet and ground props throughout fidget_search_street
+STATIC_NPC PASS MangNestor valid moving bone poses throughout fidget_search_street
+STATIC_NPC PASS MangNestor loop mode idle_loop
+STATIC_NPC PASS MangNestor authored stepped interpolation idle_loop
+STATIC_NPC PASS MangNestor fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS MangNestor valid moving bone poses throughout idle_loop
+STATIC_NPC PASS MangNestor loop mode talk_enter
+STATIC_NPC PASS MangNestor authored stepped interpolation talk_enter
+STATIC_NPC PASS MangNestor fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS MangNestor valid moving bone poses throughout talk_enter
+STATIC_NPC PASS MangNestor loop mode talk_exit
+STATIC_NPC PASS MangNestor authored stepped interpolation talk_exit
+STATIC_NPC PASS MangNestor fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS MangNestor valid moving bone poses throughout talk_exit
+STATIC_NPC PASS MangNestor loop mode talk_loop
+STATIC_NPC PASS MangNestor authored stepped interpolation talk_loop
+STATIC_NPC PASS MangNestor fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS MangNestor valid moving bone poses throughout talk_loop
+STATIC_NPC PASS MangNestor scheduler starts fidget search_street
+STATIC_NPC PASS MangNestor one-shot fidget returns to idle search_street
+STATIC_NPC PASS MangNestor fidget delay stays within 4–7 seconds
+STATIC_NPC PASS MangNestor scheduler starts fidget rub_neck
+STATIC_NPC PASS MangNestor one-shot fidget returns to idle rub_neck
+STATIC_NPC PASS MangNestor fidget delay stays within 4–7 seconds
+STATIC_NPC PASS MangNestor fidget active before interruption
+STATIC_NPC PASS MangNestor conversation interrupts fidget immediately
+STATIC_NPC PASS MangNestor repeated dialogue signal preserves playback
+STATIC_NPC PASS MangNestor closing conversation enters exit
+STATIC_NPC PASS MangNestor rapid reopening interrupts exit
+STATIC_NPC PASS MangNestor interrupted entry returns through exit to idle
+STATIC_NPC PASS MangNestor actual SceneTree pause freezes animation
+STATIC_NPC PASS MangNestor unpause resumes playback
+STATIC_NPC PASS MangNestor storm transition cancels playback
+STATIC_NPC PASS MangNestor storm rejects new conversation
+STATIC_NPC PASS MangNestor clearing canceled storm restores rest
+STATIC_NPC PASS MangNestor scene fixture uses gameplay pause semantics
+STATIC_NPC PASS MangNestor physics entry detects NPC and prompt
+STATIC_NPC PASS MangNestor native head modifier initialized
+STATIC_NPC PASS MangNestor tracking modifies Head only
+STATIC_NPC PASS MangNestor head limits use absolute symmetric rest angles
+STATIC_NPC PASS MangNestor native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS MangNestor dialogue head tracking reaches full influence left
+STATIC_NPC PASS MangNestor final rendered head pose sampled left
+STATIC_NPC PASS MangNestor actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS MangNestor visible head turns toward player left
+STATIC_NPC PASS MangNestor arms props torso feet unaffected by tracking left
+STATIC_NPC PASS MangNestor dialogue head tracking reaches full influence right
+STATIC_NPC PASS MangNestor final rendered head pose sampled right
+STATIC_NPC PASS MangNestor actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS MangNestor visible head turns toward player right
+STATIC_NPC PASS MangNestor arms props torso feet unaffected by tracking right
+STATIC_NPC PASS MangNestor dialogue head tracking reaches full influence high
+STATIC_NPC PASS MangNestor final rendered head pose sampled high
+STATIC_NPC PASS MangNestor actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS MangNestor visible head turns toward player high
+STATIC_NPC PASS MangNestor arms props torso feet unaffected by tracking high
+STATIC_NPC PASS MangNestor dialogue head tracking reaches full influence low
+STATIC_NPC PASS MangNestor final rendered head pose sampled low
+STATIC_NPC PASS MangNestor actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS MangNestor visible head turns toward player low
+STATIC_NPC PASS MangNestor arms props torso feet unaffected by tracking low
+STATIC_NPC PASS MangNestor SceneTree pause freezes head tracking
+STATIC_NPC PASS MangNestor rear target eases back toward authored head
+STATIC_NPC PASS MangNestor rear target disables backward head tracking
+STATIC_NPC PASS MangNestor tracking reenters with eased influence
+STATIC_NPC PASS MangNestor ending dialogue eases authored head restoration
+STATIC_NPC PASS MangNestor rapid reopening interrupts head return promptly
+STATIC_NPC PASS MangNestor ending dialogue restores authored head motion
+STATIC_NPC PASS MangNestor storm cancels head tracking and animation
+STATIC_NPC PASS MangNestor opens dialogue
+STATIC_NPC PASS MangNestor immediately enters conversation
+STATIC_NPC PASS MangNestor enters conversation loop
+STATIC_NPC PASS MangNestor typing skip does not restart animation
+STATIC_NPC PASS MangNestor next dialogue line does not restart animation
+STATIC_NPC PASS MangNestor next dialogue line does not restart animation
+STATIC_NPC PASS MangNestor next dialogue line does not restart animation
+STATIC_NPC PASS MangNestor next dialogue line does not restart animation
+STATIC_NPC PASS MangNestor dialogue completes
+STATIC_NPC PASS MangNestor dialogue plays exit
+STATIC_NPC PASS MangNestor returns to rest after dialogue
+STATIC_NPC PASS MangNestor choice modal suppresses fidgets
+STATIC_NPC PASS MangNestor choice modal releases player head tracking
+STATIC_NPC PASS Nestor gives quest cash
+STATIC_NPC PASS Nestor start reward once
+STATIC_NPC PASS MangNestor opens dialogue
+STATIC_NPC PASS MangNestor immediately enters conversation
+STATIC_NPC PASS MangNestor enters conversation loop
+STATIC_NPC PASS MangNestor typing skip does not restart animation
+STATIC_NPC PASS MangNestor dialogue completes
+STATIC_NPC PASS MangNestor dialogue plays exit
+STATIC_NPC PASS MangNestor returns to rest after dialogue
+STATIC_NPC PASS MangNestor choice modal suppresses fidgets
+STATIC_NPC PASS MangNestor choice modal releases player head tracking
+STATIC_NPC PASS Nestor chicken exchanged for tarp
+STATIC_NPC PASS Nestor gives sukli
+STATIC_NPC PASS Nestor reward cannot duplicate
+STATIC_NPC PASS MangNestor conversation responsive on reentry
+STATIC_NPC PASS MangNestor physics exit removes prompt
+STATIC_NPC PASS MangNestor physics exit interrupts conversation
+STATIC_NPC PASS MangNestor interaction preserves root visual scale and facing
+STATIC_NPC PASS MangNestor removal during active playback frees controller
+STATIC_NPC PASS MoneyBeggar gameplay and unique UI remain
+STATIC_NPC PASS MoneyBeggar visual wrapper exists
+STATIC_NPC PASS MoneyBeggar direct animation playback visuals
+STATIC_NPC PASS MoneyBeggar direct animation playback mixamo_base
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar
+STATIC_NPC PASS MoneyBeggar direct animation playback Skeleton3D
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_Body
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_Body
+STATIC_NPC PASS MoneyBeggar exportable finite skin binds MoneyBeggar_Body
+STATIC_NPC PASS MoneyBeggar normalized skin weights MoneyBeggar_Body
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_SandalStrap
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_SandalStrap
+STATIC_NPC PASS MoneyBeggar exportable finite skin binds MoneyBeggar_SandalStrap
+STATIC_NPC PASS MoneyBeggar normalized skin weights MoneyBeggar_SandalStrap
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_SandalStrap_001
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_SandalStrap_001
+STATIC_NPC PASS MoneyBeggar exportable finite skin binds MoneyBeggar_SandalStrap_001
+STATIC_NPC PASS MoneyBeggar normalized skin weights MoneyBeggar_SandalStrap_001
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_SandalStrap_002
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_SandalStrap_002
+STATIC_NPC PASS MoneyBeggar exportable finite skin binds MoneyBeggar_SandalStrap_002
+STATIC_NPC PASS MoneyBeggar normalized skin weights MoneyBeggar_SandalStrap_002
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_SandalStrap_003
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_SandalStrap_003
+STATIC_NPC PASS MoneyBeggar exportable finite skin binds MoneyBeggar_SandalStrap_003
+STATIC_NPC PASS MoneyBeggar normalized skin weights MoneyBeggar_SandalStrap_003
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback DialogueHeadLook
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_BagHandle
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_BagHandle
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_BagHandle_001
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_BagHandle_001
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback MoneyBeggar_GroundBag
+STATIC_NPC PASS MoneyBeggar mesh MoneyBeggar_GroundBag
+STATIC_NPC PASS MoneyBeggar nearest texture sampling
+STATIC_NPC PASS MoneyBeggar direct animation playback AnimationPlayer
+STATIC_NPC PASS MoneyBeggar visible geometry present
+STATIC_NPC PASS MoneyBeggar skinned body present
+STATIC_NPC PASS MoneyBeggar animation player and scene-owned controller present
+STATIC_NPC PASS MoneyBeggar authored clip idle_loop
+STATIC_NPC PASS MoneyBeggar authored clip talk_enter
+STATIC_NPC PASS MoneyBeggar authored clip talk_loop
+STATIC_NPC PASS MoneyBeggar authored clip talk_exit
+STATIC_NPC PASS MoneyBeggar authored clip fidget_request_money
+STATIC_NPC PASS MoneyBeggar authored clip fidget_look_around
+STATIC_NPC PASS MoneyBeggar authored clip thank_you
+STATIC_NPC PASS MoneyBeggar authored clip relieved_loop
+STATIC_NPC PASS MoneyBeggar idle initialized before first rendered frame
+STATIC_NPC PASS MoneyBeggar idle playback advances
+STATIC_NPC PASS MoneyBeggar skeleton imported
+STATIC_NPC PASS MoneyBeggar root and two feet found
+STATIC_NPC PASS MoneyBeggar loop mode fidget_look_around
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation fidget_look_around
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout fidget_look_around
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout fidget_look_around
+STATIC_NPC PASS MoneyBeggar loop mode fidget_request_money
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation fidget_request_money
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout fidget_request_money
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout fidget_request_money
+STATIC_NPC PASS MoneyBeggar loop mode idle_loop
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation idle_loop
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout idle_loop
+STATIC_NPC PASS MoneyBeggar loop mode relieved_loop
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation relieved_loop
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout relieved_loop
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout relieved_loop
+STATIC_NPC PASS MoneyBeggar loop mode talk_enter
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation talk_enter
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout talk_enter
+STATIC_NPC PASS MoneyBeggar loop mode talk_exit
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation talk_exit
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout talk_exit
+STATIC_NPC PASS MoneyBeggar loop mode talk_loop
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation talk_loop
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout talk_loop
+STATIC_NPC PASS MoneyBeggar loop mode thank_you
+STATIC_NPC PASS MoneyBeggar authored stepped interpolation thank_you
+STATIC_NPC PASS MoneyBeggar fixed root feet and ground props throughout thank_you
+STATIC_NPC PASS MoneyBeggar valid moving bone poses throughout thank_you
+STATIC_NPC PASS MoneyBeggar scheduler starts fidget request_money
+STATIC_NPC PASS MoneyBeggar one-shot fidget returns to idle request_money
+STATIC_NPC PASS MoneyBeggar fidget delay stays within 4–7 seconds
+STATIC_NPC PASS MoneyBeggar scheduler starts fidget look_around
+STATIC_NPC PASS MoneyBeggar one-shot fidget returns to idle look_around
+STATIC_NPC PASS MoneyBeggar fidget delay stays within 4–7 seconds
+STATIC_NPC PASS MoneyBeggar fidget active before interruption
+STATIC_NPC PASS MoneyBeggar conversation interrupts fidget immediately
+STATIC_NPC PASS MoneyBeggar repeated dialogue signal preserves playback
+STATIC_NPC PASS MoneyBeggar closing conversation enters exit
+STATIC_NPC PASS MoneyBeggar rapid reopening interrupts exit
+STATIC_NPC PASS MoneyBeggar interrupted entry returns through exit to idle
+STATIC_NPC PASS MoneyBeggar actual SceneTree pause freezes animation
+STATIC_NPC PASS MoneyBeggar unpause resumes playback
+STATIC_NPC PASS MoneyBeggar storm transition cancels playback
+STATIC_NPC PASS MoneyBeggar storm rejects new conversation
+STATIC_NPC PASS MoneyBeggar clearing canceled storm restores rest
+STATIC_NPC PASS MoneyBeggar scene fixture uses gameplay pause semantics
+STATIC_NPC PASS MoneyBeggar physics entry detects NPC and prompt
+STATIC_NPC PASS MoneyBeggar native head modifier initialized
+STATIC_NPC PASS MoneyBeggar tracking modifies Head only
+STATIC_NPC PASS MoneyBeggar head limits use absolute symmetric rest angles
+STATIC_NPC PASS MoneyBeggar native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS MoneyBeggar dialogue head tracking reaches full influence left
+STATIC_NPC PASS MoneyBeggar final rendered head pose sampled left
+STATIC_NPC PASS MoneyBeggar actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS MoneyBeggar visible head turns toward player left
+STATIC_NPC PASS MoneyBeggar arms props torso feet unaffected by tracking left
+STATIC_NPC PASS MoneyBeggar dialogue head tracking reaches full influence right
+STATIC_NPC PASS MoneyBeggar final rendered head pose sampled right
+STATIC_NPC PASS MoneyBeggar actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS MoneyBeggar visible head turns toward player right
+STATIC_NPC PASS MoneyBeggar arms props torso feet unaffected by tracking right
+STATIC_NPC PASS MoneyBeggar dialogue head tracking reaches full influence high
+STATIC_NPC PASS MoneyBeggar final rendered head pose sampled high
+STATIC_NPC PASS MoneyBeggar actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS MoneyBeggar visible head turns toward player high
+STATIC_NPC PASS MoneyBeggar arms props torso feet unaffected by tracking high
+STATIC_NPC PASS MoneyBeggar dialogue head tracking reaches full influence low
+STATIC_NPC PASS MoneyBeggar final rendered head pose sampled low
+STATIC_NPC PASS MoneyBeggar actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS MoneyBeggar visible head turns toward player low
+STATIC_NPC PASS MoneyBeggar arms props torso feet unaffected by tracking low
+STATIC_NPC PASS MoneyBeggar SceneTree pause freezes head tracking
+STATIC_NPC PASS MoneyBeggar rear target eases back toward authored head
+STATIC_NPC PASS MoneyBeggar rear target disables backward head tracking
+STATIC_NPC PASS MoneyBeggar tracking reenters with eased influence
+STATIC_NPC PASS MoneyBeggar ending dialogue eases authored head restoration
+STATIC_NPC PASS MoneyBeggar rapid reopening interrupts head return promptly
+STATIC_NPC PASS MoneyBeggar ending dialogue restores authored head motion
+STATIC_NPC PASS MoneyBeggar storm cancels head tracking and animation
+STATIC_NPC PASS MoneyBeggar opens dialogue
+STATIC_NPC PASS MoneyBeggar immediately enters conversation
+STATIC_NPC PASS MoneyBeggar enters conversation loop
+STATIC_NPC PASS MoneyBeggar typing skip does not restart animation
+STATIC_NPC PASS MoneyBeggar dialogue completes
+STATIC_NPC PASS MoneyBeggar dialogue plays exit
+STATIC_NPC PASS MoneyBeggar returns to rest after dialogue
+STATIC_NPC PASS MoneyBeggar choice modal suppresses fidgets
+STATIC_NPC PASS MoneyBeggar choice modal releases player head tracking
+STATIC_NPC PASS MoneyBeggar choice modal suppresses fidgets
+STATIC_NPC PASS MoneyBeggar choice modal releases player head tracking
+STATIC_NPC PASS Beggar declined donation does not thank
+STATIC_NPC PASS MoneyBeggar opens dialogue
+STATIC_NPC PASS MoneyBeggar immediately enters conversation
+STATIC_NPC PASS MoneyBeggar enters conversation loop
+STATIC_NPC PASS MoneyBeggar typing skip does not restart animation
+STATIC_NPC PASS MoneyBeggar dialogue completes
+STATIC_NPC PASS MoneyBeggar dialogue plays exit
+STATIC_NPC PASS MoneyBeggar returns to rest after dialogue
+STATIC_NPC PASS MoneyBeggar choice modal suppresses fidgets
+STATIC_NPC PASS MoneyBeggar choice modal releases player head tracking
+STATIC_NPC PASS Beggar unaffordable donation does not thank
+STATIC_NPC PASS MoneyBeggar opens dialogue
+STATIC_NPC PASS MoneyBeggar immediately enters conversation
+STATIC_NPC PASS MoneyBeggar enters conversation loop
+STATIC_NPC PASS MoneyBeggar typing skip does not restart animation
+STATIC_NPC PASS MoneyBeggar dialogue completes
+STATIC_NPC PASS MoneyBeggar dialogue plays exit
+STATIC_NPC PASS MoneyBeggar returns to rest after dialogue
+STATIC_NPC PASS MoneyBeggar choice modal suppresses fidgets
+STATIC_NPC PASS MoneyBeggar choice modal releases player head tracking
+STATIC_NPC PASS Beggar successful donation changes cash and flag
+STATIC_NPC PASS Beggar successful donation starts authored thanks
+STATIC_NPC PASS Beggar thanks finishes into relieved idle
+STATIC_NPC PASS Beggar reward and thanks cannot repeat
+STATIC_NPC PASS Beggar relieved idle suppresses requesting fidgets
+STATIC_NPC PASS Beggar location reentry restores relieved pose without replaying thanks
+STATIC_NPC PASS Beggar conversation takes priority over pending donation reaction
+STATIC_NPC PASS Beggar pending thanks starts after conversation exit
+STATIC_NPC PASS Beggar conversation immediately interrupts reaction
+STATIC_NPC PASS Beggar interrupted thanks is consumed once and returns to relieved idle
+STATIC_NPC PASS Beggar seated grounding correction retained
+STATIC_NPC PASS MoneyBeggar conversation responsive on reentry
+STATIC_NPC PASS MoneyBeggar physics exit removes prompt
+STATIC_NPC PASS MoneyBeggar physics exit interrupts conversation
+STATIC_NPC PASS MoneyBeggar interaction preserves root visual scale and facing
+STATIC_NPC PASS MoneyBeggar removal during active playback frees controller
+STATIC_NPC PASS SmokeBreakNPC gameplay and unique UI remain
+STATIC_NPC PASS SmokeBreakNPC visual wrapper exists
+STATIC_NPC PASS SmokeBreakNPC direct animation playback visuals
+STATIC_NPC PASS SmokeBreakNPC direct animation playback mixamo_base
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC
+STATIC_NPC PASS SmokeBreakNPC direct animation playback Skeleton3D
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Bangs
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Bangs
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Bangs
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Bangs
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Bangs_001
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Bangs_001
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Bangs_001
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Bangs_001
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Bangs_002
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Bangs_002
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Bangs_002
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Bangs_002
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Bangs_003
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Bangs_003
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Bangs_003
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Bangs_003
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Bangs_004
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Bangs_004
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Bangs_004
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Bangs_004
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Body
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Body
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Body
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Body
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Cigarette
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Cigarette
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Cigarette
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Cigarette
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Ember
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Ember
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Ember
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Ember
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesBridge
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesBridge
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesBridge
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesBridge
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_001
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_001
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_001
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_001
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_002
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_002
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_002
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_002
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_003
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_003
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_003
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_003
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_004
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_004
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_004
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_004
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_005
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_005
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_005
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_005
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_006
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_006
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_006
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_006
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesFrame_007
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesFrame_007
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesFrame_007
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesFrame_007
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesTemple
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesTemple
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesTemple
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesTemple
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_GlassesTemple_001
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_GlassesTemple_001
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_GlassesTemple_001
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_GlassesTemple_001
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_Phone
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_Phone
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_Phone
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_Phone
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback SmokeBreakNPC_PhoneScreen
+STATIC_NPC PASS SmokeBreakNPC mesh SmokeBreakNPC_PhoneScreen
+STATIC_NPC PASS SmokeBreakNPC exportable finite skin binds SmokeBreakNPC_PhoneScreen
+STATIC_NPC PASS SmokeBreakNPC normalized skin weights SmokeBreakNPC_PhoneScreen
+STATIC_NPC PASS SmokeBreakNPC nearest texture sampling
+STATIC_NPC PASS SmokeBreakNPC direct animation playback DialogueHeadLook
+STATIC_NPC PASS SmokeBreakNPC direct animation playback AnimationPlayer
+STATIC_NPC PASS SmokeBreakNPC visible geometry present
+STATIC_NPC PASS SmokeBreakNPC skinned body present
+STATIC_NPC PASS SmokeBreakNPC animation player and scene-owned controller present
+STATIC_NPC PASS SmokeBreakNPC authored clip idle_loop
+STATIC_NPC PASS SmokeBreakNPC authored clip talk_enter
+STATIC_NPC PASS SmokeBreakNPC authored clip talk_loop
+STATIC_NPC PASS SmokeBreakNPC authored clip talk_exit
+STATIC_NPC PASS SmokeBreakNPC authored clip fidget_smoke
+STATIC_NPC PASS SmokeBreakNPC authored clip fidget_look_around
+STATIC_NPC PASS SmokeBreakNPC authored clip fidget_check_phone
+STATIC_NPC PASS SmokeBreakNPC idle initialized before first rendered frame
+STATIC_NPC PASS SmokeBreakNPC idle playback advances
+STATIC_NPC PASS SmokeBreakNPC skeleton imported
+STATIC_NPC PASS SmokeBreakNPC root and two feet found
+STATIC_NPC PASS SmokeBreakNPC loop mode fidget_check_phone
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation fidget_check_phone
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout fidget_check_phone
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout fidget_check_phone
+STATIC_NPC PASS SmokeBreakNPC loop mode fidget_look_around
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation fidget_look_around
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout fidget_look_around
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout fidget_look_around
+STATIC_NPC PASS SmokeBreakNPC loop mode fidget_smoke
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation fidget_smoke
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout fidget_smoke
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout fidget_smoke
+STATIC_NPC PASS SmokeBreakNPC loop mode idle_loop
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation idle_loop
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout idle_loop
+STATIC_NPC PASS SmokeBreakNPC loop mode talk_enter
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation talk_enter
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout talk_enter
+STATIC_NPC PASS SmokeBreakNPC loop mode talk_exit
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation talk_exit
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout talk_exit
+STATIC_NPC PASS SmokeBreakNPC loop mode talk_loop
+STATIC_NPC PASS SmokeBreakNPC authored stepped interpolation talk_loop
+STATIC_NPC PASS SmokeBreakNPC fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS SmokeBreakNPC valid moving bone poses throughout talk_loop
+STATIC_NPC PASS SmokeBreakNPC scheduler starts fidget smoke
+STATIC_NPC PASS SmokeBreakNPC one-shot fidget returns to idle smoke
+STATIC_NPC PASS SmokeBreakNPC fidget delay stays within 4–7 seconds
+STATIC_NPC PASS SmokeBreakNPC scheduler starts fidget look_around
+STATIC_NPC PASS SmokeBreakNPC one-shot fidget returns to idle look_around
+STATIC_NPC PASS SmokeBreakNPC fidget delay stays within 4–7 seconds
+STATIC_NPC PASS SmokeBreakNPC scheduler starts fidget check_phone
+STATIC_NPC PASS SmokeBreakNPC one-shot fidget returns to idle check_phone
+STATIC_NPC PASS SmokeBreakNPC fidget delay stays within 4–7 seconds
+STATIC_NPC PASS SmokeBreakNPC fidget active before interruption
+STATIC_NPC PASS SmokeBreakNPC conversation interrupts fidget immediately
+STATIC_NPC PASS SmokeBreakNPC repeated dialogue signal preserves playback
+STATIC_NPC PASS SmokeBreakNPC closing conversation enters exit
+STATIC_NPC PASS SmokeBreakNPC rapid reopening interrupts exit
+STATIC_NPC PASS SmokeBreakNPC interrupted entry returns through exit to idle
+STATIC_NPC PASS SmokeBreakNPC actual SceneTree pause freezes animation
+STATIC_NPC PASS SmokeBreakNPC unpause resumes playback
+STATIC_NPC PASS SmokeBreakNPC storm transition cancels playback
+STATIC_NPC PASS SmokeBreakNPC storm rejects new conversation
+STATIC_NPC PASS SmokeBreakNPC clearing canceled storm restores rest
+STATIC_NPC PASS SmokeBreakNPC scene fixture uses gameplay pause semantics
+STATIC_NPC PASS SmokeBreakNPC physics entry detects NPC and prompt
+STATIC_NPC PASS SmokeBreakNPC native head modifier initialized
+STATIC_NPC PASS SmokeBreakNPC tracking modifies Head only
+STATIC_NPC PASS SmokeBreakNPC head limits use absolute symmetric rest angles
+STATIC_NPC PASS SmokeBreakNPC native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS SmokeBreakNPC dialogue head tracking reaches full influence left
+STATIC_NPC PASS SmokeBreakNPC final rendered head pose sampled left
+STATIC_NPC PASS SmokeBreakNPC actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS SmokeBreakNPC visible head turns toward player left
+STATIC_NPC PASS SmokeBreakNPC arms props torso feet unaffected by tracking left
+STATIC_NPC PASS SmokeBreakNPC dialogue head tracking reaches full influence right
+STATIC_NPC PASS SmokeBreakNPC final rendered head pose sampled right
+STATIC_NPC PASS SmokeBreakNPC actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS SmokeBreakNPC visible head turns toward player right
+STATIC_NPC PASS SmokeBreakNPC arms props torso feet unaffected by tracking right
+STATIC_NPC PASS SmokeBreakNPC dialogue head tracking reaches full influence high
+STATIC_NPC PASS SmokeBreakNPC final rendered head pose sampled high
+STATIC_NPC PASS SmokeBreakNPC actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS SmokeBreakNPC visible head turns toward player high
+STATIC_NPC PASS SmokeBreakNPC arms props torso feet unaffected by tracking high
+STATIC_NPC PASS SmokeBreakNPC dialogue head tracking reaches full influence low
+STATIC_NPC PASS SmokeBreakNPC final rendered head pose sampled low
+STATIC_NPC PASS SmokeBreakNPC actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS SmokeBreakNPC visible head turns toward player low
+STATIC_NPC PASS SmokeBreakNPC arms props torso feet unaffected by tracking low
+STATIC_NPC PASS SmokeBreakNPC SceneTree pause freezes head tracking
+STATIC_NPC PASS SmokeBreakNPC rear target eases back toward authored head
+STATIC_NPC PASS SmokeBreakNPC rear target disables backward head tracking
+STATIC_NPC PASS SmokeBreakNPC tracking reenters with eased influence
+STATIC_NPC PASS SmokeBreakNPC ending dialogue eases authored head restoration
+STATIC_NPC PASS SmokeBreakNPC rapid reopening interrupts head return promptly
+STATIC_NPC PASS SmokeBreakNPC ending dialogue restores authored head motion
+STATIC_NPC PASS SmokeBreakNPC storm cancels head tracking and animation
+STATIC_NPC PASS SmokeBreakNPC opens dialogue
+STATIC_NPC PASS SmokeBreakNPC immediately enters conversation
+STATIC_NPC PASS SmokeBreakNPC enters conversation loop
+STATIC_NPC PASS SmokeBreakNPC typing skip does not restart animation
+STATIC_NPC PASS SmokeBreakNPC dialogue completes
+STATIC_NPC PASS SmokeBreakNPC dialogue plays exit
+STATIC_NPC PASS SmokeBreakNPC returns to rest after dialogue
+STATIC_NPC PASS SmokeBreakNPC choice modal suppresses fidgets
+STATIC_NPC PASS SmokeBreakNPC choice modal releases player head tracking
+STATIC_NPC PASS Smoke action completes and releases player
+STATIC_NPC PASS Smoke costs 20 minutes once
+STATIC_NPC PASS SmokeBreakNPC conversation responsive on reentry
+STATIC_NPC PASS SmokeBreakNPC physics exit removes prompt
+STATIC_NPC PASS SmokeBreakNPC physics exit interrupts conversation
+STATIC_NPC PASS SmokeBreakNPC interaction preserves root visual scale and facing
+STATIC_NPC PASS SmokeBreakNPC removal during active playback frees controller
+STATIC_NPC PASS TapeNeighbor gameplay and unique UI remain
+STATIC_NPC PASS TapeNeighbor visual wrapper exists
+STATIC_NPC PASS TapeNeighbor direct animation playback visuals
+STATIC_NPC PASS TapeNeighbor direct animation playback mixamo_base
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor
+STATIC_NPC PASS TapeNeighbor direct animation playback Skeleton3D
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor_Body
+STATIC_NPC PASS TapeNeighbor mesh TapeNeighbor_Body
+STATIC_NPC PASS TapeNeighbor exportable finite skin binds TapeNeighbor_Body
+STATIC_NPC PASS TapeNeighbor normalized skin weights TapeNeighbor_Body
+STATIC_NPC PASS TapeNeighbor nearest texture sampling
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor_SandalStrap_L
+STATIC_NPC PASS TapeNeighbor mesh TapeNeighbor_SandalStrap_L
+STATIC_NPC PASS TapeNeighbor exportable finite skin binds TapeNeighbor_SandalStrap_L
+STATIC_NPC PASS TapeNeighbor normalized skin weights TapeNeighbor_SandalStrap_L
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor_SandalStrap_L_001
+STATIC_NPC PASS TapeNeighbor mesh TapeNeighbor_SandalStrap_L_001
+STATIC_NPC PASS TapeNeighbor exportable finite skin binds TapeNeighbor_SandalStrap_L_001
+STATIC_NPC PASS TapeNeighbor normalized skin weights TapeNeighbor_SandalStrap_L_001
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor_SandalStrap_R
+STATIC_NPC PASS TapeNeighbor mesh TapeNeighbor_SandalStrap_R
+STATIC_NPC PASS TapeNeighbor exportable finite skin binds TapeNeighbor_SandalStrap_R
+STATIC_NPC PASS TapeNeighbor normalized skin weights TapeNeighbor_SandalStrap_R
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor_SandalStrap_R_001
+STATIC_NPC PASS TapeNeighbor mesh TapeNeighbor_SandalStrap_R_001
+STATIC_NPC PASS TapeNeighbor exportable finite skin binds TapeNeighbor_SandalStrap_R_001
+STATIC_NPC PASS TapeNeighbor normalized skin weights TapeNeighbor_SandalStrap_R_001
+STATIC_NPC PASS TapeNeighbor direct animation playback TapeNeighbor_TapeRoll
+STATIC_NPC PASS TapeNeighbor mesh TapeNeighbor_TapeRoll
+STATIC_NPC PASS TapeNeighbor exportable finite skin binds TapeNeighbor_TapeRoll
+STATIC_NPC PASS TapeNeighbor normalized skin weights TapeNeighbor_TapeRoll
+STATIC_NPC PASS TapeNeighbor direct animation playback DialogueHeadLook
+STATIC_NPC PASS TapeNeighbor direct animation playback AnimationPlayer
+STATIC_NPC PASS TapeNeighbor visible geometry present
+STATIC_NPC PASS TapeNeighbor skinned body present
+STATIC_NPC PASS TapeNeighbor animation player and scene-owned controller present
+STATIC_NPC PASS TapeNeighbor authored clip idle_loop
+STATIC_NPC PASS TapeNeighbor authored clip talk_enter
+STATIC_NPC PASS TapeNeighbor authored clip talk_loop
+STATIC_NPC PASS TapeNeighbor authored clip talk_exit
+STATIC_NPC PASS TapeNeighbor authored clip fidget_search_street
+STATIC_NPC PASS TapeNeighbor authored clip fidget_inspect_tape
+STATIC_NPC PASS TapeNeighbor idle initialized before first rendered frame
+STATIC_NPC PASS TapeNeighbor idle playback advances
+STATIC_NPC PASS TapeNeighbor skeleton imported
+STATIC_NPC PASS TapeNeighbor root and two feet found
+STATIC_NPC PASS TapeNeighbor loop mode fidget_inspect_tape
+STATIC_NPC PASS TapeNeighbor authored stepped interpolation fidget_inspect_tape
+STATIC_NPC PASS TapeNeighbor fixed root feet and ground props throughout fidget_inspect_tape
+STATIC_NPC PASS TapeNeighbor valid moving bone poses throughout fidget_inspect_tape
+STATIC_NPC PASS TapeNeighbor loop mode fidget_search_street
+STATIC_NPC PASS TapeNeighbor authored stepped interpolation fidget_search_street
+STATIC_NPC PASS TapeNeighbor fixed root feet and ground props throughout fidget_search_street
+STATIC_NPC PASS TapeNeighbor valid moving bone poses throughout fidget_search_street
+STATIC_NPC PASS TapeNeighbor loop mode idle_loop
+STATIC_NPC PASS TapeNeighbor authored stepped interpolation idle_loop
+STATIC_NPC PASS TapeNeighbor fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS TapeNeighbor valid moving bone poses throughout idle_loop
+STATIC_NPC PASS TapeNeighbor loop mode talk_enter
+STATIC_NPC PASS TapeNeighbor authored stepped interpolation talk_enter
+STATIC_NPC PASS TapeNeighbor fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS TapeNeighbor valid moving bone poses throughout talk_enter
+STATIC_NPC PASS TapeNeighbor loop mode talk_exit
+STATIC_NPC PASS TapeNeighbor authored stepped interpolation talk_exit
+STATIC_NPC PASS TapeNeighbor fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS TapeNeighbor valid moving bone poses throughout talk_exit
+STATIC_NPC PASS TapeNeighbor loop mode talk_loop
+STATIC_NPC PASS TapeNeighbor authored stepped interpolation talk_loop
+STATIC_NPC PASS TapeNeighbor fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS TapeNeighbor valid moving bone poses throughout talk_loop
+STATIC_NPC PASS TapeNeighbor scheduler starts fidget search_street
+STATIC_NPC PASS TapeNeighbor one-shot fidget returns to idle search_street
+STATIC_NPC PASS TapeNeighbor fidget delay stays within 4–7 seconds
+STATIC_NPC PASS TapeNeighbor scheduler starts fidget inspect_tape
+STATIC_NPC PASS TapeNeighbor one-shot fidget returns to idle inspect_tape
+STATIC_NPC PASS TapeNeighbor fidget delay stays within 4–7 seconds
+STATIC_NPC PASS TapeNeighbor fidget active before interruption
+STATIC_NPC PASS TapeNeighbor conversation interrupts fidget immediately
+STATIC_NPC PASS TapeNeighbor repeated dialogue signal preserves playback
+STATIC_NPC PASS TapeNeighbor closing conversation enters exit
+STATIC_NPC PASS TapeNeighbor rapid reopening interrupts exit
+STATIC_NPC PASS TapeNeighbor interrupted entry returns through exit to idle
+STATIC_NPC PASS TapeNeighbor actual SceneTree pause freezes animation
+STATIC_NPC PASS TapeNeighbor unpause resumes playback
+STATIC_NPC PASS TapeNeighbor storm transition cancels playback
+STATIC_NPC PASS TapeNeighbor storm rejects new conversation
+STATIC_NPC PASS TapeNeighbor clearing canceled storm restores rest
+STATIC_NPC PASS TapeNeighbor scene fixture uses gameplay pause semantics
+STATIC_NPC PASS TapeNeighbor physics entry detects NPC and prompt
+STATIC_NPC PASS TapeNeighbor native head modifier initialized
+STATIC_NPC PASS TapeNeighbor tracking modifies Head only
+STATIC_NPC PASS TapeNeighbor head limits use absolute symmetric rest angles
+STATIC_NPC PASS TapeNeighbor native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS TapeNeighbor dialogue head tracking reaches full influence left
+STATIC_NPC PASS TapeNeighbor final rendered head pose sampled left
+STATIC_NPC PASS TapeNeighbor actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS TapeNeighbor visible head turns toward player left
+STATIC_NPC PASS TapeNeighbor arms props torso feet unaffected by tracking left
+STATIC_NPC PASS TapeNeighbor dialogue head tracking reaches full influence right
+STATIC_NPC PASS TapeNeighbor final rendered head pose sampled right
+STATIC_NPC PASS TapeNeighbor actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS TapeNeighbor visible head turns toward player right
+STATIC_NPC PASS TapeNeighbor arms props torso feet unaffected by tracking right
+STATIC_NPC PASS TapeNeighbor dialogue head tracking reaches full influence high
+STATIC_NPC PASS TapeNeighbor final rendered head pose sampled high
+STATIC_NPC PASS TapeNeighbor actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS TapeNeighbor visible head turns toward player high
+STATIC_NPC PASS TapeNeighbor arms props torso feet unaffected by tracking high
+STATIC_NPC PASS TapeNeighbor dialogue head tracking reaches full influence low
+STATIC_NPC PASS TapeNeighbor final rendered head pose sampled low
+STATIC_NPC PASS TapeNeighbor actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS TapeNeighbor visible head turns toward player low
+STATIC_NPC PASS TapeNeighbor arms props torso feet unaffected by tracking low
+STATIC_NPC PASS TapeNeighbor SceneTree pause freezes head tracking
+STATIC_NPC PASS TapeNeighbor rear target eases back toward authored head
+STATIC_NPC PASS TapeNeighbor rear target disables backward head tracking
+STATIC_NPC PASS TapeNeighbor tracking reenters with eased influence
+STATIC_NPC PASS TapeNeighbor ending dialogue eases authored head restoration
+STATIC_NPC PASS TapeNeighbor rapid reopening interrupts head return promptly
+STATIC_NPC PASS TapeNeighbor ending dialogue restores authored head motion
+STATIC_NPC PASS TapeNeighbor storm cancels head tracking and animation
+STATIC_NPC PASS TapeNeighbor opens dialogue
+STATIC_NPC PASS TapeNeighbor immediately enters conversation
+STATIC_NPC PASS TapeNeighbor enters conversation loop
+STATIC_NPC PASS TapeNeighbor typing skip does not restart animation
+STATIC_NPC PASS TapeNeighbor dialogue completes
+STATIC_NPC PASS TapeNeighbor dialogue plays exit
+STATIC_NPC PASS TapeNeighbor returns to rest after dialogue
+STATIC_NPC PASS TapeNeighbor conversation responsive on reentry
+STATIC_NPC PASS TapeNeighbor physics exit removes prompt
+STATIC_NPC PASS TapeNeighbor physics exit interrupts conversation
+STATIC_NPC PASS TapeNeighbor interaction preserves root visual scale and facing
+STATIC_NPC PASS TapeNeighbor removal during active playback frees controller
+STATIC_NPC PASS TatayJun gameplay and unique UI remain
+STATIC_NPC PASS TatayJun visual wrapper exists
+STATIC_NPC PASS TatayJun direct animation playback visuals
+STATIC_NPC PASS TatayJun direct animation playback mixamo_base
+STATIC_NPC PASS TatayJun direct animation playback TatayJun
+STATIC_NPC PASS TatayJun direct animation playback Skeleton3D
+STATIC_NPC PASS TatayJun direct animation playback TatayJun_BagHandle
+STATIC_NPC PASS TatayJun mesh TatayJun_BagHandle
+STATIC_NPC PASS TatayJun exportable finite skin binds TatayJun_BagHandle
+STATIC_NPC PASS TatayJun normalized skin weights TatayJun_BagHandle
+STATIC_NPC PASS TatayJun nearest texture sampling
+STATIC_NPC PASS TatayJun direct animation playback TatayJun_BagHandle_001
+STATIC_NPC PASS TatayJun mesh TatayJun_BagHandle_001
+STATIC_NPC PASS TatayJun exportable finite skin binds TatayJun_BagHandle_001
+STATIC_NPC PASS TatayJun normalized skin weights TatayJun_BagHandle_001
+STATIC_NPC PASS TatayJun nearest texture sampling
+STATIC_NPC PASS TatayJun direct animation playback TatayJun_BagL
+STATIC_NPC PASS TatayJun mesh TatayJun_BagL
+STATIC_NPC PASS TatayJun exportable finite skin binds TatayJun_BagL
+STATIC_NPC PASS TatayJun normalized skin weights TatayJun_BagL
+STATIC_NPC PASS TatayJun nearest texture sampling
+STATIC_NPC PASS TatayJun direct animation playback TatayJun_Body
+STATIC_NPC PASS TatayJun mesh TatayJun_Body
+STATIC_NPC PASS TatayJun exportable finite skin binds TatayJun_Body
+STATIC_NPC PASS TatayJun normalized skin weights TatayJun_Body
+STATIC_NPC PASS TatayJun nearest texture sampling
+STATIC_NPC PASS TatayJun direct animation playback TatayJun_NailPacket
+STATIC_NPC PASS TatayJun mesh TatayJun_NailPacket
+STATIC_NPC PASS TatayJun exportable finite skin binds TatayJun_NailPacket
+STATIC_NPC PASS TatayJun normalized skin weights TatayJun_NailPacket
+STATIC_NPC PASS TatayJun nearest texture sampling
+STATIC_NPC PASS TatayJun direct animation playback TatayJun_NailPacketMark
+STATIC_NPC PASS TatayJun mesh TatayJun_NailPacketMark
+STATIC_NPC PASS TatayJun exportable finite skin binds TatayJun_NailPacketMark
+STATIC_NPC PASS TatayJun normalized skin weights TatayJun_NailPacketMark
+STATIC_NPC PASS TatayJun nearest texture sampling
+STATIC_NPC PASS TatayJun direct animation playback DialogueHeadLook
+STATIC_NPC PASS TatayJun direct animation playback AnimationPlayer
+STATIC_NPC PASS TatayJun visible geometry present
+STATIC_NPC PASS TatayJun skinned body present
+STATIC_NPC PASS TatayJun animation player and scene-owned controller present
+STATIC_NPC PASS TatayJun authored clip idle_loop
+STATIC_NPC PASS TatayJun authored clip talk_enter
+STATIC_NPC PASS TatayJun authored clip talk_loop
+STATIC_NPC PASS TatayJun authored clip talk_exit
+STATIC_NPC PASS TatayJun authored clip fidget_check_packet
+STATIC_NPC PASS TatayJun authored clip fidget_check_bag
+STATIC_NPC PASS TatayJun idle initialized before first rendered frame
+STATIC_NPC PASS TatayJun idle playback advances
+STATIC_NPC PASS TatayJun skeleton imported
+STATIC_NPC PASS TatayJun root and two feet found
+STATIC_NPC PASS TatayJun loop mode fidget_check_bag
+STATIC_NPC PASS TatayJun authored stepped interpolation fidget_check_bag
+STATIC_NPC PASS TatayJun fixed root feet and ground props throughout fidget_check_bag
+STATIC_NPC PASS TatayJun valid moving bone poses throughout fidget_check_bag
+STATIC_NPC PASS TatayJun loop mode fidget_check_packet
+STATIC_NPC PASS TatayJun authored stepped interpolation fidget_check_packet
+STATIC_NPC PASS TatayJun fixed root feet and ground props throughout fidget_check_packet
+STATIC_NPC PASS TatayJun valid moving bone poses throughout fidget_check_packet
+STATIC_NPC PASS TatayJun loop mode idle_loop
+STATIC_NPC PASS TatayJun authored stepped interpolation idle_loop
+STATIC_NPC PASS TatayJun fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS TatayJun valid moving bone poses throughout idle_loop
+STATIC_NPC PASS TatayJun loop mode talk_enter
+STATIC_NPC PASS TatayJun authored stepped interpolation talk_enter
+STATIC_NPC PASS TatayJun fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS TatayJun valid moving bone poses throughout talk_enter
+STATIC_NPC PASS TatayJun loop mode talk_exit
+STATIC_NPC PASS TatayJun authored stepped interpolation talk_exit
+STATIC_NPC PASS TatayJun fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS TatayJun valid moving bone poses throughout talk_exit
+STATIC_NPC PASS TatayJun loop mode talk_loop
+STATIC_NPC PASS TatayJun authored stepped interpolation talk_loop
+STATIC_NPC PASS TatayJun fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS TatayJun valid moving bone poses throughout talk_loop
+STATIC_NPC PASS TatayJun scheduler starts fidget check_packet
+STATIC_NPC PASS TatayJun one-shot fidget returns to idle check_packet
+STATIC_NPC PASS TatayJun fidget delay stays within 4–7 seconds
+STATIC_NPC PASS TatayJun scheduler starts fidget check_bag
+STATIC_NPC PASS TatayJun one-shot fidget returns to idle check_bag
+STATIC_NPC PASS TatayJun fidget delay stays within 4–7 seconds
+STATIC_NPC PASS TatayJun fidget active before interruption
+STATIC_NPC PASS TatayJun conversation interrupts fidget immediately
+STATIC_NPC PASS TatayJun repeated dialogue signal preserves playback
+STATIC_NPC PASS TatayJun closing conversation enters exit
+STATIC_NPC PASS TatayJun rapid reopening interrupts exit
+STATIC_NPC PASS TatayJun interrupted entry returns through exit to idle
+STATIC_NPC PASS TatayJun actual SceneTree pause freezes animation
+STATIC_NPC PASS TatayJun unpause resumes playback
+STATIC_NPC PASS TatayJun storm transition cancels playback
+STATIC_NPC PASS TatayJun storm rejects new conversation
+STATIC_NPC PASS TatayJun clearing canceled storm restores rest
+STATIC_NPC PASS TatayJun scene fixture uses gameplay pause semantics
+STATIC_NPC PASS TatayJun physics entry detects NPC and prompt
+STATIC_NPC PASS TatayJun native head modifier initialized
+STATIC_NPC PASS TatayJun tracking modifies Head only
+STATIC_NPC PASS TatayJun head limits use absolute symmetric rest angles
+STATIC_NPC PASS TatayJun native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS TatayJun dialogue head tracking reaches full influence left
+STATIC_NPC PASS TatayJun final rendered head pose sampled left
+STATIC_NPC PASS TatayJun actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS TatayJun visible head turns toward player left
+STATIC_NPC PASS TatayJun arms props torso feet unaffected by tracking left
+STATIC_NPC PASS TatayJun dialogue head tracking reaches full influence right
+STATIC_NPC PASS TatayJun final rendered head pose sampled right
+STATIC_NPC PASS TatayJun actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS TatayJun visible head turns toward player right
+STATIC_NPC PASS TatayJun arms props torso feet unaffected by tracking right
+STATIC_NPC PASS TatayJun dialogue head tracking reaches full influence high
+STATIC_NPC PASS TatayJun final rendered head pose sampled high
+STATIC_NPC PASS TatayJun actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS TatayJun visible head turns toward player high
+STATIC_NPC PASS TatayJun arms props torso feet unaffected by tracking high
+STATIC_NPC PASS TatayJun dialogue head tracking reaches full influence low
+STATIC_NPC PASS TatayJun final rendered head pose sampled low
+STATIC_NPC PASS TatayJun actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS TatayJun visible head turns toward player low
+STATIC_NPC PASS TatayJun arms props torso feet unaffected by tracking low
+STATIC_NPC PASS TatayJun SceneTree pause freezes head tracking
+STATIC_NPC PASS TatayJun rear target eases back toward authored head
+STATIC_NPC PASS TatayJun rear target disables backward head tracking
+STATIC_NPC PASS TatayJun tracking reenters with eased influence
+STATIC_NPC PASS TatayJun ending dialogue eases authored head restoration
+STATIC_NPC PASS TatayJun rapid reopening interrupts head return promptly
+STATIC_NPC PASS TatayJun ending dialogue restores authored head motion
+STATIC_NPC PASS TatayJun storm cancels head tracking and animation
+STATIC_NPC PASS TatayJun opens dialogue
+STATIC_NPC PASS TatayJun immediately enters conversation
+STATIC_NPC PASS TatayJun enters conversation loop
+STATIC_NPC PASS TatayJun typing skip does not restart animation
+STATIC_NPC PASS TatayJun next dialogue line does not restart animation
+STATIC_NPC PASS TatayJun next dialogue line does not restart animation
+STATIC_NPC PASS TatayJun dialogue completes
+STATIC_NPC PASS TatayJun dialogue plays exit
+STATIC_NPC PASS TatayJun returns to rest after dialogue
+STATIC_NPC PASS TatayJun conversation responsive on reentry
+STATIC_NPC PASS TatayJun physics exit removes prompt
+STATIC_NPC PASS TatayJun physics exit interrupts conversation
+STATIC_NPC PASS TatayJun interaction preserves root visual scale and facing
+STATIC_NPC PASS TatayJun removal during active playback frees controller
+STATIC_NPC PASS KapsWorker gameplay and unique UI remain
+STATIC_NPC PASS KapsWorker visual wrapper exists
+STATIC_NPC PASS KapsWorker direct animation playback visuals
+STATIC_NPC PASS KapsWorker direct animation playback mixamo_base
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker
+STATIC_NPC PASS KapsWorker direct animation playback Skeleton3D
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker_Body
+STATIC_NPC PASS KapsWorker mesh KapsWorker_Body
+STATIC_NPC PASS KapsWorker exportable finite skin binds KapsWorker_Body
+STATIC_NPC PASS KapsWorker normalized skin weights KapsWorker_Body
+STATIC_NPC PASS KapsWorker nearest texture sampling
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker_PurchaseList
+STATIC_NPC PASS KapsWorker mesh KapsWorker_PurchaseList
+STATIC_NPC PASS KapsWorker exportable finite skin binds KapsWorker_PurchaseList
+STATIC_NPC PASS KapsWorker normalized skin weights KapsWorker_PurchaseList
+STATIC_NPC PASS KapsWorker nearest texture sampling
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker_PurchaseListMark
+STATIC_NPC PASS KapsWorker mesh KapsWorker_PurchaseListMark
+STATIC_NPC PASS KapsWorker exportable finite skin binds KapsWorker_PurchaseListMark
+STATIC_NPC PASS KapsWorker normalized skin weights KapsWorker_PurchaseListMark
+STATIC_NPC PASS KapsWorker nearest texture sampling
+STATIC_NPC PASS KapsWorker direct animation playback DialogueHeadLook
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker_GroundBundleTie
+STATIC_NPC PASS KapsWorker mesh KapsWorker_GroundBundleTie
+STATIC_NPC PASS KapsWorker nearest texture sampling
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker_GroundBundleTie_001
+STATIC_NPC PASS KapsWorker mesh KapsWorker_GroundBundleTie_001
+STATIC_NPC PASS KapsWorker nearest texture sampling
+STATIC_NPC PASS KapsWorker direct animation playback KapsWorker_GroundSupplyBundle
+STATIC_NPC PASS KapsWorker mesh KapsWorker_GroundSupplyBundle
+STATIC_NPC PASS KapsWorker nearest texture sampling
+STATIC_NPC PASS KapsWorker direct animation playback AnimationPlayer
+STATIC_NPC PASS KapsWorker visible geometry present
+STATIC_NPC PASS KapsWorker skinned body present
+STATIC_NPC PASS KapsWorker animation player and scene-owned controller present
+STATIC_NPC PASS KapsWorker authored clip idle_loop
+STATIC_NPC PASS KapsWorker authored clip talk_enter
+STATIC_NPC PASS KapsWorker authored clip talk_loop
+STATIC_NPC PASS KapsWorker authored clip talk_exit
+STATIC_NPC PASS KapsWorker authored clip fidget_read_receipt
+STATIC_NPC PASS KapsWorker authored clip fidget_check_street
+STATIC_NPC PASS KapsWorker idle initialized before first rendered frame
+STATIC_NPC PASS KapsWorker idle playback advances
+STATIC_NPC PASS KapsWorker skeleton imported
+STATIC_NPC PASS KapsWorker root and two feet found
+STATIC_NPC PASS KapsWorker loop mode fidget_check_street
+STATIC_NPC PASS KapsWorker authored stepped interpolation fidget_check_street
+STATIC_NPC PASS KapsWorker fixed root feet and ground props throughout fidget_check_street
+STATIC_NPC PASS KapsWorker valid moving bone poses throughout fidget_check_street
+STATIC_NPC PASS KapsWorker loop mode fidget_read_receipt
+STATIC_NPC PASS KapsWorker authored stepped interpolation fidget_read_receipt
+STATIC_NPC PASS KapsWorker fixed root feet and ground props throughout fidget_read_receipt
+STATIC_NPC PASS KapsWorker valid moving bone poses throughout fidget_read_receipt
+STATIC_NPC PASS KapsWorker loop mode idle_loop
+STATIC_NPC PASS KapsWorker authored stepped interpolation idle_loop
+STATIC_NPC PASS KapsWorker fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS KapsWorker valid moving bone poses throughout idle_loop
+STATIC_NPC PASS KapsWorker loop mode talk_enter
+STATIC_NPC PASS KapsWorker authored stepped interpolation talk_enter
+STATIC_NPC PASS KapsWorker fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS KapsWorker valid moving bone poses throughout talk_enter
+STATIC_NPC PASS KapsWorker loop mode talk_exit
+STATIC_NPC PASS KapsWorker authored stepped interpolation talk_exit
+STATIC_NPC PASS KapsWorker fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS KapsWorker valid moving bone poses throughout talk_exit
+STATIC_NPC PASS KapsWorker loop mode talk_loop
+STATIC_NPC PASS KapsWorker authored stepped interpolation talk_loop
+STATIC_NPC PASS KapsWorker fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS KapsWorker valid moving bone poses throughout talk_loop
+STATIC_NPC PASS KapsWorker scheduler starts fidget read_receipt
+STATIC_NPC PASS KapsWorker one-shot fidget returns to idle read_receipt
+STATIC_NPC PASS KapsWorker fidget delay stays within 4–7 seconds
+STATIC_NPC PASS KapsWorker scheduler starts fidget check_street
+STATIC_NPC PASS KapsWorker one-shot fidget returns to idle check_street
+STATIC_NPC PASS KapsWorker fidget delay stays within 4–7 seconds
+STATIC_NPC PASS KapsWorker fidget active before interruption
+STATIC_NPC PASS KapsWorker conversation interrupts fidget immediately
+STATIC_NPC PASS KapsWorker repeated dialogue signal preserves playback
+STATIC_NPC PASS KapsWorker closing conversation enters exit
+STATIC_NPC PASS KapsWorker rapid reopening interrupts exit
+STATIC_NPC PASS KapsWorker interrupted entry returns through exit to idle
+STATIC_NPC PASS KapsWorker actual SceneTree pause freezes animation
+STATIC_NPC PASS KapsWorker unpause resumes playback
+STATIC_NPC PASS KapsWorker storm transition cancels playback
+STATIC_NPC PASS KapsWorker storm rejects new conversation
+STATIC_NPC PASS KapsWorker clearing canceled storm restores rest
+STATIC_NPC PASS KapsWorker scene fixture uses gameplay pause semantics
+STATIC_NPC PASS KapsWorker physics entry detects NPC and prompt
+STATIC_NPC PASS KapsWorker native head modifier initialized
+STATIC_NPC PASS KapsWorker tracking modifies Head only
+STATIC_NPC PASS KapsWorker head limits use absolute symmetric rest angles
+STATIC_NPC PASS KapsWorker native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS KapsWorker dialogue head tracking reaches full influence left
+STATIC_NPC PASS KapsWorker final rendered head pose sampled left
+STATIC_NPC PASS KapsWorker actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS KapsWorker visible head turns toward player left
+STATIC_NPC PASS KapsWorker arms props torso feet unaffected by tracking left
+STATIC_NPC PASS KapsWorker dialogue head tracking reaches full influence right
+STATIC_NPC PASS KapsWorker final rendered head pose sampled right
+STATIC_NPC PASS KapsWorker actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS KapsWorker visible head turns toward player right
+STATIC_NPC PASS KapsWorker arms props torso feet unaffected by tracking right
+STATIC_NPC PASS KapsWorker dialogue head tracking reaches full influence high
+STATIC_NPC PASS KapsWorker final rendered head pose sampled high
+STATIC_NPC PASS KapsWorker actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS KapsWorker visible head turns toward player high
+STATIC_NPC PASS KapsWorker arms props torso feet unaffected by tracking high
+STATIC_NPC PASS KapsWorker dialogue head tracking reaches full influence low
+STATIC_NPC PASS KapsWorker final rendered head pose sampled low
+STATIC_NPC PASS KapsWorker actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS KapsWorker visible head turns toward player low
+STATIC_NPC PASS KapsWorker arms props torso feet unaffected by tracking low
+STATIC_NPC PASS KapsWorker SceneTree pause freezes head tracking
+STATIC_NPC PASS KapsWorker rear target eases back toward authored head
+STATIC_NPC PASS KapsWorker rear target disables backward head tracking
+STATIC_NPC PASS KapsWorker tracking reenters with eased influence
+STATIC_NPC PASS KapsWorker ending dialogue eases authored head restoration
+STATIC_NPC PASS KapsWorker rapid reopening interrupts head return promptly
+STATIC_NPC PASS KapsWorker ending dialogue restores authored head motion
+STATIC_NPC PASS KapsWorker storm cancels head tracking and animation
+STATIC_NPC PASS KapsWorker opens dialogue
+STATIC_NPC PASS KapsWorker immediately enters conversation
+STATIC_NPC PASS KapsWorker enters conversation loop
+STATIC_NPC PASS KapsWorker typing skip does not restart animation
+STATIC_NPC PASS KapsWorker next dialogue line does not restart animation
+STATIC_NPC PASS KapsWorker next dialogue line does not restart animation
+STATIC_NPC PASS KapsWorker dialogue completes
+STATIC_NPC PASS KapsWorker dialogue plays exit
+STATIC_NPC PASS KapsWorker returns to rest after dialogue
+STATIC_NPC PASS KapsWorker conversation responsive on reentry
+STATIC_NPC PASS KapsWorker physics exit removes prompt
+STATIC_NPC PASS KapsWorker physics exit interrupts conversation
+STATIC_NPC PASS KapsWorker interaction preserves root visual scale and facing
+STATIC_NPC PASS KapsWorker removal during active playback frees controller
+STATIC_NPC PASS AteMaribel gameplay and unique UI remain
+STATIC_NPC PASS AteMaribel visual wrapper exists
+STATIC_NPC PASS AteMaribel direct animation playback visuals
+STATIC_NPC PASS AteMaribel direct animation playback mixamo_base
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel
+STATIC_NPC PASS AteMaribel direct animation playback Skeleton3D
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_BagHandle
+STATIC_NPC PASS AteMaribel mesh AteMaribel_BagHandle
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_BagHandle
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_BagHandle
+STATIC_NPC PASS AteMaribel nearest texture sampling
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_BagHandle_001
+STATIC_NPC PASS AteMaribel mesh AteMaribel_BagHandle_001
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_BagHandle_001
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_BagHandle_001
+STATIC_NPC PASS AteMaribel nearest texture sampling
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_BagL
+STATIC_NPC PASS AteMaribel mesh AteMaribel_BagL
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_BagL
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_BagL
+STATIC_NPC PASS AteMaribel nearest texture sampling
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_Body
+STATIC_NPC PASS AteMaribel mesh AteMaribel_Body
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_Body
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_Body
+STATIC_NPC PASS AteMaribel nearest texture sampling
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_KneeLengthSkirt
+STATIC_NPC PASS AteMaribel mesh AteMaribel_KneeLengthSkirt
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_KneeLengthSkirt
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_KneeLengthSkirt
+STATIC_NPC PASS AteMaribel nearest texture sampling
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_SandalStrap_L
+STATIC_NPC PASS AteMaribel mesh AteMaribel_SandalStrap_L
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_SandalStrap_L
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_SandalStrap_L
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_SandalStrap_L_001
+STATIC_NPC PASS AteMaribel mesh AteMaribel_SandalStrap_L_001
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_SandalStrap_L_001
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_SandalStrap_L_001
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_SandalStrap_R
+STATIC_NPC PASS AteMaribel mesh AteMaribel_SandalStrap_R
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_SandalStrap_R
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_SandalStrap_R
+STATIC_NPC PASS AteMaribel direct animation playback AteMaribel_SandalStrap_R_001
+STATIC_NPC PASS AteMaribel mesh AteMaribel_SandalStrap_R_001
+STATIC_NPC PASS AteMaribel exportable finite skin binds AteMaribel_SandalStrap_R_001
+STATIC_NPC PASS AteMaribel normalized skin weights AteMaribel_SandalStrap_R_001
+STATIC_NPC PASS AteMaribel direct animation playback DialogueHeadLook
+STATIC_NPC PASS AteMaribel direct animation playback AnimationPlayer
+STATIC_NPC PASS AteMaribel visible geometry present
+STATIC_NPC PASS AteMaribel skinned body present
+STATIC_NPC PASS AteMaribel animation player and scene-owned controller present
+STATIC_NPC PASS AteMaribel authored clip idle_loop
+STATIC_NPC PASS AteMaribel authored clip talk_enter
+STATIC_NPC PASS AteMaribel authored clip talk_loop
+STATIC_NPC PASS AteMaribel authored clip talk_exit
+STATIC_NPC PASS AteMaribel authored clip fidget_adjust_bag
+STATIC_NPC PASS AteMaribel authored clip fidget_wipe_brow
+STATIC_NPC PASS AteMaribel idle initialized before first rendered frame
+STATIC_NPC PASS AteMaribel idle playback advances
+STATIC_NPC PASS AteMaribel skeleton imported
+STATIC_NPC PASS AteMaribel root and two feet found
+STATIC_NPC PASS AteMaribel loop mode fidget_adjust_bag
+STATIC_NPC PASS AteMaribel authored stepped interpolation fidget_adjust_bag
+STATIC_NPC PASS AteMaribel fixed root feet and ground props throughout fidget_adjust_bag
+STATIC_NPC PASS AteMaribel valid moving bone poses throughout fidget_adjust_bag
+STATIC_NPC PASS AteMaribel loop mode fidget_wipe_brow
+STATIC_NPC PASS AteMaribel authored stepped interpolation fidget_wipe_brow
+STATIC_NPC PASS AteMaribel fixed root feet and ground props throughout fidget_wipe_brow
+STATIC_NPC PASS AteMaribel valid moving bone poses throughout fidget_wipe_brow
+STATIC_NPC PASS AteMaribel loop mode idle_loop
+STATIC_NPC PASS AteMaribel authored stepped interpolation idle_loop
+STATIC_NPC PASS AteMaribel fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS AteMaribel valid moving bone poses throughout idle_loop
+STATIC_NPC PASS AteMaribel loop mode talk_enter
+STATIC_NPC PASS AteMaribel authored stepped interpolation talk_enter
+STATIC_NPC PASS AteMaribel fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS AteMaribel valid moving bone poses throughout talk_enter
+STATIC_NPC PASS AteMaribel loop mode talk_exit
+STATIC_NPC PASS AteMaribel authored stepped interpolation talk_exit
+STATIC_NPC PASS AteMaribel fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS AteMaribel valid moving bone poses throughout talk_exit
+STATIC_NPC PASS AteMaribel loop mode talk_loop
+STATIC_NPC PASS AteMaribel authored stepped interpolation talk_loop
+STATIC_NPC PASS AteMaribel fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS AteMaribel valid moving bone poses throughout talk_loop
+STATIC_NPC PASS AteMaribel scheduler starts fidget adjust_bag
+STATIC_NPC PASS AteMaribel one-shot fidget returns to idle adjust_bag
+STATIC_NPC PASS AteMaribel fidget delay stays within 4–7 seconds
+STATIC_NPC PASS AteMaribel scheduler starts fidget wipe_brow
+STATIC_NPC PASS AteMaribel one-shot fidget returns to idle wipe_brow
+STATIC_NPC PASS AteMaribel fidget delay stays within 4–7 seconds
+STATIC_NPC PASS AteMaribel fidget active before interruption
+STATIC_NPC PASS AteMaribel conversation interrupts fidget immediately
+STATIC_NPC PASS AteMaribel repeated dialogue signal preserves playback
+STATIC_NPC PASS AteMaribel closing conversation enters exit
+STATIC_NPC PASS AteMaribel rapid reopening interrupts exit
+STATIC_NPC PASS AteMaribel interrupted entry returns through exit to idle
+STATIC_NPC PASS AteMaribel actual SceneTree pause freezes animation
+STATIC_NPC PASS AteMaribel unpause resumes playback
+STATIC_NPC PASS AteMaribel storm transition cancels playback
+STATIC_NPC PASS AteMaribel storm rejects new conversation
+STATIC_NPC PASS AteMaribel clearing canceled storm restores rest
+STATIC_NPC PASS AteMaribel scene fixture uses gameplay pause semantics
+STATIC_NPC PASS AteMaribel physics entry detects NPC and prompt
+STATIC_NPC PASS AteMaribel native head modifier initialized
+STATIC_NPC PASS AteMaribel tracking modifies Head only
+STATIC_NPC PASS AteMaribel head limits use absolute symmetric rest angles
+STATIC_NPC PASS AteMaribel native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS AteMaribel dialogue head tracking reaches full influence left
+STATIC_NPC PASS AteMaribel final rendered head pose sampled left
+STATIC_NPC PASS AteMaribel actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS AteMaribel visible head turns toward player left
+STATIC_NPC PASS AteMaribel arms props torso feet unaffected by tracking left
+STATIC_NPC PASS AteMaribel dialogue head tracking reaches full influence right
+STATIC_NPC PASS AteMaribel final rendered head pose sampled right
+STATIC_NPC PASS AteMaribel actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS AteMaribel visible head turns toward player right
+STATIC_NPC PASS AteMaribel arms props torso feet unaffected by tracking right
+STATIC_NPC PASS AteMaribel dialogue head tracking reaches full influence high
+STATIC_NPC PASS AteMaribel final rendered head pose sampled high
+STATIC_NPC PASS AteMaribel actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS AteMaribel visible head turns toward player high
+STATIC_NPC PASS AteMaribel arms props torso feet unaffected by tracking high
+STATIC_NPC PASS AteMaribel dialogue head tracking reaches full influence low
+STATIC_NPC PASS AteMaribel final rendered head pose sampled low
+STATIC_NPC PASS AteMaribel actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS AteMaribel visible head turns toward player low
+STATIC_NPC PASS AteMaribel arms props torso feet unaffected by tracking low
+STATIC_NPC PASS AteMaribel SceneTree pause freezes head tracking
+STATIC_NPC PASS AteMaribel rear target eases back toward authored head
+STATIC_NPC PASS AteMaribel rear target disables backward head tracking
+STATIC_NPC PASS AteMaribel tracking reenters with eased influence
+STATIC_NPC PASS AteMaribel ending dialogue eases authored head restoration
+STATIC_NPC PASS AteMaribel rapid reopening interrupts head return promptly
+STATIC_NPC PASS AteMaribel ending dialogue restores authored head motion
+STATIC_NPC PASS AteMaribel storm cancels head tracking and animation
+STATIC_NPC PASS AteMaribel opens dialogue
+STATIC_NPC PASS AteMaribel immediately enters conversation
+STATIC_NPC PASS AteMaribel enters conversation loop
+STATIC_NPC PASS AteMaribel typing skip does not restart animation
+STATIC_NPC PASS AteMaribel next dialogue line does not restart animation
+STATIC_NPC PASS AteMaribel next dialogue line does not restart animation
+STATIC_NPC PASS AteMaribel dialogue completes
+STATIC_NPC PASS AteMaribel dialogue plays exit
+STATIC_NPC PASS AteMaribel returns to rest after dialogue
+STATIC_NPC PASS AteMaribel conversation responsive on reentry
+STATIC_NPC PASS AteMaribel physics exit removes prompt
+STATIC_NPC PASS AteMaribel physics exit interrupts conversation
+STATIC_NPC PASS AteMaribel interaction preserves root visual scale and facing
+STATIC_NPC PASS AteMaribel removal during active playback frees controller
+STATIC_NPC PASS PalengkeQueueMan gameplay and unique UI remain
+STATIC_NPC PASS PalengkeQueueMan visual wrapper exists
+STATIC_NPC PASS PalengkeQueueMan direct animation playback visuals
+STATIC_NPC PASS PalengkeQueueMan direct animation playback mixamo_base
+STATIC_NPC PASS PalengkeQueueMan direct animation playback PalengkeQueueMan
+STATIC_NPC PASS PalengkeQueueMan direct animation playback Skeleton3D
+STATIC_NPC PASS PalengkeQueueMan direct animation playback PalengkeQueueMan_Body
+STATIC_NPC PASS PalengkeQueueMan mesh PalengkeQueueMan_Body
+STATIC_NPC PASS PalengkeQueueMan exportable finite skin binds PalengkeQueueMan_Body
+STATIC_NPC PASS PalengkeQueueMan normalized skin weights PalengkeQueueMan_Body
+STATIC_NPC PASS PalengkeQueueMan nearest texture sampling
+STATIC_NPC PASS PalengkeQueueMan direct animation playback DialogueHeadLook
+STATIC_NPC PASS PalengkeQueueMan direct animation playback PalengkeQueueMan_BagHandle
+STATIC_NPC PASS PalengkeQueueMan mesh PalengkeQueueMan_BagHandle
+STATIC_NPC PASS PalengkeQueueMan nearest texture sampling
+STATIC_NPC PASS PalengkeQueueMan direct animation playback PalengkeQueueMan_BagHandle_001
+STATIC_NPC PASS PalengkeQueueMan mesh PalengkeQueueMan_BagHandle_001
+STATIC_NPC PASS PalengkeQueueMan nearest texture sampling
+STATIC_NPC PASS PalengkeQueueMan direct animation playback PalengkeQueueMan_GroundBag
+STATIC_NPC PASS PalengkeQueueMan mesh PalengkeQueueMan_GroundBag
+STATIC_NPC PASS PalengkeQueueMan nearest texture sampling
+STATIC_NPC PASS PalengkeQueueMan direct animation playback AnimationPlayer
+STATIC_NPC PASS PalengkeQueueMan visible geometry present
+STATIC_NPC PASS PalengkeQueueMan skinned body present
+STATIC_NPC PASS PalengkeQueueMan animation player and scene-owned controller present
+STATIC_NPC PASS PalengkeQueueMan authored clip idle_loop
+STATIC_NPC PASS PalengkeQueueMan authored clip talk_enter
+STATIC_NPC PASS PalengkeQueueMan authored clip talk_loop
+STATIC_NPC PASS PalengkeQueueMan authored clip talk_exit
+STATIC_NPC PASS PalengkeQueueMan authored clip fidget_scan_queue
+STATIC_NPC PASS PalengkeQueueMan authored clip fidget_shift_weight
+STATIC_NPC PASS PalengkeQueueMan idle initialized before first rendered frame
+STATIC_NPC PASS PalengkeQueueMan idle playback advances
+STATIC_NPC PASS PalengkeQueueMan skeleton imported
+STATIC_NPC PASS PalengkeQueueMan root and two feet found
+STATIC_NPC PASS PalengkeQueueMan loop mode fidget_scan_queue
+STATIC_NPC PASS PalengkeQueueMan authored stepped interpolation fidget_scan_queue
+STATIC_NPC PASS PalengkeQueueMan fixed root feet and ground props throughout fidget_scan_queue
+STATIC_NPC PASS PalengkeQueueMan valid moving bone poses throughout fidget_scan_queue
+STATIC_NPC PASS PalengkeQueueMan loop mode fidget_shift_weight
+STATIC_NPC PASS PalengkeQueueMan authored stepped interpolation fidget_shift_weight
+STATIC_NPC PASS PalengkeQueueMan fixed root feet and ground props throughout fidget_shift_weight
+STATIC_NPC PASS PalengkeQueueMan valid moving bone poses throughout fidget_shift_weight
+STATIC_NPC PASS PalengkeQueueMan loop mode idle_loop
+STATIC_NPC PASS PalengkeQueueMan authored stepped interpolation idle_loop
+STATIC_NPC PASS PalengkeQueueMan fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS PalengkeQueueMan valid moving bone poses throughout idle_loop
+STATIC_NPC PASS PalengkeQueueMan loop mode talk_enter
+STATIC_NPC PASS PalengkeQueueMan authored stepped interpolation talk_enter
+STATIC_NPC PASS PalengkeQueueMan fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS PalengkeQueueMan valid moving bone poses throughout talk_enter
+STATIC_NPC PASS PalengkeQueueMan loop mode talk_exit
+STATIC_NPC PASS PalengkeQueueMan authored stepped interpolation talk_exit
+STATIC_NPC PASS PalengkeQueueMan fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS PalengkeQueueMan valid moving bone poses throughout talk_exit
+STATIC_NPC PASS PalengkeQueueMan loop mode talk_loop
+STATIC_NPC PASS PalengkeQueueMan authored stepped interpolation talk_loop
+STATIC_NPC PASS PalengkeQueueMan fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS PalengkeQueueMan valid moving bone poses throughout talk_loop
+STATIC_NPC PASS PalengkeQueueMan scheduler starts fidget scan_queue
+STATIC_NPC PASS PalengkeQueueMan one-shot fidget returns to idle scan_queue
+STATIC_NPC PASS PalengkeQueueMan fidget delay stays within 4–7 seconds
+STATIC_NPC PASS PalengkeQueueMan scheduler starts fidget shift_weight
+STATIC_NPC PASS PalengkeQueueMan one-shot fidget returns to idle shift_weight
+STATIC_NPC PASS PalengkeQueueMan fidget delay stays within 4–7 seconds
+STATIC_NPC PASS PalengkeQueueMan fidget active before interruption
+STATIC_NPC PASS PalengkeQueueMan conversation interrupts fidget immediately
+STATIC_NPC PASS PalengkeQueueMan repeated dialogue signal preserves playback
+STATIC_NPC PASS PalengkeQueueMan closing conversation enters exit
+STATIC_NPC PASS PalengkeQueueMan rapid reopening interrupts exit
+STATIC_NPC PASS PalengkeQueueMan interrupted entry returns through exit to idle
+STATIC_NPC PASS PalengkeQueueMan actual SceneTree pause freezes animation
+STATIC_NPC PASS PalengkeQueueMan unpause resumes playback
+STATIC_NPC PASS PalengkeQueueMan storm transition cancels playback
+STATIC_NPC PASS PalengkeQueueMan storm rejects new conversation
+STATIC_NPC PASS PalengkeQueueMan clearing canceled storm restores rest
+STATIC_NPC PASS PalengkeQueueMan scene fixture uses gameplay pause semantics
+STATIC_NPC PASS PalengkeQueueMan physics entry detects NPC and prompt
+STATIC_NPC PASS PalengkeQueueMan native head modifier initialized
+STATIC_NPC PASS PalengkeQueueMan tracking modifies Head only
+STATIC_NPC PASS PalengkeQueueMan head limits use absolute symmetric rest angles
+STATIC_NPC PASS PalengkeQueueMan native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS PalengkeQueueMan dialogue head tracking reaches full influence left
+STATIC_NPC PASS PalengkeQueueMan final rendered head pose sampled left
+STATIC_NPC PASS PalengkeQueueMan actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS PalengkeQueueMan visible head turns toward player left
+STATIC_NPC PASS PalengkeQueueMan arms props torso feet unaffected by tracking left
+STATIC_NPC PASS PalengkeQueueMan dialogue head tracking reaches full influence right
+STATIC_NPC PASS PalengkeQueueMan final rendered head pose sampled right
+STATIC_NPC PASS PalengkeQueueMan actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS PalengkeQueueMan visible head turns toward player right
+STATIC_NPC PASS PalengkeQueueMan arms props torso feet unaffected by tracking right
+STATIC_NPC PASS PalengkeQueueMan dialogue head tracking reaches full influence high
+STATIC_NPC PASS PalengkeQueueMan final rendered head pose sampled high
+STATIC_NPC PASS PalengkeQueueMan actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS PalengkeQueueMan visible head turns toward player high
+STATIC_NPC PASS PalengkeQueueMan arms props torso feet unaffected by tracking high
+STATIC_NPC PASS PalengkeQueueMan dialogue head tracking reaches full influence low
+STATIC_NPC PASS PalengkeQueueMan final rendered head pose sampled low
+STATIC_NPC PASS PalengkeQueueMan actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS PalengkeQueueMan visible head turns toward player low
+STATIC_NPC PASS PalengkeQueueMan arms props torso feet unaffected by tracking low
+STATIC_NPC PASS PalengkeQueueMan SceneTree pause freezes head tracking
+STATIC_NPC PASS PalengkeQueueMan rear target eases back toward authored head
+STATIC_NPC PASS PalengkeQueueMan rear target disables backward head tracking
+STATIC_NPC PASS PalengkeQueueMan tracking reenters with eased influence
+STATIC_NPC PASS PalengkeQueueMan ending dialogue eases authored head restoration
+STATIC_NPC PASS PalengkeQueueMan rapid reopening interrupts head return promptly
+STATIC_NPC PASS PalengkeQueueMan ending dialogue restores authored head motion
+STATIC_NPC PASS PalengkeQueueMan storm cancels head tracking and animation
+STATIC_NPC PASS PalengkeQueueMan opens dialogue
+STATIC_NPC PASS PalengkeQueueMan immediately enters conversation
+STATIC_NPC PASS PalengkeQueueMan enters conversation loop
+STATIC_NPC PASS PalengkeQueueMan typing skip does not restart animation
+STATIC_NPC PASS PalengkeQueueMan next dialogue line does not restart animation
+STATIC_NPC PASS PalengkeQueueMan next dialogue line does not restart animation
+STATIC_NPC PASS PalengkeQueueMan dialogue completes
+STATIC_NPC PASS PalengkeQueueMan dialogue plays exit
+STATIC_NPC PASS PalengkeQueueMan returns to rest after dialogue
+STATIC_NPC PASS PalengkeQueueMan conversation responsive on reentry
+STATIC_NPC PASS PalengkeQueueMan physics exit removes prompt
+STATIC_NPC PASS PalengkeQueueMan physics exit interrupts conversation
+STATIC_NPC PASS PalengkeQueueMan interaction preserves root visual scale and facing
+STATIC_NPC PASS PalengkeQueueMan removal during active playback frees controller
+STATIC_NPC PASS PanicBuyer gameplay and unique UI remain
+STATIC_NPC PASS PanicBuyer visual wrapper exists
+STATIC_NPC PASS PanicBuyer direct animation playback visuals
+STATIC_NPC PASS PanicBuyer direct animation playback mixamo_base
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer
+STATIC_NPC PASS PanicBuyer direct animation playback Skeleton3D
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_Bag_L
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_Bag_L
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_Bag_L
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_Bag_L
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_Bag_R
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_Bag_R
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_Bag_R
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_Bag_R
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_BagHandle
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_BagHandle
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_BagHandle
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_BagHandle
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_BagHandle_001
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_BagHandle_001
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_BagHandle_001
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_BagHandle_001
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_BagHandle_002
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_BagHandle_002
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_BagHandle_002
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_BagHandle_002
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_BagHandle_003
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_BagHandle_003
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_BagHandle_003
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_BagHandle_003
+STATIC_NPC PASS PanicBuyer direct animation playback PanicBuyer_Body
+STATIC_NPC PASS PanicBuyer mesh PanicBuyer_Body
+STATIC_NPC PASS PanicBuyer exportable finite skin binds PanicBuyer_Body
+STATIC_NPC PASS PanicBuyer normalized skin weights PanicBuyer_Body
+STATIC_NPC PASS PanicBuyer nearest texture sampling
+STATIC_NPC PASS PanicBuyer direct animation playback DialogueHeadLook
+STATIC_NPC PASS PanicBuyer direct animation playback AnimationPlayer
+STATIC_NPC PASS PanicBuyer visible geometry present
+STATIC_NPC PASS PanicBuyer skinned body present
+STATIC_NPC PASS PanicBuyer animation player and scene-owned controller present
+STATIC_NPC PASS PanicBuyer authored clip idle_loop
+STATIC_NPC PASS PanicBuyer authored clip talk_enter
+STATIC_NPC PASS PanicBuyer authored clip talk_loop
+STATIC_NPC PASS PanicBuyer authored clip talk_exit
+STATIC_NPC PASS PanicBuyer authored clip fidget_look_around
+STATIC_NPC PASS PanicBuyer authored clip fidget_regrip_bags
+STATIC_NPC PASS PanicBuyer idle initialized before first rendered frame
+STATIC_NPC PASS PanicBuyer idle playback advances
+STATIC_NPC PASS PanicBuyer skeleton imported
+STATIC_NPC PASS PanicBuyer root and two feet found
+STATIC_NPC PASS PanicBuyer loop mode fidget_look_around
+STATIC_NPC PASS PanicBuyer authored stepped interpolation fidget_look_around
+STATIC_NPC PASS PanicBuyer fixed root feet and ground props throughout fidget_look_around
+STATIC_NPC PASS PanicBuyer valid moving bone poses throughout fidget_look_around
+STATIC_NPC PASS PanicBuyer loop mode fidget_regrip_bags
+STATIC_NPC PASS PanicBuyer authored stepped interpolation fidget_regrip_bags
+STATIC_NPC PASS PanicBuyer fixed root feet and ground props throughout fidget_regrip_bags
+STATIC_NPC PASS PanicBuyer valid moving bone poses throughout fidget_regrip_bags
+STATIC_NPC PASS PanicBuyer loop mode idle_loop
+STATIC_NPC PASS PanicBuyer authored stepped interpolation idle_loop
+STATIC_NPC PASS PanicBuyer fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS PanicBuyer valid moving bone poses throughout idle_loop
+STATIC_NPC PASS PanicBuyer loop mode talk_enter
+STATIC_NPC PASS PanicBuyer authored stepped interpolation talk_enter
+STATIC_NPC PASS PanicBuyer fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS PanicBuyer valid moving bone poses throughout talk_enter
+STATIC_NPC PASS PanicBuyer loop mode talk_exit
+STATIC_NPC PASS PanicBuyer authored stepped interpolation talk_exit
+STATIC_NPC PASS PanicBuyer fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS PanicBuyer valid moving bone poses throughout talk_exit
+STATIC_NPC PASS PanicBuyer loop mode talk_loop
+STATIC_NPC PASS PanicBuyer authored stepped interpolation talk_loop
+STATIC_NPC PASS PanicBuyer fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS PanicBuyer valid moving bone poses throughout talk_loop
+STATIC_NPC PASS PanicBuyer scheduler starts fidget look_around
+STATIC_NPC PASS PanicBuyer one-shot fidget returns to idle look_around
+STATIC_NPC PASS PanicBuyer fidget delay stays within 4–7 seconds
+STATIC_NPC PASS PanicBuyer scheduler starts fidget regrip_bags
+STATIC_NPC PASS PanicBuyer one-shot fidget returns to idle regrip_bags
+STATIC_NPC PASS PanicBuyer fidget delay stays within 4–7 seconds
+STATIC_NPC PASS PanicBuyer fidget active before interruption
+STATIC_NPC PASS PanicBuyer conversation interrupts fidget immediately
+STATIC_NPC PASS PanicBuyer repeated dialogue signal preserves playback
+STATIC_NPC PASS PanicBuyer closing conversation enters exit
+STATIC_NPC PASS PanicBuyer rapid reopening interrupts exit
+STATIC_NPC PASS PanicBuyer interrupted entry returns through exit to idle
+STATIC_NPC PASS PanicBuyer actual SceneTree pause freezes animation
+STATIC_NPC PASS PanicBuyer unpause resumes playback
+STATIC_NPC PASS PanicBuyer storm transition cancels playback
+STATIC_NPC PASS PanicBuyer storm rejects new conversation
+STATIC_NPC PASS PanicBuyer clearing canceled storm restores rest
+STATIC_NPC PASS PanicBuyer scene fixture uses gameplay pause semantics
+STATIC_NPC PASS PanicBuyer physics entry detects NPC and prompt
+STATIC_NPC PASS PanicBuyer native head modifier initialized
+STATIC_NPC PASS PanicBuyer tracking modifies Head only
+STATIC_NPC PASS PanicBuyer head limits use absolute symmetric rest angles
+STATIC_NPC PASS PanicBuyer native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS PanicBuyer dialogue head tracking reaches full influence left
+STATIC_NPC PASS PanicBuyer final rendered head pose sampled left
+STATIC_NPC PASS PanicBuyer actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS PanicBuyer visible head turns toward player left
+STATIC_NPC PASS PanicBuyer arms props torso feet unaffected by tracking left
+STATIC_NPC PASS PanicBuyer dialogue head tracking reaches full influence right
+STATIC_NPC PASS PanicBuyer final rendered head pose sampled right
+STATIC_NPC PASS PanicBuyer actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS PanicBuyer visible head turns toward player right
+STATIC_NPC PASS PanicBuyer arms props torso feet unaffected by tracking right
+STATIC_NPC PASS PanicBuyer dialogue head tracking reaches full influence high
+STATIC_NPC PASS PanicBuyer final rendered head pose sampled high
+STATIC_NPC PASS PanicBuyer actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS PanicBuyer visible head turns toward player high
+STATIC_NPC PASS PanicBuyer arms props torso feet unaffected by tracking high
+STATIC_NPC PASS PanicBuyer dialogue head tracking reaches full influence low
+STATIC_NPC PASS PanicBuyer final rendered head pose sampled low
+STATIC_NPC PASS PanicBuyer actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS PanicBuyer visible head turns toward player low
+STATIC_NPC PASS PanicBuyer arms props torso feet unaffected by tracking low
+STATIC_NPC PASS PanicBuyer SceneTree pause freezes head tracking
+STATIC_NPC PASS PanicBuyer rear target eases back toward authored head
+STATIC_NPC PASS PanicBuyer rear target disables backward head tracking
+STATIC_NPC PASS PanicBuyer tracking reenters with eased influence
+STATIC_NPC PASS PanicBuyer ending dialogue eases authored head restoration
+STATIC_NPC PASS PanicBuyer rapid reopening interrupts head return promptly
+STATIC_NPC PASS PanicBuyer ending dialogue restores authored head motion
+STATIC_NPC PASS PanicBuyer storm cancels head tracking and animation
+STATIC_NPC PASS PanicBuyer opens dialogue
+STATIC_NPC PASS PanicBuyer immediately enters conversation
+STATIC_NPC PASS PanicBuyer enters conversation loop
+STATIC_NPC PASS PanicBuyer typing skip does not restart animation
+STATIC_NPC PASS PanicBuyer next dialogue line does not restart animation
+STATIC_NPC PASS PanicBuyer next dialogue line does not restart animation
+STATIC_NPC PASS PanicBuyer dialogue completes
+STATIC_NPC PASS PanicBuyer dialogue plays exit
+STATIC_NPC PASS PanicBuyer returns to rest after dialogue
+STATIC_NPC PASS PanicBuyer conversation responsive on reentry
+STATIC_NPC PASS PanicBuyer physics exit removes prompt
+STATIC_NPC PASS PanicBuyer physics exit interrupts conversation
+STATIC_NPC PASS PanicBuyer interaction preserves root visual scale and facing
+STATIC_NPC PASS PanicBuyer removal during active playback frees controller
+STATIC_NPC PASS WetParent gameplay and unique UI remain
+STATIC_NPC PASS WetParent visual wrapper exists
+STATIC_NPC PASS WetParent direct animation playback visuals
+STATIC_NPC PASS WetParent direct animation playback mixamo_base
+STATIC_NPC PASS WetParent direct animation playback WetParent
+STATIC_NPC PASS WetParent direct animation playback Skeleton3D
+STATIC_NPC PASS WetParent direct animation playback WetParent_Body
+STATIC_NPC PASS WetParent mesh WetParent_Body
+STATIC_NPC PASS WetParent exportable finite skin binds WetParent_Body
+STATIC_NPC PASS WetParent normalized skin weights WetParent_Body
+STATIC_NPC PASS WetParent nearest texture sampling
+STATIC_NPC PASS WetParent direct animation playback DialogueHeadLook
+STATIC_NPC PASS WetParent direct animation playback AnimationPlayer
+STATIC_NPC PASS WetParent visible geometry present
+STATIC_NPC PASS WetParent skinned body present
+STATIC_NPC PASS WetParent animation player and scene-owned controller present
+STATIC_NPC PASS WetParent authored clip idle_loop
+STATIC_NPC PASS WetParent authored clip talk_enter
+STATIC_NPC PASS WetParent authored clip talk_loop
+STATIC_NPC PASS WetParent authored clip talk_exit
+STATIC_NPC PASS WetParent authored clip fidget_check_clothes
+STATIC_NPC PASS WetParent authored clip fidget_pat_clothes
+STATIC_NPC PASS WetParent idle initialized before first rendered frame
+STATIC_NPC PASS WetParent idle playback advances
+STATIC_NPC PASS WetParent skeleton imported
+STATIC_NPC PASS WetParent root and two feet found
+STATIC_NPC PASS WetParent loop mode fidget_check_clothes
+STATIC_NPC PASS WetParent authored stepped interpolation fidget_check_clothes
+STATIC_NPC PASS WetParent fixed root feet and ground props throughout fidget_check_clothes
+STATIC_NPC PASS WetParent valid moving bone poses throughout fidget_check_clothes
+STATIC_NPC PASS WetParent loop mode fidget_pat_clothes
+STATIC_NPC PASS WetParent authored stepped interpolation fidget_pat_clothes
+STATIC_NPC PASS WetParent fixed root feet and ground props throughout fidget_pat_clothes
+STATIC_NPC PASS WetParent valid moving bone poses throughout fidget_pat_clothes
+STATIC_NPC PASS WetParent loop mode idle_loop
+STATIC_NPC PASS WetParent authored stepped interpolation idle_loop
+STATIC_NPC PASS WetParent fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS WetParent valid moving bone poses throughout idle_loop
+STATIC_NPC PASS WetParent loop mode talk_enter
+STATIC_NPC PASS WetParent authored stepped interpolation talk_enter
+STATIC_NPC PASS WetParent fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS WetParent valid moving bone poses throughout talk_enter
+STATIC_NPC PASS WetParent loop mode talk_exit
+STATIC_NPC PASS WetParent authored stepped interpolation talk_exit
+STATIC_NPC PASS WetParent fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS WetParent valid moving bone poses throughout talk_exit
+STATIC_NPC PASS WetParent loop mode talk_loop
+STATIC_NPC PASS WetParent authored stepped interpolation talk_loop
+STATIC_NPC PASS WetParent fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS WetParent valid moving bone poses throughout talk_loop
+STATIC_NPC PASS WetParent scheduler starts fidget check_clothes
+STATIC_NPC PASS WetParent one-shot fidget returns to idle check_clothes
+STATIC_NPC PASS WetParent fidget delay stays within 4–7 seconds
+STATIC_NPC PASS WetParent scheduler starts fidget pat_clothes
+STATIC_NPC PASS WetParent one-shot fidget returns to idle pat_clothes
+STATIC_NPC PASS WetParent fidget delay stays within 4–7 seconds
+STATIC_NPC PASS WetParent fidget active before interruption
+STATIC_NPC PASS WetParent conversation interrupts fidget immediately
+STATIC_NPC PASS WetParent repeated dialogue signal preserves playback
+STATIC_NPC PASS WetParent closing conversation enters exit
+STATIC_NPC PASS WetParent rapid reopening interrupts exit
+STATIC_NPC PASS WetParent interrupted entry returns through exit to idle
+STATIC_NPC PASS WetParent actual SceneTree pause freezes animation
+STATIC_NPC PASS WetParent unpause resumes playback
+STATIC_NPC PASS WetParent storm transition cancels playback
+STATIC_NPC PASS WetParent storm rejects new conversation
+STATIC_NPC PASS WetParent clearing canceled storm restores rest
+STATIC_NPC PASS WetParent scene fixture uses gameplay pause semantics
+STATIC_NPC PASS WetParent physics entry detects NPC and prompt
+STATIC_NPC PASS WetParent native head modifier initialized
+STATIC_NPC PASS WetParent tracking modifies Head only
+STATIC_NPC PASS WetParent head limits use absolute symmetric rest angles
+STATIC_NPC PASS WetParent native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS WetParent dialogue head tracking reaches full influence left
+STATIC_NPC PASS WetParent final rendered head pose sampled left
+STATIC_NPC PASS WetParent actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS WetParent visible head turns toward player left
+STATIC_NPC PASS WetParent arms props torso feet unaffected by tracking left
+STATIC_NPC PASS WetParent dialogue head tracking reaches full influence right
+STATIC_NPC PASS WetParent final rendered head pose sampled right
+STATIC_NPC PASS WetParent actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS WetParent visible head turns toward player right
+STATIC_NPC PASS WetParent arms props torso feet unaffected by tracking right
+STATIC_NPC PASS WetParent dialogue head tracking reaches full influence high
+STATIC_NPC PASS WetParent final rendered head pose sampled high
+STATIC_NPC PASS WetParent actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS WetParent visible head turns toward player high
+STATIC_NPC PASS WetParent arms props torso feet unaffected by tracking high
+STATIC_NPC PASS WetParent dialogue head tracking reaches full influence low
+STATIC_NPC PASS WetParent final rendered head pose sampled low
+STATIC_NPC PASS WetParent actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS WetParent visible head turns toward player low
+STATIC_NPC PASS WetParent arms props torso feet unaffected by tracking low
+STATIC_NPC PASS WetParent SceneTree pause freezes head tracking
+STATIC_NPC PASS WetParent rear target eases back toward authored head
+STATIC_NPC PASS WetParent rear target disables backward head tracking
+STATIC_NPC PASS WetParent tracking reenters with eased influence
+STATIC_NPC PASS WetParent ending dialogue eases authored head restoration
+STATIC_NPC PASS WetParent rapid reopening interrupts head return promptly
+STATIC_NPC PASS WetParent ending dialogue restores authored head motion
+STATIC_NPC PASS WetParent storm cancels head tracking and animation
+STATIC_NPC PASS WetParent opens dialogue
+STATIC_NPC PASS WetParent immediately enters conversation
+STATIC_NPC PASS WetParent enters conversation loop
+STATIC_NPC PASS WetParent typing skip does not restart animation
+STATIC_NPC PASS WetParent next dialogue line does not restart animation
+STATIC_NPC PASS WetParent next dialogue line does not restart animation
+STATIC_NPC PASS WetParent dialogue completes
+STATIC_NPC PASS WetParent dialogue plays exit
+STATIC_NPC PASS WetParent returns to rest after dialogue
+STATIC_NPC PASS WetParent conversation responsive on reentry
+STATIC_NPC PASS WetParent physics exit removes prompt
+STATIC_NPC PASS WetParent physics exit interrupts conversation
+STATIC_NPC PASS WetParent interaction preserves root visual scale and facing
+STATIC_NPC PASS WetParent removal during active playback frees controller
+STATIC_NPC PASS PharmaDude gameplay and unique UI remain
+STATIC_NPC PASS PharmaDude visual wrapper exists
+STATIC_NPC PASS PharmaDude direct animation playback visuals
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDudeModel
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude
+STATIC_NPC PASS PharmaDude direct animation playback Skeleton3D
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude_Body
+STATIC_NPC PASS PharmaDude mesh PharmaDude_Body
+STATIC_NPC PASS PharmaDude exportable finite skin binds PharmaDude_Body
+STATIC_NPC PASS PharmaDude normalized skin weights PharmaDude_Body
+STATIC_NPC PASS PharmaDude nearest texture sampling
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude_MedicineCarton
+STATIC_NPC PASS PharmaDude mesh PharmaDude_MedicineCarton
+STATIC_NPC PASS PharmaDude exportable finite skin binds PharmaDude_MedicineCarton
+STATIC_NPC PASS PharmaDude normalized skin weights PharmaDude_MedicineCarton
+STATIC_NPC PASS PharmaDude nearest texture sampling
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude_MedicineCartonMark
+STATIC_NPC PASS PharmaDude mesh PharmaDude_MedicineCartonMark
+STATIC_NPC PASS PharmaDude exportable finite skin binds PharmaDude_MedicineCartonMark
+STATIC_NPC PASS PharmaDude normalized skin weights PharmaDude_MedicineCartonMark
+STATIC_NPC PASS PharmaDude nearest texture sampling
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude_NameBadge
+STATIC_NPC PASS PharmaDude mesh PharmaDude_NameBadge
+STATIC_NPC PASS PharmaDude exportable finite skin binds PharmaDude_NameBadge
+STATIC_NPC PASS PharmaDude normalized skin weights PharmaDude_NameBadge
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude_PaperSlip
+STATIC_NPC PASS PharmaDude mesh PharmaDude_PaperSlip
+STATIC_NPC PASS PharmaDude exportable finite skin binds PharmaDude_PaperSlip
+STATIC_NPC PASS PharmaDude normalized skin weights PharmaDude_PaperSlip
+STATIC_NPC PASS PharmaDude nearest texture sampling
+STATIC_NPC PASS PharmaDude direct animation playback PharmaDude_PaperSlipMark
+STATIC_NPC PASS PharmaDude mesh PharmaDude_PaperSlipMark
+STATIC_NPC PASS PharmaDude exportable finite skin binds PharmaDude_PaperSlipMark
+STATIC_NPC PASS PharmaDude normalized skin weights PharmaDude_PaperSlipMark
+STATIC_NPC PASS PharmaDude nearest texture sampling
+STATIC_NPC PASS PharmaDude direct animation playback DialogueHeadLook
+STATIC_NPC PASS PharmaDude direct animation playback AnimationPlayer
+STATIC_NPC PASS PharmaDude visible geometry present
+STATIC_NPC PASS PharmaDude skinned body present
+STATIC_NPC PASS PharmaDude animation player and scene-owned controller present
+STATIC_NPC PASS PharmaDude authored clip idle_loop
+STATIC_NPC PASS PharmaDude authored clip talk_enter
+STATIC_NPC PASS PharmaDude authored clip talk_loop
+STATIC_NPC PASS PharmaDude authored clip talk_exit
+STATIC_NPC PASS PharmaDude authored clip fidget_read_carton
+STATIC_NPC PASS PharmaDude authored clip fidget_check_slip
+STATIC_NPC PASS PharmaDude idle initialized before first rendered frame
+STATIC_NPC PASS PharmaDude idle playback advances
+STATIC_NPC PASS PharmaDude skeleton imported
+STATIC_NPC PASS PharmaDude root and two feet found
+STATIC_NPC PASS PharmaDude loop mode fidget_check_slip
+STATIC_NPC PASS PharmaDude authored stepped interpolation fidget_check_slip
+STATIC_NPC PASS PharmaDude fixed root feet and ground props throughout fidget_check_slip
+STATIC_NPC PASS PharmaDude valid moving bone poses throughout fidget_check_slip
+STATIC_NPC PASS PharmaDude loop mode fidget_read_carton
+STATIC_NPC PASS PharmaDude authored stepped interpolation fidget_read_carton
+STATIC_NPC PASS PharmaDude fixed root feet and ground props throughout fidget_read_carton
+STATIC_NPC PASS PharmaDude valid moving bone poses throughout fidget_read_carton
+STATIC_NPC PASS PharmaDude loop mode idle_loop
+STATIC_NPC PASS PharmaDude authored stepped interpolation idle_loop
+STATIC_NPC PASS PharmaDude fixed root feet and ground props throughout idle_loop
+STATIC_NPC PASS PharmaDude valid moving bone poses throughout idle_loop
+STATIC_NPC PASS PharmaDude loop mode talk_enter
+STATIC_NPC PASS PharmaDude authored stepped interpolation talk_enter
+STATIC_NPC PASS PharmaDude fixed root feet and ground props throughout talk_enter
+STATIC_NPC PASS PharmaDude valid moving bone poses throughout talk_enter
+STATIC_NPC PASS PharmaDude loop mode talk_exit
+STATIC_NPC PASS PharmaDude authored stepped interpolation talk_exit
+STATIC_NPC PASS PharmaDude fixed root feet and ground props throughout talk_exit
+STATIC_NPC PASS PharmaDude valid moving bone poses throughout talk_exit
+STATIC_NPC PASS PharmaDude loop mode talk_loop
+STATIC_NPC PASS PharmaDude authored stepped interpolation talk_loop
+STATIC_NPC PASS PharmaDude fixed root feet and ground props throughout talk_loop
+STATIC_NPC PASS PharmaDude valid moving bone poses throughout talk_loop
+STATIC_NPC PASS PharmaDude scheduler starts fidget read_carton
+STATIC_NPC PASS PharmaDude one-shot fidget returns to idle read_carton
+STATIC_NPC PASS PharmaDude fidget delay stays within 4–7 seconds
+STATIC_NPC PASS PharmaDude scheduler starts fidget check_slip
+STATIC_NPC PASS PharmaDude one-shot fidget returns to idle check_slip
+STATIC_NPC PASS PharmaDude fidget delay stays within 4–7 seconds
+STATIC_NPC PASS PharmaDude fidget active before interruption
+STATIC_NPC PASS PharmaDude conversation interrupts fidget immediately
+STATIC_NPC PASS PharmaDude repeated dialogue signal preserves playback
+STATIC_NPC PASS PharmaDude closing conversation enters exit
+STATIC_NPC PASS PharmaDude rapid reopening interrupts exit
+STATIC_NPC PASS PharmaDude interrupted entry returns through exit to idle
+STATIC_NPC PASS PharmaDude actual SceneTree pause freezes animation
+STATIC_NPC PASS PharmaDude unpause resumes playback
+STATIC_NPC PASS PharmaDude storm transition cancels playback
+STATIC_NPC PASS PharmaDude storm rejects new conversation
+STATIC_NPC PASS PharmaDude clearing canceled storm restores rest
+STATIC_NPC PASS PharmaDude scene fixture uses gameplay pause semantics
+STATIC_NPC PASS PharmaDude physics entry detects NPC and prompt
+STATIC_NPC PASS PharmaDude native head modifier initialized
+STATIC_NPC PASS PharmaDude tracking modifies Head only
+STATIC_NPC PASS PharmaDude head limits use absolute symmetric rest angles
+STATIC_NPC PASS PharmaDude native symmetric ranges enforce yaw±55 pitch±20
+STATIC_NPC PASS PharmaDude dialogue head tracking reaches full influence left
+STATIC_NPC PASS PharmaDude final rendered head pose sampled left
+STATIC_NPC PASS PharmaDude actual rendered head obeys yaw/pitch clamp left
+STATIC_NPC PASS PharmaDude visible head turns toward player left
+STATIC_NPC PASS PharmaDude arms props torso feet unaffected by tracking left
+STATIC_NPC PASS PharmaDude dialogue head tracking reaches full influence right
+STATIC_NPC PASS PharmaDude final rendered head pose sampled right
+STATIC_NPC PASS PharmaDude actual rendered head obeys yaw/pitch clamp right
+STATIC_NPC PASS PharmaDude visible head turns toward player right
+STATIC_NPC PASS PharmaDude arms props torso feet unaffected by tracking right
+STATIC_NPC PASS PharmaDude dialogue head tracking reaches full influence high
+STATIC_NPC PASS PharmaDude final rendered head pose sampled high
+STATIC_NPC PASS PharmaDude actual rendered head obeys yaw/pitch clamp high
+STATIC_NPC PASS PharmaDude visible head turns toward player high
+STATIC_NPC PASS PharmaDude arms props torso feet unaffected by tracking high
+STATIC_NPC PASS PharmaDude dialogue head tracking reaches full influence low
+STATIC_NPC PASS PharmaDude final rendered head pose sampled low
+STATIC_NPC PASS PharmaDude actual rendered head obeys yaw/pitch clamp low
+STATIC_NPC PASS PharmaDude visible head turns toward player low
+STATIC_NPC PASS PharmaDude arms props torso feet unaffected by tracking low
+STATIC_NPC PASS PharmaDude SceneTree pause freezes head tracking
+STATIC_NPC PASS PharmaDude rear target eases back toward authored head
+STATIC_NPC PASS PharmaDude rear target disables backward head tracking
+STATIC_NPC PASS PharmaDude tracking reenters with eased influence
+STATIC_NPC PASS PharmaDude ending dialogue eases authored head restoration
+STATIC_NPC PASS PharmaDude rapid reopening interrupts head return promptly
+STATIC_NPC PASS PharmaDude ending dialogue restores authored head motion
+STATIC_NPC PASS PharmaDude storm cancels head tracking and animation
+STATIC_NPC PASS PharmaDude opens dialogue
+STATIC_NPC PASS PharmaDude immediately enters conversation
+STATIC_NPC PASS PharmaDude enters conversation loop
+STATIC_NPC PASS PharmaDude typing skip does not restart animation
+STATIC_NPC PASS PharmaDude dialogue completes
+STATIC_NPC PASS PharmaDude dialogue plays exit
+STATIC_NPC PASS PharmaDude returns to rest after dialogue
+STATIC_NPC PASS PharmaDude shopping suppresses fidgets
+STATIC_NPC PASS PharmaDude shopping releases player head tracking
+STATIC_NPC PASS Pharma dialogue opens pharmacy shop
+STATIC_NPC PASS Pharmacy shop closes
+STATIC_NPC PASS PharmaDude conversation responsive on reentry
+STATIC_NPC PASS PharmaDude physics exit removes prompt
+STATIC_NPC PASS PharmaDude physics exit interrupts conversation
+STATIC_NPC PASS PharmaDude interaction preserves root visual scale and facing
+STATIC_NPC PASS PharmaDude removal during active playback frees controller
+Static NPC regression: 1638 checks, 0 failures
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 7 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

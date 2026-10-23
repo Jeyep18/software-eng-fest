@@ -1,0 +1,24 @@
+{
+  "baseline_unique_files": 301,
+  "unchanged_baseline_files": 286,
+  "changed_baseline_files": [
+    "_raw_assets/npc_assets/psx_static/README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/TESTING.md",
+    "game/entities/pharmacist/pharma_dude.tscn",
+    "game/entities/quest_npcs/mang_nestor.tscn",
+    "game/entities/quest_npcs/money_beggar.tscn",
+    "game/entities/quest_npcs/smoke_break_npc.tscn",
+    "game/entities/story_npcs/ate_maribel.tscn",
+    "game/entities/story_npcs/kaps_worker.tscn",
+    "game/entities/story_npcs/palengke_queue_man.tscn",
+    "game/entities/story_npcs/panic_buyer.tscn",
+    "game/entities/story_npcs/tape_neighbor.tscn",
+    "game/entities/story_npcs/tatay_jun.tscn",
+    "game/entities/story_npcs/wet_parent.tscn",
+    "game/tests/static_npc_regression.gd"
+  ],
+  "animated_glbs": 11,
+  "import_sidecars": 11,
+  "all_clip_sheets": 11
+}

@@ -171,7 +171,9 @@ func _normalize_quality_preset(value: StringName) -> StringName:
 
 func _on_node_added(node: Node) -> void:
 	if node is Light3D or node is WorldEnvironment:
-		call_deferred("_apply_quality_to_node", node)
+		# Scene-owned nodes may be freed before deferred quality application.
+		var node_ref: WeakRef = weakref(node)
+		(func() -> void: _apply_quality_to_node(node_ref.get_ref())).call_deferred()
 
 func _apply_quality_to_current_scene() -> void:
 	var tree := get_tree()

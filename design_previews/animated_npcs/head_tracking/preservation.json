@@ -1,0 +1,14 @@
+{
+  "baseline_files": 192,
+  "unchanged_files": 187,
+  "changed_files": [
+    "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\README.md",
+    "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\docs\\ARCHITECTURE.md",
+    "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\docs\\TESTING.md",
+    "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\npc\\PSXNPCAnimation.gd",
+    "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\tests\\static_npc_regression.gd"
+  ],
+  "checks": 1638,
+  "failures": 0,
+  "rendered_views": 77
+}

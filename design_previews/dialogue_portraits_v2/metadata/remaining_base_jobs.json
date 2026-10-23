@@ -1,0 +1,79 @@
+[
+  {
+    "id": "smoke_break",
+    "model": "SmokeBreakNPC",
+    "name": "Tambay",
+    "identity": "Adult male, fuller round face, straight short black hair with blunt bangs, thick black rectangular glasses, faint moustache/stubble, light-medium warm tan skin, grey polo shirt with pale trim. Preserve glasses, unlike the player use mature face.",
+    "background": "tindahan exterior under grey awning, weathered olive wall, small rainlit rectangle"
+  },
+  {
+    "id": "stranger",
+    "model": "MoneyBeggar",
+    "name": "Stranger",
+    "identity": "Adult man with short dark hair, light-medium warm tan skin, slightly lean cheeks, faint short stubble, ragged sleeveless muted-grey V-neck shirt with frayed neckline. No glasses. Avoid exaggerated misery or dehumanizing features.",
+    "background": "quiet wet palengke pavement/wall, grey concrete and dark teal awning shapes"
+  },
+  {
+    "id": "mang_nestor",
+    "model": "MangNestor",
+    "name": "Mang Nestor",
+    "identity": "Older bald man with tiny silver side fringe, medium-dark warm brown skin, broad familiar face, mature smile lines, plain desaturated teal henley with small button neckline. Match actual model face; no glasses/cap/apron.",
+    "background": "tindahan neighbourhood, broad faded olive wall and corrugated grey awning, simple doorway"
+  },
+  {
+    "id": "tape_neighbor",
+    "model": "TapeNeighbor",
+    "name": "Kapitbahay",
+    "identity": "Adult male, short wavy side-parted dark brown hair, light warm tan skin, faint beard stubble, muted beige/yellow collared polo. Preserve gentle broad jaw and actual model silhouette. No glasses.",
+    "background": "weathered neighbourhood wall and a broad dark window with two very subtle crossed beige tape strips"
+  },
+  {
+    "id": "tatay_jun",
+    "model": "TatayJun",
+    "name": "Tatay Jun",
+    "identity": "Middle-aged man with thick wavy dark brown/grey-streaked hair, light-medium tan skin, clean-shaven strong angular face, plain muted-brown high-neck button shirt. No eyeglasses or jewelry.",
+    "background": "hardware store, broad dark grey shelf shapes and dull brown plywood"
+  },
+  {
+    "id": "kaps_worker",
+    "model": "KapsWorker",
+    "name": "Tauhan ni Kap",
+    "identity": "Adult man, short neat brown hair, fair warm tan skin, clean-shaven round/oval face, muted olive green collared long-sleeved button shirt. No hats, badges, tie or glasses.",
+    "background": "hardware corner, broad boxed supplies and dark charcoal shelves, quiet olive-grey"
+  },
+  {
+    "id": "ate_maribel",
+    "model": "AteMaribel",
+    "name": "Ate Maribel",
+    "identity": "Adult woman, short dark side-swept pixie/fringe, warm medium tan skin, softly angular oval face, muted russet-brown scoop/V neckline blouse. No glasses, earrings or hats.",
+    "background": "pharmacy waiting area, subdued pale grey/teal wall and simple dull red shelf stripe"
+  },
+  {
+    "id": "queue_man",
+    "model": "PalengkeQueueMan",
+    "name": "Palengke Queue Man",
+    "identity": "Middle-aged man, thick dark wavy hair with a few grey tones, light-medium tan skin, clean-shaven angular face, muted steel-blue high-neck button shirt. No glasses.",
+    "background": "palengke queue, broad dark green market stall and pale grey shutter blocks"
+  },
+  {
+    "id": "panic_buyer",
+    "model": "PanicBuyer",
+    "name": "Panic Buyer",
+    "identity": "Adult woman, black straight bangs and dark hair tied back with small sides, warm light tan skin, broad face, plain muddy mustard/olive scoop neck shirt and tiny simple pendant necklace matching model. No glasses.",
+    "background": "grocery shelves in olive-charcoal, few simple overfull brown carton shapes"
+  },
+  {
+    "id": "wet_parent",
+    "model": "WetParent",
+    "name": "Nanay sa Palengke",
+    "identity": "Adult mother, dark straight bangs and hair tied back, warm light tan skin, fuller rounded face, muted dusty-purple scoop-neck shirt, tiny simple pendant necklace visible in model. No glasses. Preserve original features without adding injury.",
+    "background": "palengke rain shelter, cool desaturated blue-grey rainlit doorway and muted tarpaulin, low contrast"
+  },
+  {
+    "id": "pharmacist",
+    "model": "PharmaDude",
+    "name": "Pharmacy Boy",
+    "identity": "Young adult male pharmacist, short squared black hair, medium warm tan skin, composed narrow face and dark brows, white lab coat over charcoal crew-neck top with tiny plain teal badge shape. No text on badge, no glasses.",
+    "background": "botika interior, broad pale-grey shelves with abstract teal medicine-box blocks, no text/cross/logos"
+  }
+]

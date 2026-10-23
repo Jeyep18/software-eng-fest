@@ -1,0 +1,779 @@
+{
+  "characters": {
+    "MangNestor": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_search_street": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_rub_neck": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 5,
+      "vertices": 872,
+      "max_weight_error": 1.0058283805847168e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8967857360839844e-05,
+      "prop_weights": {
+        "MangNestor_SandalStrap_L": [
+          "Foot.L"
+        ],
+        "MangNestor_SandalStrap_L.001": [
+          "Foot.L"
+        ],
+        "MangNestor_SandalStrap_R": [
+          "Foot.R"
+        ],
+        "MangNestor_SandalStrap_R.001": [
+          "Foot.R"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "MoneyBeggar": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_request_money": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_look_around": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "relieved_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "thank_you": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 8,
+      "vertices": 946,
+      "max_weight_error": 1.1734664440155029e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8967857360839844e-05,
+      "prop_weights": {
+        "MoneyBeggar_SandalStrap": [
+          "Foot.L"
+        ],
+        "MoneyBeggar_SandalStrap.001": [
+          "Foot.L"
+        ],
+        "MoneyBeggar_SandalStrap.002": [
+          "Foot.R"
+        ],
+        "MoneyBeggar_SandalStrap.003": [
+          "Foot.R"
+        ],
+        "MoneyBeggar_BagHandle": [
+          "unskinned"
+        ],
+        "MoneyBeggar_BagHandle.001": [
+          "unskinned"
+        ],
+        "MoneyBeggar_GroundBag": [
+          "unskinned"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "SmokeBreakNPC": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_smoke": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_look_around": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_check_phone": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 21,
+      "vertices": 1126,
+      "max_weight_error": 1.0058283805847168e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8967857360839844e-05,
+      "prop_weights": {
+        "SmokeBreakNPC_Bangs": [
+          "Head"
+        ],
+        "SmokeBreakNPC_Bangs.001": [
+          "Head"
+        ],
+        "SmokeBreakNPC_Bangs.002": [
+          "Head"
+        ],
+        "SmokeBreakNPC_Bangs.003": [
+          "Head"
+        ],
+        "SmokeBreakNPC_Bangs.004": [
+          "Head"
+        ],
+        "SmokeBreakNPC_Cigarette": [
+          "Hand.R"
+        ],
+        "SmokeBreakNPC_Ember": [
+          "Hand.R"
+        ],
+        "SmokeBreakNPC_GlassesBridge": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.001": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.002": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.003": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.004": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.005": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.006": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesFrame.007": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesTemple": [
+          "Head"
+        ],
+        "SmokeBreakNPC_GlassesTemple.001": [
+          "Head"
+        ],
+        "SmokeBreakNPC_Phone": [
+          "Hand.L"
+        ],
+        "SmokeBreakNPC_PhoneScreen": [
+          "Hand.L"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "TapeNeighbor": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_search_street": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_inspect_tape": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 6,
+      "vertices": 1036,
+      "max_weight_error": 1.1920928955078125e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8848648071289062e-05,
+      "prop_weights": {
+        "TapeNeighbor_SandalStrap_L": [
+          "Foot.L"
+        ],
+        "TapeNeighbor_SandalStrap_L.001": [
+          "Foot.L"
+        ],
+        "TapeNeighbor_SandalStrap_R": [
+          "Foot.R"
+        ],
+        "TapeNeighbor_SandalStrap_R.001": [
+          "Foot.R"
+        ],
+        "TapeNeighbor_TapeRoll": [
+          "Hand.L"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "TatayJun": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_check_packet": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_check_bag": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 6,
+      "vertices": 844,
+      "max_weight_error": 8.940696716308594e-08,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8848648071289062e-05,
+      "prop_weights": {
+        "TatayJun_BagHandle": [
+          "Hand.L"
+        ],
+        "TatayJun_BagHandle.001": [
+          "Hand.L"
+        ],
+        "TatayJun_BagL": [
+          "Hand.L"
+        ],
+        "TatayJun_NailPacket": [
+          "Hand.R"
+        ],
+        "TatayJun_NailPacketMark": [
+          "Hand.R"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "KapsWorker": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_read_receipt": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_check_street": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 6,
+      "vertices": 856,
+      "max_weight_error": 1.0989606380462646e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8967857360839844e-05,
+      "prop_weights": {
+        "KapsWorker_PurchaseList": [
+          "Hand.L"
+        ],
+        "KapsWorker_PurchaseListMark": [
+          "Hand.L"
+        ],
+        "KapsWorker_GroundBundleTie": [
+          "unskinned"
+        ],
+        "KapsWorker_GroundBundleTie.001": [
+          "unskinned"
+        ],
+        "KapsWorker_GroundSupplyBundle": [
+          "unskinned"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "AteMaribel": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_adjust_bag": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_wipe_brow": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 9,
+      "vertices": 1248,
+      "max_weight_error": 1.2852251529693604e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8848648071289062e-05,
+      "prop_weights": {
+        "AteMaribel_BagHandle": [
+          "Hand.L"
+        ],
+        "AteMaribel_BagHandle.001": [
+          "Hand.L"
+        ],
+        "AteMaribel_BagL": [
+          "Hand.L"
+        ],
+        "AteMaribel_KneeLengthSkirt": [
+          "Hips",
+          "Thigh.L",
+          "Thigh.R"
+        ],
+        "AteMaribel_SandalStrap_L": [
+          "Foot.L"
+        ],
+        "AteMaribel_SandalStrap_L.001": [
+          "Foot.L"
+        ],
+        "AteMaribel_SandalStrap_R": [
+          "Foot.R"
+        ],
+        "AteMaribel_SandalStrap_R.001": [
+          "Foot.R"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "PalengkeQueueMan": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_scan_queue": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_shift_weight": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 4,
+      "vertices": 796,
+      "max_weight_error": 1.2293457984924316e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8848648071289062e-05,
+      "prop_weights": {
+        "PalengkeQueueMan_BagHandle": [
+          "unskinned"
+        ],
+        "PalengkeQueueMan_BagHandle.001": [
+          "unskinned"
+        ],
+        "PalengkeQueueMan_GroundBag": [
+          "unskinned"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "PanicBuyer": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_look_around": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_regrip_bags": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 7,
+      "vertices": 1176,
+      "max_weight_error": 1.1734664440155029e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8848648071289062e-05,
+      "prop_weights": {
+        "PanicBuyer_Bag_L": [
+          "Hand.L"
+        ],
+        "PanicBuyer_Bag_R": [
+          "Hand.R"
+        ],
+        "PanicBuyer_BagHandle": [
+          "Hand.L"
+        ],
+        "PanicBuyer_BagHandle.001": [
+          "Hand.L"
+        ],
+        "PanicBuyer_BagHandle.002": [
+          "Hand.R"
+        ],
+        "PanicBuyer_BagHandle.003": [
+          "Hand.R"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "WetParent": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_check_clothes": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_pat_clothes": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 1,
+      "vertices": 1032,
+      "max_weight_error": 1.0803341865539551e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8967857360839844e-05,
+      "prop_weights": {},
+      "images_embedded": true,
+      "nearest_sampler": true
+    },
+    "PharmaDude": {
+      "clips": {
+        "idle_loop": {
+          "duration": 5.041666507720947,
+          "keys": 61,
+          "samples": 122,
+          "start": 0.0416666679084301
+        },
+        "fidget_read_carton": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "fidget_check_slip": {
+          "duration": 3.0416667461395264,
+          "keys": 37,
+          "samples": 74,
+          "start": 0.0416666679084301
+        },
+        "talk_enter": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        },
+        "talk_loop": {
+          "duration": 4.041666507720947,
+          "keys": 49,
+          "samples": 98,
+          "start": 0.0416666679084301
+        },
+        "talk_exit": {
+          "duration": 0.5416666865348816,
+          "keys": 7,
+          "samples": 14,
+          "start": 0.0416666679084301
+        }
+      },
+      "meshes": 6,
+      "vertices": 890,
+      "max_weight_error": 1.0058283805847168e-07,
+      "fixed_root_feet_delta": 0.0,
+      "ground_mesh_delta": 0.0,
+      "max_scale_error": 2.8967857360839844e-05,
+      "prop_weights": {
+        "PharmaDude_MedicineCarton": [
+          "Hand.L"
+        ],
+        "PharmaDude_MedicineCartonMark": [
+          "Hand.L"
+        ],
+        "PharmaDude_NameBadge": [
+          "Chest"
+        ],
+        "PharmaDude_PaperSlip": [
+          "Hand.R"
+        ],
+        "PharmaDude_PaperSlipMark": [
+          "Hand.R"
+        ]
+      },
+      "images_embedded": true,
+      "nearest_sampler": true
+    }
+  },
+  "errors": [],
+  "total_pose_samples": 4674
+}

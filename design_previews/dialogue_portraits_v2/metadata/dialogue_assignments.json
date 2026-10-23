@@ -1,0 +1,1911 @@
+{
+  "status": "review_only_not_integrated",
+  "npc_count": 17,
+  "portrait_character_count": 18,
+  "active_authored_line_count": 64,
+  "active_npc_spoken_line_count": 57,
+  "active_player_reply_count": 7,
+  "configured_fallback_lines": [
+    {
+      "source_path": "game/entities/dialogues/ate_linda/sequence/ate_linda_tindahan_act1.tres",
+      "source_line": 7,
+      "resource_id": "Resource_xc5m4",
+      "speaker_name": "Ate Linda",
+      "source_text": "Oh, iho, ano ang iyong mga kailangan?",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "speaking",
+      "status": "configured_fallback_not_selected_with_current_non_null_branches",
+      "sequence_bindings": [
+        {
+          "property": "sequence_tindahan_default",
+          "kind": "ExtResource",
+          "resource_id": "3_7ti20"
+        }
+      ],
+      "localization": {
+        "key": "dialogue.oh_iho_ano_ang_iyong_mga_kailangan.03294a2c",
+        "english": "Oh, iho, what do you need?",
+        "tagalog": "Oh, iho, ano'ng kailangan mo?"
+      }
+    },
+    {
+      "source_path": "game/entities/dialogues/ate_linda/sequence/ate_linda_tindahan_act1.tres",
+      "source_line": 14,
+      "resource_id": "Resource_ylcxj",
+      "speaker_name": "Ate Linda",
+      "source_text": "Pasensya na at nagtataas ako ng presyo, nagkakaubusan na kasi ngayon ng [b]supplies[/b].",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "apologetic",
+      "status": "configured_fallback_not_selected_with_current_non_null_branches",
+      "sequence_bindings": [
+        {
+          "property": "sequence_tindahan_default",
+          "kind": "ExtResource",
+          "resource_id": "3_7ti20"
+        }
+      ],
+      "localization": {
+        "key": "dialogue.pasensya_na_at_nagtataas_ako_ng_presyo_nagkakaub.281dbec0",
+        "english": "Sorry, iho, prices went up. [b]Supplies[/b] are almost gone.",
+        "tagalog": "Pasensya na, iho, tumaas na presyo. Paubos na kasi ang [b]supplies[/b]."
+      }
+    }
+  ],
+  "active_assignments": [
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 12,
+      "resource_id": "Resource_dclit",
+      "speaker_name": "Nanay",
+      "source_text": "Anak kamusta, Narinig mo na ba yung balita?",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.anak_kamusta_narinig_mo_na_ba_yung_balita.0efd3b07",
+        "english": "Nak, how are you? Did you hear the news? Knowing you, you probably haven't.",
+        "tagalog": "Nak, kamusta? Narinig mo na ba yung balita? Naku, baka di mo pa alam."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 19,
+      "resource_id": "Resource_x1yr6",
+      "speaker_name": "Nanay",
+      "source_text": "May paparating na bagyo ulit... kailangan nating maghanda.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.may_paparating_na_bagyo_ulit_kailangan_nating_ma.01de2093",
+        "english": "Another storm's coming, nak. We need to get ready now, no dawdling.",
+        "tagalog": "May paparating na namang bagyo, nak. Maghanda na tayo, wag nang magpatumpik-tumpik."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 26,
+      "resource_id": "Resource_tmuxm",
+      "speaker_name": "Nanay",
+      "source_text": "Mas malakas daw ito kaysa dati, kaya kailangan nating maging maingat.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 2,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.mas_malakas_daw_ito_kaysa_dati_kaya_kailangan_na.98f03552",
+        "english": "They say this one's stronger than the last, so we really have to be careful, okay? Okay, nak?",
+        "tagalog": "Mas malakas daw 'to kesa dati, kaya mag-ingat tayo, ha? Ha, nak?"
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 33,
+      "resource_id": "Resource_8t3t3",
+      "speaker_name": "Nanay",
+      "source_text": "May kailangan tayong bilhin bago lumakas ang bagyo. Ito ang pera, anak.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 3,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.may_kailangan_tayong_bilhin_bago_lumakas_ang_bag.866bab7f",
+        "english": "We need to get a few things before the storm gets worse. Here's the money, nak. Don't lose it.",
+        "tagalog": "May bibilhin tayo bago lumakas ang bagyo. Eto yung pera, nak. Wag mong iwawala 'yan."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 40,
+      "resource_id": "Resource_gkn0j",
+      "speaker_name": "Nanay",
+      "source_text": "Nasa [b]bodega[/b] ang [b]martilyo[/b], [b]radyo[/b], at [b]flashlight[/b]. Kailangan ng [b]isang baterya bawat isa[/b] ng radyo at flashlight bago ilagay sa [b]istante katabi ni Lola[/b].",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 4,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.nanay.bodega_supplies",
+        "english": "The [b]hammer[/b], [b]radio[/b], and [b]flashlight[/b] are in the [b]storage room[/b]. The radio and flashlight each need [b]one battery[/b] before you put them on the [b]shelf beside Lola[/b].",
+        "tagalog": "Nasa [b]bodega[/b] ang [b]martilyo[/b], [b]radyo[/b], at [b]flashlight[/b]. Kailangan ng [b]isang baterya bawat isa[/b] ng radyo at flashlight bago ilagay sa [b]istante katabi ni Lola[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 47,
+      "resource_id": "Resource_2bejg",
+      "speaker_name": "Nanay",
+      "source_text": "[i]Inabot ni Nanay ang pera para sa mga kailangang bilhin.[/i] Hindi natin maililigtas lahat, anak. Unahin mo ang pinaka-kailangan.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 5,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.i_inabot_ni_nanay_ang_pera_para_sa_mga_kailangan.3f35f1e4",
+        "english": "[i]Nanay hands over the money.[/i] We can't save everything, nak. Start with what matters most.",
+        "tagalog": "[i]Inabot ni Nanay ang pera.[/i] Hindi natin maaayos lahat, nak. Unahin mo yung pinaka-importante."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 54,
+      "resource_id": "Resource_6khh6",
+      "speaker_name": "Nanay",
+      "source_text": "Kasya dapat yan kung maingat ka sa pagbili. Mag-ingat ka ha.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 6,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.kasya_dapat_yan_kung_maingat_ka_sa_pagbili_mag_i.ba7500fa",
+        "english": "That should be enough if you don't waste it. Don't go buying random stuff, okay?",
+        "tagalog": "Dapat kasya na yan kung hindi ka magwawaldas. Wag kang bibili ng kung ano-ano, ha."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 61,
+      "resource_id": "Resource_ucdwx",
+      "speaker_name": "Player",
+      "source_text": "Opo Nay. Hahanapin ko kung ano ang kailangan ihanda.",
+      "current_expression": "res://game/assets/npc_portraits/playerInnerThoughts.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 7,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.opo_nay_hahanapin_ko_kung_ano_ang_kailangan_ihan.60054b23",
+        "english": "Yes, Nay. I'll look around for what we still need.",
+        "tagalog": "Opo, 'Nay. Ako nang bahala maghanap ng mga kailangan."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 68,
+      "resource_id": "Resource_d6eln",
+      "speaker_name": "Nanay",
+      "source_text": "Pasensya na anak, hindi ko kayang umalis ng bahay dahil wala mag aalaga sa bunso.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 8,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.pasensya_na_anak_hindi_ko_kayang_umalis_ng_bahay.51c90daa",
+        "english": "Sorry, nak. I can't leave, there's no one to watch Bunso.",
+        "tagalog": "Pasensya na, nak. Di ako makaalis, walang magbabantay kay bunso."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 75,
+      "resource_id": "Resource_dt7x6",
+      "speaker_name": "Nanay",
+      "source_text": "Ikaw lang maaasahan ko anak. Mag-ingat ka ha, bumalik ka agad.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 9,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.ikaw_lang_maaasahan_ko_anak_mag_ingat_ka_ha_buma.5bde0747",
+        "english": "You're the only one I can count on, nak. Be careful, and come straight back. Don't go hanging around anywhere.",
+        "tagalog": "Ikaw lang maaasahan ko, nak. Ingat ka, ha, tapos bumalik ka agad. Wag kang tatambay kung saan-saan."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 82,
+      "resource_id": "Resource_67bnw",
+      "speaker_name": "Player",
+      "source_text": "Ako na po bahala nay.",
+      "current_expression": "res://game/assets/npc_portraits/playerTalking2.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "determined",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jfkbs",
+          "line_index_zero_based": 10,
+          "export_properties": [
+            "sequence_pre_departure"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.ako_na_po_bahala_nay.50da901c",
+        "english": "I'll handle it, Nay.",
+        "tagalog": "Ako na po bahala, 'Nay."
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 94,
+      "resource_id": "Resource_wdexl",
+      "speaker_name": "Nanay",
+      "source_text": "Kamusta anak, nabili mo na ba ang mga kailangan?",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_6ed0c",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_return_early"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.kamusta_anak_nabili_mo_na_ba_ang_mga_kailangan.14c1ec3c",
+        "english": "How are you, nak? Did you get everything? Nothing forgotten?",
+        "tagalog": "Kamusta, nak, nabili mo na ba lahat? Wala kang nakalimutan?"
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 106,
+      "resource_id": "Resource_wklle",
+      "speaker_name": "Nanay",
+      "source_text": "Lumalakas na ang hangin anak, mag-ingat ka.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_2gl7e",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_return_mid"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.lumalakas_na_ang_hangin_anak_mag_ingat_ka.e63b331c",
+        "english": "The wind's picking up, nak. Oh, be careful out there, okay!",
+        "tagalog": "Lumalakas na yung hangin, nak. Naku, mag-ingat ka, ha!"
+      }
+    },
+    {
+      "source_path": "game/entities/nanay/nanay.tscn",
+      "source_line": 118,
+      "resource_id": "Resource_ysi4t",
+      "speaker_name": "Nanay",
+      "source_text": "Huwag ka nang lumabas ulit anak. Malapit na ang bagyo, dito ka nalang at para ligtas.",
+      "current_expression": "res://game/assets/npc_portraits/mamawoo.png",
+      "npc_id": "nanay",
+      "proposed_speaker_id": "nanay",
+      "proposed_expression": "urgent",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_2080c",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_return_late"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.huwag_ka_nang_lumabas_ulit_anak_malapit_na_ang_b.6776058f",
+        "english": "Don't go out again, nak! The storm's almost here. Stay in where it's safe. How many times do I have to say it?",
+        "tagalog": "Wag ka nang lumabas ulit, nak! Malapit na ang bagyo, dito ka na lang para ligtas. Ilang beses ko bang sasabihin?"
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 12,
+      "resource_id": "Resource_adolq",
+      "speaker_name": "Lola",
+      "source_text": "Oy apo, halika. Umupo ka muna sandali. ",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.oy_apo_halika_umupo_ka_muna_sandali.df20a691",
+        "english": "Oy, apo, come here. Sit with me for a bit.",
+        "tagalog": "Oy, apo, halika. Upo ka muna sandali."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 19,
+      "resource_id": "Resource_f6xjy",
+      "speaker_name": "Lola",
+      "source_text": "Apo yung bagyong paparating mag-ingat ka ha.",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.apo_yung_bagyong_paparating_mag_ingat_ka_ha.b631e0dd",
+        "english": "Apo, there's a storm coming, ha. Take care.",
+        "tagalog": "Apo, may bagyong paparating, ha. Mag-ingat ka."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 26,
+      "resource_id": "Resource_q26se",
+      "speaker_name": "Player",
+      "source_text": "Opo Lola.",
+      "current_expression": "res://game/assets/npc_portraits/playerTalking.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 2,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.opo_lola.7b4fafe8",
+        "english": "Yes, Lola.",
+        "tagalog": "Opo, Lola."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 33,
+      "resource_id": "Resource_8ka6y",
+      "speaker_name": "Lola",
+      "source_text": "Mabuti naman. Pero yung [b]gamot[/b] ko huwag mo kalimutan yung sa [b]botika[/b] ha. ",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 3,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.mabuti_naman_pero_yung_b_gamot_b_ko_huwag_mo_kal.c48ad0a3",
+        "english": "That's good. But don't forget my [b]medicine[/b] from the [b]pharmacy[/b], ha.",
+        "tagalog": "Mabuti naman. Pero yung [b]gamot[/b] ko, wag mong kalimutan yung sa [b]botika[/b], ha."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 40,
+      "resource_id": "Resource_ak15h",
+      "speaker_name": "Lola",
+      "source_text": "Pag walang gamot, mahihirapan ako. Pasensya na apo. ",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 4,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.pag_walang_gamot_mahihirapan_ako_pasensya_na_apo.beef32b6",
+        "english": "Without my medicine, it gets really hard for me, apo. Sorry to be a bother.",
+        "tagalog": "Naku, apo, pag wala yung gamot ko, hirap talaga ako. Pasensya ka na ha, nakakaabala pa ko sa'yo."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 47,
+      "resource_id": "Resource_5d8dr",
+      "speaker_name": "Player",
+      "source_text": "Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b].",
+      "current_expression": "res://game/assets/npc_portraits/playerInnerThoughts.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "thinking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 5,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.kailangan_ni_lola_ang_b_gamot_b_kailangan_ko_pum.09f4c2a6",
+        "english": "Lola needs her [b]medicine[/b]. Gotta swing by the [b]pharmacy[/b].",
+        "tagalog": "Kailangan ni Lola yung [b]gamot[/b] niya. Dadaan muna ko sa [b]botika[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 54,
+      "resource_id": "Resource_ebi62",
+      "speaker_name": "Lola",
+      "source_text": "Sige na apo, pakilagay na lang sa [b]drawer sa higaan[/b] yung aking [b]gamot[/b]. ",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_qv5jj",
+          "line_index_zero_based": 6,
+          "export_properties": [
+            "sequence_first_meeting"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.sige_na_apo_pakilagay_na_lang_sa_b_drawer_sa_hig.7aed8a24",
+        "english": "Okay, apo, just put my [b]medicine[/b] in the [b]drawer by the bed[/b].",
+        "tagalog": "Sige na, apo, pakilagay na lang sa [b]drawer sa higaan[/b] yung [b]gamot[/b] ko."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 66,
+      "resource_id": "Resource_dyppw",
+      "speaker_name": "Lola",
+      "source_text": "Yung [b]gamot[/b], huwag mong kalimutan apo. [i]Mahalaga yun sa akin.[/i]",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_t0cy6",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_hint_medicine"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.yung_b_gamot_b_huwag_mong_kalimutan_apo_i_mahala.ac35a934",
+        "english": "My [b]medicine[/b], apo, don't forget it. [i]That one's important to me.[/i]",
+        "tagalog": "Yung [b]gamot[/b], ha, apo, wag mong kalimutan. [i]Mahalaga yun sa'kin.[/i]"
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 78,
+      "resource_id": "Resource_tkmwj",
+      "speaker_name": "Lola",
+      "source_text": "Pag umulan nang malakas at walang [b]panakip sa kisame[/b]... [i]basa lahat tayo dito.[/i] ",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_d6pkr",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_hint_roof"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.pag_umulan_nang_malakas_at_walang_b_panakip_sa_k.125e97f6",
+        "english": "If it pours and there's still no [b]cover for the ceiling[/b]... [i]we'll all be soaked in here.[/i]",
+        "tagalog": "Pag lumakas ang ulan at wala pang [b]panakip sa kisame[/b]... [i]basa tayong lahat dito.[/i]"
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 90,
+      "resource_id": "Resource_clmbx",
+      "speaker_name": "Nanay",
+      "source_text": "Sabi ni Nanay, wala tayong [b]pagkain[/b] para bukas. Kailangan kahit [b]de lata[/b].",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_d5nod",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_hint_food"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": "Source speaker is Nanay but this is a Lola line reporting what Nanay said; proposed speaker correction to Lola requires later integration approval.",
+      "localization": {
+        "key": "dialogue.sabi_ni_nanay_wala_tayong_b_pagkain_b_para_bukas.c4e1e132",
+        "english": "Nanay said we've got no [b]food[/b] left for tomorrow. Even just [b]canned goods[/b] would do.",
+        "tagalog": "Sabi ni Nanay, wala na tayong [b]pagkain[/b] para bukas. Kahit [b]de lata[/b] lang daw."
+      }
+    },
+    {
+      "source_path": "game/entities/lola/lola.tscn",
+      "source_line": 102,
+      "resource_id": "Resource_uqh7n",
+      "speaker_name": "Lola",
+      "source_text": "Mabuti na. Nandito na tayo. Dasal lang tayo ngayon.",
+      "current_expression": "res://game/assets/npc_portraits/Gemini_Generated_Image_xzdgclxzdgclxzdg.png",
+      "npc_id": "lola",
+      "proposed_speaker_id": "lola",
+      "proposed_expression": "relieved",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_twvbh",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_hint_all_done"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.mabuti_na_nandito_na_tayo_dasal_lang_tayo_ngayon.2e7307ec",
+        "english": "Thank goodness. We're all here now. All we can do is pray.",
+        "tagalog": "Buti na lang. Nandito na tayo. Dasal na lang ngayon."
+      }
+    },
+    {
+      "source_path": "game/entities/ate_linda_npc/ate_linda.tscn",
+      "source_line": 17,
+      "resource_id": "Line_trade_1",
+      "speaker_name": "Ate Linda",
+      "source_text": "Iho, kung may [b]martilyo[/b] ka sana, maayos ko itong istante. Kapag natulungan mo ako, [b]bababaan ko presyo[/b] ko sa'yo.",
+      "current_expression": null,
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Seq_trade",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "trade_offer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.iho_kung_may_martilyo_ka_sana_maayos_ko_itong_is.e2250939",
+        "english": "Iho, if you had a [b]hammer[/b], I could fix this shelf. Help me out and I'll [b]lower my prices[/b] for you.",
+        "tagalog": "Iho, kung may [b]martilyo[/b] ka lang sana, maaayos ko 'tong istante. Pag natulungan mo ko, [b]babawasan ko presyo[/b] ko para sa'yo."
+      }
+    },
+    {
+      "source_path": "game/entities/ate_linda_npc/ate_linda.tscn",
+      "source_line": 23,
+      "resource_id": "Line_trade_2",
+      "speaker_name": "Ate Linda",
+      "source_text": "Ipapahiram mo? Sige, utang na loob ko 'to. Ibababa ko presyo, pero kailangan mo ng [b]pamalit[/b] kung aayusin mo pa bahay n'yo.",
+      "current_expression": null,
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "grateful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Seq_trade",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "trade_offer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.ipapahiram_mo_sige_utang_na_loob_ko_to_ibababa_k.cbd68ffa",
+        "english": "You'll give it to me? Sure, I owe you one. I'll lower my prices, but you'll need a [b]replacement[/b] if you've still got repairs at home.",
+        "tagalog": "Ibibigay mo? Sige, utang na loob ko 'to. Babawasan ko presyo, pero maghanap ka muna ng [b]pamalit[/b] kung may aayusin ka pa sa bahay n'yo."
+      }
+    },
+    {
+      "source_path": "game/entities/ate_linda_npc/ate_linda.tscn",
+      "source_line": 34,
+      "resource_id": "Line_discounted",
+      "speaker_name": "Ate Linda",
+      "source_text": "Salamat, iho. Para sa'yo, mas mababa na presyo.",
+      "current_expression": null,
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "grateful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Seq_discounted",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "discounted_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.salamat_iho_para_sa_yo_mas_mababa_na_presyo.a1f8a875",
+        "english": "Thanks, iho. For you, it's cheaper now.",
+        "tagalog": "Salamat, iho. Para sa'yo, mas mababa na presyo."
+      }
+    },
+    {
+      "source_path": "game/entities/ate_linda_npc/ate_linda.tscn",
+      "source_line": 45,
+      "resource_id": "Line_no_hammer_1",
+      "speaker_name": "Ate Linda",
+      "source_text": "Oh, iho, ano ang iyong mga kailangan?",
+      "current_expression": null,
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Seq_no_hammer",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "no_hammer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.oh_iho_ano_ang_iyong_mga_kailangan.03294a2c",
+        "english": "Oh, iho, what do you need?",
+        "tagalog": "Oh, iho, ano'ng kailangan mo?"
+      }
+    },
+    {
+      "source_path": "game/entities/ate_linda_npc/ate_linda.tscn",
+      "source_line": 51,
+      "resource_id": "Line_no_hammer_2",
+      "speaker_name": "Ate Linda",
+      "source_text": "Pasensya na at mataas presyo. Kung may [b]martilyo[/b] ka sana para dito sa istante, [b]bababaan ko presyo[/b] ko sa'yo.",
+      "current_expression": null,
+      "npc_id": "ate_linda",
+      "proposed_speaker_id": "ate_linda",
+      "proposed_expression": "apologetic",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Seq_no_hammer",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "no_hammer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.pasensya_na_at_mataas_presyo_kung_may_martilyo_k.9c839390",
+        "english": "Sorry, my prices are high. If you had a [b]hammer[/b] for this shelf, I'd [b]lower them[/b] for you.",
+        "tagalog": "Pasensya na, mataas presyo ko. Kung may [b]martilyo[/b] ka lang sana para sa istante na 'to, [b]babawasan ko para sa'yo[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 19,
+      "resource_id": "OfferLine1",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Anak, pwede bang makisuyo? Hindi ako makaalis, hinihintay ko pa asawa ko.",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "hopeful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "OfferSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "offer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.anak_pwede_bang_makisuyo_hindi_ako_makaalis_hini.bf312dc4",
+        "english": "Nak, can I ask a favor? I can't leave yet, I'm still waiting on my asawa.",
+        "tagalog": "Nak, pwede bang makisuyo? Di ako makaalis, hinihintay ko pa asawa ko."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 25,
+      "resource_id": "OfferLine2",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Bilhan mo sana ako ng [b]Half Chicken[/b] sa [b]Go To Chooks[/b], katabi lang ng [b]Botika[/b].",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "OfferSequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "offer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.nestor.chicken_shop",
+        "english": "Please buy me [b]Half Chicken[/b] from [b]Go To Chooks[/b], right next to the [b]pharmacy[/b].",
+        "tagalog": "Bilhan mo sana ako ng [b]Half Chicken[/b] sa [b]Go To Chooks[/b], katabi lang ng [b]Botika[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 31,
+      "resource_id": "OfferLine3",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Eto ang [b]PHP 150[/b] para sa manok. Ikaw na bahala sa sukli. Nagtitiwala akong makakauwi kami na may [b]hapunan[/b].",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "hopeful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "OfferSequence",
+          "line_index_zero_based": 2,
+          "export_properties": [
+            "offer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.nestor.advance",
+        "english": "Here is [b]PHP 150[/b] for the chicken. You can keep the change. I trust that my family will have [b]dinner[/b] at home.",
+        "tagalog": "Eto ang [b]PHP 150[/b] para sa manok. Ikaw na bahala sa sukli. Nagtitiwala akong makakauwi kami na may [b]hapunan[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 42,
+      "resource_id": "WaitingLine",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Wala pa? Nagtitiwala pa rin ako sa'yo. Ang [b]Half Chicken[/b] ay sa [b]Go To Chooks[/b], katabi ng [b]Botika[/b].",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "hopeful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "WaitingSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "waiting_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.nestor.waiting",
+        "english": "Not yet? I still trust you. [b]Half Chicken[/b] is at [b]Go To Chooks[/b], next to the [b]pharmacy[/b].",
+        "tagalog": "Wala pa? Nagtitiwala pa rin ako sa'yo. Ang [b]Half Chicken[/b] ay sa [b]Go To Chooks[/b], katabi ng [b]Botika[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 53,
+      "resource_id": "CompleteLine",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Ay, salamat. May extra [b]tarp[/b] ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay.",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "grateful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "CompleteSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "complete_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.nestor.tarp",
+        "english": "Thank you. I have an extra [b]tarp[/b] in my tricycle. Take it. Your family needs it more.",
+        "tagalog": "Ay, salamat. May extra [b]tarp[/b] ako sa tricycle. Kunin mo. Mas kailangan n'yo 'to sa bahay."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 64,
+      "resource_id": "FullInventoryLine",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Naku, puno ang dala mo. Magbawas ka muna para maabot ko sa'yo itong tarp.",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "FullInventorySequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "full_inventory_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "item.naku_puno_ang_dala_mo_magbawas_ka_muna_para_maab.150ff5af",
+        "english": "Oh no, you're carrying too much. Drop something first so I can hand you this tarp.",
+        "tagalog": "Naku, puno na dala mo. Magbawas ka muna para maabot ko sa'yo 'tong tarp."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/mang_nestor.tscn",
+      "source_line": 75,
+      "resource_id": "DoneLine",
+      "speaker_name": "Mang Nestor",
+      "source_text": "Salamat ulit, anak. Umuwi ka na rin bago tuluyang lumakas ang hangin.",
+      "current_expression": null,
+      "npc_id": "mang_nestor",
+      "proposed_speaker_id": "mang_nestor",
+      "proposed_expression": "grateful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "DoneSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "done_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.salamat_ulit_anak_umuwi_ka_na_rin_bago_tuluyang_.eb11868a",
+        "english": "Thanks again, nak. Head home too before the wind picks up.",
+        "tagalog": "Salamat ulit, nak. Umuwi ka na rin bago pa lumakas ang hangin."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/tape_neighbor.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Kapitbahay",
+      "source_text": "Nag-tape na ako ng bintana. Hindi ko alam kung science o dasal ang gumagana.",
+      "current_expression": null,
+      "npc_id": "tape_neighbor",
+      "proposed_speaker_id": "tape_neighbor",
+      "proposed_expression": "uncertain",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.nag_tape_na_ako_ng_bintana_hindi_ko_alam_kung_sc.bd220917",
+        "english": "I taped up my windows. Not sure if it's science or prayer that's working.",
+        "tagalog": "Nag-tape na ko ng bintana. Di ko alam kung science o dasal ang gumagana."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/smoke_break_npc.tscn",
+      "source_line": 18,
+      "resource_id": "OfferLine",
+      "speaker_name": "Tambay",
+      "source_text": "Stress ka na rin ba sa bagyo? Yosi muna tayo sa gilid. Sandali lang.",
+      "current_expression": null,
+      "npc_id": "smoke_break",
+      "proposed_speaker_id": "smoke_break",
+      "proposed_expression": "coaxing",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "OfferSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "offer_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.stress_ka_na_rin_ba_sa_bagyo_yosi_muna_tayo_sa_g.30149cbc",
+        "english": "Stressed about the storm too, bro? Let's have a smoke on the side. Just a sec.",
+        "tagalog": "Stress ka na rin ba sa bagyo, pre? Yosi muna tayo sa gilid. Saglit lang."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/smoke_break_npc.tscn",
+      "source_line": 29,
+      "resource_id": "DoneLine",
+      "speaker_name": "Tambay",
+      "source_text": "Ayos na. Pero lumakas na ulan, ah. Sana sulit yung pahinga.",
+      "current_expression": null,
+      "npc_id": "smoke_break",
+      "proposed_speaker_id": "smoke_break",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "DoneSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "done_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.ayos_na_pero_lumakas_na_ulan_ah_sana_sulit_yung_.92d06b17",
+        "english": "All good. The rain's gotten heavier though. Hope the break was worth it.",
+        "tagalog": "Ayos na. Pero lumakas na ang ulan, ah. Sana sulit yung pahinga."
+      }
+    },
+    {
+      "source_path": "game/entities/pharmacist/pharma_dude.tscn",
+      "source_line": 16,
+      "resource_id": "Resource_6k71h",
+      "speaker_name": "Pharmacy Boy",
+      "source_text": "Ano po ang inyong kailangan? Mabuti at naabutan niyo pa ang [b]botika[/b] na bukas.",
+      "current_expression": "res://game/assets/images/Screenshot 2026-04-23 235718.png",
+      "npc_id": "pharmacist",
+      "proposed_speaker_id": "pharmacist",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_iev7r",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.ano_po_ang_inyong_kailangan_mabuti_at_naabutan_n.b68fa919",
+        "english": "What can I get you? You're lucky you caught the [b]pharmacy[/b] still open.",
+        "tagalog": "Ano po'ng kailangan nila? Buti naabutan nyo pa ang [b]botika[/b] na bukas."
+      }
+    },
+    {
+      "source_path": "game/entities/chooks_to_go_seller.tscn",
+      "source_line": 11,
+      "resource_id": "Resource_leh6v",
+      "speaker_name": "Tindero",
+      "source_text": "Ano pa hinihintay mo iho, bili na ng aming malinamnam na manok!",
+      "current_expression": "res://game/assets/images/Chooks.png",
+      "npc_id": "chooks_seller",
+      "proposed_speaker_id": "chooks_seller",
+      "proposed_expression": "cheerful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_eclqx",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.ano_pa_hinihintay_mo_iho_bili_na_ng_aming_malina.7f19f19f",
+        "english": "What are you waiting for, iho? Come get our juicy chicken!",
+        "tagalog": "Ano pang hinihintay mo, iho? Bili na ng masarap naming manok!"
+      }
+    },
+    {
+      "source_path": "game/entities/chooks_to_go_seller.tscn",
+      "source_line": 18,
+      "resource_id": "Resource_uelfc",
+      "speaker_name": "Tindero",
+      "source_text": "Siguradong mabubusog ka dito, promise!",
+      "current_expression": "res://game/assets/images/Chooks.png",
+      "npc_id": "chooks_seller",
+      "proposed_speaker_id": "chooks_seller",
+      "proposed_expression": "cheerful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_eclqx",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.siguradong_mabubusog_ka_dito_promise.d4da11d8",
+        "english": "You'll definitely leave full, promise!",
+        "tagalog": "Sigurado, mabubusog ka dito, promise!"
+      }
+    },
+    {
+      "source_path": "game/entities/chooks_to_go_seller.tscn",
+      "source_line": 25,
+      "resource_id": "Resource_htrks",
+      "speaker_name": "Player",
+      "source_text": "VIC SOTTO?!?!",
+      "current_expression": "res://game/assets/npc_portraits/playerTalking.png",
+      "npc_id": "chooks_seller",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "surprised",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_eclqx",
+          "line_index_zero_based": 2,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.vic_sotto.103e430c",
+        "english": "VIC SOTTO?!?!",
+        "tagalog": "VIC SOTTO?!?!"
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/ate_maribel.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Ate Maribel",
+      "source_text": "Kung [b]manok[/b] hanap mo, nasa tabi lang ng [b]Botika[/b] ang [b]Go To Chooks[/b].",
+      "current_expression": null,
+      "npc_id": "ate_maribel",
+      "proposed_speaker_id": "ate_maribel",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.maribel.chicken_shop",
+        "english": "If you are looking for [b]chicken[/b], [b]Go To Chooks[/b] is right next to the [b]pharmacy[/b].",
+        "tagalog": "Kung [b]manok[/b] hanap mo, nasa tabi lang ng [b]Botika[/b] ang [b]Go To Chooks[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/ate_maribel.tscn",
+      "source_line": 24,
+      "resource_id": "Line2",
+      "speaker_name": "Ate Maribel",
+      "source_text": "Naamoy mo na bago mo makita. Effective signage din pala ang gutom.",
+      "current_expression": null,
+      "npc_id": "ate_maribel",
+      "proposed_speaker_id": "ate_maribel",
+      "proposed_expression": "amused",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.naamoy_mo_na_bago_mo_makita_effective_signage_di.f2fe28fb",
+        "english": "You smell it before you see it. Hunger really does make effective signage.",
+        "tagalog": "Naamoy mo na bago mo makita. Effective signage din pala ang gutom."
+      }
+    },
+    {
+      "source_path": "game/entities/hardware_girl/hardware_girl.tscn",
+      "source_line": 15,
+      "resource_id": "Resource_lk3gm",
+      "speaker_name": "Hardware Girl",
+      "source_text": "Bili na kayo, at magsasara na ako. Halos naubos na lahat ni Kapitan ang mga [b]supplies[/b].",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "npc_id": "hardware_girl",
+      "proposed_speaker_id": "hardware_girl",
+      "proposed_expression": "weary",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jdpt7",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.bili_na_kayo_at_magsasara_na_ako_halos_naubos_na.a3a8ed3a",
+        "english": "Buy now, I'm closing soon. The Captain just about cleaned out all the [b]supplies[/b].",
+        "tagalog": "Bili na kayo, magsasara na ko. Halos naubos na ni Kapitan lahat ng [b]supplies[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/hardware_girl/hardware_girl.tscn",
+      "source_line": 22,
+      "resource_id": "Resource_8a7sq",
+      "speaker_name": "Player",
+      "source_text": "Ikaw ulit?!!",
+      "current_expression": "res://game/assets/npc_portraits/playerTalking2.png",
+      "npc_id": "hardware_girl",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "surprised",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jdpt7",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.ikaw_ulit.0f593589",
+        "english": "You again?!",
+        "tagalog": "Ikaw na naman?!"
+      }
+    },
+    {
+      "source_path": "game/entities/hardware_girl/hardware_girl.tscn",
+      "source_line": 29,
+      "resource_id": "Resource_hqigv",
+      "speaker_name": "Hardware Girl",
+      "source_text": "Pero i-check mo sa una unahan baka ay mayroon pa tira-tirang [b]plywood[/b] doon.",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "npc_id": "hardware_girl",
+      "proposed_speaker_id": "hardware_girl",
+      "proposed_expression": "helpful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_jdpt7",
+          "line_index_zero_based": 2,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.pero_i_check_mo_sa_una_unahan_baka_ay_mayroon_pa.d2306c16",
+        "english": "But check up front, there might still be some [b]plywood[/b] left over.",
+        "tagalog": "Pero i-check mo sa unahan, baka may tira pang [b]plywood[/b] dun."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/tatay_jun.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Tatay Jun",
+      "source_text": "Lahat naghahanap ng [b]pako[/b] ngayon. Parang exam, pero [b]bubong[/b] ang reviewer.",
+      "current_expression": null,
+      "npc_id": "tatay_jun",
+      "proposed_speaker_id": "tatay_jun",
+      "proposed_expression": "amused",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.tatay_jun.nails",
+        "english": "Everyone is looking for [b]nails[/b] now. It is like an exam, but the [b]roof[/b] is the reviewer.",
+        "tagalog": "Lahat naghahanap ng [b]pako[/b] ngayon. Parang exam, pero [b]bubong[/b] ang reviewer."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/tatay_jun.tscn",
+      "source_line": 24,
+      "resource_id": "Line2",
+      "speaker_name": "Tatay Jun",
+      "source_text": "Kung may [b]martilyo[/b] ka, ingatan mo. Kapag nawala 'yan, gastos na naman.",
+      "current_expression": null,
+      "npc_id": "tatay_jun",
+      "proposed_speaker_id": "tatay_jun",
+      "proposed_expression": "concerned",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.tatay_jun.hammer",
+        "english": "If you have a [b]hammer[/b], take care of it. Losing it would mean another expense.",
+        "tagalog": "Kung may [b]martilyo[/b] ka, ingatan mo. Kapag nawala 'yan, gastos na naman."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/kaps_worker.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Tauhan ni Kap",
+      "source_text": "Utos lang ni Kapitan. Sabi niya bilhin ko lahat ng [b]pako[/b], [b]tarp[/b], [b]plywood[/b]... lahat daw kailangan sa barangay.",
+      "current_expression": null,
+      "npc_id": "kaps_worker",
+      "proposed_speaker_id": "kaps_worker",
+      "proposed_expression": "speaking",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "item.utos_lang_ni_kapitan_sabi_niya_bilhin_ko_lahat_n.796ce2d7",
+        "english": "Captain's orders. He told me to buy all the [b]nails[/b], [b]tarps[/b], [b]plywood[/b]... everything the barangay needs.",
+        "tagalog": "Utos lang ni Kapitan. Bilhin ko daw lahat ng [b]pako[/b], [b]tarp[/b], [b]plywood[/b]... lahat ng kailangan sa barangay."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/kaps_worker.tscn",
+      "source_line": 24,
+      "resource_id": "Line2",
+      "speaker_name": "Tauhan ni Kap",
+      "source_text": "Hindi ko na tinanong kung bakit sa bodega niya muna dadalhin. Trabaho lang, iho.",
+      "current_expression": null,
+      "npc_id": "kaps_worker",
+      "proposed_speaker_id": "kaps_worker",
+      "proposed_expression": "defensive",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.hindi_ko_na_tinanong_kung_bakit_sa_bodega_niya_m.8469afec",
+        "english": "I didn't ask why he's taking it to his storage room first. Just doing my job, iho.",
+        "tagalog": "Di ko na tinanong kung bakit sa bodega niya muna dadalhin. Trabaho lang, iho."
+      }
+    },
+    {
+      "source_path": "game/entities/grocery_girl/grocery_girl.tscn",
+      "source_line": 15,
+      "resource_id": "Resource_lix8p",
+      "speaker_name": "Grocery Girl",
+      "source_text": "Oh, ano mga kailangan mo? Bilis, may bagyo na paparating at magsasara na ang [b]grocery[/b].",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "npc_id": "grocery_girl",
+      "proposed_speaker_id": "grocery_girl",
+      "proposed_expression": "urgent",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_hwteu",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "dialogue.oh_ano_mga_kailangan_mo_bilis_may_bagyo_na_papar.d9cc524e",
+        "english": "So, what do you need? Hurry up, the storm's coming and the [b]grocery[/b]'s closing.",
+        "tagalog": "Oh, ano'ng kailangan mo? Dalian mo, may bagyo na at magsasara na ang [b]grocery[/b]."
+      }
+    },
+    {
+      "source_path": "game/entities/grocery_girl/grocery_girl.tscn",
+      "source_line": 22,
+      "resource_id": "Resource_l50sn",
+      "speaker_name": "Player",
+      "source_text": "Ate Linda?? Nagtatrabaho karin pala sa hardware? Paano ka po nakarating dito?!",
+      "current_expression": "res://game/assets/npc_portraits/playerTalking.png",
+      "npc_id": "grocery_girl",
+      "proposed_speaker_id": "player",
+      "proposed_expression": "surprised",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_hwteu",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.ate_linda_nagtatrabaho_karin_pala_sa_hardware_pa.bcb0e7c7",
+        "english": "Ate Linda?? You work at the hardware store too? How'd you even get here?!",
+        "tagalog": "Ate Linda?? Dito ka rin pala nagtatrabaho sa hardware? Pa'no ka po napunta dito?!"
+      }
+    },
+    {
+      "source_path": "game/entities/grocery_girl/grocery_girl.tscn",
+      "source_line": 29,
+      "resource_id": "Resource_sfjle",
+      "speaker_name": "Grocery Girl",
+      "source_text": "Sinong Ate Linda?! kita mo nag tatrabaho ako dito!",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "npc_id": "grocery_girl",
+      "proposed_speaker_id": "grocery_girl",
+      "proposed_expression": "annoyed",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Resource_hwteu",
+          "line_index_zero_based": 2,
+          "export_properties": [
+            "sequence_tindahan_default"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.sinong_ate_linda_kita_mo_nag_tatrabaho_ako_dito.3ddd7805",
+        "english": "Who's Ate Linda?! Can't you see I work here?!",
+        "tagalog": "Sinong Ate Linda?! Hindi ba obvious? Dito ako nagtatrabaho!"
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/palengke_queue_man.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Palengke Queue Man",
+      "source_text": "Kanina pa ako nakapila. Yung iba, doble-doble ang binibili.",
+      "current_expression": null,
+      "npc_id": "queue_man",
+      "proposed_speaker_id": "queue_man",
+      "proposed_expression": "frustrated",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.kanina_pa_ako_nakapila_yung_iba_doble_doble_ang_.266a3c96",
+        "english": "I've been standing in line forever. Some people are buying double.",
+        "tagalog": "Kanina pa ko nakapila. Yung iba, doble-doble ang binibili."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/palengke_queue_man.tscn",
+      "source_line": 24,
+      "resource_id": "Line2",
+      "speaker_name": "Palengke Queue Man",
+      "source_text": "Kung kukuha ka ng [b]de lata[/b], kumuha ka lang ng [b]kaya mong dalhin[/b]. May kasunod ka pa.",
+      "current_expression": null,
+      "npc_id": "queue_man",
+      "proposed_speaker_id": "queue_man",
+      "proposed_expression": "stern",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.kung_kukuha_ka_ng_de_lata_kumuha_ka_lang_ng_kaya.edc3e206",
+        "english": "If you're getting [b]canned goods[/b], only take [b]what you can carry[/b]. There's people behind you.",
+        "tagalog": "Pag kukuha ka ng [b]de lata[/b], yung [b]kaya mo lang dalhin[/b]. May kasunod ka pa."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/panic_buyer.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Panic Buyer",
+      "source_text": "Kailangan ko pa ng lima... hindi, sampu! Paano kung isang linggo walang kuryente?",
+      "current_expression": null,
+      "npc_id": "panic_buyer",
+      "proposed_speaker_id": "panic_buyer",
+      "proposed_expression": "anxious",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.kailangan_ko_pa_ng_lima_hindi_sampu_paano_kung_i.22a0be66",
+        "english": "I need five more... no, ten! What if the power's out for a week?",
+        "tagalog": "Kailangan ko pa ng lima... hindi, sampu! Paano kung isang linggong walang kuryente?"
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/panic_buyer.tscn",
+      "source_line": 24,
+      "resource_id": "Line2",
+      "speaker_name": "Panic Buyer",
+      "source_text": "Wait, may budget pa ba ako? Ayoko tingnan.",
+      "current_expression": null,
+      "npc_id": "panic_buyer",
+      "proposed_speaker_id": "panic_buyer",
+      "proposed_expression": "overwhelmed",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.wait_may_budget_pa_ba_ako_ayoko_tingnan.53bac4f2",
+        "english": "Wait, do I still have enough budget? I don't want to check.",
+        "tagalog": "Wait, may budget pa ba ako? Ayoko tingnan."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/wet_parent.tscn",
+      "source_line": 18,
+      "resource_id": "Line1",
+      "speaker_name": "Nanay sa Palengke",
+      "source_text": "Basa na sapatos ko, pero kailangan pa rin pumila. May bata akong naghihintay sa bahay.",
+      "current_expression": null,
+      "npc_id": "wet_parent",
+      "proposed_speaker_id": "wet_parent",
+      "proposed_expression": "exhausted",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.basa_na_sapatos_ko_pero_kailangan_pa_rin_pumila_.16919b81",
+        "english": "My shoes are soaked, but I still have to stay in line. I've got a kid waiting at home.",
+        "tagalog": "Basa na sapatos ko, pero kailangan ko pa ring pumila. May batang naghihintay sa bahay."
+      }
+    },
+    {
+      "source_path": "game/entities/story_npcs/wet_parent.tscn",
+      "source_line": 24,
+      "resource_id": "Line2",
+      "speaker_name": "Nanay sa Palengke",
+      "source_text": "Kapag may nakuha kang extra, isipin mo rin kung sino pa ang wala.",
+      "current_expression": null,
+      "npc_id": "wet_parent",
+      "proposed_speaker_id": "wet_parent",
+      "proposed_expression": "compassionate",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "Sequence",
+          "line_index_zero_based": 1,
+          "export_properties": [
+            "default_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.kapag_may_nakuha_kang_extra_isipin_mo_rin_kung_s.54d58d95",
+        "english": "If you get anything extra, think about who still has none.",
+        "tagalog": "Pag may nakuha kang extra, isipin mo rin kung sino pa ang wala."
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/money_beggar.tscn",
+      "source_line": 18,
+      "resource_id": "AskLine",
+      "speaker_name": "Stranger",
+      "source_text": "Pasensya na. Kulang pamasahe ko pauwi. May maiaabot ka bang konti?",
+      "current_expression": null,
+      "npc_id": "stranger",
+      "proposed_speaker_id": "stranger",
+      "proposed_expression": "pleading",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "AskSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "ask_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.pasensya_na_kulang_pamasahe_ko_pauwi_may_maiaabo.c9424559",
+        "english": "Sorry. I'm short on fare to get home. Could you spare a little?",
+        "tagalog": "Pasensya na po. Kulang pamasahe ko pauwi. Pwede bang makahingi ng konti?"
+      }
+    },
+    {
+      "source_path": "game/entities/quest_npcs/money_beggar.tscn",
+      "source_line": 29,
+      "resource_id": "ThanksLine",
+      "speaker_name": "Stranger",
+      "source_text": "Salamat. Hindi ko makakalimutan 'to.",
+      "current_expression": null,
+      "npc_id": "stranger",
+      "proposed_speaker_id": "stranger",
+      "proposed_expression": "grateful",
+      "sequence_bindings": [
+        {
+          "sequence_resource_id": "ThanksSequence",
+          "line_index_zero_based": 0,
+          "export_properties": [
+            "thanked_sequence"
+          ]
+        }
+      ],
+      "status": "active_authored",
+      "review_note": null,
+      "localization": {
+        "key": "ui.salamat_hindi_ko_makakalimutan_to.4940ab4a",
+        "english": "Thank you. I won't forget this.",
+        "tagalog": "Salamat. Hindi ko makakalimutan 'to."
+      }
+    }
+  ],
+  "legacy_or_unreferenced_lines": [
+    {
+      "source_path": "game/entities/dialogues/ate_linda/lines/ate_linda_line1.tres",
+      "source_line": 6,
+      "resource_id": "resource",
+      "speaker_name": "Ate Linda",
+      "source_text": "Ano ho yun?",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/ate_linda/lines/ate_linda_line2.tres",
+      "source_line": 6,
+      "resource_id": "resource",
+      "speaker_name": "Player",
+      "source_text": "bibili po sana ako hehe... bukas po ba kayo?",
+      "current_expression": "res://game/assets/images/o.png",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/ate_linda/lines/ate_linda_line3.tres",
+      "source_line": 6,
+      "resource_id": "resource",
+      "speaker_name": "Ate linda",
+      "source_text": "Oo iho pili ka lang",
+      "current_expression": "res://game/assets/ate_linda_placeholder.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/nanay/lines/nanay_line1.tres",
+      "source_line": 6,
+      "resource_id": "resource",
+      "speaker_name": "Nanay",
+      "source_text": "Anak, yung [b]bubong sa sala[/b]... [i]nag-aalala na ko dun.[/i]",
+      "current_expression": "res://game/assets/images/onanay.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/nanay/lines/nanay_line2.tres",
+      "source_line": 6,
+      "resource_id": "resource",
+      "speaker_name": "OHNanay",
+      "source_text": "Ano ba yan nak. naku",
+      "current_expression": "res://game/assets/images/onanay.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/nanay/lines/nanay_line3.tres",
+      "source_line": 6,
+      "resource_id": "resource",
+      "speaker_name": "OHNANAY",
+      "source_text": "Nak, ikaw na mag-ayos ng [b]bubong[/b]. Salamat, nak.",
+      "current_expression": "res://game/assets/images/onanay.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/nanay/sequences/nanay_seq_act1_default.tres",
+      "source_line": 9,
+      "resource_id": "Resource_fm2ve",
+      "speaker_name": "Player",
+      "source_text": "bakit po inay",
+      "current_expression": "res://game/assets/images/chris.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/dialogues/nanay/sequences/nanay_seq_after_roof_found.tres",
+      "source_line": 8,
+      "resource_id": "Resource_7lbd4",
+      "speaker_name": "Player",
+      "source_text": "ano ba naman yan ma jusq",
+      "current_expression": "res://game/assets/images/chris.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/npc/npc.tscn",
+      "source_line": 14,
+      "resource_id": "Resource_78a3a",
+      "speaker_name": "Chris",
+      "source_text": "hi hello heeello",
+      "current_expression": "res://game/assets/images/chris.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/npc/npc.tscn",
+      "source_line": 21,
+      "resource_id": "Resource_2oq6d",
+      "speaker_name": "Wews",
+      "source_text": "yes hola?",
+      "current_expression": "res://game/assets/images/o.png",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/npc/npc.tscn",
+      "source_line": 28,
+      "resource_id": "Resource_1vq1q",
+      "speaker_name": "Chris",
+      "source_text": "wala man hehe",
+      "current_expression": "res://game/assets/images/chris.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    },
+    {
+      "source_path": "game/entities/npc/npc.tscn",
+      "source_line": 35,
+      "resource_id": "Resource_b2scn",
+      "speaker_name": "Chris na malungkot",
+      "source_text": "Miss ko na kasi siya...",
+      "current_expression": "res://game/assets/images/chris.jpg",
+      "status": "legacy_or_unreferenced",
+      "integration": "Do not change without confirming reachability"
+    }
+  ],
+  "localized_active_line_count": 64
+}

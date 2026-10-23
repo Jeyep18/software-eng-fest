@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Map cloud preview</title>
+<style>body{margin:0;background:#121917;color:#e8e6d9;font:16px system-ui}header{padding:16px 24px}label{display:flex;align-items:center;gap:16px}input{width:300px}svg{display:block;width:100%;max-height:85vh}p{margin:8px 0;color:#b8c3bb}</style>
+<header><label>Storm coverage <input aria-label="Storm coverage" id="progress" type="range" min="0" max="100" value="70"><output id="amount">70%</output><button id="pause">Pause motion</button></label><p>Appearance preview only. Underlying map is the supplied screenshot; slider demonstrates cloud coverage, not live game time.</p></header>
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="soft"><feGaussianBlur stdDeviation="13"/></filter><mask id="safe" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><rect width="1920" height="1080" fill="white"/><g fill="black" filter="url(#soft)">
+<rect x="0" y="0" width="530" height="285"/><rect x="1410" y="0" width="510" height="205"/>
+<rect x="125" y="860" width="400" height="165"/><rect x="1320" y="935" width="600" height="120"/>
+<rect x="1470" y="395" width="435" height="260"/>
+<ellipse cx="610" cy="449" rx="132" ry="146"/><ellipse cx="937" cy="487" rx="150" ry="159"/>
+<ellipse cx="1255" cy="500" rx="147" ry="160"/><ellipse cx="1125" cy="715" rx="150" ry="155"/><ellipse cx="1380" cy="710" rx="140" ry="151"/>
+</g></mask></defs>
+<image href="map_reference.png" width="1920" height="1080"/>
+<g mask="url(#safe)" style="pointer-events:none">
+<image id="left" href="cloud_bank_left.png" width="900" height="1200" preserveAspectRatio="none"/>
+<image id="right" href="cloud_bank_right.png" width="900" height="1200" preserveAspectRatio="none"/>
+<image id="a" href="cloud_drift_a.png" x="470" y="80" width="620" height="207" opacity=".25"/>
+<image id="b" href="cloud_drift_b.png" x="360" y="760" width="620" height="310" opacity=".22"/>
+</g></svg>
+<script>
+const p=document.querySelector('#progress'),o=document.querySelector('#amount'),l=document.querySelector('#left'),r=document.querySelector('#right'),a=document.querySelector('#a'),b=document.querySelector('#b');
+let paused=false,t=0,last=performance.now();document.querySelector('#pause').onclick=e=>{paused=!paused;e.target.textContent=paused?'Resume motion':'Pause motion'};
+function frame(now){if(!paused)t+=(now-last)/1000;last=now;const q=Number(p.value)/100,s=q*q*(3-2*q);o.value=p.value+'%';l.setAttribute('x',-870+780*s+8*Math.sin(t*.12));l.setAttribute('y',-55+7*Math.sin(t*.09));l.setAttribute('opacity',.2+.68*s);r.setAttribute('x',1870-760*s+9*Math.sin(t*.11+1));r.setAttribute('y',-60+8*Math.sin(t*.1+2));r.setAttribute('opacity',.25+.7*s);a.setAttribute('transform','translate('+Math.sin(t*.13)*20+' '+Math.sin(t*.1)*7+')');b.setAttribute('transform','translate('+Math.sin(t*.1+2)*24+' '+Math.sin(t*.12)*8+')');requestAnimationFrame(frame)}requestAnimationFrame(frame);
+</script></html>

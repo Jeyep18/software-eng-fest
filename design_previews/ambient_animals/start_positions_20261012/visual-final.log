@@ -1,0 +1,16 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+Vulkan 1.4.351 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4050 Laptop GPU
+
+ANIMAL_VISUAL grocery_WalkingCat_high_vhs_false frustum=true visible_pixels=1728
+ANIMAL_VISUAL grocery_WanderingDog_high_vhs_false frustum=true visible_pixels=27237
+ANIMAL_VISUAL grocery_WalkingCat_high_vhs_true frustum=true visible_pixels=-1
+ANIMAL_VISUAL grocery_WanderingDog_high_vhs_true frustum=true visible_pixels=-1
+ANIMAL_VISUAL grocery_WalkingCat_performance_vhs_false frustum=true visible_pixels=1821
+ANIMAL_VISUAL grocery_WanderingDog_performance_vhs_false frustum=true visible_pixels=27331
+ANIMAL_VISUAL grocery_WalkingCat_performance_vhs_true frustum=true visible_pixels=-1
+ANIMAL_VISUAL grocery_WanderingDog_performance_vhs_true frustum=true visible_pixels=-1
+ANIMAL_VISUAL tindahan_WalkingDog_high_vhs_false frustum=true visible_pixels=17004
+ANIMAL_VISUAL tindahan_WalkingDog_high_vhs_true frustum=true visible_pixels=-1
+ANIMAL_VISUAL tindahan_WalkingDog_performance_vhs_false frustum=true visible_pixels=16949
+ANIMAL_VISUAL tindahan_WalkingDog_performance_vhs_true frustum=true visible_pixels=-1
+Animal camera probes: 12 captures, 0 visibility failures

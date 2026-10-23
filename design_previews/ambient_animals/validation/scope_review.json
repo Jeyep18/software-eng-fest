@@ -1,0 +1,70 @@
+{
+  "game/scenes/locations/grocery.tscn": {
+    "baseline_preserved": true,
+    "added_lines": 17,
+    "removed_lines": 0
+  },
+  "game/scenes/locations/tindahan.tscn": {
+    "baseline_preserved": true,
+    "added_lines": 12,
+    "removed_lines": 0
+  },
+  "docs/ARCHITECTURE.md": {
+    "baseline_preserved": true,
+    "added_lines": 6
+  },
+  "docs/DEVELOPMENT.md": {
+    "baseline_preserved": true,
+    "added_lines": 4
+  },
+  "docs/GAME_DESIGN.md": {
+    "baseline_preserved": true,
+    "added_lines": 4
+  },
+  "docs/TESTING.md": {
+    "baseline_preserved": true,
+    "added_lines": 30,
+    "utf8_valid": true
+  },
+  "cat.glb": {
+    "matches_approved_export": true,
+    "sha256": "258cb4a477a991347e839a428716a50ce427812508b470f624c30c43c2c85765"
+  },
+  "dog.glb": {
+    "matches_approved_export": true,
+    "sha256": "23920e47a6e67c1ba9001c69069efed75778ad4ce9df28e072e39efdabd6af59"
+  },
+  "cat_ginger.png": {
+    "matches_approved_export": true,
+    "sha256": "81032979677cc6d85eea62364787ae72a942b64d4e2526bb1a7678cf7471adb7"
+  },
+  "cat_gray.png": {
+    "matches_approved_export": true,
+    "sha256": "c6f0c0ecefd81b7faf108fc7a949f982a0972f6e6ed4c6b679e1873053e8e3a2"
+  },
+  "cat_cream.png": {
+    "matches_approved_export": true,
+    "sha256": "7b22bb63215a7b9758c3f3c206906a0ee529fb27981a75b9192a7f3ae5bb5ea5"
+  },
+  "dog_charcoal.png": {
+    "matches_approved_export": true,
+    "sha256": "e161092e90b6d3744c6408e28d0346bfd3717e4181b910b95f75adee699c373b"
+  },
+  "dog_brown.png": {
+    "matches_approved_export": true,
+    "sha256": "1bcc7aa1ef792357d5e82a53f71d814badf0b2acb7449dc7b46ac81e6f8a65a3"
+  },
+  "dog_tan.png": {
+    "matches_approved_export": true,
+    "sha256": "5984f309614cf4fb125911be20df845251702072416e8dcfd4347623edab221e"
+  },
+  "native_script_uids": {
+    "ambient_controller": true,
+    "asset_import": true,
+    "regression": true
+  },
+  "final_logs": {
+    "parser_script_assertion_failures": 0,
+    "known_headless_shutdown_warnings_retained": true
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "common": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60–65% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3–5 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.",
+  "first_six_characters": [
+    {
+      "id": "nanay",
+      "model": "Nanay",
+      "name": "Nanay",
+      "identity": "Mother, adult woman; copper/auburn swept-back shoulder-length hair with long side strands, light-medium warm tan skin, dark charcoal plain crew-neck tee. No eyeglasses or earrings: use actual model rather than earlier purple illustrated portrait.",
+      "background": "quiet dark olive home wall, broad window/curtain, muted storm light"
+    },
+    {
+      "id": "lola",
+      "model": "Lola",
+      "name": "Lola",
+      "identity": "Elderly grandmother, short neatly combed silver-grey hair, age lines around eyes/mouth, warm light tan skin, pale desaturated blue cardigan/blazer over ivory top. No glasses, necklace, or brooch: match actual model rather than older sketch reference.",
+      "background": "quiet home room, broad grey window and dull sage yard shape"
+    },
+    {
+      "id": "ate_linda",
+      "model": "AteLinda",
+      "name": "Ate Linda",
+      "identity": "Adult woman with straight chin-length dark blonde/ochre bob parted to the side, light warm tan skin, white-and-grey broad check/block shirt. Match the shared actual shop model; no glasses. Facial proportions can be adult and angular; no teen face.",
+      "background": "tindahan stall, desaturated teal counter edge and muted tin/wood shelving, few broad blocks"
+    },
+    {
+      "id": "hardware_girl",
+      "model": "HardwareGirl",
+      "name": "Hardware Girl",
+      "identity": "Adult woman, straight chin-length dark blonde/ochre side-part bob, light warm tan skin, white/grey broad check/block short-sleeved shirt. She shares a3D model with AteLinda/GroceryGirl; preserve that shared silhouette and clothes. No added helmet/apron/glasses.",
+      "background": "hardware interior, broad weathered plywood planks and dark charcoal shelf geometry, dull amber small edge"
+    },
+    {
+      "id": "grocery_girl",
+      "model": "GroceryGirl",
+      "name": "Grocery Girl",
+      "identity": "Adult woman, chin-length dark blonde/ochre side-parted bob, light warm tan skin, white/grey broad check/block shirt. Same shared model silhouette as shop staff, do not invent another hair color or outfit. No eyewear/accessories.",
+      "background": "grocery interior, broad sea-green shelves with abstract muted canned/carton blocks, no lettering"
+    },
+    {
+      "id": "chooks_seller",
+      "model": "ChooksSeller",
+      "name": "Tindero",
+      "identity": "Older bald male vendor with small grey side fringe, medium-dark brown skin, broad face, a few mature smile lines, plain muted blue short-sleeved henley with small button placket. No added cap, apron, cigarette or jewelry.",
+      "background": "chicken shop, quiet charcoal counter and faded warm red wall panel with muted grey rain-lit rectangle"
+    }
+  ]
+}

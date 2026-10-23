@@ -1,0 +1,396 @@
+[
+  {
+    "id": "nanay",
+    "speaker_name": "Nanay",
+    "location": "home",
+    "scene_path": "game/entities/nanay/nanay.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/nanay.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/nanay/nanay1.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "concerned",
+      "urgent"
+    ],
+    "active_authored_line_count": 14,
+    "reachability": "Instanced by SceneManager destination home"
+  },
+  {
+    "id": "lola",
+    "speaker_name": "Lola",
+    "location": "home",
+    "scene_path": "game/entities/lola/lola.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/Lola.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/lola/lola.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "concerned",
+      "relieved"
+    ],
+    "active_authored_line_count": 11,
+    "reachability": "Instanced by SceneManager destination home"
+  },
+  {
+    "id": "ate_linda",
+    "speaker_name": "Ate Linda",
+    "location": "tindahan",
+    "scene_path": "game/entities/ate_linda_npc/ate_linda.tscn",
+    "model_paths": [
+      "res://game/assets/models/nanay_model.tscn"
+    ],
+    "script_paths": [
+      "res://game/entities/ate_linda_npc/AteLindaQuestShop.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "apologetic",
+      "grateful"
+    ],
+    "active_authored_line_count": 5,
+    "reachability": "Instanced by SceneManager destination tindahan"
+  },
+  {
+    "id": "mang_nestor",
+    "speaker_name": "Mang Nestor",
+    "location": "tindahan",
+    "scene_path": "game/entities/quest_npcs/mang_nestor.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/MangNestor.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/quest_npcs/MangNestor.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "hopeful",
+      "grateful",
+      "concerned"
+    ],
+    "active_authored_line_count": 7,
+    "reachability": "Instanced by SceneManager destination tindahan"
+  },
+  {
+    "id": "tape_neighbor",
+    "speaker_name": "Kapitbahay",
+    "location": "tindahan",
+    "scene_path": "game/entities/story_npcs/tape_neighbor.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/TapeNeighbor.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "uncertain"
+    ],
+    "active_authored_line_count": 1,
+    "reachability": "Instanced by SceneManager destination tindahan"
+  },
+  {
+    "id": "smoke_break",
+    "speaker_name": "Tambay",
+    "location": "tindahan",
+    "scene_path": "game/entities/quest_npcs/smoke_break_npc.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/SmokeBreakNPC.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/quest_npcs/SmokeBreakNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "coaxing",
+      "concerned"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination tindahan"
+  },
+  {
+    "id": "pharmacist",
+    "speaker_name": "Pharmacy Boy",
+    "location": "pharmacy",
+    "scene_path": "game/entities/pharmacist/pharma_dude.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/PharmaDude.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/pharmacist/pharmadude.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking"
+    ],
+    "active_authored_line_count": 1,
+    "reachability": "Instanced by SceneManager destination pharmacy"
+  },
+  {
+    "id": "chooks_seller",
+    "speaker_name": "Tindero",
+    "location": "pharmacy",
+    "scene_path": "game/entities/chooks_to_go_seller.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/ChooksToGoSeller.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/ChooksToGo.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "cheerful"
+    ],
+    "active_authored_line_count": 3,
+    "reachability": "Instanced by SceneManager destination pharmacy"
+  },
+  {
+    "id": "ate_maribel",
+    "speaker_name": "Ate Maribel",
+    "location": "pharmacy",
+    "scene_path": "game/entities/story_npcs/ate_maribel.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/AteMaribel.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "amused"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination pharmacy"
+  },
+  {
+    "id": "hardware_girl",
+    "speaker_name": "Hardware Girl",
+    "location": "hardware",
+    "scene_path": "game/entities/hardware_girl/hardware_girl.tscn",
+    "model_paths": [
+      "res://game/assets/models/nanay_model.tscn"
+    ],
+    "script_paths": [
+      "res://game/entities/hardware_girl/hardwaregirl.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "weary",
+      "helpful"
+    ],
+    "active_authored_line_count": 3,
+    "reachability": "Instanced by SceneManager destination hardware"
+  },
+  {
+    "id": "tatay_jun",
+    "speaker_name": "Tatay Jun",
+    "location": "hardware",
+    "scene_path": "game/entities/story_npcs/tatay_jun.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/TatayJun.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "amused",
+      "concerned"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination hardware"
+  },
+  {
+    "id": "kaps_worker",
+    "speaker_name": "Tauhan ni Kap",
+    "location": "hardware",
+    "scene_path": "game/entities/story_npcs/kaps_worker.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/KapsWorker.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "defensive"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination hardware"
+  },
+  {
+    "id": "grocery_girl",
+    "speaker_name": "Grocery Girl",
+    "location": "grocery",
+    "scene_path": "game/entities/grocery_girl/grocery_girl.tscn",
+    "model_paths": [
+      "res://game/assets/models/nanay_model.tscn"
+    ],
+    "script_paths": [
+      "res://game/entities/grocery_girl/grocerygirl.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "urgent",
+      "annoyed"
+    ],
+    "active_authored_line_count": 3,
+    "reachability": "Instanced by SceneManager destination grocery"
+  },
+  {
+    "id": "queue_man",
+    "speaker_name": "Palengke Queue Man",
+    "location": "grocery",
+    "scene_path": "game/entities/story_npcs/palengke_queue_man.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/PalengkeQueueMan.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "frustrated",
+      "stern"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination grocery"
+  },
+  {
+    "id": "panic_buyer",
+    "speaker_name": "Panic Buyer",
+    "location": "grocery",
+    "scene_path": "game/entities/story_npcs/panic_buyer.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/PanicBuyer.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "anxious",
+      "overwhelmed"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination grocery"
+  },
+  {
+    "id": "wet_parent",
+    "speaker_name": "Nanay sa Palengke",
+    "location": "grocery",
+    "scene_path": "game/entities/story_npcs/wet_parent.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/WetParent.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/npc/StoryNPC.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "exhausted",
+      "compassionate"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination grocery"
+  },
+  {
+    "id": "stranger",
+    "speaker_name": "Stranger",
+    "location": "grocery",
+    "scene_path": "game/entities/quest_npcs/money_beggar.tscn",
+    "model_paths": [
+      "res://_raw_assets/npc_assets/psx_animated/MoneyBeggar.glb"
+    ],
+    "script_paths": [
+      "res://game/entities/quest_npcs/MoneyBeggar.gd",
+      "res://game/entities/npc/dialogueLine.gd",
+      "res://game/entities/npc/dialogueSequence.gd",
+      "res://game/entities/npc/PSXNPCAnimation.gd"
+    ],
+    "expressions": [
+      "neutral",
+      "speaking",
+      "pleading",
+      "grateful"
+    ],
+    "active_authored_line_count": 2,
+    "reachability": "Instanced by SceneManager destination grocery"
+  },
+  {
+    "id": "player",
+    "speaker_name": "Player",
+    "scene_path": "game/entities/playerv2/playerv_2.tscn",
+    "expressions": [
+      "neutral",
+      "speaking",
+      "thinking",
+      "surprised",
+      "determined"
+    ],
+    "active_authored_line_count": 7,
+    "note": "Add glasses to every state. Shared inner-dialogue scene currently binds playerInnerThoughts.png, covering item/task/narrative monologues."
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "file": "01_living_dining_normal_godot.png",
+    "resolution": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "file": "01_living_dining_wrecked_godot.png",
+    "resolution": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "file": "02_reverse_living_normal_godot.png",
+    "resolution": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "file": "02_reverse_living_wrecked_godot.png",
+    "resolution": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "file": "03_bedroom_normal_godot.png",
+    "resolution": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "file": "03_bedroom_wrecked_godot.png",
+    "resolution": [
+      1920,
+      1080
+    ]
+  }
+]

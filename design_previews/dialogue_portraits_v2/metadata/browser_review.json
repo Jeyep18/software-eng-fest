@@ -1,0 +1,32 @@
+{
+  "status": "reviewed_in_browser_not_integrated",
+  "url": "http://127.0.0.1:8766/preview.html",
+  "character_sections": 18,
+  "main_gallery_image_elements": 170,
+  "broken_images_after_load": 0,
+  "pending_images_after_load": 0,
+  "player_sheet_image_elements": 6,
+  "player_sheet_display_widths": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+  ],
+  "checked_interactions": [
+    "Cast overview loaded all18 neutral portraits",
+    "Player expression sheet showed five glasses portraits and model reference",
+    "Ate Linda expanded library and proposed expressions alongside five bilingual active lines",
+    "Full-resolution PNG links and local gallery targets independently audited"
+  ],
+  "screenshots": [
+    "cast_review.jpg",
+    "player_review.jpg",
+    "store_dialogue_review.jpg"
+  ],
+  "limitations": [
+    "Full-page browser capture unavailable; saved viewport captures.",
+    "Browser review does not prove Godot imports, postprocessing, or live dialogue transitions."
+  ]
+}

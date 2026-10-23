@@ -1,0 +1,62 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+
+MILESTONE1 PASS explicit isolated userdata path supplied (BAGYONG_ISOLATED_SMOKE)
+MILESTONE1 PASS engine uses normal timing
+MILESTONE1 PASS live labels still localize after temporary UI removal
+MILESTONE1 PASS intro reaches skippable narrative
+MILESTONE1 PASS intro skip reaches menu
+MILESTONE1 PASS difficulty selector opens
+MILESTONE1 PASS new run reaches home
+MILESTONE1 PASS startup tutorial appears after stand-up
+MILESTONE1 PASS tutorial pauses the scene tree
+MILESTONE1 PASS tutorial dismissal restores player input
+MILESTONE1 PASS new run clock is active
+MILESTONE1 PASS dialogue opens and pauses clock: Area3D
+MILESTONE1 PASS dialogue closes: Area3D
+MILESTONE1 PASS Nanay unlocks tasks and grants cash
+MILESTONE1 PASS dialogue opens and pauses clock: Area3D
+MILESTONE1 PASS dialogue closes: Area3D
+MILESTONE1 PASS Lola discovers medicine need
+MILESTONE1 PASS NPC dialogue releases clock pause
+MILESTONE1 PASS map leaves clock running
+MILESTONE1 PASS backpack closes map and leaves clock running
+MILESTONE1 PASS travel completes: ate_linda
+MILESTONE1 PASS Tindahan spawn has supporting collision
+MILESTONE1 PASS dialogue opens and pauses clock: Area3D
+MILESTONE1 PASS dialogue closes: Area3D
+MILESTONE1 PASS Ate Linda dialogue opens the shop
+MILESTONE1 PASS medicine purchased from Ate Linda
+MILESTONE1 PASS travel completes: hardware
+MILESTONE1 PASS hardware shop opens and pauses clock
+MILESTONE1 PASS purchase updates inventory, cash and stock
+MILESTONE1 PASS shop close releases clock pause
+MILESTONE1 PASS travel completes: home
+MILESTONE1 PASS return home consumes spawn marker
+MILESTONE1 PASS dialogue opens and pauses clock: MedicineTask
+MILESTONE1 PASS dialogue closes: MedicineTask
+TaskObject: Completed - Gamot ni Lola — medicine needed | Burst cost: 3 min
+MILESTONE1 PASS medicine task completion finishes
+MILESTONE1 PASS completed task resolves need and consumes medicine
+MILESTONE1 PASS dialogue opens and pauses clock: MedicineTask
+MILESTONE1 PASS dialogue closes: MedicineTask
+MILESTONE1 PASS repeated task interaction does not repeat completion
+MILESTONE1 PASS pause menu suspends scene tree
+MILESTONE1 PASS pause restart replaces home scene
+MILESTONE1 PASS startup tutorial appears after stand-up
+MILESTONE1 PASS tutorial pauses the scene tree
+MILESTONE1 PASS tutorial dismissal restores player input
+MILESTONE1 PASS restart resets run state and resumes clock
+MILESTONE1 PASS storm reaches ending
+MILESTONE1 PASS ending waits on visible score before name prompt
+MILESTONE1 PASS score remains readable until player continues
+MILESTONE1 PASS continue opens score name prompt
+MILESTONE1 PASS score submission returns to menu
+MILESTONE1 PASS difficulty selector opens
+MILESTONE1 PASS new run reaches home
+MILESTONE1 PASS startup tutorial appears after stand-up
+MILESTONE1 PASS tutorial pauses the scene tree
+MILESTONE1 PASS tutorial dismissal restores player input
+MILESTONE1 PASS post-ending second run starts clean with active clock
+Milestone 1 smoke: 56 checks, 0 failures
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)

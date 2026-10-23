@@ -1,0 +1,1450 @@
+{
+  "characters": {
+    "AteMaribel": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "AteMaribel_BagHandle": {
+          "max": [
+            0.255322813987732,
+            0.861874997615814,
+            0.0525949820876122
+          ],
+          "min": [
+            0.162870466709137,
+            0.760207176208496,
+            0.0425949543714523
+          ]
+        },
+        "AteMaribel_BagHandle.001": {
+          "max": [
+            0.340322911739349,
+            0.861875116825104,
+            0.0525949709117413
+          ],
+          "min": [
+            0.24787050485611,
+            0.760207176208496,
+            0.0425949543714523
+          ]
+        },
+        "AteMaribel_BagL": {
+          "max": [
+            0.366596579551697,
+            0.763541221618652,
+            0.112595044076443
+          ],
+          "min": [
+            0.1365966796875,
+            0.493541300296783,
+            -0.0174049735069275
+          ]
+        },
+        "AteMaribel_Body": {
+          "max": [
+            0.294771254062653,
+            1.61557948589325,
+            0.154205530881882
+          ],
+          "min": [
+            -0.262202829122543,
+            -0.000000266583896291195,
+            -0.130332723259926
+          ]
+        },
+        "AteMaribel_KneeLengthSkirt": {
+          "max": [
+            0.23489636182785,
+            1.04489994049072,
+            0.170097798109055
+          ],
+          "min": [
+            -0.23489636182785,
+            0.485992431640625,
+            -0.17009699344635
+          ]
+        },
+        "AteMaribel_SandalStrap_L": {
+          "max": [
+            0.0719074234366417,
+            0.0544927939772606,
+            0.0803856551647186
+          ],
+          "min": [
+            0.0240005515515804,
+            0.0355245918035507,
+            0.00883885938674212
+          ]
+        },
+        "AteMaribel_SandalStrap_L.001": {
+          "max": [
+            0.10754755884409,
+            0.0544927939772606,
+            0.0803856253623962
+          ],
+          "min": [
+            0.0596404001116753,
+            0.0355245918035507,
+            0.0088387243449688
+          ]
+        },
+        "AteMaribel_SandalStrap_R": {
+          "max": [
+            -0.0596404001116753,
+            0.0544927939772606,
+            0.0803856253623962
+          ],
+          "min": [
+            -0.10754755884409,
+            0.0355245918035507,
+            0.0088387243449688
+          ]
+        },
+        "AteMaribel_SandalStrap_R.001": {
+          "max": [
+            -0.0240005515515804,
+            0.0544927939772606,
+            0.0803856551647186
+          ],
+          "min": [
+            -0.0719074234366417,
+            0.0355245918035507,
+            0.00883885938674212
+          ]
+        }
+      },
+      "max_matrix_error": 0.00000124624453046174,
+      "meshes": {
+        "AteMaribel_BagHandle": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_BagHandle.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_BagL": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_Body": {
+          "imported_vertices": 972,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_KneeLengthSkirt": {
+          "imported_vertices": 108,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_SandalStrap_L": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_SandalStrap_L.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_SandalStrap_R": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "AteMaribel_SandalStrap_R.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "KapsWorker": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "KapsWorker_Body": {
+          "max": [
+            0.295651972293854,
+            1.80000007152557,
+            0.390033364295959
+          ],
+          "min": [
+            -0.345282346010208,
+            -0.00000051003553380724,
+            -0.177771255373955
+          ]
+        },
+        "KapsWorker_GroundBundleTie": {
+          "max": [
+            0.248999997973442,
+            0.333000004291534,
+            0.10249999165535
+          ],
+          "min": [
+            0.230999991297722,
+            0.0,
+            -0.182500004768372
+          ]
+        },
+        "KapsWorker_GroundBundleTie.001": {
+          "max": [
+            0.449000000953674,
+            0.333000004291534,
+            0.10249999165535
+          ],
+          "min": [
+            0.430999994277954,
+            0.0,
+            -0.182500004768372
+          ]
+        },
+        "KapsWorker_GroundSupplyBundle": {
+          "max": [
+            0.490000009536743,
+            0.323499977588654,
+            0.0949999988079071
+          ],
+          "min": [
+            0.189999997615814,
+            0.00349999964237213,
+            -0.175000011920929
+          ]
+        },
+        "KapsWorker_PurchaseList": {
+          "max": [
+            0.179436981678009,
+            1.24304270744324,
+            0.330903649330139
+          ],
+          "min": [
+            0.0894368886947632,
+            1.11304259300232,
+            0.305903434753418
+          ]
+        },
+        "KapsWorker_PurchaseListMark": {
+          "max": [
+            0.160436928272247,
+            1.20204257965088,
+            0.335403501987457
+          ],
+          "min": [
+            0.108436852693558,
+            1.18404245376587,
+            0.333403468132019
+          ]
+        }
+      },
+      "max_matrix_error": 0.000000810342972917821,
+      "meshes": {
+        "KapsWorker_Body": {
+          "imported_vertices": 736,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "KapsWorker_GroundBundleTie": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.00000000745058059692383,
+          "weight_mismatches": 0
+        },
+        "KapsWorker_GroundBundleTie.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.00000000745058059692383,
+          "weight_mismatches": 0
+        },
+        "KapsWorker_GroundSupplyBundle": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.00000000745058059692383,
+          "weight_mismatches": 0
+        },
+        "KapsWorker_PurchaseList": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "KapsWorker_PurchaseListMark": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "MangNestor": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "MangNestor_Body": {
+          "max": [
+            0.293050229549408,
+            1.72214436531067,
+            0.249008059501648
+          ],
+          "min": [
+            -0.293535441160202,
+            -0.000000306946105865791,
+            -0.179327487945557
+          ]
+        },
+        "MangNestor_SandalStrap_L": {
+          "max": [
+            0.103251270949841,
+            0.0798628404736519,
+            0.053612194955349
+          ],
+          "min": [
+            0.0531443953514099,
+            0.0608910359442234,
+            -0.0219346396625042
+          ]
+        },
+        "MangNestor_SandalStrap_L.001": {
+          "max": [
+            0.141091406345367,
+            0.0798628404736519,
+            0.053612157702446
+          ],
+          "min": [
+            0.0909842550754547,
+            0.0608910359442234,
+            -0.0219347793608904
+          ]
+        },
+        "MangNestor_SandalStrap_R": {
+          "max": [
+            -0.0909842550754547,
+            0.0798628404736519,
+            0.053612157702446
+          ],
+          "min": [
+            -0.141091406345367,
+            0.0608910359442234,
+            -0.0219347793608904
+          ]
+        },
+        "MangNestor_SandalStrap_R.001": {
+          "max": [
+            -0.0531443953514099,
+            0.0798628404736519,
+            0.053612194955349
+          ],
+          "min": [
+            -0.103251270949841,
+            0.0608910359442234,
+            -0.0219346396625042
+          ]
+        }
+      },
+      "max_matrix_error": 0.000000695996384747488,
+      "meshes": {
+        "MangNestor_Body": {
+          "imported_vertices": 776,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MangNestor_SandalStrap_L": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MangNestor_SandalStrap_L.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MangNestor_SandalStrap_R": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MangNestor_SandalStrap_R.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "MoneyBeggar": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "MoneyBeggar_BagHandle": {
+          "max": [
+            0.493726193904877,
+            0.368333995342255,
+            -0.0749999955296516
+          ],
+          "min": [
+            0.401273757219315,
+            0.266666054725647,
+            -0.0850000008940697
+          ]
+        },
+        "MoneyBeggar_BagHandle.001": {
+          "max": [
+            0.578726232051849,
+            0.368333995342255,
+            -0.0749999955296516
+          ],
+          "min": [
+            0.486273765563965,
+            0.266666054725647,
+            -0.0850000008940697
+          ]
+        },
+        "MoneyBeggar_Body": {
+          "max": [
+            0.396287143230438,
+            0.877992391586304,
+            0.682721853256226
+          ],
+          "min": [
+            -0.327567577362061,
+            -0.0495787858963013,
+            -0.177218779921532
+          ]
+        },
+        "MoneyBeggar_GroundBag": {
+          "max": [
+            0.605000019073486,
+            0.270000010728836,
+            -0.0150000005960464
+          ],
+          "min": [
+            0.374999970197678,
+            0.0,
+            -0.144999995827675
+          ]
+        },
+        "MoneyBeggar_SandalStrap": {
+          "max": [
+            0.265541762113571,
+            0.105963155627251,
+            0.575088977813721
+          ],
+          "min": [
+            0.229870140552521,
+            0.0877717286348343,
+            0.523935854434967
+          ]
+        },
+        "MoneyBeggar_SandalStrap.001": {
+          "max": [
+            0.29254150390625,
+            0.105963155627251,
+            0.575088977813721
+          ],
+          "min": [
+            0.256870657205582,
+            0.0877712517976761,
+            0.523935914039612
+          ]
+        },
+        "MoneyBeggar_SandalStrap.002": {
+          "max": [
+            -0.256870657205582,
+            0.105963155627251,
+            0.575088977813721
+          ],
+          "min": [
+            -0.29254150390625,
+            0.0877712517976761,
+            0.523935914039612
+          ]
+        },
+        "MoneyBeggar_SandalStrap.003": {
+          "max": [
+            -0.229870140552521,
+            0.105963155627251,
+            0.575088977813721
+          ],
+          "min": [
+            -0.265541762113571,
+            0.0877717286348343,
+            0.523935854434967
+          ]
+        }
+      },
+      "max_matrix_error": 0.00000124901198086946,
+      "meshes": {
+        "MoneyBeggar_BagHandle": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0000017192608239479,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_BagHandle.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.00000150789149292392,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_Body": {
+          "imported_vertices": 778,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_GroundBag": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_SandalStrap": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_SandalStrap.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_SandalStrap.002": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "MoneyBeggar_SandalStrap.003": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 592
+    },
+    "PalengkeQueueMan": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "PalengkeQueueMan_BagHandle": {
+          "max": [
+            0.323726207017899,
+            0.368333995342255,
+            -0.0350000001490116
+          ],
+          "min": [
+            0.231273785233498,
+            0.266666054725647,
+            -0.044999998062849
+          ]
+        },
+        "PalengkeQueueMan_BagHandle.001": {
+          "max": [
+            0.408726215362549,
+            0.368333995342255,
+            -0.0350000001490116
+          ],
+          "min": [
+            0.316273778676987,
+            0.266666054725647,
+            -0.044999998062849
+          ]
+        },
+        "PalengkeQueueMan_Body": {
+          "max": [
+            0.239626735448837,
+            1.75,
+            0.270644396543503
+          ],
+          "min": [
+            -0.240547865629196,
+            -0.000000473761616603952,
+            -0.173849433660507
+          ]
+        },
+        "PalengkeQueueMan_GroundBag": {
+          "max": [
+            0.435000002384186,
+            0.270000010728836,
+            0.0249999985098839
+          ],
+          "min": [
+            0.204999983310699,
+            0.0,
+            -0.104999996721745
+          ]
+        }
+      },
+      "max_matrix_error": 0.000000571294187456939,
+      "meshes": {
+        "PalengkeQueueMan_BagHandle": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0000017192608239479,
+          "weight_mismatches": 0
+        },
+        "PalengkeQueueMan_BagHandle.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.00000150789149292392,
+          "weight_mismatches": 0
+        },
+        "PalengkeQueueMan_Body": {
+          "imported_vertices": 724,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PalengkeQueueMan_GroundBag": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "PanicBuyer": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "PanicBuyer_BagHandle": {
+          "max": [
+            0.282548248767853,
+            0.915717303752899,
+            0.139233112335205
+          ],
+          "min": [
+            0.201151669025421,
+            0.7126584649086,
+            0.112606629729271
+          ]
+        },
+        "PanicBuyer_BagHandle.001": {
+          "max": [
+            0.35364031791687,
+            0.91571718454361,
+            0.13816787302494
+          ],
+          "min": [
+            0.27195543050766,
+            0.71265834569931,
+            0.112576171755791
+          ]
+        },
+        "PanicBuyer_BagHandle.002": {
+          "max": [
+            -0.27195543050766,
+            0.91571718454361,
+            0.13816787302494
+          ],
+          "min": [
+            -0.35364043712616,
+            0.71265834569931,
+            0.112576186656952
+          ]
+        },
+        "PanicBuyer_BagHandle.003": {
+          "max": [
+            -0.201151669025421,
+            0.915717244148254,
+            0.139233112335205
+          ],
+          "min": [
+            -0.282548248767853,
+            0.7126584649086,
+            0.112606644630432
+          ]
+        },
+        "PanicBuyer_Bag_L": {
+          "max": [
+            0.385073184967041,
+            0.717586874961853,
+            0.191546469926834
+          ],
+          "min": [
+            0.169688820838928,
+            0.432228744029999,
+            0.072204202413559
+          ]
+        },
+        "PanicBuyer_Bag_R": {
+          "max": [
+            -0.169688880443573,
+            0.717586815357208,
+            0.191546469926834
+          ],
+          "min": [
+            -0.385073184967041,
+            0.432228684425354,
+            0.0722042173147202
+          ]
+        },
+        "PanicBuyer_Body": {
+          "max": [
+            0.290142327547073,
+            1.64722716808319,
+            0.187344089150429
+          ],
+          "min": [
+            -0.290142327547073,
+            -0.000000465006792182976,
+            -0.140385776758194
+          ]
+        }
+      },
+      "max_matrix_error": 0.000000560368676461032,
+      "meshes": {
+        "PanicBuyer_BagHandle": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PanicBuyer_BagHandle.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PanicBuyer_BagHandle.002": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PanicBuyer_BagHandle.003": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PanicBuyer_Bag_L": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PanicBuyer_Bag_R": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PanicBuyer_Body": {
+          "imported_vertices": 1032,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "PharmaDude": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "PharmaDude_Body": {
+          "max": [
+            0.300832390785217,
+            1.76000022888184,
+            0.378471553325653
+          ],
+          "min": [
+            -0.302022099494934,
+            -0.000000432472802458506,
+            -0.187462508678436
+          ]
+        },
+        "PharmaDude_MedicineCarton": {
+          "max": [
+            0.196351438760757,
+            1.36663234233856,
+            0.333876490592957
+          ],
+          "min": [
+            0.126351326704025,
+            1.25663232803345,
+            0.273876309394836
+          ]
+        },
+        "PharmaDude_MedicineCartonMark": {
+          "max": [
+            0.187351375818253,
+            1.33563220500946,
+            0.320876479148865
+          ],
+          "min": [
+            0.135351300239563,
+            1.31763243675232,
+            0.318876326084137
+          ]
+        },
+        "PharmaDude_NameBadge": {
+          "max": [
+            -0.0765599980950356,
+            1.32000005245209,
+            0.0687079057097435
+          ],
+          "min": [
+            -0.134639993309975,
+            1.28480017185211,
+            0.0637079030275345
+          ]
+        },
+        "PharmaDude_PaperSlip": {
+          "max": [
+            -0.0941826701164246,
+            1.31927490234375,
+            0.282448470592499
+          ],
+          "min": [
+            -0.18418276309967,
+            1.18927454948425,
+            0.257448375225067
+          ]
+        },
+        "PharmaDude_PaperSlipMark": {
+          "max": [
+            -0.113182693719864,
+            1.27827477455139,
+            0.286948502063751
+          ],
+          "min": [
+            -0.165182769298553,
+            1.26027476787567,
+            0.284948408603668
+          ]
+        }
+      },
+      "max_matrix_error": 0.00000199627800104296,
+      "meshes": {
+        "PharmaDude_Body": {
+          "imported_vertices": 770,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PharmaDude_MedicineCarton": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PharmaDude_MedicineCartonMark": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PharmaDude_NameBadge": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PharmaDude_PaperSlip": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "PharmaDude_PaperSlipMark": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "SmokeBreakNPC": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "SmokeBreakNPC_Bangs": {
+          "max": [
+            -0.0320000015199184,
+            1.69900000095367,
+            0.0699143782258034
+          ],
+          "min": [
+            -0.0710000023245811,
+            1.65699994564056,
+            0.0409012176096439
+          ]
+        },
+        "SmokeBreakNPC_Bangs.001": {
+          "max": [
+            -0.00600000005215406,
+            1.69900000095367,
+            0.0798625126481056
+          ],
+          "min": [
+            -0.0450000017881393,
+            1.64699995517731,
+            0.0499687530100346
+          ]
+        },
+        "SmokeBreakNPC_Bangs.002": {
+          "max": [
+            0.0199999995529652,
+            1.69900000095367,
+            0.0823643580079079
+          ],
+          "min": [
+            -0.0189999993890524,
+            1.65699994564056,
+            0.059831652790308
+          ]
+        },
+        "SmokeBreakNPC_Bangs.003": {
+          "max": [
+            0.046000000089407,
+            1.69900000095367,
+            0.0809163227677345
+          ],
+          "min": [
+            0.00700000021606684,
+            1.64699995517731,
+            0.0526512004435062
+          ]
+        },
+        "SmokeBreakNPC_Bangs.004": {
+          "max": [
+            0.0719999969005585,
+            1.69900000095367,
+            0.0716641321778297
+          ],
+          "min": [
+            0.0329999998211861,
+            1.65699994564056,
+            0.0450000017881393
+          ]
+        },
+        "SmokeBreakNPC_Body": {
+          "max": [
+            0.438648760318756,
+            1.73000001907349,
+            0.412827253341675
+          ],
+          "min": [
+            -0.428471922874451,
+            -0.00000045021232608633,
+            -0.223362505435944
+          ]
+        },
+        "SmokeBreakNPC_Cigarette": {
+          "max": [
+            -0.232745915651321,
+            1.04645109176636,
+            0.374909460544586
+          ],
+          "min": [
+            -0.25305962562561,
+            0.970155835151672,
+            0.324206709861755
+          ]
+        },
+        "SmokeBreakNPC_Ember": {
+          "max": [
+            -0.231547594070435,
+            1.05359661579132,
+            0.331068336963654
+          ],
+          "min": [
+            -0.240650117397308,
+            1.04236340522766,
+            0.319870471954346
+          ]
+        },
+        "SmokeBreakNPC_GlassesBridge": {
+          "max": [
+            0.0140000004321337,
+            1.6243200302124,
+            0.092477060854435
+          ],
+          "min": [
+            -0.0140000004321337,
+            1.61732006072998,
+            0.0854770615696907
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame": {
+          "max": [
+            -0.0140000004321337,
+            1.60081994533539,
+            0.0929770618677139
+          ],
+          "min": [
+            -0.0820000022649765,
+            1.59282004833221,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.001": {
+          "max": [
+            -0.0140000004321337,
+            1.63881993293762,
+            0.0929770618677139
+          ],
+          "min": [
+            -0.0820000022649765,
+            1.63082003593445,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.002": {
+          "max": [
+            -0.0780000016093254,
+            1.63481998443604,
+            0.0929770618677139
+          ],
+          "min": [
+            -0.0860000029206276,
+            1.5968199968338,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.003": {
+          "max": [
+            -0.00999999977648258,
+            1.63481998443604,
+            0.0929770618677139
+          ],
+          "min": [
+            -0.0180000010877848,
+            1.5968199968338,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.004": {
+          "max": [
+            0.0820000022649765,
+            1.60081994533539,
+            0.0929770618677139
+          ],
+          "min": [
+            0.0140000004321337,
+            1.59282004833221,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.005": {
+          "max": [
+            0.0820000022649765,
+            1.63881993293762,
+            0.0929770618677139
+          ],
+          "min": [
+            0.0140000004321337,
+            1.63082003593445,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.006": {
+          "max": [
+            0.0180000010877848,
+            1.63481998443604,
+            0.0929770618677139
+          ],
+          "min": [
+            0.00999999977648258,
+            1.5968199968338,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesFrame.007": {
+          "max": [
+            0.0860000029206276,
+            1.63481998443604,
+            0.0929770618677139
+          ],
+          "min": [
+            0.0780000016093254,
+            1.5968199968338,
+            0.0849770605564117
+          ]
+        },
+        "SmokeBreakNPC_GlassesTemple": {
+          "max": [
+            -0.0785079076886177,
+            1.61931431293488,
+            0.0892121568322182
+          ],
+          "min": [
+            -0.0924920961260796,
+            1.60632574558258,
+            -0.0152350962162018
+          ]
+        },
+        "SmokeBreakNPC_GlassesTemple.001": {
+          "max": [
+            0.0924920961260796,
+            1.61931431293488,
+            0.0892121568322182
+          ],
+          "min": [
+            0.0785079076886177,
+            1.60632574558258,
+            -0.0152350962162018
+          ]
+        },
+        "SmokeBreakNPC_Phone": {
+          "max": [
+            0.352902621030808,
+            0.91524600982666,
+            0.241208136081696
+          ],
+          "min": [
+            0.252460718154907,
+            0.809252440929413,
+            0.138795018196106
+          ]
+        },
+        "SmokeBreakNPC_PhoneScreen": {
+          "max": [
+            0.33561760187149,
+            0.900914311408997,
+            0.236297488212585
+          ],
+          "min": [
+            0.260242789983749,
+            0.826082527637482,
+            0.164088428020477
+          ]
+        }
+      },
+      "max_matrix_error": 0.00000134953667646487,
+      "meshes": {
+        "SmokeBreakNPC_Bangs": {
+          "imported_vertices": 4,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Bangs.001": {
+          "imported_vertices": 4,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Bangs.002": {
+          "imported_vertices": 4,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Bangs.003": {
+          "imported_vertices": 4,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Bangs.004": {
+          "imported_vertices": 4,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Body": {
+          "imported_vertices": 746,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Cigarette": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Ember": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesBridge": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.002": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.003": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.004": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.005": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.006": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesFrame.007": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesTemple": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_GlassesTemple.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_Phone": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "SmokeBreakNPC_PhoneScreen": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 518
+    },
+    "TapeNeighbor": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "TapeNeighbor_Body": {
+          "max": [
+            0.294735044240952,
+            1.68076479434967,
+            0.162168547511101
+          ],
+          "min": [
+            -0.278499722480774,
+            -0.000000393331959003262,
+            -0.16716656088829
+          ]
+        },
+        "TapeNeighbor_SandalStrap_L": {
+          "max": [
+            0.119018726050854,
+            0.0880250632762909,
+            0.0594687089323998
+          ],
+          "min": [
+            0.069791853427887,
+            0.0690546184778214,
+            -0.0144780874252319
+          ]
+        },
+        "TapeNeighbor_SandalStrap_L.001": {
+          "max": [
+            0.155978843569756,
+            0.0880250632762909,
+            0.0594686791300774
+          ],
+          "min": [
+            0.106751695275307,
+            0.0690546184778214,
+            -0.0144782299175859
+          ]
+        },
+        "TapeNeighbor_SandalStrap_R": {
+          "max": [
+            -0.106751695275307,
+            0.0880250632762909,
+            0.0594686791300774
+          ],
+          "min": [
+            -0.155978843569756,
+            0.0690546184778214,
+            -0.0144782299175859
+          ]
+        },
+        "TapeNeighbor_SandalStrap_R.001": {
+          "max": [
+            -0.069791853427887,
+            0.0880250632762909,
+            0.0594687089323998
+          ],
+          "min": [
+            -0.119018726050854,
+            0.0690546184778214,
+            -0.0144780874252319
+          ]
+        },
+        "TapeNeighbor_TapeRoll": {
+          "max": [
+            0.273240983486176,
+            0.881167829036713,
+            0.153853237628937
+          ],
+          "min": [
+            0.199838221073151,
+            0.847751319408417,
+            0.0829733163118362
+          ]
+        }
+      },
+      "max_matrix_error": 0.00000218887302233517,
+      "meshes": {
+        "TapeNeighbor_Body": {
+          "imported_vertices": 812,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TapeNeighbor_SandalStrap_L": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TapeNeighbor_SandalStrap_L.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TapeNeighbor_SandalStrap_R": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TapeNeighbor_SandalStrap_R.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TapeNeighbor_TapeRoll": {
+          "imported_vertices": 128,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "TatayJun": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "TatayJun_BagHandle": {
+          "max": [
+            0.241032600402832,
+            0.816442728042603,
+            0.0798030197620392
+          ],
+          "min": [
+            0.148580133914948,
+            0.71477472782135,
+            0.0698030591011047
+          ]
+        },
+        "TatayJun_BagHandle.001": {
+          "max": [
+            0.326032608747482,
+            0.816442728042603,
+            0.079803079366684
+          ],
+          "min": [
+            0.23358017206192,
+            0.714774668216705,
+            0.0698030889034271
+          ]
+        },
+        "TatayJun_BagL": {
+          "max": [
+            0.352306455373764,
+            0.718108773231506,
+            0.139803230762482
+          ],
+          "min": [
+            0.122306197881699,
+            0.448108464479446,
+            0.00980302691459656
+          ]
+        },
+        "TatayJun_Body": {
+          "max": [
+            0.301650911569595,
+            1.6599999666214,
+            0.405746579170227
+          ],
+          "min": [
+            -0.268931925296783,
+            -0.000000540047494723694,
+            -0.164091423153877
+          ]
+        },
+        "TatayJun_NailPacket": {
+          "max": [
+            -0.101525723934174,
+            1.25494337081909,
+            0.352169930934906
+          ],
+          "min": [
+            -0.191525876522064,
+            1.12494325637817,
+            0.32716977596283
+          ]
+        },
+        "TatayJun_NailPacketMark": {
+          "max": [
+            -0.120525717735291,
+            1.21394324302673,
+            0.356669902801514
+          ],
+          "min": [
+            -0.172525763511658,
+            1.1959433555603,
+            0.354669868946075
+          ]
+        }
+      },
+      "max_matrix_error": 0.000000592582537706221,
+      "meshes": {
+        "TatayJun_BagHandle": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TatayJun_BagHandle.001": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TatayJun_BagL": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TatayJun_Body": {
+          "imported_vertices": 724,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TatayJun_NailPacket": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        },
+        "TatayJun_NailPacketMark": {
+          "imported_vertices": 24,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    },
+    "WetParent": {
+      "bad_matrix_samples": 0,
+      "idle_bounds": {
+        "WetParent_Body": {
+          "max": [
+            0.259233504533768,
+            1.59731149673462,
+            0.249263793230057
+          ],
+          "min": [
+            -0.259783685207367,
+            -0.000000669158509936096,
+            -0.139761283993721
+          ]
+        }
+      },
+      "max_matrix_error": 0.0000013309138228168,
+      "meshes": {
+        "WetParent_Body": {
+          "imported_vertices": 1032,
+          "max_vertex_error": 0.0,
+          "weight_mismatches": 0
+        }
+      },
+      "samples": 396
+    }
+  },
+  "checks": 10803,
+  "failures": [],
+  "max_matrix_error": 0.00000218887302233517,
+  "max_position_error": 0.0000017192608239479
+}

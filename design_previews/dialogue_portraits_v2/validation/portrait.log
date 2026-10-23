@@ -1,0 +1,279 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/nanay/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/nanay/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/nanay/concerned.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/nanay/urgent.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/lola/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/lola/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/lola/concerned.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/lola/relieved.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_linda/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_linda/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_linda/apologetic.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_linda/grateful.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/mang_nestor/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/mang_nestor/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/mang_nestor/hopeful.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/mang_nestor/grateful.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/mang_nestor/concerned.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tape_neighbor/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tape_neighbor/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tape_neighbor/uncertain.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/smoke_break/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/smoke_break/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/smoke_break/coaxing.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/smoke_break/concerned.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/pharmacist/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/pharmacist/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/chooks_seller/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/chooks_seller/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/chooks_seller/cheerful.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_maribel/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_maribel/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/ate_maribel/amused.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/hardware_girl/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/hardware_girl/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/hardware_girl/weary.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/hardware_girl/helpful.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tatay_jun/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tatay_jun/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tatay_jun/amused.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/tatay_jun/concerned.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/kaps_worker/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/kaps_worker/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/kaps_worker/defensive.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/grocery_girl/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/grocery_girl/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/grocery_girl/urgent.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/grocery_girl/annoyed.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/queue_man/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/queue_man/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/queue_man/frustrated.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/queue_man/stern.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/panic_buyer/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/panic_buyer/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/panic_buyer/anxious.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/panic_buyer/overwhelmed.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/wet_parent/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/wet_parent/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/wet_parent/exhausted.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/wet_parent/compassionate.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/stranger/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/stranger/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/stranger/pleading.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/stranger/grateful.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/player/neutral.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/player/speaking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/player/thinking.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/player/surprised.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+WARNING: Loaded resource as image file, this will not work on export: 'res://game/assets/npc_portraits/stylized/player/determined.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+   at: load_from_file (core/io/image.cpp:2766)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://game/tests/dialogue_portrait_regression.gd:28)
+Portrait regression: 686 checks, 0 failures; 66 lines, 68 portraits
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 7 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

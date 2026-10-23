@@ -1,0 +1,654 @@
+{
+  "scope": "Read-only source/model investigation for preview library; no runtime assets or connected Blender scene modified.",
+  "characters": [
+    {
+      "id": "MangNestor",
+      "display_name": "Mang Nestor",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\quest_npcs\\mang_nestor.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\MangNestor.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\MangNestor.png",
+      "identity_evidence": "Older balding brown-skinned man; dark gray side hair, prominent ears, teal short-sleeve henley; warm lined face.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "MangNestor_PSX",
+        "MangNestor_DarkRubber"
+      ],
+      "current_glb_meshes": [
+        "MangNestor_Mesh",
+        "Cylinder",
+        "Cylinder.001",
+        "Cylinder.002",
+        "Cylinder.003"
+      ],
+      "current_sha256": "5166a91cce5df7d9a564b212dfcf822553141b4102bfbcb780d4ee32b83d093e",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\MangNestor.glb"
+      ]
+    },
+    {
+      "id": "MoneyBeggar",
+      "display_name": "Stranger",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\quest_npcs\\money_beggar.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\MoneyBeggar.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\MoneyBeggar.png",
+      "identity_evidence": "Young-to-middle-aged man; short dark brown hair, light-medium warm skin, light stubble, ragged sleeveless gray V-neck, olive shorts. Seated requesting pose.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "SmokeBreakNPC_PSX",
+        "PSX_Props"
+      ],
+      "current_glb_meshes": [
+        "SmokeBreakNPC_Mesh.001",
+        "SandalStrap",
+        "SandalStrap.001",
+        "SandalStrap.002",
+        "SandalStrap.003",
+        "BagHandle.002",
+        "BagHandle.003",
+        "GroundBag.001"
+      ],
+      "current_sha256": "bee7731682ae64753b90aafcc49baa97fba8068648bdb5bc35399d2cda3bc274",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\MoneyBeggar.glb"
+      ]
+    },
+    {
+      "id": "SmokeBreakNPC",
+      "display_name": "Tambay",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\quest_npcs\\smoke_break_npc.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\SmokeBreakNPC.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\SmokeBreakNPC.png",
+      "identity_evidence": "Fuller young man; short black hair with straight bangs, thick black rectangular glasses, mustache/beard shadow, gray polo with white edging, dark trousers; phone and cigarette.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "PSX_Props",
+        "MoneyBeggar_PSX"
+      ],
+      "current_glb_meshes": [
+        "Bangs",
+        "Bangs.001",
+        "Bangs.002",
+        "Bangs.003",
+        "Bangs.004",
+        "MoneyBeggar_Mesh.001",
+        "Cigarette",
+        "Ember",
+        "GlassesBridge",
+        "GlassesFrame",
+        "GlassesFrame.001",
+        "GlassesFrame.002",
+        "GlassesFrame.003",
+        "GlassesFrame.004",
+        "GlassesFrame.005",
+        "GlassesFrame.006",
+        "GlassesFrame.007",
+        "GlassesTemple",
+        "GlassesTemple.001",
+        "Phone",
+        "PhoneScreen"
+      ],
+      "current_sha256": "7dd128e273270ca4a4cc8ac098c2880299e6748652b001914dfa783e8d90e32a",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\SmokeBreakNPC.glb"
+      ]
+    },
+    {
+      "id": "TapeNeighbor",
+      "display_name": "Kapitbahay",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\tape_neighbor.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\TapeNeighbor.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\TapeNeighbor.png",
+      "identity_evidence": "Young-to-middle-aged man; side-parted short dark hair, fair-to-medium skin, slight stubble, pale yellow polo; dark brown shorts; tape roll.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "TapeNeighbor_PSX",
+        "TapeNeighbor_DarkRubber",
+        "TapeNeighbor_Tape"
+      ],
+      "current_glb_meshes": [
+        "TapeNeighbor_Mesh",
+        "Cylinder.011",
+        "Cylinder.012",
+        "Cylinder.013",
+        "Cylinder.014",
+        "Torus"
+      ],
+      "current_sha256": "aadeb892d2fa3ef453be1d627387faac5dc298a74399b66751bd22ff1773c12b",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\TapeNeighbor.glb"
+      ]
+    },
+    {
+      "id": "TatayJun",
+      "display_name": "Tatay Jun",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\tatay_jun.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\TatayJun.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\TatayJun.png",
+      "identity_evidence": "Middle-aged man; tousled gray/dark wavy hair, medium warm skin, brown long-sleeved buttoned shirt, blue waist band, dark trousers.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "PSX_Props",
+        "TatayJun_PSX"
+      ],
+      "current_glb_meshes": [
+        "BagHandle.004",
+        "BagHandle.005",
+        "BagL",
+        "TatayJun_Mesh",
+        "NailPacket",
+        "NailPacketMark"
+      ],
+      "current_sha256": "5762188f1e338ea926fdd62fcc47e6f5931e6303424b58a6c2c27c61b1f4b0b0",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\TatayJun.glb"
+      ]
+    },
+    {
+      "id": "KapsWorker",
+      "display_name": "Tauhan ni Kap",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\kaps_worker.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\KapsWorker.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\KapsWorker.png",
+      "identity_evidence": "Young-to-middle-aged man; short dark hair, light-medium warm skin, olive green long-sleeved collared shirt, pale shirt hem and dark trousers; purchase list.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "KapsWorker_PSX",
+        "PSX_Props"
+      ],
+      "current_glb_meshes": [
+        "KapsWorker_Mesh",
+        "PurchaseList",
+        "PurchaseListMark",
+        "GroundBundleTie",
+        "GroundBundleTie.001",
+        "GroundSupplyBundle"
+      ],
+      "current_sha256": "a855d0308a838ca7f992cab9a451c5d0d7a09885b99b7e0a424328e3a680d9a4",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\KapsWorker.glb"
+      ]
+    },
+    {
+      "id": "AteMaribel",
+      "display_name": "Ate Maribel",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\ate_maribel.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\AteMaribel.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\AteMaribel.png",
+      "identity_evidence": "Middle-aged woman; dark hair gathered back with side-swept forelock, medium brown skin, brown scoop-neck long-sleeved blouse, muted slate-blue skirt.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "PSX_Props",
+        "AteMaribel_PSX",
+        "AteMaribel_DarkRubber"
+      ],
+      "current_glb_meshes": [
+        "BagHandle.006",
+        "BagHandle.007",
+        "BagL.001",
+        "AteMaribel_Mesh",
+        "AteMaribel_SkirtMesh",
+        "Cylinder.015",
+        "Cylinder.016",
+        "Cylinder.017",
+        "Cylinder.018"
+      ],
+      "current_sha256": "fa1c777310f73194c8294f0705368e2dc54738f07f462aa0701962b1ae16b7ba",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\AteMaribel.glb"
+      ]
+    },
+    {
+      "id": "PalengkeQueueMan",
+      "display_name": "Queue Man",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\palengke_queue_man.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\PalengkeQueueMan.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\PalengkeQueueMan.png",
+      "identity_evidence": "Middle-aged man sharing Tatay Jun donor face; tousled gray/dark hair, medium warm skin, slate-blue long-sleeved buttoned shirt, navy waist band and brown trousers.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "PalengkeQueueMan_PSX",
+        "PSX_Props"
+      ],
+      "current_glb_meshes": [
+        "PalengkeQueueMan_Mesh",
+        "BagHandle",
+        "BagHandle.001",
+        "GroundBag"
+      ],
+      "current_sha256": "c291d05d258b4c92eac527c35c2f436d150211cac0e67af76c611506376ce68e",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\PalengkeQueueMan.glb"
+      ]
+    },
+    {
+      "id": "PanicBuyer",
+      "display_name": "Panic Buyer",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\panic_buyer.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\PanicBuyer.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\PanicBuyer.png",
+      "identity_evidence": "Woman with short black bob/shag and bangs; light-medium skin, olive yellow short-sleeved scoop-neck shirt, necklace, blue jeans; two grocery bags.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "PanicBuyer_BagCanvas",
+        "PanicBuyer_PSX"
+      ],
+      "current_glb_meshes": [
+        "Cube.002",
+        "Cube.003",
+        "Cylinder.021",
+        "Cylinder.022",
+        "Cylinder.023",
+        "Cylinder.024",
+        "PanicBuyer_Mesh"
+      ],
+      "current_sha256": "ecdc3676df43784b2367ac75217d5cbce4277dfb0fa29554eca31c3ab8da8cad",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\PanicBuyer.glb"
+      ]
+    },
+    {
+      "id": "WetParent",
+      "display_name": "Nanay sa Palengke",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\story_npcs\\wet_parent.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\WetParent.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\WetParent.png",
+      "identity_evidence": "Woman sharing Panic Buyer donor face; short black bob/shag with bangs, light-medium skin, dusty plum scoop-neck shirt, necklace, dark denim trousers with damp hems.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "WetParent_PSX"
+      ],
+      "current_glb_meshes": [
+        "WetParent_Mesh"
+      ],
+      "current_sha256": "7a726e1fe72246d3d4d9d216bd44d86a4d4ea421562c2668f9a4a28e1c1b4705",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\WetParent.glb"
+      ]
+    },
+    {
+      "id": "PharmaDude",
+      "display_name": "Pharmacy Boy",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\pharmacist\\pharma_dude.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\psx_animated\\PharmaDude.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\PharmaDude.png",
+      "identity_evidence": "Man with short neat black hair, medium warm skin, angular brows and slight stubble, white lab coat over black V-neck shirt; light cyan badge.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "PharmaDude_PSX",
+        "PSX_Props",
+        "PharmaDude_Badge"
+      ],
+      "current_glb_meshes": [
+        "PharmaDude_Mesh",
+        "MedicineCarton",
+        "MedicineCartonMark",
+        "Cube.004",
+        "PaperSlip",
+        "PaperSlipMark"
+      ],
+      "current_sha256": "655c964689aca7692241a593ef4e63fe083db6338e985e34294324d51c90b0dc",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [
+        "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\exports_arm_polish\\PharmaDude.glb"
+      ]
+    },
+    {
+      "id": "Nanay",
+      "display_name": "Nanay",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\nanay\\nanay.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\nanay.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\Nanay.png",
+      "identity_evidence": "Actual active model: light-medium skin, copper/red straight hair tied/gathered back with two shoulder-length locks, black/navy T-shirt, blue jeans. Approved portrait instead has black hair, rectangular glasses and purple blouse.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "approved_portrait_divergence": true,
+      "current_glb_materials": [
+        "Character_33_Female"
+      ],
+      "current_glb_meshes": [
+        "Character_33_Female"
+      ],
+      "current_sha256": "af645e1643df6c4b946a0289f9acb4c042d3efaf9a81dcaa8e33a1687e480a42",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [],
+      "original_texture_comparison": [
+        {
+          "texture_path": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\textures\\Character_33_Female_002.png",
+          "pixel_identical_to_animated_texture": true,
+          "source_size": [
+            512,
+            512
+          ],
+          "embedded_size": [
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Lola",
+      "display_name": "Lola",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\lola\\lola.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\Lola.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\Lola.png",
+      "identity_evidence": "Actual active model: elderly woman with short silver swept-back hair, light-medium warm skin and deep smile lines; pale blue long blazer over white top, dark trousers; no glasses. Approved portrait has round glasses and patterned cardigan.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "approved_portrait_divergence": true,
+      "current_glb_materials": [
+        "Character_31_Female"
+      ],
+      "current_glb_meshes": [
+        "Character_31_Female"
+      ],
+      "current_sha256": "fac841c31fdecabc930ff1b1bd75d845717b054fb8ae56a10cec8a23d91ce159",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [],
+      "original_texture_comparison": [
+        {
+          "texture_path": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\textures\\Character_31_Female_001.png",
+          "pixel_identical_to_animated_texture": true,
+          "source_size": [
+            512,
+            512
+          ],
+          "embedded_size": [
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "AteLinda",
+      "display_name": "Ate Linda",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\ate_linda_npc\\ate_linda.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\Animated Woman.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\AteLinda.png",
+      "identity_evidence": "Stylized faceted woman: fair-to-medium warm skin, chin/shoulder-length gold/blond bob with center part, gray/white broad-block shirt, orange-brown trousers; no glasses.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "scene_wrapper": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\assets\\models\\nanay_model.tscn",
+      "current_glb_materials": [
+        "White",
+        "Skin",
+        "Grey",
+        "Hair_Blond",
+        "Hair_Brown",
+        "Brown",
+        "Orange"
+      ],
+      "current_glb_meshes": [
+        "Casual_Body",
+        "Casual_Feet",
+        "Casual_Head",
+        "Casual_Legs"
+      ],
+      "current_sha256": "a2212729826b718e59e698211ed3951c22459b48733b1ee6a24fac0abf74dca8",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [],
+      "current_material_rgba": {
+        "White": [
+          0.457522302865982,
+          0.457522302865982,
+          0.457522302865982,
+          1.0
+        ],
+        "Skin": [
+          0.617206752300262,
+          0.41788512468338,
+          0.23839758336544,
+          1.0
+        ],
+        "Grey": [
+          0.0497065745294094,
+          0.0497065745294094,
+          0.0497065745294094,
+          1.0
+        ],
+        "Hair_Blond": [
+          0.259794056415558,
+          0.17865963280201,
+          0.0627506673336029,
+          1.0
+        ],
+        "Hair_Brown": [
+          0.0481718368828297,
+          0.0343398116528988,
+          0.022173885256052,
+          1.0
+        ],
+        "Brown": [
+          0.0310619566589594,
+          0.0181614384055138,
+          0.0113078402355313,
+          1.0
+        ],
+        "Orange": [
+          0.342379808425903,
+          0.121411025524139,
+          0.0398355051875114,
+          1.0
+        ]
+      },
+      "model_match_evidence": "All three current scenes use the same wrapper and same source GLB; its named flat materials include Hair_Blond/Hair_Brown, White/Grey shirt and Orange trousers. External prepare_cast.py preserves the original imported storewoman geometry/materials, duplicating only per-role transforms and prop lists."
+    },
+    {
+      "id": "HardwareGirl",
+      "display_name": "Hardware Girl",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\hardware_girl\\hardware_girl.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\Animated Woman.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\HardwareGirl.png",
+      "identity_evidence": "Same mesh/materials as Ate Linda and Grocery Girl: gold/blond bob, gray/white broad-block shirt, orange-brown trousers. Role distinction should use background and expression, not invented hair/clothing.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "scene_wrapper": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\assets\\models\\nanay_model.tscn",
+      "current_glb_materials": [
+        "White",
+        "Skin",
+        "Grey",
+        "Hair_Blond",
+        "Hair_Brown",
+        "Brown",
+        "Orange"
+      ],
+      "current_glb_meshes": [
+        "Casual_Body",
+        "Casual_Feet",
+        "Casual_Head",
+        "Casual_Legs"
+      ],
+      "current_sha256": "a2212729826b718e59e698211ed3951c22459b48733b1ee6a24fac0abf74dca8",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [],
+      "current_material_rgba": {
+        "White": [
+          0.457522302865982,
+          0.457522302865982,
+          0.457522302865982,
+          1.0
+        ],
+        "Skin": [
+          0.617206752300262,
+          0.41788512468338,
+          0.23839758336544,
+          1.0
+        ],
+        "Grey": [
+          0.0497065745294094,
+          0.0497065745294094,
+          0.0497065745294094,
+          1.0
+        ],
+        "Hair_Blond": [
+          0.259794056415558,
+          0.17865963280201,
+          0.0627506673336029,
+          1.0
+        ],
+        "Hair_Brown": [
+          0.0481718368828297,
+          0.0343398116528988,
+          0.022173885256052,
+          1.0
+        ],
+        "Brown": [
+          0.0310619566589594,
+          0.0181614384055138,
+          0.0113078402355313,
+          1.0
+        ],
+        "Orange": [
+          0.342379808425903,
+          0.121411025524139,
+          0.0398355051875114,
+          1.0
+        ]
+      },
+      "model_match_evidence": "All three current scenes use the same wrapper and same source GLB; its named flat materials include Hair_Blond/Hair_Brown, White/Grey shirt and Orange trousers. External prepare_cast.py preserves the original imported storewoman geometry/materials, duplicating only per-role transforms and prop lists."
+    },
+    {
+      "id": "GroceryGirl",
+      "display_name": "Grocery Girl",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\grocery_girl\\grocery_girl.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\Animated Woman.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\GroceryGirl.png",
+      "identity_evidence": "Same mesh/materials as Ate Linda and Hardware Girl: gold/blond bob, gray/white broad-block shirt, orange-brown trousers. Role distinction should use background and expression, not invented hair/clothing.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "scene_wrapper": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\assets\\models\\nanay_model.tscn",
+      "current_glb_materials": [
+        "White",
+        "Skin",
+        "Grey",
+        "Hair_Blond",
+        "Hair_Brown",
+        "Brown",
+        "Orange"
+      ],
+      "current_glb_meshes": [
+        "Casual_Body",
+        "Casual_Feet",
+        "Casual_Head",
+        "Casual_Legs"
+      ],
+      "current_sha256": "a2212729826b718e59e698211ed3951c22459b48733b1ee6a24fac0abf74dca8",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [],
+      "current_material_rgba": {
+        "White": [
+          0.457522302865982,
+          0.457522302865982,
+          0.457522302865982,
+          1.0
+        ],
+        "Skin": [
+          0.617206752300262,
+          0.41788512468338,
+          0.23839758336544,
+          1.0
+        ],
+        "Grey": [
+          0.0497065745294094,
+          0.0497065745294094,
+          0.0497065745294094,
+          1.0
+        ],
+        "Hair_Blond": [
+          0.259794056415558,
+          0.17865963280201,
+          0.0627506673336029,
+          1.0
+        ],
+        "Hair_Brown": [
+          0.0481718368828297,
+          0.0343398116528988,
+          0.022173885256052,
+          1.0
+        ],
+        "Brown": [
+          0.0310619566589594,
+          0.0181614384055138,
+          0.0113078402355313,
+          1.0
+        ],
+        "Orange": [
+          0.342379808425903,
+          0.121411025524139,
+          0.0398355051875114,
+          1.0
+        ]
+      },
+      "model_match_evidence": "All three current scenes use the same wrapper and same source GLB; its named flat materials include Hair_Blond/Hair_Brown, White/Grey shirt and Orange trousers. External prepare_cast.py preserves the original imported storewoman geometry/materials, duplicating only per-role transforms and prop lists."
+    },
+    {
+      "id": "ChooksSeller",
+      "display_name": "Chooks Seller",
+      "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\chooks_to_go_seller.tscn",
+      "model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\npc_assets\\ChooksToGoSeller.glb",
+      "reference_image": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\previews\\ChooksSeller.png",
+      "identity_evidence": "Older bald brown-skinned man sharing Mang Nestor donor face, dark/gray side hair, blue henley short-sleeved shirt, multicolor plaid shorts; lined smiling face.",
+      "reference_status": "Existing external Blender preview, visually inspected cast and key identity closeups; source model mapping verified from current scenes",
+      "current_glb_materials": [
+        "Character_13"
+      ],
+      "current_glb_meshes": [
+        "Character_13"
+      ],
+      "current_sha256": "0ca7d445ce95b76ddcf6cfcf05e7be3ff627d9a965364c4bbd69ced823d584f0",
+      "material_identity_check": "Current glb parsed successfully; scene resource binding and existing source render match role; source export hash checked when available.",
+      "matching_external_export_paths": [],
+      "original_texture_comparison": [
+        {
+          "texture_path": "C:\\Users\\john2\\Documents\\Blender\\Bagyong_Bahay_NPCs_PSX\\animated\\textures\\Character_13.png",
+          "pixel_identical_to_animated_texture": true,
+          "source_size": [
+            512,
+            512
+          ],
+          "embedded_size": [
+            512,
+            512
+          ]
+        }
+      ]
+    }
+  ],
+  "player": {
+    "id": "Player",
+    "active_scene": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\game\\entities\\playerv2\\playerv_2.tscn",
+    "reference_model_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\Simple_Character_PSX\\model\\glb\\simple-character-psx.glb",
+    "reference_blend_path": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\Simple_Character_PSX\\simple-character-psx.blend",
+    "texture_reference": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\_raw_assets\\Simple_Character_PSX\\model\\fbx\\simple-character-psx_0.png",
+    "approved_style_references": [
+      "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\design_previews\\dialogue_portraits_v1\\player_calm.png",
+      "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\design_previews\\dialogue_portraits_v1\\player_talking.png",
+      "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\design_previews\\dialogue_portraits_v1\\player_inner_thoughts.png"
+    ],
+    "glasses": "Thick black rectangular rims represented in textured head geometry; translucent lenses are separate head surface named glass. Source GLB head has 167 textured vertices and 16 lens vertices. Active tscn embeds head and StandardMaterial3D_y10w4 with resource_name glass. No separate glasses node exists.",
+    "render_reference_status": "Rendered and visually inspected front head/shoulder reference in isolated Blender 5.2.2 LTS process; source GLB and connected Blender scene unchanged.",
+    "reference_image": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\design_previews\\dialogue_portraits_v2\\references\\player_model.png",
+    "render_script": "C:\\Users\\john2\\Documents\\Game Development\\Bagyong Bahay\\software-eng-fest\\design_previews\\dialogue_portraits_v2\\references\\render_player_reference.py",
+    "observed_identity": "Short dark brown/near-black blocky hair, light-medium warm skin, thick dark rectangular/trapezoid glasses, cream/white T-shirt with a small dark print; retain stylized approved portrait design and add corresponding glasses."
+  },
+  "gaps": [
+    "Approved Nanay/Lola v1 portraits differ from current source models; parent will explain divergence and use current model identities in approved rendering style.",
+    "Shared storewomen geometry; designs need backgrounds/expressions to distinguish each role."
+  ],
+  "stale_references": [
+    "Original non-animated package previews swap the later smoker/beggar identities; use animated/previews instead."
+  ],
+  "tools": {
+    "blender_executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "blender_executable_exists": true,
+    "godot_console_executable": "C:\\Godot\\Godot_v4.6.1-stable_win64.exe\\Godot_v4.6.1-stable_win64_console.exe",
+    "safe_render_route": "blender --background --factory-startup --python isolated review script: import source GLB, add portrait camera/light, render PNG to preview metadata/references. Never save blend or open connected instance; no Godot import necessary.",
+    "blender_version_verified": "5.2.2 LTS, hash d13f752e3b9c, built 2026-09-15"
+  }
+}

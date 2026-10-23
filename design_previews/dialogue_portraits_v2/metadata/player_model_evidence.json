@@ -1,0 +1,9 @@
+{
+  "id": "player",
+  "scene_path": "game/entities/playerv2/playerv_2.tscn",
+  "model_path": "_raw_assets/Simple_Character_PSX/model/glb/simple-character-psx.glb",
+  "local_reference": "references/player_model.png",
+  "identity_evidence": "Thick black rectangular frames and translucent lenses. Embedded head ArrayMesh includes glass surface using StandardMaterial3D_y10w4.",
+  "reference_status": "Front head-and-shoulder render from source GLB using isolated Blender 5.2.2 LTS. Visually inspected; no live Blender scene or runtime source changed.",
+  "portrait_requirement": "Preserve approved player identity and add matching black glasses to all five expressions."
+}

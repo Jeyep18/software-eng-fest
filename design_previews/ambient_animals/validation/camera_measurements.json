@@ -1,0 +1,222 @@
+[
+	{
+		"animal": "(14.5, 0.6178, -14.5)",
+		"camera": "(10.5, 2.000704, -8.001766)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "grocery_RestingCat_high_vhs_false",
+		"player": "(10.5, 0.617909, -14.0)",
+		"process_ms": 25.638,
+		"screen": "(1530.276, 649.2992)",
+		"visible_pixels": 1704
+	},
+	{
+		"animal": "(-4.4, 0.6178, -14.4)",
+		"camera": "(-5.798447, 2.998364, -8.400003)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WalkingCat_high_vhs_false",
+		"player": "(-5.8, 0.617909, -14.4)",
+		"process_ms": 29.008,
+		"screen": "(1169.42, 732.4248)",
+		"visible_pixels": 1397
+	},
+	{
+		"animal": "(9.5, 0.6178, -9.7)",
+		"camera": "(8.498888, 2.001503, -5.000002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WanderingDog_high_vhs_false",
+		"player": "(8.5, 0.617909, -11.0)",
+		"process_ms": 30.993,
+		"screen": "(1156.683, 683.881)",
+		"visible_pixels": 6354
+	},
+	{
+		"animal": "(14.5, 0.6178, -14.5)",
+		"camera": "(10.49999, 1.999648, -8.000002)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "grocery_RestingCat_high_vhs_true",
+		"player": "(10.5, 0.617909, -14.0)",
+		"process_ms": 29.845,
+		"screen": "(1530.142, 649.2885)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(-4.4, 0.6178, -14.4)",
+		"camera": "(-5.797684, 2.997428, -8.400002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WalkingCat_high_vhs_true",
+		"player": "(-5.8, 0.617909, -14.4)",
+		"process_ms": 35.218,
+		"screen": "(1169.437, 732.4486)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(9.5, 0.6178, -9.7)",
+		"camera": "(8.498161, 2.002537, -5.000002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WanderingDog_high_vhs_true",
+		"player": "(8.5, 0.617909, -11.0)",
+		"process_ms": 41.134,
+		"screen": "(1156.701, 683.9124)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(14.5, 0.6178, -14.5)",
+		"camera": "(10.49999, 1.999792, -8.000002)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "grocery_RestingCat_performance_vhs_false",
+		"player": "(10.5, 0.617909, -14.0)",
+		"process_ms": 212.164,
+		"screen": "(1530.139, 649.2863)",
+		"visible_pixels": 1727
+	},
+	{
+		"animal": "(-4.4, 0.6178, -14.4)",
+		"camera": "(-5.798441, 2.998371, -8.400002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WalkingCat_performance_vhs_false",
+		"player": "(-5.8, 0.617909, -14.4)",
+		"process_ms": 27.633,
+		"screen": "(1169.42, 732.4248)",
+		"visible_pixels": 1381
+	},
+	{
+		"animal": "(9.5, 0.6178, -9.7)",
+		"camera": "(8.498918, 2.001504, -5.000002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WanderingDog_performance_vhs_false",
+		"player": "(8.5, 0.617909, -11.0)",
+		"process_ms": 364.833,
+		"screen": "(1156.682, 683.8812)",
+		"visible_pixels": 6546
+	},
+	{
+		"animal": "(14.5, 0.6178, -14.5)",
+		"camera": "(10.49999, 1.999648, -8.000002)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "grocery_RestingCat_performance_vhs_true",
+		"player": "(10.5, 0.617909, -14.0)",
+		"process_ms": 26.216,
+		"screen": "(1530.142, 649.2885)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(-4.4, 0.6178, -14.4)",
+		"camera": "(-5.797728, 2.997544, -8.400002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WalkingCat_performance_vhs_true",
+		"player": "(-5.8, 0.617909, -14.4)",
+		"process_ms": 34.43,
+		"screen": "(1169.435, 732.4463)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(9.5, 0.6178, -9.7)",
+		"camera": "(8.49806, 2.002705, -5.000002)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "grocery_WanderingDog_performance_vhs_true",
+		"player": "(8.5, 0.617909, -11.0)",
+		"process_ms": 35.633,
+		"screen": "(1156.703, 683.9177)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(17.2, 0.8562, -11.1)",
+		"camera": "(18.75354, 2.500557, -5.0)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "tindahan_RestingCat_high_vhs_false",
+		"player": "(18.75354, 0.500557, -10.0)",
+		"process_ms": 584.221,
+		"screen": "(728.0638, 572.8451)",
+		"visible_pixels": 1054
+	},
+	{
+		"animal": "(0.8, 0.500448, -6.9)",
+		"camera": "(3.8, 2.500554, -1.9)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "tindahan_WalkingDog_high_vhs_false",
+		"player": "(3.8, 0.500555, -6.9)",
+		"process_ms": 18.078,
+		"screen": "(423.1371, 654.0801)",
+		"visible_pixels": 7149
+	},
+	{
+		"animal": "(17.2, 0.8562, -11.1)",
+		"camera": "(18.75354, 2.500556, -5.0)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "tindahan_RestingCat_high_vhs_true",
+		"player": "(18.75354, 0.500557, -10.0)",
+		"process_ms": 29.788,
+		"screen": "(728.0638, 572.8451)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(0.8, 0.500448, -6.9)",
+		"camera": "(3.8, 2.500554, -1.9)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "tindahan_WalkingDog_high_vhs_true",
+		"player": "(3.8, 0.500555, -6.9)",
+		"process_ms": 26.817,
+		"screen": "(423.1371, 654.0801)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(17.2, 0.8562, -11.1)",
+		"camera": "(18.75354, 2.500556, -5.0)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "tindahan_RestingCat_performance_vhs_false",
+		"player": "(18.75354, 0.500557, -10.0)",
+		"process_ms": 15.147,
+		"screen": "(728.0638, 572.8451)",
+		"visible_pixels": 1056
+	},
+	{
+		"animal": "(0.8, 0.500448, -6.9)",
+		"camera": "(3.8, 2.500553, -1.9)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "tindahan_WalkingDog_performance_vhs_false",
+		"player": "(3.8, 0.500555, -6.9)",
+		"process_ms": 13.94,
+		"screen": "(423.1371, 654.0801)",
+		"visible_pixels": 7175
+	},
+	{
+		"animal": "(17.2, 0.8562, -11.1)",
+		"camera": "(18.75354, 2.500555, -5.0)",
+		"camera_visible": true,
+		"clip": "sit_loop",
+		"label": "tindahan_RestingCat_performance_vhs_true",
+		"player": "(18.75354, 0.500557, -10.0)",
+		"process_ms": 25.855,
+		"screen": "(728.0638, 572.8451)",
+		"visible_pixels": -1
+	},
+	{
+		"animal": "(0.8, 0.500448, -6.9)",
+		"camera": "(3.8, 2.500553, -1.9)",
+		"camera_visible": true,
+		"clip": "idle_loop",
+		"label": "tindahan_WalkingDog_performance_vhs_true",
+		"player": "(3.8, 0.500555, -6.9)",
+		"process_ms": 26.287,
+		"screen": "(423.1371, 654.0801)",
+		"visible_pixels": -1
+	}
+]

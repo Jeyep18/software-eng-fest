@@ -47,6 +47,9 @@ size = Vector3(13.718491, 2.862793, 1.854065)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lottohan"]
 size = Vector3(3.8, 2, 1.7)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_chicken_curb"]
+points = PackedVector3Array(-0.65, -0.05, 0.45, 0.65, -0.05, 0.45, -0.65, -0.05, -0.45, 0.65, -0.05, -0.45, -0.65, 0.00033, 0.45, 0.65, 0.00033, 0.45, -0.65, 0.17233, -0.45, 0.65, 0.17233, -0.45)
+
 [node name="Pharmacy" type="Node3D" unique_id=658136089]
 
 [node name="StormRainLayer" parent="." unique_id=40312604 instance=ExtResource("16_rain")]
@@ -282,6 +285,12 @@ data = ExtResource("8_lgo0e")
 
 [node name="Pharmacy" parent="." unique_id=254151288 instance=ExtResource("9_scsrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18076801, -0.00018376112, 0.04223728)
+
+[node name="ChickenCornerCurbRamp" type="StaticBody3D" parent="."]
+position = Vector3(16.65, 0.4, -6.35)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChickenCornerCurbRamp"]
+shape = SubResource("ConvexPolygonShape3D_chicken_curb")
 
 [node name="WorldItem" parent="." unique_id=704261374 instance=ExtResource("12_lgo0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.819492, 1.5753336, -7.885809)

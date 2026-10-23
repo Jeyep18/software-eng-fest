@@ -1,0 +1,24 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+
+ATE LINDA PASS hammer is available
+ATE LINDA PASS dialogue completes
+ATE LINDA PASS hammer triggers trade offer
+ATE LINDA PASS open trade prompt uses its Tagalog key without source overlap
+ATE LINDA PASS open trade prompt restores English
+ATE LINDA PASS declining opens regular-priced shop
+ATE LINDA PASS declining keeps hammer and prices unchanged
+ATE LINDA PASS regular-priced purchase still succeeds
+ATE LINDA PASS regular purchase reduces Linda's finite stock
+ATE LINDA PASS dialogue completes
+ATE LINDA PASS declined offer returns on next interaction
+ATE LINDA PASS accepted trade consumes hammer and unlocks discount
+ATE LINDA PASS accepted trade opens discounted shop
+ATE LINDA PASS discount changes price without replenishing stock
+ATE LINDA PASS trade leaves shared shop resources unchanged
+ATE LINDA PASS dialogue completes
+ATE LINDA PASS accepted trade is not offered again
+Ate Linda regression: 17 checks, 0 failures
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 9 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

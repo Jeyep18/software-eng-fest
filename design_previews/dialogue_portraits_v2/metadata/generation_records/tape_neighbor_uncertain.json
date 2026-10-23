@@ -1,0 +1,12 @@
+{
+  "id": "tape_neighbor",
+  "expression": "uncertain",
+  "name": "Kapitbahay",
+  "refs": [
+    "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tape_neighbor/neutral.png"
+  ],
+  "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Kapitbahay.\nExpression: uncertain — Uncertain doubt: one brow higher, other knit, hesitant eyes, skewed doubtful closed mouth.",
+  "destination": "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tape_neighbor/uncertain.png",
+  "source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-29b04170-a0b0-49c9-a9e5-b28240589587.png",
+  "status": "generated_review_only"
+}

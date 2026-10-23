@@ -68,7 +68,7 @@ func _process(delta: float) -> void:
 		_until_pulse = FIRST_PULSE_DELAY
 		return
 	if _pulse_elapsed >= 0.0:
-		if not _is_eligible(_target):
+		if not is_instance_valid(_target) or not _is_eligible(_target):
 			_target = null
 			_hide_wind()
 			_until_pulse = FIRST_PULSE_DELAY
@@ -139,7 +139,7 @@ func _is_eligible(item: WorldItem) -> bool:
 
 
 func _choose_route() -> PackedVector3Array:
-	if _is_eligible(_target):
+	if is_instance_valid(_target) and _is_eligible(_target):
 		var previous := _calculate_route(_target)
 		if not previous.is_empty():
 			return previous
@@ -147,7 +147,8 @@ func _choose_route() -> PackedVector3Array:
 	var best := PackedVector3Array()
 	var best_length := INF
 	for item in _items:
-		if not _is_eligible(item):
+		# Freed pickups must be rejected before the typed function call.
+		if not is_instance_valid(item) or not _is_eligible(item):
 			continue
 		var route := _calculate_route(item)
 		if route.is_empty():

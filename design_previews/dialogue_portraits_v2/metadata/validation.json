@@ -1,0 +1,310 @@
+{
+  "status": "approved_and_integrated",
+  "npc_count": 17,
+  "character_count": 18,
+  "portrait_count": 68,
+  "active_interaction_line_count": 64,
+  "configured_fallback_line_count": 2,
+  "model_reference_count": 18,
+  "base_generation_record_count": 18,
+  "expression_generation_record_count": 50,
+  "png_dimensions": {
+    "portraits/ate_linda/apologetic.png": [
+      1254,
+      1254
+    ],
+    "portraits/ate_linda/grateful.png": [
+      1254,
+      1254
+    ],
+    "portraits/ate_linda/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/ate_linda/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/ate_maribel/amused.png": [
+      1254,
+      1254
+    ],
+    "portraits/ate_maribel/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/ate_maribel/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/chooks_seller/cheerful.png": [
+      1254,
+      1254
+    ],
+    "portraits/chooks_seller/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/chooks_seller/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/grocery_girl/annoyed.png": [
+      1254,
+      1254
+    ],
+    "portraits/grocery_girl/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/grocery_girl/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/grocery_girl/urgent.png": [
+      1254,
+      1254
+    ],
+    "portraits/hardware_girl/helpful.png": [
+      1254,
+      1254
+    ],
+    "portraits/hardware_girl/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/hardware_girl/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/hardware_girl/weary.png": [
+      1254,
+      1254
+    ],
+    "portraits/kaps_worker/defensive.png": [
+      1254,
+      1254
+    ],
+    "portraits/kaps_worker/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/kaps_worker/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/lola/concerned.png": [
+      1254,
+      1254
+    ],
+    "portraits/lola/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/lola/relieved.png": [
+      1254,
+      1254
+    ],
+    "portraits/lola/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/mang_nestor/concerned.png": [
+      1254,
+      1254
+    ],
+    "portraits/mang_nestor/grateful.png": [
+      1254,
+      1254
+    ],
+    "portraits/mang_nestor/hopeful.png": [
+      1254,
+      1254
+    ],
+    "portraits/mang_nestor/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/mang_nestor/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/nanay/concerned.png": [
+      1254,
+      1254
+    ],
+    "portraits/nanay/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/nanay/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/nanay/urgent.png": [
+      1254,
+      1254
+    ],
+    "portraits/panic_buyer/anxious.png": [
+      1254,
+      1254
+    ],
+    "portraits/panic_buyer/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/panic_buyer/overwhelmed.png": [
+      1254,
+      1254
+    ],
+    "portraits/panic_buyer/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/pharmacist/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/pharmacist/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/player/determined.png": [
+      1254,
+      1254
+    ],
+    "portraits/player/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/player/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/player/surprised.png": [
+      1254,
+      1254
+    ],
+    "portraits/player/thinking.png": [
+      1254,
+      1254
+    ],
+    "portraits/queue_man/frustrated.png": [
+      1254,
+      1254
+    ],
+    "portraits/queue_man/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/queue_man/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/queue_man/stern.png": [
+      1254,
+      1254
+    ],
+    "portraits/smoke_break/coaxing.png": [
+      1254,
+      1254
+    ],
+    "portraits/smoke_break/concerned.png": [
+      1254,
+      1254
+    ],
+    "portraits/smoke_break/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/smoke_break/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/stranger/grateful.png": [
+      1254,
+      1254
+    ],
+    "portraits/stranger/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/stranger/pleading.png": [
+      1254,
+      1254
+    ],
+    "portraits/stranger/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/tape_neighbor/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/tape_neighbor/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/tape_neighbor/uncertain.png": [
+      1254,
+      1254
+    ],
+    "portraits/tatay_jun/amused.png": [
+      1254,
+      1254
+    ],
+    "portraits/tatay_jun/concerned.png": [
+      1254,
+      1254
+    ],
+    "portraits/tatay_jun/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/tatay_jun/speaking.png": [
+      1254,
+      1254
+    ],
+    "portraits/wet_parent/compassionate.png": [
+      1254,
+      1254
+    ],
+    "portraits/wet_parent/exhausted.png": [
+      1254,
+      1254
+    ],
+    "portraits/wet_parent/neutral.png": [
+      1254,
+      1254
+    ],
+    "portraits/wet_parent/speaking.png": [
+      1254,
+      1254
+    ]
+  },
+  "runtime_baseline_file_count": 253,
+  "runtime_baseline_changed_files": [
+    "game/entities/chooks_to_go_seller.tscn",
+    "game/ui/inner_dialogue/monologue_ui.tscn",
+    "game/entities/ate_linda_npc/ate_linda.tscn",
+    "game/entities/grocery_girl/grocery_girl.tscn",
+    "game/entities/hardware_girl/hardware_girl.tscn",
+    "game/entities/lola/lola.tscn",
+    "game/entities/nanay/nanay.tscn",
+    "game/entities/pharmacist/pharma_dude.tscn",
+    "game/entities/quest_npcs/mang_nestor.tscn",
+    "game/entities/quest_npcs/money_beggar.tscn",
+    "game/entities/quest_npcs/smoke_break_npc.tscn",
+    "game/entities/story_npcs/ate_maribel.tscn",
+    "game/entities/story_npcs/kaps_worker.tscn",
+    "game/entities/story_npcs/palengke_queue_man.tscn",
+    "game/entities/story_npcs/panic_buyer.tscn",
+    "game/entities/story_npcs/tape_neighbor.tscn",
+    "game/entities/story_npcs/tatay_jun.tscn",
+    "game/entities/story_npcs/wet_parent.tscn",
+    "game/entities/dialogues/ate_linda/sequence/ate_linda_tindahan_act1.tres"
+  ],
+  "limits": [
+    "Artwork and binding preservation checks; see integration verification for Godot runtime results."
+  ]
+}

@@ -1,0 +1,772 @@
+[
+  {
+    "id": "nanay",
+    "expression": "neutral",
+    "portrait_path": "portraits/nanay/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Mother, adult woman; copper/auburn swept-back shoulder-length hair with long side strands, light-medium warm tan skin, dark charcoal plain crew-neck tee. No eyeglasses or earrings: use actual model rather than earlier purple illustrated portrait.\nBackground: quiet dark olive home wall, broad window/curtain, muted storm light.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/Nanay.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-7b64c3a8-61d6-490e-ad43-299e98f7cb03.png",
+    "sha256": "6a48aa6d1f0031d065fc0bc6fe40471b1fe240eb87a6ab725fe88b90a79a8758"
+  },
+  {
+    "id": "lola",
+    "expression": "neutral",
+    "portrait_path": "portraits/lola/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Elderly grandmother, short neatly combed silver-grey hair, age lines around eyes/mouth, warm light tan skin, pale desaturated blue cardigan/blazer over ivory top. No glasses, necklace, or brooch: match actual model rather than older sketch reference.\nBackground: quiet home room, broad grey window and dull sage yard shape.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/Lola.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-422535d2-b665-4518-b4c5-c1c09ff90cc4.png",
+    "sha256": "2d10eebc0497d467fda1abc8b518636b3b8e91c7ff5f9141ae7e258631fe73b0"
+  },
+  {
+    "id": "ate_linda",
+    "expression": "neutral",
+    "portrait_path": "portraits/ate_linda/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult woman with straight chin-length dark blonde/ochre bob parted to the side, light warm tan skin, white-and-grey broad check/block shirt. Match the shared actual shop model; no glasses. Facial proportions can be adult and angular; no teen face.\nBackground: tindahan stall, desaturated teal counter edge and muted tin/wood shelving, few broad blocks.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/AteLinda.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-a2b3a0b1-4aaf-4b1b-b6d5-0961c92743ab.png",
+    "sha256": "d19a79059a951322095996fa73aaaca5644b12c0fa783b4ac17e30e16475f705"
+  },
+  {
+    "id": "mang_nestor",
+    "expression": "neutral",
+    "portrait_path": "portraits/mang_nestor/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Older bald man with tiny silver side fringe, medium-dark warm brown skin, broad familiar face, mature smile lines, plain desaturated teal henley with small button neckline. Match actual model face; no glasses/cap/apron.\nBackground: tindahan neighbourhood, broad faded olive wall and corrugated grey awning, simple doorway.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/MangNestor.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-d572cdcd-15b2-45c0-9af1-4450afd6b502.png",
+    "sha256": "570310dd2bd6d374263441ce4f3838eda9c4006160429aca0268410429087af2"
+  },
+  {
+    "id": "tape_neighbor",
+    "expression": "neutral",
+    "portrait_path": "portraits/tape_neighbor/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult male, short wavy side-parted dark brown hair, light warm tan skin, faint beard stubble, muted beige/yellow collared polo. Preserve gentle broad jaw and actual model silhouette. No glasses.\nBackground: weathered neighbourhood wall and a broad dark window with two very subtle crossed beige tape strips.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/TapeNeighbor.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-48b8d572-baae-4c80-a956-8b1412b7cafd.png",
+    "sha256": "bac720bf2af18489a148763cb1a58a506bdd17649933fcee1b3afeaeac8dd28b"
+  },
+  {
+    "id": "smoke_break",
+    "expression": "neutral",
+    "portrait_path": "portraits/smoke_break/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult male, fuller round face, straight short black hair with blunt bangs, thick black rectangular glasses, faint moustache/stubble, light-medium warm tan skin, grey polo shirt with pale trim. Preserve glasses, unlike the player use mature face.\nBackground: tindahan exterior under grey awning, weathered olive wall, small rainlit rectangle.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/SmokeBreakNPC.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-752a356d-4705-42ec-867b-1537c425bd79.png",
+    "sha256": "1af21d06f62332d38c887c613efc7656a06adef38d0b66605104cf18e6487c64"
+  },
+  {
+    "id": "pharmacist",
+    "expression": "neutral",
+    "portrait_path": "portraits/pharmacist/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Young adult male pharmacist, short squared black hair, medium warm tan skin, composed narrow face and dark brows, white lab coat over charcoal crew-neck top with tiny plain teal badge shape. No text on badge, no glasses.\nBackground: botika interior, broad pale-grey shelves with abstract teal medicine-box blocks, no text/cross/logos.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/PharmaDude.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-93cb4c9b-8ed9-4ef0-90e6-26f84ac98e8a.png",
+    "sha256": "34defe291c804cdbf8b30efbcb8bd4c34d9ae3265eb0956f61b8d84a18ef305d"
+  },
+  {
+    "id": "chooks_seller",
+    "expression": "neutral",
+    "portrait_path": "portraits/chooks_seller/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Older bald male vendor with small grey side fringe, medium-dark brown skin, broad face, a few mature smile lines, plain muted blue short-sleeved henley with small button placket. No added cap, apron, cigarette or jewelry.\nBackground: chicken shop, quiet charcoal counter and faded warm red wall panel with muted grey rain-lit rectangle.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/ChooksSeller.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-e7cb3129-a4db-4bf7-95c5-da60416dfc84.png",
+    "sha256": "527dded77e45885c665ebc5235e8c6e284ed10e6b60087cf2c166fae109ab4c5"
+  },
+  {
+    "id": "ate_maribel",
+    "expression": "neutral",
+    "portrait_path": "portraits/ate_maribel/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult woman, short dark side-swept pixie/fringe, warm medium tan skin, softly angular oval face, muted russet-brown scoop/V neckline blouse. No glasses, earrings or hats.\nBackground: pharmacy waiting area, subdued pale grey/teal wall and simple dull red shelf stripe.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/AteMaribel.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-b0c68ccb-c2ec-4e0f-bbbb-39de55827093.png",
+    "sha256": "17997cf2fa67e902fac4f75b3c2f216dd678032b8128d67e36bbfef1ec6d9c3c"
+  },
+  {
+    "id": "hardware_girl",
+    "expression": "neutral",
+    "portrait_path": "portraits/hardware_girl/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult woman, straight chin-length dark blonde/ochre side-part bob, light warm tan skin, white/grey broad check/block short-sleeved shirt. She shares a3D model with AteLinda/GroceryGirl; preserve that shared silhouette and clothes. No added helmet/apron/glasses.\nBackground: hardware interior, broad weathered plywood planks and dark charcoal shelf geometry, dull amber small edge.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/HardwareGirl.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-7fd10324-dfcc-418e-8cab-66bee08229c4.png",
+    "sha256": "22aaee4f98dc443fb38426842981a4c3f5a3051242e3a173b2756e17f661cc8b"
+  },
+  {
+    "id": "tatay_jun",
+    "expression": "neutral",
+    "portrait_path": "portraits/tatay_jun/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Middle-aged man with thick wavy dark brown/grey-streaked hair, light-medium tan skin, clean-shaven strong angular face, plain muted-brown high-neck button shirt. No eyeglasses or jewelry.\nBackground: hardware store, broad dark grey shelf shapes and dull brown plywood.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/TatayJun.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-17da9733-8c77-42c5-97b3-9d0e093499a1.png",
+    "sha256": "d4d257b9dc488a6a85dd2dea50d93c4309f7b5975a0c5fa5f2f2d7ddc47b8a28"
+  },
+  {
+    "id": "kaps_worker",
+    "expression": "neutral",
+    "portrait_path": "portraits/kaps_worker/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult man, short neat brown hair, fair warm tan skin, clean-shaven round/oval face, muted olive green collared long-sleeved button shirt. No hats, badges, tie or glasses.\nBackground: hardware corner, broad boxed supplies and dark charcoal shelves, quiet olive-grey.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/KapsWorker.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-42e09201-a605-404a-89c7-9700f80b652a.png",
+    "sha256": "36ec29b8dd7cad3191f65cfc3a498a3409c17c694673aff3ff912777d5bb7744"
+  },
+  {
+    "id": "grocery_girl",
+    "expression": "neutral",
+    "portrait_path": "portraits/grocery_girl/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult woman, chin-length dark blonde/ochre side-parted bob, light warm tan skin, white/grey broad check/block shirt. Same shared model silhouette as shop staff, do not invent another hair color or outfit. No eyewear/accessories.\nBackground: grocery interior, broad sea-green shelves with abstract muted canned/carton blocks, no lettering.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/GroceryGirl.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-8fd3895f-351b-4f18-9dd0-48431aad860e.png",
+    "sha256": "9dc2dbce1b5333566d1fc3c8fcc0fc68afd230d211d9e69c653827d368fb0a08"
+  },
+  {
+    "id": "queue_man",
+    "expression": "neutral",
+    "portrait_path": "portraits/queue_man/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Middle-aged man, thick dark wavy hair with a few grey tones, light-medium tan skin, clean-shaven angular face, muted steel-blue high-neck button shirt. No glasses.\nBackground: palengke queue, broad dark green market stall and pale grey shutter blocks.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/PalengkeQueueMan.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-92ea0c5f-4102-46a2-9200-e72df5e887d5.png",
+    "sha256": "3a7bae3454bf206721c4f14aa14c8125795139ce1dff25c57e69450ff220c0c4"
+  },
+  {
+    "id": "panic_buyer",
+    "expression": "neutral",
+    "portrait_path": "portraits/panic_buyer/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult woman, black straight bangs and dark hair tied back with small sides, warm light tan skin, broad face, plain muddy mustard/olive scoop neck shirt and tiny simple pendant necklace matching model. No glasses.\nBackground: grocery shelves in olive-charcoal, few simple overfull brown carton shapes.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/PanicBuyer.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-b4e69264-f1ff-4359-87db-d07dbe9e0985.png",
+    "sha256": "eebd4ec1611c02a88cd28233a89c62997e34e3447dfefed6804e4917a220e3b3"
+  },
+  {
+    "id": "wet_parent",
+    "expression": "neutral",
+    "portrait_path": "portraits/wet_parent/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult mother, dark straight bangs and hair tied back, warm light tan skin, fuller rounded face, muted dusty-purple scoop-neck shirt, tiny simple pendant necklace visible in model. No glasses. Preserve original features without adding injury.\nBackground: palengke rain shelter, cool desaturated blue-grey rainlit doorway and muted tarpaulin, low contrast.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/WetParent.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-32f03e41-23cb-4c9d-af5e-7c8d7a0a6c9c.png",
+    "sha256": "abcfc9fbffbc5ec2f9f6f739cfe0ede6a27d3e67770b7d1017b722fbec488149"
+  },
+  {
+    "id": "stranger",
+    "expression": "neutral",
+    "portrait_path": "portraits/stranger/neutral.png",
+    "prompt": "Use case: style-transfer. Asset type: ONE square head-and-shoulders NPC portrait asset for Bagyong Bahay, for a dialogue frame displayed at 150px. New illustration for design approval, no text or sheet.\nImage 1 is the actual 3D MODEL identity reference: match that character's hair, face silhouette, apparent age, skin tone, clothing and accessories. Image 2 is ONLY the approved player's rendering STYLE and frame reference. Do NOT give every adult the player's haircut or child face.\nRender a new original 2D portrait with the same broad angular cel-shaded planes, controlled dark contour, polygonal hair masses, expressive dark eyes with restrained small highlights, matte worn-print texture and storm-muted palette as Image2. Translate low-poly models into illustrated faces, never retain photographic/model-render textures. Clearly adult when applicable; do not make all characters teenagers. Restrained texture, uncluttered features readable at150px. Frontal centered gaze, head upper-shoulders crop, hair top inset, face about60\u201365% image height. Identical square composition and outer charcoal/teal frame plus fine ivory inset to Image2. Broad diffuse light from upper-left. Quiet low contrast illustrated background with3\u20135 broad shapes in desaturated olive, teal/charcoal, soft grey; background must not compete with face.\nExpression: neutral/attentive, mouth closed, relaxed but engaged brows. Each character will have separately generated expression variants later. Opaque square full-canvas PNG master about1024px. No text, numbers, brands, logos, watermark, title, UI button, hands, extra characters, photo background, glossy3D/plastic, photoreal skin, crayon scribbles, scanlines, chromatic aberration, neon, fantasy or combat imagery. No unreferenced jewelry or hats; keep actual model's traits.\nSubject: Adult man with short dark hair, light-medium warm tan skin, slightly lean cheeks, faint short stubble, ragged sleeveless muted-grey V-neck shirt with frayed neckline. No glasses. Avoid exaggerated misery or dehumanizing features.\nBackground: quiet wet palengke pavement/wall, grey concrete and dark teal awning shapes.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Blender/Bagyong_Bahay_NPCs_PSX/animated/previews/MoneyBeggar.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-aff84c67-0188-49cd-9db2-ea3fdfae25f9.png",
+    "sha256": "8db3dbfd16cacaaab3dc15e32066e658c9df4c032828057087cd843148418ddf"
+  },
+  {
+    "id": "player",
+    "expression": "neutral",
+    "portrait_path": "portraits/player/neutral.png",
+    "prompt": "Use case: precise-object-edit. Image1 is the APPROVED player portrait edit target. Image2 is actual3D player model, used ONLY to identify glasses shape. Change ONLY one thing in Image1: add the model's thick dark black rectangular/trapezoidal eyeglass frames, fitted naturally over both existing eyes with a short bridge and thin temples. Lenses clear and subtly translucent so the original expressive eyes are fully visible. Not sunglasses; no opaque glare. Keep EVERYTHING else precisely unchanged: same boy's face, hair, skin, eyes, calm closed smile, cheek marks, ivory shirt/dark collar, frame borders, background, angular illustrated medium, worn print texture, scale, crop, camera. ONE square finished portrait with opaque background, no extra characters/text/watermark. Match glasses to illustrated angular rendering ofImage1, do not copy photoreal texture from model.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_calm.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/references/player_model.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-d34429bc-6e56-46dd-a6fa-4300c67a59a4.png",
+    "sha256": "8cb5577d4283d133fc3886dbcd969bad4645f89d196155b62ca957f43454526d"
+  },
+  {
+    "id": "ate_linda",
+    "expression": "apologetic",
+    "portrait_path": "portraits/ate_linda/apologetic.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Ate Linda.\nExpression: apologetic \u2014 Reluctant apology: raised inner brows, mildly downturned eyes, rueful uneven mouth slightly parted.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/ate_linda/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-da11f987-ffbd-4bbc-8b60-b60b20e10cdd.png",
+    "sha256": "f940304b595fd4d34d1d3d3d530403b6efb55c38676435df67b4e4464c052e62"
+  },
+  {
+    "id": "ate_linda",
+    "expression": "grateful",
+    "portrait_path": "portraits/ate_linda/grateful.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Ate Linda.\nExpression: grateful \u2014 Grateful warmth: clear kind tooth-showing smile, eyes softly narrowed and bright, relaxed brows. Respectful thanks.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/ate_linda/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-f1c49533-7161-4cbc-a9c6-5c830a3de4d9.png",
+    "sha256": "b85704bd43b94c9910f22074bfc45c10a535aaf89c43844e36730943afec8882"
+  },
+  {
+    "id": "ate_linda",
+    "expression": "speaking",
+    "portrait_path": "portraits/ate_linda/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Ate Linda.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/ate_linda/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-fe8d7e4b-6f10-4997-bfba-d3f16e0a2853.png",
+    "sha256": "864e2be89d8a746629417818804c1f1e610d7e745654e21d8583e78bcdbb4ad6"
+  },
+  {
+    "id": "ate_maribel",
+    "expression": "amused",
+    "portrait_path": "portraits/ate_maribel/amused.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Ate Maribel.\nExpression: amused \u2014 Wry amusement: one raised brow, narrowed friendly eyes, small sideways open grin. Gentle humor.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/ate_maribel/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-9e9d4b44-9805-4e3d-942c-b3761b9fa1ff.png",
+    "sha256": "de59d45cfd3c869f151c81181a980525f144aa34780baf39ba670f7ee3e0b782"
+  },
+  {
+    "id": "ate_maribel",
+    "expression": "speaking",
+    "portrait_path": "portraits/ate_maribel/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Ate Maribel.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/ate_maribel/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-29cecf78-d74a-4ea5-b214-603d25acd453.png",
+    "sha256": "566bfc84724f47bf06ffde9fc758f80b57cd74fccf42a6d7de8460370301eeb1"
+  },
+  {
+    "id": "chooks_seller",
+    "expression": "cheerful",
+    "portrait_path": "portraits/chooks_seller/cheerful.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tindero.\nExpression: cheerful \u2014 Cheerful welcome: friendly tooth-showing smile, lifted relaxed brows, warm softly narrowed eyes.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/chooks_seller/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-f85e2359-40c4-49e0-b4b2-dad7e558c61f.png",
+    "sha256": "a4e386141d576e071ebc6ea8890fd923ea890bd9e73ffca2cbd258e683243370"
+  },
+  {
+    "id": "chooks_seller",
+    "expression": "speaking",
+    "portrait_path": "portraits/chooks_seller/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tindero.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/chooks_seller/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-98aa5e83-445c-4b8b-89af-d7e16f5f9640.png",
+    "sha256": "b616549663ebbb3b5a0ad8303017d19499cb0ac0f9b613dd324919cf19809262"
+  },
+  {
+    "id": "grocery_girl",
+    "expression": "annoyed",
+    "portrait_path": "portraits/grocery_girl/annoyed.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Grocery Girl.\nExpression: annoyed \u2014 Impatient annoyance: distinctly lowered brows, half-lidded narrowed eyes, compressed sideways/downward mouth.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/grocery_girl/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-17bcaf37-a8b1-41d0-a289-de10777cf528.png",
+    "sha256": "70ce6047ea1d4328bf49e515f80a9ca7d812f6f168eebe30122b983c669207cb"
+  },
+  {
+    "id": "grocery_girl",
+    "expression": "speaking",
+    "portrait_path": "portraits/grocery_girl/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Grocery Girl.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/grocery_girl/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-b7994369-8204-4d9d-8169-32c26bc66d85.png",
+    "sha256": "5b6f558ad3d71a6c132f278ee8590450286d7369fff29a1de49733d65a790eaf"
+  },
+  {
+    "id": "grocery_girl",
+    "expression": "urgent",
+    "portrait_path": "portraits/grocery_girl/urgent.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Grocery Girl.\nExpression: urgent \u2014 Urgent serious warning: brows down/inward, focused widened eyes, partly open mouth in emphatic speech. Not snarling.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/grocery_girl/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-ec70d739-6ec9-4bd3-8a4d-1408a88eff06.png",
+    "sha256": "d5c47043a2eb377c400dddf7817672393b345448b7f279e34ac113168b87124d"
+  },
+  {
+    "id": "hardware_girl",
+    "expression": "helpful",
+    "portrait_path": "portraits/hardware_girl/helpful.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Hardware Girl.\nExpression: helpful \u2014 Helpful encouragement: gently lifted brows, attentive warm eyes, small open reassuring smile.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/hardware_girl/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-c5bc4033-9984-4509-9879-a66537574f19.png",
+    "sha256": "dfc3369ef7456a6d1d71dbb254355ba8353a69b6502c2ee7bbe53f21113984a8"
+  },
+  {
+    "id": "hardware_girl",
+    "expression": "speaking",
+    "portrait_path": "portraits/hardware_girl/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Hardware Girl.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/hardware_girl/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-6ebbfaf0-ccc0-4ccd-80d9-ded766d01bb3.png",
+    "sha256": "a0f1b26297f77bf907cf7398715f173b41922094458d6aeb2cdb0eab5bb6748f"
+  },
+  {
+    "id": "hardware_girl",
+    "expression": "weary",
+    "portrait_path": "portraits/hardware_girl/weary.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Hardware Girl.\nExpression: weary \u2014 Weary worker: drooping eyelids, lightly furrowed inner brows, flat/downward mouth. No bruises.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/hardware_girl/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-90ce87a2-ca79-473e-8ddd-1ec4788fd0e6.png",
+    "sha256": "3691d60ea317ec7036e7a32fcd55536a85257a34d487487c2dd4ecf4617d08c2"
+  },
+  {
+    "id": "kaps_worker",
+    "expression": "defensive",
+    "portrait_path": "portraits/kaps_worker/defensive.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tauhan ni Kap.\nExpression: defensive \u2014 Guarded defensive reply: inward angled brows, narrowed eyes, small tense uneven mouth. Not enraged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/kaps_worker/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-39772e1e-ef5c-4ed8-ac58-1cf25a9f0235.png",
+    "sha256": "d92133dd1a4083fb93c8323916df1eea2d8b53fbb1222b6e21c0491fb2359611"
+  },
+  {
+    "id": "kaps_worker",
+    "expression": "speaking",
+    "portrait_path": "portraits/kaps_worker/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tauhan ni Kap.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/kaps_worker/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-3b5071be-1bdc-45d8-94e9-de33a55bfc6e.png",
+    "sha256": "6dc4c2a327fda6f4a70dd49e6c0fc09ed83b7ff6478e29b3f13d71b89b7c66c9"
+  },
+  {
+    "id": "lola",
+    "expression": "concerned",
+    "portrait_path": "portraits/lola/concerned.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Lola.\nExpression: concerned \u2014 Worried caring concern: inner brows lifted and drawn together, eyes a little wider, small tense downward/slightly open mouth. Not anger/horror.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/lola/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-b93a8a1b-d724-440d-867b-9f6b47c22048.png",
+    "sha256": "1e233271f0164a004e578f5c0d1189eee341d1e3c30af3e4bad55650076c583d"
+  },
+  {
+    "id": "lola",
+    "expression": "relieved",
+    "portrait_path": "portraits/lola/relieved.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Lola.\nExpression: relieved \u2014 Gentle reassuring relief: relaxed brows, soft eyelids, modest warm closed smile. Calm reminder shared, not triumph.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/lola/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-8a4a4b19-4ee5-4d65-8e2f-da310e21046b.png",
+    "sha256": "25171b5cff4cfe21496686155df3058599d07868b03f33156a645ee30cdc2e9b"
+  },
+  {
+    "id": "lola",
+    "expression": "speaking",
+    "portrait_path": "portraits/lola/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Lola.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/lola/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-44d48859-36ca-4b37-a330-fae356d47d6c.png",
+    "sha256": "02782a98493c8bc23805f9e5131704b9dcb71ec0945bd49c1c26aa037d97353c"
+  },
+  {
+    "id": "mang_nestor",
+    "expression": "concerned",
+    "portrait_path": "portraits/mang_nestor/concerned.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Mang Nestor.\nExpression: concerned \u2014 Worried caring concern: inner brows lifted and drawn together, eyes a little wider, small tense downward/slightly open mouth. Not anger/horror.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/mang_nestor/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-dd5e71d5-4118-48af-965f-b712c8617553.png",
+    "sha256": "706d08a87974be337f2cd8baa10b0d1937d31126ce75d874aa01e4500b0fdfd0"
+  },
+  {
+    "id": "mang_nestor",
+    "expression": "grateful",
+    "portrait_path": "portraits/mang_nestor/grateful.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Mang Nestor.\nExpression: grateful \u2014 Grateful warmth: clear kind tooth-showing smile, eyes softly narrowed and bright, relaxed brows. Respectful thanks.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/mang_nestor/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-25722e15-0cc6-4bf4-9bdc-26343e1a91cb.png",
+    "sha256": "fa40ffb7f3754762cb7911185f67f8e8b7c51591292e7cabe6af3bb845294f63"
+  },
+  {
+    "id": "mang_nestor",
+    "expression": "hopeful",
+    "portrait_path": "portraits/mang_nestor/hopeful.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Mang Nestor.\nExpression: hopeful \u2014 Hopeful request: slightly lifted inner brows, open attentive eyes, tentative small parted smile.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/mang_nestor/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-4df59064-420e-4970-a172-93586d10b4e2.png",
+    "sha256": "5cc40862125796f4e2e918e166f081059d721ef87beecaf1deacebe4efb41014"
+  },
+  {
+    "id": "mang_nestor",
+    "expression": "speaking",
+    "portrait_path": "portraits/mang_nestor/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Mang Nestor.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/mang_nestor/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-6af112b7-9ee5-4252-ad02-0db835f6df24.png",
+    "sha256": "3ec85e8e855693f39bcbe09813f060f15816a7dd5cd9028c9dffe5df607fc151"
+  },
+  {
+    "id": "nanay",
+    "expression": "concerned",
+    "portrait_path": "portraits/nanay/concerned.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Nanay.\nExpression: concerned \u2014 Worried caring concern: inner brows lifted and drawn together, eyes a little wider, small tense downward/slightly open mouth. Not anger/horror.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/nanay/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-d1a2f48a-f0c1-49f1-b8d4-5bb36c0b80fb.png",
+    "sha256": "3a9fd44b00949cdc8816137208548b553e58ad7aaad14983a349f4b94ae5f2ed"
+  },
+  {
+    "id": "nanay",
+    "expression": "speaking",
+    "portrait_path": "portraits/nanay/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Nanay.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/nanay/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-35d19381-9ab6-4a4b-a80a-dd2431818766.png",
+    "sha256": "b48ff2d04d7ca26922f5a0b25fe2ff8f402c2e3f68e9cec65ee1e5862165a0b7"
+  },
+  {
+    "id": "nanay",
+    "expression": "urgent",
+    "portrait_path": "portraits/nanay/urgent.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Nanay.\nExpression: urgent \u2014 Urgent serious warning: brows down/inward, focused widened eyes, partly open mouth in emphatic speech. Not snarling.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/nanay/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-28a40853-4bec-456f-b5d5-4becd9fdbd52.png",
+    "sha256": "55d3bef9d29ea0b6c15a63bfc4e2f25bbb4d50fd2c4ca364e6e4c91f3516df0f"
+  },
+  {
+    "id": "panic_buyer",
+    "expression": "anxious",
+    "portrait_path": "portraits/panic_buyer/anxious.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Panic Buyer.\nExpression: anxious \u2014 Anxious worry: raised drawn-together inner brows, wide eyes, small uncertain open mouth.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/panic_buyer/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-517b6898-a850-425c-b1f3-aa665feb9e20.png",
+    "sha256": "9d5d93af7d9315d1414c47e6567dcdeb53af6c11684a8233745367dac2b3fd7d"
+  },
+  {
+    "id": "panic_buyer",
+    "expression": "overwhelmed",
+    "portrait_path": "portraits/panic_buyer/overwhelmed.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Panic Buyer.\nExpression: overwhelmed \u2014 Overwhelmed indecision: high pinched brows, troubled slightly averted gaze, tense open mouth. No stickers/tears.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/panic_buyer/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-e1164b29-b748-4d1e-8d06-04d373fb81ea.png",
+    "sha256": "6af3f72767b33bade794756833d04d58e3b893c60855171afbad093cb5cade9d"
+  },
+  {
+    "id": "panic_buyer",
+    "expression": "speaking",
+    "portrait_path": "portraits/panic_buyer/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Panic Buyer.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/panic_buyer/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-d22818d3-cfff-463b-895c-7bca07e70037.png",
+    "sha256": "6a413ae2d8f10f9850780feceaac9ad57495861c437def276b7e92ea07725095"
+  },
+  {
+    "id": "pharmacist",
+    "expression": "speaking",
+    "portrait_path": "portraits/pharmacist/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Pharmacy Boy.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/pharmacist/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-0a617e49-7d22-4b05-8617-52ca4fcfa642.png",
+    "sha256": "5c13907d0613c6cedc1bd5c2efa254aefdc8733e4ea4fd563e77f9bc4286bbcd"
+  },
+  {
+    "id": "player",
+    "expression": "determined",
+    "portrait_path": "portraits/player/determined.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Player.\nExpression: determined \u2014 Steady determination: firmly lowered brows, focused eyes, confident closed-mouth line/slight smile. Not aggression.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/player/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-bbabf910-aed2-442a-a255-ee20d72b8eba.png",
+    "sha256": "caf8c527b26e28cda2fa52e03bb668d737483224492fdce813f17bb32fc3f2f6"
+  },
+  {
+    "id": "player",
+    "expression": "speaking",
+    "portrait_path": "portraits/player/speaking.png",
+    "prompt": "Use case: precise-object-edit. Image1 is the ORIGINAL APPROVED player speaking portrait edit target. Image2 is the new neutral portrait with glasses; Image3 the model's glasses shape. Change ONLY by adding thick black rectangular/trapezoid eyeglasses exactly matching Image2, naturally fitted over the ORIGINAL existing eyes, clear lenses so eyes stay visible. Preserve every other part ofImage1 precisely: original boy identity, facial expression (open mouth speaking), face proportions, pointed tousled black hair, medium brown skin, eyes, cheek marks, shirt, collar, upper-left light, faceted illustration, texture, original olive background and ALL four borders. Do not transplant model face or haircut. Same camera/crop/head scale, no extra text/props/sheet/watermark. Opaque square PNG.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_talking.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/player/neutral.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/references/player_model.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-c5fb428c-c000-464d-8bec-85795323ec4f.png",
+    "sha256": "d01cc080417b0e9cf30fae13f8500a95095062f5a2dc6e6932bd61c77d76f302"
+  },
+  {
+    "id": "player",
+    "expression": "surprised",
+    "portrait_path": "portraits/player/surprised.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Player.\nExpression: surprised \u2014 Surprise at news: distinctly raised brows, wider eyes, small round open mouth. Mild shock.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/player/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-5b33b7a2-7b38-4b21-a7f6-b9c96e3f97f2.png",
+    "sha256": "3df97304ac959f80674eca89e01d4946a258ad736c4e48f5f24f4e3be62eeb2b"
+  },
+  {
+    "id": "player",
+    "expression": "thinking",
+    "portrait_path": "portraits/player/thinking.png",
+    "prompt": "Use case: precise-object-edit. Image1 is the ORIGINAL APPROVED player thinking portrait edit target. Image2 is the new neutral portrait with glasses; Image3 the model's glasses shape. Change ONLY by adding thick black rectangular/trapezoid eyeglasses exactly matching Image2, naturally fitted over the ORIGINAL existing eyes, clear lenses so eyes stay visible. Preserve every other part ofImage1 precisely: original boy identity, facial expression (quiet thought and closed mouth), face proportions, pointed tousled black hair, medium brown skin, eyes, cheek marks, shirt, collar, upper-left light, faceted illustration, texture, original blue background and ALL four borders. Do not transplant model face or haircut. Same camera/crop/head scale, no extra text/props/sheet/watermark. Opaque square PNG.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_inner_thoughts.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/player/neutral.png",
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/references/player_model.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-8d4485a1-0531-4ae1-a62b-dc2c10e5abee.png",
+    "sha256": "ceaf2497110adebe7c0a35743bd6b1acb31632a7b7f5ab3aeae0d89df1234030"
+  },
+  {
+    "id": "queue_man",
+    "expression": "frustrated",
+    "portrait_path": "portraits/queue_man/frustrated.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Palengke Queue Man.\nExpression: frustrated \u2014 Exasperated complaint: knitted brows, narrowed eyes, mouth visibly open in small frustrated complaint.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/queue_man/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-16663ea0-5f98-46b7-a60d-df695bd1d5f2.png",
+    "sha256": "d31dc7e562286222c42ef10f40f784b98a0ea747195e3a53dcb511d8652088ea"
+  },
+  {
+    "id": "queue_man",
+    "expression": "speaking",
+    "portrait_path": "portraits/queue_man/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Palengke Queue Man.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/queue_man/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-ec5cbb53-58e1-4d14-a868-a2139bcaee75.png",
+    "sha256": "cf9740fb1b402965ab05d1dfd28ace698c56df92b8c0800a9bc89b9aaf7e0d86"
+  },
+  {
+    "id": "queue_man",
+    "expression": "stern",
+    "portrait_path": "portraits/queue_man/stern.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Palengke Queue Man.\nExpression: stern \u2014 Stern warning: lowered straight brows, direct steady gaze, firm tight closed mouth.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/queue_man/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-08009a39-80e5-41e7-baf1-55e625f1253d.png",
+    "sha256": "8cfc3457b55690165d9602d26aeba4e62f4ef977fe47ec5bc4b56dd2da0de60d"
+  },
+  {
+    "id": "smoke_break",
+    "expression": "coaxing",
+    "portrait_path": "portraits/smoke_break/coaxing.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tambay.\nExpression: coaxing \u2014 Casual coaxing: one raised brow, relaxed half-lidded gaze, friendly sideways partly-open smirk. No cigarette in mouth.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/smoke_break/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-71924104-58c3-48d8-a975-377045c5b30c.png",
+    "sha256": "145ad751d01ad6934191ea948171390b66c45ebdd28726cbcd5a523d1a3cf870"
+  },
+  {
+    "id": "smoke_break",
+    "expression": "concerned",
+    "portrait_path": "portraits/smoke_break/concerned.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tambay.\nExpression: concerned \u2014 Worried caring concern: inner brows lifted and drawn together, eyes a little wider, small tense downward/slightly open mouth. Not anger/horror.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/smoke_break/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-5ab8b303-a621-44f1-94c0-e5bd2e2c443f.png",
+    "sha256": "e5136b3e2c984da89551989e0b75860a427cced8cecebbe8c146e068e5812e40"
+  },
+  {
+    "id": "smoke_break",
+    "expression": "speaking",
+    "portrait_path": "portraits/smoke_break/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tambay.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/smoke_break/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-8a0a7af0-17b0-4f86-957b-79cf21886ac5.png",
+    "sha256": "60fe5e68b91277dbbf09f1584b15e0947b7419d2db4af96b6dc6411f0667f762"
+  },
+  {
+    "id": "stranger",
+    "expression": "grateful",
+    "portrait_path": "portraits/stranger/grateful.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Stranger.\nExpression: grateful \u2014 Grateful warmth: clear kind tooth-showing smile, eyes softly narrowed and bright, relaxed brows. Respectful thanks.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/stranger/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-2001ff3a-97fb-4333-8497-a058abfc888d.png",
+    "sha256": "94ba462e113da8ba27b4952abac80d995b9e8117db4a0442d21a6f2a6f4cdcde"
+  },
+  {
+    "id": "stranger",
+    "expression": "pleading",
+    "portrait_path": "portraits/stranger/pleading.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Stranger.\nExpression: pleading \u2014 Earnest respectful request: centrally raised brows, attentive eyes, hesitant small open mouth. Preserve dignity.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/stranger/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-92763a07-3fa6-44c9-bb0c-3fa8ef65bf26.png",
+    "sha256": "f73dbabf482bcaf0dc44e40d6c7c9911317e0e178ff357979238da50a4b4ca68"
+  },
+  {
+    "id": "stranger",
+    "expression": "speaking",
+    "portrait_path": "portraits/stranger/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Stranger.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/stranger/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-659fed2a-1140-4a06-8b55-e459ce732ac2.png",
+    "sha256": "1c937b381940a72acb9834e7c1f3e03cee2a26496dc201b971ec2a253b6e5638"
+  },
+  {
+    "id": "tape_neighbor",
+    "expression": "speaking",
+    "portrait_path": "portraits/tape_neighbor/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Kapitbahay.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tape_neighbor/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-e59f9aff-0888-41e6-9740-1637f4ebec0f.png",
+    "sha256": "59eb9a17f8cc53acaee1ad41892856eb61f64fc6dba892feb0dfc8552ee1489c"
+  },
+  {
+    "id": "tape_neighbor",
+    "expression": "uncertain",
+    "portrait_path": "portraits/tape_neighbor/uncertain.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Kapitbahay.\nExpression: uncertain \u2014 Uncertain doubt: one brow higher, other knit, hesitant eyes, skewed doubtful closed mouth.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tape_neighbor/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-29b04170-a0b0-49c9-a9e5-b28240589587.png",
+    "sha256": "e59c7f6e53627b9082f280780d3939d9a152aec3bdee2645919ff5bfe9c33f5f"
+  },
+  {
+    "id": "tatay_jun",
+    "expression": "amused",
+    "portrait_path": "portraits/tatay_jun/amused.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tatay Jun.\nExpression: amused \u2014 Wry amusement: one raised brow, narrowed friendly eyes, small sideways open grin. Gentle humor.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tatay_jun/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-ec7b4b4e-55f3-4e27-a620-ca017563df5c.png",
+    "sha256": "6ec09f7b0a9d3f1b784cfdb7b0f7f879edf5d199f08a5ccb4d541c32fadc5e51"
+  },
+  {
+    "id": "tatay_jun",
+    "expression": "concerned",
+    "portrait_path": "portraits/tatay_jun/concerned.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tatay Jun.\nExpression: concerned \u2014 Worried caring concern: inner brows lifted and drawn together, eyes a little wider, small tense downward/slightly open mouth. Not anger/horror.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tatay_jun/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-f75d5b1f-e62d-4465-be62-0c67b03efedf.png",
+    "sha256": "cfa9f2dbc34bed3182bb91ae80fe0179df0c02b5f253dae954b9c49f1de7ead3"
+  },
+  {
+    "id": "tatay_jun",
+    "expression": "speaking",
+    "portrait_path": "portraits/tatay_jun/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Tatay Jun.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/tatay_jun/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-b0da845b-3510-4aa1-b495-8b72f0b7da1a.png",
+    "sha256": "1e77cfb223dad2dbe76d788c37d972ef71e8160a8a97013bd73957513c8a6197"
+  },
+  {
+    "id": "wet_parent",
+    "expression": "compassionate",
+    "portrait_path": "portraits/wet_parent/compassionate.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Nanay sa Palengke.\nExpression: compassionate \u2014 Compassionate reassurance: gently arched inner brows, soft attentive eyes, small warm parted smile.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/wet_parent/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-afe6a138-32ff-4bdd-a931-f9354fb67eef.png",
+    "sha256": "1bbb82148821a7288a32dc9f96bf964e89f1589f27e25d30aa6949822774bad6"
+  },
+  {
+    "id": "wet_parent",
+    "expression": "exhausted",
+    "portrait_path": "portraits/wet_parent/exhausted.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Nanay sa Palengke.\nExpression: exhausted \u2014 Tired parent: heavy half-lidded eyes, tired raised inner brows, weary downward mouth. No wounds.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/wet_parent/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-ba21a3c2-a485-4f3f-97d9-c8a1f75fb5df.png",
+    "sha256": "ab399e5344e5544f7ea3775d8a55dab6a5fde30e96a6c137ebed85bed59a9ccc"
+  },
+  {
+    "id": "wet_parent",
+    "expression": "speaking",
+    "portrait_path": "portraits/wet_parent/speaking.png",
+    "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Nanay sa Palengke.\nExpression: speaking \u2014 Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+    "reference_paths": [
+      "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/wet_parent/neutral.png"
+    ],
+    "generated_source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-96e50030-41be-44f0-9c4a-1a964955ce1c.png",
+    "sha256": "46e3f7322b029a6f162cf70acb45ef7c21e42f23220d72688f075a5d85cac039"
+  }
+]

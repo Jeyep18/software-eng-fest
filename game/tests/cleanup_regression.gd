@@ -27,6 +27,7 @@ func _run() -> void:
 	_test_task_requirements()
 	_test_windows()
 	_test_quest_readiness()
+	await _test_deferred_visual_quality()
 	print("Cleanup regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
 
@@ -198,3 +199,26 @@ func _test_quest_readiness() -> void:
 	_quests.refresh_mang_nestor_chicken()
 	_quests.start_mang_nestor_chicken()
 	_check(_quests.get_quest_state(id) == _quests.STATE_COMPLETED, "completed quest stays completed after removal and revisit")
+
+func _test_deferred_visual_quality() -> void:
+	var freed_light := OmniLight3D.new()
+	var freed_environment := WorldEnvironment.new()
+	add_child(freed_light)
+	add_child(freed_environment)
+	freed_light.free()
+	freed_environment.free()
+	var retained_light := OmniLight3D.new()
+	retained_light.light_energy = 2.0
+	var retained_environment := WorldEnvironment.new()
+	retained_environment.environment = Environment.new()
+	add_child(retained_light)
+	add_child(retained_environment)
+	await get_tree().process_frame
+	_check(not is_instance_valid(freed_light) and not is_instance_valid(freed_environment),
+		"visual quality callbacks tolerate nodes freed before deferred dispatch")
+	_check(retained_light.get_meta("visual_quality_base_energy", 0.0) == 2.0,
+		"deferred quality still captures a live light's authored energy")
+	_check(retained_environment.environment.has_meta("visual_quality_base_ssil"),
+		"deferred quality still applies to a live environment")
+	retained_light.free()
+	retained_environment.free()

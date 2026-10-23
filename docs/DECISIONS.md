@@ -135,6 +135,20 @@ Accepted 2026-10-04 through the approved Dev Mode plan. A menu-only code would b
 
 The mode shares existing cash, timer, travel and pause owners. Its session unlock is never persisted. Enabling it marks the run unranked, with both ending UI and leaderboard recording guards. Clock rewind resets storm thresholds and closures without resetting preparation progress; after storm arrival it is denied. The extra autoload and export preset keep this policy explicit without changing normal difficulty or save formats.
 
+## Weighted preparation and ending consequences — 2026-10-06
+
+The approved balance revision treats six household needs as different preparation priorities: food 3; water and medicine 2 each; roof, windows, and radio/flashlight 1 each. Each weight point earns 2,000 base score; delivering Mang Nestor's chicken adds 1,000; the existing remaining-minutes bonus and difficulty multiplier apply afterward. An additional household weight point therefore outweighs the quest bonus and all possible time points within one difficulty. These weights express game priorities, not a probability of injury or death.
+
+Nestor's accepted errand has a separate ending consequence. Delivery shows that he returned home with food; an unfinished accepted errand shows him waiting. An unfinished state does not prove deliberate theft, so it carries no score penalty. The former count-only score file cannot reveal which needs old players completed; new weighted scores use a separate leaderboard file, while the old file remains untouched on disk. The ending computes results from a single run snapshot so cinematic beat count cannot change household outcomes.
+
+Town epilogues use only visited, finished destinations and presentation-only sets. Barangay Hall and Mang Romy's unfinished scenery stay out of the montage. Item guidance uses scene-owned, bounded navigation in bodega and hardware; it disappears when no safe route exists. This contains the feature to six vital pickups without a new global manager or changes to inventory, lotto, or the clock.
+
+## Dev Mode recording camera — 2026-10-12
+
+The approved teaser-recording tool uses one scene-owned camera outside the disabled PlayerV2 subtree. Existing pause/cursor/timer ownership and Dev Mode access/unranked policies remain authoritative. Scene-tree pause freezes world processing while the camera runs independently, and a recording clock freezes the active VHS shader. Engine-wide time scaling was rejected because the camera must remain controllable. Both world modes hold the preparation deadline to keep takes independent of the gameplay time limit.
+
+Temporary camera environment resources and a sunlight quality-baseline snapshot isolate lighting from authored scenes and saved graphics settings. Four presets plus bounded adjustments cover the approved filming needs without a generic environment framework, new dependency or autoload. Entering after a teleport deliberately starts a new location-owned shot. The approved scope includes no video encoder, path animation or automatic teleport continuation; freely clipping scenery and 1K sky softness remain practical filming limits.
+
 ## Choices whose rationale is not established
 
 The repository demonstrates autoload-based session state, duplicated shop resources, a directed travel graph, seven inventory slots, and local JSON scores. It does not establish all original alternatives or reasons behind those choices. Do not fabricate Accepted ADRs for them. A 4.7 engine upgrade was mentioned in the old handoff, but acceptance/completion remains **Unknown / Needs verification**.

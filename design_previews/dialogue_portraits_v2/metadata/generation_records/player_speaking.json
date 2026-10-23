@@ -1,0 +1,14 @@
+{
+  "id": "player",
+  "expression": "speaking",
+  "name": "Player",
+  "refs": [
+    "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v1/player_talking.png",
+    "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/player/neutral.png",
+    "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/references/player_model.png"
+  ],
+  "prompt": "Use case: precise-object-edit. Image1 is the ORIGINAL APPROVED player speaking portrait edit target. Image2 is the new neutral portrait with glasses; Image3 the model's glasses shape. Change ONLY by adding thick black rectangular/trapezoid eyeglasses exactly matching Image2, naturally fitted over the ORIGINAL existing eyes, clear lenses so eyes stay visible. Preserve every other part ofImage1 precisely: original boy identity, facial expression (open mouth speaking), face proportions, pointed tousled black hair, medium brown skin, eyes, cheek marks, shirt, collar, upper-left light, faceted illustration, texture, original olive background and ALL four borders. Do not transplant model face or haircut. Same camera/crop/head scale, no extra text/props/sheet/watermark. Opaque square PNG.",
+  "destination": "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/player/speaking.png",
+  "source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-c5fb428c-c000-464d-8bec-85795323ec4f.png",
+  "status": "generated_review_only"
+}

@@ -1,5 +1,216 @@
 # Testing and verification
 
+## House teaser props and weather follow-up
+
+Normal now uses the authored gameplay house visuals and lighting, including its doors, TV, sofa, furniture, family and eleven surrounding trees. Wrecked retains approved damage/flood meshes, the damaged sofa, native additional props and surroundings; its TV follows the displaced cabinet and its door leaves/family are absent. Hide NPCs affects Normal. The existing environment helper starts from the selected state's authored resource and applies each preset once. Wrecked Default Stormy uses the existing overcast HDRI, fog and full-intensity rain; dry presets suppress rain, and world freeze pauses it.
+
+Godot **4.6.1.stable.official.14d19694e**, synchronized disposable project `C:/Temp/bagyong-static-npcs-20261010/project`, isolated APPDATA/LOCALAPPDATA and exact BAGYONG_ISOLATED_SMOKE paths:
+
+| Check | Result |
+| --- | --- |
+| House regression | **11,516 checks, 0 failures**. Native mesh resources and global placements match the playable house; visual copies have no gameplay scripts/groups/collision participation. Includes exclusive states, cabinet-relative TV placement, no duplicate sofa, NPC visibility, state environment rebuilds, all four preset exposures, weather refresh/dry/freeze behavior, current-location switching with player input disabled, restart/title/teleport/storm cleanup and restoration. |
+| Forward Plus | **11,530 checks, 0 failures**, no logged warnings/errors. Actual 1920Ã—1080 matched living/dining, reverse and bedroom views, both states under all four presets, NPC visibility and EN/TL panels. A separate wider props/NPC capture passed **11 checks**, also without logged errors. **32 full-resolution PNGs** and four comparison sheets are in [the revised gallery](../design_previews/house_teaser/README.md). |
+| Existing camera regression | **979 checks, 0 failures** after the controller ownership change. |
+| Packaged internal debug runtime | Native resource pack export succeeded. The installed Windows debug template loaded the pack from an isolated directory and passed **11,516 checks, 0 failures**, including native house dependencies, imported textures/HDRIs and lifecycle restoration. This was a disposable test entry, not a distribution build. |
+| Review and preservation | Independent source review found no actionable issue. Final diffs checked against exact pre-adjustment files; original gameplay scene and model assets were not edited. Both GLB hashes still match the previous integrity report. No Blender file was edited by this revision. |
+
+Logs remain under `C:/Temp/bagyong-house-teaser-adjustments-20261013`. The diagnostic package remains in its `package/` folder (about 1.1 GB) because automatic approval review blocked deletion with "blocked by policy". Headless runs retain the existing ObjectDB/ten-resources-at-exit diagnostics; the package also reports a test-script UID fallback to its valid text path. These are separate from passing assertions and clean graphical logs. Manual recording feel, sustained capture performance and a natural full-day playthrough remain unverified. Public release denial was verified in the preceding integration stage; this follow-up did not rerun that package. No access-gate or export-preset changes were made.
+
+## Approved normal/wrecked house recording location - 2026-10-12
+
+`house_teaser_regression.tscn` exercises the production PauseMenu and recording controller with the approved imported house. Godot **4.6.1.stable.official.14d19694e** in the synchronized disposable project `C:/Temp/bagyong-static-npcs-20261010/project` passed **5,611 headless checks, 0 failures** and **5,613 Forward Plus checks, 0 failures**. The original camera suite passed **979 checks, 0 failures**. Each run uses isolated APPDATA/LOCALAPPDATA and an exact BAGYONG_ISOLATED_SMOKE path; production user data and project/export settings are unchanged.
+
+Coverage includes validated location/state choices, retained framing, exclusive states, original world/light/GI visibility and processing, unchanged player/destination/deadline/preferences, current-location switching, reentry/reset, developer disable/run end and real Restart/Return to Title/teleport/storm cleanup. Six native **1920Ã—1080** renders and English/Tagalog 175% panel captures were inspected. The internal debug test package passed the same **5,611 checks** outside the source directory, proving the imported models/textures are packaged and loadable. See [Godot comparisons](../design_previews/house_teaser/README.md) and [asset notes](../game/assets/house_teaser/README.md).
+
+Asset checks validate all 68 Normal / 71 Wrecked embedded images, wet color factors, water and transparent wall-mark textures. CSV verification preserves every previous row except the updated recording instructions and adds six UI labels. Both original/approved Blender files retain their pre-export hashes. Independent source review found no actionable issue. A public release test package passed **3 access-denial checks, 0 failures**, including direct new location/state settings. Export initially exhausted disk space; removing only task-created diagnostic packages resolved it. Test packages were removed after verification, while logs and `glb_integrity.json` remain in `C:/Temp/bagyong-house-teaser-20261012`.
+
+Some headless runs retain existing ObjectDB/resource-in-use shutdown diagnostics. Floating poses are static; no fluid animation, audio, automated glitch edit or gameplay damage system was added. Manual recording feel, sustained performance and a natural full-day playthrough remain open.
+
+## Dev Mode Recording Camera - 2026-10-12
+
+`game/tests/dev_camera_regression.tscn` exercises the production camera, pause panel, environment helper and all six destinations. Verification used Godot **4.6.1.stable.official.14d19694e**, a synchronized imported disposable project at `C:/Temp/bagyong-static-npcs-20261010/project`, and separate APPDATA/LOCALAPPDATA plus an exact `BAGYONG_ISOLATED_SMOKE` path for each run. Production user data, project/export settings and `.godot/` caches were untouched.
+
+| Check | Result |
+| --- | --- |
+| Recording camera state regression | **979 checks, 0 failures**. Access guards, bounded settings/FOV/pitch, blocked gameplay input, held deadline in both time modes, frame-rate-independent cinematic movement, retained/reset framing, each hide option, previously hidden objects, completed preparations, all four presets across all six destinations, resource/lighting restoration, inherited and explicit graphics effects, unchanged saved graphics bytes, weather-controller refreshes and preservation of another timer pause owner. |
+| Lifecycle | The same suite covers Esc, repeated entry/exit, developer disable, run end/reset, scene removal, Dev teleport, forced storm, and actual PauseMenu Restart/Return to Title replacements. It checks that old camera/timer/cursor owners disappear and that the title menu retains its own valid cursor request. |
+| Forward Plus rendering | **203 checks, 0 failures**, on an NVIDIA RTX 4050. **36 PNGs** cover the 24 destination/preset combinations, live/frozen grocery rain and VHS, and eight recording-panel sections in English/Tagalog at 175% UI scale. Rendered frozen-frame mean difference is approximately **0.000045**, below the 0.01 tolerance for temporal rendering; live frames change. |
+| Windows exports | Both debug presets and the public release export succeed. The tagged internal debug EXE passes the full **979 checks, 0 failures** outside the source directory, including lazy HDR loading. Untagged debug and public release each pass **7 access-denial checks, 0 failures**, including direct camera/settings/effect calls. |
+| Existing regressions | Dev Mode **47/47**, animals **229/229**, pickup guidance **38/38**, Milestone 2 unit subset **29/29**, animated NPCs **1,638/1,638**, cleanup **92/92**. The rendered cursor regression exits 0 without failed assertions. |
+| Independent review | Source review of authorization, input ownership, cached visibility, temporary rendering, quality refresh and lifecycle cleanup found no remaining actionable issue after the inherited graphics-effect refresh fix. |
+
+All preset captures were inspected for distinct outdoor lighting, dry weather, clear recording views and retained interior lighting/hidden sunlight. Large Tagalog recording toggles wrap at 175% instead of being clipped. Headless state and internal-package runs still emit the existing ObjectDB/resource-in-use shutdown diagnostics (10 retained resources in the final camera run); these are separate from passing assertions. The cleanup suite intentionally logs invalid-input warnings and its null-combination error. Final camera/render runs have no parser/script errors. No new dependency or autoload was added.
+
+To repeat after synchronizing/importing a disposable project:
+
+```powershell
+$camera_engine = 'C:/Godot/Godot_v4.6.1-stable_win64.exe/Godot_v4.6.1-stable_win64_console.exe'
+$camera_project = 'C:/Temp/bagyong-static-npcs-20261010/project'
+$env:APPDATA = 'C:/Temp/bagyong-dev-camera-20261012/repeat/Roaming'
+$env:LOCALAPPDATA = 'C:/Temp/bagyong-dev-camera-20261012/repeat/Local'
+$env:BAGYONG_ISOLATED_SMOKE = 'C:/Temp/bagyong-dev-camera-20261012/repeat/Roaming/Godot/app_userdata/Software Festival 2026'
+& $camera_engine --headless --path $camera_project res://game/tests/dev_camera_regression.tscn
+& $camera_engine --path $camera_project res://game/tests/dev_camera_regression.tscn --windowed --resolution 1280x720 -- --visual-only
+```
+
+The test creates its own isolated preference fixture. Repeat package checks by changing **only the disposable copy's** main scene to this test, exporting `Windows Desktop Internal Dev` with `--export-debug`, and running its EXE with isolated user data outside the source project. Untagged `Windows Desktop` debug and release EXEs take the denied-access branch. Restore the disposable project/export configuration afterward; never distribute these test-entry packages.
+
+Evidence is under `C:/Temp/bagyong-dev-camera-20261012`: `camera-final.log`, `visual-wrap.log`, the named existing-suite logs, `export-final-*.log`, and `package-final-*/stdout.log` / `stderr.log`. Final images are in `visual-wrap/Roaming/Godot/app_userdata/Software Festival 2026/recording_camera_*.png`.
+
+**Manual recording acceptance remains open:** physical keyboard/mouse feel, cinematic smoothness, chosen trailer framing, audible ambience, recording performance and a natural gameplay playthrough. Scripted input and rendered captures do not replace this review. Fly-through recording can expose unfinished geometry or leave fixed rain volumes; the supplied 1K skies can soften at strong zoom.
+
+## Walking animal start positions - 2026-10-12
+
+The three walking animals now start at the positions saved by the user in the location scenes: Palengke cat **(-12.792954, 0.6178, -11.068410)**, Palengke dog **(6.687792, 0.6178, -8.193398)**, Tindahan dog **(8.115475, 0.500448, -7.689245)**. `AmbientAnimal` duplicates each parent-space route and translates it to the saved node position on entry, preventing the old first waypoint from resetting the editor placement. Initial rotations are retained. The stationary cats' user-edited transforms are preserved.
+
+The Tindahan leg is shortened from 1.7 m to **1 m**, ending at X=9.115475, to clear Mang Nestor. The other two leg lengths/directions are retained. A new saved-placement regression reproduced the original reset for all three animals (**229 checks, 3 failures**) and the corrected controller passes **229 checks, 0 failures**, including relative route shape, player proximity, pause, travel and storm checks. Ground raycasts and five-phase skinned-body bounds along all three relocated routes pass **2,031 checks, 0 failures** against visible solids and NPC collision bodies. Hidden CSG player boundary walls are excluded from visual clearance because these decorative animals have no collision bodies; player boundaries are unchanged.
+
+Checks use the same imported disposable project and isolated user data under `C:/Temp/bagyong-animal-starts-20261012`. [Updated previews and logs](../design_previews/ambient_animals/start_positions_20261012/README.md) record the new starts. Actual PlayerV2 cameras pass **12 captures, 0 visibility failures** for the three walkers across High/Performance and VHS off/on. The original 2026-10-11 captures below remain evidence of the initial integration. Manual keyboard play and standalone Windows execution were not rerun. Existing headless shutdown retention warnings persist.
+
+## Ambient cats and dogs - 2026-10-11
+
+The approved Blender exports are integrated as **five decorative animals**: three in Palengke (`grocery.tscn`) and two in Tindahan. Their fixed anchors/species match the approved plan. Coats and rest/movement timing vary through an instance-local RNG. The asset [workflow](../game/assets/animals/README.md) records the shared models, six coat atlases, 24 fps native imports and animation names.
+
+Verification used Godot **4.6.1.stable.official.14d19694e** in the imported disposable project `C:/Temp/bagyong-static-npcs-20261010/project`, with separate APPDATA/LOCALAPPDATA and an exact `BAGYONG_ISOLATED_SMOKE` path for each run. Production user data, project settings and generated `.godot/` files were untouched.
+
+| Check | Result |
+| --- | --- |
+| Focused `ambient_animal_regression.tscn` | **223 checks, 0 failures**. Full clip ranges/loop flags, finite animated bones/skins, loop and rest-transition seams, three independent/stable coats, unchanged gameplay RNG, exact populations, bounded authored routes, smooth turns, nearby-player pauses, actual SceneTree pause/resume, actual travel/storm cleanup and no ending animals. |
+| Imported skin ground sampling | **16 clips, 634 poses** at 24 fps. No ground penetration; idle/sit/lie/sniff paws remain approximately 1 mm above the ground. Walking/running retain their authored raised-paw phases. This checks native CPU skinning, not just bone configuration. |
+| Location ground and body clearance | **2,305 checks, 0 failures**. Ground raycasts every 0.5 m or less along routes; conservative skinned-body bounds at five phases per action and both route directions clear the actual solid geometry. The lowest 35 mm are omitted from body-box overlap tests to permit ground contact; separate full-mesh ground sampling covers that band. |
+| Gait calibration | Imported low-paw backward velocities measure approximately **0.43 m/s cat walk, 0.60 m/s dog walk, 2.20 m/s dog run**. Runtime speeds are 0.43/0.59/2.20 m/s. Cat speed was corrected from its initial estimate; an endpoint tolerance that could exceed the speed cap was removed and the focused test rerun. |
+| Actual gameplay cameras | **20 captures, 0 visibility failures** across all five animals, High/Performance and VHS off/on, using PlayerV2's actual camera volumes, normal lighting and HUD. VHS-off temporary silhouette masks verify visible rendered pixels. Animals are held at their starting anchors for repeatable comparisons while clips continue. Scene occlusion remains dependent on player position. |
+| Native animation/motion review | **736 rendered frames**: three 20-second controlled route simulations plus every cat/dog action at its midpoint. Reviewed native sheets retain the approved deformation and grounding. Camera/HUD/lighting are native; controller/animation time is manually advanced and the player is locked for repeatable capture. |
+| Existing regressions | Normal-flow Milestone 1 smoke **56/56**; animated NPC regression **1,638/1,638**; Ate Linda trade/shop **17/17**. |
+| Independent review | No material controller/import/test issue found. The only location edits are the two model scene references, `AmbientAnimals` roots and their five children. |
+
+For the focused check, import a disposable copy and use its path in `$animal_project`:
+
+```powershell
+$env:APPDATA = 'C:/Temp/bagyong-ambient-integration-20261011/regression-data/Roaming'
+$env:LOCALAPPDATA = 'C:/Temp/bagyong-ambient-integration-20261011/regression-data/Local'
+$env:BAGYONG_ISOLATED_SMOKE = 'C:/Temp/bagyong-ambient-integration-20261011/regression-data/Roaming/Godot/app_userdata/Software Festival 2026'
+$animal_engine = 'C:/Godot/Godot_v4.6.1-stable_win64.exe/Godot_v4.6.1-stable_win64_console.exe'
+$animal_project = 'C:/Temp/bagyong-static-npcs-20261010/project'
+& $animal_engine --headless --path $animal_project res://game/tests/ambient_animal_regression.tscn
+```
+
+[Placement previews and evidence](../design_previews/ambient_animals/README.md) include native camera captures, logs, geometry results and disposable probes. Final runs have no parser/script errors or failed assertions. Existing ObjectDB/resource-in-use diagnostics remain in some headless shutdown logs and are separate from passing assertions. No new dependencies, autoloads, physics bodies or gameplay interactions were added. Manual keyboard play through every route and a standalone Windows build remain unchecked.
+
+## Approved dialogue portrait integration â€” 2026-10-11
+
+The approved v2 library installs 68 portraits for 17 NPCs and Player, binds all 64 active interaction lines plus two configured Linda fallback lines, and updates the shared player monologue portrait. `game/tests/dialogue_portrait_regression.tscn` loads the actual NPC scene sequences and exercises real DialogueUI in English and Tagalog, including expression switching, null-portrait hiding/recovery, localized speakers/text and player thinking. The manifest records the approved character expression roster and scene paths.
+
+In the imported disposable project `C:/Temp/bagyong-portraits-20261011/project`, Godot 4.6.1 headless passed **686 checks, 0 failures**. The Forward Plus/Vulkan run on the RTX 4050 passed **691 checks, 0 failures**, including five saved real UI render captures with the default VHS/CRT overlay. All 68 imported textures were compared pixel-for-pixel against their PNG masters. The existing Ate Linda trade/shop regression passed **17 checks, 0 failures**. A separate read-only audit of the working project's 68 portrait cache textures also matched the masters. Tests used isolated APPDATA/LOCALAPPDATA and BAGYONG_ISOLATED_SMOKE; no gameplay user data or project settings were changed.
+
+The first disposable import produced corrupted colors in 12 textures, and the initial simultaneous model-loading probe exhausted memory. Rebuilding only the disposable portrait cache and allowing model rendering resources to retire between scene loads resolved those probe failures. No source PNG edits or compression-setting changes were needed. Final render logs have no parser/script errors or failed assertions. Some headless runs retain the existing ObjectDB/resource-in-use shutdown diagnostics separately from passing assertions.
+
+Independent comparison against exact pre-integration files verified all 66 approved bindings and preservation of every other scene/resource property, except the approved Lola speaker correction. All 68 runtime PNGs match approved master hashes. Gallery verification permits exactly the 19 approved resource changes against the 253-file pre-generation runtime baseline. Logs, captures and scope review are under `design_previews/dialogue_portraits_v2/metadata/integration_verification.md` and its linked files. Manual gameplay through every branch and a standalone Windows build remain unchecked.
+
+## Separate merged localization CSV â€” 2026-10-11
+
+The active table is `game/localization/game_text_merged.csv`; `game_text.csv` is the exact pre-rewrite working table retained as a backup. The merged CSV retains all 515 ordered IDs and metadata: 127 accepted rewrite rows and 388 rows with their pre-merge translations. Source lookup keeps the first translation for a repeated source, while context-specific UI uses its stable key. This prevents Lotto's `Close` alias and Linda's trade prompt alias from overwriting general source defaults. Both Windows presets include the active raw CSV, imported as Keep File, and exclude the backup.
+
+Godot 4.6.1 checks used isolated user data and the existing imported disposable project. The all-row source/key/Label/BBCode probe passed **2,569 checks, 0 failures** in English and Tagalog. The Milestone 2 unit subset passed **29/29**, including the general Close, Lotto Close, and Linda trade aliases. The actual Ate Linda trade regression passed **17/17**, including language switching while the offer is open; Scratch Lotto passed **41/41**. CSV checks verify unique IDs, preserved source/order/metadata, and exact unchanged-row values against the restored backup. An independent read-only review found no material issue.
+
+A minimal localization data PCK exported with the current Windows Desktop include/exclude settings was loaded from a separate project outside the source directory. Its packaged lookup check passed **2,061/2,061**: the active raw CSV exists with the source hash, the backup is absent, and all English/Tagalog key and general source lookups match. This verifies localization packing; it is not a full-game Windows EXE or presentation test. Full-game visual layout, manual gameplay, and standalone Windows acceptance remain separate. The full-project headless regressions retain the known ObjectDB/resource-in-use shutdown diagnostics, with no script/parser errors or failed assertions.
+
+## NPC fidget frequency and dialogue head tracking â€” 2026-10-11
+
+The approved follow-up shortens the 11 new NPCs' idle fidget wait from 8â€“14 to **4â€“7 seconds** and adds dialogue-only head tracking. A native `LookAtModifier3D` under each opted-in skeleton rotates only `Head`, toward PlayerV2's animated `spine.005` position plus a 0.1-unit face offset. Limits are **55 degrees left/right and 20 degrees up/down**, measured from Head's local rest orientation under its current neck pose. Symmetric native settings specify the total range, so they are configured as 110/40 degrees. Influence eases in/out over approximately 0.25 seconds; rear or very close targets restore authored motion. The six default NPCs, assets, location scenes, gameplay scripts, scales, and placements are unchanged.
+
+Godot `4.6.1.stable.official.14d19694e` ran in the existing disposable project with fresh isolated user data under `C:\Temp\bagyong-npc-look-20261011`. The focused `static_npc_regression.tscn` passed **1,638 checks, 0 failures**, retaining the original clip, physics, dialogue, quest, donation, smoking, and pharmacy checks. New checks sample the actual final modified bone poses through `modification_processed`, rather than only asserting configured limits. They verify visible turns in all four directions, angular bounds, unchanged non-head bones, front/rear handling, eased return, rapid reopening, pause, storm cancellation, and choice/shop restoration for all 11 NPCs. Native imports remain unchanged.
+
+A Forward Plus preview used the actual PlayerV2 head joint as a target in the four locations: **77 captured views** cover authored idle, both yaw limits, both pitch limits, a rear target, and restored idle for every NPC. All 11 sheets were reviewed; no new visible neck deformation, backward twist, or body rotation appeared. Two seven-second H.264 previews (MangNestor and MoneyBeggar) decode successfully. [Head tracking gallery](../design_previews/animated_npcs/head_tracking/README.md) includes the sheets, videos, and validation log. Inspection fill lighting, hidden player/HUD/CRT, displaced player targets, and disabled detection in the capture fixture do not change production files.
+
+The independent controller review found no material issue. Baseline hashes preserve existing NPC scenes, model assets, default NPCs, shared scripts, and locations. Manual keyboard gameplay and packaged-build acceptance remain separate. Existing headless shutdown ObjectDB/retained-resource diagnostics persist despite passing checks; the graphical preview log has no script errors. The previous integration evidence below describes the earlier 8â€“14-second, authored-head-only checkpoint.
+
+## Animated PSX NPC integration â€” 2026-10-11
+
+Only the 11 new PSX NPC scenes opt into animated visuals and the scene-owned `PSXNPCAnimation` controller. The six original modeled NPCs and shared NPC scripts are unchanged. The [animated asset workflow and manual checklist](../_raw_assets/npc_assets/psx_animated/README.md) describe import settings, preserved height calibration, playback behavior, and the four locations to test. The static integration and height sections below remain historical checkpoint evidence.
+
+Godot `4.6.1.stable.official.14d19694e` reused the imported disposable project at `C:\Temp\bagyong-static-npcs-20261010\project`. Current game files were synced before the checks. New GLBs were imported normally; their parameters were configured using Godot's `ConfigFile` API and the native scene importer regenerated its outputs. Import FPS is 24, suffix processing is off, animation optimization/compression are disabled, and the asset-specific import script preserves nearest interpolation, nearest textures, clip loop flags, and idle autoplay. No production `.godot/` files were edited.
+
+Each run used its own isolated `APPDATA`, `LOCALAPPDATA`, and exact forward-slash `BAGYONG_ISOLATED_SMOKE` path under `C:\Temp\bagyong-animated-npcs-20261011`. To repeat the focused checks after importing a disposable copy:
+
+```powershell
+$env:APPDATA = 'C:\Temp\bagyong-animated-npcs-20261011\regression-data\Roaming'
+$env:LOCALAPPDATA = 'C:\Temp\bagyong-animated-npcs-20261011\regression-data\Local'
+$env:BAGYONG_ISOLATED_SMOKE = 'C:/Temp/bagyong-animated-npcs-20261011/regression-data/Roaming/Godot/app_userdata/Software Festival 2026'
+$engine = 'C:\Godot\Godot_v4.6.1-stable_win64.exe\Godot_v4.6.1-stable_win64_console.exe'
+$project = 'C:\Temp\bagyong-static-npcs-20261010\project'
+& $engine --headless --path $project res://game/tests/static_npc_regression.tscn
+
+$env:STATIC_NPC_CAPTURE_DIR = 'C:/Temp/bagyong-animated-npcs-20261011/all_clip_captures'
+& $engine --path $project --windowed --resolution 1280x720 res://game/tests/static_npc_regression.tscn -- --visual-only
+```
+
+The existing `static_npc_regression.tscn` name is retained for command compatibility; its checks now validate animated models.
+
+| Check | Result |
+| --- | --- |
+| Configured native import | Exit 0, with no logged script/parser/import errors. All 11 production GLBs match their corrected source exports byte-for-byte. |
+| Focused animation/gameplay regression | **1,267 checks, 0 failures**. All 11 rigs, skins, nearest materials, required clips, loop flags, and stepped tracks load. Each authored clip is sampled at 24 fps for fixed roots/feet/ground props and valid skin data. |
+| Responsiveness and lifecycle | Actual `npc.interact()` calls trigger entry, loop, and exit. Typing skip and next-line signals do not restart playback. Reopening during exit and talking during fidgets/reactions interrupt promptly. Choices/shop suppress fidgets. Donation decline, insufficient cash, success, queued/interrupted gratitude, relieved idle, and reentry are covered. Actual SceneTree pause, storm suspension, and removal during playback are checked. |
+| Preserved gameplay | A CharacterBody3D fixture enters/leaves each real Area3D through physics. Existing dialogue, Nestor quest cash/chicken/tarp/sukli guards, donation, smoker's one-time time cost, and pharmacy shopping checks pass. |
+| Independent source/import geometry audit | **10,803 checks, 0 failures** across **69 clips and 4,674 authored poses/STEP holds**. Mesh vertices/counts, named weights, bind matrices, and skin deformation match the corrected exports. Held props retain authored hand weighting; roots, feet, and ground props stay fixed. Approved scaled idle heights and grounding differ by less than 0.000001 scene units. |
+| Responsive action previews | All 11 labeled H.264 MP4s decode successfully. Real dialogue calls and the controller's fidget scheduler drive each idle/fidget/conversation/exit/idle sequence in the four actual locations. Reviewed sheets show no new visible deformation or prop-contact issue. |
+| Every clip in three views | **207 captures, 0 failures**: all 69 clips at their midpoint from front, side, and elevated views in the four actual locations. All 11 labeled sheets were independently reviewed; no new visible deformation, prop separation, ground-prop drift, or wall/counter intersection was found. |
+| Existing regressions | Milestone 2 unit subset: **26 checks, 0 failures**. Headless normal-flow Milestone 1 smoke: **56 checks, 0 failures**. |
+| Independent preservation review | Reversing only the approved visual/controller edits and Beggar offset reproduces all 11 scene baseline hashes. Other protected baseline files, excluded NPCs/assets, shared scripts, static GLBs, locations, corrected source exports, and polished Blender file remain unchanged. Existing unrelated dirty work is retained. |
+
+Durable action videos and sheets are in [the animated review folder](../design_previews/animated_npcs/). The [all-clip gallery](../design_previews/animated_npcs/all_clips/README.md) contains 11 labeled sheets; copied geometry reports and final regression/capture logs are in `design_previews/animated_npcs/validation/`. Full-resolution captures, baseline hashes, and disposable probes remain under `C:\Temp\bagyong-animated-npcs-20261011`. Responsive videos use controlled animation time at 12 fps and a shortened fidget wait; labeled inspection lighting and hidden dialogue/shop overlays improve model visibility only in the preview fixture. Production lighting and UI are unchanged.
+
+The checks establish scripted physics/dialogue responsiveness and import fidelity. They do not establish manual keyboard/mouse gameplay, actual PlayerV2 HUD acceptance, audible quality, or a packaged build. Geometry equivalence preserves authored prop contact but is not an exhaustive surface-intersection proof. PanicBuyer's existing foreground box partly obscures a shoe. Some probes still report known ObjectDB/retained-resource diagnostics at shutdown despite exit 0 and passing checks; these are separate from script/parser failures.
+
+## Static PSX NPC integration â€” 2026-10-10
+
+The 11 new NPCs use static meshes baked from the corrected `idle_loop`, frame 1. The asset [workflow](../_raw_assets/npc_assets/psx_static/README.md) records the source, export constraints, model mapping, and PharmaDude's visual grounding correction. No gameplay scripts or location scenes changed in this integration.
+
+Godot `4.6.1.stable.official.14d19694e` imported a disposable copy at `C:\Temp\bagyong-static-npcs-20261010\project`; `.git` and `.godot` were excluded from the copy. Test runs used isolated `APPDATA` and `LOCALAPPDATA`. The initial fresh import reported dependency/cache errors before assets were available; a second complete import exited 0 with no parser/import errors or warnings. No production `.godot/` files were edited.
+
+To repeat the focused check after importing a disposable copy:
+
+```powershell
+$env:APPDATA = 'C:\Temp\bagyong-static-npcs-20261010\userdata\Roaming'
+$env:LOCALAPPDATA = 'C:\Temp\bagyong-static-npcs-20261010\userdata\Local'
+# Match OS.get_user_data_dir() exactly, including forward slashes.
+$env:BAGYONG_ISOLATED_SMOKE = 'C:/Temp/bagyong-static-npcs-20261010/userdata/Roaming/Godot/app_userdata/Software Festival 2026'
+$engine = 'C:\Godot\Godot_v4.6.1-stable_win64.exe\Godot_v4.6.1-stable_win64_console.exe'
+$project = 'C:\Temp\bagyong-static-npcs-20261010\project'
+& $engine --headless --path $project res://game/tests/static_npc_regression.tscn
+
+$env:STATIC_NPC_CAPTURE_DIR = 'C:/Temp/bagyong-static-npcs-20261010/captures'
+& $engine --path $project --windowed --resolution 1280x720 res://game/tests/static_npc_regression.tscn -- --visual-only
+```
+
+| Check | Result |
+| --- | --- |
+| Independent GLB audit | 11/11: expected source body/prop components, embedded textures, nearest samplers, grounded Y=0 bounds, and no animations, skins, joints, cameras, lights, or collision nodes. Standing heights are 1.597â€“1.800 m; MoneyBeggar remains seated at 0.9276 m. |
+| `static_npc_regression.tscn` | Final run: 339 checks, 0 failures. All 11 scenes instantiate with unskinned static meshes and nearest imported materials. A CharacterBody3D fixture enters and leaves each actual Area3D through physics, exercising detection callbacks and prompt strings. |
+| Interaction coverage | Story dialogue completes; Nestor gives quest cash, exchanges chicken for tarp with a full backpack, gives sukli, and guards duplicate rewards. Beggar donation and SmokeBreakNPC's 20-minute choice apply once. PharmaDude opens/closes the pharmacy shop. Visual transforms remain static through every interaction. |
+| Four real location scenes | Final Forward Plus run: 33 captures, 0 save failures. Front, side, and elevated views of every target were inspected for scale, facing, feet, hands, props, and nearby geometry. Close cameras avoid entering foreground shop roofs/walls. |
+| PharmaDude grounding | Visual child offset `(0, -0.3448443, 0)` places feet on the visible platform at world Y=0.9617674. Four model-bound corner probes agree on the platform height. Body clears the back wall by 0.486 m and the side wall by 1.391 m; held props remain clear. Root, Area3D, and disabled collider are preserved. |
+| Existing Milestone 2 unit subset | 26 checks, 0 failures. |
+| Existing normal-flow Milestone 1 smoke | 56 checks, 0 failures. |
+| Preservation review | Ten scenes have only model resource path substitutions relative to the dirty baseline. PharmaDude has only visual additions. Excluded NPCs/assets, shared Mixamo, production scripts, four locations, source Blender file, and 11 animated exports retain baseline hashes. Existing unrelated work is preserved. |
+
+Logs, baseline snapshots, GLB audit, and independent review are in `C:\Temp\bagyong-static-npcs-20261010`. Labeled sheets are in `design_previews/static_npc_integration/`; all 33 full-resolution location captures are also saved in the Blender package at `animated/static_pose_review/game_locations/`. The project still renders its 1920Ã—1080 logical canvas in a 1280Ã—720 window.
+
+The final import and runtime logs contain no script/parser errors or failed checks. Known ObjectDB/resource-in-use diagnostics remain at shutdown in the headless regressions. These checks establish scripted scene/physics interaction and rendered appearance; they do not establish physical keyboard/mouse acceptance, audible quality, a natural full-day playthrough, or a packaged Windows build. The player fixture checks callback/prompt state rather than the actual PlayerV2 HUD. Existing small root-to-floor margins remain for the ten replacement scenes because their transforms were preserved. No animation playback was integrated.
+
+### NPC height follow-up â€” 2026-10-10
+
+The 11 model children now use uniform scales calibrated against PlayerV2's visible idle height of **2.04209747 scene units**. The measurement evaluates actual skinned player vertices at `Idle/mixamo_com`, frame 0; NPC body bounds exclude props. Male models measure 98â€“100% of player height and female models 92â€“94%. MoneyBeggar remains seated and uses his source standing body height as the scale reference. Exact scales and measured heights are in the [asset workflow](../_raw_assets/npc_assets/psx_static/README.md#height-calibration).
+
+Godot 4.6.1 reused the imported disposable project above with the revised scenes and the current pharmacy placement. Isolated `APPDATA`, `LOCALAPPDATA`, and matching `BAGYONG_ISOLATED_SMOKE` were under `C:\Temp\bagyong-npc-height-20261010\regression-data`. The focused `static_npc_regression.tscn` passed **339 checks, 0 failures**, including physics entry/exit, dialogue, quests, donation, smoke choice, pharmacy shopping, and static pose persistence. All 11 measured height ratios match the intended values within 0.00001; model grounding offsets remain unchanged.
+
+Forward Plus rendered **22 before/after captures** across the four actual locations. A frozen PlayerV2 idle model stands beside each NPC on the same foot plane with matching framing per pair. Review found the intended height differences, retained seated proportions and held-prop contact, and no new visible wall intersections. PharmaDude's feet remain at Y=0.961767; a platform support ray measured Y=0.961951 (approximately 0.18 mm difference). PanicBuyer's existing foreground box partly hides one shoe and bag. The comparison fixture demonstrates relative model height; it does not simulate normal player movement around furniture.
+
+Labeled sheets and individual captures are in [the height review folder](../design_previews/static_npc_height/). Measurement, regression, and visual logs remain in `C:\Temp\bagyong-npc-height-20261010`. An independent review and baseline hashes confirm that only the 11 model-child scales changed in NPC scenes: roots, visual wrappers, Area3Ds, colliders, scripts, dialogue, locations, PlayerV2, excluded NPCs, and protected GLBs remain unchanged. `git diff --check` passed. Existing unrelated edits were retained.
+
+No animations, gameplay changes, asset re-exports, physical keyboard/mouse playthrough, actual HUD acceptance, or packaged-build checks were performed for this follow-up.
+
 ## Current strategy and evidence
 
 The initial documentation audit found no automated tests. Focused no-framework checks now live in `game/tests/cleanup_regression.tscn` and `game/tests/milestone1_smoke.tscn`; no third-party test framework or CI test workflow is configured. `game/tests/sandbox/test_world/test_world.tscn`, `test_world_2.tscn` and their scene resources are exploratory 3D content, not GUT/GdUnit/custom automated tests. Do not report them as a passing suite.
@@ -44,7 +255,7 @@ $env:BAGYONG_ISOLATED_SMOKE = $env:APPDATA.Replace('\', '/') + '/Godot/app_userd
 Godot_v4.6.1-stable_win64_console.exe --headless --path $testProject --scene res://game/tests/milestone1_smoke.tscn
 ```
 
-Omit `--headless` to run with rendering. The graphical run saves `milestone1_home.png`, `milestone1_tindahan.png`, `milestone1_shop.png` and `milestone1_ending.png` in the isolated user-data directory. The test uses normal engine timing, skips the intro through its input handler, dismisses the actual tutorial, advances dialogue, buys medicine from Ate Linda and an item from hardware, completes the medicine task, restarts, forces storm arrival, submits an isolated score and starts another run. It also reproduces detached-checklist and immediately-freed-label callbacks. Expect several minutes for the normal ending sequence.
+Omit `--headless` to run with rendering. The graphical run saves `milestone1_home.png`, `milestone1_tindahan.png`, `milestone1_shop.png` and `milestone1_ending.png` in the isolated user-data directory. The test uses normal engine timing, skips the intro through its input handler, dismisses the actual tutorial, advances dialogue, buys medicine from Ate Linda and an item from hardware, completes the medicine task, restarts, forces storm arrival, verifies that the score waits for a continue press, submits an isolated score and starts another run. It also reproduces detached-checklist and immediately-freed-label callbacks. Expect several minutes for the normal ending sequence.
 
 Inspect logs as well as exit status and assertions: a Godot runtime error does not necessarily set a failing process exit code. No `SCRIPT ERROR`, failed assertion, deferred-localization error or detached-checklist error is acceptable. Known shutdown leak diagnostics are recorded separately. This test calls production interaction methods directly; it is not a manual movement/proximity/audio test, a natural full-day wait or coverage of every optional quest and ending.
 
@@ -72,7 +283,7 @@ Use a fresh run from the menu and note difficulty, language, quality, UI scale a
 - [ ] Buy/pick up items, inspect quantities and cash, combine an eligible pair and complete at least one home task. Verify the completed need, remaining inventory and visible props agree.
 - [ ] Travel among reachable map destinations and return home. Confirm displayed quoted cost is used, timer advances, appropriate spawn is selected and collected/completed scene state survives revisits.
 - [ ] Observe storm danger/closure progression and a refused inaccessible destination. Check map presentation, rain/audio intensity and eventual storm arrival.
-- [ ] Use End Day on one run and natural timeout on another. Confirm ending beats reflect need completion; save a named score and return to menu.
+- [ ] Use End Day on one run and natural timeout on another. Confirm ending beats reflect need completion; read the score and typhoon message before pressing continue, then save a named score and return to menu.
 - [ ] Restart from pause and start another run after an ending. Check cash, needs, inventory, shop stock, storm restrictions, opening/tutorial behavior and selected difficulty against the relevant reset code.
 
 ## System regression checks
@@ -330,6 +541,38 @@ In a disposable Godot 4.6.1 copy with isolated user data, the scratch lotto regr
 
 A disposable pause-layout probe passed at 1280Ã—720 with **0 failures**. It checked that the idle navigation, Settings card and Dev Mode card are centered; tabs overlap each open card by 12 logical pixels; and Resume closes the menu and unpauses. Captures were visually inspected in both languages at 100% and 175% scale. This was scripted scene interaction and image review, not a physical mouse/keyboard playthrough or packaged build.
 
+### Illustrated map UI â€” 2026-10-05
+
+Run `game/tests/map_ui_regression.tscn` with Godot 4.6.1 in an imported disposable project copy. Set isolated `APPDATA` and `LOCALAPPDATA`, and set `BAGYONG_ISOLATED_SMOKE` to that copy's Godot `user://` directory. The headless run checks the live destinations, End the Day, M action, quoted travel cost, hover, current/danger/closed states, and early-end score snapshot. A Forward Plus run with `-- --visual-only` also saves English/Tagalog captures under isolated `user://`. Add `--wide` to render the map in a 2560 Ã— 1080 offscreen viewport; this works even when the physical display is narrower. Inspect logs for script errors and shutdown diagnostics independently of assertion counts.
+
+The final focused headless run passed **17 checks, 0 failures**. The Forward Plus visual run passed **22 checks, 0 failures**; logical-viewport map captures from runs requesting 1280 Ã— 720 and 1920 Ã— 1080 windows were inspected. The existing Milestone 2 unit subset passed **26 checks, 0 failures**; its Forward Plus integration visual subset passed **16 checks, 0 failures** across English/Tagalog and 100%/175% UI scale. Godot imported the new map assets successfully. The focused run still printed ObjectDB/resource-in-use shutdown warnings despite exit 0; the Milestone 2 visual subset did not print those warnings.
+
+An initial attempt to resize the native window was capped at the machine's 1920 Ã— 1080 display and failed the width assertion. The corrected offscreen 2560 Ã— 1080 Forward Plus run passed **24 checks, 0 failures**; its initial and confirmation captures were inspected and show the paper centered with readable side margins and controls. This verifies rendered ultrawide layout, not physical ultrawide monitor behavior. The focused offscreen run still printed ObjectDB and resource-in-use shutdown diagnostics. Manual mouse/keyboard travel, natural clock progression through a full run, audible feedback, VHS-off comparison, and a packaged executable were not tested in this pass.
+
+Map refinement on 2026-10-05 aligned the icon art to measured paper-circle centers, enlarged it, reduced blank space under both action panels, and placed a transparent static cloud-and-rain cutout behind the moving storm. The storm text gained a light ink outline for contrast. These checks ran in the working checkout with isolated user data: Godot 4.6.1 import exited 0; the updated headless map regression passed **20 checks**, the rendered map run **25 checks**, and the 2560 Ã— 1080 offscreen run **27 checks**, all with 0 failures. The action-panel bottom gaps measured 18 and 21 logical pixels. The Milestone 2 unit subset passed **26 checks**, and its Forward Plus UI subset passed **16 checks** across English/Tagalog at 100%/175% UI scale, all with 0 failures. Captures with the game HUD and the ultrawide map were inspected. The focused and unit runs still logged ObjectDB/resource-in-use shutdown warnings; no manual gameplay or packaged build was performed for this refinement.
+
+### Weighted preparation and ending revision â€” 2026-10-06
+
+Use Godot 4.6.1 with isolated `APPDATA`, `LOCALAPPDATA`, and matching `BAGYONG_ISOLATED_SMOKE` for any regression that writes leaderboard data. The count-only leaderboard file remains an archive; new tests must use `leaderboard_scores_v2.json` in isolated user data.
+
+The pre-change score regression passed **4 checks, 0 failures**. After the scoring stage, `score_calculation_regression.tscn` passed **272 checks, 0 failures**, covering all 64 household need masks across four Nestor states, R8 versus R10, input normalization, saved score consistency, live need state, home and canonicalized shop visits, canceled travel, and visit deduplication. The first post-change run had one assertion failure because the test expected input ordering rather than canonical saved need-ID ordering; the corrected assertion passed on rerun. `milestone2_regression.tscn -- --unit-only` passed **26 checks, 0 failures** and `map_ui_regression.tscn` passed **20 checks, 0 failures**. Each headless run exited 0 after the corrected score test. Existing ObjectDB/resource-in-use shutdown diagnostics appeared in some runs despite passing assertions.
+
+Final Godot 4.6.1 CLI checks in isolated user data: `score_calculation_regression.tscn` **272/272**, `ending_balance_regression.tscn` **12/12**, `pickup_guidance_regression.tscn` **37/37**, `dev_mode_regression.tscn` **47/47**, `map_ui_regression.tscn` **20/20**, `scratch_lotto_regression.tscn` **41/41**, and `milestone2_regression.tscn -- --unit-only` **26/26**. The rendered Milestone 1 smoke passed **54/54**, exercising a normal scene flow through ending and score submission. Direct bodega and hardware scene loads emitted no script/parser errors. Logs for these runs contained only the known ObjectDB/resource-in-use shutdown diagnostics.
+
+Forward Plus probes used `ending_balance_regression.tscn -- --visual-only` at 1920Ã—1080 with VHS enabled (**27/27**) and at a 1280Ã—720 window with VHS disabled (**27/27**). They saved and inspected start/end frames of all four finished town locations, Nestor present/absent, English/Tagalog captions, the partial-window prop, and English/Tagalog result panels. The 1280Ã—720 window still rendered the project's 1920Ã—1080 logical canvas. The initial rendered pass exposed nearly black town shots; local montage lights corrected them. The final `pickup_guidance_regression.tscn -- --visual-only` Forward Plus pass saved bodega/hardware trail captures and passed **45/45** after a modest ribbon and wisp visibility adjustment; the matching headless run passed **37/37**. Guidance tests cover all six target routes, collision and destination checks, collection/full-bag cancellation, outside-mesh rejection, and modal/pause suppression. The captures show a visible ground-level ribbon without obvious wall phasing, but these scripted frames do not replace manual walking and visual tuning on a physical display, audio review, a natural full-day playthrough, or a packaged build.
+
+After the final NPC hint edits, the Godot CLI editor import exited 0 without script/parser errors. The focused score (**272/272**), ending (**12/12**), and Milestone 2 unit (**26/26**) regressions passed in isolated user data. A CSV/source check confirmed all six edited highlighted NPC lines have one matching localization row with balanced BBCode in English and Tagalog. The headless regression runs still emitted the known ObjectDB/resource-in-use shutdown diagnostics.
+
+### Pickup wind, Ate Linda shopping, and ending camera â€” 2026-10-07
+
+Godot 4.6.1 CLI checks used separate isolated `APPDATA`/`LOCALAPPDATA` directories and matching `BAGYONG_ISOLATED_SMOKE` paths. The focused `ate_linda_trade_regression.tscn` passed **15/15** (decline opens normal-price shopping, repeat offer, acceptance changes price without restoring sold stock). `pickup_guidance_regression.tscn` passed **38/38** headless and **50/50** Forward Plus (particle trails, route movement, pickup and modal cancellation). `ending_balance_regression.tscn` passed **12/12** headless and **49/49** Forward Plus both with VHS on at 1920Ã—1080 and off at a 1280Ã—720 window (orbit focus/distance, town environment and VoxelGI selection, editable town anchors, Nestor and result captures). The final rendered hardware frames were inspected at both orbit endpoints with VHS on and off; its rear sign and ceiling are now visible. These probes render the projectâ€™s 1920Ã—1080 logical canvas even in the smaller window.
+
+After the focused changes, the score regression passed **272/272**, the Milestone 2 unit subset **26/26**, and the normal-flow Milestone 1 smoke **54/54** in isolated user data. Logs had no script/parser errors or failed assertions. Some headless runs still emitted the known ObjectDB/resource-in-use shutdown diagnostics. The captures and scripted interactions do not establish manual walking, audible quality, natural full-day play, physical-display tuning, or packaged Windows behavior.
+
+### Final pickup trail and result-screen reading gate â€” 2026-10-07
+
+Godot 4.6.1 CLI runs used isolated user data. After lowering the wind trail, reducing it to 30 particles, and adding mild material emission, `pickup_guidance_regression.tscn` passed **38/38** headless and **50/50** rendered. After restoring the original two-paragraph typhoon/accountability message and adding a continue press before leaderboard name entry, `ending_balance_regression.tscn` passed **17/17** headless and **58/58** rendered; the normal-flow `milestone1_smoke.tscn` passed **56/56**. Rendered bodega/hardware trail and English/Tagalog result captures were inspected for visibility and clipping. No failed assertions or script/parser errors appeared; the known ObjectDB/resource-in-use shutdown diagnostics remain. Scripted checks and captures do not replace manual movement, physical-display visual tuning, a natural full-day run, or a packaged-build check.
+
 ## File organization verification - 2026-10-14
 
 The existing runtime work was checkpointed separately as `e04a588` before the structure-only relocation. The organization changes move 315 files, preserve filenames and resource identities, and update references without changing gameplay logic, node names, scene properties or asset payloads. `_raw_assets` model/texture bundles retain their existing paths.
@@ -344,3 +587,23 @@ Verification used Godot **4.6.1.stable.official.14d19694e**, separate baseline/r
 - Independent review checked the move map, dynamic NPC path tables, UID companions, content-preservation evidence and navigation documentation. Its pending import-metadata finding was resolved by copying Godot-regenerated sidecars from the tested project.
 
 Evidence is under `C:/Temp/bagyong-structure-20261014`: `regression-comparison.json`, `preservation-report.json`, source/rendered suite logs, `visual-final`, `export-results` and `package-results`. The helper scripts and diagnostic probes remain outside the repository. Existing ObjectDB/resource retention warnings and intentional cleanup invalid-input diagnostics are recorded separately from assertions. Full manual play, audible audio quality and standalone Windows EXE acceptance were not verified by this relocation task.
+
+## Freed pickup guidance regression - 2026-10-14
+
+The radio pickup in bodega exposed cached `WorldItem` references surviving their nodes' deletion. Godot rejects a freed argument at the typed `_is_eligible()` call before its internal guard runs. `PickupGuidance3D` now checks instance validity before each eligibility call for its active target, previous target and cached candidates; item eligibility and route rules are unchanged.
+
+The extended `pickup_guidance_regression.tscn` reproduced the original script error before the fix. It invokes actual pickup completion in bodega and hardware, verifies inventory/collected state and node deletion, checks queued and freed targets, remaining-item selection, no surplus plywood hints after two boards, all pickups removed, and scene reload with collected items absent. Godot **4.6.1.stable.official.14d19694e** passed **54 headless checks** and **64 Forward Plus checks**, both with **0 failures** and no script/parser errors, warnings or shutdown diagnostics. The rendered run additionally exercises active-hint cancellation after target deletion. Tests reused the imported disposable project at `C:/Temp/bagyong-structure-20261014/after` with synchronized game files and isolated APPDATA/LOCALAPPDATA plus exact BAGYONG_ISOLATED_SMOKE paths. Logs and result files are under `C:/Temp/bagyong-radio-20261014/final-headless` and `final-rendered`. `git diff --check` passed. Manual keyboard pickup/confirmation and packaged builds were not rerun; unrelated editor warnings shown in the original screenshot were outside this fix.
+
+## Deferred visual quality regression - 2026-10-14
+
+`VisualSettings` previously deferred a typed `Node` argument directly when lights or environments entered the tree. Nodes freed before dispatch caused `Cannot convert argument 1 from Object to Object` before the function's validity guard could run. It now uses the existing localization weak-reference pattern, resolving the node immediately before the unchanged typed quality function. Live-node quality behavior and persisted settings are unchanged.
+
+The extended cleanup suite frees a light and environment before their deferred callbacks and retains another pair to verify quality application. Before the fix, assertions passed but the engine logged two deferred conversion errors; therefore the assertion count alone is insufficient. After the fix, Godot **4.6.1.stable.official.14d19694e** passed **95 checks, 0 failures** in both headless and Forward Plus, with no unexpected engine/script errors or shutdown diagnostics. The suite's intentional invalid-inventory diagnostics remain expected. The previous pickup suite also passed **54 checks, 0 failures** after this change. Tests reused the imported disposable project with isolated APPDATA/LOCALAPPDATA and exact BAGYONG_ISOLATED_SMOKE paths. Evidence is under `C:/Temp/bagyong-pharmacy-20261014/visual-before`, `visual-after`, `visual-rendered` and `pickup-recheck`. Independent review found no actionable issue in the two-file fix. Manual keyboard play and packaged builds were not verified; the pharmacy movement report is a separate collision investigation.
+
+## Pharmacy chicken-store curb regression - 2026-10-14
+
+A diagonal walking approach into the pharmacy's front/right boundary reproduced persistent forward movement blockage at the chicken-store curb. At initial contact, step-up classified the remaining movement as sufficient; repeated imported sidewalk contacts then lost floor recognition and prevented further step-up attempts. The road/sidewalk rise is approximately 0.172 units, below the controller's 0.32-unit limit. A small scene-owned collision ramp now provides continuous ground support at this corner, without changing the visible imported mesh, map walls or shared controller.
+
+`game/tests/pharmacy_movement_regression.tscn` exercises actual PlayerV2 input/physics across four approach positions, walking and sprinting, sustained diagonal pressure, W/A escapes, boundary containment, and reaching the sidewalk top. Godot **4.6.1.stable.official.14d19694e** passed **32 checks, 0 failures** in both headless and Forward Plus using the imported disposable project and isolated APPDATA/LOCALAPPDATA plus exact BAGYONG_ISOLATED_SMOKE paths. The pre-fix approach probe failed the curb escape; the candidate and final scene passed. Logs/results are under `C:/Temp/bagyong-pharmacy-20261014/approach`, `ramp-candidate`, `final-headless` and `final-rendered`. No script/parser errors occurred. The headless movement run retained known ObjectDB/resource-in-use shutdown diagnostics; the rendered run did not. Independent review found no actionable issue in the scene/test fix. Temporary diagnosis and shop-cycle probes remain outside the repository.
+
+This verifies the reproduced curb blockage, not the user's reported complete all-direction immobilization: leftward escape worked in the failing probe. Manual keyboard acceptance of the original stuck session and packaged builds remain unverified. Recheck diagonal corner entry and W/A escape after restarting the game; D/S should still respect the authored road/right boundaries.

@@ -116,9 +116,68 @@ func _check_location(path: String, starts: Array[Vector3]) -> void:
 		for _i in range(InventoryManager.MAX_INVENTORY_SIZE):
 			InventoryManager.add_item(load("res://game/resources/items/hammer.tres"))
 		_check(not guidance._is_eligible(first_item), "full bag suppresses plywood hint")
+	await _check_pickup_lifecycle(location, guidance, first_route, path)
 	location.queue_free()
 	await get_tree().process_frame
 	await get_tree().process_frame
+	var reloaded := (load(path) as PackedScene).instantiate() as Node3D
+	add_child(reloaded)
+	var reloaded_guidance := reloaded.get_node("PickupGuidance")
+	reloaded_guidance.set_process(false)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_check(reloaded_guidance._choose_route().is_empty() and reloaded_guidance._target == null,
+		path + " reloaded scene skips pickups already removed by collected state")
+	reloaded.queue_free()
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+
+func _check_pickup_lifecycle(location: Node3D, guidance: Node3D, route: PackedVector3Array, path: String) -> void:
+	InventoryManager.reset()
+	guidance.set_process(false)
+	var picked_item: WorldItem = location.get_node("Radio") if path.contains("bodega") else guidance._items[2]
+	var picked_id := picked_item.item_data.item_id
+	var world_id := picked_item.world_item_id
+	guidance._target = picked_item
+	if route.size() >= 2:
+		guidance._set_route(route)
+		guidance._pulse_elapsed = 0.0
+		guidance._wind.show()
+		guidance._wind.emitting = true
+	picked_item._do_pickup()
+	_check(InventoryManager.has_item_with_id(picked_id) and GameState.is_item_collected(world_id),
+		path + " real pickup adds inventory and commits collected state")
+	_check(not guidance._is_eligible(picked_item), path + " queued pickup is ineligible")
+	await get_tree().process_frame
+	_check(not is_instance_valid(picked_item), path + " real pickup frees its scene node")
+	if guidance._can_show() and route.size() >= 2:
+		guidance._process(0.01)
+		_check(guidance._target == null and not guidance._wind.visible and not guidance._wind.emitting,
+			path + " active hint stops safely after its target is freed")
+	var next_route = guidance._choose_route()
+	_check(next_route is PackedVector3Array and not next_route.is_empty() and is_instance_valid(guidance._target),
+		path + " route selection replaces a freed target with a remaining pickup")
+	guidance._target = null
+	next_route = guidance._choose_route()
+	_check(next_route is PackedVector3Array and not next_route.is_empty() and is_instance_valid(guidance._target),
+		path + " idle selection skips freed entries in the pickup cache")
+	if is_instance_valid(guidance._target):
+		guidance._target._do_pickup()
+		await get_tree().process_frame
+		next_route = guidance._choose_route()
+		if path.contains("hardware"):
+			_check(next_route is PackedVector3Array and next_route.is_empty() and guidance._target == null,
+				path + " no surplus plywood hint after collecting two boards")
+		else:
+			_check(next_route is PackedVector3Array and not next_route.is_empty() and is_instance_valid(guidance._target),
+				path + " route selection replaces another freed target")
+	for item in guidance._items:
+		if is_instance_valid(item):
+			item._do_pickup()
+	await get_tree().process_frame
+	_check(guidance._choose_route().is_empty() and guidance._target == null,
+		path + " collecting every pickup leaves no route or stale target")
 
 
 func _check(condition: bool, description: String) -> void:

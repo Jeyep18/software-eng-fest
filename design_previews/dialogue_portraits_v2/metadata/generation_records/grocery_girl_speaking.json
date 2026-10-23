@@ -1,0 +1,12 @@
+{
+  "id": "grocery_girl",
+  "expression": "speaking",
+  "name": "Grocery Girl",
+  "refs": [
+    "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/grocery_girl/neutral.png"
+  ],
+  "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is this character's final NEUTRAL illustrated portrait and exact edit target. Produce ONE separate square expression variant. Change ONLY brows, eyelids/gaze, mouth shape and very small cheek movement according to expression below. KEEP precisely identical identity, face proportions, hair silhouette/color, skin tone, clothing, glasses/jewelry if present, angle, neck/shoulders, camera, scale, crop, upper-left lighting, faceted cel-shaded illustration, texture amount, all four charcoal/teal/ivory borders, background and background objects. No redesign into a different person; adult characters remain adults. Emotion must read visibly at150px: meaningful brow/eye/mouth differences. No text/labels/watermark, extra props, sweat/tear symbols, photo skin, shiny3D, scanlines, neon, extra people or expression sheet. Opaque square PNG. Only PLAYER thinking may cool same background's palette as explicitly described.\nCharacter: Grocery Girl.\nExpression: speaking — Attentive natural speaking: mouth distinctly open with a small dark opening and modest upper-teeth strip; brows engaged.",
+  "destination": "C:/Users/john2/Documents/Game Development/Bagyong Bahay/software-eng-fest/design_previews/dialogue_portraits_v2/portraits/grocery_girl/speaking.png",
+  "source": "C:\\Users\\john2\\.codex\\generated_images\\01a12911-1d6a-7383-aa81-84d435f4f9ef\\exec-b7994369-8204-4d9d-8169-32c26bc66d85.png",
+  "status": "generated_review_only"
+}

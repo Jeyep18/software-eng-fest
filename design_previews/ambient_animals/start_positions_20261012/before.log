@@ -1,0 +1,10 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+
+AMBIENT FAIL: grocery WalkingCat starts at saved editor position
+AMBIENT FAIL: grocery WanderingDog starts at saved editor position
+AMBIENT FAIL: tindahan WalkingDog starts at saved editor position
+Ambient animal regression: 229 checks, 3 failures
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 7 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
