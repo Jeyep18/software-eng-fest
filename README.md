@@ -23,7 +23,7 @@ The application setting still names the project `Software Festival 2026`. The ol
 
 ## Running the game
 
-The configured main scene is [IntroSequence.tscn](game/scenes/intro/IntroSequence.tscn). It leads to [Main_Menu1.tscn](game/scenes/main_menu/Main_Menu1.tscn). Choosing Start and a difficulty loads [house_inside.tscn](game/scenes/locations/house_inside.tscn), starts the clock, and plays the player's opening animation/tutorial flow. The current menu does not enter the older Act1 scenes.
+The configured main scene is [IntroSequence.tscn](game/scenes/intro/IntroSequence.tscn). It leads to [Main_Menu1.tscn](game/scenes/main_menu/Main_Menu1.tscn). Choosing Start and a difficulty loads [house_inside.tscn](game/scenes/locations/house_inside.tscn) and plays the waking animation, followed by a short player monologue about waking with a sore back from sleeping on the floor, a strange dream, and hearing the TV from the kitchen. Press E to finish the monologue. The player can explore the house and bodega without a clock. Completing Nanay's first conversation starts preparation, reveals the clock/objectives and opens the optional tutorial. Until then, the map and outdoor travel are locked; approaching the front door explains why. The current menu does not enter the older Act1 scenes.
 
 ## Controls
 

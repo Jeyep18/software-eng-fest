@@ -17,6 +17,11 @@
 [ext_resource type="PackedScene" path="res://game/entities/animals/ambient_dog.tscn" id="ambient_dog"]
 [ext_resource type="Environment" uid="uid://da3ce0283oavb" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
+[ext_resource type="Script" path="res://game/audio/IntermittentAmbience.gd" id="intermittent_audio"]
+[ext_resource type="AudioStream" path="res://game/assets/audio/gameplay/solarmusic-big-dog-bark-distant-113701.mp3" id="distant_dog_audio"]
+[ext_resource type="AudioStream" path="res://game/assets/audio/gameplay/dragon-studio-free-dog-bark-419014.mp3" id="dog_audio"]
+[ext_resource type="AudioStream" path="res://game/assets/audio/gameplay/650575__soundofsong__cat-purring-loop.wav" id="cat_purr_audio"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_61ce1"]
 size = Vector3(9.728727, 2.862793, 3.6633606)
 
@@ -35,7 +40,7 @@ stream = ExtResource("1_2byyo")
 volume_db = -5.0
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1240619111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.769642, 3.557139, -6.00386)
@@ -43,14 +48,14 @@ stream = ExtResource("1_2byyo")
 volume_db = -5.0
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=121212949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.904911, 3.557139, -9.28623)
 stream = ExtResource("2_eurmr")
 autoplay = true
 max_distance = 9.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1768202977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.469189, 1.9983187, -10.6616)
@@ -58,7 +63,7 @@ stream = ExtResource("3_2byyo")
 volume_db = -20.0
 autoplay = true
 max_distance = 6.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=694356742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.52699, 3.557139, -7.794567)
@@ -66,7 +71,7 @@ stream = ExtResource("4_kfp1t")
 volume_db = -5.0
 autoplay = true
 max_distance = 14.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="tindahan" parent="." unique_id=1107860213 instance=ExtResource("1_61ce1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036268234, -0.072064996, 0.022230148)
@@ -157,3 +162,37 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17.9
 [node name="WalkingDog" parent="AmbientAnimals" unique_id=1211668436 instance=ExtResource("ambient_dog")]
 transform = Transform3D(-0.63774663, 0, 0.7702462, 0, 1, 0, -0.7702462, 0, -0.63774663, 8.115475, 0.500448, -7.689245)
 waypoints = PackedVector3Array(0.8, 0.500448, -6.9, 1.8, 0.500448, -6.9)
+
+[node name="DistantDog" type="AudioStreamPlayer3D" parent="AmbientSounds"]
+position = Vector3(-18, 2, -12)
+stream = ExtResource("distant_dog_audio")
+volume_db = -3.0
+unit_size = 20.0
+bus = &"Ambience"
+max_distance = 80.0
+script = ExtResource("intermittent_audio")
+trigger_distance = 0.0
+interval_min = 10.0
+interval_max = 20.0
+
+[node name="Purring" type="AudioStreamPlayer3D" parent="AmbientAnimals/RestingCat"]
+stream = ExtResource("cat_purr_audio")
+volume_db = -1.0
+unit_size = 3.0
+bus = &"Ambience"
+max_distance = 4.0
+script = ExtResource("intermittent_audio")
+trigger_distance = 3.0
+interval_min = 4.0
+interval_max = 8.0
+
+[node name="Barking" type="AudioStreamPlayer3D" parent="AmbientAnimals/WalkingDog"]
+stream = ExtResource("dog_audio")
+volume_db = -3.0
+unit_size = 4.0
+bus = &"Ambience"
+max_distance = 8.0
+script = ExtResource("intermittent_audio")
+trigger_distance = 7.0
+interval_min = 6.0
+interval_max = 12.0

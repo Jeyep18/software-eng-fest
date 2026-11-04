@@ -50,6 +50,7 @@ func _run() -> void:
 	LeaderboardManager.record_run("Invalid", ["food", "food", "unknown"], "forged", 0, "standard")
 	var sanitized := LeaderboardManager.get_entries().filter(func(entry: Dictionary) -> bool: return entry["player_name"] == "Invalid")
 	_check(sanitized.size() == 1 and sanitized[0]["resolved_need_ids"] == ["food"] and sanitized[0]["nestor_status"] == SideQuestLog.STATE_NOT_STARTED, "invalid save inputs are normalized")
+	GameState.house_tasks_unlocked = true
 	SceneManager.reset()
 	_check(SceneManager.get_visited_locations().is_empty(), "reset clears visit history")
 	reparent(get_tree().root)

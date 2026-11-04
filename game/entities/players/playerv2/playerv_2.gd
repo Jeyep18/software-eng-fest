@@ -9,8 +9,16 @@ const AIR_ACCELERATION: float = 3.0
 const ROTATION_SPEED: float = 10.0
 const DEFAULT_STEP_HEIGHT: float = 0.32
 const TUTORIAL_MODAL_SCENE: PackedScene = preload("res://game/ui/tutorial/TutorialModal.tscn")
+const OPENING_MONOLOGUE_SCENE: PackedScene = preload("res://game/objects/interactables/narrativeshi.tscn")
+const OPENING_MONOLOGUE_LINES: Array[String] = [
+	"Ugh... morning already? My back's so stiff from sleeping on the floor.",
+	"I dreamed I was walking through our house, but every door led back to this room.",
+	"Someone kept calling my name, but I couldn't find them... What a weird dream.",
+	"I can hear the TV... I should check what's going on in the kitchen.",
+]
 const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
+const EXIT_HINT: String = "Press M or approach the front door\nto go outside."
 
 @export_range(0.0, 0.8, 0.01) var max_step_height: float = DEFAULT_STEP_HEIGHT
 
@@ -25,6 +33,8 @@ var _current_target: Interactable = null
 var _desired_step_direction: Vector3 = Vector3.ZERO
 var _interaction_dirty: bool = true
 var _last_prompt_visible: bool = false
+var _preparation_tutorial_shown: bool = false
+var _exit_hint: Label3D
 
 # Track previous movement state to trigger transition animations correctly.
 var _was_moving: bool = false
@@ -46,6 +56,7 @@ func _ready() -> void:
 	_force_interact_prompt_visible(false)
 	_capture_mouse()
 	_animation_player.animation_finished.connect(_on_animation_finished)
+	LocalizationManager.language_changed.connect(_on_hint_language_changed)
 
 	if not SceneManager.has_played_opening:
 		_is_input_locked = true
@@ -113,20 +124,60 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		ANIM_STAND_UP:
 			_play(ANIM_IDLE)
-			_show_start_tutorial_if_needed()
+			_is_input_locked = false
+			_show_opening_monologue()
 
-func _show_start_tutorial_if_needed() -> void:
+func _show_opening_monologue() -> void:
+	var monologue := OPENING_MONOLOGUE_SCENE.instantiate() as NarrativeObject
+	monologue.name = "OpeningMonologue"
+	monologue.monologue_lines.assign(OPENING_MONOLOGUE_LINES)
+	monologue.monitoring = false
+	add_child(monologue)
+	_on_interactable_entered(monologue)
+	monologue.prompt_visibility_changed.connect(func(should_show: bool) -> void:
+		if should_show:
+			_on_interactable_exited(monologue)
+			monologue.queue_free()
+	)
+	monologue.interact()
+
+func show_preparation_tutorial() -> void:
+	if _preparation_tutorial_shown or not GameState.house_tasks_unlocked:
+		return
+	_preparation_tutorial_shown = true
 	if not TutorialModal.should_show_on_start():
-		_is_input_locked = false
+		_show_exit_hint()
 		return
 
+	_is_input_locked = true
 	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()
 	add_child(tutorial)
 	var unlock_input := func() -> void:
 		_is_input_locked = false
 		tutorial.queue_free()
+		_show_exit_hint()
 	tutorial.open(true, true, unlock_input, true)
 
+func _show_exit_hint() -> void:
+	# Let the allowance notice clear before showing text above the player.
+	await get_tree().create_timer(2.6, false).timeout
+	_exit_hint = Label3D.new()
+	_exit_hint.name = "ExitHint"
+	_exit_hint.position = Vector3(0.0, 2.3, 0.0)
+	_exit_hint.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_exit_hint.no_depth_test = true
+	_exit_hint.font = UI_STYLE.FONT_SEMIBOLD
+	_exit_hint.font_size = 36
+	_exit_hint.pixel_size = 0.0025
+	_exit_hint.text = LocalizationManager.translate(EXIT_HINT)
+	add_child(_exit_hint)
+	var hint_tween := create_tween()
+	hint_tween.tween_interval(8.0)
+	hint_tween.tween_callback(_exit_hint.queue_free)
+
+func _on_hint_language_changed(_language_id: String) -> void:
+	if is_instance_valid(_exit_hint):
+		_exit_hint.text = LocalizationManager.translate(EXIT_HINT)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
@@ -302,7 +353,7 @@ func _resolve_interaction_target() -> void:
 			return
 		_current_target = _nearby_interactables[0]
 		_set_interact_prompt_text(_current_target.prompt_label)
-		if not _prompt_suppressed:
+		if not _prompt_suppressed and not _current_target.is_showing:
 			_set_interact_prompt_visible(true)
 		_rewire_prompt_signal(_current_target)
 		return
@@ -313,6 +364,10 @@ func _resolve_interaction_target() -> void:
 	for interactable: Interactable in _nearby_interactables:
 		if not interactable.is_interaction_available():
 			continue
+		# Proximity-triggered dialogue must remain advanceable when facing away.
+		if interactable.is_showing:
+			best_target = interactable
+			break
 
 		var to_target: Vector3 = interactable.global_position - global_position
 		var dot: float = to_target.normalized().dot(Vector3(_facing_direction, 0.0, 0.0))
@@ -326,7 +381,7 @@ func _resolve_interaction_target() -> void:
 	if best_target != null:
 		_current_target = best_target
 		_set_interact_prompt_text(_current_target.prompt_label)
-		if not _prompt_suppressed:
+		if not _prompt_suppressed and not _current_target.is_showing:
 			_set_interact_prompt_visible(true)
 
 	_rewire_prompt_signal(_current_target)

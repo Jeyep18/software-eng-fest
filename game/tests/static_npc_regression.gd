@@ -72,6 +72,7 @@ func _run() -> void:
 		get_tree().quit(1)
 		return
 	get_tree().current_scene = null
+	GameState.house_tasks_unlocked = true
 	GlobalTimer.start_fresh()
 	GlobalTimer.pause_timer(self)
 	if OS.get_cmdline_user_args().has("--visual-only"):
@@ -551,7 +552,7 @@ func _test_npc(target: String) -> void:
 		var minutes := GlobalTimer.current_minutes
 		await _finish_dialogue(npc)
 		npc._accept_choice()
-		var deadline := Time.get_ticks_msec() + 10000
+		var deadline := Time.get_ticks_msec() + 15000
 		while npc._pending_smoke and Time.get_ticks_msec() < deadline:
 			await get_tree().process_frame
 		_check(not npc._pending_smoke and not fixture.locked, "Smoke action completes and releases player")

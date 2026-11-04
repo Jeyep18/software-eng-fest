@@ -90,6 +90,8 @@ func travel_to(target_location: String, spawn_id: String = "", fixed_travel_cost
 		return
 	if dev_teleport and (not DevMode.can_use() or not DevMode.is_valid_destination(target_location)):
 		return
+	if not dev_teleport and not GameState.house_tasks_unlocked and not HOME_ROOMS.has(target_location):
+		return
 
 	# Block travel to inaccessible locations
 	if not dev_teleport and not StormEnroachment.can_travel_to(target_location):

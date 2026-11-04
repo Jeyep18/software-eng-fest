@@ -114,3 +114,19 @@ Completion means:
 - Documentation reflects changed paths, interfaces and behavior without promoting future plans to implementation.
 
 The 2026-09-16–17 documentation task performed static inspection and executable-version verification only; it did not launch/import the project, export a build, or playtest it.
+
+
+## Editing ending map cameras
+
+Open `res://game/scenes/ending/EndingSequence.tscn` in Godot's 3D editor. Expand `LocationSets` and select the camera for the map:
+
+| Map | Camera node path |
+| --- | --- |
+| Hardware | `LocationSets/Hardware/EndingCameraHardware` |
+| Grocery / Palengke | `LocationSets/Grocery/EndingCameraGrocery` |
+| Pharmacy | `LocationSets/Pharmacy/EndingCameraPharmacy` |
+| Tindahan | `LocationSets/Tindahan/EndingCameraTindahan` |
+
+Select the camera, press **F** to focus the editor on it, and enable **Preview** in the 3D viewport. Move and rotate the camera using the editor tools or Inspector Transform fields. Adjust Camera3D FOV for framing and save the scene. Leave **Current** disabled; playback uses the root `EndingCamera` and copies the selected shot's saved transform and lens. No Start/Focus markers or code edits are needed. A gentle 1.5-degree orbit follows the saved opening angle. The ending only includes visited maps, with Tindahan also included for an accepted Nestor quest. The map sets live in this ending scene, so editing these cameras does not change gameplay cameras in the location scenes.
+
+The closing screen is `CanvasLayer/ClosingLabel`, centered above `CanvasLayer/FadeOverlay`. Its text is localized by `EndingSequence.gd`; it finishes before `CanvasLayer/ResultPanel` appears.

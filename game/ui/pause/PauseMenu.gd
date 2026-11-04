@@ -311,7 +311,7 @@ func _do_restart() -> void:
 	await TransitionOverlay.fade_to_black()
 	_reset_global_state()
 	SceneManager.load_scene("home")
-	GlobalTimer.start_fresh()
+	GlobalTimer.reset()
 	DevMode.begin_run()
 
 func _do_quit() -> void:

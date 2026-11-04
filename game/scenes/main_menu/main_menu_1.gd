@@ -438,7 +438,7 @@ func _on_difficulty_confirmed(difficulty: GameState.Difficulty) -> void:
 	GameState.reset()
 	GameState.set_difficulty(difficulty)
 	SceneManager.load_scene("home")
-	GlobalTimer.start_fresh()
+	GlobalTimer.reset()
 	DevMode.begin_run()
 
 func _on_leaderboards_pressed() -> void:

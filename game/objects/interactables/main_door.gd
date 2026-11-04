@@ -1,11 +1,15 @@
-extends Interactable
+extends NarrativeObject
 
-func _ready() -> void:
-	prompt_label = "Go Outside"
-	super._ready()
+func _on_body_entered(body: Node3D) -> void:
+	super._on_body_entered(body)
+	if body is PlayerV2 and not body._is_input_locked and not body._is_movement_locked:
+		interact()
 
 func interact() -> void:
 	if SceneManager.is_travelling:
+		return
+	if not GameState.house_tasks_unlocked:
+		super.interact()
 		return
 
 	var map_screen = get_tree().get_first_node_in_group("map_screen")

@@ -2,7 +2,7 @@
 
 Edit player-facing text in `game_text_merged.csv`, the active runtime table. `game_text.csv` preserves the working table from before the coworker rewrite merge as a backup; the game does not load it and Windows exports exclude it.
 
-The merged table retains all 515 IDs and rows: 127 rows use the accepted rewrites, while the other 388 retain their pre-merge translations. Only `english` and `tagalog` changed; categories, IDs, lookup sources, notes, and row order are preserved.
+The merged table contains 555 rows and preserves the original 515 IDs. Of those original rows, 127 use the accepted rewrites and 388 retain their pre-merge translations. Later rows cover newer systems, including the opening door reminder and departure hint. Original categories, IDs, lookup sources, notes, and row order are preserved.
 
 Columns:
 

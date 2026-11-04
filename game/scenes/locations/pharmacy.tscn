@@ -22,6 +22,9 @@
 [ext_resource type="Script" uid="uid://s38l1itg7oag" path="res://game/ui/lotto/ScratchLottoUI.gd" id="19_lotto_ui"]
 [ext_resource type="Environment" uid="uid://da3ce0283oavb" path="res://game/resources/environments/storm_shop_environment.tres" id="storm_env"]
 
+[ext_resource type="Script" path="res://game/audio/IntermittentAmbience.gd" id="intermittent_audio"]
+[ext_resource type="AudioStream" path="res://game/assets/audio/gameplay/solarmusic-big-dog-bark-distant-113701.mp3" id="distant_dog_audio"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlip7"]
 albedo_texture = ExtResource("1_hvxim")
 ao_enabled = true
@@ -65,7 +68,7 @@ stream = ExtResource("1_b23kr")
 volume_db = -5.0
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1444846299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.769642, 3.557139, -6.00386)
@@ -73,14 +76,14 @@ stream = ExtResource("1_b23kr")
 volume_db = -5.0
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=1625905188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.728641, 3.557139, -10.768003)
 stream = ExtResource("2_koe55")
 autoplay = true
 max_distance = 9.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=766555916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.048943, 3.557139, -7.794567)
@@ -88,7 +91,7 @@ stream = ExtResource("3_ndmtl")
 volume_db = -5.0
 autoplay = true
 max_distance = 14.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="Greybox" type="Node3D" parent="." unique_id=1855147209]
 visible = false
@@ -430,3 +433,15 @@ shape = SubResource("BoxShape3D_lottohan")
 
 [node name="LottoUI" type="CanvasLayer" parent="Lottohan" unique_id=1171335149]
 script = ExtResource("19_lotto_ui")
+
+[node name="DistantDog" type="AudioStreamPlayer3D" parent="AmbientSounds"]
+position = Vector3(-18, 2, -12)
+stream = ExtResource("distant_dog_audio")
+volume_db = -3.0
+unit_size = 20.0
+bus = &"Ambience"
+max_distance = 80.0
+script = ExtResource("intermittent_audio")
+trigger_distance = 0.0
+interval_min = 10.0
+interval_max = 20.0

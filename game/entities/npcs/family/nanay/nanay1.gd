@@ -34,6 +34,8 @@ func _hide_dialogue() -> void:
 		_grant_departure_cash()
 
 	super._hide_dialogue()
+	if completed_pre_departure:
+		get_tree().call_group("player", "show_preparation_tutorial")
 
 func _grant_departure_cash() -> void:
 	if GameState.nanay_departure_cash_granted:
@@ -42,6 +44,7 @@ func _grant_departure_cash() -> void:
 	GameState.add_cash(departure_cash)
 	SFX.cash_gain()
 	get_tree().call_group("preparation_checklist_hud", "show_cash_gain", departure_cash)
+	SFX.preparation_start()
 	GameState.complete_nanay_intro()
 
 func notify_departed() -> void:

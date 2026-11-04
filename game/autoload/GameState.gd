@@ -143,6 +143,7 @@ func complete_nanay_intro() -> void:
 		return
 	house_tasks_unlocked = true
 	nanay_departure_cash_granted = true
+	GlobalTimer.start()
 	guide_tasks_changed.emit()
 
 func complete_lola_intro() -> void:

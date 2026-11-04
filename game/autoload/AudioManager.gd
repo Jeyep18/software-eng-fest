@@ -13,6 +13,7 @@ var _music_tween:    Tween = null
 var _ambience_tween: Tween = null
 var _sfx_tween: Tween = null
 var _voice_should_loop: bool = false
+var _music_volume_db: float = 0.0
 
 const FADE_DURATION: float = 1.5   # seconds for crossfade
 const SETTINGS_PATH: String = "user://audio_settings.cfg"
@@ -23,17 +24,38 @@ var _default_bus_volumes: Dictionary = {}
 # ── PUBLIC API ────────────────────────────────────────────────────────────────
 
 ## Play a background music track, with optional fade-in.
-func play_music(stream: AudioStream, fade_in: bool = true) -> void:
-	if _music_player.stream == stream and _music_player.playing:
+func play_music(stream: AudioStream, fade_in: bool = true, volume_db: float = 0.0) -> void:
+	if _music_player.stream == stream and _music_player.playing and is_equal_approx(_music_volume_db, volume_db):
 		return   # already playing this track — do nothing
 	if _music_tween and _music_tween.is_valid():
 		_music_tween.kill()
 	_music_player.stream    = stream
-	_music_player.volume_db = -80.0 if fade_in else 0.0
+	_music_volume_db = volume_db
+	_music_player.volume_db = -80.0 if fade_in else volume_db
 	_music_player.play()
 	if fade_in:
 		_music_tween = create_tween()
-		_music_tween.tween_property(_music_player, "volume_db", 0.0, FADE_DURATION)
+		_music_tween.tween_property(_music_player, "volume_db", volume_db, FADE_DURATION)
+
+func get_music_state() -> Dictionary:
+	return {
+		"stream": _music_player.stream,
+		"playing": _music_player.playing,
+		"position": _music_player.get_playback_position(),
+		"volume_db": _music_volume_db,
+	}
+
+func restore_music(state: Dictionary, replacing: AudioStream) -> void:
+	# Scene exit must not replace music already started by the ending or title.
+	if _music_player.stream != replacing:
+		return
+	if state.get("playing", false) and state.get("stream") != null:
+		play_music(state["stream"], false, state["volume_db"])
+		_music_player.seek(state["position"])
+	else:
+		if _music_tween and _music_tween.is_valid():
+			_music_tween.kill()
+		_music_player.stop()
 
 func _ready() -> void:
 	_capture_default_bus_volumes()
@@ -133,10 +155,10 @@ func stop_ambience(fade_out: bool = true) -> void:
 	_ambience_player.stop()
 
 ## Fire a one-shot SFX. Safe to call from anywhere.
-func play_sfx(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> void:
+func play_sfx(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> AudioStreamPlayer:
 	if stream == null:
 		push_warning("AudioManager.play_sfx: null stream passed")
-		return
+		return null
 	var player := AudioStreamPlayer.new()
 	player.bus = "SFX"
 	player.stream = stream
@@ -145,6 +167,7 @@ func play_sfx(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 
 	player.finished.connect(player.queue_free)
 	add_child(player)
 	player.play()
+	return player
 
 ## Play a voice/talking sound. Set loop_until_stopped for typewriter chatter.
 func play_voice(stream: AudioStream, loop_until_stopped: bool = false) -> void:

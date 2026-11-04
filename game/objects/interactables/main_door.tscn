@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cryroy6ynw3dm" path="res://game/objects/interactables/main_door.gd" id="1_bxhws"]
 [ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="1_wj3qb"]
+[ext_resource type="PackedScene" path="res://game/ui/dialogue/monologue/monologue_ui.tscn" id="3_monologue"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxhws"]
 size = Vector3(1, 2.0933228, 1.1513977)
 
 [node name="Main_Door" type="Area3D" unique_id=113227790]
 script = ExtResource("1_bxhws")
+interaction_prompt = "Go Outside"
+monologue_lines = Array[String](["I don't have any money yet. I should ask Mom what I need to do first."])
+monologue_ui_scene = ExtResource("3_monologue")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="door" parent="." unique_id=775457550 instance=ExtResource("1_wj3qb")]
 

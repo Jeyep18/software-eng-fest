@@ -84,6 +84,8 @@ func _input(event: InputEvent) -> void:
 
 
 func open_map() -> void:
+	if not GameState.house_tasks_unlocked:
+		return
 	if get_tree().get_first_node_in_group("lotto_ui") != null:
 		return
 	var was_visible := visible

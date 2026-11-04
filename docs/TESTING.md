@@ -255,7 +255,7 @@ $env:BAGYONG_ISOLATED_SMOKE = $env:APPDATA.Replace('\', '/') + '/Godot/app_userd
 Godot_v4.6.1-stable_win64_console.exe --headless --path $testProject --scene res://game/tests/milestone1_smoke.tscn
 ```
 
-Omit `--headless` to run with rendering. The graphical run saves `milestone1_home.png`, `milestone1_tindahan.png`, `milestone1_shop.png` and `milestone1_ending.png` in the isolated user-data directory. The test uses normal engine timing, skips the intro through its input handler, dismisses the actual tutorial, advances dialogue, buys medicine from Ate Linda and an item from hardware, completes the medicine task, restarts, forces storm arrival, verifies that the score waits for a continue press, submits an isolated score and starts another run. It also reproduces detached-checklist and immediately-freed-label callbacks. Expect several minutes for the normal ending sequence.
+Omit `--headless` to run with rendering. The graphical run saves `milestone1_home.png`, `milestone1_tindahan.png`, `milestone1_shop.png` and `milestone1_ending.png` in the isolated user-data directory. The test uses normal engine timing, skips the intro through its input handler, verifies untimed exploration and the bodega/map/door restrictions, completes Nanay and dismisses the actual tutorial, advances dialogue, buys medicine from Ate Linda and an item from hardware, completes the medicine task, restarts, forces storm arrival, verifies that the score waits for a continue press, submits an isolated score and starts another run. It also reproduces detached-checklist and immediately-freed-label callbacks. Expect several minutes for the normal ending sequence.
 
 Inspect logs as well as exit status and assertions: a Godot runtime error does not necessarily set a failing process exit code. No `SCRIPT ERROR`, failed assertion, deferred-localization error or detached-checklist error is acceptable. Known shutdown leak diagnostics are recorded separately. This test calls production interaction methods directly; it is not a manual movement/proximity/audio test, a natural full-day wait or coverage of every optional quest and ending.
 
@@ -276,7 +276,7 @@ F5 follows the configured intro startup and is the baseline smoke test. F6 runs 
 Use a fresh run from the menu and note difficulty, language, quality, UI scale and existing user settings. Keep a copy of valuable local leaderboard/settings data before tests that intentionally alter it; use an isolated user-data environment if available in the chosen workflow.
 
 - [ ] Start through the intro. Confirm studio/credit/warning/dedication cards precede the skippable narrative; accept/cancel/mouse can skip once enabled. Reach menu and open/close credits, tutorial, settings and leaderboards.
-- [ ] Choose a difficulty, reach the home scene, complete the stand-up/tutorial handoff and regain movement. Test tutorial Continue and session-only Do not show again.
+- [ ] Choose a difficulty, reach the home scene, finish standing up and explore freely with no timer/objectives/tutorial. Inspect objects and visit bodega; confirm zero elapsed time, blocked M/outdoor travel and the front-door reminder. Complete Nanay's first conversation; verify cash, impact SFX, clock/objectives and tutorial. Test Continue, the above-player departure hint, and session-only Do not show again. Interrupting the conversation must unlock nothing.
 - [ ] Move with WASD and Shift sprint. Check facing/animation, small-step traversal, camera-volume transitions, nearby interaction selection and prompt visibility. PlayerV2 has no jump handler; do not infer jump/crouch/flashlight behavior from Input Map entries. Test Space as dialogue advancement.
 - [ ] Talk to Nanay and Lola, advance/skip dialogue, discover preparation needs and inspect the objective HUD. Verify input returns after dialogue and task sequences.
 - [ ] Open backpack with Tab and map with M. Each closes the other and releases the mouse. **The clock continues while these menus are open.** Escape pause closes gameplay menus, pauses the tree, and Resume restores input/time progression.
@@ -607,3 +607,84 @@ A diagonal walking approach into the pharmacy's front/right boundary reproduced 
 `game/tests/pharmacy_movement_regression.tscn` exercises actual PlayerV2 input/physics across four approach positions, walking and sprinting, sustained diagonal pressure, W/A escapes, boundary containment, and reaching the sidewalk top. Godot **4.6.1.stable.official.14d19694e** passed **32 checks, 0 failures** in both headless and Forward Plus using the imported disposable project and isolated APPDATA/LOCALAPPDATA plus exact BAGYONG_ISOLATED_SMOKE paths. The pre-fix approach probe failed the curb escape; the candidate and final scene passed. Logs/results are under `C:/Temp/bagyong-pharmacy-20261014/approach`, `ramp-candidate`, `final-headless` and `final-rendered`. No script/parser errors occurred. The headless movement run retained known ObjectDB/resource-in-use shutdown diagnostics; the rendered run did not. Independent review found no actionable issue in the scene/test fix. Temporary diagnosis and shop-cycle probes remain outside the repository.
 
 This verifies the reproduced curb blockage, not the user's reported complete all-direction immobilization: leftward escape worked in the failing probe. Manual keyboard acceptance of the original stuck session and packaged builds remain unverified. Recheck diagonal corner entry and W/A escape after restarting the game; D/S should still respect the authored road/right boundaries.
+
+## Ending closing screen and editable map cameras - 2026-11-02
+
+Godot 4.6.1 ran against the current imported checkout with isolated APPDATA/LOCALAPPDATA and matching BAGYONG_ISOLATED_SMOKE under `C:/Temp/bagyong-ending-20261102`. Ending balance passed **17 headless checks** and **69 Forward Plus checks**, all with zero failures. Rendered probes covered 1280x720 with VHS disabled, 1920x1080 with VHS enabled, and the final 1280x720 VHS-enabled run. These windows use the project's 1920x1080 logical canvas. Score calculation regression passed **272 checks, zero failures**.
+
+The ending probe checks all four authored map cameras, edited position/rotation including roll and FOV, orbit framing, English/Tagalog closing captions over opaque black, caption centering, and the Tindahan shot flowing through closing into the result/continue screen. It uses a controlled ending subclass to suppress automatic startup while probing individual shots, then runs the production sequence with a Tindahan slide. English closing/results captures were inspected. Independent read-only review found no actionable production bug. `git diff --check` passed. Runtime logs contained no script/parser errors or failed assertions; known ObjectDB/resource-retention shutdown diagnostics remain. Full normal gameplay, leaderboard name entry, editor tool manipulation, and packaged builds were not rerun. See DEVELOPMENT.md for the exact camera paths and editing workflow.
+
+## Audio balance, Lottohan and neighborhood sounds - 2026-11-02
+
+The approved audio pass lowers the repeating gameplay scary track to -12 dB per track, routes local environment sounds through Ambience, reduces the previous positive environment boosts, and adds the supplied lottery, scratch, smoking, cat and dog recordings. Saved bus settings and gameplay costs/rewards are preserved. Distant dogs play in grocery, hardware, pharmacy and tindahan; individual animals and the smoker use player-distance gating and randomized quiet gaps.
+
+Godot **4.6.1.stable.official.14d19694e** ran against the working checkout with separate isolated APPDATA/LOCALAPPDATA and matching BAGYONG_ISOLATED_SMOKE directories. Production user data was not used.
+
+| Check | Result |
+| --- | --- |
+| `audio_regression.tscn`, headless | **118 checks, 0 failures**. Track fade gain, lottery music ownership/position/gain restoration, preservation of newer ending music, silence restoration, exact store purchase stream, failed-purchase silence, Scratch All and forced-close cleanup, near/far gating, actual bark completion and randomized quiet gaps, pause/resume, travel/storm guards, map/animal wiring, imported resources, smoking acceptance/decline/repeat/time cost, and unchanged bus gains. |
+| `audio_regression.tscn`, Forward Plus | **118 checks, 0 failures**, exit 0. Vulkan on RTX 4050 and Windows WASAPI output at 48 kHz/stereo were active. This is scripted playback verification, not human listening acceptance. |
+| Existing focused regressions | Animals **229/229**, scratch lottery **41/41**, animated NPCs **1,638/1,638**, complete Milestone 2 transitions **100/100**. The transition suite includes a smoke break crossing the deadline, forced storm during modals, and actual travel/return with preserved state. |
+| Import and review | Godot editor import exited 0 without script/parser errors. Independent source review found no actionable correctness issue. Final audio diff and `git diff --check` passed. |
+
+Run the focused suite with isolated user data:
+
+```powershell
+$audio_run = 'C:/Temp/bagyong-audio-repeat'
+$env:APPDATA = "$audio_run/Roaming"
+$env:LOCALAPPDATA = "$audio_run/Local"
+$env:BAGYONG_ISOLATED_SMOKE = "$audio_run/Roaming/Godot/app_userdata/Software Festival 2026"
+& 'C:/Godot/Godot_v4.6.1-stable_win64.exe/Godot_v4.6.1-stable_win64_console.exe' --headless --path . res://game/tests/audio_regression.tscn
+```
+
+Evidence is under `C:/Temp/bagyong-audio-20261102`, especially `audio-completion`, `forward-plus`, `animals`, `lottery`, `npc` and `transitions`. The headless runs retain ObjectDB/resource-at-exit diagnostics; the transition run also warns about a leftover ending camera. The rendered run reports Vulkan layer-registry and RGB8-to-RGBA8 conversion warnings, with no script/parser errors. Concurrent ending-scene and ending-documentation edits were preserved and were outside the audio review. Human listening balance, physical-input gameplay and packaged builds were not checked. Audition the house, all four outdoor maps, Lottohan and smoking on the intended speakers/headphones before final audio acceptance.
+
+
+## Untimed opening, Nanay handoff and audio timing - 2026-11-03
+
+New runs and pause restarts now wait for Nanay's completed introductory conversation before starting the preparation clock. The production smoke covers waking without a tutorial, hidden timer/objectives, M/direct-map/outdoor-travel blocking, automatic door monologue and interaction targeting, all household task-site inspections, retaining supplies when a task is already affordable, zero passive/burst time, bodega travel/return, interrupted/completed/repeated Nanay conversations, cash and one impact sound through the paused tutorial, retained discoveries, localized departure hint after the allowance popup, automatic post-Nanay door/map opening, normal map/backpack clock behavior, purchases/task completion and restart/session-suppression behavior. Task completion remains locked until Nanay.
+
+Godot **4.6.1.stable.official.14d19694e** ran against the working checkout with fresh isolated APPDATA/LOCALAPPDATA and matching BAGYONG_ISOLATED_SMOKE under `C:/Temp/bagyong-opening-20261103`. Production settings and leaderboard files were not used.
+
+| Check | Result |
+| --- | --- |
+| Production opening and preparation, headless | **100 checks, 0 failures**, exit 0, before the final hint-delay/prompt-visibility polish. |
+| Full production flow, Forward Plus | **109 checks, 0 failures**, exit 0, including ending, continue gate, isolated leaderboard submission, menu return and another untimed new run. This preceded only the final hint-delay/prompt-visibility polish. |
+| Final production opening/preparation/restart, Forward Plus | **102 checks, 0 failures**, exit 0 after visual polish. Captures of the door reminder, untimed house, tutorial and unlocked clock/objectives/hint were inspected. Vulkan ran on RTX 4050 at a 1280x720 window with the project's 1920x1080 logical canvas. |
+| Full Milestone 2 transition regression, headless | **103 checks, 0 failures**, exit 0. Includes new unstarted-timer and idempotent-start/pause-owner checks, storm/travel cancellation, deadline-crossing tasks and smoking, modal cleanup and scene returns. The Nestor unit fixture now explicitly starts its timed clock. |
+| Audio regression, Forward Plus | **132 checks, 0 failures**, exit 0, no warnings/errors. Includes actual repeated bark playback, updated scene source settings, and holding black/movement lock until the smoke recording finishes. |
+| Related headless regressions | Static NPC **1,638/1,638**, animals **229/229**, map **20/20**, score **272/272**, cleanup **95/95**, Dev Mode **47/47**. Timed map/travel fixtures explicitly set the Nanay unlock flag. |
+| Final editor import | Exit 0, no script/parser errors or warnings in `import-final/engine.log`. |
+| Source review | Independent read-only review found a pre-Nanay task-inspection gap; it was corrected and re-reviewed with no remaining actionable findings. Final diff, CSV parsing and unique translated opening keys were checked. |
+
+The smoke suite supports a shorter run through restart, omitting the ending and score-submission tail:
+
+```powershell
+$opening_run = 'C:/Temp/bagyong-opening-repeat'
+$env:APPDATA = "$opening_run/Roaming"
+$env:LOCALAPPDATA = "$opening_run/Local"
+$env:BAGYONG_ISOLATED_SMOKE = "$opening_run/Roaming/Godot/app_userdata/Software Festival 2026"
+& 'C:/Godot/Godot_v4.6.1-stable_win64.exe/Godot_v4.6.1-stable_win64_console.exe' --path . res://game/tests/milestone1_smoke.tscn --windowed --resolution 1280x720 -- --opening-only
+```
+
+Evidence folders include `opening-final-headless`, `full-forward-plus`, `opening-final-forward-plus`, `transitions-final`, `audio-final-forward-plus`, `static-npc-final-headless`, `animals`, `map`, `score`, `cleanup`, and `dev-mode`. Runtime logs contained no script/parser errors or failed assertions in these passing runs. Existing ObjectDB/resource-in-use shutdown diagnostics remain; full ending/transition runs also warn about a leftover ending camera, and cleanup deliberately logs invalid inventory inputs. Earlier diagnostic runs under this same root include the corrected SFX type-inference error and outdated timer-fixture expectation; use the final folders above as acceptance evidence.
+
+No consequential deviation from the approved plan, new dependency or new autoload was required. Speaker/headphone listening, physical keyboard gameplay, a natural full-day playthrough and packaged-build acceptance remain unverified.
+
+
+## Wake-up kitchen and TV monologue - 2026-11-03
+
+The initial version showed one existing-style monologue after the stand-up animation: "I can hear the TV... I should check what's going on in the kitchen." The line has English and Tagalog CSV entries. E skips typing and then dismisses it, freeing its scene and releasing movement into the existing untimed opening. Its NarrativeObject is registered explicitly as the player's interaction target with proximity monitoring disabled. The timer, objectives, map lock and Nanay handoff are unchanged. Room returns do not replay the waking animation or this monologue; a new run/restart does.
+
+The updated `milestone1_smoke.tscn -- --opening-only` checks the actual wake-up, dialogue target ownership, E skip/close input, movement restoration, timer remaining unstarted, bodega/door/map restrictions, Mom's tutorial handoff and pause restart. Godot 4.6.1 headless and Forward Plus each passed **112 checks, 0 failures**, exit 0, with no script/parser errors. A Forward Plus capture of the full line and E prompt was inspected at 1280x720 with the 1920x1080 logical canvas. English/Tagalog CSV values and uniqueness of the new key/source were checked.
+
+Runs use isolated APPDATA/LOCALAPPDATA and matching BAGYONG_ISOLATED_SMOKE under `C:/Temp/bagyong-wake-monologue-20261103`, with `headless` and `rendered` evidence folders. Existing ObjectDB/resource-in-use shutdown diagnostics remain. No new dependency, autoload or persisted state was added. Full ending/audio suites, physical-keyboard play and packaged builds were not rerun for this localized addition.
+
+
+## Expanded waking monologue - 2026-11-03
+
+The waking sequence now has four player lines in order: stiff back after sleeping on the floor; a dream where every door returns to the same room; an unseen person calling the player's name; then the existing TV/kitchen prompt. All lines have English/Tagalog CSV entries. Existing NarrativeObject input, movement locking, cleanup and untimed preparation behavior are reused.
+
+The updated production opening regression injects E through normal physics/input processing for every line, checking displayed order/text, skip, advancement, movement remaining locked between lines, final dismissal and restart. It also retains all previous house/bodega/map/Mom/tutorial/task checks. Isolated Godot 4.6.1 headless and Forward Plus runs each passed **132 checks, 0 failures**, exit 0, with no script/parser errors. Rendered captures of the added lines were inspected for clipping/readability at the existing 1920x1080 logical canvas in a 1280x720 Forward Plus window. CSV parsing confirms 555 rows with unique new keys/sources and populated translations; the final scoped diff and whitespace were reviewed.
+
+Evidence is under `C:/Temp/bagyong-wake-expanded-20261103/headless-final` and `rendered-final`, with current pre-edit copies in `baseline`. Earlier `headless`/`rendered` runs exposed a test-injection issue: manually calling the input handler and also allowing physics to process the same injected press could double-advance dialogue. The final test sends input through physics once. No production control change was needed. Existing ObjectDB/resource shutdown diagnostics remain. Full ending/audio regressions, manual keyboard input and exported builds were not rerun for this text-only expansion.

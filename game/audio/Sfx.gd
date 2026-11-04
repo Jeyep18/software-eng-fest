@@ -19,6 +19,7 @@ const WIND_GUST: AudioStream = preload("res://game/assets/audio/weather/dragon-s
 const THUNDER_DISTANT: AudioStream = preload("res://game/assets/audio/weather/freesound_community-027958_distant-thunderwav-79709.mp3")
 const THUNDER_CLOSE: AudioStream = preload("res://game/assets/audio/weather/u_vrs223ln83-loud-thunder-439064.mp3")
 const ROOSTER_MORNING: AudioStream = preload("res://game/assets/audio/gameplay/freesound_community-rooster-crowing_27112016-processed-101724.mp3")
+const PREPARATION_START: AudioStream = preload("res://game/assets/audio/gameplay/universfield-cinematic-impact-boom-05-352465.mp3")
 
 static func play(stream: AudioStream, volume_db: float = -6.0, pitch_variation: float = 0.0) -> void:
 	if Engine.is_editor_hint() or stream == null:
@@ -46,6 +47,10 @@ static func thunder_close(volume_db: float = -8.0) -> void: play(THUNDER_CLOSE, 
 static func thunder_distant(volume_db: float = -16.0) -> void: play(THUNDER_DISTANT, volume_db, 0.05)
 static func wind_gust(volume_db: float = -15.0) -> void: play(WIND_GUST, volume_db, 0.05)
 static func rooster_morning() -> void: play(ROOSTER_MORNING, -9.0, 0.02)
+static func preparation_start() -> void:
+	# The impact must remain audible while the tutorial pauses the scene tree.
+	var impact: AudioStreamPlayer = AudioManager.play_sfx(PREPARATION_START, -6.0)
+	impact.process_mode = Node.PROCESS_MODE_ALWAYS
 
 static func wire_button(button: Button, cancel: bool = false) -> void:
 	if button == null or button.has_meta("sfx_wired"):

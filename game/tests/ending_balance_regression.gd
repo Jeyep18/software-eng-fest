@@ -1,5 +1,10 @@
 extends Node
 
+class ControlledEnding extends "res://game/scenes/ending/EndingSequence.gd":
+	func _start() -> void:
+		pass
+
+
 var _checks := 0
 var _failures := 0
 
@@ -55,11 +60,10 @@ func _run() -> void:
 	for plank in window_cue.get_children():
 		whole_window_visible = whole_window_visible and plank.visible
 	_check(whole_window_visible, "one completed window shows all its planks")
-	var all_shots_have_focus := true
+	var all_shots_have_cameras := true
 	for slide in ending.SLIDES:
-		all_shots_have_focus = all_shots_have_focus and slide["anchor"] is Node3D and slide["focus"] is Node3D
-		all_shots_have_focus = all_shots_have_focus and slide["focus"].position.z < slide["anchor"].position.z
-	_check(all_shots_have_focus, "every public shot has an editable focus in front of its camera")
+		all_shots_have_cameras = all_shots_have_cameras and slide["anchor"] is Camera3D and not slide["anchor"].current
+	_check(all_shots_have_cameras, "every public shot has an editor camera without taking over playback")
 	var key := InputEventKey.new()
 	key.pressed = true
 	_check(ending._is_continue_input(key), "pressed key continues result")
@@ -84,6 +88,7 @@ func _run() -> void:
 
 
 func _capture_shots(ending: Node) -> void:
+	ending.set_script(ControlledEnding)
 	Engine.time_scale = 0.001
 	VisualSettings.set_vhs_crt_enabled(not OS.get_cmdline_user_args().has("--vhs-off"))
 	add_child(ending)
@@ -95,9 +100,9 @@ func _capture_shots(ending: Node) -> void:
 	ending.ending_camera.make_current()
 	for location_id in ["Hardware", "Grocery", "Pharmacy", "Tindahan"]:
 		ending._set_shot_environment(location_id.to_lower())
-		ending._snap_camera_to(ending.get_node("LocationSets/%s/Start" % location_id))
-		var focus: Vector3 = ending.get_node("LocationSets/%s/Focus" % location_id).global_position
-		ending.ending_camera.look_at(focus)
+		ending._snap_camera_to(ending.get_node("LocationSets/%s/EndingCamera%s" % [location_id, location_id]))
+		var focus: Vector3 = ending.ending_camera.global_position - ending.ending_camera.global_basis.z * 3.0
+		var start_basis: Basis = ending.ending_camera.global_basis
 		var start_offset: Vector3 = ending.ending_camera.global_position - focus
 		_check(ending.world_environment.environment == ending.SHOP_ENV, "%s uses shop environment" % location_id)
 		_check(not ending.house_sun.visible and not ending.get_node("Environment/VoxelGI").visible, "%s hides house lighting" % location_id)
@@ -107,10 +112,25 @@ func _capture_shots(ending: Node) -> void:
 		if location_id == "Tindahan":
 			ending.get_node("LocationSets/Tindahan/NestorVisual").show()
 		_check(await _capture(ending, location_id.to_lower() + "_start"), "saved %s start" % location_id)
-		ending._orbit_camera(1.0, focus, start_offset)
+		ending._orbit_camera(1.0, focus, start_offset, start_basis)
 		_check(is_equal_approx(ending.ending_camera.global_position.distance_to(focus), start_offset.length()), "%s orbit keeps focal distance" % location_id)
 		_check((-ending.ending_camera.global_basis.z).dot((focus - ending.ending_camera.global_position).normalized()) > 0.999, "%s orbit keeps focus centered" % location_id)
 		_check(await _capture(ending, location_id.to_lower() + "_orbit_end"), "saved %s orbit end" % location_id)
+	var editable_camera: Camera3D = ending.get_node("LocationSets/Tindahan/EndingCameraTindahan")
+	var original_transform := editable_camera.transform
+	editable_camera.position += Vector3(0.2, 0.1, 0.3)
+	editable_camera.rotation += Vector3(0.1, 0.2, 0.15)
+	editable_camera.fov = 58.0
+	ending._snap_camera_to(editable_camera)
+	_check(ending.ending_camera.global_transform.is_equal_approx(editable_camera.global_transform), "playback copies edited camera position and rotation including roll")
+	_check(is_equal_approx(ending.ending_camera.fov, 58.0), "playback copies edited field of view")
+	var edited_focus: Vector3 = ending.ending_camera.global_position - ending.ending_camera.global_basis.z * 3.0
+	var edited_basis: Basis = ending.ending_camera.global_basis
+	ending._orbit_camera(0.0, edited_focus, ending.ending_camera.global_position - edited_focus, edited_basis)
+	_check(ending.ending_camera.global_basis.is_equal_approx(edited_basis), "orbit begins with the editor's saved angle and roll")
+	editable_camera.transform = original_transform
+	editable_camera.fov = 75.0
+	ending._snap_camera_to(editable_camera)
 	ending.get_node("LocationSets/Tindahan/NestorVisual").hide()
 	_check(await _capture(ending, "tindahan_delivered"), "saved empty Nestor scene")
 	ending.get_node("LocationSets/Tindahan/NestorVisual").show()
@@ -130,7 +150,7 @@ func _capture_shots(ending: Node) -> void:
 	_check(not ending.get_node("LocationSets/Hardware/VoxelGI").visible and not ending.get_node("LocationSets/Grocery/VoxelGI").visible and not ending.get_node("LocationSets/Pharmacy/VoxelGI").visible, "house shot hides town baked lighting")
 	var house_focus: Vector3 = ending.ending_camera.global_position - ending.ending_camera.global_basis.z * 3.0
 	var house_offset: Vector3 = ending.ending_camera.global_position - house_focus
-	ending._orbit_camera(1.0, house_focus, house_offset)
+	ending._orbit_camera(1.0, house_focus, house_offset, ending.ending_camera.global_basis)
 	_check(is_equal_approx(ending.ending_camera.global_position.distance_to(house_focus), 3.0), "house orbit keeps focal distance")
 	ending._apply_visual_cue({"need": NeedsLog.Need.WINDOWS, "visual_cue_path": "World3D/WindowArea/WindowTaskVisualCue"}, false, true)
 	_check(await _capture(ending, "window_partial"), "saved partial window scene")
@@ -143,6 +163,20 @@ func _capture_shots(ending: Node) -> void:
 		"remaining_minutes": 240,
 		"unranked": false,
 	}
+	for language in ["english", "tagalog"]:
+		LocalizationManager.set_language(language)
+		ending._show_closing_line()
+		ending.closing_label.modulate.a = 1.0
+		await get_tree().process_frame
+		_check(ending.fade_overlay.color == Color.BLACK and ending.closing_label.visible and not ending.slide_label.visible and not ending.result_panel.visible, "closing caption appears alone on opaque black in %s" % language)
+		var caption_rect: Rect2 = ending.closing_label.get_global_rect()
+		_check(caption_rect.get_center().is_equal_approx(ending.get_viewport().get_visible_rect().get_center()), "closing caption is centered in %s" % language)
+		_check(await _capture(ending, "closing_" + language), "saved black closing screen in %s" % language)
+		Engine.time_scale = 100.0
+		while ending.closing_label.visible:
+			await get_tree().process_frame
+		Engine.time_scale = 0.001
+	ending.closing_label.hide()
 	ending.fade_overlay.color.a = 1.0
 	for language in ["english", "tagalog"]:
 		LocalizationManager.set_language(language)
@@ -156,6 +190,15 @@ func _capture_shots(ending: Node) -> void:
 				child.modulate.a = 1.0
 		_check(await _capture(ending, "result_" + language), "saved result panel in %s" % language)
 		await get_tree().process_frame
+	ending.result_panel.hide()
+	ending.SLIDES = [{"anchor": editable_camera, "location_id": "tindahan", "text": "At the tindahan, neighbors shared warnings and helped one another prepare."}]
+	Engine.time_scale = 100.0
+	ending._run_sequence()
+	var deadline := Time.get_ticks_msec() + 5000
+	while not ending._awaiting_result_continue and Time.get_ticks_msec() < deadline:
+		await get_tree().process_frame
+	_check(ending._awaiting_result_continue and ending.result_panel.visible and not ending.closing_label.visible, "Tindahan montage finishes closing screen before showing results and continue prompt")
+	_check(ending.fade_overlay.color == Color.BLACK, "result screen keeps the map fully covered")
 	ending.queue_free()
 	Engine.time_scale = 1.0
 

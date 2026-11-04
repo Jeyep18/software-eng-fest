@@ -575,3 +575,12 @@ ui,dev.camera.house_teaser,House teaser,House teaser,Bahay para sa teaser,Record
 ui,dev.camera.house_state,House state,House state,Kalagayan ng bahay,Recording-only developer tool.
 ui,dev.camera.normal,Normal,Normal,Normal,Recording-only developer tool.
 ui,dev.camera.wrecked,Wrecked,Wrecked,Wasak,Recording-only developer tool.
+dialogue,dialogue.opening_no_money,I don't have any money yet. I should ask Mom what I need to do first.,I don't have any money yet. I should ask Mom what I need to do first.,Wala pa akong pera. Tanungin ko muna si Nanay kung ano ang kailangan kong gawin.,Opening front-door reminder.
+ui,ui.preparation_exit_hint,"Press M or approach the front door
+to go outside.","Press M or approach the front door
+to go outside.","Pindutin ang M o lumapit sa pintuan
+para lumabas.",Brief hint above the player after Nanay.
+dialogue,dialogue.wake_up_kitchen_tv,I can hear the TV... I should check what's going on in the kitchen.,I can hear the TV... I should check what's going on in the kitchen.,Naririnig ko ang TV... Tingnan ko nga kung ano ang nangyayari sa kusina.,Shown once after the waking animation; preparation remains unstarted.
+dialogue,dialogue.wake_up_sore_back,Ugh... morning already? My back's so stiff from sleeping on the floor.,Ugh... morning already? My back's so stiff from sleeping on the floor.,Aray... umaga na agad? Ang tigas ng likod ko sa pagtulog sa sahig.,First wake-up line.
+dialogue,dialogue.wake_up_dream_house,"I dreamed I was walking through our house, but every door led back to this room.","I dreamed I was walking through our house, but every door led back to this room.","Nanaginip akong naglalakad ako sa bahay namin, pero bawat pintuan, pabalik din sa kwartong ito.",Second wake-up line.
+dialogue,dialogue.wake_up_dream_voice,"Someone kept calling my name, but I couldn't find them... What a weird dream.","Someone kept calling my name, but I couldn't find them... What a weird dream.","May paulit-ulit na tumatawag sa pangalan ko, pero wala akong makita... Ang weird ng panaginip na iyon.","Third wake-up line, before the TV/kitchen reminder."

@@ -1,8 +1,8 @@
 # GlobalTimer.gd — Autoload Singleton
 # Central 12-hour clock. Difficulty controls seconds per game minute.
-# New runs call start_fresh() on entering home; map/backpack and fades do not
+# New runs reset on entering home and start after Nanay; map/backpack and fades do not
 # pause the clock themselves. Dialogue, shops and tasks acquire timer pauses;
-# PauseMenu separately pauses the SceneTree. Burst costs apply even when paused.
+# PauseMenu separately pauses the SceneTree. Once started, burst costs apply even when paused.
 # Pair pause_timer(self) with resume_timer(self); scene exit also releases it.
 
 extends Node
@@ -33,6 +33,7 @@ var seconds_per_game_minute: float = 1.5
 # ── State ─────────────────────────────────────────────────────────────────────
 var current_minutes: int  = 0
 var is_paused:       bool = true   # starts paused until a run starts
+var has_started: bool = false
 
 # Accumulates fractional seconds between whole-minute ticks.
 var _tick_accumulator: float = 0.0
@@ -47,7 +48,7 @@ var _pause_owners: Dictionary = {}
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _process(delta: float) -> void:
 	# Hard guards — never tick if paused or storm has already arrived.
-	if is_paused or current_minutes >= TOTAL_MINUTES:
+	if not has_started or is_paused or current_minutes >= TOTAL_MINUTES:
 		return
 
 	_tick_accumulator += delta
@@ -80,14 +81,14 @@ func resume_timer(pause_owner: Node = null) -> void:
 		if pause_owner.tree_exiting.is_connected(release):
 			pause_owner.tree_exiting.disconnect(release)
 	_pause_stack = max(_pause_stack - 1, 0)
-	if _pause_stack == 0 and current_minutes < TOTAL_MINUTES:
+	if has_started and _pause_stack == 0 and current_minutes < TOTAL_MINUTES:
 		is_paused = false
 		_tick_accumulator = 0.0  # reset so we don't rush-tick after a UI close
 
 ## Add minutes instantly (travel burst, task completion, NPC trade).
-## Works regardless of pause state — burst costs are always applied.
+## Before Nanay, exploration is untimed. Once started, costs apply even when paused.
 func add_time(minutes: int) -> void:
-	if minutes <= 0:
+	if not has_started or minutes <= 0:
 		return
 	var previous: int = current_minutes
 	current_minutes = min(current_minutes + minutes, TOTAL_MINUTES)
@@ -144,6 +145,7 @@ func reset() -> void:
 	_pause_owners.clear()
 	current_minutes    = 0
 	is_paused          = true
+	has_started        = false
 	_tick_accumulator  = 0.0
 	_pause_stack       = 0
 	apply_difficulty_settings()
@@ -152,7 +154,15 @@ func reset() -> void:
 
 func start_fresh() -> void:
 	reset()
-	resume_timer()
+	start()
+
+## Start once without discarding dialogue pauses or exploration progress.
+func start() -> void:
+	if has_started:
+		return
+	has_started = true
+	is_paused = _pause_stack > 0 or current_minutes >= TOTAL_MINUTES
+	time_updated.emit(current_minutes)
 
 func apply_difficulty_settings() -> void:
 	if get_node_or_null("/root/GameState") != null:

@@ -28,6 +28,7 @@ func _run() -> void:
 		wide_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 		add_child(wide_viewport)
 	LocalizationManager.set_language("english")
+	GameState.house_tasks_unlocked = true
 	GlobalTimer.start_fresh()
 	var map := preload("res://game/ui/map/MapScreen.tscn").instantiate()
 	if wide:

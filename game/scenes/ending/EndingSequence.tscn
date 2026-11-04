@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c7kkn2h4p108b"]
+[gd_scene format=4 uid="uid://c7kkn2h4p108b"]
 
 [ext_resource type="Script" uid="uid://ddni841fjhgnk" path="res://game/scenes/ending/EndingSequence.gd" id="1_6ukco"]
 [ext_resource type="PackedScene" uid="uid://c0ig0ldbdxsw1" path="res://_raw_assets/house_map/house_inside.glb" id="2_0axko"]
@@ -16,14 +16,26 @@
 [ext_resource type="PackedScene" uid="uid://bceav8j4y4qno" path="res://_raw_assets/house_map/HouseEnv.glb" id="9_mhti3"]
 [ext_resource type="PackedScene" uid="uid://bqeql6ih7l8b" path="res://game/objects/models/door_2.tscn" id="15_38p1u"]
 [ext_resource type="PackedScene" uid="uid://cs0rqh6yvrrtk" path="res://_raw_assets/interactable_models/fridge.glb" id="16_q3j7e"]
-[ext_resource type="PackedScene" path="res://_raw_assets/interactable_models/treska.glb" id="17_cans"]
-[ext_resource type="PackedScene" path="res://_raw_assets/Locations/HardwareStore.glb" id="18_hardware"]
-[ext_resource type="PackedScene" path="res://_raw_assets/Locations/Market.glb" id="19_grocery"]
-[ext_resource type="PackedScene" path="res://_raw_assets/Locations/Pharmacy.glb" id="20_pharmacy"]
-[ext_resource type="PackedScene" path="res://_raw_assets/Locations/tindahan.glb" id="21_tindahan"]
-[ext_resource type="PackedScene" path="res://_raw_assets/player_assets/mixamo_base.glb" id="22_nestor_visual"]
+[ext_resource type="PackedScene" uid="uid://b17fnmp7jshgp" path="res://_raw_assets/interactable_models/treska.glb" id="17_cans"]
+[ext_resource type="PackedScene" uid="uid://ccn02805xx87w" path="res://_raw_assets/Locations/HardwareStore.glb" id="18_hardware"]
+[ext_resource type="PackedScene" uid="uid://cbtfx45as84mq" path="res://_raw_assets/Locations/Market.glb" id="19_grocery"]
+[ext_resource type="PackedScene" uid="uid://c2sp28fvd3dvj" path="res://_raw_assets/Locations/Pharmacy.glb" id="20_pharmacy"]
+[ext_resource type="PackedScene" uid="uid://dtqgjfxxnejci" path="res://_raw_assets/Locations/tindahan.glb" id="21_tindahan"]
+[ext_resource type="PackedScene" uid="uid://bdq6ajic6fjrf" path="res://_raw_assets/player_assets/mixamo_base.glb" id="22_nestor_visual"]
 [ext_resource type="VoxelGIData" uid="uid://daf080x3na5qv" path="res://game/resources/voxels/grocery.VoxelGI_data.res" id="23_grocery_gi"]
 [ext_resource type="VoxelGIData" uid="uid://6bsi8yxlare1" path="res://game/resources/voxels/pharmacy.VoxelGI_data.res" id="24_pharmacy_gi"]
+
+[sub_resource type="BoxMesh" id="MedicinePackMesh"]
+size = Vector3(0.32, 0.09, 0.18)
+
+[sub_resource type="StandardMaterial3D" id="MedicinePackMaterial"]
+albedo_color = Color(0.91, 0.9, 0.84, 1)
+
+[sub_resource type="BoxMesh" id="MedicineBandMesh"]
+size = Vector3(0.07, 0.095, 0.182)
+
+[sub_resource type="StandardMaterial3D" id="MedicineBandMaterial"]
+albedo_color = Color(0.22, 0.47, 0.39, 1)
 
 [sub_resource type="VoxelGIData" id="HardwareVoxelGIData"]
 _data = {
@@ -97,18 +109,6 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38p1u"]
 albedo_color = Color(0.49208862, 0.4189518, 0.25232288, 1)
 
-[sub_resource type="BoxMesh" id="MedicinePackMesh"]
-size = Vector3(0.32, 0.09, 0.18)
-
-[sub_resource type="StandardMaterial3D" id="MedicinePackMaterial"]
-albedo_color = Color(0.91, 0.9, 0.84, 1)
-
-[sub_resource type="BoxMesh" id="MedicineBandMesh"]
-size = Vector3(0.07, 0.095, 0.182)
-
-[sub_resource type="StandardMaterial3D" id="MedicineBandMaterial"]
-albedo_color = Color(0.22, 0.47, 0.39, 1)
-
 [node name="EndingSequence" type="Node" unique_id=2125907861]
 script = ExtResource("1_6ukco")
 
@@ -146,14 +146,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06754875, -0.5019884)
 transform = Transform3D(0.0038889905, -0.37386787, 0.92747384, 0, 0.9274809, 0.3738707, -0.99999243, -0.0014539796, 0.0036069641, -6.5330877, 2.1536064, 1.3531399)
 
 [node name="MedicineTaskVisualCue" type="Node3D" parent="World3D" unique_id=2076221844]
-position = Vector3(-6.9, 2.08, 1.11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9, 2.08, 1.11)
 
-[node name="MedicinePack" type="MeshInstance3D" parent="World3D/MedicineTaskVisualCue"]
+[node name="MedicinePack" type="MeshInstance3D" parent="World3D/MedicineTaskVisualCue" unique_id=1996128018]
 mesh = SubResource("MedicinePackMesh")
 surface_material_override/0 = SubResource("MedicinePackMaterial")
 
-[node name="MedicineBand" type="MeshInstance3D" parent="World3D/MedicineTaskVisualCue"]
-position = Vector3(0.08, 0, 0)
+[node name="MedicineBand" type="MeshInstance3D" parent="World3D/MedicineTaskVisualCue" unique_id=519642485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0, 0)
 mesh = SubResource("MedicineBandMesh")
 surface_material_override/0 = SubResource("MedicineBandMaterial")
 
@@ -161,12 +161,12 @@ surface_material_override/0 = SubResource("MedicineBandMaterial")
 transform = Transform3D(0.8212383, -0.38330632, 0.4226629, 0, 0.7407532, 0.6717773, -0.57058537, -0.55168927, 0.60833484, 4.448159, 1.5744739, -2.9127576)
 
 [node name="FoodTaskVisualCue" type="Node3D" parent="World3D" unique_id=439614265]
-position = Vector3(1.83, 1.35, -6.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83, 1.35, -6.9)
 
-[node name="CannedGoods" parent="World3D/FoodTaskVisualCue" instance=ExtResource("17_cans")]
+[node name="CannedGoods" parent="World3D/FoodTaskVisualCue" unique_id=1017829491 instance=ExtResource("17_cans")]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, -0.15, 0, 0)
 
-[node name="CannedGoods2" parent="World3D/FoodTaskVisualCue" instance=ExtResource("17_cans")]
+[node name="CannedGoods2" parent="World3D/FoodTaskVisualCue" unique_id=377335999 instance=ExtResource("17_cans")]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.23, 0, 0)
 
 [node name="WaterArea" type="Node3D" parent="World3D" unique_id=78236688]
@@ -190,28 +190,24 @@ transform = Transform3D(-0.9993163, -0.003947636, 0.036756903, -0.0038177064, 0.
 [node name="Flashlight" parent="World3D/RadioArea/RadioTaskVisualCue" unique_id=1715193510 instance=ExtResource("6_xn1oe")]
 transform = Transform3D(-0.5016014, -0.056919497, 0.8632245, -0.03341392, 0.99836415, 0.046414144, -0.8644531, -0.005562376, -0.5026822, -0.5990638, 1.0932446, 1.6630607)
 
-[node name="LocationSets" type="Node3D" parent="."]
+[node name="LocationSets" type="Node3D" parent="." unique_id=730601135]
 
-[node name="Hardware" type="Node3D" parent="LocationSets"]
-position = Vector3(200, 0, 0)
+[node name="Hardware" type="Node3D" parent="LocationSets" unique_id=2125244990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="Visual" parent="LocationSets/Hardware" instance=ExtResource("18_hardware")]
+[node name="Visual" parent="LocationSets/Hardware" unique_id=551586015 instance=ExtResource("18_hardware")]
 
-[node name="Start" type="Node3D" parent="LocationSets/Hardware"]
-position = Vector3(-4.5, 2.5, -3.2)
-editor_description = "Move this camera position; Focus sets where it looks."
+[node name="EndingCameraHardware" type="Camera3D" parent="LocationSets/Hardware" unique_id=340241021]
+editor_description = "Ending montage shot. Move and rotate this camera in the 3D editor; use Preview to frame it. Playback copies its transform and lens before the gentle orbit."
+transform = Transform3D(0.9723699, 0.050958756, -0.2278156, 0, 0.975884, 0.21828984, 0.23344536, -0.21225849, 0.94892025, -4.6498413, 2.5, -5.7718067)
 
-[node name="Focus" type="Node3D" parent="LocationSets/Hardware"]
-position = Vector3(-4.5, 1.65, -7.0)
-editor_description = "Move this point to frame the object you want in the ending shot."
-
-[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Hardware"]
-position = Vector3(-4.5, 2.8, -5.5)
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Hardware" unique_id=1832042358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.8, -5.5)
 light_color = Color(0.71, 0.83, 0.82, 1)
 light_energy = 1.5
 omni_range = 8.0
 
-[node name="ShopLight" type="SpotLight3D" parent="LocationSets/Hardware"]
+[node name="ShopLight" type="SpotLight3D" parent="LocationSets/Hardware" unique_id=329921064]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.9212047, 4.458832, -12.196724)
 light_color = Color(0.7149116, 0.8551672, 0.8798625, 1)
 light_energy = 5.0
@@ -219,7 +215,7 @@ shadow_enabled = true
 spot_range = 8.818372
 spot_angle = 77.12604
 
-[node name="FrontLight" type="SpotLight3D" parent="LocationSets/Hardware"]
+[node name="FrontLight" type="SpotLight3D" parent="LocationSets/Hardware" unique_id=537892003]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.5087192, -4.925426)
 light_color = Color(0.8415731, 0.8367813, 0.69427425, 1)
 light_energy = 5.0
@@ -227,7 +223,7 @@ shadow_enabled = true
 spot_range = 8.818372
 spot_angle = 86.03076
 
-[node name="RearSpotLight" type="SpotLight3D" parent="LocationSets/Hardware"]
+[node name="RearSpotLight" type="SpotLight3D" parent="LocationSets/Hardware" unique_id=1048804088]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.9931026, 3.4562097, -17.20773)
 light_color = Color(0.8156054, 0.86813295, 0.3882016, 1)
 light_energy = 5.0
@@ -235,83 +231,75 @@ shadow_enabled = true
 spot_range = 8.818372
 spot_angle = 78.42372
 
-[node name="RearOmniLight" type="OmniLight3D" parent="LocationSets/Hardware"]
+[node name="RearOmniLight" type="OmniLight3D" parent="LocationSets/Hardware" unique_id=1615245692]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5223448, 4.0110874, -18.612194)
 light_color = Color(0.7149116, 0.8551672, 0.8798625, 1)
 light_energy = 5.0
 shadow_enabled = true
 omni_range = 6.5609684
 
-[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Hardware"]
-position = Vector3(-0.44036102, 3.6203613, -14.981354)
+[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Hardware" unique_id=2104217608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44036102, 3.6203613, -14.981354)
 size = Vector3(40.23021, 12.759277, 27.089539)
 data = SubResource("HardwareVoxelGIData")
 
-[node name="Grocery" type="Node3D" parent="LocationSets"]
-position = Vector3(400, 0, 0)
+[node name="Grocery" type="Node3D" parent="LocationSets" unique_id=580431541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 
-[node name="Visual" parent="LocationSets/Grocery" instance=ExtResource("19_grocery")]
+[node name="Visual" parent="LocationSets/Grocery" unique_id=122919383 instance=ExtResource("19_grocery")]
 
-[node name="Start" type="Node3D" parent="LocationSets/Grocery"]
-position = Vector3(5, 2.7, -10)
-editor_description = "Move this camera position; Focus sets where it looks."
+[node name="EndingCameraGrocery" type="Camera3D" parent="LocationSets/Grocery" unique_id=1752886210]
+editor_description = "Ending montage shot. Move and rotate this camera in the 3D editor; use Preview to frame it. Playback copies its transform and lens before the gentle orbit."
+transform = Transform3D(0.9687479, -0.052485168, 0.24243109, 0, 0.9773578, 0.2115933, -0.24804743, -0.20498055, 0.94681334, 4.277191, 3.563163, -13.048025)
 
-[node name="Focus" type="Node3D" parent="LocationSets/Grocery"]
-position = Vector3(5, 1.75, -14.5)
-editor_description = "Move this point to frame the object you want in the ending shot."
-
-[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Grocery"]
-position = Vector3(3.5760818, 4.1030445, -14.8461485)
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Grocery" unique_id=926857178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5760818, 4.1030445, -14.8461485)
 light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
 light_energy = 3.0
 omni_range = 9.038949
 
-[node name="EntranceLight" type="OmniLight3D" parent="LocationSets/Grocery"]
-position = Vector3(0.016717196, 3.279735, -9.504298)
+[node name="EntranceLight" type="OmniLight3D" parent="LocationSets/Grocery" unique_id=49198823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016717196, 3.279735, -9.504298)
 light_color = Color(0.757307, 0.70236456, 0.4681983, 1)
 omni_range = 9.038949
 
-[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Grocery"]
+[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Grocery" unique_id=1019827275]
 transform = Transform3D(-0.54827666, 0.69679934, -0.46245354, -0.79260045, -0.2565451, 0.5531451, 0.26679093, 0.66981757, 0.6929412, 0, 0, 0)
 visible = false
 light_color = Color(0.79409355, 0.91914696, 0.88604504, 1)
 shadow_enabled = true
 
-[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Grocery"]
-position = Vector3(0.5275421, 6.2610245, -18.955826)
+[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Grocery" unique_id=657057098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5275421, 6.2610245, -18.955826)
 size = Vector3(41.851044, 16.070023, 29.232391)
 data = ExtResource("23_grocery_gi")
 
-[node name="Pharmacy" type="Node3D" parent="LocationSets"]
-position = Vector3(600, 0, 0)
+[node name="Pharmacy" type="Node3D" parent="LocationSets" unique_id=1319629336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, 0)
 
-[node name="Visual" parent="LocationSets/Pharmacy" instance=ExtResource("20_pharmacy")]
+[node name="Visual" parent="LocationSets/Pharmacy" unique_id=1251970775 instance=ExtResource("20_pharmacy")]
 
-[node name="Start" type="Node3D" parent="LocationSets/Pharmacy"]
-position = Vector3(11, 2.7, -3.8)
-editor_description = "Move this camera position; Focus sets where it looks."
+[node name="EndingCameraPharmacy" type="Camera3D" parent="LocationSets/Pharmacy" unique_id=1356986443]
+editor_description = "Ending montage shot. Move and rotate this camera in the 3D editor; use Preview to frame it. Playback copies its transform and lens before the gentle orbit."
+transform = Transform3D(0.99360526, 0.017629147, -0.11152494, 0.01806964, 0.9501775, 0.3111852, 0.111454405, -0.31121045, 0.94378287, 6.2647095, 6.0024548, -3.6449459)
 
-[node name="Focus" type="Node3D" parent="LocationSets/Pharmacy"]
-position = Vector3(11.5, 2.0, -8.2)
-editor_description = "Move this point to frame the object you want in the ending shot."
-
-[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Pharmacy"]
-position = Vector3(9.949357, 5.9343977, -6.332438)
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Pharmacy" unique_id=619030550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.949357, 5.9343977, -6.332438)
 light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
 light_energy = 1.475
 
-[node name="ShopLight" type="OmniLight3D" parent="LocationSets/Pharmacy"]
-position = Vector3(10.118393, 4.020945, -10.00791)
+[node name="ShopLight" type="OmniLight3D" parent="LocationSets/Pharmacy" unique_id=357283933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.118393, 4.020945, -10.00791)
 light_color = Color(0.92694676, 0.94188607, 0.9454741, 1)
 light_energy = 1.475
 
-[node name="CameraFill" type="OmniLight3D" parent="LocationSets/Pharmacy"]
-position = Vector3(11, 3, -6.5)
+[node name="CameraFill" type="OmniLight3D" parent="LocationSets/Pharmacy" unique_id=1538524972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, -6.5)
 light_color = Color(0.79, 0.86, 0.8, 1)
 light_energy = 1.5
 omni_range = 8.0
 
-[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Pharmacy"]
+[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Pharmacy" unique_id=1747203067]
 transform = Transform3D(-0.37305862, 0.88816875, -0.26829684, -0.63038397, -0.030463114, 0.7756853, 0.68076646, 0.45850614, 0.5712521, 0, 0, 0)
 visible = false
 light_color = Color(0.4306579, 0.49029338, 0.50966644, 1)
@@ -320,39 +308,35 @@ light_volumetric_fog_energy = 0.5
 light_specular = 5.0
 shadow_enabled = true
 
-[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Pharmacy"]
-position = Vector3(6.314453, 6.0292053, -14.321473)
+[node name="VoxelGI" type="VoxelGI" parent="LocationSets/Pharmacy" unique_id=196890216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.314453, 6.0292053, -14.321473)
 size = Vector3(32.628906, 12.50592, 21.352661)
 data = ExtResource("24_pharmacy_gi")
 
-[node name="Tindahan" type="Node3D" parent="LocationSets"]
-position = Vector3(800, 0, 0)
+[node name="Tindahan" type="Node3D" parent="LocationSets" unique_id=1966718356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 800, 0, 0)
 
-[node name="Visual" parent="LocationSets/Tindahan" instance=ExtResource("21_tindahan")]
+[node name="Visual" parent="LocationSets/Tindahan" unique_id=2114202637 instance=ExtResource("21_tindahan")]
 
-[node name="NestorVisual" parent="LocationSets/Tindahan" instance=ExtResource("22_nestor_visual")]
-transform = Transform3D(1.0338629, 0, -0.18337724, 0, 1.05, 0, 0.18337724, 0, 1.0338629, 10.307398, 0.51232105, -7.942025)
+[node name="NestorVisual" parent="LocationSets/Tindahan" unique_id=1657255033 instance=ExtResource("22_nestor_visual")]
+transform = Transform3D(1.033863, 0, -0.18337724, 0, 1.05, 0, 0.18337724, 0, 1.033863, 10.307398, 0.51232105, -7.942025)
 visible = false
 
-[node name="Start" type="Node3D" parent="LocationSets/Tindahan"]
-position = Vector3(10.3, 2.5, -2.0)
-editor_description = "Move this camera position; Focus sets where it looks."
+[node name="EndingCameraTindahan" type="Camera3D" parent="LocationSets/Tindahan" unique_id=702801117]
+editor_description = "Ending montage shot. Move and rotate this camera in the 3D editor; use Preview to frame it. Playback copies its transform and lens before the gentle orbit."
+transform = Transform3D(0.93338645, -0.15843265, 0.32200763, -1.2143186e-08, 0.8972746, 0.44147277, -0.358873, -0.4120647, 0.83750397, 16.004883, 5.407235, -3.6637554)
 
-[node name="Focus" type="Node3D" parent="LocationSets/Tindahan"]
-position = Vector3(10.3, 1.85, -7.94)
-editor_description = "Move this point to frame the object you want in the ending shot."
-
-[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Tindahan"]
-position = Vector3(10.3, 2.7, -6.0)
+[node name="MontageLight" type="OmniLight3D" parent="LocationSets/Tindahan" unique_id=391226164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 2.7, -6)
 light_color = Color(0.75, 0.84, 0.85, 1)
 light_energy = 2.5
 omni_range = 8.0
 
-[node name="ShopLight" type="OmniLight3D" parent="LocationSets/Tindahan"]
-position = Vector3(15.1187935, 2.8572388, -8.715235)
+[node name="ShopLight" type="OmniLight3D" parent="LocationSets/Tindahan" unique_id=1786477842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1187935, 2.8572388, -8.715235)
 light_color = Color(0.7707947, 0.73799646, 0.626923, 1)
 
-[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Tindahan"]
+[node name="Sun" type="DirectionalLight3D" parent="LocationSets/Tindahan" unique_id=564111644]
 transform = Transform3D(0.44671407, 0.700256, -0.55685574, -0.29760435, 0.70326996, 0.6456338, 0.84372884, -0.12269098, 0.5225598, 0, 0, 0)
 visible = false
 light_color = Color(0.55189186, 0.5332212, 0.47011477, 1)
@@ -379,7 +363,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1977650460]
-anchors_preset = 12
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -402,6 +386,22 @@ autowrap_mode = 3
 [node name="Control" type="Control" parent="CanvasLayer/VBoxContainer" unique_id=348113460]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+
+[node name="ClosingLabel" type="Label" parent="CanvasLayer" unique_id=145666043]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 60.0
+offset_right = -120.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_38p1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="ResultPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1388194203]
 custom_minimum_size = Vector2(500, 300)

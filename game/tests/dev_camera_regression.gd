@@ -729,6 +729,17 @@ func _test_restart_and_title() -> void:
 			_pause = _player.get_node("PauseMenu") as CanvasLayer
 			if not await _wait_until(func(): return not _player._is_input_locked, "restarted player completes startup", 12.0):
 				return
+			var opening := _player.get_node_or_null("OpeningMonologue") as NarrativeObject
+			_check(is_instance_valid(opening) and _player._is_movement_locked and DevMode._camera_entry_blocked(_scene)
+				and not DevMode.start_camera_mode(_player, _pause), "restarted waking monologue blocks recording camera entry")
+			for _step in range(PlayerV2.OPENING_MONOLOGUE_LINES.size() * 2):
+				if not is_instance_valid(opening) or opening.is_queued_for_deletion():
+					break
+				opening.interact()
+				await get_tree().process_frame
+			if not await _wait_until(func(): return not _player.has_node("OpeningMonologue") and not _player._is_movement_locked,
+					"restarted waking dialogue closes before recording resumes"):
+				return
 		else:
 			get_tree().current_scene.queue_free()
 			get_tree().current_scene = null

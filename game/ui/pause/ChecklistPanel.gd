@@ -65,6 +65,9 @@ func _populate() -> void:
 	for child in _list.get_children():
 		_list.remove_child(child)
 		child.queue_free()
+	if not GameState.house_tasks_unlocked:
+		checklist_content_changed.emit()
+		return
 
 	_add_guide_tasks()
 	if NeedsLog.discovery_count() > 0:

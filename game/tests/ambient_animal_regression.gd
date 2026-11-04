@@ -19,6 +19,7 @@ func _run() -> void:
 	get_tree().current_scene = null
 	TutorialModal.mark_do_not_show_again()
 	SceneManager.reset()
+	GameState.house_tasks_unlocked = true
 	GlobalTimer.start_fresh()
 	GlobalTimer.pause_timer(self)
 	_fixture = Node3D.new()

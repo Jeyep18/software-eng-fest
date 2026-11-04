@@ -6,6 +6,9 @@ signal closed
 const RULES = preload("res://game/ui/lotto/ScratchLottoRules.gd")
 const SLOT_SCRIPT = preload("res://game/ui/lotto/ScratchLottoSlot.gd")
 const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
+const SFX = preload("res://game/audio/Sfx.gd")
+const LOTTO_MUSIC: AudioStreamMP3 = preload("res://game/assets/audio/music/mfcc-lottery-casino-pause-intro-background-music-120443.mp3")
+const SCRATCH_SOUND: AudioStream = preload("res://game/assets/audio/ui/127979__henaway__scratching-paper.mp3")
 const TICKET_FACE: Texture2D = preload("res://game/assets/scratch_lotto/scratch_ticket_face.png")
 const FRUIT_ATLAS: Texture2D = preload("res://game/assets/scratch_lotto/scratch_fruit_atlas.png")
 const FOIL_COVER: Texture2D = preload("res://game/assets/scratch_lotto/scratch_foil_cover.png")
@@ -30,6 +33,9 @@ var _ticket_count: int = 0
 var _payout: int = 0
 var _settled: bool = true
 var _open: bool = false
+var _previous_music: Dictionary = {}
+var _lotto_music: AudioStreamMP3
+var _scratch_player: AudioStreamPlayer
 var _base_foil: Image
 var _slots: Array[ScratchLottoSlot] = []
 var _prize_labels: Array[Label] = []
@@ -56,6 +62,13 @@ var _close_button: Button
 
 func _ready() -> void:
 	layer = 12
+	_lotto_music = LOTTO_MUSIC.duplicate() as AudioStreamMP3
+	_lotto_music.loop = true
+	_scratch_player = AudioStreamPlayer.new()
+	_scratch_player.stream = SCRATCH_SOUND
+	_scratch_player.bus = "SFX"
+	_scratch_player.volume_db = -12.0
+	add_child(_scratch_player)
 	_rng.randomize()
 	_base_foil = FOIL_COVER.get_image()
 	if _base_foil.is_compressed():
@@ -168,7 +181,7 @@ func _build_ui() -> void:
 	_button_row.add_child(_buy_button)
 	_scratch_all_button = _make_button()
 	_scratch_all_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_scratch_all_button.pressed.connect(reveal_all)
+	_scratch_all_button.pressed.connect(_on_scratch_all_pressed)
 	_button_row.add_child(_scratch_all_button)
 	_close_button = _make_button()
 	_close_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -246,6 +259,8 @@ func open_ui() -> void:
 		return
 	_close_other_menus()
 	_open = true
+	_previous_music = AudioManager.get_music_state()
+	AudioManager.play_music(_lotto_music, true, -10.0)
 	add_to_group("lotto_ui")
 	_backdrop.show()
 	_center.show()
@@ -266,6 +281,7 @@ func buy_ticket() -> bool:
 		_result_label.text = LocalizationManager.translate_key("lotto.not_enough_cash", "Not enough cash for a ticket.")
 		_refresh_buttons()
 		return false
+	SFX.purchase_success()
 	_ticket = RULES.roll_ticket(_rng)
 	_ticket_count += 1
 	_payout = 0
@@ -282,6 +298,13 @@ func reveal_all() -> void:
 	for slot in _slots:
 		slot.reveal()
 	_settle_ticket()
+
+
+func _on_scratch_all_pressed() -> void:
+	if not _open or _settled:
+		return
+	_scratch_player.play()
+	reveal_all()
 
 
 func request_close() -> void:
@@ -303,6 +326,9 @@ func _close_ui() -> void:
 	if not _open:
 		return
 	_open = false
+	_scratch_player.stop()
+	AudioManager.restore_music(_previous_music, _lotto_music)
+	_previous_music.clear()
 	remove_from_group("lotto_ui")
 	_backdrop.hide()
 	_center.hide()
@@ -404,4 +430,5 @@ func _exit_tree() -> void:
 	# A scene replacement must never discard a paid ticket or award it twice.
 	_settle_ticket()
 	if _open:
+		AudioManager.restore_music(_previous_music, _lotto_music)
 		CursorState.release_visible(self)

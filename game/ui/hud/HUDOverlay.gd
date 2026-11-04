@@ -1,5 +1,5 @@
 # HUDOverlay.gd — scene-owned CanvasLayer, not a registered autoload.
-# Instanced by PlayerV2; displays time, storm ETA and control hints from startup.
+# Instanced by PlayerV2; displays time and storm ETA after Nanay's introduction.
 # Node paths below match game/ui/hud/HUDOverlay.tscn.
 
 extends CanvasLayer
@@ -32,7 +32,7 @@ func _ready() -> void:
 	layer = 5   # above world, below map (MapScreen uses higher layer if needed)
 	_setup_vignette_overlay()
 
-	# Start hidden — show only when Act 2 begins
+	# Nanay's completed introduction reveals the preparation clock.
 	top_bar.hide()
 
 	# Connect to GlobalTimer for live updates
@@ -42,15 +42,14 @@ func _ready() -> void:
 	LocalizationManager.language_changed.connect(_on_language_changed)
 	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 
-	# Connect to GameState to show/hide based on act
-	GameState.act_changed.connect(_on_act_changed)
+	GameState.guide_tasks_changed.connect(_on_guide_tasks_changed)
 
 	_apply_ui_scale()
 	show_hud()
 
 # ── Public API ─────────────────────────────────────────────────────────────────
 func show_hud() -> void:
-	top_bar.show()
+	top_bar.visible = GameState.house_tasks_unlocked
 	_refresh_all()
 
 func hide_hud() -> void:
@@ -81,15 +80,8 @@ func _on_storm_arrived() -> void:
 	eta_label.text = LocalizationManager.translate("STORM HAS ARRIVED")
 	eta_label.add_theme_color_override("font_color", COLOR_ETA_DANGER)
 
-func _on_act_changed(new_act: GameState.Act) -> void:
-	match new_act:
-		GameState.Act.ACT_2:
-			show_hud()
-		GameState.Act.ACT_1:
-			hide_hud()
-		# ACT_3 and ACT_4: keep visible (storm resolution still shows time context)
-		_:
-			pass
+func _on_guide_tasks_changed() -> void:
+	show_hud()
 
 func _on_language_changed(_language_id: String) -> void:
 	if top_bar.visible:

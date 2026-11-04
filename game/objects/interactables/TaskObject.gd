@@ -94,7 +94,7 @@ func _begin_dialogue() -> void:
 
 	if _is_completed:
 		_showing_ready_branch = false
-	elif _has_all_required_items():
+	elif GameState.house_tasks_unlocked and _has_all_required_items():
 		_showing_ready_branch = true
 		if discover_on_interact:
 			NeedsLog.discover(need)
@@ -140,7 +140,7 @@ func _has_all_required_items() -> bool:
 	return true
 
 func _complete_task() -> void:
-	if _is_completed or _is_completing or SceneManager.storm_transition_pending:
+	if not GameState.house_tasks_unlocked or _is_completed or _is_completing or SceneManager.storm_transition_pending:
 		return
 
 	_is_completing = true
@@ -298,7 +298,7 @@ func is_interaction_available() -> bool:
 	if _is_completing or SceneManager.storm_transition_pending:
 		return false
 
-	return GameState.house_tasks_unlocked or _is_completed
+	return true
 
 func _on_guide_tasks_changed() -> void:
 	_update_task_cue()

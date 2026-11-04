@@ -17,6 +17,9 @@
 [ext_resource type="Script" path="res://game/objects/world_items/PickupGuidance3D.gd" id="15_guidance"]
 [ext_resource type="NavigationMesh" path="res://game/resources/navigation/pickup_guidance_hardware.tres" id="16_guidance_nav"]
 
+[ext_resource type="Script" path="res://game/audio/IntermittentAmbience.gd" id="intermittent_audio"]
+[ext_resource type="AudioStream" path="res://game/assets/audio/gameplay/solarmusic-big-dog-bark-distant-113701.mp3" id="distant_dog_audio"]
+
 [sub_resource type="VoxelGIData" id="VoxelGIData_crmys"]
 _data = {
 "bounds": AABB(-20.115105, -6.3796387, -13.544769, 40.23021, 12.759277, 27.089539),
@@ -46,21 +49,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9174037, 3.557139, -6.00386
 stream = ExtResource("2_mrv0t")
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=714894437]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.939375, 3.557139, -6.00386)
 stream = ExtResource("2_mrv0t")
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=339816807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0170035, 3.557139, -17.767422)
 stream = ExtResource("2_mrv0t")
 autoplay = true
 max_distance = 18.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AmbientSounds" unique_id=567027489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.187471, 3.557139, -10.450379)
@@ -68,7 +71,7 @@ stream = ExtResource("3_clh7r")
 volume_db = -5.0
 autoplay = true
 max_distance = 10.0
-bus = &"SFX"
+bus = &"Ambience"
 
 [node name="Environment" type="Node" parent="." unique_id=958567759]
 
@@ -341,3 +344,15 @@ chars_per_second = 40.0
 script = ExtResource("15_guidance")
 navigation_mesh = ExtResource("16_guidance_nav")
 item_paths = Array[NodePath]([NodePath("../plywood"), NodePath("../plywood2"), NodePath("../plywood3")])
+
+[node name="DistantDog" type="AudioStreamPlayer3D" parent="AmbientSounds"]
+position = Vector3(-18, 2, -12)
+stream = ExtResource("distant_dog_audio")
+volume_db = -3.0
+unit_size = 20.0
+bus = &"Ambience"
+max_distance = 80.0
+script = ExtResource("intermittent_audio")
+trigger_distance = 0.0
+interval_min = 10.0
+interval_max = 20.0

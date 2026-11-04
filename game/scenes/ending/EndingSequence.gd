@@ -11,16 +11,17 @@ const ENDING_STORM: AudioStream = preload("res://game/assets/audio/weather/sound
 const HOUSE_ENV: Environment = preload("res://game/resources/environments/house1_environment.tres")
 const SHOP_ENV: Environment = preload("res://game/resources/environments/storm_shop_environment.tres")
 const PUBLIC_SHOTS: Dictionary = {
-	"hardware": ["LocationSets/Hardware/Start", "LocationSets/Hardware/Focus", "After the storm, repairing a home still depended on materials a family could reach and afford."],
-	"grocery": ["LocationSets/Grocery/Start", "LocationSets/Grocery/Focus", "The market held supplies, but families needed a way to reach and afford them before the roads closed."],
-	"pharmacy": ["LocationSets/Pharmacy/Start", "LocationSets/Pharmacy/Focus", "Medicine and a meal could be found here, if families could reach the shops in time."],
-	"tindahan": ["LocationSets/Tindahan/Start", "LocationSets/Tindahan/Focus", "At the tindahan, neighbors shared warnings and helped one another prepare."],
+	"hardware": ["LocationSets/Hardware/EndingCameraHardware", "After the storm, repairing a home still depended on materials a family could reach and afford."],
+	"grocery": ["LocationSets/Grocery/EndingCameraGrocery", "The market held supplies, but families needed a way to reach and afford them before the roads closed."],
+	"pharmacy": ["LocationSets/Pharmacy/EndingCameraPharmacy", "Medicine and a meal could be found here, if families could reach the shops in time."],
+	"tindahan": ["LocationSets/Tindahan/EndingCameraTindahan", "At the tindahan, neighbors shared warnings and helped one another prepare."],
 }
 
 # ── Node References ────────────────────────────────────────────────────────────
 @onready var ending_camera: Camera3D          = $EndingCamera
 @onready var fade_overlay:  ColorRect         = $CanvasLayer/FadeOverlay
 @onready var slide_label:   Label             = $CanvasLayer/VBoxContainer/SlideLabel
+@onready var closing_label: Label = $CanvasLayer/ClosingLabel
 @onready var result_panel:  Control           = $CanvasLayer/ResultPanel
 @onready var lightning:     SpotLight3D       = $Lights/Lightning
 @onready var world_environment: WorldEnvironment = $Environment/WorldEnvironment
@@ -187,14 +188,13 @@ func _append_visited_shots() -> void:
 		if not visited.has(location_id) and not (location_id == "tindahan" and quest_status != SideQuestLog.STATE_NOT_STARTED):
 			continue
 		var shot: Array = PUBLIC_SHOTS[location_id]
-		var text: String = shot[2]
+		var text: String = shot[1]
 		if location_id == "tindahan" and quest_status == SideQuestLog.STATE_COMPLETED:
 			text = "Mang Nestor's place outside the tindahan stood empty. He returned home with the chicken, and his family weathered the storm with food on the table."
 		elif location_id == "tindahan" and quest_status != SideQuestLog.STATE_NOT_STARTED:
 			text = "Mang Nestor was still waiting outside the tindahan when the storm came. The promised meal never reached his family; they had no food on the table."
 		SLIDES.append({
 			"anchor": get_node(shot[0]),
-			"focus": get_node(shot[1]),
 			"location_id": location_id,
 			"text": text,
 		})
@@ -211,8 +211,6 @@ func _run_sequence() -> void:
 		_apply_visual_cue(slide, is_done, is_partial)
 		_set_shot_environment(slide.get("location_id", ""))
 		_snap_camera_to(slide["anchor"])
-		if not is_house:
-			ending_camera.look_at(slide["focus"].global_position)
 		await _fade(0.0)
 		if is_house:
 			_play_slide_sfx(slide, is_done)
@@ -230,11 +228,21 @@ func _run_sequence() -> void:
 
 func _show_closing_line() -> void:
 	var closing := LocalizationManager.translate("What you prepared mattered. So did the people you remembered. But being strong isn't just enough. Families also deserve protection they can depend on.")
-	_start_label(closing)
-	await _fade(0.0)
+	fade_overlay.color = Color.BLACK
+	if _camera_tween and _camera_tween.is_running():
+		_camera_tween.kill()
+	slide_label.hide()
+	closing_label.text = closing
+	closing_label.modulate.a = 0.0
+	closing_label.show()
+	var reveal := create_tween()
+	reveal.tween_property(closing_label, "modulate:a", 1.0, LABEL_FADE_IN)
+	await reveal.finished
 	await get_tree().create_timer(maxf(8.0, float(closing.length()) / 17.0)).timeout
-	await _fade_out_label()
-	await _fade(1.0)
+	var conceal := create_tween()
+	conceal.tween_property(closing_label, "modulate:a", 0.0, LABEL_FADE_OUT)
+	await conceal.finished
+	closing_label.hide()
 
 
 # ── Visual Cue System ──────────────────────────────────────────────────────────
@@ -270,18 +278,31 @@ func _snap_camera_to(anchor: Node3D) -> void:
 	if _camera_tween and _camera_tween.is_running():
 		_camera_tween.kill()
 	ending_camera.global_transform = anchor.global_transform
+	if anchor is Camera3D:
+		ending_camera.projection = anchor.projection
+		ending_camera.fov = anchor.fov
+		ending_camera.size = anchor.size
+		ending_camera.near = anchor.near
+		ending_camera.far = anchor.far
+		ending_camera.keep_aspect = anchor.keep_aspect
+		ending_camera.h_offset = anchor.h_offset
+		ending_camera.v_offset = anchor.v_offset
+		ending_camera.frustum_offset = anchor.frustum_offset
+	else:
+		ending_camera.fov = 75.0
 
-func _move_camera_around(slide: Dictionary) -> void:
-	# House anchors retain their authored view; town Focus nodes are editable in the scene.
-	var focus: Vector3 = slide["focus"].global_position if slide.has("focus") else ending_camera.global_position - ending_camera.global_basis.z * 3.0
+func _move_camera_around(_slide: Dictionary) -> void:
+	# Orbit from the authored view so editor rotation also controls the runtime framing.
+	var focus: Vector3 = ending_camera.global_position - ending_camera.global_basis.z * 3.0
 	var start_offset: Vector3 = ending_camera.global_position - focus
 	_camera_tween = create_tween()
 	_camera_tween.set_trans(Tween.TRANS_SINE)
-	_camera_tween.tween_method(_orbit_camera.bind(focus, start_offset), 0.0, 1.0, CAMERA_MOVE_DURATION)
+	_camera_tween.tween_method(_orbit_camera.bind(focus, start_offset, ending_camera.global_basis), 0.0, 1.0, CAMERA_MOVE_DURATION)
 
-func _orbit_camera(progress: float, focus: Vector3, start_offset: Vector3) -> void:
-	ending_camera.global_position = focus + Basis(Vector3.UP, deg_to_rad(CAMERA_ORBIT_ANGLE * progress)) * start_offset
-	ending_camera.look_at(focus)
+func _orbit_camera(progress: float, focus: Vector3, start_offset: Vector3, start_basis: Basis) -> void:
+	var orbit := Basis(Vector3.UP, deg_to_rad(CAMERA_ORBIT_ANGLE * progress))
+	ending_camera.global_position = focus + orbit * start_offset
+	ending_camera.global_basis = orbit * start_basis
 
 func _set_shot_environment(location_id: String) -> void:
 	var is_house := location_id.is_empty()
@@ -638,6 +659,9 @@ func _apply_result_ui_style() -> void:
 	slide_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
 	slide_label.add_theme_font_size_override("font_size", 26)
 	slide_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	closing_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	closing_label.add_theme_font_size_override("font_size", 26)
+	closing_label.add_theme_color_override("font_color", UI_STYLE.TEXT)
 
 func _reveal_result_message() -> void:
 	var title_lbl := result_panel.get_node("VBoxContainer/TitleLabel") as Label

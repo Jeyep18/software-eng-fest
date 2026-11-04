@@ -223,7 +223,7 @@ func _on_side_objective_started(label: String) -> void:
 	_refresh_compact_objectives(false)
 
 func _show_objective_notice(title: String, body: String, near_checklist: bool) -> void:
-	if _objective_notice == null or _objective_notice_body == null:
+	if not GameState.house_tasks_unlocked or _objective_notice == null or _objective_notice_body == null:
 		return
 	_objective_notice_title.text = title
 	_objective_notice_body.text = body
@@ -377,6 +377,9 @@ func _apply_ui_scale() -> void:
 
 func _refresh_compact_objectives(animate_removed: bool) -> void:
 	if checklist_items == null:
+		return
+	checklist_panel.visible = GameState.house_tasks_unlocked
+	if not GameState.house_tasks_unlocked:
 		return
 
 	var desired := _get_active_objectives()
