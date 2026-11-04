@@ -20,14 +20,14 @@ size = Vector3(1.5, 2.0, 2.1)
 
 [sub_resource type="Resource" id="Line1"]
 script = ExtResource("3_line")
-speaker_name = "Tauhan ni Kap"
+speaker_name = "Mang Lito"
 expression = ExtResource("portrait_kaps_worker_speaking")
 text = "Utos lang ni Kapitan. Sabi niya bilhin ko lahat ng [b]pako[/b], [b]tarp[/b], [b]plywood[/b]... lahat daw kailangan sa barangay."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Line2"]
 script = ExtResource("3_line")
-speaker_name = "Tauhan ni Kap"
+speaker_name = "Mang Lito"
 expression = ExtResource("portrait_kaps_worker_defensive")
 text = "Hindi ko na tinanong kung bakit sa bodega niya muna dadalhin. Trabaho lang, iho."
 metadata/_custom_type_script = "uid://po32410sv037"

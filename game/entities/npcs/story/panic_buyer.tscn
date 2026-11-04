@@ -20,14 +20,14 @@ size = Vector3(1.5, 2.0, 2.1)
 
 [sub_resource type="Resource" id="Line1"]
 script = ExtResource("3_line")
-speaker_name = "Panic Buyer"
+speaker_name = "Ate Mylene"
 expression = ExtResource("portrait_panic_buyer_anxious")
 text = "Kailangan ko pa ng lima... hindi, sampu! Paano kung isang linggo walang kuryente?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Line2"]
 script = ExtResource("3_line")
-speaker_name = "Panic Buyer"
+speaker_name = "Ate Mylene"
 expression = ExtResource("portrait_panic_buyer_overwhelmed")
 text = "Wait, may budget pa ba ako? Ayoko tingnan."
 metadata/_custom_type_script = "uid://po32410sv037"

@@ -115,6 +115,8 @@ full_inventory_sequence = SubResource("FullInventorySequence")
 done_sequence = SubResource("DoneSequence")
 tarp_reward = ExtResource("6_tarp")
 dialogue_ui_scene = ExtResource("4_ui")
+quest_speaker = "Mang Nestor"
+quest_prompt = "Talk to Mang Nestor"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.1)

@@ -104,8 +104,8 @@ Current optional content includes:
 
 - Ate Linda: trade away a hammer to unlock lower prices through another shop catalogue. Declining the offer still opens her regular-price shop; the offer returns at the next interaction. Accepting changes prices without replenishing stock already bought there.
 - Mang Nestor: accept money to buy half chicken, return it for a tarp and additional cash. The history explicitly chose a surprise tarp reward to make the risk worthwhile.
-- MoneyBeggar: optional donation of 20 cash.
-- SmokeBreakNPC: optional one-time 20-minute delay.
+- Mang Isko: optionally give him PHP 20 for his fare home.
+- Mang Rodel: optionally take a smoke break that costs 20 minutes once.
 - Story NPCs: authored dialogue providing activity and context in the shops.
 
 No enemy AI, navigation/perception, combat, or procedural world generation was found. These are not implied future requirements.

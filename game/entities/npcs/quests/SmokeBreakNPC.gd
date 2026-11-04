@@ -8,7 +8,6 @@ var _pending_smoke: bool = false
 
 func _ready() -> void:
 	super._ready()
-	prompt_label = "Talk"
 	GlobalTimer.storm_arrived.connect($SmokeAccepted.stop)
 
 func _pick_sequence() -> DialogueSequence:

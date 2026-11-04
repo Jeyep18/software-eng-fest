@@ -71,9 +71,6 @@ func _ready() -> void:
 	_apply_menu_ui_style()
 	_capture_camera_base()
 	credits_button.pressed.connect(_on_credits_pressed)
-	var credits_close := credits_modal.get_node_or_null("MarginContainer/CreditsModal/VBoxContainer/HBoxContainer/close_button") as Button
-	if credits_close != null:
-		credits_close.pressed.connect(func() -> void: credits_modal.visible = false)
 	leaderboards_button.pressed.connect(_on_leaderboards_pressed)
 	await TransitionOverlay.fade_from_black()
 	AudioManager.play_ambience(preload("res://game/assets/audio/weather/u_7hpxkdroz2-storm-461601.mp3"))
@@ -112,7 +109,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _dev_sequence_input_allowed() -> bool:
 	if _settings_layer == null or _settings_layer.visible or _difficulty_layer.visible or _loading_layer.visible:
 		return false
-	if credits_modal.visible or leaderboards_modal.visible:
+	if credits_modal.visible or leaderboards_modal.visible or quit_button.is_confirmation_open():
 		return false
 	var focus := get_viewport().gui_get_focus_owner()
 	if focus is LineEdit or focus is TextEdit:
@@ -448,7 +445,7 @@ func _on_leaderboards_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	_clear_dev_sequence()
-	credits_modal.visible = true
+	credits_modal.open(credits_button)
 
 func _on_settings_pressed() -> void:
 	_clear_dev_sequence()

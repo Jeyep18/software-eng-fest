@@ -83,6 +83,7 @@ Read [development](docs/DEVELOPMENT.md) for conventions and workflows, [testing]
 
 ## Documentation
 
+- [Asset credits audit](docs/audits/2026-11-04-asset-credits.md) and [file inventory](docs/audits/2026-11-04-asset-inventory.csv).
 - [Architecture](docs/ARCHITECTURE.md): current implementation.
 - [Game design](docs/GAME_DESIGN.md): player experience and implementation/history distinctions.
 - [Development](docs/DEVELOPMENT.md): working in the repository.

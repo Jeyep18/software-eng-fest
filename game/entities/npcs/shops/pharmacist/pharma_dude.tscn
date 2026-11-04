@@ -16,7 +16,7 @@ radius = 0.3671875
 
 [sub_resource type="Resource" id="Resource_6k71h"]
 script = ExtResource("2_05351")
-speaker_name = "Pharmacy Boy"
+speaker_name = "Kuya Nico"
 expression = ExtResource("portrait_pharmacist_speaking")
 text = "Ano po ang inyong kailangan? Mabuti at naabutan niyo pa ang [b]botika[/b] na bukas."
 metadata/_custom_type_script = "uid://po32410sv037"

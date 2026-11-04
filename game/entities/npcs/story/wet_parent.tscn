@@ -20,14 +20,14 @@ size = Vector3(1.5, 2.0, 2.1)
 
 [sub_resource type="Resource" id="Line1"]
 script = ExtResource("3_line")
-speaker_name = "Nanay sa Palengke"
+speaker_name = "Ate Tess"
 expression = ExtResource("portrait_wet_parent_exhausted")
 text = "Basa na sapatos ko, pero kailangan pa rin pumila. May bata akong naghihintay sa bahay."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Line2"]
 script = ExtResource("3_line")
-speaker_name = "Nanay sa Palengke"
+speaker_name = "Ate Tess"
 expression = ExtResource("portrait_wet_parent_compassionate")
 text = "Kapag may nakuha kang extra, isipin mo rin kung sino pa ang wala."
 metadata/_custom_type_script = "uid://po32410sv037"

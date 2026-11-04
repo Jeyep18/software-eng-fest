@@ -20,7 +20,7 @@ size = Vector3(1.5, 2.0, 2.1)
 
 [sub_resource type="Resource" id="AskLine"]
 script = ExtResource("3_line")
-speaker_name = "Stranger"
+speaker_name = "Mang Isko"
 expression = ExtResource("portrait_stranger_pleading")
 text = "Pasensya na. Kulang pamasahe ko pauwi. May maiaabot ka bang konti?"
 metadata/_custom_type_script = "uid://po32410sv037"
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="Resource" id="ThanksLine"]
 script = ExtResource("3_line")
-speaker_name = "Stranger"
+speaker_name = "Mang Isko"
 expression = ExtResource("portrait_stranger_grateful")
 text = "Salamat. Hindi ko makakalimutan 'to."
 metadata/_custom_type_script = "uid://po32410sv037"
@@ -59,6 +59,8 @@ script = ExtResource("2_script")
 ask_sequence = SubResource("AskSequence")
 thanked_sequence = SubResource("ThanksSequence")
 dialogue_ui_scene = ExtResource("4_ui")
+quest_speaker = "Mang Isko"
+quest_prompt = "Talk to Mang Isko"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.1)

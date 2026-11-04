@@ -11,10 +11,6 @@ extends QuestNPC
 
 var _pending_action: String = ""
 
-func _ready() -> void:
-	super._ready()
-	prompt_label = "Talk to Mang Nestor"
-
 func _pick_sequence() -> DialogueSequence:
 	_pending_action = ""
 	SideQuestLog.refresh_mang_nestor_chicken()

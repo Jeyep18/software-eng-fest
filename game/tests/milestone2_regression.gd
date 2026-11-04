@@ -139,6 +139,7 @@ func _test_nestor() -> void:
 	InventoryManager.reset()
 	SideQuestLog.reset()
 	var npc_scene: Node = load("res://game/entities/npcs/quests/mang_nestor.tscn").instantiate()
+	npc_scene.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(npc_scene)
 	var nestor: Node = npc_scene.get_node("Area3D")
 	nestor._start_quest()
@@ -164,12 +165,24 @@ func _test_nestor() -> void:
 	_check(GameState.get_cash() == completed_cash and InventoryManager.get_total_quantity("tarp") == 1
 		and InventoryManager.has_item_with_id("half_chicken"), "repeated turn-in cannot consume another chicken or duplicate reward")
 	_check(nestor._pick_sequence() == nestor.done_sequence, "completed quest selects done dialogue on return")
+	var prompt_visibility: Array[bool] = []
+	nestor.prompt_visibility_changed.connect(func(visible: bool) -> void: prompt_visibility.append(visible))
 	nestor.show_choice_prompt("Give the Half Chicken to Mang Nestor?", "Give", "Keep it")
 	_check(GlobalTimer.is_paused, "quest choice owns timer pause")
+	_check(nestor._choice_title.text == "Mang Nestor" and prompt_visibility == [false], "quest choice identifies the speaker and hides the proximity prompt")
+	_check(nestor._choice_decline_button.has_focus() and nestor._choice_decline_button.find_next_valid_focus() == nestor._choice_accept_button
+		and nestor._choice_accept_button.find_next_valid_focus() == nestor._choice_decline_button, "quest choice starts on decline and keeps Tab focus within its actions")
+	get_tree().paused = true
+	nestor._choice_decline_button.release_focus()
+	get_tree().paused = false
+	_check(nestor._choice_decline_button.has_focus(), "returning from pause restores quest choice focus")
 	nestor.interact()
 	_check(not nestor._is_showing and GlobalTimer.is_paused, "repeat interaction cannot reopen dialogue over quest choice")
 	LocalizationManager.set_language("tagalog")
 	_check(nestor._choice_body.text == "Ibigay ang Half Chicken kay Mang Nestor?", "open quest choice updates to Tagalog")
+	nestor._choice_decline_button.pressed.emit()
+	_check(not nestor._choice_modal.visible and not GlobalTimer.is_paused and prompt_visibility == [false, true],
+		"decline closes choice, resumes timer and restores the proximity prompt")
 	nestor.show_choice_prompt("Give PHP %d?", "Give", "Sorry", [20])
 	_check(nestor._choice_body.text == "Magbigay ng PHP 20?", "formatted choice translates before substitution")
 	LocalizationManager.set_language("english")
@@ -374,12 +387,15 @@ func _test_visuals() -> void:
 			map.close_map()
 			ShopUi.open_shop(load("res://game/resources/shops/HardwareShop.tres"))
 			await _capture("shop_" + suffix)
-			ShopUi.close_shop()
+			ShopUi.close_shop(true)
 			var npc_scene: Node = load("res://game/entities/npcs/quests/mang_nestor.tscn").instantiate()
 			get_tree().current_scene.add_child(npc_scene)
 			var nestor: Node = npc_scene.get_node("Area3D")
 			nestor.show_choice_prompt("Accept Mang Nestor's PHP 150 and buy Half Chicken from Go To Chooks beside the Pharmacy?", "Accept", "Not now")
 			await _capture("quest_" + suffix)
+			var choice_panel: Control = nestor._choice_body.get_parent().get_parent().get_parent()
+			_check(get_viewport().get_visible_rect().encloses(choice_panel.get_global_rect()) and choice_panel.get_global_rect().encloses(nestor._choice_body.get_global_rect()),
+				"quest choice text and panel stay on screen " + suffix)
 			nestor._close_choice_prompt()
 			npc_scene.queue_free()
 			var backpack := get_tree().get_first_node_in_group("backpack_ui")

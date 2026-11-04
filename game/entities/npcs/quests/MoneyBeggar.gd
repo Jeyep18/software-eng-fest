@@ -6,10 +6,6 @@ extends QuestNPC
 
 var _pending_donation: bool = false
 
-func _ready() -> void:
-	super._ready()
-	prompt_label = "Talk"
-
 func _pick_sequence() -> DialogueSequence:
 	_pending_donation = false
 	if GameState.grocery_donation_given:

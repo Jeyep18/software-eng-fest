@@ -11,14 +11,14 @@
 
 [sub_resource type="Resource" id="Resource_leh6v"]
 script = ExtResource("3_ekqec")
-speaker_name = "Tindero"
+speaker_name = "Kuya Benjie"
 expression = ExtResource("portrait_chooks_seller_cheerful")
 text = "Ano pa hinihintay mo iho, bili na ng aming malinamnam na manok!"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_uelfc"]
 script = ExtResource("3_ekqec")
-speaker_name = "Tindero"
+speaker_name = "Kuya Benjie"
 expression = ExtResource("portrait_chooks_seller_cheerful")
 text = "Siguradong mabubusog ka dito, promise!"
 metadata/_custom_type_script = "uid://po32410sv037"

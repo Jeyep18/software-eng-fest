@@ -19,7 +19,7 @@ size = Vector3(1.5, 2.0, 2.1)
 
 [sub_resource type="Resource" id="Line1"]
 script = ExtResource("3_line")
-speaker_name = "Kapitbahay"
+speaker_name = "Mang Bert"
 expression = ExtResource("portrait_tape_neighbor_uncertain")
 text = "Nag-tape na ako ng bintana. Hindi ko alam kung science o dasal ang gumagana."
 metadata/_custom_type_script = "uid://po32410sv037"

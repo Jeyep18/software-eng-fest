@@ -4,9 +4,11 @@ extends NPC
 const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 
 @export var quest_prompt: String = "Talk"
+@export var quest_speaker: String = ""
 
 var _dialogue_completed: bool = false
 var _choice_modal: Control = null
+var _choice_title: Label = null
 var _choice_body: Label = null
 var _choice_accept_button: Button = null
 var _choice_decline_button: Button = null
@@ -45,6 +47,8 @@ func show_choice_prompt(body: String, accept_text: String = "Accept", decline_te
 	_refresh_choice_text()
 	_choice_modal.show()
 	CursorState.request_visible(_choice_modal)
+	_choice_decline_button.grab_focus()
+	prompt_visibility_changed.emit(false)
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", false)
 	get_tree().call_group("player", "set_movement_locked", true)
 	if not _choice_paused_timer:
@@ -54,6 +58,7 @@ func show_choice_prompt(body: String, accept_text: String = "Accept", decline_te
 func _refresh_choice_text(_language_id: String = "") -> void:
 	if _choice_body == null:
 		return
+	_choice_title.text = LocalizationManager.translate(quest_speaker)
 	_choice_body.text = LocalizationManager.translate(_choice_source) if _choice_values.is_empty() else LocalizationManager.trf(_choice_source, _choice_values)
 	_choice_accept_button.text = LocalizationManager.translate(_accept_source)
 	_choice_decline_button.text = LocalizationManager.translate(_decline_source)
@@ -66,9 +71,9 @@ func _build_choice_prompt() -> void:
 	%CanvasLayer.add_child(_choice_modal)
 
 	var backdrop := ColorRect.new()
-	backdrop.color = Color(0.02, 0.025, 0.03, 0.62)
+	backdrop.color = Color(0.02, 0.025, 0.03, 0.72)
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_choice_modal.add_child(backdrop)
 
 	var center := CenterContainer.new()
@@ -77,20 +82,20 @@ func _build_choice_prompt() -> void:
 	_choice_modal.add_child(center)
 
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(520, 210)
 	UI_STYLE.apply_panel(panel)
 	center.add_child(panel)
 
 	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 24)
-	margin.add_theme_constant_override("margin_top", 22)
-	margin.add_theme_constant_override("margin_right", 24)
-	margin.add_theme_constant_override("margin_bottom", 22)
 	panel.add_child(margin)
 
 	var content := VBoxContainer.new()
-	content.add_theme_constant_override("separation", 16)
 	margin.add_child(content)
+
+	_choice_title = Label.new()
+	_choice_title.visible = not quest_speaker.is_empty()
+	_choice_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	UI_STYLE.apply_label(_choice_title, false, true)
+	content.add_child(_choice_title)
 
 	_choice_body = Label.new()
 	_choice_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -100,22 +105,50 @@ func _build_choice_prompt() -> void:
 
 	var actions := HBoxContainer.new()
 	actions.alignment = BoxContainer.ALIGNMENT_CENTER
-	actions.add_theme_constant_override("separation", 14)
 	content.add_child(actions)
 
-	_choice_accept_button = Button.new()
-	_choice_accept_button.custom_minimum_size = Vector2(140, 42)
-	_choice_accept_button.pressed.connect(_accept_choice)
-	UI_STYLE.apply_button(_choice_accept_button)
-	actions.add_child(_choice_accept_button)
-
 	_choice_decline_button = Button.new()
-	_choice_decline_button.custom_minimum_size = Vector2(140, 42)
 	_choice_decline_button.pressed.connect(_decline_choice)
 	UI_STYLE.apply_button(_choice_decline_button)
 	actions.add_child(_choice_decline_button)
 
+	_choice_accept_button = Button.new()
+	_choice_accept_button.pressed.connect(_accept_choice)
+	UI_STYLE.apply_button(_choice_accept_button)
+	_choice_accept_button.add_theme_stylebox_override("normal", UI_STYLE.button_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER))
+	actions.add_child(_choice_accept_button)
+
+	_choice_decline_button.focus_neighbor_right = _choice_decline_button.get_path_to(_choice_accept_button)
+	_choice_accept_button.focus_neighbor_left = _choice_accept_button.get_path_to(_choice_decline_button)
+	_choice_decline_button.focus_next = _choice_decline_button.focus_neighbor_right
+	_choice_decline_button.focus_previous = _choice_decline_button.focus_neighbor_right
+	_choice_accept_button.focus_next = _choice_accept_button.focus_neighbor_left
+	_choice_accept_button.focus_previous = _choice_accept_button.focus_neighbor_left
+	_choice_decline_button.focus_neighbor_left = NodePath(".")
+	_choice_accept_button.focus_neighbor_right = NodePath(".")
+	for button in [_choice_decline_button, _choice_accept_button]:
+		button.focus_neighbor_top = NodePath(".")
+		button.focus_neighbor_bottom = NodePath(".")
+
+	var apply_scale := func(ui_scale: float) -> void:
+		panel.custom_minimum_size = Vector2(620, 0) * ui_scale
+		for side in ["left", "right", "top", "bottom"]:
+			margin.add_theme_constant_override("margin_" + side, roundi(26.0 * ui_scale))
+		content.add_theme_constant_override("separation", roundi(16.0 * ui_scale))
+		actions.add_theme_constant_override("separation", roundi(14.0 * ui_scale))
+		_choice_title.add_theme_font_size_override("font_size", roundi(32.0 * ui_scale))
+		_choice_body.add_theme_font_size_override("font_size", roundi(22.0 * ui_scale))
+		for button in [_choice_decline_button, _choice_accept_button]:
+			button.custom_minimum_size = Vector2(156, 46) * ui_scale
+			button.add_theme_font_size_override("font_size", roundi(20.0 * ui_scale))
+	apply_scale.call(VisualSettings.get_ui_scale())
+	VisualSettings.ui_scale_changed.connect(apply_scale)
+
 	_choice_modal.hide()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_UNPAUSED and is_instance_valid(_choice_modal) and _choice_modal.is_visible_in_tree():
+		_choice_decline_button.grab_focus()
 
 func _close_choice_prompt() -> void:
 	if _choice_modal != null:
@@ -126,6 +159,7 @@ func _close_choice_prompt() -> void:
 	get_tree().call_group("hotbar_ui", "set_hotbar_visible", true)
 	get_tree().call_group("player", "set_movement_locked", false)
 	CursorState.release_visible(_choice_modal)
+	prompt_visibility_changed.emit(true)
 
 func _accept_choice() -> void:
 	_close_choice_prompt()
