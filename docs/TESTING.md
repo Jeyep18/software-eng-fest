@@ -763,3 +763,29 @@ EXE before replacing the existing downloadable ZIP in place. Do not create dated
 ZIP copies or alter Windows security policy to bypass a launch failure.
 
 Logs and reviewed UI captures are under `C:/Temp/bagyong-ui-20261107`.
+
+## Tutorial first-open and inventory bar repair, November 7, 2026
+
+User screenshots exposed a gap in the earlier 220-check tutorial runs: they did
+not check a fresh modal through the real main-menu and Pause-menu entries before
+paging or changing scale. A native baseline reproduced an oversized panel with
+content below the viewport. Autowrap initially inflated the minimum size; the
+modal now reapplies its bounded size when that minimum settles.
+
+The revised compact layout uses a large title, bold lead, larger body text and
+one-line close hint. Redundant headings/captions were removed. The hotbar's Tab
+badge was removed and its seven passive slots remain centered at the bottom.
+Six native gameplay images were recaptured in both languages without the badge.
+
+| Check | Result |
+| --- | --- |
+| Tutorial paging | 1,230 headless checks, zero failures. Includes existing navigation/pause/focus/session checks and fresh real menu entries. |
+| Native tutorial entries | 964 Forward Plus checks, zero failures. Both real entry buttons, EN/TL, 100%/140%/175%, 1920x1080 and 1280x720 logical canvases, first processed frame, all five pages, bounds and close/focus/pause restoration. Rendered captures inspected. |
+| Inventory bar | 48 headless and 48 Forward Plus checks, zero failures. No hint, slot-only width, bottom centering, passive wheel/number input and physical Tab bag access. |
+| Related regression | Cleanup: 86 checks, zero failures. |
+
+Independent source review found no actionable regression. The active CSV now has
+615 unique keys; the new close hint preserves all previous rows. Existing
+ObjectDB/resource shutdown diagnostics remain. No Windows EXE or ZIP was built;
+packaged acceptance and human playthrough remain unverified. Evidence and captures
+are under `C:/Temp/bagyong-tutorial-repair-20261107`.

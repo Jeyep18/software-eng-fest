@@ -34,6 +34,11 @@ func _run() -> void:
 		push_error("Tutorial regression requires isolated user data.")
 		get_tree().quit(1)
 		return
+	await _run_entry_paths()
+	if OS.get_cmdline_user_args().has("--entry-only"):
+		print("Tutorial entry regression: %d checks, %d failures" % [_checks, _failures])
+		get_tree().quit(0 if _failures == 0 else 1)
+		return
 	LocalizationManager.set_language("english")
 	var source := Button.new()
 	source.text = "Tutorial"
@@ -44,6 +49,7 @@ func _run() -> void:
 	_check(tutorial.PAGES.size() == 5 and tutorial.find_children("*", "ScrollContainer", true, false).is_empty(), "five pages replace the scrolling tutorial")
 	tutorial.open(true, true, func(): _close_count += 1)
 	await _settle()
+	_check_layout(tutorial, "standalone first open before paging")
 	_check(tutorial._page_index == 0 and tutorial._counter.text == "1 / 5" and tutorial._back_button.disabled, "opening begins on page one with Back disabled")
 	_check(get_tree().paused and CursorState.is_requesting_visible(tutorial) and tutorial._next_button.has_focus(), "opening owns pause, cursor and keyboard focus")
 	_check(tutorial._next_button.find_next_valid_focus() == tutorial._do_not_show_button and tutorial._do_not_show_button.find_prev_valid_focus() == tutorial._next_button, "first-page focus stays inside visible actions")
@@ -118,11 +124,82 @@ func _run() -> void:
 	print("Tutorial paging regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
 
+func _run_entry_paths() -> void:
+	var original_canvas_size := get_window().content_scale_size
+	var original_aspect := get_window().content_scale_aspect
+	var original_scale := VisualSettings.get_ui_scale_percent()
+	var original_language := LocalizationManager.get_language()
+	var original_paused := get_tree().paused
+	# Headless windows otherwise expand the logical canvas to a square.
+	get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
+	get_tree().paused = false
+	for entry in ["main_menu", "pause_menu"]:
+		var scene_path := "res://game/scenes/main_menu/Main_Menu1.tscn" if entry == "main_menu" else "res://game/ui/pause/PauseMenu.tscn"
+		var parent := load(scene_path).instantiate() as Node
+		add_child(parent)
+		if entry == "pause_menu":
+			parent._open()
+			await parent._panel_tween.finished
+		var source: Button = parent.tutorial_button if entry == "main_menu" else parent.nav_tutorial
+		for canvas_size in [Vector2i(1920, 1080), Vector2i(1280, 720)]:
+			get_window().content_scale_size = canvas_size
+			await _settle()
+			_check(get_viewport().get_visible_rect().size == Vector2(canvas_size), "entry matrix uses the requested logical canvas")
+			for language in ["english", "tagalog"]:
+				LocalizationManager.set_language(language)
+				for scale_percent in [100, 140, 175]:
+					VisualSettings.set_ui_scale_percent(scale_percent)
+					await _settle()
+					source.grab_focus()
+					var was_paused := get_tree().paused
+					if entry == "main_menu":
+						parent._on_tutorial_pressed()
+					else:
+						parent._on_nav_tutorial()
+					var tutorial := get_tree().get_first_node_in_group("tutorial_modal") as TutorialModal
+					var label := "%s %s %d%% %s" % [entry, language, scale_percent, canvas_size]
+					_check(tutorial != null, "real entry creates a fresh tutorial: " + label)
+					if tutorial == null:
+						continue
+					await get_tree().process_frame
+					_check_layout(tutorial, "first processed frame " + label)
+					_check(tutorial._page_index == 0 and tutorial._next_button.has_focus() and CursorState.is_requesting_visible(tutorial), "fresh entry starts on page one with focus and cursor: " + label)
+					await _settle()
+					for page in 5:
+						_check_layout(tutorial, "%s page %d" % [label, page + 1])
+						if OS.get_cmdline_user_args().has("--capture") and DisplayServer.get_name() != "headless":
+							await RenderingServer.frame_post_draw
+							get_viewport().get_texture().get_image().save_png("user://tutorial_entry_%s_%s_%d_%dx%d_page%d.png" % [entry, language, scale_percent, canvas_size.x, canvas_size.y, page + 1])
+						if page < 4:
+							tutorial._next_button.pressed.emit()
+							await _settle()
+					tutorial._next_button.pressed.emit()
+					_check(not tutorial.visible and get_tree().paused == was_paused and not CursorState.is_requesting_visible(tutorial) and source.has_focus(), "Done restores the entry's pause and focus and releases cursor: " + label)
+					await _settle()
+					_check(not is_instance_valid(tutorial), "real entry frees its closed modal: " + label)
+		get_tree().paused = false
+		parent.queue_free()
+		await _settle()
+	get_window().content_scale_size = original_canvas_size
+	get_window().content_scale_aspect = original_aspect
+	VisualSettings.set_ui_scale_percent(original_scale)
+	LocalizationManager.set_language(original_language)
+	get_tree().paused = original_paused
+	await _settle()
+
 func _check_layout(tutorial: TutorialModal, label: String) -> void:
 	var viewport_rect := get_viewport().get_visible_rect()
 	var panel_rect := tutorial._panel.get_global_rect()
 	_check(viewport_rect.encloses(panel_rect), "panel fits viewport: " + label)
-	_check(panel_rect.encloses(tutorial._body.get_global_rect()) and panel_rect.encloses(tutorial._footer.get_global_rect()) and panel_rect.encloses(tutorial._title.get_global_rect()), "copy and navigation fit panel: " + label)
-	_check(tutorial._body.size.y + 1.0 >= tutorial._body.get_minimum_size().y and tutorial._image.size.y >= 100.0, "body and image remain readable: " + label)
+	var content_fits := true
+	var text_fits := true
+	for control in tutorial._panel.find_children("*", "Control", true, false):
+		if control.is_visible_in_tree():
+			content_fits = content_fits and panel_rect.encloses(control.get_global_rect())
+			if control is Label:
+				text_fits = text_fits and control.size.y + 1.0 >= control.get_minimum_size().y
+	_check(content_fits, "all copy, image and navigation fit panel: " + label)
+	_check(text_fits and tutorial._image.size.y >= 100.0, "text and image remain readable: " + label)
 	_check(tutorial._image.texture != null, "localized gameplay image loads: " + label)
 	_check(tutorial._counter.get_line_count() == 1, "page counter stays on one line: " + label)
+	_check(tutorial._hint.get_line_count() == 1, "footer close hint stays on one line: " + label)

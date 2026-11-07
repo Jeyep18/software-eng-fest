@@ -142,7 +142,7 @@ func _test_hotbar() -> void:
 	await get_tree().process_frame
 	_check(hotbar._slot_panels == slots and _inventory.get_all_items() == inventory, "number keys and wheel leave preview slots and inventory unchanged")
 	_check(not hotbar.has_method("_select_slot") and not hotbar.has_method("get_selected_item"), "passive preview exposes no selected item")
-	_check(hotbar.tab_label.text == "Tab" and not hotbar.hint_label.text.is_empty(), "inventory preview displays its Tab instruction")
+	_check(not hotbar.hotbar_root.has_node("InventoryHint"), "inventory preview contains only the seven slots")
 	hotbar.queue_free()
 	await get_tree().process_frame
 

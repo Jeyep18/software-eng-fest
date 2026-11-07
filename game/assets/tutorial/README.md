@@ -3,7 +3,9 @@
 The five-page tutorial uses `overview`, `task`, `map`, `combine` and `finish`
 captures in both `english` and `tagalog`. These are native Godot 4.6.1 gameplay
 renders from November 7, 2026, with the current dialogue and inventory UI.
-The two older `*_example.png` images are retained but no longer shown.
+The overview, task and finish images were refreshed after removing the hotbar
+instruction badge. The two older `*_example.png` images are retained but no longer
+shown.
 
 Captures use the normal house scene, player camera and lighting at 100% UI scale.
 VHS is disabled during capture because the runtime overlay also covers the

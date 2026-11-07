@@ -38,7 +38,7 @@ The configured main scene is [IntroSequence.tscn](game/scenes/intro/IntroSequenc
 | Escape | Pause/resume via `ui_cancel`; player also has an `escape` mouse-capture handler |
 | Mouse | UI choices, shop purchases, inventory selection and drag-to-discard |
 
-The bottom inventory bar is a passive seven-slot preview with a Tab hint. Wheel and number keys do not select or use items. The Input Map retains legacy jump, crouch, flashlight and hotbar bindings; PlayerV2 does not implement these actions. Map and backpack leave time running.
+The bottom inventory bar is a passive seven-slot preview centered at the bottom, without an instruction badge. Wheel and number keys do not select or use items. The Input Map retains legacy jump, crouch, flashlight and hotbar bindings; PlayerV2 does not implement these actions. Map and backpack leave time running.
 
 ## Project structure
 

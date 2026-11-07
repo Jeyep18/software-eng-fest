@@ -67,18 +67,19 @@ func _run() -> void:
 		for scale_percent in [100, 140, 175]:
 			VisualSettings.set_ui_scale_percent(scale_percent)
 			await _settle()
-			var hint: Control = hotbar.inventory_hint
-			_check(hotbar.tab_label.text == "Tab" and hotbar.hint_label.text == ("Open inventory" if language == "english" else "Buksan ang imbentaryo"), "hint matches " + language)
-			_check(get_viewport().get_visible_rect().encloses(hotbar.hotbar_root.get_global_rect()), "full bar fits at %s %d%%" % [language, scale_percent])
-			_check(hint.get_global_rect().encloses(hotbar.hint_label.get_global_rect()) and hint.size.y >= hint.get_combined_minimum_size().y, "translated instruction fits at %s %d%%" % [language, scale_percent])
-			_check(hint.get_global_rect().position.x >= hotbar.slot_container.get_global_rect().end.x, "hint stays beside the slots")
+			var bar_rect: Rect2 = hotbar.hotbar_root.get_global_rect()
+			var viewport_rect := get_viewport().get_visible_rect()
+			_check(not hotbar.hotbar_root.has_node("InventoryHint"), "bar has no inventory instruction")
+			_check(viewport_rect.encloses(bar_rect), "bar fits at %s %d%%" % [language, scale_percent])
+			_check(is_equal_approx(bar_rect.get_center().x, viewport_rect.get_center().x), "seven slots remain centered")
+			_check(is_equal_approx(hotbar.hotbar_root.size.x, hotbar.slot_container.size.x), "bar reserves only the slot width")
 			if DisplayServer.get_name() != "headless":
 				await RenderingServer.frame_post_draw
 				get_viewport().get_texture().get_image().save_png("user://inventory_bar_%s_%d.png" % [language, scale_percent])
 	hotbar.set_hotbar_visible(false)
-	_check(not hotbar.visible, "dialogue visibility hook hides preview and hint together")
+	_check(not hotbar.visible, "dialogue visibility hook hides the preview")
 	hotbar.set_hotbar_visible(true)
-	_check(hotbar.visible, "dialogue visibility hook restores preview and hint together")
+	_check(hotbar.visible, "dialogue visibility hook restores the preview")
 	print("Inventory bar regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
 

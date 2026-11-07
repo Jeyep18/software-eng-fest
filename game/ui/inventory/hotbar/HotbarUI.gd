@@ -11,21 +11,10 @@ extends CanvasLayer
 @onready var slot_container: HBoxContainer = $HotbarRoot/SlotContainer
 @onready var hotbar_bg: Panel = $HotbarRoot/HotbarBG
 @onready var hotbar_root: Control = $HotbarRoot
-@onready var inventory_hint: PanelContainer = $HotbarRoot/InventoryHint
-@onready var hint_margin: MarginContainer = $HotbarRoot/InventoryHint/Margin
-@onready var hint_row: HBoxContainer = $HotbarRoot/InventoryHint/Margin/Row
-@onready var tab_key: PanelContainer = $HotbarRoot/InventoryHint/Margin/Row/TabKey
-@onready var tab_label: Label = $HotbarRoot/InventoryHint/Margin/Row/TabKey/Label
-@onready var hint_label: Label = $HotbarRoot/InventoryHint/Margin/Row/Hint
-
-const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
-
 const BASE_SLOT_SIZE: float = 62.0
 const BASE_SLOT_GAP: float = 8.0
 const BASE_VERTICAL_PADDING: float = 10.0
 const BASE_BOTTOM_MARGIN: float = 18.0
-const BASE_HINT_WIDTH: float = 192.0
-const BASE_HINT_GAP: float = 12.0
 
 var _slot_panels: Array[Panel] = []
 var _slot_items: Array[ItemData] = []
@@ -47,7 +36,6 @@ func _ready() -> void:
 	_on_language_changed(LocalizationManager.get_language())
 
 func _on_language_changed(_language_id: String) -> void:
-	hint_label.text = LocalizationManager.translate_key("ui.inventory.open_hint", "Open inventory")
 	_redraw_hotbar()
 
 func _redraw_hotbar() -> void:
@@ -153,7 +141,7 @@ func set_hotbar_visible(is_visible: bool) -> void:
 
 func _apply_ui_scale() -> void:
 	var slot_count: int = InventoryManager.MAX_INVENTORY_SIZE
-	var base_width := BASE_SLOT_SIZE * slot_count + BASE_SLOT_GAP * (slot_count - 1) + BASE_HINT_GAP + BASE_HINT_WIDTH
+	var base_width := BASE_SLOT_SIZE * slot_count + BASE_SLOT_GAP * (slot_count - 1)
 	_ui_scale = minf(VisualSettings.get_ui_scale(), (get_viewport().get_visible_rect().size.x - 32.0) / base_width)
 	var ui_scale := _ui_scale
 	_rebuild_style_cache()
@@ -185,26 +173,6 @@ func _apply_ui_scale() -> void:
 	slot_container.offset_top = -slot_size * 0.5
 	slot_container.offset_bottom = slot_size * 0.5
 	slot_container.add_theme_constant_override("separation", int(roundi(gap)))
-	inventory_hint.set_anchors_preset(Control.PRESET_CENTER_LEFT)
-	inventory_hint.offset_left = slot_width + BASE_HINT_GAP * ui_scale
-	inventory_hint.offset_right = width
-	inventory_hint.offset_top = -26.0 * ui_scale
-	inventory_hint.offset_bottom = 26.0 * ui_scale
-	UI_STYLE.apply_panel(inventory_hint, true)
-	for side in ["left", "right"]:
-		hint_margin.add_theme_constant_override("margin_" + side, roundi(10.0 * ui_scale))
-	for side in ["top", "bottom"]:
-		hint_margin.add_theme_constant_override("margin_" + side, roundi(6.0 * ui_scale))
-	hint_row.add_theme_constant_override("separation", roundi(8.0 * ui_scale))
-	var key_style := UI_STYLE.panel_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER)
-	key_style.content_margin_left = 6.0 * ui_scale
-	key_style.content_margin_right = 6.0 * ui_scale
-	key_style.content_margin_top = 4.0 * ui_scale
-	key_style.content_margin_bottom = 4.0 * ui_scale
-	tab_key.add_theme_stylebox_override("panel", key_style)
-	for label in [tab_label, hint_label]:
-		UI_STYLE.apply_label(label)
-		label.add_theme_font_size_override("font_size", roundi(16.0 * ui_scale))
 	for i in range(_slot_panels.size()):
 		var panel := _slot_panels[i]
 		panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * ui_scale

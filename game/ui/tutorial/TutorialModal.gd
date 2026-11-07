@@ -8,27 +8,22 @@ const PAGES: Array[Dictionary] = [
 	{
 		"id": "before", "title": "Before the storm", "image": "overview",
 		"body": "A typhoon is approaching. Help Nanay, Lola and Bunso prepare your home before it arrives.\n\nStore food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.",
-		"caption": "Prepare the family home before the storm arrives.",
 	},
 	{
 		"id": "inspect", "title": "Inspect the house", "image": "task",
 		"body": "WASD: move. Shift: sprint.\n\nPress E near people or glowing task markers to learn what is needed.\n\nPress E or Space to finish a line and continue dialogue.",
-		"caption": "Glowing markers identify preparation tasks.",
 	},
 	{
 		"id": "shop", "title": "Buy supplies", "image": "map",
 		"body": "Press M to open the map and choose a destination. Travel uses time.\n\nSpend carefully. Shops can become dangerous or close as the storm worsens.\n\nThe clock keeps running while the map or inventory is open.",
-		"caption": "Check travel time and shop availability before leaving.",
 	},
 	{
 		"id": "bag", "title": "Use your inventory", "image": "combine",
 		"body": "Press Tab to open or close your seven-slot inventory.\n\nClick an item, then a compatible second item. Check the result and press Combine.\n\nTry batteries with a flashlight or radio.",
-		"caption": "The combination preview shows what you will make.",
 	},
 	{
 		"id": "finish", "title": "Finish preparations", "image": "finish",
 		"body": "Return home with supplies and press E at each task. Check the preparation checklist.\n\nFood needs 4 cans, 1 whole chicken, or 2 half chickens.\n\nThe storm arrives when time runs out. Ready early? Choose End the Day on the map.",
-		"caption": "Completed tasks leave the active objectives.",
 	},
 ]
 
@@ -43,13 +38,13 @@ var _previous_focus: Control
 var _panel: PanelContainer
 var _margin: MarginContainer
 var _layout: VBoxContainer
-var _heading: Label
 var _title: Label
 var _counter: Label
 var _body_row: HBoxContainer
 var _image_column: VBoxContainer
 var _image: TextureRect
-var _caption: Label
+var _copy_column: VBoxContainer
+var _lead: Label
 var _body: Label
 var _hint: Label
 var _footer: HBoxContainer
@@ -62,6 +57,8 @@ func _ready() -> void:
 	add_to_group("tutorial_modal")
 	hide()
 	_build_ui()
+	# Autowrap settles after the first sort; shrink any provisional minimum size.
+	_panel.minimum_size_changed.connect(_apply_layout)
 	LocalizationManager.language_changed.connect(_on_language_changed)
 	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
 	get_viewport().size_changed.connect(_apply_layout)
@@ -142,15 +139,15 @@ func _on_ui_scale_changed(_scale: float) -> void:
 
 func _refresh_page() -> void:
 	var page := PAGES[_page_index]
-	_heading.text = LocalizationManager.translate_key("tutorial.title", "How to prepare")
 	_title.text = LocalizationManager.translate_key("tutorial.%s.title" % page["id"], page["title"])
-	_body.text = LocalizationManager.translate_key("tutorial.%s.body" % page["id"], page["body"])
-	_caption.text = LocalizationManager.translate_key("tutorial.%s.caption" % page["id"], page["caption"])
+	var paragraphs := LocalizationManager.translate_key("tutorial.%s.body" % page["id"], page["body"]).split("\n\n")
+	_lead.text = paragraphs[0]
+	_body.text = "\n\n".join(paragraphs.slice(1))
 	_counter.text = LocalizationManager.trfk("tutorial.page_count", [_page_index + 1, PAGES.size()], "%d / %d")
 	_back_button.text = LocalizationManager.translate_key("tutorial.back", "Back")
 	_next_button.text = LocalizationManager.translate_key("tutorial.done", "Done") if _page_index == PAGES.size() - 1 else LocalizationManager.translate_key("tutorial.next", "Next")
 	_do_not_show_button.text = LocalizationManager.translate_key("tutorial.hide_session", "Do not show again")
-	_hint.text = LocalizationManager.translate_key("tutorial.paused", "The game is paused while you read. Esc closes this guide.")
+	_hint.text = LocalizationManager.translate_key("tutorial.close_hint", "Esc: Close")
 	_back_button.disabled = _page_index == 0
 	var image_path := "res://game/assets/tutorial/%s_%s.png" % [page["image"], LocalizationManager.get_language()]
 	_image.texture = load(image_path) if ResourceLoader.exists(image_path) else null
@@ -186,17 +183,18 @@ func _build_ui() -> void:
 	_panel = PanelContainer.new()
 	_panel.name = "Panel"
 	UI_STYLE.apply_panel(_panel)
+	_panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.075, 0.11, 0.115, 1.0)))
 	root.add_child(_panel)
 	_margin = MarginContainer.new()
 	_panel.add_child(_margin)
 	_layout = VBoxContainer.new()
 	_margin.add_child(_layout)
-	_heading = _make_label(_layout, true)
 	var header := HBoxContainer.new()
 	_layout.add_child(header)
 	_title = _make_label(header)
+	_title.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
 	_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_counter = _make_label(header, true)
+	_counter = _make_label(header)
 	_counter.autowrap_mode = TextServer.AUTOWRAP_OFF
 	_counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_body_row = HBoxContainer.new()
@@ -204,23 +202,24 @@ func _build_ui() -> void:
 	_layout.add_child(_body_row)
 	_image_column = VBoxContainer.new()
 	_image_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_image_column.size_flags_stretch_ratio = 1.05
 	_body_row.add_child(_image_column)
 	_image = TextureRect.new()
 	_image.name = "PageImage"
 	_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	_image.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_image_column.add_child(_image)
-	_caption = _make_label(_image_column, true)
-	_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_body = _make_label(_body_row)
-	_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_body.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	_hint = _make_label(_layout, true)
+	_copy_column = VBoxContainer.new()
+	_copy_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_body_row.add_child(_copy_column)
+	_lead = _make_label(_copy_column)
+	_lead.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
+	_body = _make_label(_copy_column)
 	_footer = HBoxContainer.new()
 	_layout.add_child(_footer)
 	_do_not_show_button = _make_button("DoNotShowButton", _on_do_not_show_pressed)
+	_hint = _make_label(_footer)
+	_hint.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_footer.add_child(spacer)
@@ -245,23 +244,24 @@ func _make_button(node_name: String, callback: Callable) -> Button:
 
 func _apply_layout() -> void:
 	var viewport_size := get_viewport().get_visible_rect().size
-	# Bound scaled text as well as the panel so every page fits without scrolling.
-	var scale := minf(VisualSettings.get_ui_scale(), viewport_size.y / 640.0)
-	var panel_size := (Vector2(1220, 780) * scale).min(viewport_size - Vector2(48, 48))
+	var scale := minf(VisualSettings.get_ui_scale(), minf((viewport_size.x - 64.0) / 1120.0, (viewport_size.y - 64.0) / 500.0))
+	var panel_size := Vector2(1120, 500) * scale
 	_panel.position = (viewport_size - panel_size) * 0.5
 	for side in ["left", "right", "top", "bottom"]:
 		_margin.add_theme_constant_override("margin_" + side, roundi(24.0 * scale))
-	_layout.add_theme_constant_override("separation", roundi(12.0 * scale))
+	_layout.add_theme_constant_override("separation", roundi(16.0 * scale))
 	_body_row.add_theme_constant_override("separation", roundi(28.0 * scale))
-	_image_column.add_theme_constant_override("separation", roundi(8.0 * scale))
+	_copy_column.add_theme_constant_override("separation", roundi(16.0 * scale))
+	_image.custom_minimum_size = Vector2(0, 300.0 * scale)
 	_footer.add_theme_constant_override("separation", roundi(12.0 * scale))
-	_heading.add_theme_font_size_override("font_size", roundi(17.0 * scale))
-	_title.add_theme_font_size_override("font_size", roundi(30.0 * scale))
-	_counter.add_theme_font_size_override("font_size", roundi(18.0 * scale))
-	_body.add_theme_font_size_override("font_size", roundi(20.0 * scale))
-	for label in [_caption, _hint]:
-		label.add_theme_font_size_override("font_size", roundi(15.0 * scale))
+	_title.add_theme_font_size_override("font_size", roundi(38.0 * scale))
+	_counter.add_theme_font_size_override("font_size", roundi(22.0 * scale))
+	_lead.add_theme_font_size_override("font_size", roundi(25.0 * scale))
+	_lead.add_theme_constant_override("line_spacing", roundi(4.0 * scale))
+	_body.add_theme_font_size_override("font_size", roundi(23.0 * scale))
+	_body.add_theme_constant_override("line_spacing", roundi(6.0 * scale))
+	_hint.add_theme_font_size_override("font_size", roundi(20.0 * scale))
 	for button in [_do_not_show_button, _back_button, _next_button]:
-		button.add_theme_font_size_override("font_size", roundi(18.0 * scale))
+		button.add_theme_font_size_override("font_size", roundi(22.0 * scale))
 		button.custom_minimum_size = Vector2(0, 44) * scale
 	_panel.set_deferred("size", panel_size)
