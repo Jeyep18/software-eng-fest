@@ -51,7 +51,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 script = ExtResource("3_dw7mn")
 speaker_name = "Player"
 expression = ExtResource("portrait_player_thinking")
-text = "Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b]."
+text = "[color=#a9d8e8]Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b].[/color]"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ebi62"]

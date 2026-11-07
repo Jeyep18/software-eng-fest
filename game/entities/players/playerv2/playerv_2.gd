@@ -43,6 +43,8 @@ var _was_moving: bool = false
 @onready var _visuals: Node3D = $visuals
 @onready var _interact_text: Label = %InteractText
 @onready var _interact_prompt_background: ColorRect = get_node_or_null("CanvasLayer/InteractPromptBackground") as ColorRect
+@onready var _map_screen: CanvasLayer = $MapScreen
+@onready var _backpack_ui: CanvasLayer = $BackpackUi
 
 # ── Animation name constants — change library names here if you named them differently ──
 const ANIM_IDLE:       String = "Idle/mixamo_com"
@@ -449,5 +451,6 @@ func _on_interactable_exited(interactable: Interactable) -> void:
 #endregion
 
 func _is_interaction_blocked_by_ui() -> bool:
-	return (get_node_or_null("/root/ShopUi") != null and ShopUi.is_open()
+	return (_map_screen.visible or _backpack_ui.visible
+		or get_node_or_null("/root/ShopUi") != null and ShopUi.is_open()
 		or get_tree().get_first_node_in_group("lotto_ui") != null)

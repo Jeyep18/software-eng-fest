@@ -47,6 +47,7 @@ var _loading_layer: CanvasLayer
 var _loading_label: Label
 var _loading_tween: Tween
 var _start_source_button: Button
+var _transition_started: bool = false
 var _lightning_active: bool = true
 var _parallax_target: Vector2 = Vector2.ZERO
 var _parallax_current: Vector2 = Vector2.ZERO
@@ -82,6 +83,48 @@ func _process(delta: float) -> void:
 	_parallax_current = _parallax_current.lerp(_parallax_target, 1.0 - exp(-parallax_smoothing * delta))
 	_apply_parallax()
 
+func _input(_event: InputEvent) -> void:
+	if _transition_started:
+		get_viewport().set_input_as_handled()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("ui_cancel"):
+		return
+	if _settings_layer.visible:
+		get_viewport().set_input_as_handled()
+		_on_settings_close_requested()
+	elif _difficulty_layer.visible:
+		get_viewport().set_input_as_handled()
+		_hide_difficulty_overlay()
+
+func _focus_overlay(layer: CanvasLayer) -> void:
+	var controls: Array[Control] = []
+	for node in layer.find_children("*", "Control", true, false):
+		var control := node as Control
+		if control.focus_mode == Control.FOCUS_ALL and control.is_visible_in_tree():
+			if not control is BaseButton or not (control as BaseButton).disabled:
+				controls.append(control)
+	for index in controls.size():
+		var control := controls[index]
+		control.focus_next = control.get_path_to(controls[(index + 1) % controls.size()])
+		control.focus_previous = control.get_path_to(controls[(index - 1 + controls.size()) % controls.size()])
+		control.focus_neighbor_top = control.focus_previous
+		control.focus_neighbor_bottom = control.focus_next
+		control.focus_neighbor_left = NodePath(".")
+		control.focus_neighbor_right = NodePath(".")
+	if not controls.is_empty():
+		controls[0].grab_focus()
+
+func _menu_action_blocked() -> bool:
+	if _transition_started or _settings_layer.visible or _difficulty_layer.visible or _loading_layer.visible:
+		return true
+	if credits_modal.visible or leaderboards_modal.visible or quit_button.is_confirmation_open():
+		return true
+	for tutorial in get_tree().get_nodes_in_group("tutorial_modal"):
+		if tutorial is TutorialModal and tutorial.visible:
+			return true
+	return false
+
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not DevMode.is_available() or DevMode.unlocked:
 		return
@@ -107,17 +150,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_show_dev_unlocked_cue()
 
 func _dev_sequence_input_allowed() -> bool:
-	if _settings_layer == null or _settings_layer.visible or _difficulty_layer.visible or _loading_layer.visible:
-		return false
-	if credits_modal.visible or leaderboards_modal.visible or quit_button.is_confirmation_open():
+	if _settings_layer == null or _menu_action_blocked():
 		return false
 	var focus := get_viewport().gui_get_focus_owner()
-	if focus is LineEdit or focus is TextEdit:
-		return false
-	for tutorial in get_tree().get_nodes_in_group("tutorial_modal"):
-		if tutorial is TutorialModal and tutorial.visible:
-			return false
-	return true
+	return not (focus is LineEdit or focus is TextEdit)
 
 func _clear_dev_sequence() -> void:
 	_dev_sequence_buffer = ""
@@ -409,18 +445,28 @@ func _apply_parallax() -> void:
 	)
 
 func request_start_game(source_button: Button) -> void:
+	if _menu_action_blocked():
+		return
 	_clear_dev_sequence()
 	_start_source_button = source_button
 	if _start_source_button != null:
 		_start_source_button.disabled = true
 	_difficulty_layer.visible = true
+	_focus_overlay(_difficulty_layer)
 
 func _hide_difficulty_overlay() -> void:
+	if not _difficulty_layer.visible:
+		return
 	_difficulty_layer.visible = false
 	if _start_source_button != null:
 		_start_source_button.disabled = false
+		_start_source_button.grab_focus()
+	_start_source_button = null
 
 func _on_difficulty_confirmed(difficulty: GameState.Difficulty) -> void:
+	if _transition_started or not _difficulty_layer.visible:
+		return
+	_transition_started = true
 	_difficulty_layer.visible = false
 	_show_loading_hint()
 	AudioManager.stop_music(true)
@@ -439,22 +485,34 @@ func _on_difficulty_confirmed(difficulty: GameState.Difficulty) -> void:
 	DevMode.begin_run()
 
 func _on_leaderboards_pressed() -> void:
+	if _menu_action_blocked():
+		return
 	_clear_dev_sequence()
 	if leaderboards_modal.has_method("open"):
-		leaderboards_modal.open()
+		leaderboards_modal.open(leaderboards_button)
 
 func _on_credits_pressed() -> void:
+	if _menu_action_blocked():
+		return
 	_clear_dev_sequence()
 	credits_modal.open(credits_button)
 
 func _on_settings_pressed() -> void:
+	if _menu_action_blocked():
+		return
 	_clear_dev_sequence()
 	_settings_layer.visible = true
+	_focus_overlay(_settings_layer)
 
 func _on_settings_close_requested() -> void:
+	if not _settings_layer.visible:
+		return
 	_settings_layer.visible = false
+	settings_button.grab_focus()
 
 func _on_tutorial_pressed() -> void:
+	if _menu_action_blocked():
+		return
 	_clear_dev_sequence()
 	var tutorial := TUTORIAL_MODAL_SCENE.instantiate()
 	add_child(tutorial)
@@ -463,7 +521,10 @@ func _on_tutorial_pressed() -> void:
 	)
 
 func _on_replay_intro_pressed() -> void:
+	if _menu_action_blocked():
+		return
 	_clear_dev_sequence()
+	_transition_started = true
 	replay_intro_button.disabled = true
 	await TransitionOverlay.fade_to_black()
 	SceneManager.load_scene("intro")

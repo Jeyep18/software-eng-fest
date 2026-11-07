@@ -19,6 +19,7 @@ func _run() -> void:
 	var menu := MENU.instantiate()
 	add_child(menu)
 	await get_tree().create_timer(0.8).timeout
+	await _test_input_isolation(menu)
 
 	var credits: CanvasLayer = menu.credits_modal
 	var credits_body: RichTextLabel = credits.get_node("%Body")
@@ -143,9 +144,74 @@ func _run() -> void:
 	push_error("Confirmed quit did not exit")
 	get_tree().quit(1)
 
-func _key(code: Key) -> void:
+func _test_input_isolation(menu: Node) -> void:
+	var board: CanvasLayer = menu.leaderboards_modal
+	menu.leaderboards_button.grab_focus()
+	_key(KEY_ENTER)
+	await get_tree().create_timer(0.2).timeout
+	_check(board.visible and board.close_button.has_focus(), "leaderboards opens with keyboard focus inside")
+	_click(menu.settings_button.get_global_rect().get_center())
+	_check(not menu._settings_layer.visible, "leaderboards backdrop blocks menu clicks")
+	menu._on_settings_close_requested()
+	for index in 6:
+		_key(KEY_TAB, index % 2 == 1)
+		_check(board.is_ancestor_of(get_viewport().gui_get_focus_owner()), "leaderboards contains Tab and Shift-Tab %d" % index)
+	_key(KEY_ESCAPE)
+	_click(menu.settings_button.get_global_rect().get_center())
+	_check(not menu._settings_layer.visible, "leaderboards closing fade still blocks clicks")
+	await get_tree().create_timer(0.2).timeout
+	_check(not board.visible and menu.leaderboards_button.has_focus(), "Escape closes leaderboards and restores focus")
+	board.close()
+	await get_tree().create_timer(0.2).timeout
+	menu._on_settings_close_requested()
+	menu._on_leaderboards_pressed()
+	await get_tree().create_timer(0.2).timeout
+	_check(board.visible and board.close_button.has_focus(), "leaderboards reopens after its fade")
+	_click(board.close_button.get_global_rect().get_center())
+	board.close()
+	menu.request_start_game(menu.start_button)
+	_check(not menu._difficulty_layer.visible, "leaderboards closing fade blocks another menu action")
+	await get_tree().create_timer(0.2).timeout
+	_check(not board.visible and menu.leaderboards_button.has_focus(), "leaderboards Close restores focus after repeated close")
+
+	for cycle in 2:
+		menu.settings_button.grab_focus()
+		_key(KEY_ENTER)
+		await get_tree().process_frame
+		_check(menu._settings_layer.visible and menu._settings_panel.is_ancestor_of(get_viewport().gui_get_focus_owner()), "settings opens with keyboard focus inside %d" % cycle)
+		menu.request_start_game(menu.start_button)
+		_check(not menu._difficulty_layer.visible, "settings blocks a second menu action")
+		if menu._difficulty_layer.visible:
+			menu._hide_difficulty_overlay()
+		var focus_stayed_inside := true
+		for index in 20:
+			_key(KEY_TAB, index >= 10)
+			focus_stayed_inside = focus_stayed_inside and menu._settings_panel.is_ancestor_of(get_viewport().gui_get_focus_owner())
+		_check(focus_stayed_inside, "settings contains forward and backward focus cycling %d" % cycle)
+		_key(KEY_ESCAPE)
+		_check(not menu._settings_layer.visible and menu.settings_button.has_focus(), "Escape closes settings and restores focus %d" % cycle)
+		menu._on_settings_close_requested()
+
+	for cycle in 2:
+		menu.request_start_game(menu.start_button)
+		await get_tree().process_frame
+		_check(menu._difficulty_layer.visible and menu._difficulty_layer.is_ancestor_of(get_viewport().gui_get_focus_owner()), "difficulty opens with keyboard focus inside %d" % cycle)
+		menu._on_settings_pressed()
+		_check(not menu._settings_layer.visible, "difficulty blocks a second menu action")
+		menu._on_settings_close_requested()
+		var focus_stayed_inside := true
+		for index in 10:
+			_key(KEY_TAB, index >= 5)
+			focus_stayed_inside = focus_stayed_inside and menu._difficulty_layer.is_ancestor_of(get_viewport().gui_get_focus_owner())
+		_check(focus_stayed_inside, "difficulty contains forward and backward focus cycling %d" % cycle)
+		_key(KEY_ESCAPE)
+		_check(not menu._difficulty_layer.visible and menu.start_button.has_focus() and not menu.start_button.disabled, "Escape cancels difficulty and restores Start %d" % cycle)
+		menu._hide_difficulty_overlay()
+
+func _key(code: Key, shift: bool = false) -> void:
 	var event := InputEventKey.new()
 	event.keycode = code
+	event.shift_pressed = shift
 	event.pressed = true
 	get_viewport().push_input(event, true)
 	var release := event.duplicate() as InputEventKey

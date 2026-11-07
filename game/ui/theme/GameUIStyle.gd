@@ -3,6 +3,8 @@ extends RefCounted
 
 const FONT_REGULAR: FontFile = preload("res://game/assets/fonts/inter/Inter-Regular.ttf")
 const FONT_SEMIBOLD: FontFile = preload("res://game/assets/fonts/inter/Inter-SemiBold.ttf")
+const FONT_ITALIC: FontVariation = preload("res://game/ui/theme/InterItalic.tres")
+const FONT_SEMIBOLD_ITALIC: FontVariation = preload("res://game/ui/theme/InterSemiBoldItalic.tres")
 const FONT_HEADING: FontFile = preload("res://game/assets/fonts/easvhs/eas-vhs.ttf")
 const GAME_THEME: Theme = preload("res://game/ui/theme/GameTheme.tres")
 const SFX = preload("res://game/audio/Sfx.gd")
@@ -14,6 +16,7 @@ const BORDER: Color = Color(0.21, 0.47, 0.37, 0.80)
 const BORDER_SOFT: Color = Color(0.47, 0.66, 0.55, 0.24)
 const TEXT: Color = Color(0.91, 0.90, 0.85)
 const TEXT_MUTED: Color = Color(0.67, 0.71, 0.68)
+const THOUGHT_TEXT: Color = Color("#a9d8e8")
 const ACCENT: Color = Color(0.35, 0.80, 0.65)
 
 static func panel_style(bg_color: Color = PANEL_BG, border_color: Color = BORDER, radius: int = 8) -> StyleBoxFlat:

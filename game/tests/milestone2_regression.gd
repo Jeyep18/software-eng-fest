@@ -26,6 +26,14 @@ func _run() -> void:
 		print("Milestone 2 visual: %d checks, %d failures" % [_checks, _failures])
 		get_tree().quit(0 if _failures == 0 else 1)
 		return
+	if OS.get_cmdline_user_args().has("--private-beta-only"):
+		get_tree().current_scene = null
+		TutorialModal.mark_do_not_show_again()
+		await _test_task_supply_changes()
+		await _test_world_input_overlays()
+		print("Milestone 2 private beta: %d checks, %d failures" % [_checks, _failures])
+		get_tree().quit(0 if _failures == 0 else 1)
+		return
 	await _test_localization()
 	await _test_pause_owners()
 	_test_shop()
@@ -34,6 +42,8 @@ func _run() -> void:
 	get_tree().current_scene = null
 	TutorialModal.mark_do_not_show_again()
 	if not OS.get_cmdline_user_args().has("--unit-only"):
+		await _test_task_supply_changes()
+		await _test_world_input_overlays()
 		await _test_lifecycle()
 	print("Milestone 2 regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
@@ -226,6 +236,116 @@ func _ending(description: String) -> bool:
 	await get_tree().create_timer(1.5, true).timeout
 	_check(_scene_is("ending") and not SceneManager.is_travelling and SceneManager.get_pending_spawn_id().is_empty(), "ending remains final destination with no pending spawn")
 	return true
+
+func _finish_task_dialogue(task: TaskObject) -> void:
+	for _step in range(20):
+		if not task._is_showing:
+			return
+		task.interact()
+		await get_tree().process_frame
+	_check(false, "task dialogue finishes within its authored lines")
+
+func _test_task_supply_changes() -> void:
+	for stage in ["dialogue", "fade", "sound"]:
+		if not await _fresh_home():
+			return
+		GlobalTimer.seconds_per_game_minute = 1000.0
+		GlobalTimer.current_minutes = 100
+		var task_name := "Window" if stage == "sound" else "MedicineTask"
+		var task := get_tree().current_scene.get_node(task_name) as TaskObject
+		var player := get_tree().get_first_node_in_group("player") as PlayerV2
+		player.set_physics_process(false)
+		for item_id: String in task.required_item_ids:
+			InventoryManager.add_item(load("res://game/resources/items/%s.tres" % item_id))
+		task.interact()
+		_check(task._showing_ready_branch, "supplies select the ready dialogue before " + stage)
+		if stage != "dialogue":
+			await _finish_task_dialogue(task)
+			_check(task._is_completing and GlobalTimer.is_paused, "completion begins before supply removal during " + stage)
+			if stage == "sound":
+				if not await _wait_until(func(): return TransitionOverlay.overlay.color.a > 0.99, "window reaches completion sounds"):
+					return
+				await get_tree().create_timer(0.15).timeout
+			else:
+				await get_tree().create_timer(0.1).timeout
+		var removed_index := InventoryManager.inventory.size() - 1
+		var removed_id: String = InventoryManager.inventory[removed_index].item_id
+		_check(InventoryManager.move_item_to_discard(removed_index), "required item moves to discard during " + stage)
+		if stage == "dialogue":
+			await _finish_task_dialogue(task)
+		if not await _wait_until(func(): return not task._is_completing, "missing supplies end completion safely during " + stage):
+			return
+		var completed := NeedsLog.is_window_boarded("bedroom_window") if stage == "sound" else NeedsLog.is_resolved(NeedsLog.Need.MEDICINE)
+		_check(not completed and not task._is_completed, "missing supplies cannot award completion during " + stage)
+		for item_id: String in task.required_item_ids:
+			_check(InventoryManager.get_total_quantity(item_id) == (0 if item_id == removed_id else 1),
+				"cancel preserves remaining " + item_id + " during " + stage)
+		_check(GlobalTimer.current_minutes == 100 and not GlobalTimer.is_paused,
+			"cancel charges no task time and releases its pause during " + stage)
+		_check(TransitionOverlay.overlay.color.a < 0.01 and not player._is_movement_locked and player.get_node("HotbarUi").visible,
+			"cancel restores view, movement and hotbar during " + stage)
+		_check(InventoryManager.restore_discard_item(), "discarded supply can be restored after " + stage)
+		if completed:
+			continue
+		task.interact()
+		await _finish_task_dialogue(task)
+		if not await _wait_until(func(): return task._is_completed and not task._is_completing, "restored supplies allow successful retry after " + stage):
+			return
+		_check(GlobalTimer.current_minutes == 100 + task.time_cost_minutes, "retry charges task cost exactly once after " + stage)
+		for item_id: String in task.required_item_ids:
+			var item := load("res://game/resources/items/%s.tres" % item_id) as ItemData
+			_check(InventoryManager.get_total_quantity(item_id) == (0 if task._can_consume_task_item(item) else 1),
+				"retry consumes supplies and retains tools: " + item_id)
+		_check(not GlobalTimer.is_paused and TransitionOverlay.overlay.color.a < 0.01,
+			"successful retry releases the view and timer after " + stage)
+
+func _send_world_action(player: PlayerV2, action: String) -> void:
+	await get_tree().create_timer(0.02).timeout
+	Input.action_press(action)
+	player._handle_interact_input()
+	Input.action_release(action)
+	await get_tree().physics_frame
+
+func _test_world_input_overlays() -> void:
+	for panel_kind in ["map", "backpack"]:
+		if not await _fresh_home():
+			return
+		var player := get_tree().get_first_node_in_group("player") as PlayerV2
+		player.set_physics_process(false)
+		var task := get_tree().current_scene.get_node("MedicineTask") as TaskObject
+		var panel := get_tree().get_first_node_in_group("map_screen" if panel_kind == "map" else "backpack_ui") as CanvasLayer
+		if panel_kind == "map":
+			panel.open_map()
+		else:
+			panel._toggle()
+		await get_tree().create_timer(0.2).timeout
+		_check(player._is_interaction_blocked_by_ui(), panel_kind + " owns world interaction input while visible")
+		player._current_target = task
+		await _send_world_action(player, "interact")
+		_check(not task._is_showing and not GlobalTimer.is_paused, "E cannot start a hidden interaction behind " + panel_kind)
+		if task._is_showing:
+			task._hide_monologue()
+		task.interact()
+		task._skip_to_line_end()
+		await _send_world_action(player, "dialogue_advance")
+		_check(task._is_showing, "Space cannot advance hidden dialogue behind " + panel_kind)
+		if task._is_showing:
+			task._hide_monologue()
+		if panel_kind == "map":
+			panel.close_map()
+		else:
+			panel.close_backpack()
+		_check(panel.visible and player._is_interaction_blocked_by_ui(), "closing " + panel_kind + " retains world input ownership")
+		await _send_world_action(player, "interact")
+		_check(not task._is_showing and not GlobalTimer.is_paused, "closing " + panel_kind + " still blocks E without pausing time")
+		if task._is_showing:
+			task._hide_monologue()
+		await get_tree().create_timer(0.2).timeout
+		await _send_world_action(player, "interact")
+		_check(task._is_showing, "E resumes world interaction after " + panel_kind + " closes")
+		task._skip_to_line_end()
+		await _send_world_action(player, "dialogue_advance")
+		_check(not task._is_showing and not GlobalTimer.is_paused, "Space resumes dialogue advancement after " + panel_kind + " closes")
 
 func _test_lifecycle() -> void:
 	if not await _fresh_home():

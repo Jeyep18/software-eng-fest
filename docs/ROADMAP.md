@@ -4,7 +4,7 @@ Audited 2026-09-16–17. This file describes future work, not implemented archit
 
 ## Current stage and priority
 
-Current apparent stage: playable festival/beta preparation loop. Milestones 1 and 2 are implemented with targeted Godot 4.6.1 validation; broader manual playtesting remains necessary. Milestone 3 distribution/presentation validation is in progress; Windows Application Control blocks standalone launch on the test machine. Release date remains **Unknown / Needs verification**.
+Current apparent stage: playable festival/beta preparation loop. Milestones 1 and 2 are implemented with targeted Godot 4.6.1 validation; broader manual playtesting remains necessary. Milestone 3 distribution/presentation validation is in progress. Native headless Windows launch succeeded on November 7, superseding the older Application Control blocker. Physical-keyboard and second-PC acceptance remain open. Release date remains **Unknown / Needs verification**.
 
 The milestones below are **audit-proposed stabilization work**, not recovered commitments. Their ordering is a recommendation based on verified source risks; it does not establish a scheduled release plan.
 
@@ -64,7 +64,7 @@ Goal: establish evidence for a downloadable Windows build and readable presentat
 
 ### Completion criteria
 
-An actual exported build has recorded smoke-test results and any hardware claims include measurements. A Windows candidate is exported and the missing raw localization CSV is explicitly included. Standalone execution remains blocked by Windows Application Control; source-run tests do not fulfill exported-build acceptance. See [TESTING.md](TESTING.md) for the bounded presentation matrix, measurements and remaining checks. No minimum/recommended hardware specification is established by a single-machine sample.
+An actual exported build has recorded smoke-test results and any hardware claims include measurements. Windows candidates include the raw localization CSV and native headless startup succeeds. A physical-keyboard playthrough and second-PC run still require their own evidence; source-run tests do not fulfill exported-build acceptance. See [TESTING.md](TESTING.md) for the bounded presentation matrix, measurements and remaining checks. No minimum/recommended hardware specification is established by a single-machine sample.
 
 ## Backlog by proposed priority
 

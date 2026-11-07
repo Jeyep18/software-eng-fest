@@ -17,6 +17,8 @@ const HEADER_BG: Color = Color(0.122, 0.486, 0.404, 0.18)
 
 var _clear_armed: bool = false
 var _panel_tween: Tween = null
+var _source_button: Button
+var _closing: bool = false
 
 func _ready() -> void:
 	close_button.pressed.connect(close)
@@ -34,7 +36,20 @@ func _ready() -> void:
 	_apply_leaderboard_style()
 	hide()
 
-func open() -> void:
+func _input(_event: InputEvent) -> void:
+	if visible and _closing:
+		get_viewport().set_input_as_handled()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if visible and event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		close()
+
+func open(source_button: Button = null) -> void:
+	if visible and not _closing:
+		return
+	_source_button = source_button
+	_closing = false
 	if _panel_tween != null and _panel_tween.is_valid():
 		_panel_tween.kill()
 	close_button.disabled = false
@@ -43,13 +58,15 @@ func open() -> void:
 	_update_clear_button()
 	_refresh()
 	show()
+	close_button.grab_focus()
 	margin_container.modulate.a = 0.0
 	_panel_tween = create_tween()
 	_panel_tween.tween_property(margin_container, "modulate:a", 1.0, PANEL_FADE_DURATION)
 
 func close() -> void:
-	if not visible:
+	if not visible or _closing:
 		return
+	_closing = true
 	if _panel_tween != null and _panel_tween.is_valid():
 		_panel_tween.kill()
 	close_button.disabled = true
@@ -58,8 +75,23 @@ func close() -> void:
 	_panel_tween.tween_property(margin_container, "modulate:a", 0.0, PANEL_FADE_DURATION)
 	_panel_tween.finished.connect(func() -> void:
 		hide()
+		_closing = false
 		close_button.disabled = false
+		if is_instance_valid(_source_button):
+			_source_button.grab_focus()
+		_source_button = null
 	)
+
+func _update_focus_chain() -> void:
+	var controls: Array[Control] = [close_button]
+	if not clear_button.disabled:
+		controls.append(clear_button)
+	for index in controls.size():
+		var control := controls[index]
+		control.focus_next = control.get_path_to(controls[(index + 1) % controls.size()])
+		control.focus_previous = control.get_path_to(controls[(index - 1 + controls.size()) % controls.size()])
+		for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
+			control.set_focus_neighbor(side, control.focus_next)
 
 func _refresh() -> void:
 	title_label.text = "LEADERBOARDS"
@@ -70,7 +102,8 @@ func _refresh() -> void:
 
 	var entries: Array[Dictionary] = LeaderboardManager.get_ranked_entries()
 	empty_label.visible = entries.is_empty()
-	clear_button.disabled = entries.is_empty()
+	clear_button.disabled = entries.is_empty() or _closing
+	_update_focus_chain()
 
 	if entries.is_empty():
 		return

@@ -142,6 +142,8 @@ func _has_all_required_items() -> bool:
 func _complete_task() -> void:
 	if not GameState.house_tasks_unlocked or _is_completed or _is_completing or SceneManager.storm_transition_pending:
 		return
+	if not _has_all_required_items():
+		return
 
 	_is_completing = true
 	var generation := SceneManager.transition_generation
@@ -155,6 +157,11 @@ func _complete_task() -> void:
 	@warning_ignore("redundant_await")
 	await _play_completion_sfx()
 	if generation != SceneManager.transition_generation:
+		_cancel_completion()
+		return
+	# Supplies can change while the ready dialogue, fade or completion sounds run.
+	if not _has_all_required_items():
+		await TransitionOverlay.fade_from_black()
 		_cancel_completion()
 		return
 	_consume_required_items()

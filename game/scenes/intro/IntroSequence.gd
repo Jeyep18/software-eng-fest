@@ -187,11 +187,9 @@ func _apply_style(style: String) -> void:
 			line_label.add_theme_font_size_override("font_size", 35)
 			line_label.add_theme_color_override("font_color", Color(0.53, 0.53, 0.50))
 		"italic":
-			line_label.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+			line_label.add_theme_font_override("font", UI_STYLE.FONT_ITALIC)
 			line_label.add_theme_font_size_override("font_size", 35)
 			line_label.add_theme_color_override("font_color", Color.WHITE)
-			# Assign an italic font variant via LabelSettings in the Inspector
-			# for this style to render correctly.
 
 # ── Tween Helpers ─────────────────────────────────────────────────────────────
 func _setup_font_overrides() -> void:

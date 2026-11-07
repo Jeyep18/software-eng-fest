@@ -4,6 +4,7 @@ const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 
 @onready var cash_label: Label = $CashPanel/MarginContainer/CashLabel
+@onready var cash_panel: PanelContainer = $CashPanel
 @onready var checklist_panel: ChecklistPanel = $ChecklistPanel
 @onready var checklist_background: Panel = $ChecklistPanel/Panel
 @onready var checklist_title: Label = $ChecklistPanel/VBoxContainer/TitleLabel
@@ -48,6 +49,7 @@ func _ready() -> void:
 		SideQuestLog.side_objective_started.connect(_on_side_objective_started)
 	LocalizationManager.language_changed.connect(_on_language_changed)
 	VisualSettings.ui_scale_changed.connect(_on_ui_scale_changed)
+	cash_label.minimum_size_changed.connect(_resize_cash_panel)
 	_on_cash_changed(GameState.get_cash())
 	if cash_gain_label != null:
 		cash_gain_label.hide()
@@ -83,7 +85,12 @@ func _disable_embedded_full_checklist_updates() -> void:
 
 func _on_cash_changed(new_balance: int) -> void:
 	if cash_label != null:
-		cash_label.text = LocalizationManager.trf("Pera: PHP %d", [new_balance])
+		cash_label.text = LocalizationManager.trf("PHP %d", [new_balance])
+		_resize_cash_panel()
+
+func _resize_cash_panel() -> void:
+	cash_panel.reset_size()
+	checklist_panel.offset_top = cash_panel.offset_bottom + 12.0 * VisualSettings.get_ui_scale()
 
 func _apply_hud_style() -> void:
 	UI_STYLE.apply_panel($CashPanel, true)
@@ -94,7 +101,7 @@ func _apply_hud_style() -> void:
 		checklist_background.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 	if cash_label != null:
 		cash_label.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
-		cash_label.add_theme_font_size_override("font_size", 22)
+		cash_label.add_theme_font_size_override("font_size", 20)
 		cash_label.add_theme_color_override("font_color", Color.WHITE)
 	if checklist_title != null:
 		checklist_title.text = "OBJECTIVES"
@@ -351,12 +358,15 @@ func _apply_ui_scale() -> void:
 	var ui_scale := VisualSettings.get_ui_scale()
 	$CashPanel.offset_left = 16.0
 	$CashPanel.offset_top = 24.0
-	$CashPanel.offset_right = 16.0 + (344.0 * ui_scale)
-	$CashPanel.offset_bottom = 24.0 + (50.0 * ui_scale)
+	var cash_margin := $CashPanel/MarginContainer as MarginContainer
+	for side in ["left", "right"]:
+		cash_margin.add_theme_constant_override("margin_" + side, roundi(10.0 * ui_scale))
+	for side in ["top", "bottom"]:
+		cash_margin.add_theme_constant_override("margin_" + side, roundi(6.0 * ui_scale))
+	cash_label.add_theme_font_size_override("font_size", roundi(20.0 * ui_scale))
+	_resize_cash_panel()
 	checklist_panel.offset_left = 16.0
-	checklist_panel.offset_top = 86.0 * ui_scale
 	checklist_panel.offset_right = 16.0 + (292.0 * ui_scale)
-	cash_label.add_theme_font_size_override("font_size", int(roundi(22.0 * ui_scale)))
 	checklist_title.add_theme_font_size_override("font_size", int(roundi(18.0 * ui_scale)))
 	if objective_box != null:
 		objective_box.add_theme_constant_override("separation", int(roundi(3.0 * ui_scale)))
