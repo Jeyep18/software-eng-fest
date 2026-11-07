@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cbtfx45as84mq" path="res://_raw_assets/Locations/Market.glb" id="19_grocery"]
 [ext_resource type="PackedScene" uid="uid://c2sp28fvd3dvj" path="res://_raw_assets/Locations/Pharmacy.glb" id="20_pharmacy"]
 [ext_resource type="PackedScene" uid="uid://dtqgjfxxnejci" path="res://_raw_assets/Locations/tindahan.glb" id="21_tindahan"]
-[ext_resource type="PackedScene" uid="uid://bdq6ajic6fjrf" path="res://_raw_assets/player_assets/mixamo_base.glb" id="22_nestor_visual"]
+[ext_resource type="PackedScene" uid="uid://e7ptyswxh0rc" path="res://_raw_assets/npc_assets/psx_animated/MangNestor.glb" id="22_nestor_visual"]
 [ext_resource type="VoxelGIData" uid="uid://daf080x3na5qv" path="res://game/resources/voxels/grocery.VoxelGI_data.res" id="23_grocery_gi"]
 [ext_resource type="VoxelGIData" uid="uid://6bsi8yxlare1" path="res://game/resources/voxels/pharmacy.VoxelGI_data.res" id="24_pharmacy_gi"]
 
@@ -319,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 800, 0, 0)
 [node name="Visual" parent="LocationSets/Tindahan" unique_id=2114202637 instance=ExtResource("21_tindahan")]
 
 [node name="NestorVisual" parent="LocationSets/Tindahan" unique_id=1657255033 instance=ExtResource("22_nestor_visual")]
-transform = Transform3D(1.033863, 0, -0.18337724, 0, 1.05, 0, 0.18337724, 0, 1.033863, 10.307398, 0.51232105, -7.942025)
+transform = Transform3D(1.1442125, 0, -0.20295003, 0, 1.16207187, 0, 0.20295003, 0, 1.1442125, 10.307398, 0.51232105, -7.942025)
 visible = false
 
 [node name="EndingCameraTindahan" type="Camera3D" parent="LocationSets/Tindahan" unique_id=702801117]

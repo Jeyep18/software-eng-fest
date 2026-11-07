@@ -1,13 +1,10 @@
 extends TaskObject
 
-@export var required_items: Array[String] = [
-	"canned_goods",
-	"canned_goods",
-	"canned_goods",
-	"canned_goods",
-]
-
-func _ready() -> void:
-	super._ready()
-	prompt_label = interaction_prompt
-	required_item_ids = required_items
+func _get_required_item_counts() -> Dictionary:
+	if InventoryManager.get_total_quantity("canned_goods") >= 4:
+		return {"canned_goods": 4}
+	if InventoryManager.get_total_quantity("whole_chicken") >= 1:
+		return {"whole_chicken": 1}
+	if InventoryManager.get_total_quantity("half_chicken") >= 2:
+		return {"half_chicken": 2}
+	return {"canned_goods": 4}

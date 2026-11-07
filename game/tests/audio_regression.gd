@@ -2,11 +2,15 @@ extends Node
 
 const AMBIENCE = preload("res://game/audio/IntermittentAmbience.gd")
 const SCARY: AudioStream = preload("res://game/assets/audio/music/freesound_community-scary-ambience-59002.mp3")
-const ENDING: AudioStream = preload("res://game/assets/audio/music/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3")
+const ENDING: AudioStream = preload("res://game/scenes/ending/EndingSequence.gd").ENDING_MUSIC
 const BARK: AudioStream = preload("res://game/assets/audio/gameplay/dragon-studio-free-dog-bark-419014.mp3")
 
 var _checks := 0
 var _failures := 0
+
+class ControlledEnding extends "res://game/scenes/ending/EndingSequence.gd":
+	func _start() -> void:
+		pass
 
 class SmokePlayerFixture extends Node3D:
 	var locked := false
@@ -45,11 +49,36 @@ func _run() -> void:
 	await _test_proximity()
 	await _test_locations()
 	await _test_smoker()
+	await _test_ending_audio()
 	for index in AudioServer.bus_count:
 		_check(is_equal_approx(AudioServer.get_bus_volume_db(index), bus_volumes[index]), "playback preserves saved bus gain %d" % index)
 	AudioManager.stop_all()
 	print("Audio regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
+
+
+func _test_ending_audio() -> void:
+	SideQuestLog.start_mang_nestor_chicken()
+	var ending := preload("res://game/scenes/ending/EndingSequence.tscn").instantiate()
+	ending.set_script(ControlledEnding)
+	add_child(ending)
+	await get_tree().process_frame
+	var storm_player: AudioStreamPlayer = AudioManager._ambience_player
+	var music_player: AudioStreamPlayer = AudioManager._music_player
+	_check(storm_player.stream != ending.ENDING_STORM and storm_player.stream.loop, "ending loops its own storm stream")
+	_check(not ending.ENDING_STORM.loop, "ending leaves the shared storm import unchanged")
+	_check(music_player.stream.get_length() <= 36.0, "ending music excludes the fading outro")
+	_check(music_player.stream == ENDING and ENDING.loop_mode == AudioStreamWAV.LOOP_FORWARD, "ending uses the authored continuous music loop")
+	var model: Node3D = ending.get_node("LocationSets/Tindahan/NestorVisual")
+	var animations := model.find_children("*", "AnimationPlayer", true, false)
+	_check(model.visible and animations.size() == 1 and animations[0].current_animation == "idle_loop", "unfinished errand shows Nestor with his authored idle animation")
+	for player in [storm_player, music_player]:
+		player.seek(player.stream.get_length() - 0.15)
+	await get_tree().create_timer(0.6).timeout
+	_check(storm_player.playing and storm_player.get_playback_position() < 1.0, "ending storm keeps playing across its recording boundary")
+	_check(music_player.playing and music_player.get_playback_position() < 1.0, "ending music keeps playing across its loop boundary")
+	ending.queue_free()
+	await get_tree().process_frame
 
 
 func _test_lotto_audio() -> void:

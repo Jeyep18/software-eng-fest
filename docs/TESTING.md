@@ -706,3 +706,28 @@ Run `res://game/tests/leaderboard_persistence_regression.tscn` with isolated `AP
 The Windows public preset exported with 2,241 pack entries. All 11 legal text files and the active localization CSV matched the working files byte for byte. No imported payload or source sidecar matched Bates Shower, Traveling Typewriter or the excluded ErickBloem recording. The evaluation distribution includes matching companion notices, engine/dependency notices, project terms, README and an executable checksum.
 
 The package's normal main scene started successfully under the installed Godot runtime with `--main-pack`. Native interactive executable verification remains open. Automatic approval review rejected a combined packaging/launch command with only “blocked by policy”; separate packaging succeeded, but the computer-use launcher then timed out and exhausted its request budget without exposing a game window. No existing score or settings file changed. Existing ObjectDB/resource shutdown diagnostics remain. Evidence is under `C:/Temp/bagyong-notices-20261107` and `C:/Temp/bagyong-privacy-20261107`.
+
+## Ending presentation and food alternatives, November 7, 2026
+
+Godot 4.6.1 ran against the imported working checkout with isolated APPDATA,
+LOCALAPPDATA and matching `BAGYONG_ISOLATED_SMOKE`. Baseline regressions reproduced
+the placeholder Nestor model/scale, non-looping storm audio, fading music outro
+and rejected chicken food options before their fixes.
+
+| Check | Final result |
+| --- | --- |
+| `food_options_regression.tscn` | 108 headless and 108 Forward Plus checks, zero failures. Authored shop food, all three complete options, rejected partial combinations, consumption priority/surplus, cancellation/retry, changing options during fades, Nestor readiness without delivery, both languages and deadline ending snapshots. |
+| `audio_regression.tscn` | 139 headless checks, zero failures. Production ending startup, private storm-stream looping, unchanged shared import, authored music loop, Nestor idle, actual playback across both recording boundaries and existing lottery/location/smoker audio. |
+| `ending_balance_regression.tscn` | 19 headless and 71 Forward Plus checks, zero failures. Gameplay Nestor model/scale, conditional beats, map cameras, closing screen and results. Native waiting-Nestor capture inspected. |
+| Existing regressions | Cleanup 95 and score calculation 272 checks, zero failures. |
+| Music asset and source review | 34-second forward-loop WAV metadata verified; two-second RMS windows span -22.59 to -18.94 dB, with no clipped samples or fading outro. Independent source review found no actionable issue. |
+
+The longer food hints use the existing wrapping labels; translations were checked,
+but dedicated hint-clipping captures and human keyboard/listening acceptance were
+not performed. Existing ObjectDB/resource-at-exit diagnostics remain; accepted
+runs had no script/parser errors or failed assertions. No Windows export or ZIP
+was rebuilt, as requested. These source changes are not present in the previously
+downloaded ZIP.
+
+Logs and ending captures are under `C:/Temp/bagyong-ending-fix-20261107` and
+`C:/Temp/bagyong-food-options-20261107`.

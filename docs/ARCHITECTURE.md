@@ -145,13 +145,15 @@ TaskObject checks required item quantities and presents missing/ready/completed 
 | Task | Required items | Burst cost |
 | --- | --- | ---: |
 | Roof | tarp, nails, hammer | 15 min |
-| Food/fridge | four canned_goods | 5 min |
+| Food/fridge | four canned_goods OR one whole_chicken OR two half_chicken | 5 min |
 | Medicine | medicine | 3 min |
 | Water | wrench, water_jug | 10 min |
 | Radio/flashlight preparation | working_radio, working_flashlight | 5 min |
 | Each window | plywood, nails, hammer | 12 min |
 
 The house window IDs are `bedroom_window` and `living_room_window`. Hammer is TOOL and retained. Wrench has the default BRING_HOME resource type and is consumed by the water task. FLASHLIGHT is the aggregate radio-and-flashlight preparation objective, not just a battery pickup.
+
+FridgeTask selects one complete food option, preferring four cans, then one whole chicken, then two halves. Its count hook feeds TaskObject's existing readiness checks and consumption, including the check after completion waits. Partial options cannot be mixed. Only the selected quantity is consumed; chicken used at home is no longer available for Nestor, and the existing inventory signal refreshes his quest readiness without completing delivery.
 
 ## Inventory, economy and resource model
 
@@ -214,6 +216,8 @@ StormAudioController owns rain, wind, heavy-storm, rumble and grocery-announceme
 EndingSequence presents household consequences for the six NeedsLog entries, then conditional Nestor and visited-location beats. Household outcomes use weighted resolved need IDs, independent of the number of cinematic beats. Food contributes 3; water and medicine 2 each; roof, windows and radio/flashlight 1 each. Nestor's quest state controls an additional presentation branch but does not upgrade household preparation. `end_day.gd` snapshots remaining minutes before forcing storm arrival; natural deadline endings have no remaining-time bonus.
 
 Each beat starts from an authored view and moves through a 1.5-degree orbit over seven seconds. House beats use their existing anchors. The four finished town sets expose `Camera3D` nodes named `EndingCameraHardware`, `EndingCameraGrocery`, `EndingCameraPharmacy` and `EndingCameraTindahan` under `LocationSets/<Location>` in `EndingSequence.tscn`. Playback copies their saved global transform and lens settings into the runtime `EndingCamera`; the orbit begins from that view and retains authored roll, around a point three meters forward. The ending switches between the house and shop WorldEnvironment resources, house/town sun lights, and available baked VoxelGI for each beat. Town sets are visual-only scene pieces with selected source lights, not full gameplay scene instances.
+
+The waiting Nestor visual reuses his gameplay GLB, model scale and imported idle animation, without instantiating quest interaction logic. The ending duplicates its storm recording to enable looping locally and plays the authored 34-second `ending_cinema_loop.wav`, which removes the music's fading outro and embeds a forward loop. AudioManager owns both players through the montage and results; menu music replaces ending music through the existing flow. Shared storm imports, intro music and saved bus settings are unchanged. See the [loop asset notes](../game/assets/audio/music/README.md).
 
 The montage ends with the localized closing line centered horizontally and vertically over an opaque black overlay. The closing label fades out before the score panel appears; the last location is never revealed behind it. The ending captures one run snapshot before display and submission. Its result panel shows the score and original typhoon/accountability message until a fresh key, mouse, gamepad, or touch press. A ranked run then offers a local nickname entry with a 24-character limit and a Continue without saving action. The notice identifies device-only storage and the leaderboard's Clear control. Save errors leave the prompt open for retry or skipping. After either choice finishes, run systems reset and the game returns to the menu. `LeaderboardManager.calculate_score()` is shared by summary and saved entry. Score is `[(weighted_points × 2000) + (1000 if Nestor's chicken was delivered, otherwise 0) + remaining_minutes] × difficulty_multiplier`; remaining minutes are clamped to 0–720. Sorting uses score, then remaining time, then timestamp. The local leaderboard retains at most 25 weighted entries.
 

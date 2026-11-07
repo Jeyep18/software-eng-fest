@@ -8,7 +8,7 @@ extends Node
 enum Need {
 	ROOF,       # Ceiling hole in living room — requires tarp
 	MEDICINE,   # Lola's bottle nearly empty — requires medicine
-	FOOD,       # Fridge empty — requires canned goods
+	FOOD,       # Fridge empty — requires canned goods or chicken
 	WINDOWS,    # Second-floor windows weak — requires plywood
 	WATER,      # No filled containers — requires water jugs
 	FLASHLIGHT, # Dead flashlight in bodega — requires batteries

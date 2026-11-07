@@ -52,7 +52,9 @@ This is a description of the intended route through implemented interactions, no
 | Travel | Five map destinations; graph costs plus variation and danger penalty; whole-scene travel | Richer route-risk events were proposed, not implemented. |
 | Time pressure | 720 in-game minutes; passive time plus action/travel costs; map/backpack keep time running | A generalized storm-event system remains a proposal. |
 
-Preparation details are defined by task scripts, resource types and scene overrides. The roof uses tarp/nails/hammer; food requires four canned goods; two individually tracked windows require plywood/nails/hammer; medicine, water and combined radio/flashlight complete the remaining needs. Hammer is retained as a tool; the current wrench is consumed because its resource retains the default item type. See the architecture task table for costs and source owners.
+Preparation details are defined by task scripts, resource types and scene overrides. The roof uses tarp/nails/hammer; food requires four canned goods, one whole chicken, or two half chickens; two individually tracked windows require plywood/nails/hammer; medicine, water and combined radio/flashlight complete the remaining needs. Hammer is retained as a tool; the current wrench is consumed because its resource retains the default item type. See the architecture task table for costs and source owners.
+
+The fridge consumes one complete food option and does not combine partial quantities. When multiple options are held, it prefers cans, then a whole chicken, then halves. Palengke's four cans cost PHP 180, a whole chicken PHP 250, and two halves PHP 290. Existing shop prices and finite stock remain unchanged; Ate Linda's regular four cans cost PHP 360, or PHP 220 after her trade discount. Using chicken for the household competes with Nestor's errand and does not count as delivery. The food task still costs five minutes and has the same preparation weight.
 
 ### Pharmacy Lottohan
 

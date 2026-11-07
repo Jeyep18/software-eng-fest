@@ -22,6 +22,12 @@ func _check(condition: bool, description: String) -> void:
 
 func _run() -> void:
 	var ending := preload("res://game/scenes/ending/EndingSequence.tscn").instantiate()
+	var gameplay_nestor := preload("res://game/entities/npcs/quests/mang_nestor.tscn").instantiate()
+	var ending_model: Node3D = ending.get_node("LocationSets/Tindahan/NestorVisual")
+	var gameplay_model: Node3D = gameplay_nestor.get_node("visuals/mixamo_base")
+	_check(ending_model.scene_file_path == gameplay_model.scene_file_path, "waiting Nestor uses his gameplay model")
+	_check(ending_model.scale.is_equal_approx(gameplay_model.scale), "waiting Nestor retains gameplay model scale")
+	gameplay_nestor.free()
 	ending._snapshot = {"weighted_progress": 0, "resolved_ids": [], "visited": [], "nestor_status": SideQuestLog.STATE_NOT_STARTED}
 	_check(ending._get_household_title() == "Too Little Prepared", "empty household tier")
 	ending._snapshot["weighted_progress"] = 4

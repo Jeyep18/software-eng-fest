@@ -9,6 +9,7 @@ signal leaderboard_choice_made(save_score: bool)
 const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
 const ENDING_STORM: AudioStream = preload("res://game/assets/audio/weather/soundreality-rain-thunder-sfx-525011.mp3")
+const ENDING_MUSIC: AudioStream = preload("res://game/assets/audio/music/ending_cinema_loop.wav")
 const HOUSE_ENV: Environment = preload("res://game/resources/environments/house1_environment.tres")
 const SHOP_ENV: Environment = preload("res://game/resources/environments/storm_shop_environment.tres")
 const PUBLIC_SHOTS: Dictionary = {
@@ -80,8 +81,11 @@ func _ready() -> void:
 		"remaining_minutes": LeaderboardManager.consume_remaining_time_snapshot(),
 		"unranked": DevMode.run_unranked,
 	}
-	AudioManager.play_ambience(ENDING_STORM)
-	AudioManager.play_music(preload("res://game/assets/audio/music/samuelfjohanns-extreme-sad-cinema-12299-SamuelFJohannsPixabay.mp3"))
+	# Other scenes use this recording as a one-shot; only the ending loops it.
+	var storm := ENDING_STORM.duplicate() as AudioStreamMP3
+	storm.loop = true
+	AudioManager.play_ambience(storm)
+	AudioManager.play_music(ENDING_MUSIC)
 	SLIDES = [
 		{
 			"need":            NeedsLog.Need.WINDOWS,
