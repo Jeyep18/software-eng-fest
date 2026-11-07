@@ -24,7 +24,7 @@ size = Vector3(1.5, 2.0, 2.1)
 
 [sub_resource type="Resource" id="OfferLine"]
 script = ExtResource("3_line")
-speaker_name = "Mang Rodel"
+speaker_name = "Mang Julian"
 expression = ExtResource("portrait_smoke_break_coaxing")
 text = "Stress ka na rin ba sa bagyo? Yosi muna tayo sa gilid. Sandali lang."
 metadata/_custom_type_script = "uid://po32410sv037"
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="Resource" id="DoneLine"]
 script = ExtResource("3_line")
-speaker_name = "Mang Rodel"
+speaker_name = "Mang Julian"
 expression = ExtResource("portrait_smoke_break_concerned")
 text = "Ayos na. Pero lumakas na ulan, ah. Sana sulit yung pahinga."
 metadata/_custom_type_script = "uid://po32410sv037"
@@ -62,8 +62,8 @@ script = ExtResource("2_script")
 offer_sequence = SubResource("OfferSequence")
 done_sequence = SubResource("DoneSequence")
 dialogue_ui_scene = ExtResource("4_ui")
-quest_speaker = "Mang Rodel"
-quest_prompt = "Talk to Mang Rodel"
+quest_speaker = "Mang Julian"
+quest_prompt = "Talk to Mang Julian"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.1)

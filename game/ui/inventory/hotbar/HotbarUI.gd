@@ -3,7 +3,7 @@
 # PURPOSE: Inventory hotbar at the bottom of the screen.
 # - Displays the full inventory; dialogue/task flows can temporarily hide it.
 # - Uses InventoryManager's slot capacity.
-# - Highlights the currently selected slot
+# - Opens through the backpack's Tab action; this bar is a passive preview.
 # - Sits at a LOW layer value so backpack/ESC menu render on top
 
 extends CanvasLayer
@@ -11,21 +11,27 @@ extends CanvasLayer
 @onready var slot_container: HBoxContainer = $HotbarRoot/SlotContainer
 @onready var hotbar_bg: Panel = $HotbarRoot/HotbarBG
 @onready var hotbar_root: Control = $HotbarRoot
+@onready var inventory_hint: PanelContainer = $HotbarRoot/InventoryHint
+@onready var hint_margin: MarginContainer = $HotbarRoot/InventoryHint/Margin
+@onready var hint_row: HBoxContainer = $HotbarRoot/InventoryHint/Margin/Row
+@onready var tab_key: PanelContainer = $HotbarRoot/InventoryHint/Margin/Row/TabKey
+@onready var tab_label: Label = $HotbarRoot/InventoryHint/Margin/Row/TabKey/Label
+@onready var hint_label: Label = $HotbarRoot/InventoryHint/Margin/Row/Hint
+
+const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 
 const BASE_SLOT_SIZE: float = 62.0
 const BASE_SLOT_GAP: float = 8.0
 const BASE_VERTICAL_PADDING: float = 10.0
 const BASE_BOTTOM_MARGIN: float = 18.0
+const BASE_HINT_WIDTH: float = 192.0
+const BASE_HINT_GAP: float = 12.0
 
-# Zero-based index of the currently selected inventory slot.
-var selected_slot: int = 0
-
-# Track slot Panel nodes so we can update selection highlight without full rebuild
 var _slot_panels: Array[Panel] = []
 var _slot_items: Array[ItemData] = []
 var _slot_quantities: Array[int] = []
 var _normal_style: StyleBoxFlat
-var _selected_style: StyleBoxFlat
+var _ui_scale: float = 1.0
 
 func _ready() -> void:
 	add_to_group("hotbar_ui")
@@ -34,46 +40,15 @@ func _ready() -> void:
 	layer = 1
 
 	InventoryManager.inventory_changed.connect(_redraw_hotbar)
-	LocalizationManager.language_changed.connect(func(_language_id: String) -> void: _redraw_hotbar())
-	VisualSettings.ui_scale_changed.connect(func(_scale: float) -> void:
-		_apply_ui_scale()
-		_redraw_hotbar()
-	)
+	LocalizationManager.language_changed.connect(_on_language_changed)
+	VisualSettings.ui_scale_changed.connect(func(_scale: float) -> void: _apply_ui_scale())
+	get_viewport().size_changed.connect(_apply_ui_scale)
 	_apply_ui_scale()
-	_rebuild_style_cache()
+	_on_language_changed(LocalizationManager.get_language())
+
+func _on_language_changed(_language_id: String) -> void:
+	hint_label.text = LocalizationManager.translate_key("ui.inventory.open_hint", "Open inventory")
 	_redraw_hotbar()
-
-func _unhandled_input(event: InputEvent) -> void:
-	# Number keys select the slots defined by inventory capacity.
-	for i in range(InventoryManager.MAX_INVENTORY_SIZE):
-		if event.is_action_pressed("hotbar_slot_" + str(i + 1)):
-			_select_slot(i)
-			return
-	# Preserve the existing key 8 alias for the last slot without an eighth slot.
-	if event.is_action_pressed("hotbar_slot_8"):
-		_select_slot(InventoryManager.MAX_INVENTORY_SIZE - 1)
-		return
-
-	# Mouse scroll to cycle through slots
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_select_slot((selected_slot - 1 + InventoryManager.MAX_INVENTORY_SIZE) % InventoryManager.MAX_INVENTORY_SIZE)
-		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_select_slot((selected_slot + 1) % InventoryManager.MAX_INVENTORY_SIZE)
-
-func _select_slot(index: int) -> void:
-	selected_slot = clamp(index, 0, InventoryManager.MAX_INVENTORY_SIZE - 1)
-	_update_selection_highlight()
-
-func _update_selection_highlight() -> void:
-	for i in range(_slot_panels.size()):
-		var panel = _slot_panels[i]
-		if not is_instance_valid(panel):
-			continue
-		if i == selected_slot:
-			panel.add_theme_stylebox_override("panel", _selected_style)
-		else:
-			panel.add_theme_stylebox_override("panel", _normal_style)
 
 func _redraw_hotbar() -> void:
 	var items = InventoryManager.get_all_items()
@@ -85,11 +60,9 @@ func _redraw_hotbar() -> void:
 			item = items[i]
 		var quantity := InventoryManager.get_item_quantity(i)
 		if _slot_items[i] != item or _slot_quantities[i] != quantity:
-			_update_slot(_slot_panels[i], item, quantity, i)
+			_update_slot(_slot_panels[i], item, quantity)
 			_slot_items[i] = item
 			_slot_quantities[i] = quantity
-
-	_update_selection_highlight()
 
 func _ensure_slot_nodes() -> void:
 	while _slot_panels.size() < InventoryManager.MAX_INVENTORY_SIZE:
@@ -102,19 +75,21 @@ func _ensure_slot_nodes() -> void:
 
 func _create_slot(index: int) -> Panel:
 	var panel = Panel.new()
-	var ui_scale := VisualSettings.get_ui_scale()
+	var ui_scale := _ui_scale
 	panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * ui_scale
 	panel.add_theme_stylebox_override("panel", _normal_style)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.set_meta("slot_index", index)
 	return panel
 
-func _update_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> void:
-	var ui_scale := VisualSettings.get_ui_scale()
+func _update_slot(panel: Panel, item: ItemData, quantity: int) -> void:
+	var ui_scale := _ui_scale
 	for child in panel.get_children():
 		child.queue_free()
 
 	if item != null:
 		var icon = TextureRect.new()
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		icon.texture = item.item_icon
 		icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -126,6 +101,7 @@ func _update_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> vo
 		panel.add_child(icon)
 
 		var name_label = Label.new()
+		name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		name_label.text = item.get_item_name()
 		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -170,37 +146,21 @@ func _update_slot(panel: Panel, item: ItemData, quantity: int, index: int) -> vo
 			quantity_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			quantity_badge.add_child(quantity_label)
 
-	# Slot number badge (bottom-right corner)
-	var num_label = Label.new()
-	num_label.text = str(index + 1)
-	num_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	num_label.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
-	num_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	num_label.offset_right  = -4 * ui_scale
-	num_label.offset_bottom = -2 * ui_scale
-	num_label.add_theme_font_size_override("font_size", int(roundi(8.0 * ui_scale)))
-	num_label.modulate = Color(1, 1, 1, 0.28)
-	panel.add_child(num_label)
-
-# Returns the ItemData in the currently selected slot, or null if empty
-func get_selected_item() -> ItemData:
-	var items = InventoryManager.get_all_items()
-	if selected_slot < items.size():
-		return items[selected_slot]
-	return null
-
 # Keep the public parameter name; this sets visibility rather than querying it.
 @warning_ignore("shadowed_variable_base_class")
 func set_hotbar_visible(is_visible: bool) -> void:
 	self.visible = is_visible
 
 func _apply_ui_scale() -> void:
-	var ui_scale: float = VisualSettings.get_ui_scale()
-	_rebuild_style_cache()
 	var slot_count: int = InventoryManager.MAX_INVENTORY_SIZE
+	var base_width := BASE_SLOT_SIZE * slot_count + BASE_SLOT_GAP * (slot_count - 1) + BASE_HINT_GAP + BASE_HINT_WIDTH
+	_ui_scale = minf(VisualSettings.get_ui_scale(), (get_viewport().get_visible_rect().size.x - 32.0) / base_width)
+	var ui_scale := _ui_scale
+	_rebuild_style_cache()
 	var gap: float = BASE_SLOT_GAP * ui_scale
 	var slot_size: float = BASE_SLOT_SIZE * ui_scale
-	var width: float = (slot_size * float(slot_count)) + (gap * float(max(slot_count - 1, 0)))
+	var slot_width: float = (slot_size * float(slot_count)) + (gap * float(max(slot_count - 1, 0)))
+	var width := base_width * ui_scale
 	var height: float = slot_size + (BASE_VERTICAL_PADDING * 2.0 * ui_scale)
 
 	hotbar_root.anchor_left = 0.5
@@ -212,22 +172,43 @@ func _apply_ui_scale() -> void:
 	hotbar_root.offset_top = -(height + BASE_BOTTOM_MARGIN * ui_scale)
 	hotbar_root.offset_bottom = -BASE_BOTTOM_MARGIN * ui_scale
 
-	hotbar_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	hotbar_bg.set_anchors_preset(Control.PRESET_LEFT_WIDE)
 	hotbar_bg.offset_left = 0.0
 	hotbar_bg.offset_top = 0.0
-	hotbar_bg.offset_right = 0.0
+	hotbar_bg.offset_right = slot_width
 	hotbar_bg.offset_bottom = 0.0
-	hotbar_bg.custom_minimum_size = Vector2(width, height)
+	hotbar_bg.custom_minimum_size = Vector2(slot_width, height)
 
-	slot_container.set_anchors_preset(Control.PRESET_CENTER)
-	slot_container.offset_left = -width * 0.5
-	slot_container.offset_right = width * 0.5
+	slot_container.set_anchors_preset(Control.PRESET_CENTER_LEFT)
+	slot_container.offset_left = 0.0
+	slot_container.offset_right = slot_width
 	slot_container.offset_top = -slot_size * 0.5
 	slot_container.offset_bottom = slot_size * 0.5
 	slot_container.add_theme_constant_override("separation", int(roundi(gap)))
+	inventory_hint.set_anchors_preset(Control.PRESET_CENTER_LEFT)
+	inventory_hint.offset_left = slot_width + BASE_HINT_GAP * ui_scale
+	inventory_hint.offset_right = width
+	inventory_hint.offset_top = -26.0 * ui_scale
+	inventory_hint.offset_bottom = 26.0 * ui_scale
+	UI_STYLE.apply_panel(inventory_hint, true)
+	for side in ["left", "right"]:
+		hint_margin.add_theme_constant_override("margin_" + side, roundi(10.0 * ui_scale))
+	for side in ["top", "bottom"]:
+		hint_margin.add_theme_constant_override("margin_" + side, roundi(6.0 * ui_scale))
+	hint_row.add_theme_constant_override("separation", roundi(8.0 * ui_scale))
+	var key_style := UI_STYLE.panel_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER)
+	key_style.content_margin_left = 6.0 * ui_scale
+	key_style.content_margin_right = 6.0 * ui_scale
+	key_style.content_margin_top = 4.0 * ui_scale
+	key_style.content_margin_bottom = 4.0 * ui_scale
+	tab_key.add_theme_stylebox_override("panel", key_style)
+	for label in [tab_label, hint_label]:
+		UI_STYLE.apply_label(label)
+		label.add_theme_font_size_override("font_size", roundi(16.0 * ui_scale))
 	for i in range(_slot_panels.size()):
 		var panel := _slot_panels[i]
 		panel.custom_minimum_size = Vector2(BASE_SLOT_SIZE, BASE_SLOT_SIZE) * ui_scale
+		panel.add_theme_stylebox_override("panel", _normal_style)
 		_slot_items[i] = null
 		_slot_quantities[i] = -1
 	_redraw_hotbar()
@@ -244,11 +225,3 @@ func _rebuild_style_cache() -> void:
 	_normal_style.border_width_top = 1
 	_normal_style.border_width_bottom = 1
 	_normal_style.border_color = Color(1, 1, 1, 0.12)
-
-	_selected_style = _normal_style.duplicate() as StyleBoxFlat
-	_selected_style.border_color = Color(1.0, 0.85, 0.3, 1.0)
-	_selected_style.border_width_left = 2
-	_selected_style.border_width_right = 2
-	_selected_style.border_width_top = 2
-	_selected_style.border_width_bottom = 2
-	_selected_style.bg_color = Color(0.25, 0.22, 0.08, 0.9)

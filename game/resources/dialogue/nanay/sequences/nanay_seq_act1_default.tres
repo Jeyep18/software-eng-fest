@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_fm2ve"]
 script = ExtResource("1_4flvv")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("3_rxbes")
 text = "bakit po inay"
 metadata/_custom_type_script = "uid://po32410sv037"

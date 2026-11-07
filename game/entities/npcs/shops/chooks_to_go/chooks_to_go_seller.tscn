@@ -13,26 +13,26 @@
 script = ExtResource("3_ekqec")
 speaker_name = "Kuya Benjie"
 expression = ExtResource("portrait_chooks_seller_cheerful")
-text = "Ano pa hinihintay mo iho, bili na ng aming malinamnam na manok!"
+text = "Mainit pa, iho. Buo o kalahati?"
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_uelfc"]
 script = ExtResource("3_ekqec")
 speaker_name = "Kuya Benjie"
 expression = ExtResource("portrait_chooks_seller_cheerful")
-text = "Siguradong mabubusog ka dito, promise!"
+text = "Sige, pili ka muna bago tayo abutan ng ulan."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_htrks"]
 script = ExtResource("3_ekqec")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_surprised")
-text = "VIC SOTTO?!?!"
+text = "Tingin muna po sa presyo. Baka yung budget ko ang makalahati."
 metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_eclqx"]
 script = ExtResource("5_htrks")
-lines = Array[ExtResource("3_ekqec")]([SubResource("Resource_leh6v"), SubResource("Resource_uelfc"), SubResource("Resource_htrks")])
+lines = Array[ExtResource("3_ekqec")]([SubResource("Resource_leh6v"), SubResource("Resource_htrks"), SubResource("Resource_uelfc")])
 metadata/_custom_type_script = "uid://b55uh8miobq8a"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_glc6s"]

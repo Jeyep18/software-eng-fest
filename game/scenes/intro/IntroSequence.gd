@@ -87,11 +87,6 @@ func _run_sequence() -> void:
 		await _end_sequence()
 		return
 
-	await _show_card("Made with Godot 4", "credit", 1.8, 0.8)
-	if _skipped:
-		await _end_sequence()
-		return
-
 	await _show_card(CONTENT_WARNING, "warning", 4.0, 0.8)
 	if _skipped:
 		await _end_sequence()

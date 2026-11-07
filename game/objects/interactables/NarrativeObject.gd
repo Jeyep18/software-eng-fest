@@ -32,7 +32,7 @@ extends Interactable
 @export var monologue_ui_scene: PackedScene
 
 # --- INTERNALS ---
-const PLAYER_NAME: String = "Player"
+const PLAYER_NAME: String = "You"
 
 var _ui: MonologueUI = null
 var _current_line: int = 0

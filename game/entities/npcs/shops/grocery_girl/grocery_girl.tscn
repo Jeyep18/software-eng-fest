@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_l50sn"]
 script = ExtResource("3_qjf6c")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_surprised")
 text = "Ate Linda?? Nagtatrabaho karin pala sa hardware? Paano ka po nakarating dito?!"
 metadata/_custom_type_script = "uid://po32410sv037"

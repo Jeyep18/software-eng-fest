@@ -421,8 +421,7 @@ func _test_camera_controls() -> void:
 	var gameplay_camera := get_viewport().get_camera_3d()
 	var gameplay_pose := gameplay_camera.global_transform
 	var gameplay_fov := gameplay_camera.fov
-	var hotbar: Variant = get_tree().get_first_node_in_group("hotbar_ui")
-	var selected_slot: int = hotbar.selected_slot
+	var inventory_before := InventoryManager.get_all_items().duplicate()
 	var old_visibility := {}
 	var hidden_npc: Node3D
 	var hidden_item: WorldItem
@@ -472,7 +471,7 @@ func _test_camera_controls() -> void:
 		event.pressed = false
 		Input.parse_input_event(event)
 	await get_tree().process_frame
-	_check(not get_tree().get_first_node_in_group("backpack_ui").visible and not get_tree().get_first_node_in_group("map_screen").visible and hotbar.selected_slot == selected_slot, "recording inputs cannot open gameplay menus or select hotbar slots")
+	_check(not get_tree().get_first_node_in_group("backpack_ui").visible and not get_tree().get_first_node_in_group("map_screen").visible and InventoryManager.get_all_items() == inventory_before, "recording inputs cannot open gameplay menus or change inventory")
 	_key(KEY_P, true)
 	_key(KEY_P, false)
 	_check(DevMode.camera_settings().world_paused and get_tree().paused, "P freezes the world without exiting camera mode")

@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_8a7sq"]
 script = ExtResource("3_ba3tf")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_surprised")
 text = "Ikaw ulit?!!"
 metadata/_custom_type_script = "uid://po32410sv037"

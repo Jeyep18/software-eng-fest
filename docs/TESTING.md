@@ -731,3 +731,35 @@ downloaded ZIP.
 
 Logs and ending captures are under `C:/Temp/bagyong-ending-fix-20261107` and
 `C:/Temp/bagyong-food-options-20261107`.
+
+## Paged tutorial, inventory guidance and launch branding, November 7, 2026
+
+The tutorial now introduces the family situation and six preparation goals across
+five pages, with Back/Next/Done, a one-line page counter and native gameplay images
+in both languages. No scrolling is required. English/Tagalog layouts were inspected
+at 100%, 140% and 175%, including a compact 1280x720 logical canvas. Source captures
+use current gameplay with VHS off; the runtime overlay remains unchanged.
+
+| Check | Accepted result |
+| --- | --- |
+| Tutorial paging | 220 headless and 220 Forward Plus checks, zero failures. Navigation, Enter activation, focus containment/restoration, Escape/Done/idempotent close, nested pause, teardown, session suppression, live translation, every page/image and compact layouts. |
+| Static inventory bar | 48 headless and 48 Forward Plus checks, zero failures. Wheel/number input leaves inventory and styles unchanged, simulated physical-key Tab opens/closes the real bag, cached slots/quantities remain, and the EN/TL hint fits all supported UI scales. |
+| Dialogue presentation | 110 headless and 128 Forward Plus checks, zero failures. You in both languages, Mang Julian name/prompt, the revised chicken reply, existing portraits, typewriter/formatting and cash display. Portrait regression passed 686 checks. |
+| Launch branding | 15 headless and 15 Forward Plus checks, zero failures. Game/window title, disabled engine boot image, studio-first production sequence without the engine card, original Windows user-data path and both export icon settings. |
+| Scripted full flow | 161 headless checks, zero failures. Intro/menu, opening, Nanay's handoff and five tutorial pages, travel/inventory/purchases/task, restart, storm ending, score submission and a clean second run. |
+| Related regressions | Cleanup 86, recording camera 1,011, leaderboard persistence 75 checks, zero failures. |
+| Assets/localization | Supplied icon PNG matches the attachment byte for byte; ICO has seven resolutions from 16 to 256 pixels. All ten native tutorial captures/imports load. CSV has 614 unique keys, preserved prior key order, five revised rows and 24 additions. |
+
+Independent source review found no actionable issue. Rendered review caught and
+corrected a wrapping page counter; the final 220-check runs cover that case.
+Existing ObjectDB/resource-at-exit diagnostics remain. Accepted final runs have no
+script/parser errors or failed assertions. Inputs were injected by the harness;
+these checks do not establish a human playthrough or second-PC acceptance.
+
+No Windows executable or downloadable ZIP was rebuilt. Source settings enable
+native icon resource rewriting, which previously hit Windows Application Control
+WinError 4551 on this laptop. After separate build approval, verify the new native
+EXE before replacing the existing downloadable ZIP in place. Do not create dated
+ZIP copies or alter Windows security policy to bypass a launch failure.
+
+Logs and reviewed UI captures are under `C:/Temp/bagyong-ui-20261107`.

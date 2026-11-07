@@ -57,7 +57,7 @@ func _run() -> void:
 		"live language switch retranslates mixed dialogue and preserves typing progress")
 	_check(npc.get_node("%SpeakerImage").texture == portrait, "live language switch preserves the current portrait")
 	npc.hide_ui()
-	monologue.show_line("Yung [b]martilyo[/b] ni Tatay.", "Player")
+	monologue.show_line("Yung [b]martilyo[/b] ni Tatay.", "You")
 	monologue_label.visible_ratio = 0.5
 	LocalizationManager.set_language("english")
 	_check(monologue_label.get_parsed_text() == _plain_text(LocalizationManager.translate("Yung [b]martilyo[/b] ni Tatay."))
@@ -65,6 +65,13 @@ func _run() -> void:
 	monologue.hide_ui()
 	for language in ["english", "tagalog"]:
 		LocalizationManager.set_language(language)
+		_check(thought.speaker_name == "You" and thought.get_speaker_name() == "You", "player dialogue is You in " + language)
+		monologue.show_line("Yung [b]martilyo[/b] ni Tatay.", TaskObject.PLAYER_NAME)
+		_check(monologue.get_node("%SpeakerName").text == "You", "task monologue is You in " + language)
+		monologue.hide_ui()
+		_check(LocalizationManager.translate("Mang Julian") == "Mang Julian" and LocalizationManager.translate("Talk to Mang Julian").contains("Mang Julian"), "Julian name and prompt are localized in " + language)
+		var joke := _find_line("res://game/entities/npcs/shops/chooks_to_go/chooks_to_go_seller.tscn", "Tingin muna")
+		_check(joke != null and joke.speaker_name == "You" and not joke.get_text().contains("VIC SOTTO"), "chicken seller has the new player reply in " + language)
 		for scale_percent in [100, 140, 175]:
 			VisualSettings.set_ui_scale_percent(scale_percent)
 			GameState.cash_balance = 700
@@ -106,7 +113,7 @@ func _run() -> void:
 			_check(npc_label.text.contains("[i]") and not npc_label.text.contains("#c7b8dd")
 				and not npc_label.text.contains("#a9d8e8"), "spoken italic emphasis is not classified as narration")
 			npc.hide_ui()
-			monologue.show_line("Yung [b]martilyo[/b] ni Tatay.", "Player")
+			monologue.show_line("Yung [b]martilyo[/b] ni Tatay.", "You")
 			_check(monologue_label.visible_ratio == 0.0, "monologue still starts with the typewriter hidden")
 			var tween := monologue.run_typewriter(1000.0)
 			await tween.finished

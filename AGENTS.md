@@ -2,7 +2,7 @@
 
 ## Purpose and project
 
-Use these instructions for work in **Bagyong Bahay**, a GDScript disaster-preparation game with 3D environments and a 2.5D camera. Target Godot **4.6.1**, Forward Plus. The configured application name is `Software Festival 2026`. Current scope is a playable festival/beta preparation loop, not a completed four-act simulation.
+Use these instructions for work in **Bagyong Bahay**, a GDScript disaster-preparation game with 3D environments and a 2.5D camera. Target Godot **4.6.1**, Forward Plus. The configured application name is `Bagyong Bahay`; the custom desktop user-data path retains `Software Festival 2026` for existing scores/settings. Current scope is a playable festival/beta preparation loop, not a completed four-act simulation.
 
 ## Source of truth
 
@@ -59,7 +59,7 @@ Locations instantiate their own player and its UI. Whole-scene replacement frees
 
 Use existing `PackedScene.instantiate()` / `add_child()` / `queue_free()` patterns. Custom Resources include `ItemData`, `ShopItem`, `ShopData`, `DialogueLine`, `DialogueSequence`. `ShopUi` duplicates/caches shop data for per-run stock; do not mutate shared `.tres` data casually. Item type controls task consumption; tools are retained, but the current wrench defaults to a consumable type.
 
-Reuse Input Map actions: movement, `sprint`, `interact`, `dialogue_advance`, `open_map`, `toggle_backpack`, `hotbar_slot_1`–`hotbar_slot_8`. Pause uses built-in `ui_cancel`. Mapped jump/crouch/flashlight do not imply PlayerV2 supports them. See [controls](README.md#controls).
+Reuse Input Map actions: movement, `sprint`, `interact`, `dialogue_advance`, `open_map`, and `toggle_backpack`. The inventory bar is a passive seven-slot preview with a Tab hint; `hotbar_slot_1`–`hotbar_slot_8` remain unused legacy bindings. Pause uses built-in `ui_cancel`. Mapped jump/crouch/flashlight do not imply PlayerV2 supports them. See [controls](README.md#controls).
 
 PlayerV2 uses `CharacterBody3D`; interactions and camera volumes use `Area3D`. There is no named project collision-layer scheme. Most scenes omit masks/layers; a test-world override uses value 3. Check scene properties and step-up collision probes before changing physics. Do not infer a gameplay layer convention from that test scene.
 

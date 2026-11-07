@@ -122,24 +122,27 @@ func _test_hotbar() -> void:
 	var hotbar = load("res://game/ui/inventory/hotbar/HotbarUI.tscn").instantiate()
 	add_child(hotbar)
 	_check(hotbar.slot_container.get_child_count() == 7, "real hotbar builds seven slots")
+	_inventory.add_item(_item("canned_goods"))
+	var slots: Array = hotbar._slot_panels.duplicate()
+	var inventory: Array = _inventory.get_all_items().duplicate()
 	for key in range(1, 9):
 		var event := InputEventAction.new()
 		event.action = "hotbar_slot_%d" % key
 		event.pressed = true
-		hotbar._unhandled_input(event)
-		_check(hotbar.selected_slot == mini(key - 1, 6), "hotbar key %d selection" % key)
+		Input.parse_input_event(event)
+		event = event.duplicate()
+		event.pressed = false
+		Input.parse_input_event(event)
 	for direction in [MOUSE_BUTTON_WHEEL_DOWN, MOUSE_BUTTON_WHEEL_UP]:
-		hotbar._select_slot(6 if direction == MOUSE_BUTTON_WHEEL_DOWN else 0)
 		var event := InputEventMouseButton.new()
 		event.button_index = direction
 		event.pressed = true
-		hotbar._unhandled_input(event)
-		_check(hotbar.selected_slot == (0 if direction == MOUSE_BUTTON_WHEEL_DOWN else 6), "wheel wraps across boundary")
-		for i in range(7):
-			hotbar._unhandled_input(event)
-		_check(hotbar.selected_slot == (0 if direction == MOUSE_BUTTON_WHEEL_DOWN else 6), "wheel completes seven-slot cycle")
+		Input.parse_input_event(event)
 	# Let node-added localization finish before freeing the scene under test.
 	await get_tree().process_frame
+	_check(hotbar._slot_panels == slots and _inventory.get_all_items() == inventory, "number keys and wheel leave preview slots and inventory unchanged")
+	_check(not hotbar.has_method("_select_slot") and not hotbar.has_method("get_selected_item"), "passive preview exposes no selected item")
+	_check(hotbar.tab_label.text == "Tab" and not hotbar.hint_label.text.is_empty(), "inventory preview displays its Tab instruction")
 	hotbar.queue_free()
 	await get_tree().process_frame
 

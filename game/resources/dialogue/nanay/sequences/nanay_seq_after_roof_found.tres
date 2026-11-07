@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_7lbd4"]
 script = ExtResource("1_pdokw")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("3_yklda")
 text = "ano ba naman yan ma jusq"
 metadata/_custom_type_script = "uid://po32410sv037"

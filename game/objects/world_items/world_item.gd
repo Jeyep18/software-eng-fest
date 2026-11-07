@@ -31,8 +31,7 @@ const SFX = preload("res://game/audio/Sfx.gd")
 
 # --- CONSTANTS ---
 # The speaker name shown in the monologue box during pickup.
-# "Player" matches your existing fridge setup convention.
-const SPEAKER_NAME: String = "Player"
+const SPEAKER_NAME: String = "You"
 
 # --- INTERNAL STATE ---
 # Reference to the MonologueUI instance we create at runtime.

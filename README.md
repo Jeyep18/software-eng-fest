@@ -13,7 +13,7 @@ Playable festival/beta scope, inferred from the current loop and source scope co
 - A graphics environment that supports this project's Forward Plus renderer. Measured minimum hardware requirements: **Unknown / Needs verification**.
 - Windows Desktop x86_64 export preset exists; matching export templates are needed to export. No C#/.NET or runtime addon dependency was found.
 
-The application setting still names the project `Software Festival 2026`. The older handoff discusses a possible 4.7 upgrade; that is not evidence of a completed migration.
+The application/window title is `Bagyong Bahay`. Its custom user-data directory retains the former `Software Festival 2026` path so existing scores and settings remain available. The older handoff discusses a possible 4.7 upgrade; that is not evidence of a completed migration.
 
 ## Getting started
 
@@ -35,12 +35,10 @@ The configured main scene is [IntroSequence.tscn](game/scenes/intro/IntroSequenc
 | Space | Advance/finish active dialogue through `dialogue_advance` |
 | M | Open/close map |
 | Tab | Open/close backpack |
-| 1–7 | Select hotbar slot |
-| Mouse wheel | Hotbar selection; see limitation below |
 | Escape | Pause/resume via `ui_cancel`; player also has an `escape` mouse-capture handler |
 | Mouse | UI choices, shop purchases, inventory selection and drag-to-discard |
 
-The Input Map also defines jump, crouch, flashlight, and hotbar key 8. The active PlayerV2 does not implement jump/crouch/flashlight actions. Key 8 explicitly selects the seventh slot; wheel cycling wraps across all seven slots. Map and backpack currently leave time running.
+The bottom inventory bar is a passive seven-slot preview with a Tab hint. Wheel and number keys do not select or use items. The Input Map retains legacy jump, crouch, flashlight and hotbar bindings; PlayerV2 does not implement these actions. Map and backpack leave time running.
 
 ## Project structure
 

@@ -45,7 +45,9 @@ func _dismiss_tutorial() -> bool:
 	var tutorial := player.find_child("TutorialModal", true, false) as TutorialModal
 	_check(tutorial.visible and get_tree().paused, "tutorial pauses the scene tree")
 	await _capture("tutorial")
-	tutorial.close()
+	for page in TutorialModal.PAGES.size():
+		_check(tutorial._page_index == page and tutorial.visible, "tutorial page %d is shown" % (page + 1))
+		tutorial._next_button.pressed.emit()
 	await get_tree().process_frame
 	return _check(not get_tree().paused and not player.get("_is_input_locked"), "tutorial dismissal restores player input")
 

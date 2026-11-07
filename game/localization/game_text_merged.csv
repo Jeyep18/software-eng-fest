@@ -41,9 +41,9 @@ dialogue,dialogue.oh_ano_mga_kailangan_mo_bilis_may_bagyo_na_papar.d9cc524e,"Oh,
 ui,ui.ate_linda_nagtatrabaho_karin_pala_sa_hardware_pa.bcb0e7c7,Ate Linda?? Nagtatrabaho karin pala sa hardware? Paano ka po nakarating dito?!,Ate Linda?? You work at the hardware store too? How'd you even get here?!,Ate Linda?? Dito ka rin pala nagtatrabaho sa hardware? Pa'no ka po napunta dito?!,
 ui,ui.sinong_ate_linda_kita_mo_nag_tatrabaho_ako_dito.3ddd7805,Sinong Ate Linda?! kita mo nag tatrabaho ako dito!,Who's Ate Linda?! Can't you see I work here?!,Sinong Ate Linda?! Hindi ba obvious? Dito ako nagtatrabaho!,
 dialogue,dialogue.ano_po_ang_inyong_kailangan_mabuti_at_naabutan_n.b68fa919,Ano po ang inyong kailangan? Mabuti at naabutan niyo pa ang [b]botika[/b] na bukas.,What can I get you? You're lucky you caught the [b]pharmacy[/b] still open.,Ano po'ng kailangan nila? Buti naabutan nyo pa ang [b]botika[/b] na bukas.,Preserve BBCode tags.
-dialogue,dialogue.ano_pa_hinihintay_mo_iho_bili_na_ng_aming_malina.7f19f19f,"Ano pa hinihintay mo iho, bili na ng aming malinamnam na manok!","What are you waiting for, iho? Come get our juicy chicken!","Ano pang hinihintay mo, iho? Bili na ng masarap naming manok!",
-ui,ui.siguradong_mabubusog_ka_dito_promise.d4da11d8,"Siguradong mabubusog ka dito, promise!","You'll definitely leave full, promise!","Sigurado, mabubusog ka dito, promise!",
-ui,ui.vic_sotto.103e430c,VIC SOTTO?!?!,VIC SOTTO?!?!,VIC SOTTO?!?!,
+dialogue,dialogue.ano_pa_hinihintay_mo_iho_bili_na_ng_aming_malina.7f19f19f,"Mainit pa, iho. Buo o kalahati?","Still hot, iho. Whole or half?","Mainit pa, iho. Buo o kalahati?",
+ui,ui.siguradong_mabubusog_ka_dito_promise.d4da11d8,"Sige, pili ka muna bago tayo abutan ng ulan.",Take your pick before the rain catches us.,"Sige, pili ka muna bago tayo abutan ng ulan.",
+ui,ui.vic_sotto.103e430c,Tingin muna po sa presyo. Baka yung budget ko ang makalahati.,Let me check the price first. I'd like to keep my budget in one piece.,Tingin muna po sa presyo. Baka yung budget ko ang makalahati.,
 ui,ui.hi_hello_heeello.16d29364,hi hello heeello,"Hi, hello, hellooo.","Hi, hello, hellooo.",
 ui,ui.yes_hola.bc756ba9,yes hola?,"Yes, hello?","Yes, hello?",
 ui,ui.wala_man_hehe.c4abb494,wala man hehe,"Nothing, hehe.","Wala naman, hehe.",
@@ -405,7 +405,7 @@ dialogue,dialogue.salamat_ulit_anak_umuwi_ka_na_rin_bago_tuluyang_.eb11868a,"Sal
 ui,ui.stranger.5d603318,Mang Isko,Mang Isko,Mang Isko,
 ui,ui.pasensya_na_kulang_pamasahe_ko_pauwi_may_maiaabo.c9424559,Pasensya na. Kulang pamasahe ko pauwi. May maiaabot ka bang konti?,Sorry. I'm short on fare to get home. Could you spare a little?,Pasensya na po. Kulang pamasahe ko pauwi. Pwede bang makahingi ng konti?,
 ui,ui.salamat_hindi_ko_makakalimutan_to.4940ab4a,Salamat. Hindi ko makakalimutan 'to.,Thank you. I won't forget this.,Salamat. Hindi ko makakalimutan 'to.,
-ui,ui.tambay.fbddbf8c,Mang Rodel,Mang Rodel,Mang Rodel,
+ui,ui.tambay.fbddbf8c,Mang Julian,Mang Julian,Mang Julian,
 dialogue,dialogue.stress_ka_na_rin_ba_sa_bagyo_yosi_muna_tayo_sa_g.30149cbc,Stress ka na rin ba sa bagyo? Yosi muna tayo sa gilid. Sandali lang.,"Stressed about the storm too, bro? Let's have a smoke on the side. Just a sec.","Stress ka na rin ba sa bagyo, pre? Yosi muna tayo sa gilid. Saglit lang.",
 ui,ui.ayos_na_pero_lumakas_na_ulan_ah_sana_sulit_yung_.92d06b17,"Ayos na. Pero lumakas na ulan, ah. Sana sulit yung pahinga.",All good. The rain's gotten heavier though. Hope the break was worth it.,"Ayos na. Pero lumakas na ang ulan, ah. Sana sulit yung pahinga.",
 ui,ui.ate_maribel.d67803a3,Ate Maribel,Ate Maribel,Ate Maribel,
@@ -584,7 +584,7 @@ dialogue,dialogue.wake_up_kitchen_tv,I can hear the TV... I should check what's 
 dialogue,dialogue.wake_up_sore_back,Ugh... morning already? My back's so stiff from sleeping on the floor.,Ugh... morning already? My back's so stiff from sleeping on the floor.,Aray... umaga na agad? Ang tigas ng likod ko sa pagtulog sa sahig.,First wake-up line.
 dialogue,dialogue.wake_up_dream_house,"I dreamed I was walking through our house, but every door led back to this room.","I dreamed I was walking through our house, but every door led back to this room.","Nanaginip akong naglalakad ako sa bahay namin, pero bawat pintuan, pabalik din sa kwartong ito.",Second wake-up line.
 dialogue,dialogue.wake_up_dream_voice,"Someone kept calling my name, but I couldn't find them... What a weird dream.","Someone kept calling my name, but I couldn't find them... What a weird dream.","May paulit-ulit na tumatawag sa pangalan ko, pero wala akong makita... Ang weird ng panaginip na iyon.","Third wake-up line, before the TV/kitchen reminder."
-prompt,prompt.talk_to_mang_rodel,Talk to Mang Rodel,Talk to Mang Rodel,Kausapin si Mang Rodel,
+prompt,prompt.talk_to_mang_rodel,Talk to Mang Julian,Talk to Mang Julian,Kausapin si Mang Julian,
 prompt,prompt.talk_to_mang_isko,Talk to Mang Isko,Talk to Mang Isko,Kausapin si Mang Isko,
 ui,ui.credits.title,Game credits,Game credits,Mga kredito,
 ui,ui.credits.close,Close credits,Close,Isara,
@@ -619,3 +619,81 @@ ui,ui.leaderboard.skip_save,Continue without saving,Continue without saving,Magp
 ui,ui.leaderboard.save_failed,Your score could not be saved. Try again or continue without saving.,Your score could not be saved. Try again or continue without saving.,Hindi na-save ang score mo. Subukan muli o magpatuloy nang hindi sine-save.,
 ui,ui.leaderboard.clear_failed,Scores could not be cleared. Try again. Existing scores are still available.,Scores could not be cleared. Try again. Existing scores are still available.,Hindi nabura ang mga score. Subukan muli. Nananatili ang mga naunang score.,
 ui,ui.hud.cash_compact,PHP %d,PHP %d,PHP %d,Compact HUD balance; preserve %d placeholder.
+dialogue,dialogue.you,You,You,You,Player dialogue label stays You in both languages.
+ui,ui.inventory.open_hint,Open inventory,Open inventory,Buksan ang imbentaryo,Tab keycap is displayed separately.
+tutorial,tutorial.title,How to prepare,How to prepare,Paano maghanda,
+tutorial,tutorial.page_count,%d / %d,%d / %d,%d / %d,Keep %d placeholders.
+tutorial,tutorial.before.title,Before the storm,Before the storm,Bago dumating ang bagyo,
+tutorial,tutorial.before.body,"A typhoon is approaching. Help Nanay, Lola and Bunso prepare your home before it arrives.
+
+Store food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.","A typhoon is approaching. Help Nanay, Lola and Bunso prepare your home before it arrives.
+
+Store food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.","Paparating ang bagyo. Tulungan sina Nanay, Lola at Bunso na ihanda ang bahay bago ito dumating.
+
+Mag-imbak ng pagkain at tubig, kumuha ng gamot ni Lola, ayusin ang bubong, takpan ang dalawang bintana, at paganahin ang radyo at flashlight.",
+tutorial,tutorial.before.caption,Prepare the family home before the storm arrives.,Prepare the family home before the storm arrives.,Ihanda ang bahay ng pamilya bago dumating ang bagyo.,
+tutorial,tutorial.inspect.title,Inspect the house,Inspect the house,Suriin ang bahay,
+tutorial,tutorial.inspect.body,"WASD: move. Shift: sprint.
+
+Press E near people or glowing task markers to learn what is needed.
+
+Press E or Space to finish a line and continue dialogue.","WASD: move. Shift: sprint.
+
+Press E near people or glowing task markers to learn what is needed.
+
+Press E or Space to finish a line and continue dialogue.","WASD: gumalaw. Shift: tumakbo.
+
+Lumapit sa tao o kumikinang na task marker at pindutin ang E para malaman ang kailangan.
+
+Pindutin ang E o Space para tapusin ang linya at ituloy ang usapan.",
+tutorial,tutorial.inspect.caption,Glowing markers identify preparation tasks.,Glowing markers identify preparation tasks.,Minamarkahan ng mga kumikinang na palatandaan ang mga gawain.,
+tutorial,tutorial.shop.title,Buy supplies,Buy supplies,Bumili ng mga kailangan,
+tutorial,tutorial.shop.body,"Press M to open the map and choose a destination. Travel uses time.
+
+Spend carefully. Shops can become dangerous or close as the storm worsens.
+
+The clock keeps running while the map or inventory is open.","Press M to open the map and choose a destination. Travel uses time.
+
+Spend carefully. Shops can become dangerous or close as the storm worsens.
+
+The clock keeps running while the map or inventory is open.","Pindutin ang M para buksan ang mapa at pumili ng pupuntahan. May oras na gugugulin sa biyahe.
+
+Magtipid. Maaaring maging delikado o magsara ang mga tindahan habang lumalakas ang bagyo.
+
+Tuloy ang oras habang bukas ang mapa o inventory.",
+tutorial,tutorial.shop.caption,Check travel time and shop availability before leaving.,Check travel time and shop availability before leaving.,Tingnan ang oras ng biyahe at kung bukas pa ang tindahan bago umalis.,
+tutorial,tutorial.bag.title,Use your inventory,Use your inventory,Gamitin ang inventory,
+tutorial,tutorial.bag.body,"Press Tab to open or close your seven-slot inventory.
+
+Click an item, then a compatible second item. Check the result and press Combine.
+
+Try batteries with a flashlight or radio.","Press Tab to open or close your seven-slot inventory.
+
+Click an item, then a compatible second item. Check the result and press Combine.
+
+Try batteries with a flashlight or radio.","Pindutin ang Tab para buksan o isara ang inventory na may pitong slot.
+
+Pumili ng item, saka ng katugmang ikalawang item. Tingnan ang resulta at pindutin ang Combine.
+
+Subukan ang baterya sa flashlight o radyo.",
+tutorial,tutorial.bag.caption,The combination preview shows what you will make.,The combination preview shows what you will make.,Ipinapakita ng preview ang mabubuong item bago pagsamahin.,
+tutorial,tutorial.finish.title,Finish preparations,Finish preparations,Tapusin ang paghahanda,
+tutorial,tutorial.finish.body,"Return home with supplies and press E at each task. Check the preparation checklist.
+
+Food needs 4 cans, 1 whole chicken, or 2 half chickens.
+
+The storm arrives when time runs out. Ready early? Choose End the Day on the map.","Return home with supplies and press E at each task. Check the preparation checklist.
+
+Food needs 4 cans, 1 whole chicken, or 2 half chickens.
+
+The storm arrives when time runs out. Ready early? Choose End the Day on the map.","Umuwi dala ang mga kailangan at pindutin ang E sa bawat gawain. Tingnan ang checklist.
+
+Para sa pagkain: 4 na de lata, 1 buong manok, o 2 kalahating manok.
+
+Darating ang bagyo kapag ubos na ang oras. Handa na? Piliin ang End the Day sa mapa.",
+tutorial,tutorial.finish.caption,Completed tasks leave the active objectives.,Completed tasks leave the active objectives.,Nawawala sa mga aktibong layunin ang natapos na gawain.,
+tutorial,tutorial.back,Back,Back,Bumalik,
+tutorial,tutorial.next,Next,Next,Susunod,
+tutorial,tutorial.done,Done,Done,Tapos,
+tutorial,tutorial.hide_session,Do not show again,Do not show again,Huwag nang ipakita,
+tutorial,tutorial.paused,The game is paused while you read. Esc closes this guide.,The game is paused while you read. Esc closes this guide.,Naka-pause ang laro habang nagbabasa ka. Esc para isara ang gabay.,

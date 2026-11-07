@@ -22,7 +22,7 @@ extends Interactable
 @export var chars_per_second: float = 40.0
 @export var monologue_ui_scene: PackedScene
 
-const PLAYER_NAME: String = "Player"
+const PLAYER_NAME: String = "You"
 const SFX = preload("res://game/audio/Sfx.gd")
 const CONSUMABLE_TASK_ITEM_TYPES: Array[int] = [
 	ItemData.ItemType.BRING_HOME,

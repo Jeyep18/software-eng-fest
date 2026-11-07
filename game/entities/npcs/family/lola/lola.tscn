@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_q26se"]
 script = ExtResource("3_dw7mn")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_speaking")
 text = "Opo Lola."
 metadata/_custom_type_script = "uid://po32410sv037"
@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_5d8dr"]
 script = ExtResource("3_dw7mn")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_thinking")
 text = "[color=#a9d8e8]Kailangan ni Lola ang [b]gamot[/b]. Kailangan ko pumunta ng [b]botika[/b].[/color]"
 metadata/_custom_type_script = "uid://po32410sv037"

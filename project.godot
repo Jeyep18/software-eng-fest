@@ -10,10 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Software Festival 2026"
+config/name="Bagyong Bahay"
 run/main_scene="uid://c4d7ja1u0s1e7"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="godot/app_userdata/Software Festival 2026"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+config/icon="res://game/assets/branding/game_icon.png"
+config/windows_native_icon="res://game/assets/branding/game_icon.ico"
+config/custom_user_dir_name.windows="Godot/app_userdata/Software Festival 2026"
+config/custom_user_dir_name.macos="Godot/app_userdata/Software Festival 2026"
 
 [audio]
 

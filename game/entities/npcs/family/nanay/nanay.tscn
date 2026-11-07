@@ -63,7 +63,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_ucdwx"]
 script = ExtResource("3_dclit")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_speaking")
 text = "Opo Nay. Hahanapin ko kung ano ang kailangan ihanda."
 metadata/_custom_type_script = "uid://po32410sv037"
@@ -84,7 +84,7 @@ metadata/_custom_type_script = "uid://po32410sv037"
 
 [sub_resource type="Resource" id="Resource_67bnw"]
 script = ExtResource("3_dclit")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("portrait_player_determined")
 text = "Ako na po bahala nay."
 metadata/_custom_type_script = "uid://po32410sv037"

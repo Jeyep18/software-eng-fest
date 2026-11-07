@@ -86,7 +86,7 @@ func _run() -> void:
 					_check(get_viewport().get_texture().get_image().save_png(capture_dir.path_join(identity + ".png")) == OK, "render capture: " + identity)
 					break
 		ui.hide_ui()
-		monologue.show_line("Kailangan kong maghanda.", "Player")
+		monologue.show_line("Kailangan kong maghanda.", "You")
 		monologue.skip_to_end()
 		await RenderingServer.frame_post_draw
 		_check(get_viewport().get_texture().get_image().save_png(capture_dir.path_join("player_thinking.png")) == OK, "monologue render capture")

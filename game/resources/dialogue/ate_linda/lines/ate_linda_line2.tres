@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_r3rbf")
-speaker_name = "Player"
+speaker_name = "You"
 expression = ExtResource("1_ixc7w")
 text = "bibili po sana ako hehe... bukas po ba kayo?"
 metadata/_custom_type_script = "uid://po32410sv037"

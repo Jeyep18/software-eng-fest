@@ -25,6 +25,7 @@ offset_right = 215.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="HotbarBG" type="Panel" parent="HotbarRoot" unique_id=1072293837]
 custom_minimum_size = Vector2(460, 62)
@@ -37,6 +38,7 @@ offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3t8fp")
+mouse_filter = 2
 
 [node name="SlotContainer" type="HBoxContainer" parent="HotbarRoot" unique_id=98096001]
 layout_mode = 1
@@ -45,3 +47,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -2.0
 theme_override_constants/separation = 6
+mouse_filter = 2
+
+[node name="InventoryHint" type="PanelContainer" parent="HotbarRoot"]
+layout_mode = 0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="HotbarRoot/InventoryHint"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Row" type="HBoxContainer" parent="HotbarRoot/InventoryHint/Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TabKey" type="PanelContainer" parent="HotbarRoot/InventoryHint/Margin/Row"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="HotbarRoot/InventoryHint/Margin/Row/TabKey"]
+layout_mode = 2
+mouse_filter = 2
+text = "Tab"
+
+[node name="Hint" type="Label" parent="HotbarRoot/InventoryHint/Margin/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Open inventory"
+autowrap_mode = 3
