@@ -1,0 +1,12 @@
+BAGYONG BAHAY
+Paglalahad ng tulong mula sa AI
+
+Salin bilang gabay sa pagbasa. Ang English na AI_DISCLOSURE.txt ang masusunod kung may pagkakaiba sa kahulugan.
+
+Gumamit ang 3 Netherite Ingots ng OpenAI Codex at ChatGPT bilang tulong sa pagprograma, pag-debug, pagsubok at dokumentasyon.
+
+Gumamit ng AI-assisted image generation para sa mapa at mga portrait ng NPC sa ilalim ng direksyon ni Jeyep18 at ng team. Ang team ang pumili, nagsuri at nag-integrate ng mga resulta.
+
+Mula kay Jeyep18 at sa team ang orihinal na 3D modeling, mga kapaligiran, mapa ng bahay at art direction. Kinikilala sa Credits at Licenses menu ang mga gumawa ng third-party na modelo, texture, audio, font at shader. Nananatiling naaangkop ang kani-kanilang mga karapatan at lisensya.
+
+Petsa ng abiso Nobyembre 7, 2026.

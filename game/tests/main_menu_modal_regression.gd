@@ -23,7 +23,9 @@ func _run() -> void:
 	var credits: CanvasLayer = menu.credits_modal
 	var credits_body: RichTextLabel = credits.get_node("%Body")
 	var credits_close: Button = credits.get_node("%Close")
-	var credits_sources: Button = credits.get_node("%Sources")
+	var source_select: OptionButton = credits.get_node("%SourceSelect")
+	var open_source: Button = credits.get_node("%OpenSource")
+	var license_topic: OptionButton = credits.get_node("%LicenseTopic")
 	var credits_title: Label = credits.get_node("%Title")
 	var credits_panel: PanelContainer = credits.get_node("%Panel")
 	var quit: Button = menu.quit_button
@@ -35,8 +37,9 @@ func _run() -> void:
 	_key(KEY_ENTER)
 	await get_tree().process_frame
 	_check(credits.visible and credits_close.has_focus(), "Enter opens credits and focuses Close")
-	_check(credits_title.text == "Game credits" and credits_body.get_parsed_text().contains("3 Netherite Ingots"), "English heading and development credit")
-	_check(credits_body.get_parsed_text().contains("BokerTV") and credits_body.get_parsed_text().contains("Henaway"), "confirmed broadcast and new sound credits are present")
+	_check(credits_title.text == "BAGYONG BAHAY" and credits_body.get_parsed_text().contains("3 Netherite Ingots")
+		and credits_body.get_parsed_text().contains("Jeyep18"), "game title and original team credit")
+	_check(credits._tabs.size() == 4 and source_select.item_count > 10, "four views and keyboard source catalog")
 	await _capture("credits_english")
 	_click(menu.quit_button.get_global_rect().get_center())
 	_check(not quit.is_confirmation_open(), "click cannot reach the menu behind credits")
@@ -44,6 +47,9 @@ func _run() -> void:
 	await get_tree().process_frame
 	_check(credits_body.get_v_scroll_bar().value > 0, "mouse wheel scrolls the credits")
 	_key(KEY_TAB)
+	_check(credits._tabs[0].has_focus(), "Tab enters the view navigation")
+	for index in 4:
+		_key(KEY_TAB)
 	_check(credits_body.has_focus(), "Tab focuses the credits text")
 	var first_scroll := credits_body.get_v_scroll_bar().value
 	_key(KEY_PAGEDOWN)
@@ -55,9 +61,40 @@ func _run() -> void:
 	_key(KEY_HOME)
 	_check(is_zero_approx(scroll.value), "Home returns to the first section")
 	_key(KEY_TAB)
-	_check(credits_sources.has_focus(), "Tab reaches the source list")
+	_check(source_select.has_focus(), "Tab reaches the source list")
+	_key(KEY_TAB)
+	_check(open_source.has_focus(), "source action is keyboard accessible")
 	_key(KEY_TAB)
 	_check(credits_close.has_focus(), "focus cycles within credits")
+	_click(credits._tabs[1].get_global_rect().get_center())
+	await get_tree().process_frame
+	_check(license_topic.visible and credits_body.get_parsed_text().contains("Jeyep18"), "Licenses opens offline project terms")
+	license_topic.select(1)
+	license_topic.item_selected.emit(1)
+	_check(credits_body.get_parsed_text().contains("Lyndschoko") and credits_body.get_parsed_text().contains("CC BY 4.0")
+		and credits_body.get_parsed_text().contains("CUSTOM ASSET AND PLATFORM TERMS"), "asset notices retain attribution and custom terms")
+	license_topic.select(2)
+	license_topic.item_selected.emit(2)
+	_check(credits_body.get_parsed_text().contains("Permission is hereby granted")
+		and credits_body.get_parsed_text().contains("Third-party components"), "offline engine and dependency notices")
+	license_topic.select(3)
+	license_topic.item_selected.emit(3)
+	_check(credits_body.get_parsed_text().contains("Creative Commons")
+		and credits_body.get_parsed_text().contains("OPEN FONT LICENSE"), "full media and font licenses load offline")
+	_click(credits._tabs[2].get_global_rect().get_center())
+	_check(credits_body.get_parsed_text().contains("leaderboard") and not license_topic.visible
+		and not source_select.is_visible_in_tree(), "Privacy explains local scores with contextual controls")
+	_click(credits._tabs[3].get_global_rect().get_center())
+	_check(credits_body.get_parsed_text().contains("Codex") and credits_body.get_parsed_text().contains("ChatGPT"), "AI use discloses confirmed development assistance")
+	VisualSettings.set_ui_scale_percent(100)
+	_click(credits._tabs[0].get_global_rect().get_center())
+	await get_tree().process_frame
+	_check(get_viewport().get_visible_rect().encloses(credits_panel.get_global_rect()), "credits fit at 100%")
+	await _capture("credits_english_100")
+	credits._tabs[0].grab_focus()
+	_key(KEY_RIGHT)
+	_key(KEY_ENTER)
+	_check(credits._view == 1 and credits._tabs[1].has_focus(), "arrow and Enter navigate to Licenses")
 	_key(KEY_ESCAPE)
 	_check(not credits.visible and menu.credits_button.has_focus(), "Escape closes credits and restores source focus")
 
@@ -65,9 +102,14 @@ func _run() -> void:
 	VisualSettings.set_ui_scale_percent(175)
 	_click(menu.credits_button.get_global_rect().get_center())
 	await get_tree().process_frame
-	_check(credits.visible and credits_title.text == "Mga kredito" and credits_close.text == "Isara", "mouse opens localized credits")
+	_check(credits.visible and credits._tabs[0].text == "Mga kredito" and credits_close.text == "Isara", "mouse opens localized credits")
 	_check(get_viewport().get_visible_rect().encloses(credits_panel.get_global_rect()), "credits fit at 175%")
 	await _capture("credits_tagalog_175")
+	for index in range(1, 4):
+		_click(credits._tabs[index].get_global_rect().get_center())
+		await get_tree().process_frame
+		_check(not credits_body.text.is_empty() and credits_panel.get_global_rect().encloses(credits_body.get_global_rect()), "localized view fits at 175% " + str(index))
+		await _capture("notice_%d_tagalog_175" % index)
 	_click(credits_close.get_global_rect().get_center())
 	_check(not credits.visible and menu.credits_button.has_focus(), "Close button restores source focus")
 

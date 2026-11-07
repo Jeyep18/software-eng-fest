@@ -79,6 +79,10 @@ Reuse `game/ui/theme/GameUIStyle.gd`, `GameTheme.tres` and `VisualSettings` sizi
 
 Use `game/audio/Sfx.gd` for existing semantic sounds and button wiring. `AudioManager` manages music/ambience/voice and transient SFX; `StormAudioController` separately owns evolving storm layers. Settings and leaderboard are local files, not a complete save-game system. Changing their format requires checking old data and load failure behavior. Persistent files and their scope are documented in [ARCHITECTURE.md](ARCHITECTURE.md).
 
+The menu's Credits, Licenses, Privacy and AI use views read the contributor catalog and `game/legal/*.txt`. Keep detailed attribution edits consistent with `THIRD_PARTY_NOTICES.txt`; the license view reads that full offline notice. Preserve original license texts. Both Windows presets include the legal files. The public preset additionally excludes the unused Bates Shower, Traveling Typewriter and ErickBloem outside-birds assets. Inspect the exported pack to verify their imported payloads are absent.
+
+A Windows distribution carries the root project permission and a `licenses` folder containing the legal text files. Generate engine and dependency notices from the matching Godot version with `Engine.get_license_text()`, `Engine.get_copyright_info()` and `Engine.get_license_info()`, which also supply the offline menu. Include those notices beside the executable, and carry the README and checksum with the evaluation folder. The [release checklist](audits/2026-11-07-public-release-notices.md) records outstanding permission work.
+
 ## Debugging and export
 
 Use Godot's Output/Debugger and Remote scene tree during ordinary development to inspect node ownership, signals, input locks and paused state. Existing `game/tests/sandbox/test_world/test_world.tscn` and `test_world_2.tscn` are exploratory scenes, not assertions or a test runner. Directly loading ending/location scenes is a useful narrow inspection but cannot prove the normal run flow works. Read current resource paths before using older debug entries.

@@ -1,0 +1,33 @@
+BAGYONG BAHAY
+Privacy at lokal na data
+
+Salin bilang gabay sa pagbasa. Ang English na PRIVACY.txt ang masusunod kung may pagkakaiba sa kahulugan.
+
+Sa iyong device iniimbak ng laro ang mga setting at leaderboard. Walang account service, analytics service o awtomatikong pag-upload ng score o mga setting ang kasalukuyang laro.
+
+Kasama sa lokal na score ang pangalang inilagay mo, resulta ng paghahanda, resulta ng quest, natitirang oras sa laro, difficulty, score at petsa at oras ng pagtatala. Makikita sa leaderboard ang mga pangalan at score ng sinumang gumagamit ng parehong lokal na data ng laro.
+
+Iniimbak din ang audio settings, visual at interface settings, at pinili mong wika. Maaaring gumawa ang pag-save ng pansamantala at backup na mga file na naglalaman ng parehong score data.
+
+Karaniwang data folder sa Windows
+%APPDATA%\Godot\app_userdata\Software Festival 2026
+
+Mga lokal na file
+leaderboard_scores_v2.json
+leaderboard_scores_v2.json.tmp
+leaderboard_scores_v2.json.bak
+audio_settings.cfg
+visual_settings.cfg
+language_settings.cfg
+
+Gamitin ang Clear scores sa leaderboard at tingnan ang resultang ipinakita ng laro. Upang alisin ang lahat ng lokal na score at setting, isara ang laro at burahin ang mga nakalistang file mula sa data folder nito. Babalik sa default ang mga setting sa susunod na pagbukas. Hindi sine-save ang progreso ng kasalukuyang laro.
+
+Maaaring may naiwang lumang leaderboard_scores.json sa parehong folder mula sa naunang bersyon. Ang Clear scores sa bersyong ito ay para sa kasalukuyang v2 scores. Upang alisin ang mga pangalang nasa lumang file, isara ang laro at hiwalay na burahin ang file na iyon.
+
+Maaaring magsulat ang Godot ng diagnostic files sa logs na subfolder. Hiwalay ang mga log na ito sa mga score at setting at maaari silang maglaman ng error o lokal na file path. Maaari mong alisin ang logs na subfolder habang sarado ang laro.
+
+Kapag pinili mong buksan ang isang source link, bubuksan ng laro ang website sa iyong browser. Ang website at browser ang humahawak sa koneksyong iyon ayon sa sarili nilang privacy settings at mga patakaran.
+
+Saklaw ng abisong ito ang mismong laro. Maaaring hiwalay na magproseso ng data ang pinag-downloadang website o platform ayon sa sarili nitong patakaran.
+
+Petsa ng abiso Nobyembre 7, 2026.

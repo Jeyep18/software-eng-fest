@@ -1,0 +1,17 @@
+BAGYONG BAHAY
+Pahintulot para sa libreng paglalaro
+
+Salin bilang gabay sa pagbasa. Ang English na PROJECT_LICENSE.txt ang masusunod kung may pagkakaiba sa kahulugan.
+
+Copyright (c) 2026 3 Netherite Ingots at ang kani-kanilang mga contributor.
+Kabilang sa orihinal na pagmomodelo, mga kapaligiran, mapa ng bahay at art direction ang gawa ni Jeyep18.
+
+Maaari mong i-download, i-install at laruin nang libre ang mga opisyal na build ng Bagyong Bahay para sa personal at pang-edukasyong paglalaro.
+
+Inilalaan ng team ang mga karapatan sa orihinal nitong code, artwork, teksto, modelo, branding at iba pang orihinal na nilalaman. Kailangan ang nakasulat na pahintulot ng team upang ibenta, i-repackage o ipamahagi ang laro, gamitin muli ang mga orihinal na materyal na iyon, o ipamahagi ang binagong build, maliban sa pinahihintulutan ng naaangkop na batas.
+
+May sariling mga lisensya at tuntunin ang mga third-party component at asset. Hindi pinapalitan o nililimitahan ng pahintulot na ito ang mga karapatang ibinibigay ng mga lisensyang iyon. Tingnan ang third-party notices at ang mga lisensya ng engine at asset sa Licenses menu ng laro at sa licenses directory ng distribusyon.
+
+Ibinibigay ang laro sa kasalukuyang kalagayan nito, nang walang pangako ng patuloy na suporta o compatibility. Nananatili ang mga karapatang ipinagkakaloob ng naaangkop na batas.
+
+Petsa ng abiso Nobyembre 7, 2026.

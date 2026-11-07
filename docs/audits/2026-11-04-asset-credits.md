@@ -2,6 +2,9 @@
 
 **November 4, 2026 · 3 Netherite Ingots**
 
+Follow-up source confirmations, current notices and the public-export checklist are in the [November 7 report](2026-11-07-public-release-notices.md).
+
+
 The [file inventory](2026-11-04-asset-inventory.csv) records 1,097 tracked media files and source companions. It identifies 423 normal game dependencies, 143 recording dependencies, 16 test or legacy dependencies, and 5 inactive references. The remaining 510 files are design, marketing, or reference media, or have no runtime reference found. Of all 1,097 files, 824 have a payload in the prior Windows demo.
 
 The original creator could not be identified for 302 file rows, including 261 normal game dependencies. Most of those dependencies are texture maps and components of shared location models. The count is by file, so it includes related maps and variants. Filter **Provenance** for `Unknown original creator`, `Unknown mesh source`, `Filename credit only`, or the candidate statuses to find the files that still need a source match. A credit or download link does not establish permission to redistribute.

@@ -13,6 +13,7 @@ const HEADER_BG: Color = Color(0.122, 0.486, 0.404, 0.18)
 @onready var rows_container: VBoxContainer = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer
 @onready var empty_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/ScrollContainer/RowsContainer/EmptyLabel
 @onready var margin_container: MarginContainer = $MarginContainer
+@onready var error_label: Label = $MarginContainer/LeaderboardsModal/VBoxContainer/Error
 
 var _clear_armed: bool = false
 var _panel_tween: Tween = null
@@ -38,6 +39,7 @@ func open() -> void:
 		_panel_tween.kill()
 	close_button.disabled = false
 	_clear_armed = false
+	error_label.hide()
 	_update_clear_button()
 	_refresh()
 	show()
@@ -143,9 +145,14 @@ func _on_clear_pressed() -> void:
 		_update_clear_button()
 		return
 
-	LeaderboardManager.clear_entries()
+	if LeaderboardManager.clear_entries() != OK:
+		error_label.text = LocalizationManager.translate_key("ui.leaderboard.clear_failed", "Scores could not be cleared. Try again. Existing scores are still available.")
+		error_label.show()
+		return
+	error_label.hide()
 	_clear_armed = false
 	_update_clear_button()
+	close_button.grab_focus()
 
 func _update_clear_button() -> void:
 	clear_button.text = "CONFIRM CLEAR" if _clear_armed else "CLEAR"
@@ -177,6 +184,8 @@ func _apply_leaderboard_style() -> void:
 	clear_button.custom_minimum_size = Vector2(132, 44) * ui_scale
 	UI_STYLE.apply_label(title_label, false, true)
 	UI_STYLE.apply_label(empty_label, true)
+	UI_STYLE.apply_label(error_label)
+	error_label.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
 	title_label.add_theme_font_size_override("font_size", int(roundi(24.0 * ui_scale)))
 
 func _table_width() -> float:

@@ -1,0 +1,286 @@
+BAGYONG BAHAY
+Third-party notices
+
+Third-party creators retain their rights in their respective works. The project permission for free play applies to the team's original material and preserves the permissions granted by each third-party license.
+
+The individual works, creators, sources and known licenses follow below. Full CC BY 3.0, CC BY 4.0, CC0 1.0 and Inter OFL texts are included in this directory and the in-game license selector. Godot's engine and compiled third-party component notices are available through the same Licenses menu.
+
+Game adaptations include scene scale, materials, placement and composition. The cat and dog additionally use revised coats and animations. The VHS shader was adapted for Godot 4, capture timing and the game's visual settings. Audio is mixed in gameplay, and selected clips are looped or cropped. The included fonts and default Godot icon retain their supplied artwork.
+
+GAME DESIGN AND PROGRAMMING
+
+3 Netherite Ingots
+Original art direction and models · Jeyep18
+Godot Engine · MIT License
+https://godotengine.org/license/
+
+3D MODELS AND TEXTURES
+
+Original models, environments and house maps · Jeyep18 and 3 Netherite Ingots
+Upstream character assets · Characters PSX by Elbolilloduro
+https://elbolilloduro.itch.io/characters-psx
+
+Player base · Simple Character PSX Asset by JashiPSX
+https://jashi-psx.itch.io/simple-character-psx-asset
+
+Player animations · Adobe Mixamo
+https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html
+
+Human base mesh · Low Poly Human Mesh by Comp-3 Interactive
+https://comp3interactive.itch.io/low-poly-human-mesh
+
+Dog · PSX Dog by MCSTEEG, adapted for the game
+https://mcsteeg.itch.io/psx-dog
+
+Cat · Low-poly cat by Prildarill, adapted for the game
+https://prildarill.itch.io/meow
+
+Cars · PSX Style Cars by GGBotNet
+https://ggbot.itch.io/psx-style-cars
+
+Plants · valsekamerplant
+https://valsekamerplant.itch.io/psx-style-house-plants-and-pots
+
+Trees · Retro PSX Nature Pack by Elegant Crow (CC0), halfhuman, and PS1/PSX Tree and Grass Pack by Domi · CC BY 4.0
+https://elegantcrow.itch.io/retro-psx-nature-pack
+https://halfhuman.itch.io/ps1psx-game-asset-pack
+https://domi236.itch.io/ps1-style-tree-and-grass-pack
+https://creativecommons.org/licenses/by/4.0/
+
+Domi pack assets were imported into Godot and integrated into team scenes.
+Interiors · Objects Interior (Village) Alpha by Elbolilloduro, Retro Model Pack Interior by Kkryy, and Retro furniture set with dithering by chikievna · CC0
+https://elbolilloduro.itch.io/objects-interiorvillage-alpha
+https://kkryy.itch.io/retro-interior-pack
+https://chikievna.itch.io/retro-furniture-set-with-dithering
+
+Original scene composition and models · Jeyep18 and 3 Netherite Ingots
+Buildings · Buildings by Elbolilloduro · CC0, with original locations by Jeyep18
+https://elbolilloduro.itch.io/buildings
+
+Tools · Low Poly Tool Pack by Lyndschoko · CC BY 4.0
+https://sketchfab.com/3d-models/low-poly-tool-pack-66fc15e383a9453984db4ededd41ed3c
+https://creativecommons.org/licenses/by/4.0/
+
+Lyndschoko pack assets were imported into Godot and integrated into team scenes.
+Bed source retained in the project · Low-Poly Bed by psychopom (formerly floating world) · custom terms
+https://psychopom.itch.io/low-poly-bed
+
+Door textures · School Classrooms Asset Pack by styloo
+https://styloo.itch.io/classroom-asset-pack
+
+Simple AA Battery by MasterYogurt · CC BY 4.0
+https://sketchfab.com/3d-models/simple-aa-battery-5dcd884e27b642c8a7932a227d7c1b7a
+https://creativecommons.org/licenses/by/4.0/
+
+Nail by Jvdm78 · CC BY 4.0
+https://sketchfab.com/3d-models/nail-58f0c51993c1461da0a76d735d118281
+https://creativecommons.org/licenses/by/4.0/
+
+Treska by Сверкающая Звезда · CC BY 4.0
+https://sketchfab.com/3d-models/treska-865b2169516042f3a2965ca7b672fe74
+https://creativecommons.org/licenses/by/4.0/
+
+Psx Style Fridge by pixapexel (bundled model) · CC BY 4.0
+https://sketchfab.com/3d-models/psx-style-fridge-1b5727b1952043339b4501a72df1bd6c
+https://creativecommons.org/licenses/by/4.0/
+
+Asphalt 02 by Rob Tuytel and Gravel Concrete 03 by Charlotte Baglioni · Poly Haven · CC0
+https://polyhaven.com/a/asphalt_02
+https://polyhaven.com/a/gravel_concrete_03
+
+Overcast Soil (Pure Sky) by Jarod Guest and Sergej Majboroda · Poly Haven · CC0
+https://polyhaven.com/a/overcast_soil_puresky
+
+Citrus Orchard (Pure Sky) by Dimitrios Savva and Jarod Guest · Poly Haven · CC0
+https://polyhaven.com/a/citrus_orchard_puresky
+
+Belfast Sunset (Pure Sky) by Dimitrios Savva, Greg Zaal and Jarod Guest · Poly Haven · CC0
+https://polyhaven.com/a/belfast_sunset_puresky
+
+Godot default application icon by Andrea Calabró · CC BY 4.0
+https://godotengine.org/press/
+https://creativecommons.org/licenses/by/4.0/
+
+MUSIC
+
+Extreme Sad Cinema · Samuel F. Johanns (Pixabay)
+Phase Shift by Scott Buckley · CC BY 4.0 · www.scottbuckley.com.au
+https://www.scottbuckley.com.au/library/phase-shift/
+https://creativecommons.org/licenses/by/4.0/
+https://www.scottbuckley.com.au/
+
+Lottery Casino Pause Intro Background Music · MFCC (Pixabay)
+https://pixabay.com/music/funk-lottery-casino-pause-intro-background-music-120443/
+
+SOUND EFFECTS
+
+Scary Ambience · jacksonacademyashmore (Freesound via Pixabay) · CC0
+https://freesound.org/people/jacksonacademyashmore/sounds/434523/
+
+MarketCalm 140205_0059.wav and Room-tone wind rain LONG 200216_0114.ogg by klankbeeld (Freesound) · CC BY 4.0
+https://freesound.org/people/klankbeeld/sounds/217464/
+https://freesound.org/people/klankbeeld/sounds/523722/
+https://creativecommons.org/licenses/by/4.0/
+
+City Sounds · forfie (Freesound)
+https://freesound.org/people/forfie/sounds/319336/
+
+Fan (heating) · giddster (Freesound)
+https://freesound.org/people/giddster/sounds/437343/
+
+Foodcourt ambience · SduggySounds (Freesound)
+https://freesound.org/people/SduggySounds/sounds/721615/
+
+Fridge tone · Catacombronson (Freesound)
+https://freesound.org/people/Catacombronson/sounds/626727/
+
+Quiet house ambience by Marlene_Coetzer (Freesound) · CC BY 3.0
+https://freesound.org/people/Marlene_Coetzer/sounds/594553/
+https://creativecommons.org/licenses/by/3.0/
+
+Fluorescent light buzzing · JoelMcDaniel (Freesound)
+https://freesound.org/people/JoelMcDaniel/sounds/830440/
+
+Morning-Birds · dadshb1489 (Freesound via Pixabay) · CC0
+https://freesound.org/people/dadshb1489/sounds/390563/
+
+Rooster Crowing · cabled_mess (Freesound via Pixabay)
+https://pixabay.com/sound-effects/nature-rooster-crowing-27112016-processed-101724/
+
+Free Dog Bark and Meowing Cat · DRAGON-STUDIO (Pixabay)
+https://pixabay.com/sound-effects/nature-free-dog-bark-419014/
+https://pixabay.com/sound-effects/nature-meowing-cat-401728/
+
+Big Dog Bark Distant · solarmusic (Pixabay)
+https://pixabay.com/sound-effects/nature-big-dog-bark-distant-113701/
+
+cat purring loop.wav · soundofsong (Freesound)
+https://freesound.org/people/soundofsong/sounds/650575/
+
+Fumar · sbaneat (Freesound via Pixabay)
+https://pixabay.com/sound-effects/people-fumar-6420/
+
+Having A Smoke · husky70 (Freesound via Pixabay)
+https://pixabay.com/sound-effects/people-having-a-smoke-89760/
+
+Scratching Paper.mp3 · Henaway (Freesound)
+https://freesound.org/people/Henaway/sounds/127979/
+
+dorm door opening.wav · pagancow (Freesound)
+https://freesound.org/people/pagancow/sounds/15419/
+
+Bllrr-text-loop · lulyc (Freesound via Pixabay) · CC0
+https://freesound.org/people/lulyc/sounds/346118/
+
+put_item · j1987 (Freesound via Pixabay)
+https://pixabay.com/sound-effects/film-special-effects-put-item-83043/
+
+HammeringRoof · mlestn1 (Freesound via Pixabay)
+https://freesound.org/people/mlestn1/sounds/83242/
+
+Inventory_Open_00.wav by LittleRobotSoundFactory (Freesound) · CC BY 4.0
+https://freesound.org/people/LittleRobotSoundFactory/sounds/270393/
+https://creativecommons.org/licenses/by/4.0/
+
+Inventory close · Fission9 (Freesound)
+https://freesound.org/people/Fission9/sounds/568991/
+
+Open Map · freesound_CrunchpixStudio (Pixabay)
+https://pixabay.com/sound-effects/open-map-384948/
+
+Pouring Water, Interface, Interface Click, Error Notification 010 and Cinematic Impact Boom 05 · Universfield (Pixabay)
+https://pixabay.com/sound-effects/water-191999/
+https://pixabay.com/sound-effects/interface-124464/
+https://pixabay.com/sound-effects/button-124476/
+https://pixabay.com/sound-effects/error-010-206498/
+
+UI Button Sound · Nomagician (Pixabay)
+https://pixabay.com/sound-effects/ui-button-sound-cancel-back-exit-continue-467877/
+
+Hover Button · Musicholder (Pixabay)
+https://pixabay.com/sound-effects/hover-button-287656/
+
+Cash Register 1 · ksjsbwuil (Pixabay)
+Coin and Money Bag 3 · floraphonic (Pixabay)
+https://pixabay.com/sound-effects/coin-and-money-bag-3-185264/
+
+Cash Register Scanner Single Beep · Cartoon Music (Pixabay)
+Wind blowing sfx · JCI-21 (Pixabay)
+https://pixabay.com/sound-effects/wind-blowing-sfx-12809/
+
+Gust of Wind · DRAGON-STUDIO (Pixabay)
+Rain Thunder SFX · SoundReality (Pixabay)
+Storm · u_7hpxkdroz2 (Pixabay)
+Loud Thunder · u_vrs223ln83 (Pixabay)
+027958_Distant Thunder.wav · Freesound Community (Pixabay)
+https://pixabay.com/sound-effects/027958-distant-thunderwav-79709/
+
+BROADCAST AUDIO
+
+Kasaysayan sa mga Liham ni Tiya Dely · DZRH radio drama, sourced from BokerTV's upload
+https://www.youtube.com/watch?v=IrpTpQobwUc
+
+Redistribution permission for this recording remains undocumented.
+Sounds from a TV by IESP (Freesound) · CC BY 3.0
+https://freesound.org/people/IESP/sounds/340020/
+https://creativecommons.org/licenses/by/3.0/
+
+057519 Train Announcement · Freesound Community (Pixabay)
+shortwave criminal history.wav by uair01 (bundled Freesound recording) · CC BY 3.0
+https://freesound.org/people/uair01/sounds/86613/
+https://creativecommons.org/licenses/by/3.0/
+
+TYPEFACES
+
+Inter · The Inter Project Authors and Rasmus Andersson · SIL Open Font License 1.1
+https://rsms.me/inter/
+https://github.com/rsms/inter/blob/v3.19/LICENSE.txt
+
+EAS VHS · Lastnames (listed as Rurr) · CC BY 3.0
+https://fontstruct.com/fontstructions/show/2878521/eas-vhs
+https://www.dafont.com/easvhs.font
+https://creativecommons.org/licenses/by/3.0/
+
+SHADER AND ARTWORK NOTES
+
+VHS and CRT monitor effect by pend00 · CC0, adapted for Godot 4 and the game
+https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+
+Map and NPC portrait artwork · Jeyep18 and 3 Netherite Ingots, with AI-assisted image generation under team direction
+Animal models, scene assemblies and selected upstream assets were adapted for the game. Full notices and project terms are available offline in this menu.
+
+CUSTOM ASSET AND PLATFORM TERMS
+
+The following is a summary. Refer to each creator's linked terms for the complete permission.
+
+JashiPSX permits commercial and noncommercial project use and modifications, with optional credit. The creator restricts standalone asset redistribution, resale and repackaging.
+https://jashi-psx.itch.io/simple-character-psx-asset
+
+MCSTEEG permits the dog in personal and commercial game or animation projects and prohibits presenting or redistributing it as your own asset. Prildarill permits project use and modification of the cat, with credit appreciated.
+https://mcsteeg.itch.io/psx-dog
+https://prildarill.itch.io/meow
+
+psychopom permits commercial and noncommercial project use of Low-Poly Bed, with optional credit, and restricts standalone redistribution and resale. The original floating-world URL redirects to psychopom.
+https://psychopom.itch.io/low-poly-bed
+
+Adobe's Mixamo terms cover the player animation library. They permit use within projects, including games. Standalone raw asset redistribution is restricted.
+https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html
+https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Mixamo-Addl-Terms-en_US-20210623.pdf
+
+halfhuman's tree-pack page permits game and project use and identifies textures.com as a texture source. The publisher's permission and each underlying texture's terms remain relevant.
+https://halfhuman.itch.io/ps1psx-game-asset-pack
+
+Pixabay permits use and adaptations subject to its Content License. Its terms restrict standalone redistribution and certain trademark, misleading and other uses. Individual source links and original Freesound credits are retained above where identified.
+https://pixabay.com/service/license-summary/
+https://pixabay.com/service/terms/
+
+EAS VHS is cataloged by Rurr on DaFont. The bundled file credits Lastnames and embeds CC BY 3.0, with FontStruct listing 2878521. That bundled-file notice is retained. It differs from the license shown for the separate itch.io edition.
+Copyright Lastnames 2026
+https://fontstruct.com/fontstructions/show/2878521/eas-vhs
+https://www.dafont.com/easvhs.font
+
+Inter's original copyright and full SIL Open Font License 1.1 are in INTER_OFL.txt. The included files are the supplied Inter 3.019 font files.
+
+The source of two archive recordings, Train Announcement and Distant Thunder, still lacks a verified original creator. The DZRH recording is attributed to its broadcaster and owner-confirmed BokerTV upload. Redistribution permission for that recording remains undocumented. Credits alone do not grant that permission.
+
+Notice date November 7, 2026.

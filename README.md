@@ -83,7 +83,8 @@ Read [development](docs/DEVELOPMENT.md) for conventions and workflows, [testing]
 
 ## Documentation
 
-- [Asset credits audit](docs/audits/2026-11-04-asset-credits.md) and [file inventory](docs/audits/2026-11-04-asset-inventory.csv).
+- [Current notices and public-export checklist](docs/audits/2026-11-07-public-release-notices.md), [asset inventory](docs/audits/2026-11-04-asset-inventory.csv), and the dated [November 4 credits audit](docs/audits/2026-11-04-asset-credits.md).
+- [Project permission for free personal and educational play](LICENSE.txt), [privacy and local data](game/legal/PRIVACY.txt), and [AI assistance disclosure](game/legal/AI_DISCLOSURE.txt). Third-party licenses apply to their respective works.
 - [Architecture](docs/ARCHITECTURE.md): current implementation.
 - [Game design](docs/GAME_DESIGN.md): player experience and implementation/history distinctions.
 - [Development](docs/DEVELOPMENT.md): working in the repository.

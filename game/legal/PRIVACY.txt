@@ -1,0 +1,31 @@
+BAGYONG BAHAY
+Privacy and local data
+
+The game stores its settings and leaderboard on your device. The current game has no account service, analytics service or automatic upload of scores or settings.
+
+Local scores include the name you enter, preparation results, quest result, remaining game time, difficulty, score and the date and time the score was recorded. Anyone who uses the same local game data can see the names and scores in the leaderboard.
+
+The game stores audio settings, visual and interface settings, and your language choice. Score saving may also create temporary and backup files containing the same score data.
+
+On Windows, the normal data folder is
+%APPDATA%\Godot\app_userdata\Software Festival 2026
+
+The local files are
+leaderboard_scores_v2.json
+leaderboard_scores_v2.json.tmp
+leaderboard_scores_v2.json.bak
+audio_settings.cfg
+visual_settings.cfg
+language_settings.cfg
+
+Use Clear scores in the leaderboard and check the result shown by the game. To remove all local scores and settings, close the game and delete the listed files from its data folder. Removing settings restores the defaults on the next launch. Session progress is not saved.
+
+Earlier versions may have left an archived leaderboard_scores.json file in the same folder. Clear scores in this version clears the current v2 scores. To remove names retained in that older file, close the game and delete the archived file separately.
+
+Godot may write diagnostic files in the logs subfolder. These logs are separate from scores and settings and may include errors or local file paths. You can remove the logs subfolder while the game is closed.
+
+When you activate an external source link, the game opens that website in your browser. The website and browser handle that connection under their own privacy settings and policies.
+
+This notice covers the game itself. A download website or platform may process data separately under its own policy.
+
+Notice date November 7, 2026.

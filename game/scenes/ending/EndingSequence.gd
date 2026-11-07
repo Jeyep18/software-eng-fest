@@ -4,6 +4,7 @@
 extends Node
 
 signal result_continue_requested
+signal leaderboard_choice_made(save_score: bool)
 
 const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const SFX = preload("res://game/audio/Sfx.gd")
@@ -57,7 +58,7 @@ const WIND_GUST_CHANCE_DONE: float = 0.12
 const WIND_GUST_CHANCE_FAILED: float = 0.28
 
 var SLIDES: Array = []
-var _leaderboard_score_saved: bool = false
+var _leaderboard_prompt_completed: bool = false
 var _lightning_active: bool = true
 var _next_wind_gust_time: float = 0.0
 var _credit_label: Label = null
@@ -370,36 +371,43 @@ func _show_result_panel() -> void:
 	SceneManager.load_scene("main_menu")
 
 func _submit_leaderboard_score() -> void:
-	if _leaderboard_score_saved:
+	if _leaderboard_prompt_completed:
 		return
 	if _snapshot["unranked"]:
-		_leaderboard_score_saved = true
+		_leaderboard_prompt_completed = true
 		return
 
 	var prompt_layer := _create_leaderboard_prompt()
 	var name_input: LineEdit = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/NameInput")
 	var submit_button: Button = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/ButtonRow/SubmitButton")
+	var skip_button: Button = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/ButtonRow/SkipButton")
+	var error_label: Label = prompt_layer.get_node("Panel/MarginContainer/VBoxContainer/Error")
 
 	name_input.text_changed.connect(func(new_text: String) -> void:
 		submit_button.disabled = new_text.strip_edges().is_empty()
+		error_label.hide()
 	)
 	name_input.text_submitted.connect(func(_new_text: String) -> void:
 		if not submit_button.disabled:
 			submit_button.pressed.emit()
 	)
 
+	submit_button.pressed.connect(func() -> void:
+		if not submit_button.disabled:
+			leaderboard_choice_made.emit(true)
+	)
+	skip_button.pressed.connect(func() -> void: leaderboard_choice_made.emit(false))
 	add_child(prompt_layer)
 	CursorState.request_visible(prompt_layer)
 	name_input.call_deferred("grab_focus")
-	await submit_button.pressed
-
-	var player_name: String = name_input.text.strip_edges()
-	if player_name.is_empty():
-		player_name = "Player"
-
-	LeaderboardManager.record_run(player_name, _snapshot["resolved_ids"], _snapshot["nestor_status"], _snapshot["remaining_minutes"], _snapshot["difficulty_id"])
-	SFX.ui_click()
-	_leaderboard_score_saved = true
+	while await leaderboard_choice_made:
+		var error := LeaderboardManager.record_run(name_input.text, _snapshot["resolved_ids"], _snapshot["nestor_status"], _snapshot["remaining_minutes"], _snapshot["difficulty_id"])
+		if error == OK:
+			break
+		error_label.text = LocalizationManager.translate_key("ui.leaderboard.save_failed", "Your score could not be saved. Try again or continue without saving.")
+		error_label.show()
+		submit_button.grab_focus()
+	_leaderboard_prompt_completed = true
 	prompt_layer.queue_free()
 
 func _create_leaderboard_prompt() -> CanvasLayer:
@@ -407,34 +415,36 @@ func _create_leaderboard_prompt() -> CanvasLayer:
 	layer.name = "LeaderboardNamePrompt"
 	layer.layer = 50
 
+	var backdrop := ColorRect.new()
+	backdrop.color = Color(0.02, 0.025, 0.03, 0.82)
+	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(backdrop)
+
+	var ui_scale := VisualSettings.get_ui_scale()
 	var panel := PanelContainer.new()
 	panel.name = "Panel"
-	panel.custom_minimum_size = Vector2(580, 280)
-	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.offset_left = -290
-	panel.offset_top = -140
-	panel.offset_right = 290
-	panel.offset_bottom = 140
+	panel.custom_minimum_size.x = minf(660.0 * ui_scale, get_viewport().get_visible_rect().size.x - 48.0)
+	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	layer.add_child(panel)
 	UI_STYLE.apply_panel(panel)
 
 	var margin := MarginContainer.new()
 	margin.name = "MarginContainer"
-	margin.add_theme_constant_override("margin_left", 28)
-	margin.add_theme_constant_override("margin_top", 24)
-	margin.add_theme_constant_override("margin_right", 28)
-	margin.add_theme_constant_override("margin_bottom", 24)
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, roundi(24.0 * ui_scale))
 	panel.add_child(margin)
 
 	var box := VBoxContainer.new()
 	box.name = "VBoxContainer"
-	box.add_theme_constant_override("separation", 14)
+	box.add_theme_constant_override("separation", roundi(14.0 * ui_scale))
 	margin.add_child(box)
 
 	var title := Label.new()
-	title.text = LocalizationManager.translate("SAVE YOUR RUN")
+	title.text = LocalizationManager.translate_key("ui.leaderboard.save_title", "Save your run")
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 28)
+	title.add_theme_font_size_override("font_size", roundi(28.0 * ui_scale))
 	box.add_child(title)
 	UI_STYLE.apply_label(title, false, true)
 
@@ -448,33 +458,72 @@ func _create_leaderboard_prompt() -> CanvasLayer:
 		_format_minutes(_snapshot["remaining_minutes"]),
 	])
 	summary.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	summary.add_theme_font_size_override("font_size", 18)
+	summary.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	summary.add_theme_font_size_override("font_size", roundi(16.0 * ui_scale))
 	box.add_child(summary)
 	UI_STYLE.apply_label(summary, true)
 
+	var privacy_notice := Label.new()
+	privacy_notice.name = "PrivacyNotice"
+	privacy_notice.text = LocalizationManager.translate_key("ui.leaderboard.nickname_notice", "Use a nickname. Your score is saved only on this device and can be cleared from Leaderboards.")
+	privacy_notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	privacy_notice.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
+	UI_STYLE.apply_label(privacy_notice, true)
+	box.add_child(privacy_notice)
+
 	var name_input := LineEdit.new()
 	name_input.name = "NameInput"
-	name_input.placeholder_text = LocalizationManager.translate("Enter player name")
+	name_input.placeholder_text = LocalizationManager.translate_key("ui.leaderboard.nickname_placeholder", "Enter a nickname")
 	name_input.max_length = 24
-	name_input.custom_minimum_size = Vector2(0, 42)
+	name_input.custom_minimum_size.y = 42.0 * ui_scale
+	name_input.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+	name_input.add_theme_font_size_override("font_size", roundi(20.0 * ui_scale))
 	name_input.add_theme_color_override("font_color", UI_STYLE.TEXT)
 	name_input.add_theme_color_override("font_placeholder_color", UI_STYLE.TEXT_MUTED)
 	name_input.add_theme_stylebox_override("normal", UI_STYLE.button_style(Color(0.08, 0.09, 0.10, 0.95)))
 	name_input.add_theme_stylebox_override("focus", UI_STYLE.button_style(Color(0.10, 0.11, 0.12, 0.98), UI_STYLE.BORDER))
 	box.add_child(name_input)
 
+	var error_label := Label.new()
+	error_label.name = "Error"
+	error_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	error_label.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
+	UI_STYLE.apply_label(error_label)
+	error_label.hide()
+	box.add_child(error_label)
+
 	var button_row := HBoxContainer.new()
 	button_row.name = "ButtonRow"
 	button_row.alignment = BoxContainer.ALIGNMENT_END
+	button_row.add_theme_constant_override("separation", roundi(12.0 * ui_scale))
 	box.add_child(button_row)
+
+	var skip_button := Button.new()
+	skip_button.name = "SkipButton"
+	skip_button.text = LocalizationManager.translate_key("ui.leaderboard.skip_save", "Continue without saving")
+	skip_button.custom_minimum_size.y = 42.0 * ui_scale
+	skip_button.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
+	button_row.add_child(skip_button)
+	UI_STYLE.apply_button(skip_button)
 
 	var submit_button := Button.new()
 	submit_button.name = "SubmitButton"
-	submit_button.text = "SAVE"
+	submit_button.text = LocalizationManager.translate_key("ui.leaderboard.save_score", "Save score")
 	submit_button.disabled = true
-	submit_button.custom_minimum_size = Vector2(130, 42)
+	submit_button.custom_minimum_size = Vector2(130, 42) * ui_scale
+	submit_button.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
 	button_row.add_child(submit_button)
 	UI_STYLE.apply_button(submit_button)
+
+	var focus_order: Array[Control] = [name_input, skip_button, submit_button]
+	for index in focus_order.size():
+		var control := focus_order[index]
+		control.focus_next = control.get_path_to(focus_order[(index + 1) % focus_order.size()])
+		control.focus_previous = control.get_path_to(focus_order[(index + focus_order.size() - 1) % focus_order.size()])
+		control.focus_neighbor_top = control.focus_previous
+		control.focus_neighbor_bottom = control.focus_next
+		control.focus_neighbor_left = control.focus_previous
+		control.focus_neighbor_right = control.focus_next
 
 	return layer
 

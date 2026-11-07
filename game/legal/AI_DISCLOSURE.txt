@@ -1,0 +1,10 @@
+BAGYONG BAHAY
+AI assistance disclosure
+
+3 Netherite Ingots used OpenAI Codex and ChatGPT to assist with programming, debugging, test work and documentation.
+
+AI-assisted image generation was used for the map and NPC portrait artwork under the direction of Jeyep18 and the team. The team selected, reviewed and integrated the results.
+
+Jeyep18 and the team supplied the original 3D modeling, environments, house maps and art direction. Third-party models, textures, audio, fonts and shaders are credited to their creators in the Credits and Licenses menus. Their individual rights and license terms still apply.
+
+Notice date November 7, 2026.

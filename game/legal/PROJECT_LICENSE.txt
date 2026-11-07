@@ -1,0 +1,15 @@
+BAGYONG BAHAY
+Permission for free play
+
+Copyright (c) 2026 3 Netherite Ingots and the respective contributors.
+Original modeling, environments, house maps and art direction include work by Jeyep18.
+
+You may download, install and play official Bagyong Bahay builds free of charge for personal and educational play.
+
+The team reserves rights in its original code, artwork, text, models, branding and other original content. Selling, repackaging or redistributing the game, reusing those original materials, or distributing modified builds requires the team's written permission, except where applicable law permits otherwise.
+
+Third-party components and assets remain subject to their own licenses and terms. The permission above does not replace or restrict rights granted by those licenses. See the third-party notices and the engine and asset license texts in the game's Licenses menu and the distribution's licenses directory.
+
+The game is supplied as available, without a promise of continued support or compatibility. Mandatory rights under applicable law are preserved.
+
+Notice date November 7, 2026.
