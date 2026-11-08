@@ -65,17 +65,17 @@ curve = SubResource("Curve_7ekle")
 line_spacing = 80.0
 font = ExtResource("11_title_font")
 font_size = 100
-font_color = Color(0.88051325, 0.89085156, 0.9155459, 1)
+font_color = Color(0.39215687, 0.7254902, 0.6431373, 1)
 shadow_size = 10
-shadow_color = Color(0.10463881, 0.239701, 0.22193775, 1)
+shadow_color = Color(0.09019608, 0.24705882, 0.21568628, 1)
 shadow_offset = Vector2(-5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tagline"]
 font = ExtResource("11_title_font")
 font_size = 45
-font_color = Color(0.7752989, 0.74258107, 0.7733152, 1)
+font_color = Color(0.7254902, 0.79607844, 0.74509805, 1)
 shadow_size = 10
-shadow_color = Color(0.10463881, 0.239701, 0.22193775, 1)
+shadow_color = Color(0.09019608, 0.24705882, 0.21568628, 1)
 shadow_offset = Vector2(-5, 5)
 
 [sub_resource type="Animation" id="Animation_5bjxa"]
