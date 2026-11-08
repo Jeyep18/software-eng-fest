@@ -3,6 +3,7 @@
 extends Node
 
 var collected_world_items: Array[String] = []
+var introduced_shop_npcs: Array[String] = []
 var player_name: String = ""
 const STARTING_CASH: int = 0
 
@@ -197,6 +198,7 @@ func reset() -> void:
 	grocery_donation_given = false
 	tindahan_smoke_break_taken = false
 	collected_world_items.clear()
+	introduced_shop_npcs.clear()
 #endregion
 
 func mark_item_collected(item_id: String) -> void:

@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://s2h4lnx5ugmq" path="res://game/ui/dialogue/npc/dialogue_ui.tscn" id="4_oif5d"]
 [ext_resource type="Script" uid="uid://po32410sv037" path="res://game/resources/dialogue/dialogueLine.gd" id="5_line"]
 [ext_resource type="Script" uid="uid://b55uh8miobq8a" path="res://game/resources/dialogue/dialogueSequence.gd" id="6_seq"]
+[ext_resource type="PackedScene" path="res://game/objects/interactables/TaskCue3D.tscn" id="shop_cue"]
+[ext_resource type="Script" path="res://game/objects/interactables/ShopDiscoveryCue.gd" id="shop_cue_script"]
 
 [ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/ate_linda/apologetic.png" id="portrait_ate_linda_apologetic"]
 [ext_resource type="Texture2D" path="res://game/assets/npc_portraits/stylized/ate_linda/grateful.png" id="portrait_ate_linda_grateful"]
@@ -95,3 +97,8 @@ debug_color = Color(0.78586143, 0.1424543, 0.9810607, 0.41960785)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=570082434]
 unique_name_in_owner = true
+
+[node name="ShopDiscoveryCue" parent="." instance=ExtResource("shop_cue")]
+position = Vector3(0, 2.2, 0)
+script = ExtResource("shop_cue_script")
+shop_id = "ate_linda"

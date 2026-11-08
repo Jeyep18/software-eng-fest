@@ -143,3 +143,17 @@ Seven selected accessible Codex tasks were reviewed, including their available t
 Unresolved decisions include the next approved milestone, whether broader act/outcome fields should ever become gameplay, engine migration timing, supported minimum hardware, complete localization scope, and whether pause/transition edge cases need behavior changes. The source does not settle these product questions.
 
 Dialogue and monologue speaker labels use **You** in both languages. The smoker is named **Mang Julian**, including his interaction prompt. The chicken seller now shares a brief whole/half-chicken exchange with a budget joke, replacing the celebrity shout. Credits/licenses uses a dark outlined reader with clear headings, one continuous licenses document and an edge-aligned scrollbar. Redundant dropdowns and source-picker controls are removed; direct source links remain keyboard accessible. Cancel/Close/Back/Leave controls use a quieter shared style, exits that discard progress have a warning border, and difficulty Cancel is narrower and separated from the three choices. Resume and progression actions remain prominent. Ending music/weather is quieter, avoids duplicate storm layers, and fades away as score results begin. Startup branding uses the studio splash and supplied game icon; the separate engine card is omitted while engine credit remains in Credits/Licenses.
+
+## Restored title and first-visit shop guidance
+
+The main menu uses the older white, shadowed two-line Bagyong Bahay title and
+"Handa ka na ba?" tagline in Bates Shower, matching the recovered typography
+confirmed by the owner. Its column adapts to available height, keeping all six
+menu actions clear of the title, tagline and Replay Intro.
+
+Gold glowing exclamation marks identify the four main shopkeepers: Ate Linda,
+grocery, hardware and pharmacy. Each disappears when the player's first valid
+conversation opens, even if the player leaves it early or buys nothing. It stays
+gone on return visits for that run and returns on restart/new game. Chicken
+seller, Lottohan and other NPCs have no new marker. Existing shop prices, stock,
+trade choices and time rules continue through their existing systems.

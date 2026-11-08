@@ -295,3 +295,25 @@ The original documentation audit used static inspection. Subsequent Milestone 1/
 Historical storm-event/route-risk/request-resource ideas are **NOT IMPLEMENTED**; see [ROADMAP.md](ROADMAP.md) for provenance and uncommitted status. A full gameplay save format is not established.
 
 Significant architecture changes should document current state, define the problem, compare real alternatives, select an approach, record the decision in [DECISIONS.md](DECISIONS.md), and update this document. Do not use this policy to justify unrelated refactoring or introduce duplicate global managers.
+
+## Main-menu title and shop discovery cues
+
+The menu restores the pre-`364e32a` Bates Shower title and tagline typography.
+`TitleArt` keeps its existing node name while becoming a Label; no caller depends
+on its former TextureRect type. A single menu column scales from its combined
+minimum size, viewport and UI scale, reserving the separate Replay Intro area.
+Minimum-size changes also handle translated button widths. The original logo
+image and shader remain available as assets. Bates Shower is included in the
+public Windows preset following the owner's explicit confirmation; its embedded
+personal-use notice and attribution are retained in the font README and notices.
+
+`ShopDiscoveryCue` subclasses `TaskCue3D` and is instanced only under Ate Linda,
+grocery, hardware and pharmacy actor roots. It listens to the existing NPC
+`prompt_visibility_changed` signal. A hidden prompt while `NPC.is_showing` is true
+marks the stable shop ID in `GameState.introduced_shop_npcs` and stops the cue.
+Blocked/empty interactions leave it active. The per-run array survives scene
+changes and clears in `GameState.reset()`; no persistence format or shop/NPC base
+changes are added. Authored heights clear each model, and only the billboard
+symbol ignores depth so roofs/counter beams cannot hide it. Glow/particles keep
+normal world rendering. Existing recording-camera TaskCue3D recognition and
+actor visibility cover these cues.

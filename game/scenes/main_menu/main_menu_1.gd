@@ -21,6 +21,7 @@ extends Node3D
 @onready var leaderboards_modal: CanvasLayer = $LeaderboardsModal
 @onready var credits_modal: CanvasLayer = $CreditsModal
 @onready var menu_buttons: VBoxContainer = $VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer
+@onready var menu_layout: HBoxContainer = $VBoxContainer
 @onready var lightning: SpotLight3D = $Lights/Lightning
 @onready var menu_camera: Camera3D = $SubViewportContainer/SubViewport/Camera3D
 
@@ -70,6 +71,10 @@ func _ready() -> void:
 	_setup_vignette_overlay()
 	_reorder_menu_buttons()
 	_apply_menu_ui_style()
+	get_viewport().size_changed.connect(_layout_menu)
+	VisualSettings.ui_scale_changed.connect(_layout_menu.unbind(1))
+	menu_layout.minimum_size_changed.connect(_layout_menu)
+	_layout_menu()
 	_capture_camera_base()
 	credits_button.pressed.connect(_on_credits_pressed)
 	leaderboards_button.pressed.connect(_on_leaderboards_pressed)
@@ -400,6 +405,16 @@ func _apply_menu_ui_style() -> void:
 			child.custom_minimum_size = Vector2(BUTTON_WIDTH, BUTTON_HEIGHT)
 
 	_apply_main_menu_button_style(replay_intro_button)
+
+func _layout_menu() -> void:
+	var viewport_size := get_viewport().get_visible_rect().size
+	var base_size := menu_layout.get_combined_minimum_size()
+	# Reserve the bottom-left Replay Intro area while keeping the full column together.
+	var available_height := maxf(1.0, viewport_size.y - 144.0)
+	var menu_scale := minf(VisualSettings.get_ui_scale(), minf((viewport_size.x - 48.0) / base_size.x, available_height / base_size.y))
+	menu_layout.size = base_size
+	menu_layout.scale = Vector2.ONE * menu_scale
+	menu_layout.position = Vector2(0.0, 32.0 + (available_height - base_size.y * menu_scale) * 0.5)
 
 func _apply_main_menu_button_style(button: Button) -> void:
 	UI_STYLE.apply_button(button)

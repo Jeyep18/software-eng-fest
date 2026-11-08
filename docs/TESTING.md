@@ -809,3 +809,33 @@ corrected before final acceptance; only passing final runs count.
 No Windows executable or ZIP was rebuilt. Native packaged launch/icon rewriting,
 extracted persistence, physical input/listening and second-PC acceptance remain
 separate gates. Evidence is under `C:/Temp/bagyong-polish-20261108`.
+
+## Restored title and first-visit shop cues, November 8, 2026
+
+`menu_title_regression.tscn` passed 77 headless and 77 Forward Plus checks. It
+checks recovered Bates Shower settings, Windows font inclusion and non-overlap
+among the title, tagline, all six menu actions and Replay Intro. Its 18-case
+matrix covers EN/TL, 100/140/175% UI scale, and 1920x1080, 1280x720 and 1280x800
+logical canvases. Native title captures were inspected.
+
+`shop_discovery_regression.tscn` passed 57 headless and 57 Forward Plus checks.
+It covers all four IDs, model-head clearance, roof-readable symbols, first valid
+dialogue, blocked/empty/repeated/canceled dialogue, normal shop opening, scene
+unload/reinstantiation, independent shop states and new-run reset. A native probe
+loaded each production shop and home/return scene, captured spawn/near/dialogue/
+return views and passed 24 checks. Native review caught Ate Linda's roof-beam
+occlusion; the final billboard-only depth override fixes it.
+
+Related checks: menu modal 396 headless/404 Forward Plus; Milestone 2 lifecycle
+169; recording camera 1,025; pickup guidance 54; Ate Linda trade 17; full scripted
+flow 163. All final runs passed. One initial concurrent Milestone 2 run missed a
+transient black-fade sampling condition; the unchanged suite passed on rerun.
+Existing shutdown diagnostics remain separate from assertions.
+
+Evidence: `C:/Temp/bagyong-title-shops-20261108`, with final title/menu results in
+`final-original-headless` and `final-original-native`, final marker results in
+`final-headless` and `native-related`, and final camera captures in
+`shop-native-final`. The full-flow run predates only the later confirmed font
+substitution/notice updates; the final font/menu has its dedicated native matrix.
+No Windows EXE or ZIP was rebuilt. Font distribution permission and new-package
+acceptance remain separate from these runtime/source checks.

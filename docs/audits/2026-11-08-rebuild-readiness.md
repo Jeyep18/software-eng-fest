@@ -81,3 +81,36 @@ the early menu/audio runs in `targeted` are superseded.
 
 Unrelated preexisting documentation and icon-preview work is preserved separately
 from the polish commit.
+
+## Follow-up: recovered title and shop discovery markers
+
+After baseline `586a2ef`, the owner confirmed restoring the recovered Bates Shower
+menu version and including its font in Windows exports. The title/tagline use the
+original 100/45 font settings and white/shadow treatment. One responsive column
+preserves the title/menu/Replay Intro separation. The prior pixel-font substitute
+was not committed. Credits and offline notices now identify Imagex and preserve
+the font's embedded "Free for personal use only" notice. See the
+[font record](../../game/assets/fonts/bates_shower/README.md); no separate broader
+distribution permission document is present in the repository.
+
+Only Ate Linda, grocery, hardware and pharmacy receive the existing gold task-cue
+visual. First valid dialogue records discovery for that run; leaving/revisiting
+does not restore it, while a new run does. The small TaskCue3D subclass reuses
+existing dialogue signals, without changing shop bases, costs or persistence.
+Its billboard symbol stays readable beneath shop roofs; glow/particles remain
+normal 3D content.
+
+| Follow-up check | Final result |
+| --- | --- |
+| Restored title | 77 headless and 77 Forward Plus, zero failures. Font/export settings, 18 layout combinations, all actions and Replay Intro bounds/non-overlap. |
+| Shop lifecycle | 57 headless and 57 Forward Plus, zero failures. Four identities, first valid dialogue, rejection guards, head clearance, independent flags, revisit/reset and normal shop opening. |
+| Production shop cameras | 24 native checks, zero failures; 16 final captures across the four actual locations and return visits. Ate Linda's initially obscured symbol was corrected before final review. |
+| Related checks | Menu modal 396 headless/404 Forward Plus; lifecycle 169; recording camera 1,025; pickup 54; Ate Linda trade 17; full scripted flow 163. All final runs passed. |
+
+The initial concurrent lifecycle run missed a transient fade condition; the same
+unmodified suite passed its rerun. No assertion was weakened. Independent source
+review found no actionable remaining issue. Evidence is under
+`C:/Temp/bagyong-title-shops-20261108`. Runtime/geometry tests use scripted input and
+scene staging, not a human playthrough. Native package/font inclusion and broader
+font-distribution permission remain unverified. Windows rebuild approval is still
+required, and the existing ZIP has not been replaced or duplicated.

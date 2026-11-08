@@ -30,7 +30,8 @@ Sounds from a TV · [b]IESP[/b]
 Train Announcement · [b]Freesound Community via Pixabay[/b]
 Bundled shortwave recording · [b]uair01[/b]"""],
 	["ui.credits.fonts", "Typefaces", """Inter · [b]Rasmus Andersson and the Inter Project Authors[/b]
-EAS VHS · [b]Lastnames, listed as Rurr[/b]"""],
+EAS VHS · [b]Lastnames, listed as Rurr[/b]
+Bates Shower · [b]Imagex[/b]"""],
 	["ui.credits.technology", "Technology and artwork", """Godot Engine · [b]Godot contributors[/b]
 Player animations · [b]Adobe Mixamo[/b]
 VHS and CRT monitor effect · [b]pend00[/b]
@@ -112,7 +113,8 @@ Redistribution permission for this recording remains undocumented.
 057519 Train Announcement · Freesound Community (Pixabay)
 [url=https://freesound.org/people/uair01/sounds/86613/]shortwave criminal history.wav[/url] by uair01 (bundled Freesound recording) · [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]"""],
 	["ui.credits.fonts", "Typefaces", """[url=https://rsms.me/inter/]Inter[/url] · The Inter Project Authors and Rasmus Andersson · [url=https://github.com/rsms/inter/blob/v3.19/LICENSE.txt]SIL Open Font License 1.1[/url]
-[url=https://fontstruct.com/fontstructions/show/2878521/eas-vhs]EAS VHS[/url] · Lastnames (listed as [url=https://www.dafont.com/easvhs.font]Rurr[/url]) · [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]"""],
+[url=https://fontstruct.com/fontstructions/show/2878521/eas-vhs]EAS VHS[/url] · Lastnames (listed as [url=https://www.dafont.com/easvhs.font]Rurr[/url]) · [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]
+[url=https://www.dafont.com/bates-shower.font]Bates Shower[/url] · Imagex · Embedded notice: Free for personal use only"""],
 	["ui.credits.technology", "Shader and artwork notes", """[url=https://godotshaders.com/shader/vhs-and-crt-monitor-effect/]VHS and CRT monitor effect[/url] by pend00 · CC0, adapted for Godot 4 and the game
 Map and NPC portrait artwork · Jeyep18 and 3 Netherite Ingots, with AI-assisted image generation under team direction
 Animal models, scene assemblies and selected upstream assets were adapted for the game. Full notices and project terms are available offline in this menu."""],
@@ -194,6 +196,7 @@ const SOURCE_LINKS := [
 	["Inter", "https://rsms.me/inter/"],
 	["SIL Open Font License 1.1", "https://github.com/rsms/inter/blob/v3.19/LICENSE.txt"],
 	["EAS VHS", "https://fontstruct.com/fontstructions/show/2878521/eas-vhs"],
+	["Bates Shower", "https://www.dafont.com/bates-shower.font"],
 	["Rurr", "https://www.dafont.com/easvhs.font"],
 	["VHS and CRT monitor effect", "https://godotshaders.com/shader/vhs-and-crt-monitor-effect/"],
 	["Public release notice report", "https://github.com/Jeyep18/software-eng-fest/blob/dev/docs/audits/2026-11-07-public-release-notices.md"],

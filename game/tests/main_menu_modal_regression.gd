@@ -39,6 +39,7 @@ func _run() -> void:
 	_check(credits.visible and credits_close.has_focus(), "Enter opens credits and focuses Close")
 	_check(credits_title.text == "BAGYONG BAHAY" and credits_body.get_parsed_text().contains("3 Netherite Ingots")
 		and credits_body.get_parsed_text().contains("Jeyep18"), "game title and original team credit")
+	_check(credits_body.get_parsed_text().contains("Bates Shower") and credits_body.get_parsed_text().contains("Imagex"), "restored title font retains its creator credit")
 	_check(credits._tabs.size() == 4 and credits._source_links.size() == credits.CONTENT.SOURCE_LINKS.size(), "four views retain the complete keyboard source catalog")
 	_check(credits.find_children("*", "OptionButton", true, false).is_empty(), "credits has no dropdown selectors")
 	_check(credits_close.get_meta("button_role") == &"secondary", "Close has a secondary action style")
@@ -78,6 +79,7 @@ func _run() -> void:
 		and credits_body.get_parsed_text().contains("Third-party components"), "offline engine and dependency notices")
 	_check(credits_body.get_parsed_text().contains("Creative Commons")
 		and credits_body.get_parsed_text().contains("OPEN FONT LICENSE"), "full media and font licenses load offline")
+	_check(credits_body.get_parsed_text().contains("Free for personal use only"), "the restored font's embedded notice is available offline")
 	for entry: Array in credits.CONTENT.LICENSE_FILES:
 		_check(_words(credits_body.get_parsed_text()).contains(_words(FileAccess.get_file_as_string(entry[1]))), "reflow preserves complete notice wording: " + entry[0])
 	_check(_words(credits_body.get_parsed_text()).contains(_words(Engine.get_license_text())), "engine license wording is preserved")
