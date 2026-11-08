@@ -789,3 +789,23 @@ Independent source review found no actionable regression. The active CSV now has
 ObjectDB/resource shutdown diagnostics remain. No Windows EXE or ZIP was built;
 packaged acceptance and human playthrough remain unverified. Evidence and captures
 are under `C:/Temp/bagyong-tutorial-repair-20261107`.
+
+## Presentation, food guidance and ending mix, November 8, 2026
+
+The approved source changes and final acceptance results are recorded in the
+[rebuild-readiness review](audits/2026-11-08-rebuild-readiness.md). Credits/menu
+passed 393 headless and 401 Forward Plus checks; food 166 in each mode; tutorial
+1,238 in each; audio 161 in each; full scripted flow 163 in each. Forward Plus
+and forced Compatibility each passed the 49-check graphics matrix. Related
+regressions and native captures are listed in that review.
+
+The full flow now checks stopped ending loops at results and nickname entry.
+Audio tests assign the real ending as the root's current scene, exposing and
+checking the removal of duplicate gameplay storm layers. Credits tests check the
+single reader's actual scroll edge, preserved license wording, source-link focus,
+resize behavior and bounded focus indicator. Initial fixture/layout failures were
+corrected before final acceptance; only passing final runs count.
+
+No Windows executable or ZIP was rebuilt. Native packaged launch/icon rewriting,
+extracted persistence, physical input/listening and second-PC acceptance remain
+separate gates. Evidence is under `C:/Temp/bagyong-polish-20261108`.

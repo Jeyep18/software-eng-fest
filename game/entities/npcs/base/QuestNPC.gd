@@ -109,7 +109,7 @@ func _build_choice_prompt() -> void:
 
 	_choice_decline_button = Button.new()
 	_choice_decline_button.pressed.connect(_decline_choice)
-	UI_STYLE.apply_button(_choice_decline_button)
+	UI_STYLE.apply_secondary_button(_choice_decline_button)
 	actions.add_child(_choice_decline_button)
 
 	_choice_accept_button = Button.new()

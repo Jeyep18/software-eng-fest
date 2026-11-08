@@ -7,7 +7,7 @@ const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const PAGES: Array[Dictionary] = [
 	{
 		"id": "before", "title": "Before the storm", "image": "overview",
-		"body": "A typhoon is approaching. Help Nanay, Lola and Bunso prepare your home before it arrives.\n\nStore food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.",
+		"body": "A typhoon is approaching. Help Nanay, Lola and Bunso prepare before 6 PM.\n\nStore food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.",
 	},
 	{
 		"id": "inspect", "title": "Inspect the house", "image": "task",
@@ -15,7 +15,7 @@ const PAGES: Array[Dictionary] = [
 	},
 	{
 		"id": "shop", "title": "Buy supplies", "image": "map",
-		"body": "Press M to open the map and choose a destination. Travel uses time.\n\nSpend carefully. Shops can become dangerous or close as the storm worsens.\n\nThe clock keeps running while the map or inventory is open.",
+		"body": "Travel and completed tasks cost time. Plan each trip before leaving.\n\nPress M for the map. Compare prices and group your purchases to stretch your cash.\n\nThe clock keeps running on the map and in your bag. Shops may close as the storm worsens.",
 	},
 	{
 		"id": "bag", "title": "Use your inventory", "image": "combine",
@@ -23,7 +23,7 @@ const PAGES: Array[Dictionary] = [
 	},
 	{
 		"id": "finish", "title": "Finish preparations", "image": "finish",
-		"body": "Return home with supplies and press E at each task. Check the preparation checklist.\n\nFood needs 4 cans, 1 whole chicken, or 2 half chickens.\n\nThe storm arrives when time runs out. Ready early? Choose End the Day on the map.",
+		"body": "Return home with supplies and press E at each task. Check the preparation checklist.\n\nFood needs 4 cans.\n\nThe storm arrives when time runs out. Ready early? Choose End the Day on the map.",
 	},
 ]
 
@@ -217,6 +217,7 @@ func _build_ui() -> void:
 	_footer = HBoxContainer.new()
 	_layout.add_child(_footer)
 	_do_not_show_button = _make_button("DoNotShowButton", _on_do_not_show_pressed)
+	UI_STYLE.apply_secondary_button(_do_not_show_button)
 	_hint = _make_label(_footer)
 	_hint.autowrap_mode = TextServer.AUTOWRAP_OFF
 	_hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -224,6 +225,7 @@ func _build_ui() -> void:
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_footer.add_child(spacer)
 	_back_button = _make_button("BackButton", _on_back_pressed)
+	UI_STYLE.apply_secondary_button(_back_button)
 	_next_button = _make_button("NextButton", _on_next_pressed)
 
 func _make_label(parent: Node, muted: bool = false) -> Label:

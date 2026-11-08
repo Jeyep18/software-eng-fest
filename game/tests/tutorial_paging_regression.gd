@@ -34,6 +34,7 @@ func _run() -> void:
 		push_error("Tutorial regression requires isolated user data.")
 		get_tree().quit(1)
 		return
+	_test_instruction_copy()
 	await _run_entry_paths()
 	if OS.get_cmdline_user_args().has("--entry-only"):
 		print("Tutorial entry regression: %d checks, %d failures" % [_checks, _failures])
@@ -123,6 +124,19 @@ func _run() -> void:
 	source.free()
 	print("Tutorial paging regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
+
+func _test_instruction_copy() -> void:
+	var previous_language := LocalizationManager.get_language()
+	for language in ["english", "tagalog"]:
+		LocalizationManager.set_language(language)
+		var before := LocalizationManager.translate_key("tutorial.before.body")
+		var shop := LocalizationManager.translate_key("tutorial.shop.body").to_lower()
+		var finish := LocalizationManager.translate_key("tutorial.finish.body").to_lower()
+		_check(before.contains("6 PM" if language == "english" else "alas-sais"), "opening names the storm deadline in " + language)
+		_check(shop.contains("completed tasks" if language == "english" else "gawain") and shop.contains("time" if language == "english" else "oras"), "tutorial explains travel and task time costs in " + language)
+		_check(shop.contains("cash" if language == "english" else "pera") and shop.contains("clock" if language == "english" else "orasan"), "tutorial connects the budget and running clock in " + language)
+		_check(finish.contains("4 cans" if language == "english" else "4 na de lata") and not finish.contains("chicken") and not finish.contains("manok"), "tutorial keeps the food goal to four cans in " + language)
+	LocalizationManager.set_language(previous_language)
 
 func _run_entry_paths() -> void:
 	var original_canvas_size := get_window().content_scale_size

@@ -424,6 +424,11 @@ func _refresh_buttons() -> void:
 	_scratch_all_button.disabled = _settled
 	_scratch_all_button.text = LocalizationManager.translate_key("lotto.scratch_all", "Scratch All")
 	_close_button.text = LocalizationManager.translate_key("lotto.reveal_result", "Reveal Result") if not _settled else LocalizationManager.translate_key("lotto.close", "Close")
+	if _settled:
+		UI_STYLE.apply_secondary_button(_close_button)
+	else:
+		_close_button.remove_meta("button_role")
+		UI_STYLE.apply_button(_close_button)
 
 
 func _exit_tree() -> void:

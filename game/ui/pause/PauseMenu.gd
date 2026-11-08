@@ -185,6 +185,8 @@ func _apply_pause_style() -> void:
 	overlay_panel.modulate = Color(1, 1, 1, 1)
 	overlay_panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.02, 0.025, 0.03, 0.74), Color(1, 1, 1, 0.04), 0))
 	UI_STYLE.apply_tree($Panel/HSplitContainer/Sidebar)
+	UI_STYLE.apply_secondary_button(nav_restart, true)
+	UI_STYLE.apply_secondary_button(nav_quit, true)
 	var badge := $Panel/HSplitContainer/Sidebar/PauseBadge as PanelContainer
 	UI_STYLE.apply_panel(badge)
 	var pause_label := $Panel/HSplitContainer/Sidebar/PauseBadge/Label as Label

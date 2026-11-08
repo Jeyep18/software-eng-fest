@@ -23,6 +23,7 @@ func _run() -> void:
 	_test_invalid_mutations()
 	_test_recipes()
 	_test_stacking_and_discard()
+	_test_button_styles()
 	await _test_hotbar()
 	_test_task_requirements()
 	_test_windows()
@@ -42,6 +43,28 @@ func _item(id: String) -> ItemData:
 	item.item_id = id
 	item.item_name = id
 	return item
+
+func _test_button_styles() -> void:
+	var group := Control.new()
+	var primary := Button.new()
+	var secondary := Button.new()
+	var destructive := Button.new()
+	for button in [primary, secondary, destructive]:
+		group.add_child(button)
+	GameUIStyle.apply_secondary_button(secondary)
+	GameUIStyle.apply_secondary_button(destructive, true)
+	GameUIStyle.apply_tree(group)
+	var primary_style := primary.get_theme_stylebox("normal") as StyleBoxFlat
+	var secondary_style := secondary.get_theme_stylebox("normal") as StyleBoxFlat
+	var destructive_style := destructive.get_theme_stylebox("normal") as StyleBoxFlat
+	_check(primary_style.bg_color != secondary_style.bg_color, "secondary controls stay distinct after a shared restyle")
+	_check(secondary_style.border_color != destructive_style.border_color, "destructive exits differ from safe dismissals")
+	for button in [primary, secondary, destructive]:
+		_check(button.get_theme_stylebox("focus") == GameUIStyle.GAME_THEME.get_stylebox("focus", "Button"), "every button role retains the visible keyboard focus ring")
+	secondary.remove_meta("button_role")
+	GameUIStyle.apply_button(secondary)
+	_check(secondary.get_theme_stylebox("normal") == primary.get_theme_stylebox("normal"), "a changing action can return to primary styling")
+	group.free()
 
 func _reset_inventory() -> void:
 	_inventory.reset()

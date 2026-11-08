@@ -84,8 +84,10 @@ func _ready() -> void:
 	# Other scenes use this recording as a one-shot; only the ending loops it.
 	var storm := ENDING_STORM.duplicate() as AudioStreamMP3
 	storm.loop = true
-	AudioManager.play_ambience(storm)
-	AudioManager.play_music(ENDING_MUSIC)
+	AudioManager.play_ambience(storm, true, -10.0)
+	AudioManager.play_music(ENDING_MUSIC, true, -12.0)
+	# Refresh after current_scene is assigned, even though the ending pauses time.
+	StormAudioController.refresh_layers.call_deferred()
 	SLIDES = [
 		{
 			"need":            NeedsLog.Need.WINDOWS,
@@ -350,6 +352,8 @@ func _fade_out_label() -> void:
 
 # ── Result Panel ───────────────────────────────────────────────────────────────
 func _show_result_panel() -> void:
+	AudioManager.stop_music()
+	AudioManager.stop_ambience()
 	_populate_result_panel()
 	fade_overlay.color.a = 1.0
 	result_panel.show()
@@ -508,7 +512,7 @@ func _create_leaderboard_prompt() -> CanvasLayer:
 	skip_button.custom_minimum_size.y = 42.0 * ui_scale
 	skip_button.add_theme_font_size_override("font_size", roundi(18.0 * ui_scale))
 	button_row.add_child(skip_button)
-	UI_STYLE.apply_button(skip_button)
+	UI_STYLE.apply_secondary_button(skip_button)
 
 	var submit_button := Button.new()
 	submit_button.name = "SubmitButton"
@@ -734,7 +738,7 @@ func _reveal_result_message() -> void:
 func _play_slide_sfx(_slide: Dictionary, is_done: bool) -> void:
 	_try_play_wind_gust(is_done)
 	if not is_done:
-		SFX.thunder_close(-11.0)
+		SFX.thunder_close(-13.0)
 
 func _try_play_wind_gust(is_done: bool) -> void:
 	var now := float(Time.get_ticks_msec()) / 1000.0

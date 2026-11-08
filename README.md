@@ -4,6 +4,8 @@ A Filipino household prepares for an approaching storm. Explore the house, talk 
 
 ## Status
 
+The latest source checks are recorded in the [November 8 rebuild-readiness review](docs/audits/2026-11-08-rebuild-readiness.md). The updated Windows executable and ZIP await separate build approval.
+
 Playable festival/beta scope, inferred from the current loop and source scope comments. This repository includes older scenes and unfinished APIs alongside the current game. Documentation was audited on **2026-09-16–17**, against baseline commit `d280ee0`; gameplay was not playtested during that documentation audit.
 
 ## Engine and requirements

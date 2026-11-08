@@ -41,13 +41,12 @@ func _process(delta: float) -> void:
 	if progress < 0.32 or not _should_play_layers():
 		_one_shot_timer = 6.0
 		return
-	var is_ending_scene := _is_ending_scene()
 	if not _recording_dry and randf() < clamp(progress, 0.25, 0.85):
 		if progress > 0.72 and randf() < 0.35:
 			SFX.thunder_close(-13.0)
 		elif randf() < 0.55:
 			SFX.thunder_distant(-18.0)
-		elif not is_ending_scene:
+		else:
 			SFX.wind_gust(-18.0)
 	if SceneManager.current_location == "grocery" and randf() < 0.35:
 		SFX.shop_beep()
@@ -92,13 +91,10 @@ func _should_play_layers() -> bool:
 	if tree == null or tree.current_scene == null:
 		return false
 	var scene_path := tree.current_scene.scene_file_path
-	return scene_path.contains("/locations/") or scene_path.contains("/ending/")
+	return scene_path.contains("/locations/")
 
-func _is_ending_scene() -> bool:
-	var tree := get_tree()
-	if tree == null or tree.current_scene == null:
-		return false
-	return tree.current_scene.scene_file_path.contains("/ending/")
+func refresh_layers() -> void:
+	_update_layers()
 
 func _update_layers(force: bool = false) -> void:
 	var progress: float = GlobalTimer.get_storm_progress()

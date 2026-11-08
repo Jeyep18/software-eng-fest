@@ -14,6 +14,9 @@ var _ambience_tween: Tween = null
 var _sfx_tween: Tween = null
 var _voice_should_loop: bool = false
 var _music_volume_db: float = 0.0
+var _ambience_volume_db: float = 0.0
+var _music_stopping: bool = false
+var _ambience_stopping: bool = false
 
 const FADE_DURATION: float = 1.5   # seconds for crossfade
 const SETTINGS_PATH: String = "user://audio_settings.cfg"
@@ -25,12 +28,13 @@ var _default_bus_volumes: Dictionary = {}
 
 ## Play a background music track, with optional fade-in.
 func play_music(stream: AudioStream, fade_in: bool = true, volume_db: float = 0.0) -> void:
-	if _music_player.stream == stream and _music_player.playing and is_equal_approx(_music_volume_db, volume_db):
+	if _music_player.stream == stream and _music_player.playing and is_equal_approx(_music_volume_db, volume_db) and not _music_stopping:
 		return   # already playing this track — do nothing
 	if _music_tween and _music_tween.is_valid():
 		_music_tween.kill()
 	_music_player.stream    = stream
 	_music_volume_db = volume_db
+	_music_stopping = false
 	_music_player.volume_db = -80.0 if fade_in else volume_db
 	_music_player.play()
 	if fade_in:
@@ -123,36 +127,46 @@ func _save_audio_settings() -> void:
 
 ## Stop music, with optional fade-out.
 func stop_music(fade_out: bool = true) -> void:
+	if _music_tween and _music_tween.is_valid():
+		_music_tween.kill()
+	_music_stopping = true
 	if not _music_player.playing:
 		return
 	if fade_out:
 		_music_tween = create_tween()
 		_music_tween.tween_property(_music_player, "volume_db", -80.0, FADE_DURATION)
-		await _music_tween.finished
-	_music_player.stop()
+		_music_tween.tween_callback(_music_player.stop)
+	else:
+		_music_player.stop()
 
 ## Play a looping ambience layer.
-func play_ambience(stream: AudioStream, fade_in: bool = true) -> void:
-	if _ambience_player.stream == stream and _ambience_player.playing:
+func play_ambience(stream: AudioStream, fade_in: bool = true, volume_db: float = 0.0) -> void:
+	if _ambience_player.stream == stream and _ambience_player.playing and is_equal_approx(_ambience_volume_db, volume_db) and not _ambience_stopping:
 		return
 	if _ambience_tween and _ambience_tween.is_valid():
 		_ambience_tween.kill()
 	_ambience_player.stream    = stream
-	_ambience_player.volume_db = -80.0 if fade_in else 0.0
+	_ambience_volume_db = volume_db
+	_ambience_stopping = false
+	_ambience_player.volume_db = -80.0 if fade_in else volume_db
 	_ambience_player.play()
 	if fade_in:
 		_ambience_tween = create_tween()
-		_ambience_tween.tween_property(_ambience_player, "volume_db", 0.0, FADE_DURATION)
+		_ambience_tween.tween_property(_ambience_player, "volume_db", volume_db, FADE_DURATION)
 
 ## Stop ambience.
 func stop_ambience(fade_out: bool = true) -> void:
+	if _ambience_tween and _ambience_tween.is_valid():
+		_ambience_tween.kill()
+	_ambience_stopping = true
 	if not _ambience_player.playing:
 		return
 	if fade_out:
 		_ambience_tween = create_tween()
 		_ambience_tween.tween_property(_ambience_player, "volume_db", -80.0, FADE_DURATION)
-		await _ambience_tween.finished
-	_ambience_player.stop()
+		_ambience_tween.tween_callback(_ambience_player.stop)
+	else:
+		_ambience_player.stop()
 
 ## Fire a one-shot SFX. Safe to call from anywhere.
 func play_sfx(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> AudioStreamPlayer:

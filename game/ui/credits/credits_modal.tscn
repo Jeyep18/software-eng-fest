@@ -55,35 +55,42 @@ text = "3 Netherite Ingots · Software Festival 2026"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LicenseTopic" type="OptionButton" parent="Panel/Margin/Layout"]
+[node name="Reader" type="PanelContainer" parent="Panel/Margin/Layout"]
 unique_name_in_owner = true
 layout_mode = 2
-fit_to_longest_item = false
-
-[node name="Divider" type="HSeparator" parent="Panel/Margin/Layout"]
-layout_mode = 2
-
-[node name="Body" type="RichTextLabel" parent="Panel/Margin/Layout"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
-focus_mode = 2
-bbcode_enabled = true
-selection_enabled = true
 
-[node name="Sources" type="HBoxContainer" parent="Panel/Margin/Layout"]
+[node name="Scroll" type="ScrollContainer" parent="Panel/Margin/Layout/Reader"]
 unique_name_in_owner = true
 layout_mode = 2
+clip_contents = true
+focus_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
 
-[node name="SourceSelect" type="OptionButton" parent="Panel/Margin/Layout/Sources"]
+[node name="ReadingMargin" type="MarginContainer" parent="Panel/Margin/Layout/Reader/Scroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-fit_to_longest_item = false
-text_overrun_behavior = 3
 
-[node name="OpenSource" type="Button" parent="Panel/Margin/Layout/Sources"]
+[node name="Document" type="VBoxContainer" parent="Panel/Margin/Layout/Reader/Scroll/ReadingMargin"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Open source page"
+
+[node name="Body" type="RichTextLabel" parent="Panel/Margin/Layout/Reader/Scroll/ReadingMargin/Document"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Sources" type="VBoxContainer" parent="Panel/Margin/Layout/Reader/Scroll/ReadingMargin/Document"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SourceHeading" type="Label" parent="Panel/Margin/Layout/Reader/Scroll/ReadingMargin/Document/Sources"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sources"

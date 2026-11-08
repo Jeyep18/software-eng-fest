@@ -61,7 +61,7 @@ dialogue,dialogue.lalakas_ang_hangin_mamaya_kailangan_ko_b_takpan_.608ce836,"Lal
 dialogue,dialogue.kailangan_ko_ng_b_plywood_b_b_pako_b_at_b_martil.8e0525a5,"Kailangan ko ng [b]plywood[/b], [b]pako[/b], at [b]martilyo[/b]. Nasaan na kaya yung martilyo ni Papa?","[b]Plywood[/b], [b]nails[/b], [b]hammer[/b]... Where did Papa's hammer go?","[b]Plywood[/b], [b]pako[/b], [b]martilyo[/b]... Asan na kaya yung martilyo ni Papa?",Preserve BBCode tags.
 dialogue,dialogue.kumpleto_na_mga_kailangan_ko_matatakpan_ko_na_it.ffbeae3b,"Kumpleto na mga kailangan ko, matatakpan ko na itong [b]bintana[/b].",That's everything. Now I can board up this [b]window[/b].,Kumpleto na lahat. Matatakpan ko na 'tong [b]bintana[/b].,Preserve BBCode tags.
 dialogue,dialogue.natakpan_ko_na_bintana_sana_kumapit_ito_hanggang.10c52aaa,"Natakpan ko na bintana, sana kumapit ito hanggang sa matapos ang bagyo.",Window's covered. I hope it holds until the storm's over.,Natakpan ko na yung bintana. Sana kumapit 'to hanggang matapos ang bagyo.,
-dialogue,dialogue.wala_pa_ring_pagkain_kailangan_ng_kahit_b_apat_n.26de96bd,"Wala pa ring pagkain. Kailangan ng [b]apat na de lata[/b], [b]isang buong manok[/b], o [b]dalawang kalahating manok[/b] para sa aming apat.","Still no food. We need [b]four cans[/b], [b]one whole chicken[/b], or [b]two half chickens[/b] for the four of us.","Wala pa ring pagkain. Kailangan ng [b]apat na de lata[/b], [b]isang buong manok[/b], o [b]dalawang kalahating manok[/b] para sa aming apat.",Preserve BBCode tags.
+dialogue,dialogue.wala_pa_ring_pagkain_kailangan_ng_kahit_b_apat_n.26de96bd,Wala pa ring pagkain. Kailangan ng [b]apat na de lata[/b] para sa aming apat.,Still no food. We need [b]four cans[/b] for the four of us.,Wala pa ring pagkain. Kailangan ng [b]apat na de lata[/b] para sa aming apat.,Preserve BBCode tags.
 dialogue,dialogue.unahin_ko_dapat_ang_b_palengke_b_kung_kaya_pa_ma.c44f7fc3,"Unahin ko dapat ang [b]palengke[/b] kung kaya pa. Mas mura doon, pero mabilis magsara kapag tumaas ang baha.","I should hit the [b]market[/b] first if I still can. It's cheaper there, but it closes fast once the flood rises.","Dapat [b]palengke[/b] muna kung kaya pa. Mas mura dun, pero mabilis magsara pag tumaas ang baha.",Preserve BBCode tags.
 dialogue,dialogue.kung_huli_na_ako_pwede_pa_kay_b_ate_linda_b_mas_.548cc61d,"Kung huli na ako, pwede pa kay [b]Ate Linda[/b] — mas mahal, pero mas malapit.","If I'm too late, there's still [b]Ate Linda[/b]. It's pricier, but closer.","Pag huli na ko, pwede pa kay [b]Ate Linda[/b] — mas mahal nga lang, pero mas malapit.",Preserve BBCode tags.
 dialogue,dialogue.sapat_na_ito_ilalagay_ko_na_sa_b_ref_b_para_mada.057d893f,Sapat na ito. Ilalagay ko na sa [b]ref[/b] para madali makuha kapag kailangan.,That should be enough. I'll put it in the [b]fridge[/b] so it's easy to grab when we need it.,Sapat na 'to. Ilalagay ko na sa [b]ref[/b] para madaling kunin pag kailangan.,Preserve BBCode tags.
@@ -183,7 +183,7 @@ item,item.tarp_nails_hammer.c22fcfe3,Tarp + nails + hammer,Tarp + nails + hammer
 dialogue,dialogue.get_lola_s_medicine.ba850fe7,Get Lola's medicine,Get Lola's medicine,Kunin ang gamot ni Lola,
 ui,ui.pharmacy.2f6c536b,Pharmacy,Pharmacy,Botika,
 shop,shop.store_food.62654ac7,Store food,Store food,Mag-imbak ng pagkain,
-item,item.4x_canned_goods.71880f4b,4 cans / 1 whole chicken / 2 half chickens,4 cans / 1 whole chicken / 2 half chickens,4 na de lata / 1 buong manok / 2 kalahating manok,
+item,item.4x_canned_goods.71880f4b,4 cans,4 cans,4 na de lata,
 item,item.fill_water_jugs.88c4f27f,Fill water jugs,Fill water jugs,Punuin ang water jugs,
 map,map.home_faucet.ec8dc2f6,Home faucet,Home faucet,Gripo sa bahay,
 task,task.board_both_windows.6c437f4c,Board both windows,Board both windows,Takpan ang dalawang bintana,
@@ -624,11 +624,11 @@ ui,ui.inventory.open_hint,Open inventory,Open inventory,Buksan ang imbentaryo,Ta
 tutorial,tutorial.title,How to prepare,How to prepare,Paano maghanda,
 tutorial,tutorial.page_count,%d / %d,%d / %d,%d / %d,Keep %d placeholders.
 tutorial,tutorial.before.title,Before the storm,Before the storm,Bago dumating ang bagyo,
-tutorial,tutorial.before.body,"A typhoon is approaching. Help Nanay, Lola and Bunso prepare your home before it arrives.
+tutorial,tutorial.before.body,"A typhoon is approaching. Help Nanay, Lola and Bunso prepare before 6 PM.
 
-Store food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.","A typhoon is approaching. Help Nanay, Lola and Bunso prepare your home before it arrives.
+Store food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.","A typhoon is approaching. Help Nanay, Lola and Bunso prepare before 6 PM.
 
-Store food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.","Paparating ang bagyo. Tulungan sina Nanay, Lola at Bunso na ihanda ang bahay bago ito dumating.
+Store food and water, get Lola's medicine, repair the roof, board both windows, and prepare a working radio and flashlight.","Paparating ang bagyo. Tulungan sina Nanay, Lola at Bunso na maghanda bago mag-alas-sais ng gabi.
 
 Mag-imbak ng pagkain at tubig, kumuha ng gamot ni Lola, ayusin ang bubong, takpan ang dalawang bintana, at paganahin ang radyo at flashlight.",
 tutorial,tutorial.before.caption,Prepare the family home before the storm arrives.,Prepare the family home before the storm arrives.,Ihanda ang bahay ng pamilya bago dumating ang bagyo.,
@@ -648,19 +648,19 @@ Lumapit sa tao o kumikinang na task marker at pindutin ang E para malaman ang ka
 Pindutin ang E o Space para tapusin ang linya at ituloy ang usapan.",
 tutorial,tutorial.inspect.caption,Glowing markers identify preparation tasks.,Glowing markers identify preparation tasks.,Minamarkahan ng mga kumikinang na palatandaan ang mga gawain.,
 tutorial,tutorial.shop.title,Buy supplies,Buy supplies,Bumili ng mga kailangan,
-tutorial,tutorial.shop.body,"Press M to open the map and choose a destination. Travel uses time.
+tutorial,tutorial.shop.body,"Travel and completed tasks cost time. Plan each trip before leaving.
 
-Spend carefully. Shops can become dangerous or close as the storm worsens.
+Press M for the map. Compare prices and group your purchases to stretch your cash.
 
-The clock keeps running while the map or inventory is open.","Press M to open the map and choose a destination. Travel uses time.
+The clock keeps running on the map and in your bag. Shops may close as the storm worsens.","Travel and completed tasks cost time. Plan each trip before leaving.
 
-Spend carefully. Shops can become dangerous or close as the storm worsens.
+Press M for the map. Compare prices and group your purchases to stretch your cash.
 
-The clock keeps running while the map or inventory is open.","Pindutin ang M para buksan ang mapa at pumili ng pupuntahan. May oras na gugugulin sa biyahe.
+The clock keeps running on the map and in your bag. Shops may close as the storm worsens.","May bawas sa oras ang biyahe at pagtatapos ng gawain. Planuhin muna ang ruta.
 
-Magtipid. Maaaring maging delikado o magsara ang mga tindahan habang lumalakas ang bagyo.
+M para sa mapa. Ihambing ang presyo at pagsabay-sabayin ang bibilhin para makatipid sa pera.
 
-Tuloy ang oras habang bukas ang mapa o inventory.",
+Tuloy ang orasan habang nasa mapa o bukas ang bag. Maaaring magsara ang mga tindahan habang lumalakas ang bagyo.",
 tutorial,tutorial.shop.caption,Check travel time and shop availability before leaving.,Check travel time and shop availability before leaving.,Tingnan ang oras ng biyahe at kung bukas pa ang tindahan bago umalis.,
 tutorial,tutorial.bag.title,Use your inventory,Use your inventory,Gamitin ang inventory,
 tutorial,tutorial.bag.body,"Press Tab to open or close your seven-slot inventory.
@@ -680,15 +680,15 @@ tutorial,tutorial.bag.caption,The combination preview shows what you will make.,
 tutorial,tutorial.finish.title,Finish preparations,Finish preparations,Tapusin ang paghahanda,
 tutorial,tutorial.finish.body,"Return home with supplies and press E at each task. Check the preparation checklist.
 
-Food needs 4 cans, 1 whole chicken, or 2 half chickens.
+Food needs 4 cans.
 
 The storm arrives when time runs out. Ready early? Choose End the Day on the map.","Return home with supplies and press E at each task. Check the preparation checklist.
 
-Food needs 4 cans, 1 whole chicken, or 2 half chickens.
+Food needs 4 cans.
 
 The storm arrives when time runs out. Ready early? Choose End the Day on the map.","Umuwi dala ang mga kailangan at pindutin ang E sa bawat gawain. Tingnan ang checklist.
 
-Para sa pagkain: 4 na de lata, 1 buong manok, o 2 kalahating manok.
+Para sa pagkain: 4 na de lata.
 
 Darating ang bagyo kapag ubos na ang oras. Handa na? Piliin ang End the Day sa mapa.",
 tutorial,tutorial.finish.caption,Completed tasks leave the active objectives.,Completed tasks leave the active objectives.,Nawawala sa mga aktibong layunin ang natapos na gawain.,
@@ -698,3 +698,4 @@ tutorial,tutorial.done,Done,Done,Tapos,
 tutorial,tutorial.hide_session,Do not show again,Do not show again,Huwag nang ipakita,
 tutorial,tutorial.paused,The game is paused while you read. Esc closes this guide.,The game is paused while you read. Esc closes this guide.,Naka-pause ang laro habang nagbabasa ka. Esc para isara ang gabay.,
 tutorial,tutorial.close_hint,Esc: Close,Esc: Close,Esc: Isara,
+dialogue,dialogue.food.chicken_ready,This will do. There is enough for everyone.,This will do. There is enough for everyone.,Puwede na ito. Sapat na para sa lahat.,Shown only when the food task selects a complete chicken option.

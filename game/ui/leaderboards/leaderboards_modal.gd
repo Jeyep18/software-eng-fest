@@ -211,8 +211,8 @@ func _apply_leaderboard_style() -> void:
 	margin_container.add_theme_constant_override("margin_bottom", maxi(36, int(roundi(170.0 / ui_scale))))
 	var panel := $MarginContainer/LeaderboardsModal as PanelContainer
 	panel.add_theme_stylebox_override("panel", UI_STYLE.panel_style(Color(0.025, 0.028, 0.03, 0.94), UI_STYLE.BORDER, 8))
-	UI_STYLE.apply_button(close_button)
-	UI_STYLE.apply_button(clear_button)
+	UI_STYLE.apply_secondary_button(close_button)
+	UI_STYLE.apply_secondary_button(clear_button, true)
 	close_button.custom_minimum_size = Vector2(104, 44) * ui_scale
 	clear_button.custom_minimum_size = Vector2(132, 44) * ui_scale
 	UI_STYLE.apply_label(title_label, false, true)

@@ -306,7 +306,7 @@ func _apply_shop_style() -> void:
 	UI_STYLE.apply_label(subtitle_label, true)
 	UI_STYLE.apply_label(cash_label)
 	UI_STYLE.apply_label(feedback_label)
-	UI_STYLE.apply_button(close_button)
+	UI_STYLE.apply_secondary_button(close_button)
 
 # ── Purchase ───────────────────────────────────────────────────────────────────
 func _on_buy_pressed(shop_item: ShopItem) -> void:

@@ -16,7 +16,7 @@ const _ITEMS: Array = [
 	# [label,                  hint,                        priority,   Need enum         ]
 	["Patch the roof",      "Tarp + nails + hammer",     "", NeedsLog.Need.ROOF      ],
 	["Get Lola's medicine", "Pharmacy",                   "", NeedsLog.Need.MEDICINE  ],
-	["Store food", "4 cans / 1 whole chicken / 2 half chickens", "", NeedsLog.Need.FOOD],
+	["Store food", "4 cans", "", NeedsLog.Need.FOOD],
 	["Fill water jugs",    "Home faucet",                "", NeedsLog.Need.WATER     ],
 	["Board both windows", "Plywood + nails + hammer",   "", NeedsLog.Need.WINDOWS   ],
 	["Assemble flashlight & radio", "Flashlight + batteries; radio + batteries", "", NeedsLog.Need.FLASHLIGHT],

@@ -340,6 +340,8 @@ func _run() -> void:
 		return
 	_check(get_tree().current_scene.get_node("CanvasLayer/ResultPanel").visible
 		and not get_tree().current_scene.has_node("LeaderboardNamePrompt"), "score remains readable until player continues")
+	_check(not AudioManager._music_player.playing and not AudioManager._ambience_player.playing
+		and not StormAudioController._should_play_layers(), "ending audio is silent while the score waits for input")
 	var continue_key := InputEventKey.new()
 	continue_key.pressed = true
 	get_tree().current_scene.call("_input", continue_key)
@@ -348,6 +350,8 @@ func _run() -> void:
 		_finish()
 		return
 	var prompt := get_tree().current_scene.get_node("LeaderboardNamePrompt")
+	_check(not AudioManager._music_player.playing and not AudioManager._ambience_player.playing,
+		"ending loops stay stopped during nickname entry")
 	await _capture("ending")
 	var name_input := prompt.find_child("NameInput", true, false) as LineEdit
 	name_input.text = "Isolated smoke test"

@@ -267,7 +267,7 @@ func _apply_map_style() -> void:
 	map_hint.add_theme_font_override("font", UI_STYLE.FONT_HEADING)
 	map_hint.add_theme_color_override("font_color", Color(0.14, 0.18, 0.17))
 	UI_STYLE.apply_button(confirm_button)
-	UI_STYLE.apply_button(cancel_button)
+	UI_STYLE.apply_secondary_button(cancel_button)
 	UI_STYLE.apply_button(end_day_button)
 	_refresh_static_text()
 

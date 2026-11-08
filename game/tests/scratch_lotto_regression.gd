@@ -71,6 +71,7 @@ func _test_ui() -> void:
 	add_child(ui)
 	await get_tree().process_frame
 	ui.open_ui()
+	_check(ui._close_button.get_meta("button_role", &"primary") == &"secondary", "settled Close is a secondary dismissal")
 	_check(ui.is_open() and not GlobalTimer.is_paused, "opening lotto leaves the game clock running")
 	var minutes_before := GlobalTimer.current_minutes
 	GlobalTimer.seconds_per_game_minute = 0.04
@@ -84,6 +85,7 @@ func _test_ui() -> void:
 	SceneManager.storm_transition_pending = false
 	ui._rng.seed = 1428
 	_check(ui.buy_ticket() and GameState.get_cash() == 0, "buy charges exactly one ticket")
+	_check(not ui._close_button.has_meta("button_role"), "Reveal Result keeps primary action styling")
 	var first_expected: int = RULES.calculate_payout(ui._ticket)
 	_check(not ui.buy_ticket() and GameState.get_cash() == 0, "a covered ticket blocks another purchase")
 	var first_slot: ScratchLottoSlot = ui._slots[0]
@@ -100,6 +102,7 @@ func _test_ui() -> void:
 			first_slot._gui_input(motion)
 	_check(first_slot.is_revealed(), "mouse drag erases half the foil and reveals one well")
 	ui.reveal_all()
+	_check(ui._close_button.get_meta("button_role", &"primary") == &"secondary", "revealing changes the action back to secondary Close")
 	_check(GameState.get_cash() == first_expected, "resolving credits the calculated prize")
 	ui.reveal_all()
 	_check(GameState.get_cash() == first_expected, "reveal all cannot pay twice")

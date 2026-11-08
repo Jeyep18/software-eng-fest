@@ -139,7 +139,7 @@ func _build_trade_prompt() -> void:
 	_choice_decline_button = Button.new()
 	_choice_decline_button.custom_minimum_size = Vector2(140, 42)
 	_choice_decline_button.pressed.connect(_decline_trade)
-	UI_STYLE.apply_button(_choice_decline_button)
+	UI_STYLE.apply_secondary_button(_choice_decline_button)
 	actions.add_child(_choice_decline_button)
 
 	_choice_modal.hide()

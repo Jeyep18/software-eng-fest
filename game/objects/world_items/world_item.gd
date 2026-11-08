@@ -362,7 +362,7 @@ func _build_confirm_modal() -> void:
 	leave_button.focus_mode = Control.FOCUS_NONE
 	leave_button.custom_minimum_size = Vector2(112, 42) * ui_scale
 	leave_button.pressed.connect(_on_pickup_cancelled)
-	UI_STYLE.apply_button(leave_button)
+	UI_STYLE.apply_secondary_button(leave_button)
 	leave_button.add_theme_font_size_override("font_size", roundi(20 * ui_scale))
 	actions.add_child(leave_button)
 

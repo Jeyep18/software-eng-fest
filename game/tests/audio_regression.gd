@@ -50,6 +50,7 @@ func _run() -> void:
 	await _test_locations()
 	await _test_smoker()
 	await _test_ending_audio()
+	await _test_audio_fade_replacement()
 	for index in AudioServer.bus_count:
 		_check(is_equal_approx(AudioServer.get_bus_volume_db(index), bus_volumes[index]), "playback preserves saved bus gain %d" % index)
 	AudioManager.stop_all()
@@ -58,13 +59,30 @@ func _run() -> void:
 
 
 func _test_ending_audio() -> void:
+	GlobalTimer.current_minutes = GlobalTimer.TOTAL_MINUTES
+	var location := Node.new()
+	location.scene_file_path = SceneManager.SCENE_PATHS["home"]
+	get_tree().root.add_child(location)
+	get_tree().current_scene = location
+	StormAudioController._update_layers(true)
+	_check(StormAudioController._heavy_player.volume_db > -20.0, "fixture enters ending with gameplay storm layers already audible")
 	SideQuestLog.start_mang_nestor_chicken()
 	var ending := preload("res://game/scenes/ending/EndingSequence.tscn").instantiate()
 	ending.set_script(ControlledEnding)
-	add_child(ending)
-	await get_tree().process_frame
+	get_tree().root.add_child(ending)
+	get_tree().current_scene = ending
+	location.queue_free()
+	await get_tree().create_timer(AudioManager.FADE_DURATION + 0.1).timeout
 	var storm_player: AudioStreamPlayer = AudioManager._ambience_player
 	var music_player: AudioStreamPlayer = AudioManager._music_player
+	_check(is_equal_approx(storm_player.volume_db, -10.0) and is_equal_approx(music_player.volume_db, -12.0), "ending fades to its quieter per-track gains")
+	for player in StormAudioController.get_children():
+		if player is AudioStreamPlayer:
+			_check(player.volume_db <= -79.0, "ending silences duplicate gameplay weather: " + player.name)
+	var sounds_before := AudioManager.get_child_count()
+	StormAudioController._one_shot_timer = 0.0
+	StormAudioController._process(0.1)
+	_check(not StormAudioController._should_play_layers() and AudioManager.get_child_count() == sounds_before, "ending cannot restart gameplay thunder or wind at maximum storm progress")
 	_check(storm_player.stream != ending.ENDING_STORM and storm_player.stream.loop, "ending loops its own storm stream")
 	_check(not ending.ENDING_STORM.loop, "ending leaves the shared storm import unchanged")
 	_check(music_player.stream.get_length() <= 36.0, "ending music excludes the fading outro")
@@ -77,8 +95,65 @@ func _test_ending_audio() -> void:
 	await get_tree().create_timer(0.6).timeout
 	_check(storm_player.playing and storm_player.get_playback_position() < 1.0, "ending storm keeps playing across its recording boundary")
 	_check(music_player.playing and music_player.get_playback_position() < 1.0, "ending music keeps playing across its loop boundary")
+	ending._show_closing_line()
+	await get_tree().process_frame
+	_check(storm_player.playing and music_player.playing and ending.closing_label.visible, "ending audio continues while the closing statement appears")
+	while ending.closing_label.visible:
+		await get_tree().process_frame
+	_check(storm_player.playing and music_player.playing, "ending audio lasts through the complete closing statement")
+	ending._show_result_panel()
+	await get_tree().create_timer(0.4).timeout
+	_check(storm_player.playing and music_player.playing and storm_player.volume_db < -10.0 and music_player.volume_db < -12.0, "both tracks fade together as score results appear")
+	await get_tree().create_timer(AudioManager.FADE_DURATION).timeout
+	_check(not storm_player.playing and not music_player.playing and ending.result_panel.visible, "score results stop both tracks after their fade")
+	ending._awaiting_result_continue = false
+	ending.result_panel.hide()
+	ending._submit_leaderboard_score()
+	await get_tree().process_frame
+	var prompt: CanvasLayer = ending.get_node("LeaderboardNamePrompt")
+	var input: LineEdit = prompt.find_child("NameInput", true, false)
+	var save: Button = prompt.find_child("SubmitButton", true, false)
+	input.text = "Quiet ending"
+	input.text_changed.emit(input.text)
+	_check(not storm_player.playing and not music_player.playing, "nickname entry stays quiet")
+	_check(DirAccess.make_dir_absolute(LeaderboardManager.TEMP_PATH) == OK, "audio fixture blocks score writes for retry")
+	for attempt in 2:
+		save.pressed.emit()
+		await get_tree().process_frame
+		_check(prompt.find_child("Error", true, false).visible and not storm_player.playing and not music_player.playing, "failed score save and retry do not restart ending audio")
+	_check(DirAccess.remove_absolute(LeaderboardManager.TEMP_PATH) == OK, "audio fixture releases score writes")
+	prompt.find_child("SkipButton", true, false).pressed.emit()
+	await get_tree().process_frame
+	_check(not ending.has_node("LeaderboardNamePrompt") and not storm_player.playing and not music_player.playing, "continuing without saving keeps ending audio stopped")
+	get_tree().current_scene = null
 	ending.queue_free()
 	await get_tree().process_frame
+
+
+func _test_audio_fade_replacement() -> void:
+	var menu_music: AudioStream = preload("res://game/assets/audio/music/PhaseShift(chosic.com)-ScottBuckley.mp3")
+	var menu_storm: AudioStream = preload("res://game/assets/audio/weather/u_7hpxkdroz2-storm-461601.mp3")
+	AudioManager.play_music(ENDING, false, -12.0)
+	AudioManager.play_ambience(StormAudioController.HEAVY_STORM, false, -10.0)
+	AudioManager.stop_music()
+	AudioManager.stop_ambience()
+	await get_tree().create_timer(0.2).timeout
+	AudioManager.play_music(menu_music, false)
+	AudioManager.play_ambience(menu_storm, false)
+	await get_tree().create_timer(AudioManager.FADE_DURATION + 0.1).timeout
+	_check(AudioManager._music_player.stream == menu_music and AudioManager._music_player.playing and is_zero_approx(AudioManager._music_player.volume_db), "late ending fade cannot stop or attenuate newer menu music")
+	_check(AudioManager._ambience_player.stream == menu_storm and AudioManager._ambience_player.playing and is_zero_approx(AudioManager._ambience_player.volume_db), "late ending fade cannot stop newer ambience; legacy default gain is unchanged")
+	AudioManager.stop_music()
+	AudioManager.stop_ambience()
+	AudioManager.play_music(menu_music, false)
+	AudioManager.play_ambience(menu_storm, false)
+	await get_tree().create_timer(AudioManager.FADE_DURATION + 0.1).timeout
+	_check(AudioManager._music_player.playing and AudioManager._ambience_player.playing, "replaying the same tracks cancels their pending stops")
+	AudioManager.play_music(ENDING, true, -12.0)
+	AudioManager.play_ambience(StormAudioController.HEAVY_STORM, true, -10.0)
+	AudioManager.stop_all()
+	await get_tree().create_timer(AudioManager.FADE_DURATION + 0.1).timeout
+	_check(not AudioManager._music_player.playing and not AudioManager._ambience_player.playing, "hard stop cancels unfinished fade-ins")
 
 
 func _test_lotto_audio() -> void:

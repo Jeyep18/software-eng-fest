@@ -50,6 +50,7 @@ func _run() -> void:
 		task._complete_task()
 		await _wait_until(func(): return not task._is_completing, "completion finishes: " + test_case[2])
 		_check(NeedsLog.is_resolved(NeedsLog.Need.FOOD) and task._is_completed, "food resolves: " + test_case[2])
+		_check(not task._is_showing and task._get_active_lines() == task.completed_lines, "completion adds no extra dialogue and retains the completed branch")
 		_check(_quantities() == test_case[1], "only selected food is consumed: " + test_case[2])
 		_check(GlobalTimer.current_minutes == 105 and not GlobalTimer.is_paused, "completion costs five minutes and releases pause")
 		task._complete_task()
@@ -58,6 +59,7 @@ func _run() -> void:
 		fridge.free()
 	await _test_supply_changes()
 	_test_text()
+	_test_ready_dialogue()
 	await _test_deadline()
 	print("Food options regression: %d checks, %d failures" % [_checks, _failures])
 	get_tree().quit(0 if _failures == 0 else 1)
@@ -126,12 +128,31 @@ func _test_text() -> void:
 	for language in ["english", "tagalog"]:
 		LocalizationManager.set_language(language)
 		var line := LocalizationManager.translate(task.missing_lines[0])
-		_check(line.contains("[b]") and ("whole chicken" in line if language == "english" else "buong manok" in line), "fridge explains chicken options in " + language)
+		_check(line.contains("[b]") and ("four cans" in line if language == "english" else "apat na de lata" in line), "fridge asks for four cans in " + language)
+		_check(not line.to_lower().contains("chicken") and not line.to_lower().contains("manok"), "fridge does not advertise chicken in " + language)
 		var hint: String = ChecklistPanel._ITEMS[2][1]
 		var translated := LocalizationManager.translate(hint)
-		_check(("whole chicken" in translated if language == "english" else "buong manok" in translated), "checklist explains chicken options in " + language)
+		_check(translated == ("4 cans" if language == "english" else "4 na de lata"), "checklist keeps cans as the main food need in " + language)
 	LocalizationManager.set_language("english")
 	fridge.free()
+
+
+func _test_ready_dialogue() -> void:
+	for language in ["english", "tagalog"]:
+		LocalizationManager.set_language(language)
+		for counts in [[4, 1, 2], [0, 1, 0], [0, 0, 2], [3, 0, 1]]:
+			var fridge := _fresh_fridge(counts)
+			var task := fridge.get_node("Area3D") as TaskObject
+			task._begin_dialogue()
+			var chicken_selected: bool = counts[0] < 4 and (counts[1] >= 1 or counts[2] >= 2)
+			var line := LocalizationManager.translate(task._ui._source_text)
+			var chicken_line := "This will do. There is enough for everyone." if language == "english" else "Puwede na ito. Sapat na para sa lahat."
+			_check((line == chicken_line) == chicken_selected, "only a complete selected chicken option gets its own ready line: %s %s" % [language, counts])
+			_check(not NeedsLog.is_resolved(NeedsLog.Need.FOOD) and _quantities() == counts, "ready dialogue itself consumes no food")
+			task._hide_monologue()
+			_check(not GlobalTimer.is_paused, "closing the ready dialogue releases its timer pause")
+			fridge.free()
+	LocalizationManager.set_language("english")
 
 
 func _test_deadline() -> void:

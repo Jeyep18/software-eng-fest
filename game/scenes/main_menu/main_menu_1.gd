@@ -325,13 +325,19 @@ func _setup_difficulty_overlay() -> void:
 	_add_difficulty_button(box, "STANDARD", GameState.Difficulty.STANDARD)
 	_add_difficulty_button(box, "CHALLENGE", GameState.Difficulty.CHALLENGE)
 
+	var cancel_row := MarginContainer.new()
+	cancel_row.add_theme_constant_override("margin_top", 14)
+	box.add_child(cancel_row)
 	var cancel := Button.new()
+	cancel.name = "CancelDifficulty"
 	cancel.text = "CANCEL"
-	cancel.custom_minimum_size = Vector2(DIFFICULTY_BUTTON_WIDTH, 50)
+	cancel.custom_minimum_size = Vector2(180, 44)
+	cancel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	cancel.pressed.connect(_hide_difficulty_overlay)
-	box.add_child(cancel)
+	cancel_row.add_child(cancel)
+	UI_STYLE.apply_secondary_button(cancel)
 	_apply_main_menu_button_style(cancel)
-	cancel.add_theme_font_size_override("font_size", 24)
+	cancel.add_theme_font_size_override("font_size", 20)
 
 func _setup_loading_layer() -> void:
 	_loading_layer = CanvasLayer.new()
@@ -398,7 +404,8 @@ func _apply_menu_ui_style() -> void:
 func _apply_main_menu_button_style(button: Button) -> void:
 	UI_STYLE.apply_button(button)
 	button.add_theme_font_size_override("font_size", 20)
-	button.add_theme_stylebox_override("normal", UI_STYLE.button_style(Color(0.035, 0.075, 0.07, 0.86), UI_STYLE.BORDER_SOFT))
+	if not button.has_meta("button_role"):
+		button.add_theme_stylebox_override("normal", UI_STYLE.button_style(Color(0.035, 0.075, 0.07, 0.86), UI_STYLE.BORDER_SOFT))
 	button.mouse_entered.connect(_on_menu_button_hovered.bind(button, true))
 	button.mouse_exited.connect(_on_menu_button_hovered.bind(button, false))
 	button.button_down.connect(_on_menu_button_pressed.bind(button))

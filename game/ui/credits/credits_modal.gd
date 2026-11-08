@@ -3,7 +3,6 @@ extends CanvasLayer
 const UI_STYLE = preload("res://game/ui/theme/GameUIStyle.gd")
 const CONTENT = preload("res://game/ui/credits/credits_content.gd")
 const VIEWS := ["Credits", "Licenses", "Privacy", "AI use"]
-const LICENSE_TOPICS := ["Project terms", "Asset notices", "Godot Engine", "License texts"]
 
 @onready var _panel: PanelContainer = %Panel
 @onready var _margin: MarginContainer = %Margin
@@ -13,12 +12,15 @@ const LICENSE_TOPICS := ["Project terms", "Asset notices", "Godot Engine", "Lice
 @onready var _navigation: HBoxContainer = %Navigation
 @onready var _close_button: Button = %Close
 @onready var _body: RichTextLabel = %Body
-@onready var _license_topic: OptionButton = %LicenseTopic
-@onready var _sources: HBoxContainer = %Sources
-@onready var _source_select: OptionButton = %SourceSelect
-@onready var _open_source_button: Button = %OpenSource
+@onready var _reader: PanelContainer = %Reader
+@onready var _scroll: ScrollContainer = %Scroll
+@onready var _reading_margin: MarginContainer = %ReadingMargin
+@onready var _document: VBoxContainer = %Document
+@onready var _sources: VBoxContainer = %Sources
+@onready var _source_heading: Label = %SourceHeading
 
 var _source_button: Button
+var _source_links: Array[LinkButton] = []
 var _tabs: Array[Button] = []
 var _view: int = 0
 
@@ -26,17 +28,22 @@ func _ready() -> void:
 	UI_STYLE.apply_panel(_panel)
 	UI_STYLE.apply_label(_title, false, true)
 	UI_STYLE.apply_label(_studio, true)
-	for button in [_close_button, _license_topic, _source_select, _open_source_button]:
-		UI_STYLE.apply_button(button)
+	var reader_style := UI_STYLE.panel_style(Color(0.025, 0.028, 0.03, 0.98))
+	reader_style.set_border_width_all(2)
+	var reader_focus := reader_style.duplicate() as StyleBoxFlat
+	reader_focus.border_color = (UI_STYLE.GAME_THEME.get_stylebox("focus", "Button") as StyleBoxFlat).border_color
+	_reader.add_theme_stylebox_override("panel", reader_style)
+	_scroll.focus_entered.connect(func(): _reader.add_theme_stylebox_override("panel", reader_focus))
+	_scroll.focus_exited.connect(func(): _reader.add_theme_stylebox_override("panel", reader_style))
+	UI_STYLE.apply_secondary_button(_close_button)
+	UI_STYLE.apply_label(_source_heading)
+	_source_heading.add_theme_font_override("font", UI_STYLE.FONT_SEMIBOLD)
 	_body.add_theme_font_override("normal_font", UI_STYLE.FONT_REGULAR)
 	_body.add_theme_font_override("bold_font", UI_STYLE.FONT_SEMIBOLD)
 	_body.add_theme_color_override("default_color", UI_STYLE.TEXT)
-	_body.add_theme_stylebox_override("focus", UI_STYLE.GAME_THEME.get_stylebox("focus", "Button"))
 	_body.meta_clicked.connect(_open_source)
-	_body.gui_input.connect(_on_body_input)
+	_scroll.gui_input.connect(_on_body_input)
 	_close_button.pressed.connect(close)
-	_open_source_button.pressed.connect(_open_selected_source)
-	_license_topic.item_selected.connect(func(_index: int) -> void: _refresh_body())
 
 	var tab_group := ButtonGroup.new()
 	for index in VIEWS.size():
@@ -50,8 +57,19 @@ func _ready() -> void:
 		UI_STYLE.apply_button(button)
 		_tabs.append(button)
 	for entry: Array in CONTENT.SOURCE_LINKS:
-		_source_select.add_item(entry[0])
-	get_viewport().size_changed.connect(_layout_panel)
+		var link := LinkButton.new()
+		link.text = entry[0]
+		link.tooltip_text = entry[1]
+		link.focus_mode = Control.FOCUS_ALL
+		link.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		link.add_theme_font_override("font", UI_STYLE.FONT_REGULAR)
+		link.add_theme_color_override("font_color", UI_STYLE.ACCENT)
+		link.add_theme_stylebox_override("focus", UI_STYLE.GAME_THEME.get_stylebox("focus", "Button"))
+		link.pressed.connect(_open_source.bind(entry[1]))
+		link.gui_input.connect(_on_body_input)
+		_sources.add_child(link)
+		_source_links.append(link)
+	get_viewport().size_changed.connect(_on_scale_changed)
 	VisualSettings.ui_scale_changed.connect(_on_scale_changed)
 	LocalizationManager.language_changed.connect(_refresh_text)
 	_layout_panel()
@@ -83,7 +101,6 @@ func _select_view(index: int) -> void:
 		_tabs[tab_index].add_theme_stylebox_override("normal",
 			UI_STYLE.button_style(UI_STYLE.SECTION_BG, UI_STYLE.BORDER) if selected
 			else UI_STYLE.GAME_THEME.get_stylebox("normal", "Button"))
-	_license_topic.visible = index == 1
 	_sources.visible = index == 0 or index == 1
 	_refresh_body()
 	_update_focus_chain()
@@ -92,13 +109,7 @@ func _refresh_text(_language: String = "") -> void:
 	for index in _tabs.size():
 		_tabs[index].text = LocalizationManager.translate(VIEWS[index])
 	_close_button.text = LocalizationManager.translate_key("ui.credits.close", "Close")
-	_open_source_button.text = LocalizationManager.translate("Open source page")
-	_open_source_button.tooltip_text = LocalizationManager.translate("Opens the selected website in your browser.")
-	var previous_topic := maxi(0, _license_topic.selected)
-	_license_topic.clear()
-	for topic: String in LICENSE_TOPICS:
-		_license_topic.add_item(LocalizationManager.translate(topic))
-	_license_topic.select(previous_topic)
+	_source_heading.text = LocalizationManager.translate_key("ui.credits.sources", "Sources")
 	_refresh_body()
 
 func _refresh_body() -> void:
@@ -106,30 +117,29 @@ func _refresh_body() -> void:
 		0:
 			_body.text = _sections_text(CONTENT.CREDIT_SECTIONS)
 		1:
-			match _license_topic.selected:
-				0:
-					_body.text = _notice("PROJECT_LICENSE")
-				1:
-					_body.text = _read_plain("res://game/legal/THIRD_PARTY_NOTICES.txt")
-				2:
-					_body.text = _engine_notices()
-				3:
-					var notices := PackedStringArray()
-					for entry: Array in CONTENT.LICENSE_FILES:
-						notices.append("[b]%s[/b]\n\n%s" % [entry[0], _read_plain(entry[1])])
-					_body.text = "\n\n".join(notices)
+			var notices := PackedStringArray([
+				_heading(LocalizationManager.translate("Project terms")) + _notice("PROJECT_LICENSE"),
+				_heading(LocalizationManager.translate("Asset notices")) + _read_plain("res://game/legal/THIRD_PARTY_NOTICES.txt"),
+				_engine_notices(),
+			])
+			for entry: Array in CONTENT.LICENSE_FILES:
+				notices.append(_heading(entry[0]) + _read_plain(entry[1]))
+			_body.text = "\n\n\n".join(notices)
 		2:
 			_body.text = _notice("PRIVACY")
 		3:
 			_body.text = _notice("AI_DISCLOSURE")
 	_body.deselect()
-	_body.scroll_to_line(0)
+	_scroll.set_deferred("scroll_vertical", 0)
+
+func _heading(text: String) -> String:
+	return "[font_size=%d][color=#77cdb3][b]%s[/b][/color][/font_size]\n\n" % [roundi(24.0 * _layout_scale()), text]
 
 func _sections_text(sections: Array) -> String:
 	var paragraphs := PackedStringArray()
 	for section: Array in sections:
 		var heading := LocalizationManager.translate_key(section[0], section[1])
-		paragraphs.append("[color=#77cdb3][b]%s[/b][/color]\n\n%s" % [heading, section[2]])
+		paragraphs.append(_heading(heading) + section[2])
 	return "\n\n\n".join(paragraphs)
 
 func _notice(document: String) -> String:
@@ -141,10 +151,24 @@ func _read_plain(path: String) -> String:
 	if file == null:
 		push_error("Credits: could not read " + path)
 		return LocalizationManager.translate("This notice could not be loaded.")
-	return file.get_as_text().replace("[", "[lb]")
+	return _reflow_plain(file.get_as_text()).replace("[", "[lb]")
+
+func _reflow_plain(text: String) -> String:
+	var result := PackedStringArray()
+	var list_item := RegEx.create_from_string("^([a-zA-Z0-9]+[.)]|[-*])\\s")
+	var previous := ""
+	for line in text.replace("\r\n", "\n").split("\n"):
+		var trimmed := line.strip_edges()
+		# Join authored wrap continuations, preserving paragraph and list starts.
+		if previous.length() >= 50 and not trimmed.is_empty() and list_item.search(trimmed) == null and not previous.begins_with("http"):
+			result[result.size() - 1] += " " + trimmed
+		else:
+			result.append(line)
+		previous = trimmed
+	return "\n".join(result)
 
 func _engine_notices() -> String:
-	var text := "[b]Godot Engine[/b]\n\n" + Engine.get_license_text().replace("[", "[lb]")
+	var text := _heading("Godot Engine") + _reflow_plain(Engine.get_license_text()).replace("[", "[lb]")
 	text += "\n\n[b]Third-party components[/b]\n"
 	for component: Dictionary in Engine.get_copyright_info():
 		text += "\n[b]%s[/b]\n" % component["name"]
@@ -153,43 +177,49 @@ func _engine_notices() -> String:
 			text += "\n" + str(part["license"]) + "\n"
 	var license_texts := Engine.get_license_info()
 	for license_name: String in license_texts:
-		text += "\n[b]%s[/b]\n%s\n" % [license_name, str(license_texts[license_name]).replace("[", "[lb]")]
+		text += "\n[b]%s[/b]\n%s\n" % [license_name, _reflow_plain(str(license_texts[license_name])).replace("[", "[lb]")]
 	return text
 
 func _layout_panel() -> void:
-	var scale_factor := VisualSettings.get_ui_scale()
-	var panel_size := (Vector2(960, 700) * scale_factor).min(get_viewport().get_visible_rect().size - Vector2(64, 64))
+	var scale_factor := _layout_scale()
+	var panel_size := Vector2(980, 720) * scale_factor
 	_panel.offset_left = -panel_size.x * 0.5
 	_panel.offset_top = -panel_size.y * 0.5
 	_panel.offset_right = panel_size.x * 0.5
 	_panel.offset_bottom = panel_size.y * 0.5
 	for side in ["left", "top", "right", "bottom"]:
 		_margin.add_theme_constant_override("margin_" + side, roundi(24 * scale_factor))
+		_reading_margin.add_theme_constant_override("margin_" + side, roundi(24 * scale_factor))
 	_layout.add_theme_constant_override("separation", roundi(12 * scale_factor))
 	_navigation.add_theme_constant_override("separation", roundi(8 * scale_factor))
+	_document.add_theme_constant_override("separation", roundi(24 * scale_factor))
 	_sources.add_theme_constant_override("separation", roundi(12 * scale_factor))
-	_title.add_theme_font_size_override("font_size", roundi(34 * scale_factor))
-	_studio.add_theme_font_size_override("font_size", roundi(14 * scale_factor))
-	for button in [_close_button, _license_topic, _source_select, _open_source_button] + _tabs:
-		button.add_theme_font_size_override("font_size", roundi(16 * scale_factor))
-		button.custom_minimum_size.y = 36 * scale_factor
-	_body.add_theme_font_size_override("normal_font_size", roundi(18 * scale_factor))
-	_body.add_theme_font_size_override("bold_font_size", roundi(19 * scale_factor))
+	_title.add_theme_font_size_override("font_size", roundi(32 * scale_factor))
+	_studio.add_theme_font_size_override("font_size", roundi(16 * scale_factor))
+	_source_heading.add_theme_font_size_override("font_size", roundi(24 * scale_factor))
+	for button in [_close_button] + _tabs:
+		button.add_theme_font_size_override("font_size", roundi(18 * scale_factor))
+		button.custom_minimum_size.y = 42 * scale_factor
+	for link in _source_links:
+		link.add_theme_font_size_override("font_size", roundi(18 * scale_factor))
+	_body.add_theme_font_size_override("normal_font_size", roundi(20 * scale_factor))
+	_body.add_theme_font_size_override("bold_font_size", roundi(20 * scale_factor))
 	_body.add_theme_constant_override("line_separation", roundi(6 * scale_factor))
-	var alphabet_width := UI_STYLE.FONT_REGULAR.get_string_size("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", HORIZONTAL_ALIGNMENT_LEFT, -1, roundi(18 * scale_factor)).x
-	_body.custom_minimum_size.x = minf(alphabet_width / 52.0 * 65.0, panel_size.x - 48 * scale_factor)
 
-func _on_scale_changed(_scale: float) -> void:
+func _layout_scale() -> float:
+	var available := get_viewport().get_visible_rect().size - Vector2(64, 64)
+	return minf(VisualSettings.get_ui_scale(), minf(available.x / 980.0, available.y / 720.0))
+
+func _on_scale_changed(_scale: float = 1.0) -> void:
 	_layout_panel()
+	_refresh_body()
 
 func _update_focus_chain() -> void:
 	var controls: Array[Control] = [_close_button]
 	controls.append_array(_tabs)
-	if _license_topic.visible:
-		controls.append(_license_topic)
-	controls.append(_body)
+	controls.append(_scroll)
 	if _sources.visible:
-		controls.append_array([_source_select, _open_source_button])
+		controls.append_array(_source_links)
 	for index in controls.size():
 		var control := controls[index]
 		control.focus_next = control.get_path_to(controls[(index + 1) % controls.size()])
@@ -201,7 +231,7 @@ func _update_focus_chain() -> void:
 		_tabs[index].focus_neighbor_right = _tabs[index].get_path_to(_tabs[(index + 1) % _tabs.size()])
 
 func _on_body_input(event: InputEvent) -> void:
-	var scroll := _body.get_v_scroll_bar()
+	var scroll := _scroll.get_v_scroll_bar()
 	if event.is_action_pressed("ui_up", true):
 		scroll.value -= _body.get_theme_font_size("normal_font_size")
 	elif event.is_action_pressed("ui_down", true):
@@ -216,10 +246,7 @@ func _on_body_input(event: InputEvent) -> void:
 		scroll.value = scroll.max_value
 	else:
 		return
-	_body.accept_event()
-
-func _open_selected_source() -> void:
-	_open_source(CONTENT.SOURCE_LINKS[_source_select.selected][1])
+	_scroll.accept_event()
 
 func _open_source(meta: Variant) -> void:
 	var url := str(meta)

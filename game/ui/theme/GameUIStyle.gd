@@ -43,11 +43,28 @@ static func button_style(bg_color: Color, border_color: Color = BORDER_SOFT) -> 
 
 static func apply_button(button: Button) -> void:
 	button.add_theme_font_override("font", FONT_SEMIBOLD)
+	var role: StringName = button.get_meta("button_role", &"primary")
 	for state in ["normal", "hover", "pressed", "disabled", "focus"]:
-		button.add_theme_stylebox_override(state, GAME_THEME.get_stylebox(state, "Button"))
+		var style := GAME_THEME.get_stylebox(state, "Button")
+		if role != &"primary" and state != "focus":
+			var secondary := style.duplicate() as StyleBoxFlat
+			secondary.bg_color = Color(0.035, 0.043, 0.047, 0.94)
+			secondary.border_color = Color(0.49, 0.53, 0.51, 0.65)
+			if role == &"destructive":
+				secondary.border_color = Color(0.72, 0.39, 0.32, 0.8)
+			if state in ["hover", "pressed"]:
+				secondary.bg_color = Color(0.10, 0.115, 0.12, 1.0)
+				secondary.border_color = secondary.border_color.lightened(0.15)
+			style = secondary
+		button.add_theme_stylebox_override(state, style)
+	button.add_theme_color_override("font_pressed_color", Color(1, 0.77, 0.69) if role == &"destructive" else (TEXT if role == &"secondary" else ACCENT))
 	if not button.has_theme_font_size_override("font_size"):
 		button.add_theme_font_size_override("font_size", 20)
 	SFX.wire_button(button)
+
+static func apply_secondary_button(button: Button, destructive: bool = false) -> void:
+	button.set_meta("button_role", &"destructive" if destructive else &"secondary")
+	apply_button(button)
 
 static func apply_panel(panel: Control, soft: bool = false) -> void:
 	var bg := PANEL_BG_SOFT if soft else PANEL_BG

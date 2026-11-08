@@ -12,6 +12,7 @@ var _confirm: Button
 var _quitting: bool = false
 
 func _ready() -> void:
+	UI_STYLE.apply_secondary_button(self)
 	_build_confirmation()
 	pressed.connect(_open_confirmation)
 
@@ -84,14 +85,14 @@ func _build_confirmation() -> void:
 	_cancel.text = "Cancel quit"
 	_cancel.pressed.connect(_cancel_confirmation)
 	UI_STYLE.SFX.wire_button(_cancel, true)
-	UI_STYLE.apply_button(_cancel)
+	UI_STYLE.apply_secondary_button(_cancel)
 	actions.add_child(_cancel)
 
 	_confirm = Button.new()
 	_confirm.name = "Confirm"
 	_confirm.text = "Confirm quit"
 	_confirm.pressed.connect(_quit_game)
-	UI_STYLE.apply_button(_confirm)
+	UI_STYLE.apply_secondary_button(_confirm, true)
 	actions.add_child(_confirm)
 
 	for button in [_cancel, _confirm]:

@@ -24,9 +24,8 @@ func _run() -> void:
 	var credits: CanvasLayer = menu.credits_modal
 	var credits_body: RichTextLabel = credits.get_node("%Body")
 	var credits_close: Button = credits.get_node("%Close")
-	var source_select: OptionButton = credits.get_node("%SourceSelect")
-	var open_source: Button = credits.get_node("%OpenSource")
-	var license_topic: OptionButton = credits.get_node("%LicenseTopic")
+	var reader: PanelContainer = credits.get_node("%Reader")
+	var scroll_container: ScrollContainer = credits.get_node("%Scroll")
 	var credits_title: Label = credits.get_node("%Title")
 	var credits_panel: PanelContainer = credits.get_node("%Panel")
 	var quit: Button = menu.quit_button
@@ -40,51 +39,50 @@ func _run() -> void:
 	_check(credits.visible and credits_close.has_focus(), "Enter opens credits and focuses Close")
 	_check(credits_title.text == "BAGYONG BAHAY" and credits_body.get_parsed_text().contains("3 Netherite Ingots")
 		and credits_body.get_parsed_text().contains("Jeyep18"), "game title and original team credit")
-	_check(credits._tabs.size() == 4 and source_select.item_count > 10, "four views and keyboard source catalog")
+	_check(credits._tabs.size() == 4 and credits._source_links.size() == credits.CONTENT.SOURCE_LINKS.size(), "four views retain the complete keyboard source catalog")
+	_check(credits.find_children("*", "OptionButton", true, false).is_empty(), "credits has no dropdown selectors")
+	_check(credits_close.get_meta("button_role") == &"secondary", "Close has a secondary action style")
 	await _capture("credits_english")
 	_click(menu.quit_button.get_global_rect().get_center())
 	_check(not quit.is_confirmation_open(), "click cannot reach the menu behind credits")
-	_click(credits_body.get_global_rect().get_center(), MOUSE_BUTTON_WHEEL_DOWN)
+	_click(reader.get_global_rect().get_center(), MOUSE_BUTTON_WHEEL_DOWN)
 	await get_tree().process_frame
-	_check(credits_body.get_v_scroll_bar().value > 0, "mouse wheel scrolls the credits")
+	_check(scroll_container.scroll_vertical > 0, "mouse wheel scrolls the credits")
+	credits_close.grab_focus()
 	_key(KEY_TAB)
 	_check(credits._tabs[0].has_focus(), "Tab enters the view navigation")
 	for index in 4:
 		_key(KEY_TAB)
-	_check(credits_body.has_focus(), "Tab focuses the credits text")
-	var first_scroll := credits_body.get_v_scroll_bar().value
+	_check(scroll_container.has_focus(), "Tab focuses the bounded reading viewport")
+	var first_scroll := scroll_container.scroll_vertical
 	_key(KEY_PAGEDOWN)
-	_check(credits_body.get_v_scroll_bar().value > first_scroll, "Page Down scrolls the credits")
+	_check(scroll_container.scroll_vertical > first_scroll, "Page Down scrolls the credits")
 	_key(KEY_END)
 	await get_tree().process_frame
-	var scroll := credits_body.get_v_scroll_bar()
+	var scroll := scroll_container.get_v_scroll_bar()
 	_check(is_equal_approx(scroll.value, scroll.max_value - scroll.page), "End reaches the last section")
 	_key(KEY_HOME)
 	_check(is_zero_approx(scroll.value), "Home returns to the first section")
 	_key(KEY_TAB)
-	_check(source_select.has_focus(), "Tab reaches the source list")
-	_key(KEY_TAB)
-	_check(open_source.has_focus(), "source action is keyboard accessible")
-	_key(KEY_TAB)
+	_check(credits._source_links[0].has_focus(), "Tab reaches a directly activatable source link")
+	for link in credits._source_links:
+		_check(link is LinkButton and link.focus_mode == Control.FOCUS_ALL and link.pressed.get_connections().size() == 1, "source link is keyboard accessible and wired once")
+		_key(KEY_TAB)
 	_check(credits_close.has_focus(), "focus cycles within credits")
 	_click(credits._tabs[1].get_global_rect().get_center())
 	await get_tree().process_frame
-	_check(license_topic.visible and credits_body.get_parsed_text().contains("Jeyep18"), "Licenses opens offline project terms")
-	license_topic.select(1)
-	license_topic.item_selected.emit(1)
+	_check(credits_body.get_parsed_text().contains("Jeyep18"), "Licenses opens offline project terms")
 	_check(credits_body.get_parsed_text().contains("Lyndschoko") and credits_body.get_parsed_text().contains("CC BY 4.0")
 		and credits_body.get_parsed_text().contains("CUSTOM ASSET AND PLATFORM TERMS"), "asset notices retain attribution and custom terms")
-	license_topic.select(2)
-	license_topic.item_selected.emit(2)
 	_check(credits_body.get_parsed_text().contains("Permission is hereby granted")
 		and credits_body.get_parsed_text().contains("Third-party components"), "offline engine and dependency notices")
-	license_topic.select(3)
-	license_topic.item_selected.emit(3)
 	_check(credits_body.get_parsed_text().contains("Creative Commons")
 		and credits_body.get_parsed_text().contains("OPEN FONT LICENSE"), "full media and font licenses load offline")
+	for entry: Array in credits.CONTENT.LICENSE_FILES:
+		_check(_words(credits_body.get_parsed_text()).contains(_words(FileAccess.get_file_as_string(entry[1]))), "reflow preserves complete notice wording: " + entry[0])
+	_check(_words(credits_body.get_parsed_text()).contains(_words(Engine.get_license_text())), "engine license wording is preserved")
 	_click(credits._tabs[2].get_global_rect().get_center())
-	_check(credits_body.get_parsed_text().contains("leaderboard") and not license_topic.visible
-		and not source_select.is_visible_in_tree(), "Privacy explains local scores with contextual controls")
+	_check(credits_body.get_parsed_text().contains("leaderboard") and not credits._sources.is_visible_in_tree(), "Privacy explains local scores without source controls")
 	_click(credits._tabs[3].get_global_rect().get_center())
 	_check(credits_body.get_parsed_text().contains("Codex") and credits_body.get_parsed_text().contains("ChatGPT"), "AI use discloses confirmed development assistance")
 	VisualSettings.set_ui_scale_percent(100)
@@ -109,8 +107,9 @@ func _run() -> void:
 	for index in range(1, 4):
 		_click(credits._tabs[index].get_global_rect().get_center())
 		await get_tree().process_frame
-		_check(not credits_body.text.is_empty() and credits_panel.get_global_rect().encloses(credits_body.get_global_rect()), "localized view fits at 175% " + str(index))
+		_check(not credits_body.text.is_empty() and credits_panel.get_global_rect().encloses(reader.get_global_rect()), "localized reader fits at 175% " + str(index))
 		await _capture("notice_%d_tagalog_175" % index)
+	await _test_credits_layouts(credits)
 	_click(credits_close.get_global_rect().get_center())
 	_check(not credits.visible and menu.credits_button.has_focus(), "Close button restores source focus")
 
@@ -196,6 +195,11 @@ func _test_input_isolation(menu: Node) -> void:
 		menu.request_start_game(menu.start_button)
 		await get_tree().process_frame
 		_check(menu._difficulty_layer.visible and menu._difficulty_layer.is_ancestor_of(get_viewport().gui_get_focus_owner()), "difficulty opens with keyboard focus inside %d" % cycle)
+		var cancel: Button = menu._difficulty_layer.find_child("CancelDifficulty", true, false)
+		var choices: Array[Node] = menu._difficulty_layer.find_children("*", "Button", true, false)
+		_check(cancel.get_meta("button_role") == &"secondary" and cancel.size.x < choices[0].size.x, "difficulty Cancel is narrower and visually secondary")
+		if cycle == 0:
+			await _capture("difficulty_buttons")
 		menu._on_settings_pressed()
 		_check(not menu._settings_layer.visible, "difficulty blocks a second menu action")
 		menu._on_settings_close_requested()
@@ -207,6 +211,53 @@ func _test_input_isolation(menu: Node) -> void:
 		_key(KEY_ESCAPE)
 		_check(not menu._difficulty_layer.visible and menu.start_button.has_focus() and not menu.start_button.disabled, "Escape cancels difficulty and restores Start %d" % cycle)
 		menu._hide_difficulty_overlay()
+
+func _words(text: String) -> String:
+	return RegEx.create_from_string("\\s+").sub(text, " ", true).strip_edges()
+
+func _test_credits_layouts(credits: CanvasLayer) -> void:
+	var original_size := get_window().content_scale_size
+	var original_aspect := get_window().content_scale_aspect
+	get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
+	credits._select_view(0)
+	VisualSettings.set_ui_scale_percent(175)
+	get_window().content_scale_size = Vector2i(1280, 720)
+	for frame in 4:
+		await get_tree().process_frame
+	var heading := LocalizationManager.translate_key(credits.CONTENT.CREDIT_SECTIONS[0][0], credits.CONTENT.CREDIT_SECTIONS[0][1])
+	_check(credits._view == 0 and credits._body.text.begins_with(credits._heading(heading)), "resizing refreshes embedded heading sizes without changing the view")
+	for canvas_size in [Vector2i(1920, 1080), Vector2i(1280, 720)]:
+		get_window().content_scale_size = canvas_size
+		for language in ["english", "tagalog"]:
+			LocalizationManager.set_language(language)
+			for scale in [100, 140, 175]:
+				VisualSettings.set_ui_scale_percent(scale)
+				for view in 4:
+					credits._select_view(view)
+					for frame in 4:
+						await get_tree().process_frame
+					var label := "%s %d%% %s view%d" % [language, scale, canvas_size, view]
+					var panel_rect: Rect2 = credits._panel.get_global_rect()
+					var reader_rect: Rect2 = credits._reader.get_global_rect()
+					var bar: VScrollBar = credits._scroll.get_v_scroll_bar()
+					_check(get_viewport().get_visible_rect().encloses(panel_rect) and panel_rect.encloses(reader_rect) and panel_rect.encloses(credits._close_button.get_global_rect()), "all modal chrome fits: " + label)
+					_check(credits._body.size.x <= credits._scroll.size.x and credits._scroll.get_h_scroll_bar().max_value <= credits._scroll.size.x + 1.0, "text and source links fit the reader width: " + label)
+					_check(bar.get_global_rect().end.x >= reader_rect.end.x - 3.0, "scrollbar stays at the reading panel edge: " + label)
+					credits._scroll.grab_focus()
+					_check((credits._reader.get_theme_stylebox("panel") as StyleBoxFlat).border_color == (GameUIStyle.GAME_THEME.get_stylebox("focus", "Button") as StyleBoxFlat).border_color, "keyboard reading focus is marked on the bounded panel: " + label)
+					_key(KEY_END)
+					await get_tree().process_frame
+					_check(is_equal_approx(bar.value, maxf(0.0, bar.max_value - bar.page)), "keyboard reaches the true document end: " + label)
+					_key(KEY_HOME)
+					if OS.get_cmdline_user_args().has("--capture"):
+						await _capture("reader_%s_%d_%dx%d_view%d" % [language, scale, canvas_size.x, canvas_size.y, view])
+	get_window().content_scale_size = original_size
+	get_window().content_scale_aspect = original_aspect
+	LocalizationManager.set_language("tagalog")
+	VisualSettings.set_ui_scale_percent(175)
+	credits._select_view(3)
+	for frame in 4:
+		await get_tree().process_frame
 
 func _key(code: Key, shift: bool = false) -> void:
 	var event := InputEventKey.new()

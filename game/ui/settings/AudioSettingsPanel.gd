@@ -84,7 +84,7 @@ func _build() -> void:
 		close_button.text = "Close"
 		close_button.custom_minimum_size = Vector2(120, 42)
 		close_button.pressed.connect(func() -> void: close_requested.emit())
-		UI_STYLE.apply_button(close_button)
+		UI_STYLE.apply_secondary_button(close_button)
 		SFX.wire_button(close_button, true)
 		buttons.add_child(close_button)
 
